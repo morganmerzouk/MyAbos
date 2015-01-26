@@ -14,27 +14,25 @@ class SkipperAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('translations', 'a2lix_translations', array(
-                'by_reference' => false,
-                'locales' => array('fr', 'en')))
-            ->add('name', 'text', array('label' => 'Nom'))
-            ->add('email', 'text', array('label' => 'Email'))
-            ->add('description', 'text', array('label' => 'Description'))
-            ->add('yearsSailing', 'text', array('label' => 'Years sailing'))
-            ->add('professionalSince', 'text', array('label' => 'Professional since'))
-            ->add('certificationDate', 'text', array('label' => 'certificationDate'))
-            ->add('yearsSailingCarribean', 'text', array('label' => 'yearsSailingCarribean'))
-            ->add('yearsKiteSurfing', 'text', array('label' => 'yearsKiteSurfing'))
-            ->add('yearsKiteCruise', 'text', array('label' => 'yearsKiteCruise'))
-            ->add('kitesurfInstructorSince', 'text', array('label' => 'kitesurfInstructorSince'))
-            ->add('kitesurfCertificationDate', 'text', array('label' => 'kitesurfCertificationDate'))
-            ->add('otherCertification', 'text', array('label' => 'otherCertification'))
-            ->add('hobbies', 'text', array('label' => 'hobbies'))
-            ->add('languagesSpoken', 'text', array('label' => 'languagesSpoken'))
-            ->add('greatestQualities', 'text', array('label' => 'greatestQualities'))
-            ->add('avatar', 'text', array('label' => 'avatar'))
-            ->add('rank', 'integer', array('label' => 'order'))
-            ->add('published', 'checkbox', array('label' => 'published'))
+            ->add('translations', 'a2lix_translations')
+            ->add('name', 'text', array('label' => 'Nom', 'required'=> false))
+            ->add('email', 'text', array('label' => 'Email', 'required'=> false))
+            ->add('description', 'text', array('label' => 'Description', 'required'=> false))
+            ->add('yearsSailing', 'text', array('label' => 'Years sailing', 'required'=> false))
+            ->add('professionalSince', 'text', array('label' => 'Professional since', 'required'=> false))
+            ->add('certificationDate', 'text', array('label' => 'certificationDate', 'required'=> false))
+            ->add('yearsSailingCarribean', 'text', array('label' => 'yearsSailingCarribean', 'required'=> false))
+            ->add('yearsKiteSurfing', 'text', array('label' => 'yearsKiteSurfing', 'required'=> false))
+            ->add('yearsKiteCruise', 'text', array('label' => 'yearsKiteCruise', 'required'=> false))
+            ->add('kitesurfInstructorSince', 'text', array('label' => 'kitesurfInstructorSince', 'required'=> false))
+            ->add('kitesurfCertificationDate', 'text', array('label' => 'kitesurfCertificationDate', 'required'=> false))
+            ->add('otherCertifications', 'text', array('label' => 'otherCertification', 'required'=> false))
+            ->add('hobbies', 'text', array('label' => 'hobbies', 'required'=> false))
+            ->add('languagesSpoken', 'text', array('label' => 'languagesSpoken', 'required'=> false))
+            ->add('greatestQualities', 'text', array('label' => 'greatestQualities', 'required'=> false))
+            ->add('avatarFile', 'file', array('required' => false))
+            ->add('rank', 'integer', array('label' => 'rank', 'required'=> false))
+            ->add('published', 'checkbox', array('label' => 'published', 'required'=> false))
             
         ;
     }
@@ -67,5 +65,18 @@ class SkipperAdmin extends Admin
     public function setBaseRoutePattern($baseRoutePattern)
     {
         $this->baseRoutePattern = $baseRoutePattern;
+    }
+    
+    public function prePersist($avatar) {
+        $this->saveFile($avatar);
+    }
+    
+    public function preUpdate($avatar) {
+        $this->saveFile($avatar);
+    }
+    
+    public function saveFile($avatar) {
+        $basepath = $this->getRequest()->getBasePath();
+        $avatar->upload($basepath);
     }
 }

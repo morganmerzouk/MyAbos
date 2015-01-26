@@ -4,7 +4,7 @@ imports:
     - { resource: @AppBundle/Resources/config/admin.yml }
 framework:
     #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator:      { fallback: "%locale%" }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -61,6 +61,10 @@ doctrine:
             defaults:
                 mappings:
                     AppBundle: ~
+                filters:
+                    oneLocale:
+                        class: A2lix\I18nDoctrineBundle\Doctrine\ORM\Filter\OneLocaleFilter
+                        enabled: true
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -78,11 +82,18 @@ services:
             - { name: doctrine.event_subscriber, connection: default }
         calls:
             - [ setAnnotationReader, [ @annotation_reader ] ]
-            - [ setDefaultLocale, [ en ] ]
-            - [ setTranslationFallback, [ true ] ]
 sonata_admin:
     title:      Kitsurfari
-    
+    templates:
+        # default global templates
+        layout:  SonataAdminBundle::standard_layout.html.twig
+        ajax:    SonataAdminBundle::ajax_layout.html.twig
+
+        # default actions templates, should extend a global templates
+        list:    SonataAdminBundle:CRUD:list.html.twig
+        show:    SonataAdminBundle:CRUD:show.html.twig
+        edit:    SonataAdminBundle:CRUD:edit.html.twig
+        
 sonata_block:
     default_contexts: [cms]
     blocks:
@@ -90,6 +101,8 @@ sonata_block:
         sonata.admin.block.admin_list:
             contexts:   [admin]
 a2lix_translation_form:
-        default_locale: en                  # [Optionnal] Default to 'en'
-        locales: [en,fr]               # [Optionnal] Array of translations locales. Can be specified in the form.
+        locales: [fr,en]               # [Optionnal] Array of translations locales. Can be specified in the form.
         templating: "A2lixTranslationFormBundle::default.html.twig"      # [4]
+
+a2lix_i18n_doctrine:
+    manager_registry: doctrine       # [1]     

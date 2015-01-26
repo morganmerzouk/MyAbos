@@ -6,6 +6,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @ORM\Entity
@@ -14,6 +15,8 @@ use Gedmo\Mapping\Annotation as Gedmo;
  */
 class Skipper {
 
+    use \A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+        
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -22,111 +25,98 @@ class Skipper {
     protected $id;
     
     /**
-    * @Gedmo\Translatable
-    * @ORM\Column(type="string", length=100)
+    * @ORM\Column(type="string", length=100, nullable=true)
     */
     protected $name;
     
     /**
-    * @ORM\Column(type="string", length=100)
+    * @ORM\Column(type="string", length=100, nullable=true)
     */
     protected $email;
     
     /**
-    * @Gedmo\Translatable
-    * @ORM\Column(type="text")
+    * @ORM\Column(type="text", nullable=true)
     */
     protected $description;
     
     /**
-    * @ORM\Column(type="string", length=30)
+    * @ORM\Column(type="string", length=30, nullable=true)
     */
     protected $yearsSailing;
     
     /**
-    * @ORM\Column(type="string", length=30)
+    * @ORM\Column(type="string", length=30, nullable=true)
     */
     protected $professionalSince;
     
     /**
-    * @ORM\Column(type="string", length=30)
+    * @ORM\Column(type="string", length=30, nullable=true)
     */
     protected $certificationDate;
     
     /**
-    * @ORM\Column(type="string", length=30)
+    * @ORM\Column(type="string", length=30, nullable=true)
     */
     protected $yearsSailingCarribean;
     
     /**
-    * @ORM\Column(type="string", length=30)
+    * @ORM\Column(type="string", length=30, nullable=true)
     */
     protected $yearsKiteSurfing;
     
     /**
-    * @ORM\Column(type="string", length=30)
+    * @ORM\Column(type="string", length=30, nullable=true)
     */
     protected $yearsKiteCruise;
     
     /**
-    * @ORM\Column(type="string", length=30)
+    * @ORM\Column(type="string", length=30, nullable=true)
     */
     protected $kitesurfInstructorSince;
     
     /**
-    * @ORM\Column(type="string", length=30)
+    * @ORM\Column(type="string", length=30, nullable=true)
     */
     protected $kitesurfCertificationDate;
     
     /**
-    * @ORM\Column(type="string", length=200)
+    * @ORM\Column(type="string", length=200, nullable=true)
     */
-    protected $otherCertification;
+    protected $otherCertifications;
     
     /**
-    * @Gedmo\Translatable
-    * @ORM\Column(type="string", length=200)
+    * @ORM\Column(type="string", length=200, nullable=true)
     */
     protected $hobbies;
     
     /**
-    * @Gedmo\Translatable
-    * @ORM\Column(type="string", length=200)
+    * @ORM\Column(type="string", length=200, nullable=true)
     */
     protected $languagesSpoken;
     
     /**
-    * @Gedmo\Translatable
-    * @ORM\Column(type="string", length=200)
+    * @ORM\Column(type="string", length=200, nullable=true)
     */
     protected $greatestQualities;
     
     /**
-    * @ORM\Column(type="string", length=200)
+    * @ORM\Column(type="string", length=200, nullable=true)
     */
     protected $avatar;
     
+    protected $avatarFile;
+    
     /**
-    * @ORM\Column(type="integer")
+    * @ORM\Column(type="integer", nullable=true)
     */
     protected $rank;
-    
-    
+        
     /**
      * @ORM\Column(type="boolean")
      */
     protected $published;
     
-    /**
-     * @ORM\OneToMany(targetEntity="SkipperTranslation", mappedBy="object", cascade={"persist", "remove"})
-     */
     protected $translations;
-
-    /**
-     * Required for Translatable behaviour
-     * @Gedmo\Locale
-     */
-    protected $locale;
 
     public function __construct()
     {
@@ -397,26 +387,26 @@ class Skipper {
     }
 
     /**
-     * Set otherCertification
+     * Set otherCertifications
      *
-     * @param string $otherCertification
+     * @param string $otherCertifications
      * @return Skipper
      */
-    public function setOtherCertification($otherCertification)
+    public function setOtherCertifications($otherCertifications)
     {
-        $this->otherCertification = $otherCertification;
+        $this->otherCertifications = $otherCertifications;
 
         return $this;
     }
 
     /**
-     * Get otherCertification
+     * Get otherCertifications
      *
      * @return string 
      */
-    public function getOtherCertification()
+    public function getOtherCertifications()
     {
-        return $this->otherCertification;
+        return $this->otherCertifications;
     }
 
     /**
@@ -488,28 +478,6 @@ class Skipper {
         return $this->greatestQualities;
     }
 
-    /**
-     * Set avatar
-     *
-     * @param string $avatar
-     * @return Skipper
-     */
-    public function setAvatar($avatar)
-    {
-        $this->avatar = $avatar;
-
-        return $this;
-    }
-
-    /**
-     * Get avatar
-     *
-     * @return string 
-     */
-    public function getAvatar()
-    {
-        return $this->avatar;
-    }
 
     /**
      * Set published
@@ -578,4 +546,99 @@ class Skipper {
         $this->translations = $translations;
     }
     
+    /**
+     * Set avatar
+     *
+     * @param string $avatar
+     * @return Skipper
+     */
+    public function setAvatar($avatar)
+    {
+        $this->avatar = $avatar;
+    
+        return $this;
+    }
+    
+    /**
+     * Get avatar
+     *
+     * @return string
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
+    
+    
+    /**
+     * Sets avatarFile.
+     *
+     * @param UploadedFile $avatarFile
+     */
+    public function setAvatarFile(UploadedFile $avatarFile = null)
+    {
+        $this->avatarFile = $avatarFile;
+    }
+    
+    /**
+     * Get avatarFile.
+     *
+     * @return UploadedFile
+     */
+    public function getAvatarFile()
+    {
+        return $this->avatarFile;
+    }
+    
+    public function getAvatarAbsolutePath()
+    {
+        return null === $this->avatar
+        ? null
+        : $this->getUploadRootDir().'/'.$this->avatar;
+    }
+    
+    public function getAvatarWebPath()
+    {
+        return null === $this->avatar
+        ? null
+        : $this->getUploadDir().'/'.$this->avatar;
+    }
+    
+    protected function getUploadRootDir()
+    {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__.'/../../../web/'.$this->getUploadDir();
+    }
+    
+    protected function getUploadDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view.
+        return 'uploads/avatar';
+    }
+    
+    public function upload($basepath)
+    {
+        // the file property can be empty if the field is not required
+        if (null === $this->avatarFile) {
+            return;
+        }
+    
+        if (null === $basepath) {
+            return;
+        }
+    
+        // we use the original file name here but you should
+        // sanitize it at least to avoid any security issues
+    
+        // move takes the target directory and then the target filename to move to
+        $this->avatarFile->move($this->getUploadRootDir($basepath), $this->avatarFile->getClientOriginalName());
+    
+        // set the path property to the filename where you'ved saved the file
+        $this->setAvatar($this->avatarFile->getClientOriginalName());
+    
+        // clean up the file property as you won't need it anymore
+        $this->avatarFile = null;
+    }
 }
