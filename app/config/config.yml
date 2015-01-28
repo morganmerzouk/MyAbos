@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: @AppBundle/Resources/config/admin.yml }
+    - { resource: ../../vendor/knplabs/doctrine-behaviors/config/orm-services.yml }
 framework:
     #esi:             ~
     translator:      { fallback: "%locale%" }
@@ -103,6 +104,3 @@ sonata_block:
 a2lix_translation_form:
         locales: [fr,en]               # [Optionnal] Array of translations locales. Can be specified in the form.
         templating: "A2lixTranslationFormBundle::default.html.twig"      # [4]
-
-a2lix_i18n_doctrine:
-    manager_registry: doctrine       # [1]     

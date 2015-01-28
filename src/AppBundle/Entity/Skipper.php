@@ -5,17 +5,16 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-use Gedmo\Mapping\Annotation as Gedmo;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="skipper")
- * @Gedmo\TranslationEntity(class="AppBundle\Entity\SkipperTranslation")
  */
 class Skipper {
 
-    use \A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
+    use ORMBehaviors\Translatable\Translatable;
         
     /**
      * @ORM\Id
@@ -82,23 +81,8 @@ class Skipper {
     /**
     * @ORM\Column(type="string", length=200, nullable=true)
     */
-    protected $otherCertifications;
-    
-    /**
-    * @ORM\Column(type="string", length=200, nullable=true)
-    */
-    protected $hobbies;
-    
-    /**
-    * @ORM\Column(type="string", length=200, nullable=true)
-    */
     protected $languagesSpoken;
-    
-    /**
-    * @ORM\Column(type="string", length=200, nullable=true)
-    */
-    protected $greatestQualities;
-    
+        
     /**
     * @ORM\Column(type="string", length=200, nullable=true)
     */
@@ -115,13 +99,6 @@ class Skipper {
      * @ORM\Column(type="boolean")
      */
     protected $published;
-    
-    protected $translations;
-
-    public function __construct()
-    {
-        $this->translations = new ArrayCollection;
-    }
     
     /**
      * Get id
@@ -525,27 +502,6 @@ class Skipper {
         return $this->rank;
     }
     
-    public function getTranslations()
-    {
-        return $this->translations;
-    }
-    
-    public function addTranslation(SkipperTranslation $t)
-    {
-        $this->translations->add($t);
-        $t->setObject($this);
-    }
-    
-    public function removeTranslation(SkipperTranslation $t)
-    {
-        $this->translations->removeElement($t);
-    }
-    
-    public function setTranslations($translations)
-    {
-        $this->translations = $translations;
-    }
-    
     /**
      * Set avatar
      *
@@ -620,7 +576,6 @@ class Skipper {
     
     public function upload($basepath)
     {
-        // the file property can be empty if the field is not required
         if (null === $this->avatarFile) {
             return;
         }
@@ -629,12 +584,33 @@ class Skipper {
             return;
         }
     
-        // we use the original file name here but you should
-        // sanitize it at least to avoid any security issues
-    
-        // move takes the target directory and then the target filename to move to
-        $this->avatarFile->move($this->getUploadRootDir($basepath), $this->avatarFile->getClientOriginalName());
-    
+        $destination = imagecreatetruecolor(125, 125);
+        $extension = $this->avatarFile->getClientOriginalExtension();
+        switch ($extension) {
+            case "png":
+                $source = imagecreatefrompng($this->avatarFile);
+                $fct = 'imagepng';
+            break;
+            case "jpg":
+            case "jpeg":
+                $source = imagecreatefromjpeg($this->avatarFile);
+                $fct = 'imagejpeg';
+            break;
+            case "gif":
+                $source = imagecreatefromgif($this->avatarFile);
+                $fct = 'imagegif';
+            break;
+                    
+        }
+        
+        
+        // On récupère la taille de l'image source
+        $largeur_source = imagesx($source);
+        $hauteur_source = imagesy($source);
+
+        // On redimensionne tout !
+        imagecopyresampled($destination, $source, 0, 0, 0, 0, 125, 125, $largeur_source, $hauteur_source);
+        $fct($destination, $this->getUploadRootDir($basepath).'/'.$this->avatarFile->getClientOriginalName());
         // set the path property to the filename where you'ved saved the file
         $this->setAvatar($this->avatarFile->getClientOriginalName());
     
