@@ -3,6 +3,7 @@
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Acme\DemoBundle\AcmeDemoBundle;
+use Sonata\EasyExtendsBundle\SonataEasyExtendsBundle;
 
 class AppKernel extends Kernel
 {
@@ -24,7 +25,10 @@ class AppKernel extends Kernel
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Sonata\AdminBundle\SonataAdminBundle(),
             new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
-            
+            new FOS\UserBundle\FOSUserBundle(),
+            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
+            new SonataEasyExtendsBundle(),
+            new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
             new AppBundle\AppBundle(),
         );
 

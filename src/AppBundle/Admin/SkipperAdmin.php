@@ -64,9 +64,11 @@ class SkipperAdmin extends Admin
                                     'label' => 'Greatest qualities'
                                 ),
                             'required' => false
+
                             )
                         )
                     )))
+            ->add('languagesSpoken', 'sonata_type_translatable_choice', array('label' => 'Langues parlées', 'choice_list' => $this->loadLanguagesList(), 'multiple' => true))
             ->add('avatarFile', 'file', array('label' => 'Avatar', 'required' => false))
             ->add('rank', 'integer', array('label' => 'Ordre', 'required'=> false))
             ->add('published', 'checkbox', array('label' => 'Publié', 'required'=> false))    
@@ -166,6 +168,22 @@ class SkipperAdmin extends Admin
             '2015' => '2015',
         );
         $choices = new SimpleChoiceList($years);
+    
+        return $choices;
+    }
+    
+    protected function loadLanguagesList() {
+        $languages = array(
+            'Francais' => 'Francais',
+            'Anglais' => 'Anglais',
+            'Allemand' => 'Allemand',
+            'Italien' => 'Italien',
+            'Espagnol' => 'Espagnol',
+            'Danois' => 'Danois',
+            'Grec' => 'Grec',
+            'Portugais' => 'Portugais',
+        );
+        $choices = new SimpleChoiceList($languages);
     
         return $choices;
     }

@@ -29,11 +29,6 @@ class SkipperTranslation
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
      */
-    protected $languagesSpoken;
-
-    /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
     protected $greatestQualities;
 
     public function __construct()
@@ -85,29 +80,6 @@ class SkipperTranslation
     public function getHobbies()
     {
         return $this->hobbies;
-    }
-
-    /**
-     * Set languagesSpoken
-     *
-     * @param string $languagesSpoken            
-     * @return Skipper
-     */
-    public function setLanguagesSpoken($languagesSpoken)
-    {
-        $this->languagesSpoken = $languagesSpoken;
-        
-        return $this;
-    }
-
-    /**
-     * Get languagesSpoken
-     *
-     * @return string
-     */
-    public function getLanguagesSpoken()
-    {
-        return $this->languagesSpoken;
     }
 
     /**
