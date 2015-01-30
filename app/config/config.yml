@@ -116,7 +116,7 @@ sonata_admin:
             ADMIN:    [MASTER]
         admin_permissions: [CREATE, LIST, DELETE, UNDELETE, EXPORT, OPERATOR, MASTER]
         object_permissions: [VIEW, EDIT, DELETE, UNDELETE, OPERATOR, MASTER, OWNER]
-    title:      Kitsurfari
+    title:      Kitesurfari
     templates:
         # default global templates
         layout:  SonataAdminBundle::standard_layout.html.twig
@@ -137,5 +137,6 @@ sonata_block:
             contexts:   [admin]
             
 a2lix_translation_form:
+        default_locale: fr
         locales: [fr,en]               # [Optionnal] Array of translations locales. Can be specified in the form.
         templating: "A2lixTranslationFormBundle::default.html.twig"      # [4]
