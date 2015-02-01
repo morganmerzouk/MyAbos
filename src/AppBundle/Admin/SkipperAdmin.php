@@ -5,7 +5,6 @@ namespace AppBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
-use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\ChoiceList\SimpleChoiceList;
 
@@ -14,9 +13,31 @@ class SkipperAdmin extends Admin
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $optionsAvatar = array('label' => 'Avatar', 'required' => false);
+        $optionsPhoto1 = array('label' => 'Photo 1', 'required' => false);
+        $optionsPhoto2 = array('label' => 'Photo 2', 'required' => false);
+        $optionsPhoto3 = array('label' => 'Photo 3', 'required' => false);
+        $optionsPhoto4 = array('label' => 'Photo 4', 'required' => false);
+        $optionsPhoto5 = array('label' => 'Photo 5', 'required' => false);
+        
+        $skipper = $this->getSubject();
+        
+        if ($skipper->getAvatarWebPath()) {$optionsAvatar['help'] = '<img src="' . $skipper->getAvatarWebPath(). '" />';}
+        if ($skipper->getPhoto1WebPath()) {$optionsPhoto1['help'] = '<img src="' . $skipper->getPhoto1WebPath(). '" />';}
+        if ($skipper->getPhoto2WebPath()) {$optionsPhoto2['help'] = '<img src="' . $skipper->getPhoto2WebPath(). '" />';}
+        if ($skipper->getPhoto3WebPath()) {$optionsPhoto3['help'] = '<img src="' . $skipper->getPhoto3WebPath(). '" />';}
+        if ($skipper->getPhoto4WebPath()) {$optionsPhoto4['help'] = '<img src="' . $skipper->getPhoto4WebPath(). '" />';}
+        if ($skipper->getPhoto5WebPath()) {$optionsPhoto5['help'] = '<img src="' . $skipper->getPhoto5WebPath(). '" />';}
+
+
         $formMapper
             ->add('name', 'text', array('label' => 'Nom', 'required'=> false))
             ->add('email', 'text', array('label' => 'Email', 'required'=> false))
+            ->add('photo1File', 'file', $optionsPhoto1)
+            ->add('photo2File', 'file', $optionsPhoto2)
+            ->add('photo3File', 'file', $optionsPhoto3)
+            ->add('photo4File', 'file', $optionsPhoto4)
+            ->add('photo5File', 'file', $optionsPhoto5)
             ->add('description', 'text', array('label' => 'Description', 'required'=> false))
             ->add('yearsSailing', 'choice', array('label' => 'Nombre d\'années de navigation', 'required'=> false,
                 'choice_list' => $this->loadChoiceList()
@@ -68,18 +89,10 @@ class SkipperAdmin extends Admin
                             )
                         )
                     )))
-            ->add('languagesSpoken', 'sonata_type_translatable_choice', array('label' => 'Langues parlées', 'choice_list' => $this->loadLanguagesList(), 'multiple' => true))
-            ->add('avatarFile', 'file', array('label' => 'Avatar', 'required' => false))
+            ->add('languagesSpoken', 'choice', array('label' => 'Langues parlées', 'choice_list' => $this->loadLanguagesList(), 'multiple' => true, 'required' => false))
+            ->add('avatarFile', 'file', $optionsAvatar)
             ->add('rank', 'integer', array('label' => 'Ordre', 'required'=> false))
             ->add('published', 'checkbox', array('label' => 'Publié', 'required'=> false))    
-        ;
-    }
-
-    // Fields to be shown on filter forms
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
-        $datagridMapper
-            ->add('name')
         ;
     }
 
@@ -105,17 +118,17 @@ class SkipperAdmin extends Admin
         $this->baseRoutePattern = $baseRoutePattern;
     }
     
-    public function prePersist($avatar) {
-        $this->saveFile($avatar);
+    public function prePersist($skipper) {
+        $this->saveFile($skipper);
     }
     
-    public function preUpdate($avatar) {
-        $this->saveFile($avatar);
+    public function preUpdate($skipper) {
+        $this->saveFile($skipper);
     }
     
-    public function saveFile($avatar) {
+    public function saveFile($skipper) {
         $basepath = $this->getRequest()->getBasePath();
-        $avatar->upload($basepath);
+        $skipper->upload($basepath);
     }
 
     protected function loadChoiceList() {

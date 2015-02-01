@@ -4,6 +4,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -133,7 +134,7 @@ class Skipper {
      * @ORM\Column(type="boolean")
      */
     protected $published;
-        
+    
     /**
      * Get id
      *
@@ -451,7 +452,7 @@ class Skipper {
      */
     public function setLanguagesSpoken($languagesSpoken)
     {
-        $this->languagesSpoken = implode(', ',$languagesSpoken);
+        $this->languagesSpoken = $languagesSpoken;
 
         return $this;
     }
@@ -463,7 +464,7 @@ class Skipper {
      */
     public function getLanguagesSpoken()
     {
-        return explode(', ', $this->languagesSpoken);
+        return $this->languagesSpoken;
     }
 
     /**
@@ -580,324 +581,75 @@ class Skipper {
         return $this->avatarFile;
     }
     
-    /**
-     * Sets photo1File.
-     *
-     * @param UploadedFile $photo1File
-     */
-    public function setPhoto1File(UploadedFile $photo1File = null)
+    public function getAvatarAbsolutePath()
     {
-        $this->photo1File = $photo1File;
-    }
-    
-    /**
-     * Get photo1File.
-     *
-     * @return UploadedFile
-     */
-    public function getPhoto1File()
-    {
-        return $this->photo1File;
-    }
-    
-    /**
-     * Sets photo2File.
-     *
-     * @param UploadedFile $photo2File
-     */
-    public function setPhoto2File(UploadedFile $photo2File = null)
-    {
-        $this->photo2File = $photo2File;
-    }
-    
-    /**
-     * Get photo2File.
-     *
-     * @return UploadedFile
-     */
-    public function getPhoto2File()
-    {
-        return $this->photo2File;
-    }
-    
-    /**
-     * Sets photo3File.
-     *
-     * @param UploadedFile $photo3File
-     */
-    public function setPhoto3File(UploadedFile $photo3File = null)
-    {
-        $this->photo3File = $photo3File;
-    }
-    
-    /**
-     * Get photo3File.
-     *
-     * @return UploadedFile
-     */
-    public function getPhoto3File()
-    {
-        return $this->photo3File;
-    }
-    
-    /**
-     * Sets photo4File.
-     *
-     * @param UploadedFile $photo4File
-     */
-    public function setPhoto4File(UploadedFile $photo4File = null)
-    {
-        $this->photo4File = $photo4File;
-    }
-    
-    /**
-     * Get photo4File.
-     *
-     * @return UploadedFile
-     */
-    public function getPhoto4File()
-    {
-        return $this->photo4File;
-    }
-    
-    /**
-     * Sets photo5File.
-     *
-     * @param UploadedFile $photo5File
-     */
-    public function setPhoto5File(UploadedFile $photo5File = null)
-    {
-        $this->photo5File = $photo5File;
-    }
-    
-    /**
-     * Get photo5File.
-     *
-     * @return UploadedFile
-     */
-    public function getPhoto5File()
-    {
-        return $this->photo5File;
+        return null === $this->avatar
+        ? null
+        : $this->getUploadRootDir().'/'.$this->avatar;
     }
     
     public function getAvatarWebPath()
     {
         return null === $this->avatar
         ? null
-        : $this->getUploadDir().'/avatar/'.$this->avatar;
+        : $this->getUploadDir().'/'.$this->avatar;
     }
     
-    public function getPhoto1WebPath()
+    protected function getUploadRootDir()
     {
-        return null === $this->photo1
-        ? null
-        : $this->getUploadDir().'/'.$this->photo1;
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__.'/../../../web/'.$this->getUploadDir();
     }
-    
-    public function getPhoto2WebPath()
-    {
-        return null === $this->photo2
-        ? null
-        : $this->getUploadDir().'/'.$this->photo2;
-    }
-    
-    public function getPhoto3WebPath()
-    {
-        return null === $this->photo3
-        ? null
-        : $this->getUploadDir().'/'.$this->photo3;
-    }
-    
-    public function getPhoto4WebPath()
-    {
-        return null === $this->photo4
-        ? null
-        : $this->getUploadDir().'/'.$this->photo4;
-    }
-    
-    public function getPhoto5WebPath()
-    {
-        return null === $this->photo5
-        ? null
-        : $this->getUploadDir().'/'.$this->photo5;
-    }
-    
     
     protected function getUploadDir()
     {
-        return '/uploads/skipper';
-    }
-    
-    protected function getUploadRootDir(){
-        return __DIR__.'/../../../web/'.$this->getUploadDir();
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view.
+        return 'uploads/avatar';
     }
     
     public function upload($basepath)
     {
-        $this->uploadImage($this->avatarFile, "setAvatar", 125, 125);
-        $this->uploadImage($this->photo1File, "setPhoto1", 300, 300);
-        $this->uploadImage($this->photo2File, "setPhoto2", 300, 300);
-        $this->uploadImage($this->photo3File, "setPhoto3", 300, 300);
-        $this->uploadImage($this->photo4File, "setPhoto4", 300, 300);
-        $this->uploadImage($this->photo5File, "setPhoto5", 300, 300);
-    }
-    
-    public function uploadImage($file, $fctName, $width, $height){
-
-        if (null === $file) {
+        if (null === $this->avatarFile) {
             return;
         }
-        $destination = imagecreatetruecolor($width, 125);
-
-        $extension = $file->getClientOriginalExtension();
-        switch (strtolower($extension)) {
+    
+        if (null === $basepath) {
+            return;
+        }
+    
+        $destination = imagecreatetruecolor(125, 125);
+        $extension = $this->avatarFile->getClientOriginalExtension();
+        switch ($extension) {
             case "png":
-                $source = imagecreatefrompng($file);
+                $source = imagecreatefrompng($this->avatarFile);
                 $fct = 'imagepng';
             break;
             case "jpg":
             case "jpeg":
-                $source = imagecreatefromjpeg($file);
+                $source = imagecreatefromjpeg($this->avatarFile);
                 $fct = 'imagejpeg';
             break;
             case "gif":
-                $source = imagecreatefromgif($file);
+                $source = imagecreatefromgif($this->avatarFile);
                 $fct = 'imagegif';
             break;
                     
         }
         
-        // On rï¿½cupï¿½re la taille de l'image source
-        $largeur_source = imagesx($source);        
-        $hauteur_source = imagesy($source);
         
+        // On récupère la taille de l'image source
+        $largeur_source = imagesx($source);
+        $hauteur_source = imagesy($source);
+
         // On redimensionne tout !
-        imagecopyresampled($destination, $source, 0, 0, 0, 0, $width, $height, $largeur_source, $hauteur_source);
-        if ($fctName == "setAvatar") {
-            $fct($destination, $this->getUploadRootDir() . '/avatar/' . $file->getClientOriginalName());
-        } else {
-            $fct($destination, $this->getUploadRootDir() . '/' . $file->getClientOriginalName());
-        }
-
+        imagecopyresampled($destination, $source, 0, 0, 0, 0, 125, 125, $largeur_source, $hauteur_source);
+        $fct($destination, $this->getUploadRootDir($basepath).'/'.$this->avatarFile->getClientOriginalName());
         // set the path property to the filename where you'ved saved the file
-        $this->$fctName($file->getClientOriginalName());
+        $this->setAvatar($this->avatarFile->getClientOriginalName());
+    
         // clean up the file property as you won't need it anymore
-        $file = null;
-    }
-    
-    
-    /**
-     * Set photo1
-     *
-     * @param string $photo1
-     * @return Skipper
-     */
-    public function setPhoto1($photo1)
-    {
-        $this->photo1 = $photo1;
-
-        return $this;
-    }
-
-    /**
-     * Get photo1
-     *
-     * @return string 
-     */
-    public function getPhoto1()
-    {
-        return $this->photo1;
-    }
-
-    /**
-     * Set photo2
-     *
-     * @param string $photo2
-     * @return Skipper
-     */
-    public function setPhoto2($photo2)
-    {
-        $this->photo2 = $photo2;
-
-        return $this;
-    }
-
-    /**
-     * Get photo2
-     *
-     * @return string 
-     */
-    public function getPhoto2()
-    {
-        return $this->photo2;
-    }
-
-    /**
-     * Set photo3
-     *
-     * @param string $photo3
-     * @return Skipper
-     */
-    public function setPhoto3($photo3)
-    {
-        $this->photo3 = $photo3;
-
-        return $this;
-    }
-
-    /**
-     * Get photo3
-     *
-     * @return string 
-     */
-    public function getPhoto3()
-    {
-        return $this->photo3;
-    }
-
-    /**
-     * Set photo4
-     *
-     * @param string $photo4
-     * @return Skipper
-     */
-    public function setPhoto4($photo4)
-    {
-        $this->photo4 = $photo4;
-
-        return $this;
-    }
-
-    /**
-     * Get photo4
-     *
-     * @return string 
-     */
-    public function getPhoto4()
-    {
-        return $this->photo4;
-    }
-
-    /**
-     * Set photo5
-     *
-     * @param string $photo5
-     * @return Skipper
-     */
-    public function setPhoto5($photo5)
-    {
-        $this->photo5 = $photo5;
-
-        return $this;
-    }
-
-    /**
-     * Get photo5
-     *
-     * @return string 
-     */
-    public function getPhoto5()
-    {
-        return $this->photo5;
+        $this->avatarFile = null;
     }
 }

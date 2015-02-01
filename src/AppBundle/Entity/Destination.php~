@@ -265,11 +265,7 @@ class Destination {
     {
         return '/uploads/destination';
     }
-        
-    protected function getUploadRootDir(){
-        return __DIR__.'/../../../web/'.$this->getUploadDir();
-    }
-        
+    
     public function upload($basepath)
     {
         $this->uploadImage($this->photo1File, "setPhoto1", 300, 300);
@@ -450,5 +446,4 @@ class Destination {
          return $this->getName();
     }
     /* Fin hack */
-
 }
