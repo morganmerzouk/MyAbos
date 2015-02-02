@@ -20,7 +20,8 @@
     "knplabs/doctrine-behaviors" : "=v1.0.2",
     "gedmo/doctrine-extensions" : "=v2.3.10",
     "a2lix/i18n-doctrine-bundle" : "=0.1",
-    "sonata-project/user-bundle": "~2.2"
+    "sonata-project/user-bundle": "~2.2",
+    "sonata-project/block-bundle": "2.2.9"
   },
   "scripts" : {
     "post-install-cmd" : [ "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters", "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap", "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache", "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets", "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile" ],
