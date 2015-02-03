@@ -11,6 +11,7 @@ class DestinationAdmin extends Admin
 {    // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $optionsMiniature = array('label' => 'Miniature', 'required' => false);
         $optionsPhoto1 = array('label' => 'Photo 1', 'required' => false);
         $optionsPhoto2 = array('label' => 'Photo 2', 'required' => false);
         $optionsPhoto3 = array('label' => 'Photo 3', 'required' => false);
@@ -19,6 +20,7 @@ class DestinationAdmin extends Admin
         
         $destination = $this->getSubject();
         
+        if ($destination->getMiniatureWebPath()) {$optionsMiniature['help'] = '<img src="' . $destination->getMiniatureWebPath(). '" />';}
         if ($destination->getPhoto1WebPath()) {$optionsPhoto1['help'] = '<img src="' . $destination->getPhoto1WebPath(). '" />';}
         if ($destination->getPhoto2WebPath()) {$optionsPhoto2['help'] = '<img src="' . $destination->getPhoto2WebPath(). '" />';}
         if ($destination->getPhoto3WebPath()) {$optionsPhoto3['help'] = '<img src="' . $destination->getPhoto3WebPath(). '" />';}
@@ -26,6 +28,7 @@ class DestinationAdmin extends Admin
         if ($destination->getPhoto5WebPath()) {$optionsPhoto5['help'] = '<img src="' . $destination->getPhoto5WebPath(). '" />';}
         
         $formMapper
+            ->add('miniatureFile', 'file', $optionsMiniature)
             ->add('photo1File', 'file', $optionsPhoto1)
             ->add('photo2File', 'file', $optionsPhoto2)
             ->add('photo3File', 'file', $optionsPhoto3)
@@ -52,7 +55,7 @@ class DestinationAdmin extends Admin
                             )
                         ),                  
                     )))
-            ->add('linkGMap', 'text', array('label' => 'Lien google map', 'required'=> false))
+            ->add('linkgmap', 'text', array('label' => 'Lien google map', 'required'=> false))
             ->add('published', 'checkbox', array('label' => 'Publié', 'required'=> false))    
         ;
     }
