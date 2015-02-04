@@ -74,6 +74,7 @@ class Destination {
     
     protected $photo5File;
     
+    
     /**
      * Get id
      *

@@ -23,3 +23,27 @@ services:
             - [ setTranslationDomain, [AppBundle]]
             - [ setBaseRouteName, [destination]]
             - [ setBaseRoutePattern, [destination]]
+    sonata.admin.portdepart:
+        class: AppBundle\Admin\PortDepartAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Contenu", label: "Port de départ" }
+        arguments:
+            - ~
+            - AppBundle\Entity\PortDepart
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+            - [ setBaseRouteName, [portdepart]]
+            - [ setBaseRoutePattern, [portdepart]]
+    sonata.admin.itineraire:
+        class: AppBundle\Admin\ItineraireAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Contenu", label: "Itinéraire" }
+        arguments:
+            - ~
+            - AppBundle\Entity\Itineraire
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+            - [ setBaseRouteName, [itineraire]]
+            - [ setBaseRoutePattern, [itineraire]]
