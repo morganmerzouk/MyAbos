@@ -42,16 +42,18 @@ class DestinationAdmin extends Admin
                                 'en' => array(
                                     'label' => 'Name'
                                 ),
-                            'required' => false
+                            'required' => false,
                             )
                         ),                  
                         'description' => array(         
-                            'label' => 'Description',
+                            'label' => 'Description',                            
+                            'attr' => array('class' => 'tinymce', 'data-theme' => 'advanced'),
                             'locale_options' => array(
                                 'en' => array(
                                     'label' => 'Description'
                                 ),
-                            'required' => false
+                            'required' => false,
+                            'class' => 'tinymce'
                             )
                         ),                  
                     )))

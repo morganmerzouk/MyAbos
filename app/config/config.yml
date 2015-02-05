@@ -140,3 +140,19 @@ a2lix_translation_form:
         default_locale: fr
         locales: [fr,en]               # [Optionnal] Array of translations locales. Can be specified in the form.
         templating: "A2lixTranslationFormBundle::default.html.twig"      # [4]
+
+stfalcon_tinymce:
+    tinymce_jquery: true
+    theme:
+        # Simple theme: same as default theme
+        simple: ~
+        # Advanced theme with almost all enabled plugins
+        advanced:
+             plugins:
+                 - "advlist autolink lists link image charmap print preview hr anchor pagebreak"
+                 - "searchreplace wordcount visualblocks visualchars code fullscreen"
+                 - "insertdatetime media nonbreaking save table directionality"
+                 - "emoticons template paste textcolor"
+             toolbar1: "insertfile undo redo | styleselect | forecolor backcolor emoticons | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media"
+             toolbar2: " stfalcon | example"
+             image_advtab: true

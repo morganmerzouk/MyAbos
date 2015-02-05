@@ -11,7 +11,7 @@ class ItineraireAdmin extends Admin
 {    // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $optionsMiniature = array('label' => 'Miniature', 'required' => false);
+        $optionsMiniature = array('label' => 'Image itinéraire', 'required' => false);
         
         $portDepart = $this->getSubject();
         
@@ -28,11 +28,14 @@ class ItineraireAdmin extends Admin
                     'fields' => array(                      
                         'description' => array(         
                             'label' => 'Description',
+                            'attr' => array('class' => 'tinymce', 'data-theme' => 'advanced'),
+                            'sonata_field_description' => 'textarea',
                             'locale_options' => array(
                                 'en' => array(
                                     'label' => 'Description'
                                 ),
-                            'required' => false
+                            'required' => false,
+                            
                             )
                         ),                  
                     )))
@@ -44,16 +47,17 @@ class ItineraireAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('id')
             ->addIdentifier('portDepart.name', 'translatable_field', array(
                 'field'                => 'name',
                 'personal_translation' => 'AppBundle\Entity\ItineraireTranslation',
                 'property_path'        => 'translations',
+                'label'                => 'Port de départ'
             ))
             ->addIdentifier('destination.name', 'translatable_field', array(
                 'field'                => 'name',
                 'personal_translation' => 'AppBundle\Entity\ItineraireTranslation',
                 'property_path'        => 'translations',
+                'label'                => 'Destination'
             ))
         ;
     }

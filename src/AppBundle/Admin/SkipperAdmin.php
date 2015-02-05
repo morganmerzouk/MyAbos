@@ -38,7 +38,7 @@ class SkipperAdmin extends Admin
             ->add('photo3File', 'file', $optionsPhoto3)
             ->add('photo4File', 'file', $optionsPhoto4)
             ->add('photo5File', 'file', $optionsPhoto5)
-            ->add('description', 'text', array('label' => 'Description', 'required'=> false))
+            ->add('description', 'textarea', array('label' => 'Description', 'required' => false, 'attr' => array('class' => 'tinymce', 'data-theme' => 'advanced')))
             ->add('yearsSailing', 'choice', array('label' => 'Nombre d\'années de navigation', 'required'=> false,
                 'choice_list' => $this->loadChoiceList()
             ))
