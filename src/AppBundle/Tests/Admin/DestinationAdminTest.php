@@ -1,33 +1,27 @@
 <?php
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-
-
+use AppBundle\Tests\AbstractControllerTest;
 /**
  * Description of DestinationAdminTest
  *
  * @author Morgan
  */
-class DestinationAdminTest extends WebTestCase {
+class DestinationAdminTest extends AbstractControllerTest {
     
     protected $urlList = "/admin/destination/list";
     protected $urlAdd = "/admin/destination/add";
     protected $urlEdit = "/admin/destination/edit";
     
-    public function setUp()
-    {
-        $this->client = static::createClient();
-    }
-    
     public function testLoginOk()
     {
-        $this->logIn();
+        $this->client->followRedirects();
+        $crawler = $this->client->request('GET', $this->urlList);
 
-        $this->client->request('GET', $this->urlList);
-
-        $this->assertTrue($this->client->getResponse()->isSuccessful());
-        $this->assertTrue($client->getResponse()->isRedirect('/admin/dashboard'));
-    
+        var_dump($this->client->getResponse()->getContent());
+        $this->assertEquals(
+            200,
+            $this->client->getResponse()->getStatusCode()
+        );
     }
     
     public function testLoginKo()
@@ -93,16 +87,4 @@ class DestinationAdminTest extends WebTestCase {
         $this->GreaterThan(0, $crawler->filter('a:contains("new destination name")')->count());
     }
     
-    private function logIn()
-    {
-        $session = $this->client->getContainer()->get('session');
-
-        $firewall = 'secured_area';
-        $token = new UsernamePasswordToken('admin', null, $firewall, array('ROLE_ADMIN'));
-        $session->set('_security_'.$firewall, serialize($token));
-        $session->save();
-
-        $cookie = new Cookie($session->getName(), $session->getId());
-        $this->client->getCookieJar()->set($cookie);
-    }
 }

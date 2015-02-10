@@ -47,3 +47,15 @@ services:
             - [ setTranslationDomain, [AppBundle]]
             - [ setBaseRouteName, [itineraire]]
             - [ setBaseRoutePattern, [itineraire]]
+    sonata.admin.ensavoirplus:
+        class: AppBundle\Admin\EnSavoirPlusAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Contenu", label: "En Savoir Plus" }
+        arguments:
+            - ~
+            - AppBundle\Entity\EnSavoirPlus
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+            - [ setBaseRouteName, [ensavoirplus]]
+            - [ setBaseRoutePattern, [ensavoirplus]]

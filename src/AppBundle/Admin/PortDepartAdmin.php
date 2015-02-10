@@ -1,5 +1,5 @@
 <?php
-// src/AppBundle/Admin/SkipperAdmin.php
+// src/AppBundle/Admin/PortDepartAdmin.php
 
 namespace AppBundle\Admin;
 

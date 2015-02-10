@@ -1,6 +1,6 @@
 <?php
 
-// src/AppBundle/Entity/Destination.php
+// src/AppBundle/Entity/EnSavoirPlus.php
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -9,9 +9,9 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="destination")
+ * @ORM\Table(name="ensavoirplus")
  */
-class Destination {
+class EnSavoirPlus {
 
     use ORMBehaviors\Translatable\Translatable;
         
@@ -23,22 +23,37 @@ class Destination {
     protected $id;
     
     /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $image1;
+    
+    protected $image1File;
+    
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    protected $linkgmap;
-        
+    protected $lien1;
+    
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    protected $published;
+    protected $lien2;
     
     /**
-    * @ORM\Column(type="string", length=200, nullable=true)
-    */
-    protected $miniature;
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $lien3;
     
-    protected $miniatureFile;
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $lien4;
     
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $lien5;
+            
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
      */
@@ -74,6 +89,10 @@ class Destination {
     
     protected $photo5File;
     
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $published;
     
     /**
      * Get id
@@ -107,52 +126,28 @@ class Destination {
     {
         return $this->published;
     }
-    
+     
     /**
-     * Set miniature
+     * Sets image1File.
      *
-     * @param string miniature
-     * @return Destination
+     * @param UploadedFile $image1File
      */
-    public function setMiniature($miniature)
+    public function setImage1File(UploadedFile $image1File = null)
     {
-        $this->miniature = $miniature;
-    
-        return $this;
+        $this->image1File = $image1File;
     }
     
     /**
-     * Get miniature
-     *
-     * @return string
-     */
-    public function getMiniature()
-    {
-        return $this->miniature;
-    }
-    
-    
-    /**
-     * Sets miniatureFile.
-     *
-     * @param UploadedFile $miniatureFile
-     */
-    public function setMiniatureFile(UploadedFile $miniatureFile = null)
-    {
-        $this->miniatureFile = $miniatureFile;
-    }
-    
-    /**
-     * Get miniatureFile.
+     * Get image1File.
      *
      * @return UploadedFile
      */
-    public function getMiniatureFile()
+    public function getImage1File()
     {
-        return $this->miniatureFile;
+        return $this->image1File;
     }
- 
     
+     
     /**
      * Sets photo1File.
      *
@@ -253,11 +248,11 @@ class Destination {
         return $this->photo5File;
     }
     
-    public function getMiniatureWebPath()
+    public function getImage1WebPath()
     {
-        return null === $this->miniature
+        return null === $this->image1
         ? null
-        : $this->getUploadDir().'/miniature/'.$this->miniature;
+        : $this->getUploadDir().'/'.$this->image1;
     }
     
     public function getPhoto1WebPath()
@@ -298,7 +293,7 @@ class Destination {
     
     protected function getUploadDir()
     {
-        return '/uploads/destination';
+        return '/uploads/ensavoirplus';
     }
         
     protected function getUploadRootDir(){
@@ -307,7 +302,7 @@ class Destination {
         
     public function upload($basepath)
     {
-        $this->uploadImage($this->miniatureFile, "setMiniature", 125, 125);
+        $this->uploadImage($this->image1File, "setImage1", 300, 300);
         $this->uploadImage($this->photo1File, "setPhoto1", 300, 300);
         $this->uploadImage($this->photo2File, "setPhoto2", 300, 300);
         $this->uploadImage($this->photo3File, "setPhoto3", 300, 300);
@@ -346,7 +341,7 @@ class Destination {
         
         // On redimensionne tout !
         imagecopyresampled($destination, $source, 0, 0, 0, 0, $width, $height, $largeur_source, $hauteur_source);
-        if ($fctName == "setMiniature") {
+        if ($fctName == "") {
             $fct($destination, $this->getUploadRootDir() . '/miniature/' . $file->getClientOriginalName());
         } else {
             $fct($destination, $this->getUploadRootDir() . '/' . $file->getClientOriginalName());
@@ -358,6 +353,29 @@ class Destination {
         $file = null;
     }
     
+
+    /**
+     * Set image1
+     *
+     * @param string $image1
+     * @return EnSavoirPlus
+     */
+    public function setImage1($image1)
+    {
+        $this->image1 = $image1;
+
+        return $this;
+    }
+
+    /**
+     * Get image1
+     *
+     * @return string 
+     */
+    public function getImage1()
+    {
+        return $this->image1;
+    }
     
     /**
      * Set photo1
@@ -490,27 +508,118 @@ class Destination {
          return $this->getName();
     }
 
-
     /**
-     * Set linkgmap
+     * Set lien1
      *
-     * @param string $linkgmap
-     * @return Destination
+     * @param string $lien1
+     * @return EnSavoirPlus
      */
-    public function setLinkgmap($linkgmap)
+    public function setLien1($lien1)
     {
-        $this->linkgmap = $linkgmap;
+        $this->lien1 = $lien1;
 
         return $this;
     }
 
     /**
-     * Get linkgmap
+     * Get lien1
      *
      * @return string 
      */
-    public function getLinkgmap()
+    public function getLien1()
     {
-        return $this->linkgmap;
+        return $this->lien1;
+    }
+
+    /**
+     * Set lien2
+     *
+     * @param string $lien2
+     * @return EnSavoirPlus
+     */
+    public function setLien2($lien2)
+    {
+        $this->lien2 = $lien2;
+
+        return $this;
+    }
+
+    /**
+     * Get lien2
+     *
+     * @return string 
+     */
+    public function getLien2()
+    {
+        return $this->lien2;
+    }
+
+    /**
+     * Set lien3
+     *
+     * @param string $lien3
+     * @return EnSavoirPlus
+     */
+    public function setLien3($lien3)
+    {
+        $this->lien3 = $lien3;
+
+        return $this;
+    }
+
+    /**
+     * Get lien3
+     *
+     * @return string 
+     */
+    public function getLien3()
+    {
+        return $this->lien3;
+    }
+
+    /**
+     * Set lien4
+     *
+     * @param string $lien4
+     * @return EnSavoirPlus
+     */
+    public function setLien4($lien4)
+    {
+        $this->lien4 = $lien4;
+
+        return $this;
+    }
+
+    /**
+     * Get lien4
+     *
+     * @return string 
+     */
+    public function getLien4()
+    {
+        return $this->lien4;
+    }
+
+    /**
+     * Set lien5
+     *
+     * @param string $lien5
+     * @return EnSavoirPlus
+     */
+    public function setLien5($lien5)
+    {
+        $this->lien5 = $lien5;
+
+        return $this;
+    }
+
+    /**
+     * Get lien5
+     *
+     * @return string 
+     */
+    public function getLien5()
+    {
+        return $this->lien5;
     }
 }

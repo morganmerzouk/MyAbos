@@ -1,0 +1,3 @@
+security:
+    firewalls:
+            http_basic: ~

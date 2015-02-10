@@ -1,5 +1,5 @@
 <?php
-// src/AppBundle/Admin/SkipperAdmin.php
+// src/AppBundle/Admin/ItineraireAdmin.php
 
 namespace AppBundle\Admin;
 
