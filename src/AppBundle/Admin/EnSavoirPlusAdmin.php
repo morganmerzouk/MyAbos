@@ -38,16 +38,7 @@ class EnSavoirPlusAdmin extends Admin
                                 ),
                             'required' => false,
                             )
-                        ),                    
-                        'url' => array(         
-                            'label' => 'Nom de l\'url',
-                            'locale_options' => array(
-                                'en' => array(
-                                    'label' => 'Name of the url'
-                                ),
-                            'required' => false,
-                            )
-                        ),                      
+                        ),                       
                         'description' => array(         
                             'label' => 'Description',                            
                             'attr' => array('class' => 'tinymce', 'data-theme' => 'advanced'),
