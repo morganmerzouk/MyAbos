@@ -31,23 +31,13 @@ class EnSavoirPlusAdmin extends Admin
             ->add('translations', 'a2lix_translations', array(
                     'fields' => array(                      
                         'name' => array(         
-                            'label' => 'Nomv',
+                            'label' => 'Nom: ',
                             'locale_options' => array(
                                 'en' => array(
                                     'label' => 'Name: '
                                 ),
-                            'required' => false,
-                            )
-                        ),                    
-                        'url' => array(         
-                            'label' => 'Nom de l\'url: ',
-                            'locale_options' => array(
-                                'en' => array(
-                                    'label' => 'Name of the url: '
-                                ),
-                            'required' => false,
-                            )
-                        ),                      
+                            ),'required' => false,
+                        ),  
                         'description' => array(         
                             'label' => 'Description: ',                            
                             'attr' => array('class' => 'tinymce', 'data-theme' => 'advanced'),

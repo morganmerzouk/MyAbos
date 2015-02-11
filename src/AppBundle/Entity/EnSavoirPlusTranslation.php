@@ -19,11 +19,6 @@ class EnSavoirPlusTranslation
      * @ORM\Column(type="string", length=200, nullable=true)
      */
     protected $name;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $url;   
          
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -189,29 +184,6 @@ class EnSavoirPlusTranslation
     }
 
     /**
-     * Set url
-     *
-     * @param string $url
-     * @return EnSavoirPlusTranslation
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    /**
-     * Get url
-     *
-     * @return string 
-     */
-    public function getUrl()
-    {
-        return $this->url;
-    }
-
-    /**
      * Get id
      *
      * @return integer 
@@ -219,5 +191,28 @@ class EnSavoirPlusTranslation
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set locale
+     *
+     * @param string $locale
+     * @return EnSavoirPlusTranslation
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
+
+        return $this;
+    }
+
+    /**
+     * Get locale
+     *
+     * @return string 
+     */
+    public function getLocale()
+    {
+        return $this->locale;
     }
 }
