@@ -1,0 +1,75 @@
+/*** Admin edit général ***/
+.control-label {
+    float: left;
+    width: 155px;
+    text-align: right;
+    padding: 5px;
+}
+.form-control {
+    width: 600px;
+}
+.tab-content>.tab-pane {
+    border: 1px solid silver;
+    padding: 10px;
+}
+div.select2-container { width: auto !important;}
+div.select2-container-multi { width: 505px !important;}
+.sonata-ba-field {display: inline;}
+.select2-container.select2-allowclear .select2-choice abbr.select2-search-choice-close { display: none;}
+/*** Fin Admin edit général ***/
+/*** Début Skipper ***/
+.skipper-avatar {
+    float: left;
+    width: 14%;
+    padding: 0;
+    height: auto;
+}
+.skipper-name {
+    float: left;
+    width: 30%;
+}
+.skipper-email {
+    width: 30%;
+}
+.control-avatar,
+.control-name,
+.control-email {
+    width: 105px;
+}
+.control-photo {
+    width: 63px;
+}
+.control-languages-spoken {
+    width: 112px;
+}
+.skipper-photo1,
+.skipper-photo2,
+.skipper-photo3,
+.skipper-photo4,
+.skipper-photo5 {
+float: left;
+width: 14%;
+padding: 0;
+height: auto
+}
+.control-description {
+    display: none;
+}
+.mce-panel { 
+    clear: both; 
+    margin-top: 10px;
+}
+.form-group[id$='yearsSailing'],
+.form-group[id$='yearsSailingCarribean'],
+.form-group[id$='yearsKiteSurfing'],
+.form-group[id$='yearsKiteCruise'],
+.form-group[id$='languagesSpoken'],
+.form-group[id$='kitesurfInstructorSince'] { float:left;}
+.skipper-professional-since { float:left; width: 200px;}
+.control-annee-navigation { width: auto; float: none; display: inline;}
+.skipper-kitesurf-certification-date,
+.skipper-date-certification { width: 215px; }
+.control-annee-navigation-caraibes { width: auto; float: none; display: inline;}
+.control-annee-kitesurfing { width: 240px;}
+
+/*** Fin Skipper ***/

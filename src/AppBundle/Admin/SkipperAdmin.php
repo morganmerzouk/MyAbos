@@ -13,12 +13,12 @@ class SkipperAdmin extends Admin
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $optionsAvatar = array('label' => 'Avatar', 'required' => false);
-        $optionsPhoto1 = array('label' => 'Photo 1', 'required' => false);
-        $optionsPhoto2 = array('label' => 'Photo 2', 'required' => false);
-        $optionsPhoto3 = array('label' => 'Photo 3', 'required' => false);
-        $optionsPhoto4 = array('label' => 'Photo 4', 'required' => false);
-        $optionsPhoto5 = array('label' => 'Photo 5', 'required' => false);
+        $optionsAvatar = array( 'label' => 'Avatar: ', 'required' => false, 'label_attr' => array('class' => 'control-photo'), 'attr' => array('class' => 'skipper-avatar'));
+        $optionsPhoto1 = array('label' => 'Photo 1: ', 'required' => false, 'label_attr' => array('class' => 'control-photo'), 'attr' => array('class' => 'skipper-photo1'));
+        $optionsPhoto2 = array('label' => 'Photo 2: ', 'required' => false, 'label_attr' => array('class' => 'control-photo'), 'attr' => array('class' => 'skipper-photo2'));
+        $optionsPhoto3 = array('label' => 'Photo 3: ', 'required' => false, 'label_attr' => array('class' => 'control-photo'), 'attr' => array('class' => 'skipper-photo3'));
+        $optionsPhoto4 = array('label' => 'Photo 4: ', 'required' => false, 'label_attr' => array('class' => 'control-photo'), 'attr' => array('class' => 'skipper-photo4'));
+        $optionsPhoto5 = array('label' => 'Photo 5: ', 'required' => false, 'label_attr' => array('class' => 'control-photo'), 'attr' => array('class' => 'skipper-photo5'));
         
         $skipper = $this->getSubject();
         
@@ -31,68 +31,67 @@ class SkipperAdmin extends Admin
 
 
         $formMapper
-            ->add('name', 'text', array('label' => 'Nom', 'required'=> false))
-            ->add('email', 'text', array('label' => 'Email', 'required'=> false))
+            ->add('avatarFile', 'file', $optionsAvatar)
+            ->add('name', 'text', array('label' => 'Nom: ', 'required'=> false, 'label_attr' => array('class' => 'control-name'),  'attr' => array('class' => 'skipper-name') ))
+            ->add('email', 'text', array('label' => 'Email: ', 'required'=> false, 'label_attr' => array('class' => 'control-email'),  'attr' => array('class' => 'skipper-email')))
             ->add('photo1File', 'file', $optionsPhoto1)
             ->add('photo2File', 'file', $optionsPhoto2)
             ->add('photo3File', 'file', $optionsPhoto3)
             ->add('photo4File', 'file', $optionsPhoto4)
             ->add('photo5File', 'file', $optionsPhoto5)
-            ->add('description', 'textarea', array('label' => 'Description', 'required' => false, 'attr' => array('class' => 'tinymce', 'data-theme' => 'advanced')))
-            ->add('yearsSailing', 'choice', array('label' => 'Nombre d\'années de navigation', 'required'=> false,
+            ->add('description', 'textarea', array('required' => false, 'label_attr' => array('class' => 'control-description'), 'attr' => array('class' => 'tinymce', 'data-theme' => 'advanced')))
+            ->add('yearsSailing', 'choice', array('label' => 'Nombre d\'années de navigation: ', 'required'=> false, 'label_attr' => array('class' => 'control-annee-navigation'),
                 'choice_list' => $this->loadChoiceList()
             ))
-            ->add('professionalSince', 'text', array('label' => 'Professionel depuis', 'required'=> false))
-            ->add('certificationDate', 'text', array('label' => 'Date de certification', 'required'=> false))
-            ->add('yearsSailingCarribean', 'choice', array('label' => 'Nombre d\'années de navigation dans les Caraïbes', 'required'=> false,
+            ->add('professionalSince', 'text', array('label' => 'Professionel depuis: ', 'required'=> false, 'attr' => array('class' => 'skipper-professional-since')))
+            ->add('certificationDate', 'text', array('label' => 'Date de certification: ', 'required'=> false, 'attr' => array('class' => 'skipper-date-certification')))
+            ->add('languagesSpoken', 'choice', array('label' => 'Langues parlées: ', 'choice_list' => $this->loadLanguagesList(), 'multiple' => true, 'required' => false, 'label_attr' => array('class' => 'control-languages-spoken')))
+            ->add('kitesurfCertificationDate', 'text', array('label' => 'Date de certification de Kitesurf: ', 'required'=> false, 'attr' => array('class' => 'skipper-kitesurf-certification-date'), 'label_attr' => array('class' => 'control-kitesurf-certification-date')))
+            ->add('yearsSailingCarribean', 'choice', array('label' => 'Nombre d\'années de navigation dans les Caraïbes: ', 'required'=> false,  'label_attr' => array('class' => 'control-annee-navigation-caraibes'), 'attr' => array('class' => 'skipper-annee-navigation-caraibes'),
                 'choice_list' => $this->loadChoiceList()
             ))
-            ->add('yearsKiteSurfing', 'choice', array('label' => 'Nombre d\'années de KiteSurfing', 'required'=> false,
+            ->add('yearsKiteSurfing', 'choice', array('label' => 'Nombre d\'années de KiteSurfing: ', 'required'=> false, 'label_attr' => array('class' => 'control-annee-kitesurfing'),
                 'choice_list' => $this->loadChoiceList()
             ))
-            ->add('yearsKiteCruise', 'choice', array('label' => 'Nombre d\'années de croisière', 'required'=> false,
+            ->add('yearsKiteCruise', 'choice', array('label' => 'Nombre d\'années de croisière: ', 'required'=> false,
                 'choice_list' => $this->loadChoiceList()
             ))
-            ->add('kitesurfInstructorSince', 'choice', array('label' => 'Instructeur de Kitesurf depuis', 'required'=> false,
+            ->add('kitesurfInstructorSince', 'choice', array('label' => 'Instructeur de Kitesurf depuis: ', 'required'=> false,
                 'choice_list' => $this->loadYearsList()
             ))
-            ->add('kitesurfCertificationDate', 'text', array('label' => 'Date de certification de Kitesurf', 'required'=> false))
-
             ->add('translations', 'a2lix_translations', array(
                     'fields' => array(                      
                         'otherCertifications' => array(         
-                            'label' => 'Autres certifications',
+                            'label' => 'Autres certifications: ',
                             'locale_options' => array(
                                 'en' => array(
-                                    'label' => 'Other certifications'
+                                    'label' => 'Other certifications: '
                                 ),
                             'required' => false
                             )
                         ),                  
                         'hobbies' => array(         
-                            'label' => 'Hobbies',
+                            'label' => 'Hobbies: ',
                             'locale_options' => array(
                                 'en' => array(
-                                    'label' => 'Hobbies'
+                                    'label' => 'Hobbies: '
                                 ),
                             'required' => false
                             )
                         ),                  
                         'greatestQualities' => array(         
-                            'label' => 'Qualités',
+                            'label' => 'Qualités: ',
                             'locale_options' => array(
                                 'en' => array(
-                                    'label' => 'Greatest qualities'
+                                    'label' => 'Greatest qualities: '
                                 ),
                             'required' => false
 
                             )
                         )
                     )))
-            ->add('languagesSpoken', 'choice', array('label' => 'Langues parlées', 'choice_list' => $this->loadLanguagesList(), 'multiple' => true, 'required' => false))
-            ->add('avatarFile', 'file', $optionsAvatar)
-            ->add('rank', 'integer', array('label' => 'Ordre', 'required'=> false))
-            ->add('published', 'checkbox', array('label' => 'Publié', 'required'=> false))    
+                ->add('published', 'checkbox', array('label' => 'Publié: ', 'required'=> false))   
+            
         ;
     }
 
@@ -103,7 +102,6 @@ class SkipperAdmin extends Admin
             ->addIdentifier('name')
             ->add('email')
             ->add('avatar')
-            ->add('order')
             ->add('published')
         ;
     }

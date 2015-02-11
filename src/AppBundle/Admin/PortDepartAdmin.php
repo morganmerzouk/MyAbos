@@ -11,7 +11,7 @@ class PortDepartAdmin extends Admin
 {    // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $optionsMiniature = array('label' => 'Miniature', 'required' => false);
+        $optionsMiniature = array('label' => 'Miniature: ', 'required' => false);
         
         $portDepart = $this->getSubject();
         
@@ -21,17 +21,17 @@ class PortDepartAdmin extends Admin
             ->add('translations', 'a2lix_translations', array(
                     'fields' => array(                      
                         'name' => array(         
-                            'label' => 'Nom',
+                            'label' => 'Nom: ',
                             'locale_options' => array(
                                 'en' => array(
-                                    'label' => 'Name'
+                                    'label' => 'Name: '
                                 ),
                             'required' => false
                             )
                         ),                  
                     )))
             ->add('miniatureFile', 'file', $optionsMiniature)
-            ->add('published', 'checkbox', array('label' => 'Publié', 'required'=> false))    
+            ->add('published', 'checkbox', array('label' => 'Publié: ', 'required'=> false))    
         ;
     }
 

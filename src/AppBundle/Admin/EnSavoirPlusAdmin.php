@@ -11,12 +11,12 @@ class EnSavoirPlusAdmin extends Admin
 {    // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $optionsImage1 = array('label' => 'Image 1', 'required' => false);
-        $optionsPhoto1 = array('label' => 'Photo 1', 'required' => false);
-        $optionsPhoto2 = array('label' => 'Photo 2', 'required' => false);
-        $optionsPhoto3 = array('label' => 'Photo 3', 'required' => false);
-        $optionsPhoto4 = array('label' => 'Photo 4', 'required' => false);
-        $optionsPhoto5 = array('label' => 'Photo 5', 'required' => false);
+        $optionsImage1 = array('label' => 'Image 1: ', 'required' => false);
+        $optionsPhoto1 = array('label' => 'Photo 1: ', 'required' => false);
+        $optionsPhoto2 = array('label' => 'Photo 2: ', 'required' => false);
+        $optionsPhoto3 = array('label' => 'Photo 3: ', 'required' => false);
+        $optionsPhoto4 = array('label' => 'Photo 4v', 'required' => false);
+        $optionsPhoto5 = array('label' => 'Photo 5: ', 'required' => false);
         
         $ensavoirplus = $this->getSubject();
         
@@ -31,83 +31,83 @@ class EnSavoirPlusAdmin extends Admin
             ->add('translations', 'a2lix_translations', array(
                     'fields' => array(                      
                         'name' => array(         
-                            'label' => 'Nom',
+                            'label' => 'Nomv',
                             'locale_options' => array(
                                 'en' => array(
-                                    'label' => 'Name'
+                                    'label' => 'Name: '
                                 ),
                             'required' => false,
                             )
                         ),                    
                         'url' => array(         
-                            'label' => 'Nom de l\'url',
+                            'label' => 'Nom de l\'url: ',
                             'locale_options' => array(
                                 'en' => array(
-                                    'label' => 'Name of the url'
+                                    'label' => 'Name of the url: '
                                 ),
                             'required' => false,
                             )
                         ),                      
                         'description' => array(         
-                            'label' => 'Description',                            
+                            'label' => 'Description: ',                            
                             'attr' => array('class' => 'tinymce', 'data-theme' => 'advanced'),
                             'locale_options' => array(
                                 'en' => array(
-                                    'label' => 'Description'
+                                    'label' => 'Description: '
                                 ),
                             'required' => false,
                             'class' => 'tinymce'
                             )
                         ),        
                         'libelleLien2' => array(         
-                            'label' => 'Nom du lien 2',
+                            'label' => 'Nom du lien 2: ',
                             'locale_options' => array(
                                 'en' => array(
-                                    'label' => 'Name of link 2'
+                                    'label' => 'Name of link 2: '
                                 ),
                             'required' => false,
                             )
                         ),      
                         'libelleLien3' => array(         
-                            'label' => 'Nom du lien 3',
+                            'label' => 'Nom du lien 3: ',
                             'locale_options' => array(
                                 'en' => array(
-                                    'label' => 'Name of link 3'
+                                    'label' => 'Name of link 3: '
                                 ),
                             'required' => false,
                             )
                         ),      
                         'libelleLien4' => array(         
-                            'label' => 'Nom du lien 4',
+                            'label' => 'Nom du lien 4: ',
                             'locale_options' => array(
                                 'en' => array(
-                                    'label' => 'Name of link 4'
+                                    'label' => 'Name of link 4: '
                                 ),
                             'required' => false,
                             )
                         ),      
                         'libelleLien5' => array(         
-                            'label' => 'Nom du lien 5',
+                            'label' => 'Nom du lien 5: ',
                             'locale_options' => array(
                                 'en' => array(
-                                    'label' => 'Name of link 5'
+                                    'label' => 'Name of link 5: '
                                 ),
                             'required' => false,
                             )
                         ),
                     )))
-            ->add('lien1', 'text', array('label' => 'Lien 1', 'required'=> false))
+            ->add('lien1', 'text', array('label' => 'Lien 1: ', 'required'=> false))
             ->add('image1File', 'file', $optionsImage1)
-            ->add('lien2', 'text', array('label' => 'Lien 2', 'required'=> false))
-            ->add('lien3', 'text', array('label' => 'Lien 3', 'required'=> false))
-            ->add('lien4', 'text', array('label' => 'Lien 4', 'required'=> false))
-            ->add('lien5', 'text', array('label' => 'Lien 5', 'required'=> false))
+            ->add('lien2', 'text', array('label' => 'Lien 2: ', 'required'=> false))
+            ->add('lien3', 'text', array('label' => 'Lien 3: ', 'required'=> false))
+            ->add('lien4', 'text', array('label' => 'Lien 4: ', 'required'=> false))
+            ->add('lien5', 'text', array('label' => 'Lien 5: ', 'required'=> false))
             ->add('photo1File', 'file', $optionsPhoto1)
             ->add('photo2File', 'file', $optionsPhoto2)
             ->add('photo3File', 'file', $optionsPhoto3)
             ->add('photo4File', 'file', $optionsPhoto4)
             ->add('photo5File', 'file', $optionsPhoto5)
-            ->add('published', 'checkbox', array('label' => 'Publié', 'required'=> false))    
+            ->add('published', 'checkbox', array('label' => 'Publié: ', 'required'=> false))    
         ;
     }
 

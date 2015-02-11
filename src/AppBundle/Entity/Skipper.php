@@ -124,10 +124,6 @@ class Skipper {
     
     protected $photo5File;
     
-    /**
-    * @ORM\Column(type="integer", nullable=true)
-    */
-    protected $rank;
         
     /**
      * @ORM\Column(type="boolean")
@@ -514,29 +510,6 @@ class Skipper {
     } 
     
     /**
-     * Set rank
-     *
-     * @param integer $rank
-     * @return Skipper
-     */
-    public function setRank($rank)
-    {
-        $this->rank = $rank;
-
-        return $this;
-    }
-
-    /**
-     * Get rank
-     *
-     * @return integer 
-     */
-    public function getRank()
-    {
-        return $this->rank;
-    }
-    
-    /**
      * Set avatar
      *
      * @param string $avatar
@@ -899,5 +872,9 @@ class Skipper {
     public function getPhoto5()
     {
         return $this->photo5;
+    }
+    
+    public function __toString(){
+         return $this->getName();
     }
 }
