@@ -875,6 +875,6 @@ class Skipper {
     }
     
     public function __toString(){
-         return $this->getName();
+         return $this->getName() ?: "Nouveau skipper";
     }
 }

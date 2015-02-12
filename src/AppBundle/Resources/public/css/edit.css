@@ -11,11 +11,31 @@
 .tab-content>.tab-pane {
     border: 1px solid silver;
     padding: 10px;
+    overflow: auto;
 }
 div.select2-container { width: auto !important;}
 div.select2-container-multi { width: 505px !important;}
 .sonata-ba-field {display: inline;}
 .select2-container.select2-allowclear .select2-choice abbr.select2-search-choice-close { display: none;}
+.a2lix_translations.tabbable {clear:both;}
+.control-photo {
+    width: 63px;
+}
+.control-miniature {
+    width: 70px;
+}
+.form-group[id$='translations']>.control-label{ display:none;}
+.mce-panel { 
+    clear: both; 
+    margin-top: 10px;
+}
+.form-group[id$='photo1File'],
+.form-group[id$='photo2File'],
+.form-group[id$='photo3File'],
+.form-group[id$='photo4File'],
+.form-group[id$='photo5File']{ width: 300px; display: inline;}
+.preview-img {clear: both;display: block;}
+.control-photo1 { clear: both;}
 /*** Fin Admin edit général ***/
 /*** Début Skipper ***/
 .skipper-avatar {
@@ -36,17 +56,10 @@ div.select2-container-multi { width: 505px !important;}
 .control-email {
     width: 105px;
 }
-.control-photo {
-    width: 63px;
-}
 .control-languages-spoken {
     width: 112px;
 }
-.skipper-photo1,
-.skipper-photo2,
-.skipper-photo3,
-.skipper-photo4,
-.skipper-photo5 {
+.skipper-photo {
 float: left;
 width: 14%;
 padding: 0;
@@ -54,10 +67,6 @@ height: auto
 }
 .control-description {
     display: none;
-}
-.mce-panel { 
-    clear: both; 
-    margin-top: 10px;
 }
 .form-group[id$='yearsSailing'],
 .form-group[id$='yearsSailingCarribean'],
@@ -68,8 +77,62 @@ height: auto
 .skipper-professional-since { float:left; width: 200px;}
 .control-annee-navigation { width: auto; float: none; display: inline;}
 .skipper-kitesurf-certification-date,
-.skipper-date-certification { width: 215px; }
+.skipper-date-certification { width: 305px; }
 .control-annee-navigation-caraibes { width: auto; float: none; display: inline;}
 .control-annee-kitesurfing { width: 240px;}
-
 /*** Fin Skipper ***/
+/*** Début Destination ***/
+.destination-miniature {     
+    float: left;
+    width: 148px;
+    padding: 0;
+    height: auto;
+}
+.destination-photo {
+float: left;
+width: 14%;
+padding: 0;
+height: auto
+}
+.form-group[id$='linkgmap'] { float:left;}
+.destination-lien-google-map {
+    width: 700px;
+    float: left;
+}
+/*** Fin Destination ***/
+/*** Début Itinéraire ***/
+.form-group[id$='portDepart'],
+.form-group[id$='destination'] { float:left;}
+.itineraire-miniature {     
+    float: left;
+    width: 148px;
+    padding: 0;
+    height: auto;
+}
+/*** Fin Itinéraire ***/
+/*** Début En Savoir Plus ***/
+.form-group[id$='image1File'],
+.form-group[id$='lien1'] { overflow:auto; clear:both;}
+.form-group[id$='image1File']{width: 300px;}
+.ensavoirplus-image1{     
+    float: left;
+    width: 148px;
+    padding: 0;
+    height: auto;
+}
+.ensavoirplus-photo {
+    float: left;
+    width: 148px;
+    padding: 0;
+    height: auto
+}
+.control-ensavoirplus-lien { width: 63px;}
+.control-ensavoirplus-nom-lien { width: 100px;}
+.control-ensavoirplus-lien4,
+.control-ensavoirplus-nom-lien4 { clear: both;}
+.control-ensavoirplus-nom { clear: both;width: 100px;}
+.ensavoirplus-nom {width: 425px}
+.ensavoirplus-lien,
+.ensavoirplus-nom-lien {float: left; width: 425px}
+.ensavoirplus-lien{ width: 475px; }
+/*** Fin En Savoir Plus ***/

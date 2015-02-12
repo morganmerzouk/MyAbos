@@ -22,7 +22,7 @@ class Itineraire {
      */
     protected $id;
     
-   /**
+    /**
    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\PortDepart", cascade={"persist"})
    */
     protected $portDepart;
@@ -127,7 +127,7 @@ class Itineraire {
      * Set portDepart
      *
      * @param \AppBundle\Entity\PortDepart $portDepart
-     * @return Itineraire
+     * @return PortDepart
      */
     public function setPortDepart(\AppBundle\Entity\PortDepart $portDepart)
     {
@@ -139,7 +139,7 @@ class Itineraire {
     /**
      * Get portDepart
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return PortDepart 
      */
     public function getPortDepart()
     {
@@ -226,7 +226,9 @@ class Itineraire {
     
     public function __toString()
     {
-        return (string) $this->getId();
+        if(!$this->getPortDepart())
+            return 'Nouvel itinéraire';
+        return (string) $this->getPortDepart()->getName().'-'.$this->getDestination()->getName();
     }
     
         /* hack */

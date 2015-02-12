@@ -13,26 +13,26 @@ class SkipperAdmin extends Admin
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $optionsAvatar = array( 'label' => 'Avatar: ', 'required' => false, 'label_attr' => array('class' => 'control-photo'), 'attr' => array('class' => 'skipper-avatar'));
-        $optionsPhoto1 = array('label' => 'Photo 1: ', 'required' => false, 'label_attr' => array('class' => 'control-photo'), 'attr' => array('class' => 'skipper-photo1'));
-        $optionsPhoto2 = array('label' => 'Photo 2: ', 'required' => false, 'label_attr' => array('class' => 'control-photo'), 'attr' => array('class' => 'skipper-photo2'));
-        $optionsPhoto3 = array('label' => 'Photo 3: ', 'required' => false, 'label_attr' => array('class' => 'control-photo'), 'attr' => array('class' => 'skipper-photo3'));
-        $optionsPhoto4 = array('label' => 'Photo 4: ', 'required' => false, 'label_attr' => array('class' => 'control-photo'), 'attr' => array('class' => 'skipper-photo4'));
-        $optionsPhoto5 = array('label' => 'Photo 5: ', 'required' => false, 'label_attr' => array('class' => 'control-photo'), 'attr' => array('class' => 'skipper-photo5'));
+        $optionsAvatar = array('label' => 'Avatar: ', 'required' => false, 'label_attr' => array('class' => 'control-photo'), 'attr' => array('class' => 'skipper-avatar'));
+        $optionsPhoto1 = array('label' => 'Photo 1: ', 'required' => false, 'label_attr' => array('class' => 'control-photo'), 'attr' => array('class' => 'skipper-photo'));
+        $optionsPhoto2 = array('label' => 'Photo 2: ', 'required' => false, 'label_attr' => array('class' => 'control-photo'), 'attr' => array('class' => 'skipper-photo'));
+        $optionsPhoto3 = array('label' => 'Photo 3: ', 'required' => false, 'label_attr' => array('class' => 'control-photo'), 'attr' => array('class' => 'skipper-photo'));
+        $optionsPhoto4 = array('label' => 'Photo 4: ', 'required' => false, 'label_attr' => array('class' => 'control-photo'), 'attr' => array('class' => 'skipper-photo'));
+        $optionsPhoto5 = array('label' => 'Photo 5: ', 'required' => false, 'label_attr' => array('class' => 'control-photo'), 'attr' => array('class' => 'skipper-photo'));
         
         $skipper = $this->getSubject();
         
-        if ($skipper->getAvatarWebPath()) {$optionsAvatar['help'] = '<img src="' . $skipper->getAvatarWebPath(). '" />';}
-        if ($skipper->getPhoto1WebPath()) {$optionsPhoto1['help'] = '<img src="' . $skipper->getPhoto1WebPath(). '" />';}
-        if ($skipper->getPhoto2WebPath()) {$optionsPhoto2['help'] = '<img src="' . $skipper->getPhoto2WebPath(). '" />';}
-        if ($skipper->getPhoto3WebPath()) {$optionsPhoto3['help'] = '<img src="' . $skipper->getPhoto3WebPath(). '" />';}
-        if ($skipper->getPhoto4WebPath()) {$optionsPhoto4['help'] = '<img src="' . $skipper->getPhoto4WebPath(). '" />';}
-        if ($skipper->getPhoto5WebPath()) {$optionsPhoto5['help'] = '<img src="' . $skipper->getPhoto5WebPath(). '" />';}
+        if ($skipper->getAvatarWebPath()) {$optionsAvatar['help'] = '<img src="' . $skipper->getAvatarWebPath(). '" class="preview-img" />';}
+        if ($skipper->getPhoto1WebPath()) {$optionsPhoto1['help'] = '<img src="' . $skipper->getPhoto1WebPath(). '" class="preview-img" />';}
+        if ($skipper->getPhoto2WebPath()) {$optionsPhoto2['help'] = '<img src="' . $skipper->getPhoto2WebPath(). '" class="preview-img" />';}
+        if ($skipper->getPhoto3WebPath()) {$optionsPhoto3['help'] = '<img src="' . $skipper->getPhoto3WebPath(). '" class="preview-img" />';}
+        if ($skipper->getPhoto4WebPath()) {$optionsPhoto4['help'] = '<img src="' . $skipper->getPhoto4WebPath(). '" class="preview-img" />';}
+        if ($skipper->getPhoto5WebPath()) {$optionsPhoto5['help'] = '<img src="' . $skipper->getPhoto5WebPath(). '" class="preview-img" />';}
 
 
         $formMapper
             ->add('avatarFile', 'file', $optionsAvatar)
-            ->add('name', 'text', array('label' => 'Nom: ', 'required'=> false, 'label_attr' => array('class' => 'control-name'),  'attr' => array('class' => 'skipper-name') ))
+            ->add('name', 'text', array('label' => 'Nom: ', 'required'=> false, 'label_attr' => array('class' => 'control-name'),  'attr' => array('class' => 'skipper-name')))
             ->add('email', 'text', array('label' => 'Email: ', 'required'=> false, 'label_attr' => array('class' => 'control-email'),  'attr' => array('class' => 'skipper-email')))
             ->add('photo1File', 'file', $optionsPhoto1)
             ->add('photo2File', 'file', $optionsPhoto2)
@@ -99,10 +99,9 @@ class SkipperAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name')
+            ->addIdentifier('name', null, array('label' => 'Nom: '))
             ->add('email')
-            ->add('avatar')
-            ->add('published')
+            ->add('published', null, array('label' => 'Publié: '))
         ;
     }
     

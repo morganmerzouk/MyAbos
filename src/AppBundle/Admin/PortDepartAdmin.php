@@ -11,13 +11,14 @@ class PortDepartAdmin extends Admin
 {    // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $optionsMiniature = array('label' => 'Miniature: ', 'required' => false);
+        $optionsMiniature = array('label' => 'Miniature: ', 'required' => false, 'label_attr' => array('class' => 'control-miniature'), 'attr' => array('class' => 'destination-miniature'));
         
         $portDepart = $this->getSubject();
         
-        if ($portDepart->getMiniatureWebPath()) {$optionsMiniature['help'] = '<img src="' . $portDepart->getMiniatureWebPath(). '" />';}
+        if ($portDepart->getMiniatureWebPath()) {$optionsMiniature['help'] = '<img src="' . $portDepart->getMiniatureWebPath(). '" class="preview-img" />';}
         
         $formMapper
+            ->add('miniatureFile', 'file', $optionsMiniature)
             ->add('translations', 'a2lix_translations', array(
                     'fields' => array(                      
                         'name' => array(         
@@ -30,7 +31,6 @@ class PortDepartAdmin extends Admin
                             )
                         ),                  
                     )))
-            ->add('miniatureFile', 'file', $optionsMiniature)
             ->add('published', 'checkbox', array('label' => 'Publié: ', 'required'=> false))    
         ;
     }
@@ -43,8 +43,9 @@ class PortDepartAdmin extends Admin
                 'field'                => 'name',
                 'personal_translation' => 'AppBundle\Entity\PortDepartTranslation',
                 'property_path'        => 'translations',
+                'label'                => 'Nom: '
             ))
-            ->add('published')
+            ->add('published', null, array('label' => 'Publié: '))
         ;
     }
     

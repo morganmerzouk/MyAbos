@@ -505,7 +505,7 @@ class EnSavoirPlus {
 
     // Work even the precedent method not here, the proxy call work fine.
     public function __toString(){
-         return $this->getName();
+         return $this->getName() ?: "Nouvelle catégorie";
     }
 
     /**

@@ -11,11 +11,11 @@ class ItineraireAdmin extends Admin
 {    // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $optionsMiniature = array('label' => 'Image itinéraire: ', 'required' => false);
+        $optionsMiniature = array('label' => 'Image itinéraire: ', 'required' => false, 'attr' => array('class' => 'itineraire-miniature'));
         
         $portDepart = $this->getSubject();
         
-        if ($portDepart->getMiniatureWebPath()) {$optionsMiniature['help'] = '<img src="' . $portDepart->getMiniatureWebPath(). '" />';}
+        if ($portDepart->getMiniatureWebPath()) {$optionsMiniature['help'] = '<img src="' . $portDepart->getMiniatureWebPath(). '" class="preview-img" />';}
         
         $formMapper
             ->add('portDepart', 'entity', array(
@@ -24,6 +24,7 @@ class ItineraireAdmin extends Admin
             ->add('destination', 'entity', array(
                 'class'    => 'AppBundle\Entity\Destination',
             ))
+            ->add('miniatureFile', 'file', $optionsMiniature) 
             ->add('translations', 'a2lix_translations', array(
                     'fields' => array(                      
                         'description' => array(         
@@ -39,7 +40,6 @@ class ItineraireAdmin extends Admin
                             )
                         ),                  
                     )))
-            ->add('miniatureFile', 'file', $optionsMiniature) 
         ;
     }
 
@@ -51,13 +51,13 @@ class ItineraireAdmin extends Admin
                 'field'                => 'name',
                 'personal_translation' => 'AppBundle\Entity\ItineraireTranslation',
                 'property_path'        => 'translations',
-                'label'                => 'Port de départ'
+                'label'                => 'Port de départ: '
             ))
             ->addIdentifier('destination.name', 'translatable_field', array(
                 'field'                => 'name',
                 'personal_translation' => 'AppBundle\Entity\ItineraireTranslation',
                 'property_path'        => 'translations',
-                'label'                => 'Destination'
+                'label'                => 'Destination: '
             ))
         ;
     }
