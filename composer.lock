@@ -950,17 +950,17 @@
         },
         {
             "name": "friendsofsymfony/rest-bundle",
-            "version": "1.5.1",
+            "version": "1.5.2",
             "target-dir": "FOS/RestBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "4f9526ddec7fd951433586c45a78a5001d4a6997"
+                "reference": "d72f3a41409997ebd91ca34561075c615d2ddcc0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/4f9526ddec7fd951433586c45a78a5001d4a6997",
-                "reference": "4f9526ddec7fd951433586c45a78a5001d4a6997",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/d72f3a41409997ebd91ca34561075c615d2ddcc0",
+                "reference": "d72f3a41409997ebd91ca34561075c615d2ddcc0",
                 "shasum": ""
             },
             "require": {
@@ -1024,7 +1024,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2015-02-09 12:18:56"
+            "time": "2015-02-09 12:22:33"
         },
         {
             "name": "friendsofsymfony/user-bundle",

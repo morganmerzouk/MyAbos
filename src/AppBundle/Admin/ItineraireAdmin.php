@@ -18,13 +18,15 @@ class ItineraireAdmin extends Admin
         if ($portDepart->getMiniatureWebPath()) {$optionsMiniature['help'] = '<img src="' . $portDepart->getMiniatureWebPath(). '" class="preview-img" />';}
         
         $formMapper
+            ->add('miniatureFile', 'file', $optionsMiniature)
             ->add('portDepart', 'entity', array(
                 'class'    => 'AppBundle\Entity\PortDepart',
+                'label'    => "Port de départ: "
             ))
             ->add('destination', 'entity', array(
                 'class'    => 'AppBundle\Entity\Destination',
-            ))
-            ->add('miniatureFile', 'file', $optionsMiniature) 
+                'label'    => "Destination: "
+            )) 
             ->add('translations', 'a2lix_translations', array(
                     'fields' => array(                      
                         'description' => array(         

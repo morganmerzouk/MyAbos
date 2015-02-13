@@ -72,7 +72,8 @@ class DestinationAdmin extends Admin
                 'field'                => 'name',
                 'personal_translation' => 'AppBundle\Entity\DestinationTranslation',
                 'property_path'        => 'translations',
-                'label'                => 'Nom: '
+                'label'                => 'Nom: ',
+                'editable'             => true
             ))
             ->add('published', null, array('label' => 'Publié: '))
         ;
