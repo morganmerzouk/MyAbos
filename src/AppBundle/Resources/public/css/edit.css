@@ -136,3 +136,37 @@ height: auto
 .ensavoirplus-nom-lien {float: left; width: 425px}
 .ensavoirplus-lien{ width: 475px; }
 /*** Fin En Savoir Plus ***/
+/*** Début Prestation ***/
+.prestation-icone,
+.prestation-photo {
+    float: left;
+    width: 148px;
+    padding: 0;
+    height: auto
+}
+
+/*** Fin Prestation ***/
+/*** Début Bateau ***/
+.bateau-miniature,
+.bateau-photo {
+    float: left;
+    width: 148px;
+    padding: 0;
+    height: auto
+}
+.bateau-longueur,
+.bateau-largeur,
+.bateau-moteur {float:left; width: 250px;}
+.control-bateau-longueur,
+.control-bateau-largeur,
+.control-bateau-moteur {width: 100px;}
+.control-bateau-equipement { clear: both;}
+.bateau-list-radio {float: left; width: 16%}
+.bateau-list-radio li { display: block; float: left;}
+.form-group[id$='destination'] { float:left;}
+.control-bateau-nbcabine,
+.control-bateau-nbdouche,
+.control-bateau-nbequipier,
+.control-bateau-type,
+.control-bateau-skipper{ width: 120px; }
+/*** Fin Bateau ***/

@@ -47,6 +47,18 @@ services:
             - [ setTranslationDomain, [AppBundle]]
             - [ setBaseRouteName, [itineraire]]
             - [ setBaseRoutePattern, [itineraire]]
+    sonata.admin.prestation:
+        class: AppBundle\Admin\PrestationAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Contenu", label: "Prestation" }
+        arguments:
+            - ~
+            - AppBundle\Entity\Prestation
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+            - [ setBaseRouteName, [prestation]]
+            - [ setBaseRoutePattern, [prestation]]
     sonata.admin.ensavoirplus:
         class: AppBundle\Admin\EnSavoirPlusAdmin
         tags:
@@ -59,3 +71,15 @@ services:
             - [ setTranslationDomain, [AppBundle]]
             - [ setBaseRouteName, [ensavoirplus]]
             - [ setBaseRoutePattern, [ensavoirplus]]
+    sonata.admin.bateau:
+        class: AppBundle\Admin\BateauAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Contenu", label: "Bateau" }
+        arguments:
+            - ~
+            - AppBundle\Entity\Bateau
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+            - [ setBaseRouteName, [bateau]]
+            - [ setBaseRoutePattern, [bateau]]

@@ -123,7 +123,7 @@ sonata_admin:
         ajax:    SonataAdminBundle::ajax_layout.html.twig
 
         # default actions templates, should extend a global templates
-        list:    SonataAdminBundle:CRUD:list.html.twig
+        list:    AppBundle:Admin/CRUD:base_list.html.twig
         show:    SonataAdminBundle:CRUD:show.html.twig
         edit:    AppBundle:Admin/CRUD:base_edit.html.twig
         
