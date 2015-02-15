@@ -30,7 +30,9 @@ class AppKernel extends Kernel
             new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+             new CoreSphere\ConsoleBundle\CoreSphereConsoleBundle(),
             new AppBundle\AppBundle(),
+            
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
