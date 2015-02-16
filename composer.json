@@ -20,12 +20,13 @@
     "knplabs/doctrine-behaviors" : "=v1.0.2",
     "gedmo/doctrine-extensions" : "=v2.3.10",
     "a2lix/i18n-doctrine-bundle" : "=0.1",
-    "sonata-project/user-bundle": "~2.2",
-    "sonata-project/block-bundle": "2.2.9",
-    "stfalcon/tinymce-bundle": "dev-master",
-    "phpunit/phpunit": "4.5.*",
-    "doctrine/doctrine-fixtures-bundle": "dev-master",
-    "coresphere/console-bundle": "dev-master"
+    "sonata-project/user-bundle" : "~2.2",
+    "sonata-project/block-bundle" : "2.2.9",
+    "stfalcon/tinymce-bundle" : "dev-master",
+    "phpunit/phpunit" : "4.5.*",
+    "doctrine/doctrine-fixtures-bundle" : "dev-master",
+    "coresphere/console-bundle" : "dev-master",
+    "hautelook/alice-bundle": "0.2.*"
   },
   "scripts" : {
     "post-install-cmd" : [ "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters", "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap", "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache", "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets", "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile" ],
@@ -50,6 +51,6 @@
   "config" : {
     "bin-dir" : "bin"
   },
-  "license" : "MIT",
-  "type" : "project"
+  "type" : "project",
+  "license" : "MIT"
 }

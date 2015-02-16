@@ -30,7 +30,8 @@ class AppKernel extends Kernel
             new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
-             new CoreSphere\ConsoleBundle\CoreSphereConsoleBundle(),
+            new Hautelook\AliceBundle\HautelookAliceBundle(),
+            new CoreSphere\ConsoleBundle\CoreSphereConsoleBundle(),
             new AppBundle\AppBundle(),
             
         );

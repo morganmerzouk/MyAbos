@@ -303,8 +303,8 @@ class Destination {
         
     protected function getUploadRootDir(){
         return __DIR__.'/../../../web/'.$this->getUploadDir();
-    }
-        
+    } 
+    
     public function upload($basepath)
     {
         $this->uploadImage($this->miniatureFile, "setMiniature", 125, 125);
