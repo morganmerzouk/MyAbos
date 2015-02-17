@@ -1,6 +1,6 @@
 <?php
 
-// src/AppBundle/Entity/Destination.php
+// src/AppBundle/Entity/ServicePayant.php
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -9,9 +9,9 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="destination")
+ * @ORM\Table(name="servicepayant")
  */
-class Destination {
+class ServicePayant {
 
     use ORMBehaviors\Translatable\Translatable;
         
@@ -23,10 +23,32 @@ class Destination {
     protected $id;
     
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    protected $linkgmap;
-        
+    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Prestation", cascade={"persist"})
+    */
+    protected $prestation;
+    
+    /**
+    * @ORM\Column(type="string", length=200, nullable=true)
+    */
+    protected $categorie;
+    
+    /**
+    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Bateau", cascade={"persist"})
+    */
+    protected $bateau;
+    
+    
+    /**
+    * @ORM\Column(type="string", length=200, nullable=true)
+    */
+    protected $fraisSupplementaires;
+    
+        /**
+    * @ORM\Column(type="string", length=200, nullable=true)
+    */
+    protected $devise;
+    
+    
     /**
      * @ORM\Column(type="boolean")
      */
@@ -38,41 +60,6 @@ class Destination {
     protected $miniature;
     
     protected $miniatureFile;
-    
-    /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    protected $photo1;
-    
-    protected $photo1File;
-    
-    /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    protected $photo2;
-    
-    protected $photo2File;    
-    
-    /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    protected $photo3;
-    
-    protected $photo3File;   
-     
-    /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    protected $photo4;
-    
-    protected $photo4File; 
-       
-    /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    protected $photo5;
-    
-    protected $photo5File;
     
     
     /**
@@ -131,7 +118,6 @@ class Destination {
         return $this->miniature;
     }
     
-    
     /**
      * Sets miniatureFile.
      *
@@ -151,154 +137,17 @@ class Destination {
     {
         return $this->miniatureFile;
     }
- 
-    
-    /**
-     * Sets photo1File.
-     *
-     * @param UploadedFile $photo1File
-     */
-    public function setPhoto1File(UploadedFile $photo1File = null)
-    {
-        $this->photo1File = $photo1File;
-    }
-    
-    /**
-     * Get photo1File.
-     *
-     * @return UploadedFile
-     */
-    public function getPhoto1File()
-    {
-        return $this->photo1File;
-    }
-    
-    /**
-     * Sets photo2File.
-     *
-     * @param UploadedFile $photo2File
-     */
-    public function setPhoto2File(UploadedFile $photo2File = null)
-    {
-        $this->photo2File = $photo2File;
-    }
-    
-    /**
-     * Get photo2File.
-     *
-     * @return UploadedFile
-     */
-    public function getPhoto2File()
-    {
-        return $this->photo2File;
-    }
-    
-    /**
-     * Sets photo3File.
-     *
-     * @param UploadedFile $photo3File
-     */
-    public function setPhoto3File(UploadedFile $photo3File = null)
-    {
-        $this->photo3File = $photo3File;
-    }
-    
-    /**
-     * Get photo3File.
-     *
-     * @return UploadedFile
-     */
-    public function getPhoto3File()
-    {
-        return $this->photo3File;
-    }
-    
-    /**
-     * Sets photo4File.
-     *
-     * @param UploadedFile $photo4File
-     */
-    public function setPhoto4File(UploadedFile $photo4File = null)
-    {
-        $this->photo4File = $photo4File;
-    }
-    
-    /**
-     * Get photo4File.
-     *
-     * @return UploadedFile
-     */
-    public function getPhoto4File()
-    {
-        return $this->photo4File;
-    }
-    
-    /**
-     * Sets photo5File.
-     *
-     * @param UploadedFile $photo5File
-     */
-    public function setPhoto5File(UploadedFile $photo5File = null)
-    {
-        $this->photo5File = $photo5File;
-    }
-    
-    /**
-     * Get photo5File.
-     *
-     * @return UploadedFile
-     */
-    public function getPhoto5File()
-    {
-        return $this->photo5File;
-    }
     
     public function getMiniatureWebPath()
     {
         return null === $this->miniature
         ? null
-        : $this->getUploadDir().'/miniature/'.$this->miniature;
+        : $this->getUploadDir().'/'.$this->miniature;
     }
-    
-    public function getPhoto1WebPath()
-    {
-        return null === $this->photo1
-        ? null
-        : $this->getUploadDir().'/'.$this->photo1;
-    }
-    
-    public function getPhoto2WebPath()
-    {
-        return null === $this->photo2
-        ? null
-        : $this->getUploadDir().'/'.$this->photo2;
-    }
-    
-    public function getPhoto3WebPath()
-    {
-        return null === $this->photo3
-        ? null
-        : $this->getUploadDir().'/'.$this->photo3;
-    }
-    
-    public function getPhoto4WebPath()
-    {
-        return null === $this->photo4
-        ? null
-        : $this->getUploadDir().'/'.$this->photo4;
-    }
-    
-    public function getPhoto5WebPath()
-    {
-        return null === $this->photo5
-        ? null
-        : $this->getUploadDir().'/'.$this->photo5;
-    }
-    
     
     protected function getUploadDir()
     {
-        return '/uploads/destination';
+        return '/uploads/servicepayant';
     }
         
     protected function getUploadRootDir(){
@@ -308,11 +157,6 @@ class Destination {
     public function upload($basepath)
     {
         $this->uploadImage($this->miniatureFile, "setMiniature", 125, 125);
-        $this->uploadImage($this->photo1File, "setPhoto1", 300, 300);
-        $this->uploadImage($this->photo2File, "setPhoto2", 300, 300);
-        $this->uploadImage($this->photo3File, "setPhoto3", 300, 300);
-        $this->uploadImage($this->photo4File, "setPhoto4", 300, 300);
-        $this->uploadImage($this->photo5File, "setPhoto5", 300, 300);
     }
     
     public function uploadImage($file, $fctName, $width, $height){
@@ -340,138 +184,19 @@ class Destination {
                     
         }
         
-        // On r�cup�re la taille de l'image source
+        // On récupère la taille de l'image source
         $largeur_source = imagesx($source);        
         $hauteur_source = imagesy($source);
         
         // On redimensionne tout !
         imagecopyresampled($destination, $source, 0, 0, 0, 0, $width, $height, $largeur_source, $hauteur_source);
-        if ($fctName == "setMiniature") {
-            $fct($destination, $this->getUploadRootDir() . '/miniature/' . $file->getClientOriginalName());
-        } else {
-            $fct($destination, $this->getUploadRootDir() . '/' . $file->getClientOriginalName());
-        }
+        $fct($destination, $this->getUploadRootDir() . '/' . $file->getClientOriginalName());
+        
 
         // set the path property to the filename where you'ved saved the file
         $this->$fctName($file->getClientOriginalName());
         // clean up the file property as you won't need it anymore
         $file = null;
-    }
-    
-    
-    /**
-     * Set photo1
-     *
-     * @param string $photo1
-     * @return Skipper
-     */
-    public function setPhoto1($photo1)
-    {
-        $this->photo1 = $photo1;
-
-        return $this;
-    }
-
-    /**
-     * Get photo1
-     *
-     * @return string 
-     */
-    public function getPhoto1()
-    {
-        return $this->photo1;
-    }
-
-    /**
-     * Set photo2
-     *
-     * @param string $photo2
-     * @return Skipper
-     */
-    public function setPhoto2($photo2)
-    {
-        $this->photo2 = $photo2;
-
-        return $this;
-    }
-
-    /**
-     * Get photo2
-     *
-     * @return string 
-     */
-    public function getPhoto2()
-    {
-        return $this->photo2;
-    }
-
-    /**
-     * Set photo3
-     *
-     * @param string $photo3
-     * @return Skipper
-     */
-    public function setPhoto3($photo3)
-    {
-        $this->photo3 = $photo3;
-
-        return $this;
-    }
-
-    /**
-     * Get photo3
-     *
-     * @return string 
-     */
-    public function getPhoto3()
-    {
-        return $this->photo3;
-    }
-
-    /**
-     * Set photo4
-     *
-     * @param string $photo4
-     * @return Skipper
-     */
-    public function setPhoto4($photo4)
-    {
-        $this->photo4 = $photo4;
-
-        return $this;
-    }
-
-    /**
-     * Get photo4
-     *
-     * @return string 
-     */
-    public function getPhoto4()
-    {
-        return $this->photo4;
-    }
-
-    /**
-     * Set photo5
-     *
-     * @param string $photo5
-     * @return Skipper
-     */
-    public function setPhoto5($photo5)
-    {
-        $this->photo5 = $photo5;
-
-        return $this;
-    }
-
-    /**
-     * Get photo5
-     *
-     * @return string 
-     */
-    public function getPhoto5()
-    {
-        return $this->photo5;
     }
     
     /* hack */
@@ -487,30 +212,135 @@ class Destination {
 
     // Work even the precedent method not here, the proxy call work fine.
     public function __toString(){
-         return $this->getName() ?: "Nouvelle destination";
+         return $this->getName() ?: "Nouveau service payant";
     }
-
+   
 
     /**
-     * Set linkgmap
+     * Set categorie
      *
-     * @param string $linkgmap
-     * @return Destination
+     * @param string $categorie
+     * @return InclusPrix
      */
-    public function setLinkgmap($linkgmap)
+    public function setCategorie($categorie)
     {
-        $this->linkgmap = $linkgmap;
+        $this->categorie = $categorie;
 
         return $this;
     }
 
     /**
-     * Get linkgmap
+     * Get categorie
      *
      * @return string 
      */
-    public function getLinkgmap()
+    public function getCategorie()
     {
-        return $this->linkgmap;
+        return $this->categorie;
+    }
+
+    /**
+     * Set prestation
+     *
+     * @param \AppBundle\Entity\Prestation $prestation
+     * @return InclusPrix
+     */
+    public function setPrestation(\AppBundle\Entity\Prestation $prestation = null)
+    {
+        $this->prestation = $prestation;
+
+        return $this;
+    }
+
+    /**
+     * Get prestation
+     *
+     * @return \AppBundle\Entity\Prestation 
+     */
+    public function getPrestation()
+    {
+        return $this->prestation;
+    }
+
+    /**
+     * Set fraisSupplémentaires
+     *
+     * @param string $fraisSupplementaires
+     * @return ServicePayant
+     */
+    public function setFraisSupplémentaires($fraisSupplementaires)
+    {
+        $this->fraisSupplementaires = $fraisSupplementaires;
+
+        return $this;
+    }
+
+    /**
+     * Get fraisSupplémentaires
+     *
+     * @return string 
+     */
+    public function getFraisSupplementaires()
+    {
+        return $this->fraisSupplementaires;
+    }
+
+    /**
+     * Set bateau
+     *
+     * @param \AppBundle\Entity\Bateau $bateau
+     * @return ServicePayant
+     */
+    public function setBateau(\AppBundle\Entity\Bateau $bateau = null)
+    {
+        $this->bateau = $bateau;
+
+        return $this;
+    }
+
+    /**
+     * Get bateau
+     *
+     * @return \AppBundle\Entity\Bateau 
+     */
+    public function getBateau()
+    {
+        return $this->bateau;
+    }
+
+    /**
+     * Set fraisSupplementaires
+     *
+     * @param string $fraisSupplementaires
+     * @return ServicePayant
+     */
+    public function setFraisSupplementaires($fraisSupplementaires)
+    {
+        $this->fraisSupplementaires = $fraisSupplementaires;
+
+        return $this;
+    }
+
+    /**
+     * Set devise
+     *
+     * @param string $devise
+     * @return ServicePayant
+     */
+    public function setDevise($devise)
+    {
+        $this->devise = $devise;
+
+        return $this;
+    }
+
+    /**
+     * Get devise
+     *
+     * @return string 
+     */
+    public function getDevise()
+    {
+        return $this->devise;
     }
 }

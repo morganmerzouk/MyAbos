@@ -178,6 +178,7 @@ file that was distributed with this source code.
             {% else %}
                 <div class="callout callout-info">
                     {{ 'no_result'|trans({}, 'SonataAdminBundle') }}
+                    {% include 'SonataAdminBundle:Core:create_button.html.twig' %}
                 </div>
             {% endif %}
 

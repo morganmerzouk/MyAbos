@@ -126,7 +126,7 @@ class InclusPrix {
     {
         return null === $this->miniature
         ? null
-        : $this->getUploadDir().'/'.$this->miniature;
+        : $this->getUploadDir().'/miniature/'.$this->miniature;
     }
     
     protected function getUploadDir()
@@ -174,8 +174,12 @@ class InclusPrix {
         
         // On redimensionne tout !
         imagecopyresampled($destination, $source, 0, 0, 0, 0, $width, $height, $largeur_source, $hauteur_source);
-        $fct($destination, $this->getUploadRootDir() . '/' . $file->getClientOriginalName());
-        
+        if ($fctName == "setMiniature") {
+            $fct($destination, $this->getUploadRootDir() . '/miniature/' . $file->getClientOriginalName());
+        } else {
+            $fct($destination, $this->getUploadRootDir() . '/' . $file->getClientOriginalName());
+        }
+
         // set the path property to the filename where you'ved saved the file
         $this->$fctName($file->getClientOriginalName());
         // clean up the file property as you won't need it anymore

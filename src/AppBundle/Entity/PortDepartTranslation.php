@@ -21,6 +21,11 @@ class PortDepartTranslation
     protected $name;
         
     /**
+     * @ORM\Column(type="integer")
+     */
+    protected $translatable_id;
+    
+    /**
      * Set name
      *
      * @param string $name
@@ -41,5 +46,61 @@ class PortDepartTranslation
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set translatable_id
+     *
+     * @param integer $translatableId
+     * @return PortDepartTranslation
+     */
+    public function setTranslatableId($translatableId)
+    {
+        $this->translatable_id = $translatableId;
+
+        return $this;
+    }
+
+    /**
+     * Get translatable_id
+     *
+     * @return integer 
+     */
+    public function getTranslatableId()
+    {
+        return $this->translatable_id;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set locale
+     *
+     * @param string $locale
+     * @return PortDepartTranslation
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
+
+        return $this;
+    }
+
+    /**
+     * Get locale
+     *
+     * @return string 
+     */
+    public function getLocale()
+    {
+        return $this->locale;
     }
 }

@@ -29,8 +29,12 @@ class PortDepartAdmin extends Admin
                                 ),
                             'required' => false
                             )
-                        ),                  
-                    )))
+                        ),   
+                        'translatable_id' => array(   
+                                'field_type' => 'hidden'
+                            )
+                        ),       
+                    ))
             ->add('published', 'checkbox', array('label' => 'Publié: ', 'required'=> false))    
         ;
     }

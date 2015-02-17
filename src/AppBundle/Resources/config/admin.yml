@@ -74,7 +74,7 @@ services:
     sonata.admin.bateau:
         class: AppBundle\Admin\BateauAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Contenu", label: "Bateau" }
+            - { name: sonata.admin, manager_type: orm, group: "Bateau", label: "Bateau" }
         arguments:
             - ~
             - AppBundle\Entity\Bateau
@@ -83,3 +83,27 @@ services:
             - [ setTranslationDomain, [AppBundle]]
             - [ setBaseRouteName, [bateau]]
             - [ setBaseRoutePattern, [bateau]]
+    sonata.admin.inclusprix:
+        class: AppBundle\Admin\InclusPrixAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Bateau", label: "Inclus Prix" }
+        arguments:
+            - ~
+            - AppBundle\Entity\InclusPrix
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+            - [ setBaseRouteName, [inclusprix]]
+            - [ setBaseRoutePattern, [inclusprix]]
+    sonata.admin.servicepayant:
+        class: AppBundle\Admin\ServicePayantAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Bateau", label: "Services Payants" }
+        arguments:
+            - ~
+            - AppBundle\Entity\ServicePayant
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+            - [ setBaseRouteName, [servicepayant]]
+            - [ setBaseRoutePattern, [servicepayant]]

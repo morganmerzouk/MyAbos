@@ -1,6 +1,6 @@
 <?php
 
-// src/AppBundle/Entity/ServicePayantTranslation.php
+// src/AppBundle/Entity/PortDepartTranslation.php
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -10,7 +10,7 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
  * @ORM\Entity
  * 
  */
-class ServicePayantTranslation
+class PortDepartTranslation
 {
     
     use ORMBehaviors\Translatable\Translation;
@@ -19,11 +19,11 @@ class ServicePayantTranslation
      * @ORM\Column(type="string", length=200, nullable=true)
      */
     protected $name;
-
+        
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="integer")
      */
-    protected $description;
+    protected $translatable_id;
     
     /**
      * Set name
@@ -47,28 +47,4 @@ class ServicePayantTranslation
     {
         return $this->name;
     }
-    
-    /**
-     * Set description
-     *
-     * @param string $description
-     * @return Destination
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-    
-        return $this;
-    }
-    
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-    
 }

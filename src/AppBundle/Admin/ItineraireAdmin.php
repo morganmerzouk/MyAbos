@@ -6,9 +6,25 @@ namespace AppBundle\Admin;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
+use Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery;
 
 class ItineraireAdmin extends Admin
-{    // Fields to be shown on create/edit forms
+{    
+    /**
+     * @return \Sonata\AdminBundle\Datagrid\ProxyQueryInterface
+     */
+    public function createQuery($context = 'list')
+    {
+        $query = parent::createQuery($context);
+
+        return new ProxyQuery($query
+            ->join(sprintf('%s.portDepart', $query->getRootAlias()), 'c')
+            ->join('AppBundle\Entity\PortDepartTranslation', 'pt', 'WITH', 'c.id = pt.translatable_id')
+            ->orderBy('pt.name'));
+    }
+
+    // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
         $optionsMiniature = array('label' => 'Image itinéraire: ', 'required' => false, 'attr' => array('class' => 'itineraire-miniature'));
@@ -44,7 +60,7 @@ class ItineraireAdmin extends Admin
                     )))
         ;
     }
-
+    
     // Fields to be shown on lists
     protected function configureListFields(ListMapper $listMapper)
     {

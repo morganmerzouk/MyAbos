@@ -1,6 +1,6 @@
 <?php
 
-// src/AppBundle/Entity/InclusPrix.php
+// src/AppBundle/Entity/ServicePayant.php
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -9,9 +9,9 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="inclusprix")
+ * @ORM\Table(name="servicepayant")
  */
-class InclusPrix {
+class ServicePayant {
 
     use ORMBehaviors\Translatable\Translatable;
         
@@ -22,6 +22,10 @@ class InclusPrix {
      */
     protected $id;
     
+    /**
+    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Prestation", cascade={"persist"})
+    */
+    protected $prestation;
     
     /**
     * @ORM\Column(type="string", length=200, nullable=true)
@@ -29,9 +33,21 @@ class InclusPrix {
     protected $categorie;
     
     /**
-    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Prestation", cascade={"persist"})
+    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Bateau", cascade={"persist"})
     */
-    protected $prestation;
+    protected $bateau;
+    
+    
+    /**
+    * @ORM\Column(type="string", length=200, nullable=true)
+    */
+    protected $fraisSupplementaires;
+    
+        /**
+    * @ORM\Column(type="string", length=200, nullable=true)
+    */
+    protected $devise;
+    
     
     /**
      * @ORM\Column(type="boolean")
@@ -131,7 +147,7 @@ class InclusPrix {
     
     protected function getUploadDir()
     {
-        return '/uploads/inclusPrix';
+        return '/uploads/servicepayant';
     }
         
     protected function getUploadRootDir(){
@@ -176,6 +192,7 @@ class InclusPrix {
         imagecopyresampled($destination, $source, 0, 0, 0, 0, $width, $height, $largeur_source, $hauteur_source);
         $fct($destination, $this->getUploadRootDir() . '/' . $file->getClientOriginalName());
         
+
         // set the path property to the filename where you'ved saved the file
         $this->$fctName($file->getClientOriginalName());
         // clean up the file property as you won't need it anymore
@@ -195,7 +212,7 @@ class InclusPrix {
 
     // Work even the precedent method not here, the proxy call work fine.
     public function __toString(){
-         return $this->getName() ?: "Nouvel inclus prix";
+         return $this->getName() ?: "Nouveau service payant";
     }
    
 
@@ -243,5 +260,51 @@ class InclusPrix {
     public function getPrestation()
     {
         return $this->prestation;
+    }
+
+    /**
+     * Set fraisSupplémentaires
+     *
+     * @param string $fraisSupplementaires
+     * @return ServicePayant
+     */
+    public function setFraisSupplémentaires($fraisSupplementaires)
+    {
+        $this->fraisSupplementaires = $fraisSupplementaires;
+
+        return $this;
+    }
+
+    /**
+     * Get fraisSupplémentaires
+     *
+     * @return string 
+     */
+    public function getFraisSupplementaires()
+    {
+        return $this->fraisSupplementaires;
+    }
+
+    /**
+     * Set bateau
+     *
+     * @param \AppBundle\Entity\Bateau $bateau
+     * @return ServicePayant
+     */
+    public function setBateau(\AppBundle\Entity\Bateau $bateau = null)
+    {
+        $this->bateau = $bateau;
+
+        return $this;
+    }
+
+    /**
+     * Get bateau
+     *
+     * @return \AppBundle\Entity\Bateau 
+     */
+    public function getBateau()
+    {
+        return $this->bateau;
     }
 }

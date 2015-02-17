@@ -1,6 +1,6 @@
 <?php
 
-// src/AppBundle/Entity/DestinationTranslation.php
+// src/AppBundle/Entity/InclusPrixTranslation.php
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -10,7 +10,7 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
  * @ORM\Entity
  * 
  */
-class DestinationTranslation
+class InclusPrixTranslation
 {
     
     use ORMBehaviors\Translatable\Translation;
