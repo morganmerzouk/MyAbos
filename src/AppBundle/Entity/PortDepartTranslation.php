@@ -19,7 +19,13 @@ class PortDepartTranslation
      * @ORM\Column(type="string", length=200, nullable=true)
      */
     protected $name;
-        
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $translatable_id;
+    
+    
     /**
      * Set name
      *
@@ -41,5 +47,28 @@ class PortDepartTranslation
     public function getName()
     {
         return $this->name;
+    }
+    
+    /**
+     * Set translatable_id
+     *
+     * @param string $translatable_id
+     * @return PortDepartTranslation
+     */
+    public function setTranslatableId($translatable_id)
+    {
+        $this->translatable_id= $translatable_id;
+    
+        return $this;
+    }
+    
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getTranslatableId()
+    {
+        return $this->translatable_id;
     }
 }

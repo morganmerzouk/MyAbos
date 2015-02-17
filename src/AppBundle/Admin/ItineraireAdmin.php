@@ -6,9 +6,13 @@ namespace AppBundle\Admin;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
+use Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery;
+
 
 class ItineraireAdmin extends Admin
-{    // Fields to be shown on create/edit forms
+{    
+    // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
         $optionsMiniature = array('label' => 'Image itinéraire: ', 'required' => false, 'attr' => array('class' => 'itineraire-miniature'));
@@ -44,23 +48,47 @@ class ItineraireAdmin extends Admin
                     )))
         ;
     }
+    
+    public function createQuery($context = 'list') {
+        $query = parent::createQuery($context);
+    
+        return new ProxyQuery($query
+              ->leftjoin("AppBundle\Entity\PortDepart", "pd", "WITH", "o.portDepart=pd.id")
+              ->leftjoin("AppBundle\Entity\PortDepartTranslation", "pdl", "WITH", "pd.id=pdl.translatable_id")
+              ->orderBy("pdl.name", "ASC"));
+    
+    }
 
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper
+        ->add('portDepart', null, array('label' => 'Port de départ: '))
+        ->add('destination', null, array('label' => 'Destination: '));
+    }
+    
     // Fields to be shown on lists
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
             ->addIdentifier('portDepart.name', 'translatable_field', array(
-                'field'                => 'name',
                 'personal_translation' => 'AppBundle\Entity\ItineraireTranslation',
                 'property_path'        => 'translations',
                 'label'                => 'Port de départ: '
             ))
-            ->addIdentifier('destination.name', 'translatable_field', array(
+            ->add('destination.name', 'translatable_field', array(
                 'field'                => 'name',
                 'personal_translation' => 'AppBundle\Entity\ItineraireTranslation',
                 'property_path'        => 'translations',
                 'label'                => 'Destination: '
+                
             ))
+            ->add('_action', 'actions',
+                array(
+                    'actions' => array(
+                        'edit' => array(),
+                        'delete' => array()
+                    )
+                ))
         ;
     }
     

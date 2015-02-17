@@ -9,9 +9,9 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="destination")
+ * @ORM\Table(name="servicepayant")
  */
-class Destination {
+class ServicePayant {
 
     use ORMBehaviors\Translatable\Translatable;
         

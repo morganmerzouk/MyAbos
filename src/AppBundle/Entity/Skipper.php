@@ -31,12 +31,7 @@ class Skipper {
     * @ORM\Column(type="string", length=100, nullable=true)
     */
     protected $email;
-    
-    /**
-    * @ORM\Column(type="text", nullable=true)
-    */
-    protected $description;
-    
+        
     /**
     * @ORM\Column(type="string", length=30, nullable=true)
     */
@@ -186,29 +181,7 @@ class Skipper {
         return $this->email;
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description
-     * @return Skipper
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string 
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
+   
     /**
      * Set yearsSailing
      *

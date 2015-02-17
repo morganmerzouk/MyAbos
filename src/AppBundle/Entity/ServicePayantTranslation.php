@@ -10,7 +10,7 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
  * @ORM\Entity
  * 
  */
-class DestinationTranslation
+class ServicePayantTranslation
 {
     
     use ORMBehaviors\Translatable\Translation;
