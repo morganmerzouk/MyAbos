@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\ChoiceList\SimpleChoiceList;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
 
 class SkipperAdmin extends Admin
 {
@@ -102,17 +103,35 @@ class SkipperAdmin extends Admin
                         )
                     )))
                 ->add('published', 'checkbox', array('label' => 'Publié: ', 'required'=> false))   
-            
         ;
     }
-
+    
+    protected $datagridValues = array(
+        '_page' => 1,
+        '_sort_order' => 'ASC',
+        '_sort_by' => 'name',
+    );
+    
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper
+        ->add('name', null, array('label' => 'Nom: '));
+    }
+    
     // Fields to be shown on lists
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name', null, array('label' => 'Nom: '))
+            ->addIdentifier('name', null, array('label' => 'Nom: ', 'sortable' => true))
             ->add('email')
             ->add('published', null, array('label' => 'Publié: '))
+            ->add('_action', 'actions',
+                array(
+                    'actions' => array(
+                        'edit' => array(),
+                        'delete' => array()
+                    )
+                ))
         ;
     }
     

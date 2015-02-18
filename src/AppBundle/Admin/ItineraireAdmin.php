@@ -35,6 +35,7 @@ class ItineraireAdmin extends Admin
                     'fields' => array(                      
                         'description' => array(         
                             'label' => 'Description: ',
+                            'label_attr' => array('class' => 'control-description'),
                             'attr' => array('class' => 'tinymce', 'data-theme' => 'advanced'),
                             'sonata_field_description' => 'textarea',
                             'locale_options' => array(

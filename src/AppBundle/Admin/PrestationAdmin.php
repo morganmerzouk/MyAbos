@@ -6,6 +6,7 @@ namespace AppBundle\Admin;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery;
 
 class PrestationAdmin extends Admin
 {    // Fields to be shown on create/edit forms
@@ -64,6 +65,14 @@ class PrestationAdmin extends Admin
         ;
     }
 
+    public function createQuery($context = 'list') {
+        $query = parent::createQuery($context);
+    
+        return new ProxyQuery($query
+            ->leftjoin("AppBundle\Entity\PrestationTranslation", "pt", "WITH", "o.id=pt.translatable_id")
+            ->orderBy("pt.name", "ASC"));
+    }
+    
     // Fields to be shown on lists
     protected function configureListFields(ListMapper $listMapper)
     {
@@ -75,6 +84,13 @@ class PrestationAdmin extends Admin
                 'label'                => 'Nom: '
             ))
             ->add('published', null, array('label' => 'Publié: '))
+            ->add('_action', 'actions',
+                array(
+                    'actions' => array(
+                        'edit' => array(),
+                        'delete' => array()
+                    )
+                ))
         ;
     }
     

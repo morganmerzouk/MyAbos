@@ -7,6 +7,8 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\ChoiceList\SimpleChoiceList;
+use Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery;
+
 
 class BateauAdmin extends Admin
 {    // Fields to be shown on create/edit forms
@@ -197,6 +199,14 @@ class BateauAdmin extends Admin
         ;
     }
 
+    public function createQuery($context = 'list') {
+        $query = parent::createQuery($context);
+    
+        return new ProxyQuery($query
+            ->leftjoin("AppBundle\Entity\BateauTranslation", "bt", "WITH", "o.id=bt.translatable_id")
+            ->orderBy("bt.name", "ASC"));
+    }
+    
     // Fields to be shown on lists
     protected function configureListFields(ListMapper $listMapper)
     {
@@ -214,6 +224,14 @@ class BateauAdmin extends Admin
                 'label'                => 'Skipper associé: '
             ))
             ->add('published', null, array('label' => 'Publié: '))
+            ->add('_action', 'actions',
+                array(
+                    'actions' => array(
+                        'edit' => array(),
+                        'delete' => array()
+                    )
+                ))
+        ;
         ;
     }
     
