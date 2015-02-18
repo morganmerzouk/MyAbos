@@ -1,7 +1,7 @@
-/*** Admin edit gÃ©nÃ©ral ***/
+/*** Admin edit général ***/
 .control-label {
     float: left;
-    width: 155px;
+    width: 150px;
     text-align: right;
     padding: 5px;
 }
@@ -79,9 +79,9 @@ height: auto
 .skipper-kitesurf-certification-date,
 .skipper-date-certification { width: 305px; }
 .control-annee-navigation-caraibes { width: auto; float: none; display: inline;}
-.control-annee-kitesurfing { width: 240px;}
+.control-annee-kitesurfing { width: 185px;}
 /*** Fin Skipper ***/
-/*** DÃ©but Destination ***/
+/*** Début Destination ***/
 .destination-miniature {     
     float: left;
     width: 148px;

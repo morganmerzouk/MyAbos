@@ -6,6 +6,8 @@ namespace AppBundle\Admin;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery;
+
 
 class PortDepartAdmin extends Admin
 {    // Fields to be shown on create/edit forms
@@ -38,7 +40,15 @@ class PortDepartAdmin extends Admin
             ->add('published', 'checkbox', array('label' => 'Publié: ', 'required'=> false))    
         ;
     }
-
+    
+    public function createQuery($context = 'list') {
+        $query = parent::createQuery($context);
+    
+        return new ProxyQuery($query
+            ->leftjoin("AppBundle\Entity\PortDepartTranslation", "pdt", "WITH", "o.id=pdt.translatable_id")
+            ->orderBy("pdt.name", "ASC"));
+    }
+    
     // Fields to be shown on lists
     protected function configureListFields(ListMapper $listMapper)
     {
@@ -50,6 +60,13 @@ class PortDepartAdmin extends Admin
                 'label'                => 'Nom: '
             ))
             ->add('published', null, array('label' => 'Publié: '))
+            ->add('_action', 'actions',
+                array(
+                    'actions' => array(
+                        'edit' => array(),
+                        'delete' => array()
+                    )
+                ))
         ;
     }
     

@@ -22,6 +22,8 @@ class PortDepart {
      */
     protected $id;
           
+    protected $name;
+    
     /**
     * @ORM\Column(type="string", length=200, nullable=true)
     */

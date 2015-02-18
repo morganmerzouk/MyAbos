@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\ChoiceList\SimpleChoiceList;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
 
 class SkipperAdmin extends Admin
 {
@@ -39,14 +40,13 @@ class SkipperAdmin extends Admin
             ->add('photo3File', 'file', $optionsPhoto3)
             ->add('photo4File', 'file', $optionsPhoto4)
             ->add('photo5File', 'file', $optionsPhoto5)
-            ->add('description', 'textarea', array('required' => false, 'label_attr' => array('class' => 'control-description'), 'attr' => array('class' => 'tinymce', 'data-theme' => 'advanced')))
             ->add('yearsSailing', 'choice', array('label' => 'Nombre d\'années de navigation: ', 'required'=> false, 'label_attr' => array('class' => 'control-annee-navigation'),
                 'choice_list' => $this->loadChoiceList()
             ))
             ->add('professionalSince', 'text', array('label' => 'Professionel depuis: ', 'required'=> false, 'attr' => array('class' => 'skipper-professional-since')))
             ->add('certificationDate', 'text', array('label' => 'Date de certification: ', 'required'=> false, 'attr' => array('class' => 'skipper-date-certification')))
             ->add('languagesSpoken', 'choice', array('label' => 'Langues parlées: ', 'choice_list' => $this->loadLanguagesList(), 'multiple' => true, 'required' => false, 'label_attr' => array('class' => 'control-languages-spoken')))
-            ->add('kitesurfCertificationDate', 'text', array('label' => 'Date de certification de Kitesurf: ', 'required'=> false, 'attr' => array('class' => 'skipper-kitesurf-certification-date'), 'label_attr' => array('class' => 'control-kitesurf-certification-date')))
+            ->add('kitesurfCertificationDate', 'text', array('label' => 'Kitesurf Certification Granted: ', 'required'=> false, 'attr' => array('class' => 'skipper-kitesurf-certification-date'), 'label_attr' => array('class' => 'control-kitesurf-certification-date')))
             ->add('yearsSailingCarribean', 'choice', array('label' => 'Nombre d\'années de navigation dans les Caraïbes: ', 'required'=> false,  'label_attr' => array('class' => 'control-annee-navigation-caraibes'), 'attr' => array('class' => 'skipper-annee-navigation-caraibes'),
                 'choice_list' => $this->loadChoiceList()
             ))
@@ -60,7 +60,19 @@ class SkipperAdmin extends Admin
                 'choice_list' => $this->loadYearsList()
             ))
             ->add('translations', 'a2lix_translations', array(
-                    'fields' => array(                      
+                    'fields' => array(                  
+                        'description' => array(
+                            'label' => 'Description: ',
+                            'label_attr' => array('class' => 'control-description'),
+                            'attr' => array('class' => 'tinymce', 'data-theme' => 'advanced'),
+                            'locale_options' => array(
+                                'en' => array(
+                                    'label' => 'Description: '
+                                ),
+                                'required' => false,
+                                'class' => 'tinymce'
+                            )
+                        ),
                         'otherCertifications' => array(         
                             'label' => 'Autres certifications: ',
                             'locale_options' => array(
@@ -91,17 +103,35 @@ class SkipperAdmin extends Admin
                         )
                     )))
                 ->add('published', 'checkbox', array('label' => 'Publié: ', 'required'=> false))   
-            
         ;
     }
-
+    
+    protected $datagridValues = array(
+        '_page' => 1,
+        '_sort_order' => 'ASC',
+        '_sort_by' => 'name',
+    );
+    
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper
+        ->add('name', null, array('label' => 'Nom: '));
+    }
+    
     // Fields to be shown on lists
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name', null, array('label' => 'Nom: '))
+            ->addIdentifier('name', null, array('label' => 'Nom: ', 'sortable' => true))
             ->add('email')
             ->add('published', null, array('label' => 'Publié: '))
+            ->add('_action', 'actions',
+                array(
+                    'actions' => array(
+                        'edit' => array(),
+                        'delete' => array()
+                    )
+                ))
         ;
     }
     

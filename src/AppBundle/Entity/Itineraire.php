@@ -29,7 +29,7 @@ class Itineraire {
     
     /**
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Destination",cascade={"persist", "remove", "merge"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Destination",cascade={"persist"})
      */
     protected $destination;
     

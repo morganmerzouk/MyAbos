@@ -47,6 +47,7 @@ class ItineraireAdmin extends Admin
                     'fields' => array(                      
                         'description' => array(         
                             'label' => 'Description: ',
+                            'label_attr' => array('class' => 'control-description'),
                             'attr' => array('class' => 'tinymce', 'data-theme' => 'advanced'),
                             'sonata_field_description' => 'textarea',
                             'locale_options' => array(
@@ -60,23 +61,37 @@ class ItineraireAdmin extends Admin
                     )))
         ;
     }
+
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper
+        ->add('portDepart', null, array('label' => 'Port de départ: '))
+        ->add('destination', null, array('label' => 'Destination: '));
+    }
     
     // Fields to be shown on lists
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
             ->addIdentifier('portDepart.name', 'translatable_field', array(
-                'field'                => 'name',
                 'personal_translation' => 'AppBundle\Entity\ItineraireTranslation',
                 'property_path'        => 'translations',
                 'label'                => 'Port de départ: '
             ))
-            ->addIdentifier('destination.name', 'translatable_field', array(
+            ->add('destination.name', 'translatable_field', array(
                 'field'                => 'name',
                 'personal_translation' => 'AppBundle\Entity\ItineraireTranslation',
                 'property_path'        => 'translations',
                 'label'                => 'Destination: '
+                
             ))
+            ->add('_action', 'actions',
+                array(
+                    'actions' => array(
+                        'edit' => array(),
+                        'delete' => array()
+                    )
+                ))
         ;
     }
     
