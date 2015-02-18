@@ -16,8 +16,10 @@ class DestinationFixtures implements FixtureInterface {
             $destination = new Destination();
             $destination->translate('fr')->setName($item['name_fr']);
             $destination->translate('en')->setName($item['name_en']);
-            $destination->translate('fr')->setDescription(addslashes(file_get_contents(__DIR__ . "/../destination/destination".$key.".html")));
-                        
+            
+            $description = explode('--boundary--',addslashes(file_get_contents(__DIR__ . "/../destination/destination".$key.".html")));
+            $destination->translate('fr')->setDescription($description[0]);
+            $destination->translate('en')->setDescription($description[1]);          
             $destination->setPublished(false);
             
             $manager->persist($destination);

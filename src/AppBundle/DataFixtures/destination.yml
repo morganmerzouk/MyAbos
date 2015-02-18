@@ -1,6 +1,81 @@
 0:
-    name_fr: "destination fr"
-    name_en: "destination en"
+    name_fr: "Anguilla"
+    name_en: "Anguilla"
 1:
-    name_fr: "destination 2 fr"
-    name_en: "destination 2 en"
+    name_fr: "Antigua et Barbuda"
+    name_en: "Antigua et Barbuda"
+2:
+    name_fr: "Aruba"
+    name_en: "Aruba"
+3:
+    name_fr: "Barbade"
+    name_en: "Barbados"
+4:
+    name_fr: "Bonaire"
+    name_en: "Bonaire"
+5:
+    name_fr: "Curacao"
+    name_en: "Curacao"
+6:
+    name_fr: "République Dominicaine"
+    name_en: "Dominican Republic"
+7:
+    name_fr: "Guadeloupe"
+    name_en: "Guadeloupe"
+8:
+    name_fr: "Ile de la Tortue (Venezuela)"
+    name_en: "Isla La Tortuga"
+9:
+    name_fr: "Jamaïque"
+    name_en: "Jamaica"
+10:
+    name_fr: "Las Aves"
+    name_en: "Las Aves"
+11:
+    name_fr: "Los Roques"
+    name_en: "Los Roques"
+12:
+    name_fr: "Margarita"
+    name_en: "Margarita"
+13:
+    name_fr: "Martinique"
+    name_en: "Martinique"
+14:
+    name_fr: "Porto Rico"
+    name_en: "Puerto Rico"
+15:
+    name_fr: "San Blas"
+    name_en: "San Blas"
+16:
+    name_fr: "St Barth"
+    name_en: "St Barth"
+17:
+    name_fr: "St Kitts et Nevis"
+    name_en: "St Kitts and Nevis"
+18:
+    name_fr: "Saint Martin"
+    name_en: "St Matin"
+19:
+    name_fr: "Ste Lucie"
+    name_en: "Ste Lucia"
+20:
+    name_fr: "Les Bahamas"
+    name_en: "The Bahamas"
+21:
+    name_fr: "BVI"
+    name_en: "The BVI's"
+22:
+    name_fr: "Les îles Cayman"
+    name_en: "The Cayman islands"
+23:
+    name_fr: "Grenadines"
+    name_en: "The Grenadines"
+24:
+    name_fr: "Trinidad et Tobago"
+    name_en: "Trinidad and Tobago"
+25:
+    name_fr: "Les îles Turks et Caicos"
+    name_en: "Turks and Caicos Islans"
+26:
+    name_fr: "Les îles Vierges Américaines"
+    name_en: "US Virgin Islands"
