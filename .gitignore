@@ -2,10 +2,10 @@
 /app/bootstrap*
 /app/cache/*
 /app/logs/*
-/web/uploads/*
 /vendor/
 /app/config/parameters.yml
 /build/
+/nbproject/
 /bin/
 /composer.phar
 /RemoteSystemsTempFiles/

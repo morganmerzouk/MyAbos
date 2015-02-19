@@ -1,4 +1,4 @@
-/*** Admin edit général ***/
+/*** Admin edit gï¿½nï¿½ral ***/
 .control-label {
     float: left;
     width: 150px;
@@ -36,8 +36,8 @@ div.select2-container-multi { width: 505px !important;}
 .form-group[id$='photo5File']{ width: 300px; display: inline;}
 .preview-img {clear: both;display: block;}
 .control-photo1 { clear: both;}
-/*** Fin Admin edit général ***/
-/*** Début Skipper ***/
+/*** Fin Admin edit gï¿½nï¿½ral ***/
+/*** Dï¿½but Skipper ***/
 .skipper-avatar {
     float: left;
     width: 14%;
@@ -74,6 +74,7 @@ height: auto
 .form-group[id$='yearsKiteCruise'],
 .form-group[id$='languagesSpoken'],
 .form-group[id$='kitesurfInstructorSince'] { float:left;}
+.form-group[id$='yearsSailing'], .form-group[id$='yearsSailingCarribean'] { clear: both;}
 .skipper-professional-since { float:left; width: 200px;}
 .control-annee-navigation { width: auto; float: none; display: inline;}
 .skipper-kitesurf-certification-date,
@@ -81,7 +82,7 @@ height: auto
 .control-annee-navigation-caraibes { width: auto; float: none; display: inline;}
 .control-annee-kitesurfing { width: 185px;}
 /*** Fin Skipper ***/
-/*** Début Destination ***/
+/*** Dï¿½but Destination ***/
 .destination-miniature {     
     float: left;
     width: 148px;
@@ -100,7 +101,7 @@ height: auto
     float: left;
 }
 /*** Fin Destination ***/
-/*** Début Itinéraire ***/
+/*** Dï¿½but Itinï¿½raire ***/
 .form-group[id$='portDepart'],
 .form-group[id$='destination'] { float:left;}
 .itineraire-miniature {     
@@ -109,8 +110,8 @@ height: auto
     padding: 0;
     height: auto;
 }
-/*** Fin Itinéraire ***/
-/*** Début Prestation ***/
+/*** Fin Itinï¿½raire ***/
+/*** Dï¿½but Prestation ***/
 .prestation-icone,
 .prestation-photo {
     float: left;
@@ -120,7 +121,7 @@ height: auto
 }
 
 /*** Fin Prestation ***/
-/*** Début Bateau ***/
+/*** Dï¿½but Bateau ***/
 .bateau-miniature,
 .bateau-photo {
     float: left;
@@ -144,7 +145,7 @@ height: auto
 .control-bateau-type,
 .control-bateau-skipper{ width: 120px; }
 /*** Fin Bateau ***/
-/*** Début Service payant ***/
+/*** Dï¿½but Service payant ***/
 .optionpayante-miniature {     
     float: left;
     width: 148px;

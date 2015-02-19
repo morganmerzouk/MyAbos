@@ -2,13 +2,13 @@
 // src/AppBundle/DataFixtures/ORM/DestinationFixtures.php
 
 namespace AppBundle\DataFixtures\ORM;
-
+use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use AppBundle\Entity\Destination;
 use Symfony\Component\Yaml\Yaml;
 
-class DestinationFixtures implements FixtureInterface {
+class DestinationFixtures extends AbstractFixture implements FixtureInterface {
     public function load(ObjectManager $manager)
     {
         $yml = Yaml::parse(file_get_contents(__DIR__ . "/../destination.yml"));
@@ -19,8 +19,8 @@ class DestinationFixtures implements FixtureInterface {
             
             $description = explode('--boundary--',addslashes(file_get_contents(__DIR__ . "/../destination/destination".$key.".html")));
             $destination->translate('fr')->setDescription($description[0]);
-            $destination->translate('en')->setDescription($description[1]);          
-            $destination->setPublished(false);
+            $destination->translate('en')->setDescription($description[1]);            
+            $destination->setPublished(true);
             
             $manager->persist($destination);
             $destination->mergeNewTranslations();
