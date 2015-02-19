@@ -24,12 +24,17 @@ class ServicePayantTranslation
      * @ORM\Column(type="text", nullable=true)
      */
     protected $description;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $translatable_id;
     
     /**
      * Set name
      *
      * @param string $name
-     * @return Destination
+     * @return ServicePayant
      */
     public function setName($name)
     {
@@ -70,5 +75,27 @@ class ServicePayantTranslation
     {
         return $this->description;
     }
+
+    /**
+     * Set translatable_id
+     *
+     * @param string $translatable_id
+     * @return ServicePayantTranslation
+     */
+    public function setTranslatableId($translatable_id)
+    {
+        $this->translatable_id= $translatable_id;
     
+        return $this;
+    }
+    
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getTranslatableId()
+    {
+        return $this->translatable_id;
+    }
 }

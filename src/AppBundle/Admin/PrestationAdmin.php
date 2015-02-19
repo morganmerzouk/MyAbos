@@ -58,7 +58,10 @@ class PrestationAdmin extends Admin
                             'required' => false,
                             'class' => 'tinymce'
                             )
-                        ),        
+                        ),   
+                        'translatable_id' => array(   
+                            'field_type' => 'hidden'
+                        )        
                         
                     )))
             ->add('published', 'checkbox', array('label' => 'Publié: ', 'required'=> false))    

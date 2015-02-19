@@ -60,6 +60,9 @@ class BateauAdmin extends Admin
                             'required' => false,
                             'class' => 'tinymce'
                             )
+                        ),   
+                        'translatable_id' => array(   
+                            'field_type' => 'hidden'
                         ),
                         'longueur' => array(         
                             'label' => 'Longueur: ',             

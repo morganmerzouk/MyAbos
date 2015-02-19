@@ -119,7 +119,7 @@ sonata_admin:
     title:      Kitesurfari
     templates:
         # default global templates
-        layout:  SonataAdminBundle::standard_layout.html.twig
+        layout:  AppBundle:Admin:standard_layout.html.twig
         ajax:    SonataAdminBundle::ajax_layout.html.twig
 
         # default actions templates, should extend a global templates

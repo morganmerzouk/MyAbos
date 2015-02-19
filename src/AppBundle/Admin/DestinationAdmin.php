@@ -58,20 +58,14 @@ class DestinationAdmin extends Admin
                             'required' => false,
                             'class' => 'tinymce'
                             )
-                        ),                  
+                        ),   
+                        'translatable_id' => array(   
+                            'field_type' => 'hidden'
+                        )                
                     )))
                 ->add('published', 'checkbox', array('label' => 'Publié: ', 'required'=> false, 'attr'=>array('class'=>'destination-publie')))    
             
         ;
-    }
-    
-    public function createQuery($context = 'list') {
-        $query = parent::createQuery($context);
-    
-        return new ProxyQuery($query
-            ->leftjoin("AppBundle\Entity\DestinationTranslation", "dt", "WITH", "o.id=dt.translatable_id")
-            ->orderBy("dt.name", "ASC"));
-    
     }
     
     // Fields to be shown on lists
@@ -93,6 +87,15 @@ class DestinationAdmin extends Admin
                     )
                 ))
         ;
+    }
+
+    public function createQuery($context = 'list') {
+        $query = parent::createQuery($context);
+    
+        return new ProxyQuery($query
+            ->leftjoin("AppBundle\Entity\DestinationTranslation", "dt", "WITH", "o.id=dt.translatable_id")
+            ->orderBy("dt.name", "ASC"));
+    
     }
     
     public function setBaseRouteName($baseRouteName)

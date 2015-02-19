@@ -1,7 +1,9 @@
 eclipse.preferences.version=1
 encoding//src/AppBundle/Admin/BateauAdmin.php=UTF-8
 encoding//src/AppBundle/Admin/DestinationAdmin.php=UTF-8
+encoding//src/AppBundle/Admin/InclusPrixAdmin.php=UTF-8
 encoding//src/AppBundle/Admin/ItineraireAdmin.php=UTF-8
 encoding//src/AppBundle/Admin/PortDepartAdmin.php=UTF-8
 encoding//src/AppBundle/Admin/PrestationAdmin.php=UTF-8
+encoding//src/AppBundle/Admin/ServicePayantAdmin.php=UTF-8
 encoding//src/AppBundle/Admin/SkipperAdmin.php=UTF-8

@@ -11,19 +11,6 @@ use Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery;
 
 class ItineraireAdmin extends Admin
 {    
-    /**
-     * @return \Sonata\AdminBundle\Datagrid\ProxyQueryInterface
-     */
-    public function createQuery($context = 'list')
-    {
-        $query = parent::createQuery($context);
-
-        return new ProxyQuery($query
-            ->join(sprintf('%s.portDepart', $query->getRootAlias()), 'c')
-            ->join('AppBundle\Entity\PortDepartTranslation', 'pt', 'WITH', 'c.id = pt.translatable_id')
-            ->orderBy('pt.name'));
-    }
-
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
@@ -94,6 +81,20 @@ class ItineraireAdmin extends Admin
                 ))
         ;
     }
+
+    /**
+     * @return \Sonata\AdminBundle\Datagrid\ProxyQueryInterface
+     */
+    public function createQuery($context = 'list')
+    {
+        $query = parent::createQuery($context);
+    
+        return new ProxyQuery($query
+            ->join(sprintf('%s.portDepart', $query->getRootAlias()), 'c')
+            ->join('AppBundle\Entity\PortDepartTranslation', 'pt', 'WITH', 'c.id = pt.translatable_id')
+            ->orderBy('pt.name'));
+    }
+    
     
     public function setBaseRouteName($baseRouteName)
     {

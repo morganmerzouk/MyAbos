@@ -26,6 +26,11 @@ class ServicePayant {
     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Prestation", cascade={"persist"})
     */
     protected $prestation;
+
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $titreBackOffice;
     
     /**
     * @ORM\Column(type="string", length=200, nullable=true)
@@ -47,7 +52,11 @@ class ServicePayant {
     * @ORM\Column(type="string", length=200, nullable=true)
     */
     protected $devise;
-    
+
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $tarifApplique;
     
     /**
      * @ORM\Column(type="boolean")
@@ -306,5 +315,41 @@ class ServicePayant {
     public function getBateau()
     {
         return $this->bateau;
+    }
+
+    /**
+     * Set fraisSupplementaires
+     *
+     * @param string $fraisSupplementaires
+     * @return ServicePayant
+     */
+    public function setFraisSupplementaires($fraisSupplementaires)
+    {
+        $this->fraisSupplementaires = $fraisSupplementaires;
+
+        return $this;
+    }
+
+    /**
+     * Set devise
+     *
+     * @param string $devise
+     * @return ServicePayant
+     */
+    public function setDevise($devise)
+    {
+        $this->devise = $devise;
+
+        return $this;
+    }
+
+    /**
+     * Get devise
+     *
+     * @return string 
+     */
+    public function getDevise()
+    {
+        return $this->devise;
     }
 }

@@ -36,8 +36,8 @@ div.select2-container-multi { width: 505px !important;}
 .form-group[id$='photo5File']{ width: 300px; display: inline;}
 .preview-img {clear: both;display: block;}
 .control-photo1 { clear: both;}
-/*** Fin Admin edit gÃ©nÃ©ral ***/
-/*** DÃ©but Skipper ***/
+/*** Fin Admin edit général ***/
+/*** Début Skipper ***/
 .skipper-avatar {
     float: left;
     width: 14%;
@@ -100,7 +100,7 @@ height: auto
     float: left;
 }
 /*** Fin Destination ***/
-/*** DÃ©but ItinÃ©raire ***/
+/*** Début Itinéraire ***/
 .form-group[id$='portDepart'],
 .form-group[id$='destination'] { float:left;}
 .itineraire-miniature {     
@@ -109,34 +109,8 @@ height: auto
     padding: 0;
     height: auto;
 }
-/*** Fin ItinÃ©raire ***/
-/*** DÃ©but En Savoir Plus ***/
-.form-group[id$='image1File'],
-.form-group[id$='lien1'] { overflow:auto; clear:both;}
-.form-group[id$='image1File']{width: 300px;}
-.ensavoirplus-image1{     
-    float: left;
-    width: 148px;
-    padding: 0;
-    height: auto;
-}
-.ensavoirplus-photo {
-    float: left;
-    width: 148px;
-    padding: 0;
-    height: auto
-}
-.control-ensavoirplus-lien { width: 63px;}
-.control-ensavoirplus-nom-lien { width: 100px;}
-.control-ensavoirplus-lien4,
-.control-ensavoirplus-nom-lien4 { clear: both;}
-.control-ensavoirplus-nom { clear: both;width: 100px;}
-.ensavoirplus-nom {width: 425px}
-.ensavoirplus-lien,
-.ensavoirplus-nom-lien {float: left; width: 425px}
-.ensavoirplus-lien{ width: 475px; }
-/*** Fin En Savoir Plus ***/
-/*** DÃ©but Prestation ***/
+/*** Fin Itinéraire ***/
+/*** Début Prestation ***/
 .prestation-icone,
 .prestation-photo {
     float: left;
@@ -146,7 +120,7 @@ height: auto
 }
 
 /*** Fin Prestation ***/
-/*** DÃ©but Bateau ***/
+/*** Début Bateau ***/
 .bateau-miniature,
 .bateau-photo {
     float: left;
@@ -170,3 +144,24 @@ height: auto
 .control-bateau-type,
 .control-bateau-skipper{ width: 120px; }
 /*** Fin Bateau ***/
+/*** Début Service payant ***/
+.optionpayante-miniature {     
+    float: left;
+    width: 148px;
+    padding: 0;
+    height: auto;
+}
+.optionpayante-list-radio { float: left; display: block;}
+.optionpayante-list-radio-devise li {width: 40px;text-align: center;margin-top: 5px;}
+.optionpayante-list-radio-categorie li {float: left; width: 350px;}
+.optionpayante-frais { float: left; width: 60px;}
+.control-optionpayante-categorie { clear: both; }
+.control-optionpayante-devise { float: left; width: 65px; }
+.control-optionpayante-bateau,
+.control-optionpayante-prestation,
+.control-optionpayante-categorie { width: 300px; }
+.control-optionpayante-frais { width: 180px; }
+.form-group[id$='prestation'],
+.form-group[id$='fraisSupplementaires'] { clear:both;}
+.form-group[id$='prestation'] { margin-bottom: 0px; }
+.control-optionpayante_description { display: block; }
