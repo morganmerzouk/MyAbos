@@ -34,6 +34,7 @@ div.select2-container-multi { width: 505px !important;}
 .form-group[id$='photo3File'],
 .form-group[id$='photo4File'],
 .form-group[id$='photo5File']{ width: 300px; display: inline;}
+.form-group[id$='published'] { clear: both; }
 .preview-img {clear: both;display: block;}
 .control-photo1 { clear: both;}
 /*** Fin Admin edit g�n�ral ***/
@@ -145,15 +146,10 @@ height: auto
 .control-bateau-type,
 .control-bateau-skipper{ width: 120px; }
 /*** Fin Bateau ***/
-/*** D�but Service payant ***/
-.optionpayante-miniature {     
-    float: left;
-    width: 148px;
-    padding: 0;
-    height: auto;
-}
+/*** D�but Services payants ***/
+.optionpayante-miniature {float: left;width: 148px;padding: 0;height: auto;}
 .optionpayante-list-radio { float: left; display: block;}
-.optionpayante-list-radio-devise li {width: 40px;text-align: center;margin-top: 5px;}
+.optionpayante-list-radio-devise li {width: 40px;text-align: center;margin-top: 5px;float: left;}
 .optionpayante-list-radio-categorie li {float: left; width: 350px;}
 .optionpayante-frais { float: left; width: 60px;}
 .control-optionpayante-categorie { clear: both; }
@@ -166,3 +162,10 @@ height: auto
 .form-group[id$='fraisSupplementaires'] { clear:both;}
 .form-group[id$='prestation'] { margin-bottom: 0px; }
 .control-optionpayante_description { display: block; }
+/*** Fin Services payants ***/
+/*** Début Inclus Prix ***/
+.inclusprix-list-radio {float: left; display: block;}
+.inclusprix-list-radio-categorie li {float: left; display: block; width: 350px;}
+.inclusprix-miniature {float: left;width: 148px;padding: 0;height: auto;}
+.control-inclusprix-prestation { width: 300px;}
+/*** Fin Inclus Prix ***/

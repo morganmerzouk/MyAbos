@@ -50,7 +50,6 @@ class ServicePayantAdmin extends Admin
                 ->add('categorie', 'choice', array('label' => 'Catégorie d\'option payante: ',
                     'label_attr' => array('class' => 'control-optionpayante-categorie'),    
                     'choice_list' => $this->loadChoiceList("categorie"),
-                    'expanded' => true,
                     'attr' => array("class"=>"optionpayante-list-radio optionpayante-list-radio-categorie"),
                     'required' => true
                 ))
@@ -116,14 +115,13 @@ class ServicePayantAdmin extends Admin
         $listMapper
             ->addIdentifier('name', 'translatable_field', array(
                 'field'                => 'name',
-                'personal_translation' => 'AppBundle\Entity\ItineraireTranslation',
+                'personal_translation' => 'AppBundle\Entity\ServicePayantTranslation',
                 'property_path'        => 'translations',
                 'label'                => 'Nom: ',
                 'editable'             => true
             ))
             ->addIdentifier('categorie', 'translatable_field', array(
-                'label'                => 'Catégorie: ',
-                'editable'             => true
+                'label'                => 'Catégorie: '
             ))
             ->add('prestation.name', 'translatable_field', array(
                 'field'                => 'name',

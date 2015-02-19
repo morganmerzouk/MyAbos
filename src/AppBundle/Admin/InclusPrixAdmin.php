@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\ChoiceList\SimpleChoiceList;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
 
 class InclusPrixAdmin extends Admin
 {    // Fields to be shown on create/edit forms
@@ -44,21 +45,37 @@ class InclusPrixAdmin extends Admin
                             )
                         ),                  
                     )))
-                ->add('categorie', 'choice', array('label' => 'Catégorie: ',
-                    'label_attr' => array('class' => 'control-inclusprix-categorie'),    
-                    'choice_list' => $this->loadChoiceList("categorie"),
-                    'expanded' => true,
-                    'attr' => array("class"=>"inclusprix-list-radio"),
-                    'data' => 1
-                ))
                 ->add('prestation', 'entity', array(
                     'class'    => 'AppBundle\Entity\Prestation',
-                    'label'  => 'Prestation',
+                    'label'  => 'Rattachement à une prestation: ',
+                    'required' => false,
+                    "empty_value" => "Aucune",
                     'label_attr' => array('class' => 'control-inclusprix-prestation'),
+                    'attr' => array("class"=>"inclusprix-list-radio"),
                 ))
-                ->add('published', 'checkbox', array('label' => 'Publié: ', 'required'=> false, 'attr'=>array('class'=>'inclusprix-publie')))    
-            
+                ->add('categorie', 'choice', array('label' => 'Catégorie: ',
+                    'label_attr' => array('class' => 'control-inclusprix-categorie'),    
+                    'choice_list' => $this->loadChoiceList("categorie")
+                ))
+                ->add('published', 'checkbox', array('label' => 'Publié: ', 'required'=> false, 'attr'=>array('class'=>'inclusprix-publie')))
         ;
+    }
+    
+        protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper
+        ->add('prestation', null, array('label' => 'Prestation: '))
+        ->add('categorie', "doctrine_orm_choice", array('label' => 'Catégorie: ', 'class' => 'optionpayante-filter-categorie', 
+            'field_options' =>
+                array('choices'=> array(
+                    'Equipage' => 'Equipage',
+                    'Frais de voyage' => 'Frais de voyage',
+                    'Avitaillement' => 'Avitaillement',
+                    'Autres services' => 'Autres services',
+                    'Equipements à bord' => 'Equipements à bord',
+                    'Activités à bord' => 'Activités à bord',
+                    'Cours de kitesurf' => 'Cours de kitesurf'
+                )), 'field_type' => 'choice'));
     }
 
     // Fields to be shown on lists
@@ -67,12 +84,28 @@ class InclusPrixAdmin extends Admin
         $listMapper
             ->addIdentifier('name', 'translatable_field', array(
                 'field'                => 'name',
-                'personal_translation' => 'AppBundle\Entity\ItineraireTranslation',
+                'personal_translation' => 'AppBundle\Entity\InclusPrixTranslation',
                 'property_path'        => 'translations',
                 'label'                => 'Nom: ',
                 'editable'             => true
             ))
+            ->add('categorie', 'translatable_field', array(
+                'label'                => 'Catégorie: '
+            ))
+            ->add('prestation.name', 'translatable_field', array(
+                'field'                => 'name',
+                'personal_translation' => 'AppBundle\Entity\InclusPrixTranslation',
+                'property_path'        => 'translations',
+                'label'                => 'Prestation: '
+            ))
             ->add('published', null, array('label' => 'Publié: '))
+            ->add('_action', 'actions',
+                array(
+                    'actions' => array(
+                        'edit' => array(),
+                        'delete' => array()
+                    )
+                ))
         ;
     }
     
