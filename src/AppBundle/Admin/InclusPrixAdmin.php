@@ -33,10 +33,22 @@ class InclusPrixAdmin extends Admin
                                 ),
                             'required' => false,
                             )
-                        ),                
-                        'translatable_id' => array(
+                        ),                  
+                        'description' => array(         
+                            'label' => 'Description: ',         
+                            'label_attr' => array('class' => 'control-description'),
+                            'attr' => array('class' => 'tinymce', 'data-theme' => 'advanced'),
+                            'locale_options' => array(
+                                'en' => array(
+                                    'label' => 'Description: '
+                                ),
+                            'required' => false,
+                            'class' => 'tinymce'
+                            )
+                        ),     
+                        'translatable_id' => array(   
                             'field_type' => 'hidden'
-                        )
+                        ),
                     )))
                 ->add('prestation', 'entity', array(
                     'class'    => 'AppBundle\Entity\Prestation',

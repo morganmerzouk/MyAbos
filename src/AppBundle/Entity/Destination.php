@@ -26,7 +26,11 @@ class Destination {
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $linkgmap;
-        
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $inclusRecherche = true;
+    
     /**
      * @ORM\Column(type="boolean")
      */
@@ -512,5 +516,28 @@ class Destination {
     public function getLinkgmap()
     {
         return $this->linkgmap;
+    }
+
+    /**
+     * Set inclusRecherche
+     *
+     * @param boolean $inclusRecherche
+     * @return Destination
+     */
+    public function setInclusRecherche($inclusRecherche)
+    {
+        $this->inclusRecherche = $inclusRecherche;
+
+        return $this;
+    }
+
+    /**
+     * Get inclusRecherche
+     *
+     * @return boolean 
+     */
+    public function getInclusRecherche()
+    {
+        return $this->inclusRecherche;
     }
 }

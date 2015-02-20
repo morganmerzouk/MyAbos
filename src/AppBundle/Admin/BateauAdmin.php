@@ -40,7 +40,7 @@ class BateauAdmin extends Admin
             ->add('photoCarreFile', 'file', $optionsPhotoCarre)
             ->add('photoCabineFile', 'file', $optionsPhotoCabine)
             ->add('translations', 'a2lix_translations', array(
-                    'fields' => array(              
+                    'fields' => array(       
                         'description' => array(         
                             'label' => 'Description: ',             
                             'label_attr' => array('class' => 'control-description'),               
@@ -150,8 +150,7 @@ class BateauAdmin extends Admin
                 'label_attr' => array('class' => 'control-bateau-nbequipier'),    
                 'choice_list' => $this->loadChoiceList("equipier"),
                 'expanded' => true,
-                'attr' => array("class"=>"bateau-list-radio"),
-                'data' => 1
+                'attr' => array("class"=>"bateau-list-radio")
             ))
             ->add('type', 'choice', array('label' => 'Type: ',
                     'expanded'=>true,

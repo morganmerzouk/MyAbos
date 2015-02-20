@@ -8,7 +8,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use AppBundle\Entity\PortDepart;
 use Symfony\Component\Yaml\Yaml;
 
-class PrestationFixtures extends AbstractFixture implements FixtureInterface {
+class PortDepartFixtures extends AbstractFixture implements FixtureInterface {
     public function load(ObjectManager $manager)
     {
         $yml = Yaml::parse(file_get_contents(__DIR__ . "/../portdepart.yml"));

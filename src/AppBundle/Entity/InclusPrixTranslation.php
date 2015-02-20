@@ -24,7 +24,7 @@ class InclusPrixTranslation
      * @ORM\Column(type="integer")
      */
     protected $translatable_id;
-        
+       
     /**
      * Set name
      *

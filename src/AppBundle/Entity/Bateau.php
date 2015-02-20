@@ -62,6 +62,7 @@ class Bateau {
      */
     protected $reservoirEau;
 
+    
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
      */

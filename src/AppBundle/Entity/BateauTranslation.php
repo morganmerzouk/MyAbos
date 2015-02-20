@@ -20,7 +20,27 @@ class BateauTranslation
      * @ORM\Column(type="text", nullable=true)
      */
     protected $description;
-        
+    
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $translatable_id;
+    
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $longueur;
+    
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $largeur;
+    
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $moteur;
+    
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
      */
@@ -50,11 +70,6 @@ class BateauTranslation
      * @ORM\Column(type="string", length=200, nullable=true)
      */
     protected $autre;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    protected $translatable_id;
     
     /**
      * Set description

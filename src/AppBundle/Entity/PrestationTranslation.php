@@ -61,7 +61,7 @@ class PrestationTranslation
      */
     public function setDescription($description)
     {
-        $this->description = $description;
+        $this->description = stripslashes($description);
     
         return $this;
     }

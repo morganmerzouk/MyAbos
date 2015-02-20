@@ -145,6 +145,8 @@ height: auto
 .control-bateau-nbequipier,
 .control-bateau-type,
 .control-bateau-skipper{ width: 120px; }
+.bateau-inclusprix-frais {width: 500px;display: block;float: left;}
+.form-group[id$='inclusPrixAvitaillement'] { clear: both;}
 /*** Fin Bateau ***/
 /*** D�but Services payants ***/
 .optionpayante-miniature {float: left;width: 148px;padding: 0;height: auto;}
