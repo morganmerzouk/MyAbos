@@ -20,7 +20,8 @@ class DestinationFixtures extends AbstractFixture implements FixtureInterface {
             $description = explode('--boundary--',addslashes(file_get_contents(__DIR__ . "/../destination/destination".$key.".html")));
             $destination->translate('fr')->setDescription($description[0]);
             $destination->translate('en')->setDescription($description[1]);            
-            $destination->setPublished(true);
+            $destination->setPublished(true);        
+            $destination->setInclusRecherche(true);
             
             $manager->persist($destination);
             $destination->mergeNewTranslations();

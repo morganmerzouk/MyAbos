@@ -30,25 +30,73 @@ class BateauAdmin extends Admin
         if ($bateau->getPhotoCarreWebPath()) {$optionsPhotoCarre['help'] = '<img src="' . $bateau->getPhotoCarreWebPath(). '" class="preview-img"/>';}
         if ($bateau->getPhotoCabineWebPath()) {$optionsPhotoCabine['help'] = '<img src="' . $bateau->getPhotoCabineWebPath(). '" class="preview-img"/>';}
         
+        $em = $this->modelManager->getEntityManager('AppBundle\Entity\InclusPrix');
+
+        $queryEquipage = $em->createQueryBuilder('ip')
+                ->select('ip')
+                ->from('AppBundle:InclusPrix', 'ip')
+                ->leftJoin('AppBundle:InclusPrixTranslation', 'ipt', 'WITH', 'ip.id=ipt.translatable_id')
+                ->where('ip.categorie=:categorie')
+                ->setParameter(":categorie","Equipage")
+                ->orderBy('ipt.name', 'ASC');
+        
+        $queryFraisVoyage = $em->createQueryBuilder('ip')
+                ->select('ip')
+                ->from('AppBundle:InclusPrix', 'ip')
+                ->leftJoin('AppBundle:InclusPrixTranslation', 'ipt', 'WITH', 'ip.id=ipt.translatable_id')
+                ->where('ip.categorie=:categorie')
+                ->setParameter(":categorie","Frais de voyage")
+                ->orderBy('ipt.name', 'ASC');
+        
+        $queryAvitaillement = $em->createQueryBuilder('ip')
+                ->select('ip')
+                ->from('AppBundle:InclusPrix', 'ip')
+                ->leftJoin('AppBundle:InclusPrixTranslation', 'ipt', 'WITH', 'ip.id=ipt.translatable_id')
+                ->where('ip.categorie=:categorie')
+                ->setParameter(":categorie","Avitaillement")
+                ->orderBy('ipt.name', 'ASC');
+        
+        $queryAutresServices = $em->createQueryBuilder('ip')
+                ->select('ip')
+                ->from('AppBundle:InclusPrix', 'ip')
+                ->leftJoin('AppBundle:InclusPrixTranslation', 'ipt', 'WITH', 'ip.id=ipt.translatable_id')
+                ->where('ip.categorie=:categorie')
+                ->setParameter(":categorie","Autres services")
+                ->orderBy('ipt.name', 'ASC');
+
+        $queryEquipement = $em->createQueryBuilder('ip')
+                ->select('ip')
+                ->from('AppBundle:InclusPrix', 'ip')
+                ->leftJoin('AppBundle:InclusPrixTranslation', 'ipt', 'WITH', 'ip.id=ipt.translatable_id')
+                ->where('ip.categorie=:categorie')
+                ->setParameter(":categorie","Equipements à bord")
+                ->orderBy('ipt.name', 'ASC');
+        
+        $queryActivite = $em->createQueryBuilder('ip')
+                ->select('ip')
+                ->from('AppBundle:InclusPrix', 'ip')
+                ->leftJoin('AppBundle:InclusPrixTranslation', 'ipt', 'WITH', 'ip.id=ipt.translatable_id')
+                ->where('ip.categorie=:categorie')
+                ->setParameter(":categorie","Activités à bord")
+                ->orderBy('ipt.name', 'ASC');
+        
+        $queryCours = $em->createQueryBuilder('ip')
+                ->select('ip')
+                ->from('AppBundle:InclusPrix', 'ip')
+                ->leftJoin('AppBundle:InclusPrixTranslation', 'ipt', 'WITH', 'ip.id=ipt.translatable_id')
+                ->where('ip.categorie=:categorie')
+                ->setParameter(":categorie","Cours de kitesurf")
+                ->orderBy('ipt.name', 'ASC');
         $formMapper
             ->add('miniatureFile', 'file', $optionsMiniature)
+            ->add('name', 'text', array('label' => 'Nom: ', 'required'=> false, 'label_attr' => array('class' => 'control-name'),  'attr' => array('class' => 'skipper-name')))
             ->add('photoVoileFile', 'file', $optionsPhotoVoile)
             ->add('photoMouillageFile', 'file', $optionsPhotoMouillage)
             ->add('photoCockpitFile', 'file', $optionsPhotoCockpit)
             ->add('photoCarreFile', 'file', $optionsPhotoCarre)
             ->add('photoCabineFile', 'file', $optionsPhotoCabine)
             ->add('translations', 'a2lix_translations', array(
-                    'fields' => array(                      
-                        'name' => array(         
-                            'label' => 'Nom: ',
-                            'attr'=>array('class' => 'bateau-nom'),
-                            'label_attr' => array('class'=>'control-bateau-nom'),
-                            'locale_options' => array(
-                                'en' => array(
-                                    'label' => 'Name: '
-                                ),
-                            ),'required' => false,
-                        ),  
+                    'fields' => array(        
                         'description' => array(         
                             'label' => 'Description: ',             
                             'label_attr' => array('class' => 'control-description'),               
@@ -170,61 +218,77 @@ class BateauAdmin extends Admin
                 'label_attr' => array('class' => 'control-bateau-nbcabine'),    
                 'choice_list' => $this->loadChoiceList("cabine"),
                 'expanded' => true,
-                'attr' => array("class"=>"bateau-list-radio"),
-                'data' => 1
+                'attr' => array("class"=>"bateau-list-radio")
             ))
             ->add('nbDouche', 'choice', array('label' => 'Nb de douche: ',
                 'label_attr' => array('class' => 'control-bateau-nbdouche'),    
                 'choice_list' => $this->loadChoiceList("douche"),
                 'expanded' => true,
-                'attr' => array("class"=>"bateau-list-radio"),
-                'data' => 1
+                'attr' => array("class"=>"bateau-list-radio")
             ))
             ->add('nbEquipier', 'choice', array('label' => 'Nb d\'équipier: ',
                 'label_attr' => array('class' => 'control-bateau-nbequipier'),    
                 'choice_list' => $this->loadChoiceList("equipier"),
                 'expanded' => true,
-                'attr' => array("class"=>"bateau-list-radio"),
-                'data' => 1
-            ))
-            ->add('skipper', 'entity', array(
-                'class'    => 'AppBundle\Entity\Skipper',
-                'label'  => 'Skipper associé',
-                'label_attr' => array('class' => 'control-bateau-skipper'),
+                'attr' => array("class"=>"bateau-list-radio")
             ))
             ->add('type', 'choice', array('label' => 'Type: ',
                     'expanded'=>true,
-                    'data'=>1,
                     'label_attr' => array('class' => 'control-bateau-type'),
                     'choice_list'=> $this->loadChoiceList("type"),
                     'attr' => array("class"=>"bateau-list-radio")))
+            ->add('inclusPrixEquipage', 'sonata_type_model', array('query' => $queryEquipage,
+                'required'=>false, 
+                'empty_value'=>'Inclus Prix Equipage',
+                'label' => '',
+                'btn_add'=>false))    
+            ->add('inclusPrixFraisVoyage', 'sonata_type_model', array('query' => $queryFraisVoyage,
+                'required'=>false, 
+                'multiple'=>true, 
+                'expanded'=>true,
+                'attr' => array('class'=> 'bateau-inclusprix-frais'),
+                'label'=>'Frais du bateau: ',
+                'btn_add'=>false))  
+            ->add('inclusPrixAvitaillement', 'sonata_type_model', array('query' => $queryAvitaillement,
+                'required'=>false, 
+                'label'=>'Avitaillement: ',
+                'empty_value' => 'Avitaillement',
+                'btn_add'=>false))  
+            ->add('inclusPrixAutresServices', 'sonata_type_model', array('query' => $queryAutresServices,
+                'required'=>false, 
+                'multiple' => true,
+                'label'=>'Autres services: ',
+                'empty_value' => 'Autres services',
+                'btn_add'=>false))  
+            ->add('inclusPrixEquipement', 'sonata_type_model', array('query' => $queryEquipement,
+                'required'=>false, 
+                'multiple' => true,
+                'label'=>'Equipements à bord: ',
+                'empty_value' => 'Equipements à bord',
+                'btn_add'=>false)) 
+            ->add('inclusPrixActivite', 'sonata_type_model', array('query' => $queryActivite,
+                'required'=>false, 
+                'multiple' => true,
+                'label'=>'Activités à bord: ',
+                'empty_value' => 'Activités à bord',
+                'btn_add'=>false)) 
+            ->add('inclusPrixCours', 'sonata_type_model', array('query' => $queryCours,
+                'required'=>false, 
+                'multiple' => true,
+                'label'=>'Cours de kitesurf: ',
+                'empty_value' => 'Cours de kitesurf',
+                'btn_add'=>false)) 
             ->add('published', 'checkbox', array('label' => 'Publié: ', 'required'=> false))    
         ;
     }
 
-    public function createQuery($context = 'list') {
-        $query = parent::createQuery($context);
-    
-        return new ProxyQuery($query
-            ->leftjoin("AppBundle\Entity\BateauTranslation", "bt", "WITH", "o.id=bt.translatable_id")
-            ->orderBy("bt.name", "ASC"));
-    }
     
     // Fields to be shown on lists
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name', 'translatable_field', array(
-                'field'                => 'name',
-                'personal_translation' => 'AppBundle\Entity\BateauTranslation',
-                'property_path'        => 'translations',
+            ->addIdentifier('name', null, array(
                 'label'                => 'Nom: '
-            ))
-            ->addIdentifier('skipper.name', 'translatable_field', array(
-                'field'                => 'name',
-                'personal_translation' => 'AppBundle\Entity\BateauTranslation',
-                'property_path'        => 'translations',
-                'label'                => 'Skipper associé: '
             ))
             ->add('published', null, array('label' => 'Publié: '))
             ->add('_action', 'actions',

@@ -26,6 +26,11 @@ class DestinationTranslation
     protected $description;
 
     /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $infosPratique;
+    
+    /**
      * @ORM\Column(type="integer")
      */
     protected $translatable_id;
@@ -74,6 +79,29 @@ class DestinationTranslation
     public function getDescription()
     {
         return $this->description;
+    }
+    
+        /**
+     * Set description
+     *
+     * @param string $infosPratique
+     * @return Destination
+     */
+    public function setInfosPratique($infosPratique)
+    {
+        $this->infosPratique = stripslashes($infosPratique);
+        
+        return $this;
+    }
+    
+    /**
+     * Get infosPratique
+     *
+     * @return string
+     */
+    public function getInfosPratique()
+    {
+        return $this->infosPratique;
     }
 
     /**

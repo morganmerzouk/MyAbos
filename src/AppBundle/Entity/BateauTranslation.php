@@ -15,15 +15,16 @@ class BateauTranslation
     
     use ORMBehaviors\Translatable\Translation;
 
-    /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    protected $name;
          
     /**
      * @ORM\Column(type="text", nullable=true)
      */
     protected $description;
+    
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $translatable_id;
     
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
@@ -70,33 +71,6 @@ class BateauTranslation
      */
     protected $autre;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    protected $translatable_id;
-    
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Prestation
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    
-        return $this;
-    }
-    
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
     
     /**
      * Set description

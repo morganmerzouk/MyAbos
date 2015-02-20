@@ -1,6 +1,6 @@
 <?php
 
-// src/AppBundle/Entity/Skipper.php
+// src/AppBundle/Entity/Destination.php
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -26,7 +26,11 @@ class Destination {
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $linkgmap;
-        
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $inclusRecherche;
+    
     /**
      * @ORM\Column(type="boolean")
      */
@@ -303,8 +307,8 @@ class Destination {
         
     protected function getUploadRootDir(){
         return __DIR__.'/../../../web/'.$this->getUploadDir();
-    }
-        
+    } 
+    
     public function upload($basepath)
     {
         $this->uploadImage($this->miniatureFile, "setMiniature", 125, 125);
@@ -487,7 +491,7 @@ class Destination {
 
     // Work even the precedent method not here, the proxy call work fine.
     public function __toString(){
-         return $this->getName();
+         return $this->getName() ?: "Nouvelle destination";
     }
 
 

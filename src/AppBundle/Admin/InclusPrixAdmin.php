@@ -43,7 +43,10 @@ class InclusPrixAdmin extends Admin
                             'required' => false,
                             'class' => 'tinymce'
                             )
-                        ),                  
+                        ),     
+                        'translatable_id' => array(   
+                            'field_type' => 'hidden'
+                        ),
                     )))
                 ->add('prestation', 'entity', array(
                     'class'    => 'AppBundle\Entity\Prestation',

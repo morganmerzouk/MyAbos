@@ -6,6 +6,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use AppBundle\Entity\InclusPrix;
 
 /**
  * @ORM\Entity
@@ -21,11 +22,11 @@ class Bateau {
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-        
+    
     /**
-   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Skipper", cascade={"persist"})
-   */
-    protected $skipper;
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $name;
     
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
@@ -126,6 +127,43 @@ class Bateau {
     protected $nbEquipier;
     
     /**
+     * @ORM\OneToOne(targetEntity="InclusPrix")
+     */
+    protected $inclusPrixEquipage;
+        
+    /**
+     * @ORM\OneToOne(targetEntity="InclusPrix")
+     */
+    protected $inclusPrixAvitaillement;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="InclusPrix")
+     * @ORM\JoinTable(name="bateau_inclusprix_fraisvoyage")
+     */
+    protected $inclusPrixFraisVoyage;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="InclusPrix")
+     * @ORM\JoinTable(name="bateau_inclusprix_autreservices")
+     */
+    protected $inclusPrixAutresServices;
+    /**
+     * @ORM\ManyToMany(targetEntity="InclusPrix")
+     * @ORM\JoinTable(name="bateau_inclusprix_equipement")
+     */
+    protected $inclusPrixEquipement;
+    /**
+     * @ORM\ManyToMany(targetEntity="InclusPrix")
+     * @ORM\JoinTable(name="bateau_inclusprix_activite")
+     */
+    protected $inclusPrixActivite;
+    /**
+     * @ORM\ManyToMany(targetEntity="InclusPrix")
+     * @ORM\JoinTable(name="bateau_inclusprix_cours")
+     */
+    protected $inclusPrixCours;
+    
+    /**
      * @ORM\Column(type="boolean")
      */
     protected $published;
@@ -139,30 +177,30 @@ class Bateau {
     {
         return $this->id;
     }
-    
+        
     /**
-     * Set skipper
+     * Set name
      *
-     * @param \AppBundle\Entity\Skipper $skipper
-     * @return Skipper
+     * @param string $name
+     * @return Prestation
      */
-    public function setSkipper(\AppBundle\Entity\Skipper $skipper)
+    public function setName($name)
     {
-        $this->skipper = $skipper;
-
+        $this->name = $name;
+    
         return $this;
     }
     
     /**
-     * Get portDepart
+     * Get name
      *
-     * @return PortDepart 
+     * @return string
      */
-    public function getSkipper()
+    public function getName()
     {
-        return $this->skipper;
+        return $this->name;
     }
-
+    
     /**
      * Set published
      *
@@ -392,7 +430,7 @@ class Bateau {
                     
         }
         
-        // On r�cup�re la taille de l'image source
+        // On récupère la taille de l'image source
         $largeur_source = imagesx($source);        
         $hauteur_source = imagesy($source);
         
@@ -438,11 +476,6 @@ class Bateau {
     {
         return $this->proxyCurrentLocaleTranslation($method, $arguments);
     }   
-
-        // Need this method for the admin list template
-    public function getName(){
-         return $this->translate()->getName();
-    }
 
     public function __toString(){
          return $this->getName() ?: "Nouveau bateau";
@@ -768,5 +801,223 @@ class Bateau {
     public function getNbEquipier()
     {
         return $this->nbEquipier;
+    }
+
+    /**
+     * Set inclusPrixEquipage
+     *
+     * @param InclusPrix $inclusPrixEquipage
+     * @return Bateau
+     */
+    public function setInclusPrixEquipage(InclusPrix $inclusPrixEquipage = null)
+    {
+        $this->inclusPrixEquipage = $inclusPrixEquipage;
+
+        return $this;
+    }
+
+    /**
+     * Get inclusPrixEquipage
+     *
+     * @return InclusPrix 
+     */
+    public function getInclusPrixEquipage()
+    {
+        return $this->inclusPrixEquipage;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->inclusPrixFraisVoyage = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add inclusPrixFraisVoyage
+     *
+     * @param \AppBundle\Entity\InclusPrix $inclusPrixFraisVoyage
+     * @return Bateau
+     */
+    public function addInclusPrixFraisVoyage(\AppBundle\Entity\InclusPrix $inclusPrixFraisVoyage)
+    {
+        $this->inclusPrixFraisVoyage[] = $inclusPrixFraisVoyage;
+
+        return $this;
+    }
+
+    /**
+     * Remove inclusPrixFraisVoyage
+     *
+     * @param \AppBundle\Entity\InclusPrix $inclusPrixFraisVoyage
+     */
+    public function removeInclusPrixFraisVoyage(\AppBundle\Entity\InclusPrix $inclusPrixFraisVoyage)
+    {
+        $this->inclusPrixFraisVoyage->removeElement($inclusPrixFraisVoyage);
+    }
+
+    /**
+     * Get inclusPrixFraisVoyage
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInclusPrixFraisVoyage()
+    {
+        return $this->inclusPrixFraisVoyage;
+    }
+
+    /**
+     * Set inclusPrixAvitaillement
+     *
+     * @param \AppBundle\Entity\InclusPrix $inclusPrixAvitaillement
+     * @return Bateau
+     */
+    public function setInclusPrixAvitaillement(\AppBundle\Entity\InclusPrix $inclusPrixAvitaillement = null)
+    {
+        $this->inclusPrixAvitaillement = $inclusPrixAvitaillement;
+
+        return $this;
+    }
+
+    /**
+     * Get inclusPrixAvitaillement
+     *
+     * @return \AppBundle\Entity\InclusPrix 
+     */
+    public function getInclusPrixAvitaillement()
+    {
+        return $this->inclusPrixAvitaillement;
+    }
+
+    /**
+     * Add inclusPrixAutresServices
+     *
+     * @param \AppBundle\Entity\InclusPrix $inclusPrixAutresServices
+     * @return Bateau
+     */
+    public function addInclusPrixAutresService(\AppBundle\Entity\InclusPrix $inclusPrixAutresServices)
+    {
+        $this->inclusPrixAutresServices[] = $inclusPrixAutresServices;
+
+        return $this;
+    }
+
+    /**
+     * Remove inclusPrixAutresServices
+     *
+     * @param \AppBundle\Entity\InclusPrix $inclusPrixAutresServices
+     */
+    public function removeInclusPrixAutresService(\AppBundle\Entity\InclusPrix $inclusPrixAutresServices)
+    {
+        $this->inclusPrixAutresServices->removeElement($inclusPrixAutresServices);
+    }
+
+    /**
+     * Get inclusPrixAutresServices
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInclusPrixAutresServices()
+    {
+        return $this->inclusPrixAutresServices;
+    }
+
+    /**
+     * Add inclusPrixEquipement
+     *
+     * @param \AppBundle\Entity\InclusPrix $inclusPrixEquipement
+     * @return Bateau
+     */
+    public function addInclusPrixEquipement(\AppBundle\Entity\InclusPrix $inclusPrixEquipement)
+    {
+        $this->inclusPrixEquipement[] = $inclusPrixEquipement;
+
+        return $this;
+    }
+
+    /**
+     * Remove inclusPrixEquipement
+     *
+     * @param \AppBundle\Entity\InclusPrix $inclusPrixEquipement
+     */
+    public function removeInclusPrixEquipement(\AppBundle\Entity\InclusPrix $inclusPrixEquipement)
+    {
+        $this->inclusPrixEquipement->removeElement($inclusPrixEquipement);
+    }
+
+    /**
+     * Get inclusPrixEquipement
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInclusPrixEquipement()
+    {
+        return $this->inclusPrixEquipement;
+    }
+
+    /**
+     * Add inclusPrixActivite
+     *
+     * @param \AppBundle\Entity\InclusPrix $inclusPrixActivite
+     * @return Bateau
+     */
+    public function addInclusPrixActivite(\AppBundle\Entity\InclusPrix $inclusPrixActivite)
+    {
+        $this->inclusPrixActivite[] = $inclusPrixActivite;
+
+        return $this;
+    }
+
+    /**
+     * Remove inclusPrixActivite
+     *
+     * @param \AppBundle\Entity\InclusPrix $inclusPrixActivite
+     */
+    public function removeInclusPrixActivite(\AppBundle\Entity\InclusPrix $inclusPrixActivite)
+    {
+        $this->inclusPrixActivite->removeElement($inclusPrixActivite);
+    }
+
+    /**
+     * Get inclusPrixActivite
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInclusPrixActivite()
+    {
+        return $this->inclusPrixActivite;
+    }
+
+    /**
+     * Add inclusPrixCours
+     *
+     * @param \AppBundle\Entity\InclusPrix $inclusPrixCours
+     * @return Bateau
+     */
+    public function addInclusPrixCour(\AppBundle\Entity\InclusPrix $inclusPrixCours)
+    {
+        $this->inclusPrixCours[] = $inclusPrixCours;
+
+        return $this;
+    }
+
+    /**
+     * Remove inclusPrixCours
+     *
+     * @param \AppBundle\Entity\InclusPrix $inclusPrixCours
+     */
+    public function removeInclusPrixCour(\AppBundle\Entity\InclusPrix $inclusPrixCours)
+    {
+        $this->inclusPrixCours->removeElement($inclusPrixCours);
+    }
+
+    /**
+     * Get inclusPrixCours
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInclusPrixCours()
+    {
+        return $this->inclusPrixCours;
     }
 }
