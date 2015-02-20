@@ -15,31 +15,12 @@ class BateauTranslation
     
     use ORMBehaviors\Translatable\Translation;
 
-    /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    protected $name;
          
     /**
      * @ORM\Column(type="text", nullable=true)
      */
     protected $description;
-    
-    /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    protected $longueur;
-    
-    /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    protected $largeur;
-    
-    /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    protected $moteur;
-    
+        
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
      */
@@ -74,29 +55,6 @@ class BateauTranslation
      * @ORM\Column(type="integer")
      */
     protected $translatable_id;
-    
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Prestation
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    
-        return $this;
-    }
-    
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
     
     /**
      * Set description
@@ -155,75 +113,6 @@ class BateauTranslation
         return $this->locale;
     }
 
-
-    /**
-     * Set longueur
-     *
-     * @param string $longueur
-     * @return BateauTranslation
-     */
-    public function setLongueur($longueur)
-    {
-        $this->longueur = $longueur;
-
-        return $this;
-    }
-
-    /**
-     * Get longueur
-     *
-     * @return string 
-     */
-    public function getLongueur()
-    {
-        return $this->longueur;
-    }
-
-    /**
-     * Set largeur
-     *
-     * @param string $largeur
-     * @return BateauTranslation
-     */
-    public function setLargeur($largeur)
-    {
-        $this->largeur = $largeur;
-
-        return $this;
-    }
-
-    /**
-     * Get largeur
-     *
-     * @return string 
-     */
-    public function getLargeur()
-    {
-        return $this->largeur;
-    }
-
-    /**
-     * Set moteur
-     *
-     * @param string $moteur
-     * @return BateauTranslation
-     */
-    public function setMoteur($moteur)
-    {
-        $this->moteur = $moteur;
-
-        return $this;
-    }
-
-    /**
-     * Get moteur
-     *
-     * @return string 
-     */
-    public function getMoteur()
-    {
-        return $this->moteur;
-    }
 
     /**
      * Set nbCabine

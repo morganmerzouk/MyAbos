@@ -8,21 +8,23 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\ChoiceList\SimpleChoiceList;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
+use Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery;
 
 class InclusPrixAdmin extends Admin
 {    // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $optionsMiniature = array('label' => 'Miniature: ', 'required' => false, 'label_attr' => array('class' => 'control-miniature'), 'attr' => array('class' => 'inclusprix-miniature'));
+        $optionsIcone = array('label' => 'Icone: ', 'required' => false, 'label_attr' => array('class' => 'control-miniature'), 'attr' => array('class' => 'inclusprix-miniature'));
         
         $inclusPrix = $this->getSubject();
         
-        if ($inclusPrix->getMiniatureWebPath()) {$optionsMiniature['help'] = '<img src="' . $inclusPrix->getMiniatureWebPath(). '" class="preview-img" />';}
+        if ($inclusPrix->getIconeWebPath()) {$optionsIcone['help'] = '<img src="' . $inclusPrix->getIconeWebPath(). '" class="preview-img" />';}
         
         $formMapper
-            ->add('miniatureFile', 'file', $optionsMiniature)
+            ->add('iconeFile', 'file', $optionsIcone)
+            
             ->add('translations', 'a2lix_translations', array(
-                    'fields' => array(                      
+                    'fields' => array(              
                         'name' => array(         
                             'label' => 'Nom: ',
                             'locale_options' => array(
@@ -31,19 +33,10 @@ class InclusPrixAdmin extends Admin
                                 ),
                             'required' => false,
                             )
-                        ),                  
-                        'description' => array(         
-                            'label' => 'Description: ',         
-                            'label_attr' => array('class' => 'control-description'),
-                            'attr' => array('class' => 'tinymce', 'data-theme' => 'advanced'),
-                            'locale_options' => array(
-                                'en' => array(
-                                    'label' => 'Description: '
-                                ),
-                            'required' => false,
-                            'class' => 'tinymce'
-                            )
-                        ),                  
+                        ),                
+                        'translatable_id' => array(
+                            'field_type' => 'hidden'
+                        )
                     )))
                 ->add('prestation', 'entity', array(
                     'class'    => 'AppBundle\Entity\Prestation',
@@ -61,7 +54,7 @@ class InclusPrixAdmin extends Admin
         ;
     }
     
-        protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
         ->add('prestation', null, array('label' => 'Prestation: '))
@@ -86,8 +79,7 @@ class InclusPrixAdmin extends Admin
                 'field'                => 'name',
                 'personal_translation' => 'AppBundle\Entity\InclusPrixTranslation',
                 'property_path'        => 'translations',
-                'label'                => 'Nom: ',
-                'editable'             => true
+                'label'                => 'Nom: '
             ))
             ->add('categorie', 'translatable_field', array(
                 'label'                => 'Catégorie: '
@@ -109,6 +101,15 @@ class InclusPrixAdmin extends Admin
         ;
     }
     
+    public function createQuery($context = 'list') {
+        $query = parent::createQuery($context);
+    
+        return new ProxyQuery($query
+            ->leftjoin("AppBundle\Entity\InclusPrixTranslation", "ipt", "WITH", "o.id=ipt.translatable_id")
+            ->orderBy("ipt.name", "ASC"));
+    
+    }
+    
     public function setBaseRouteName($baseRouteName)
     {
         $this->baseRouteName = $baseRouteName;
@@ -118,7 +119,6 @@ class InclusPrixAdmin extends Admin
     {
         $this->baseRoutePattern = $baseRoutePattern;
     }
-    
     
     public function prePersist($inclusPrix) {
         $this->saveFile($inclusPrix);

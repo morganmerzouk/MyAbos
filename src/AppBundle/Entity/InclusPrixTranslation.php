@@ -21,10 +21,10 @@ class InclusPrixTranslation
     protected $name;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="integer")
      */
-    protected $description;
-    
+    protected $translatable_id;
+        
     /**
      * Set name
      *
@@ -49,26 +49,24 @@ class InclusPrixTranslation
     }
     
     /**
-     * Set description
+     * Set translatable_id
      *
-     * @param string $description
-     * @return Destination
+     * @param string $translatable_id
+     * @return ServicePayantTranslation
      */
-    public function setDescription($description)
+    public function setTranslatableId($translatable_id)
     {
-        $this->description = $description;
+        $this->translatable_id= $translatable_id;
     
         return $this;
     }
     
     /**
-     * Get description
+     * Get translatable_id
      *
      * @return string
      */
-    public function getDescription()
-    {
-        return $this->description;
+    public function getTranslatableId() {
+        return $this->translatable_id;
     }
-    
 }

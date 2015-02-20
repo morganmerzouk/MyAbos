@@ -8,6 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\ChoiceList\SimpleChoiceList;
 use Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
 
 
 class BateauAdmin extends Admin
@@ -32,23 +33,14 @@ class BateauAdmin extends Admin
         
         $formMapper
             ->add('miniatureFile', 'file', $optionsMiniature)
+            ->add('name', 'text', array('label' => 'Nom: ', 'required'=> false, 'label_attr' => array('class' => 'control-name'),  'attr' => array('class' => 'skipper-name')))
             ->add('photoVoileFile', 'file', $optionsPhotoVoile)
             ->add('photoMouillageFile', 'file', $optionsPhotoMouillage)
             ->add('photoCockpitFile', 'file', $optionsPhotoCockpit)
             ->add('photoCarreFile', 'file', $optionsPhotoCarre)
             ->add('photoCabineFile', 'file', $optionsPhotoCabine)
             ->add('translations', 'a2lix_translations', array(
-                    'fields' => array(                      
-                        'name' => array(         
-                            'label' => 'Nom: ',
-                            'attr'=>array('class' => 'bateau-nom'),
-                            'label_attr' => array('class'=>'control-bateau-nom'),
-                            'locale_options' => array(
-                                'en' => array(
-                                    'label' => 'Name: '
-                                ),
-                            ),'required' => false,
-                        ),  
+                    'fields' => array(              
                         'description' => array(         
                             'label' => 'Description: ',             
                             'label_attr' => array('class' => 'control-description'),               
@@ -63,40 +55,7 @@ class BateauAdmin extends Admin
                         ),   
                         'translatable_id' => array(   
                             'field_type' => 'hidden'
-                        ),
-                        'longueur' => array(         
-                            'label' => 'Longueur: ',             
-                            'label_attr' => array('class' => 'control-bateau-longueur'),               
-                            'attr' => array('class' => 'bateau-longueur'),
-                            'locale_options' => array(
-                                'en' => array(
-                                    'label' => 'Length: '
-                                ),
-                            'required' => false,
-                            )
-                        ),              
-                        'largeur' => array(         
-                            'label' => 'Largeur: ',             
-                            'label_attr' => array('class' => 'control-bateau-largeur'),               
-                            'attr' => array('class' => 'bateau-largeur'),
-                            'locale_options' => array(
-                                'en' => array(
-                                    'label' => 'Width: '
-                                ),
-                            'required' => false,
-                            )
-                        ),              
-                        'moteur' => array(         
-                            'label' => 'Moteur(s): ',             
-                            'label_attr' => array('class' => 'control-bateau-moteur'),               
-                            'attr' => array('class' => 'bateau-moteur'),
-                            'locale_options' => array(
-                                'en' => array(
-                                    'label' => 'Engine: '
-                                ),
-                            'required' => false,
-                            )
-                        ),     
+                        ),  
                         'equipementCuisine' => array(         
                             'label' => 'Equipement en cuisine: ',             
                             'label_attr' => array('class' => 'control-bateau-equipement'),               
@@ -165,7 +124,14 @@ class BateauAdmin extends Admin
                         ),                                                  
                         
                     )))
-                
+            ->add('longueur', 'text', array('label' => 'Longueur: ', 'required'=> false, 'label_attr' => array('class' => 'control-longueur'),  'attr' => array('class' => 'bateau-longueur')))
+            ->add('largeur', 'text', array('label' => 'Largeur: ', 'required'=> false, 'label_attr' => array('class' => 'control-largeur'),  'attr' => array('class' => 'bateau-largeur')))
+            ->add('tirantdeau', 'text', array('label' => 'Tirant d\'eau: ', 'required'=> false, 'label_attr' => array('class' => 'control-tirantdeau'),  'attr' => array('class' => 'bateau-tirantdeau')))
+            ->add('surfaceGrandVoile', 'text', array('label' => 'Surface Grand voile: ', 'required'=> false, 'label_attr' => array('class' => 'control-surfacegrandvoile'),  'attr' => array('class' => 'bateau-surfacegrandvoile')))
+            ->add('moteur', 'text', array('label' => 'Moteur: ', 'required'=> false, 'label_attr' => array('class' => 'control-moteur'),  'attr' => array('class' => 'bateau-moteur')))
+            ->add('reservoirCarburant', 'text', array('label' => 'Réservoir carburant: ', 'required'=> false, 'label_attr' => array('class' => 'control-reservoircarburant'),  'attr' => array('class' => 'bateau-reservoircarburant')))
+            ->add('reservoirEau', 'text', array('label' => 'Réservoir d\'eau: ', 'required'=> false, 'label_attr' => array('class' => 'control-reservoireau'),  'attr' => array('class' => 'bateau-reservoireau')))
+            
             ->add('nbCabine', 'choice', array('label' => 'Nb de cabine: ',
                 'label_attr' => array('class' => 'control-bateau-nbcabine'),    
                 'choice_list' => $this->loadChoiceList("cabine"),
@@ -187,45 +153,36 @@ class BateauAdmin extends Admin
                 'attr' => array("class"=>"bateau-list-radio"),
                 'data' => 1
             ))
-            ->add('skipper', 'entity', array(
-                'class'    => 'AppBundle\Entity\Skipper',
-                'label'  => 'Skipper associé',
-                'label_attr' => array('class' => 'control-bateau-skipper'),
-            ))
             ->add('type', 'choice', array('label' => 'Type: ',
                     'expanded'=>true,
                     'data'=>1,
                     'label_attr' => array('class' => 'control-bateau-type'),
                     'choice_list'=> $this->loadChoiceList("type"),
                     'attr' => array("class"=>"bateau-list-radio")))
+            ->add('inclusprixEquipage', 'doctrine_orm_callback', array(
+                                    'callback'   => array($this, 'getInclusPrixEquipage')))
             ->add('published', 'checkbox', array('label' => 'Publié: ', 'required'=> false))    
         ;
     }
 
-    public function createQuery($context = 'list') {
-        $query = parent::createQuery($context);
+    public function getInclusPrixEquipage($queryBuilder, $alias, $field, $value)
+    {
+        if (!$value) {
+            return;
+        }
     
-        return new ProxyQuery($query
-            ->leftjoin("AppBundle\Entity\BateauTranslation", "bt", "WITH", "o.id=bt.translatable_id")
-            ->orderBy("bt.name", "ASC"));
+        $queryBuilder->leftJoin(sprintf('%s.inclusprix', $alias), 'c');
+        $queryBuilder->andWhere('c.categorie = :categorie');
+        $queryBuilder->setParameter('categorie', "Equipage");
+    
+        return true;
     }
     
     // Fields to be shown on lists
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name', 'translatable_field', array(
-                'field'                => 'name',
-                'personal_translation' => 'AppBundle\Entity\BateauTranslation',
-                'property_path'        => 'translations',
-                'label'                => 'Nom: '
-            ))
-            ->addIdentifier('skipper.name', 'translatable_field', array(
-                'field'                => 'name',
-                'personal_translation' => 'AppBundle\Entity\BateauTranslation',
-                'property_path'        => 'translations',
-                'label'                => 'Skipper associé: '
-            ))
+            ->addIdentifier('name', null, array('label' => 'Nom: ', 'sortable' => true))
             ->add('published', null, array('label' => 'Publié: '))
             ->add('_action', 'actions',
                 array(
@@ -238,7 +195,20 @@ class BateauAdmin extends Admin
         ;
     }
     
-     protected function loadChoiceList($type) {
+    protected $datagridValues = array(
+        '_page' => 1,
+        '_sort_order' => 'ASC',
+        '_sort_by' => 'name',
+    );
+    
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper
+        ->add('name', null, array('label' => 'Nom: ', 'attr'=>array('class'=>'control-name')));
+    }
+    
+    
+    protected function loadChoiceList($type) {
         if($type=="cabine"){
             $item = array(
                     '1' => '1',
@@ -281,8 +251,7 @@ class BateauAdmin extends Admin
     {
         $this->baseRoutePattern = $baseRoutePattern;
     }
-    
-    
+     
     public function prePersist($bateau) {
         $this->saveFile($bateau);
     }

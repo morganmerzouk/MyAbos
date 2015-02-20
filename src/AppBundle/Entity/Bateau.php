@@ -21,11 +21,51 @@ class Bateau {
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-        
+
     /**
-   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Skipper", cascade={"persist"})
-   */
-    protected $skipper;
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $name;
+
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $longueur;
+    
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $largeur;
+
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $tirantdeau;
+
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $surfaceGrandVoile;
+    
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $moteur;
+
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $reservoirCarburant;
+    
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $reservoirEau;
+
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $inclusprixEquipage;
     
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
@@ -141,28 +181,98 @@ class Bateau {
     }
     
     /**
-     * Set skipper
+     * Set name
      *
-     * @param \AppBundle\Entity\Skipper $skipper
-     * @return Skipper
+     * @param string $name
+     * @return Prestation
      */
-    public function setSkipper(\AppBundle\Entity\Skipper $skipper)
+    public function setName($name)
     {
-        $this->skipper = $skipper;
-
+        $this->name = $name;
+    
         return $this;
     }
     
     /**
-     * Get portDepart
+     * Get name
      *
-     * @return PortDepart 
+     * @return string
      */
-    public function getSkipper()
+    public function getName()
     {
-        return $this->skipper;
+        return $this->name;
     }
-
+    
+    /**
+     * Set longueur
+     *
+     * @param string $longueur
+     * @return BateauTranslation
+     */
+    public function setLongueur($longueur)
+    {
+        $this->longueur = $longueur;
+    
+        return $this;
+    }
+    
+    /**
+     * Get longueur
+     *
+     * @return string
+     */
+    public function getLongueur()
+    {
+        return $this->longueur;
+    }
+    
+    /**
+     * Set largeur
+     *
+     * @param string $largeur
+     * @return BateauTranslation
+     */
+    public function setLargeur($largeur)
+    {
+        $this->largeur = $largeur;
+    
+        return $this;
+    }
+    
+    /**
+     * Get largeur
+     *
+     * @return string
+     */
+    public function getLargeur()
+    {
+        return $this->largeur;
+    }
+    
+    /**
+     * Set moteur
+     *
+     * @param string $moteur
+     * @return BateauTranslation
+     */
+    public function setMoteur($moteur)
+    {
+        $this->moteur = $moteur;
+    
+        return $this;
+    }
+    
+    /**
+     * Get moteur
+     *
+     * @return string
+     */
+    public function getMoteur()
+    {
+        return $this->moteur;
+    }
+    
+    
     /**
      * Set published
      *
@@ -438,12 +548,7 @@ class Bateau {
     {
         return $this->proxyCurrentLocaleTranslation($method, $arguments);
     }   
-
-        // Need this method for the admin list template
-    public function getName(){
-         return $this->translate()->getName();
-    }
-
+    
     public function __toString(){
          return $this->getName() ?: "Nouveau bateau";
     }
@@ -768,5 +873,120 @@ class Bateau {
     public function getNbEquipier()
     {
         return $this->nbEquipier;
+    }
+
+    /**
+     * Set tirantdeau
+     *
+     * @param string $tirantdeau
+     * @return Bateau
+     */
+    public function setTirantdeau($tirantdeau)
+    {
+        $this->tirantdeau = $tirantdeau;
+
+        return $this;
+    }
+
+    /**
+     * Get tirantdeau
+     *
+     * @return string 
+     */
+    public function getTirantdeau()
+    {
+        return $this->tirantdeau;
+    }
+
+    /**
+     * Set surfaceGrandVoile
+     *
+     * @param string $surfaceGrandVoile
+     * @return Bateau
+     */
+    public function setSurfaceGrandVoile($surfaceGrandVoile)
+    {
+        $this->surfaceGrandVoile = $surfaceGrandVoile;
+
+        return $this;
+    }
+
+    /**
+     * Get surfaceGrandVoile
+     *
+     * @return string 
+     */
+    public function getSurfaceGrandVoile()
+    {
+        return $this->surfaceGrandVoile;
+    }
+
+    /**
+     * Set reservoirCarburant
+     *
+     * @param string $reservoirCarburant
+     * @return Bateau
+     */
+    public function setReservoirCarburant($reservoirCarburant)
+    {
+        $this->reservoirCarburant = $reservoirCarburant;
+
+        return $this;
+    }
+
+    /**
+     * Get reservoirCarburant
+     *
+     * @return string 
+     */
+    public function getReservoirCarburant()
+    {
+        return $this->reservoirCarburant;
+    }
+
+    /**
+     * Set reservoirEau
+     *
+     * @param string $reservoirEau
+     * @return Bateau
+     */
+    public function setReservoirEau($reservoirEau)
+    {
+        $this->reservoirEau = $reservoirEau;
+
+        return $this;
+    }
+
+    /**
+     * Get reservoirEau
+     *
+     * @return string 
+     */
+    public function getReservoirEau()
+    {
+        return $this->reservoirEau;
+    }
+
+    /**
+     * Set inclusprixEquipage
+     *
+     * @param string $inclusprixEquipage
+     * @return Bateau
+     */
+    public function setInclusprixEquipage($inclusprixEquipage)
+    {
+        $this->inclusprixEquipage = $inclusprixEquipage;
+
+        return $this;
+    }
+
+    /**
+     * Get inclusprixEquipage
+     *
+     * @return string 
+     */
+    public function getInclusprixEquipage()
+    {
+        return $this->inclusprixEquipage;
     }
 }

@@ -713,7 +713,7 @@ class Skipper {
                     
         }
         
-        // On r�cup�re la taille de l'image source
+        // On récupère la taille de l'image source
         $largeur_source = imagesx($source);        
         $hauteur_source = imagesy($source);
         

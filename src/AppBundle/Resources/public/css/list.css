@@ -4,6 +4,7 @@
 .sonata-ba-list-field-header-actions { width: 180px;text-align: center;}
 
 /*** Block Filtre ***/
-.filter_container .select2-container {float: left; width: 200px !important;;}
+.filter_container .select2-container {float: left; width: 200px !important;}
 .filter_container label  { float: left;width: 150px;padding-right: 10px;text-align: right;}
+.filter_container .control-name  { float: left;width: 250px;}
 .filter_container .btn  { margin: 0 10px;}

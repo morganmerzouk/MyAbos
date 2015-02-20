@@ -14,14 +14,14 @@ class ServicePayantAdmin extends Admin
 {    // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $optionsMiniature = array('label' => 'Miniature: ', 'required' => false, 'label_attr' => array('class' => 'servicepayant-miniature'), 'attr' => array('class' => 'optionpayante-miniature'));
+        $optionsIcone = array('label' => 'Icone: ', 'required' => false, 'label_attr' => array('class' => 'servicepayant-miniature'), 'attr' => array('class' => 'optionpayante-miniature'));
         
         $servicepayant = $this->getSubject();
         
-        if ($servicepayant->getMiniatureWebPath()) {$optionsMiniature['help'] = '<img src="' . $servicepayant->getMiniatureWebPath(). '" class="preview-img" />';}
+        if ($servicepayant->getIconeWebPath()) {$optionsIcone['help'] = '<img src="' . $servicepayant->getIconeWebPath(). '" class="preview-img" />';}
         
         $formMapper
-            ->add('miniatureFile', 'file', $optionsMiniature)
+            ->add('iconeFile', 'file', $optionsIcone)
             ->add('translations', 'a2lix_translations', array(
                     'fields' => array(                      
                         'name' => array(         
@@ -36,6 +36,7 @@ class ServicePayantAdmin extends Admin
                         'description' => array(         
                             'label' => 'Description: ',         
                             'label_attr' => array('class' => 'control-optionpayante_description'),
+                            'attr' => array('class' => 'optionpayante_description'),
                             'locale_options' => array(
                                 'en' => array(
                                     'label' => 'Description: '
@@ -58,6 +59,7 @@ class ServicePayantAdmin extends Admin
                     'label'  => 'Rattachement à une prestation',
                     'label_attr' => array('class' => 'control-optionpayante-prestation'),
                     'required' => false,
+                    'empty_value' => "Aucune",
                     'attr' => array("class"=>"optionpayante-list-radio"),
                     
                 ))
@@ -120,7 +122,7 @@ class ServicePayantAdmin extends Admin
                 'label'                => 'Nom: ',
                 'editable'             => true
             ))
-            ->addIdentifier('categorie', 'translatable_field', array(
+            ->add('categorie', 'translatable_field', array(
                 'label'                => 'Catégorie: '
             ))
             ->add('prestation.name', 'translatable_field', array(

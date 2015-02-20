@@ -66,9 +66,9 @@ class ServicePayant {
     /**
     * @ORM\Column(type="string", length=200, nullable=true)
     */
-    protected $miniature;
+    protected $icone;
     
-    protected $miniatureFile;
+    protected $iconeFile;
     
     
     /**
@@ -105,53 +105,53 @@ class ServicePayant {
     }
     
     /**
-     * Set miniature
+     * Set icone
      *
-     * @param string miniature
-     * @return Destination
+     * @param string icone
+     * @return ServicePayant
      */
-    public function setMiniature($miniature)
+    public function setIcone($icone)
     {
-        $this->miniature = $miniature;
+        $this->icone = $icone;
     
         return $this;
     }
     
     /**
-     * Get miniature
+     * Get icone
      *
      * @return string
      */
-    public function getMiniature()
+    public function getIcone()
     {
-        return $this->miniature;
+        return $this->icone;
     }
     
     /**
-     * Sets miniatureFile.
+     * Sets iconeFile.
      *
-     * @param UploadedFile $miniatureFile
+     * @param UploadedFile $iconeFile
      */
-    public function setMiniatureFile(UploadedFile $miniatureFile = null)
+    public function setIconeFile(UploadedFile $iconeFile = null)
     {
-        $this->miniatureFile = $miniatureFile;
+        $this->iconeFile = $iconeFile;
     }
     
     /**
-     * Get miniatureFile.
+     * Get iconeFile.
      *
      * @return UploadedFile
      */
-    public function getMiniatureFile()
+    public function getIconeFile()
     {
-        return $this->miniatureFile;
+        return $this->iconeFile;
     }
     
-    public function getMiniatureWebPath()
+    public function getIconeWebPath()
     {
-        return null === $this->miniature
+        return null === $this->icone
         ? null
-        : $this->getUploadDir().'/'.$this->miniature;
+        : $this->getUploadDir().'/'.$this->icone;
     }
     
     protected function getUploadDir()
@@ -165,7 +165,7 @@ class ServicePayant {
         
     public function upload($basepath)
     {
-        $this->uploadImage($this->miniatureFile, "setMiniature", 125, 125);
+        $this->uploadImage($this->iconeFile, "setIcone", 125, 125);
     }
     
     public function uploadImage($file, $fctName, $width, $height){
@@ -351,29 +351,6 @@ class ServicePayant {
     public function getDevise()
     {
         return $this->devise;
-    }
-
-    /**
-     * Set titreBackOffice
-     *
-     * @param string $titreBackOffice
-     * @return ServicePayant
-     */
-    public function setTitreBackOffice($titreBackOffice)
-    {
-        $this->titreBackOffice = $titreBackOffice;
-
-        return $this;
-    }
-
-    /**
-     * Get titreBackOffice
-     *
-     * @return string 
-     */
-    public function getTitreBackOffice()
-    {
-        return $this->titreBackOffice;
     }
 
     /**

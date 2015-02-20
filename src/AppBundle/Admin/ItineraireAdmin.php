@@ -94,8 +94,7 @@ class ItineraireAdmin extends Admin
             ->join('AppBundle\Entity\PortDepartTranslation', 'pt', 'WITH', 'c.id = pt.translatable_id')
             ->orderBy('pt.name'));
     }
-    
-    
+      
     public function setBaseRouteName($baseRouteName)
     {
         $this->baseRouteName = $baseRouteName;

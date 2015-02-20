@@ -41,9 +41,9 @@ class InclusPrix {
     /**
     * @ORM\Column(type="string", length=200, nullable=true)
     */
-    protected $miniature;
+    protected $icone;
     
-    protected $miniatureFile;
+    protected $iconeFile;
     
     
     /**
@@ -80,58 +80,58 @@ class InclusPrix {
     }
     
     /**
-     * Set miniature
+     * Set icone
      *
-     * @param string miniature
-     * @return Destination
+     * @param string icone
+     * @return InclusPrix
      */
-    public function setMiniature($miniature)
+    public function setIcone($icone)
     {
-        $this->miniature = $miniature;
+        $this->icone = $icone;
     
         return $this;
     }
     
     /**
-     * Get miniature
+     * Get icone
      *
      * @return string
      */
-    public function getMiniature()
+    public function getIcone()
     {
-        return $this->miniature;
+        return $this->icone;
     }
     
     /**
-     * Sets miniatureFile.
+     * Sets iconeFile.
      *
-     * @param UploadedFile $miniatureFile
+     * @param UploadedFile $iconeFile
      */
-    public function setMiniatureFile(UploadedFile $miniatureFile = null)
+    public function setMiniatureFile(UploadedFile $iconeFile = null)
     {
-        $this->miniatureFile = $miniatureFile;
+        $this->iconeFile = $iconeFile;
     }
     
     /**
-     * Get miniatureFile.
+     * Get iconeFile.
      *
      * @return UploadedFile
      */
-    public function getMiniatureFile()
+    public function getIconeFile()
     {
-        return $this->miniatureFile;
+        return $this->iconeFile;
     }
     
-    public function getMiniatureWebPath()
+    public function getIconeWebPath()
     {
-        return null === $this->miniature
+        return null === $this->icone
         ? null
-        : $this->getUploadDir().'/'.$this->miniature;
+        : $this->getUploadDir().'/'.$this->icone;
     }
     
     protected function getUploadDir()
     {
-        return '/uploads/inclusPrix';
+        return '/uploads/inclusprix';
     }
         
     protected function getUploadRootDir(){
@@ -140,7 +140,7 @@ class InclusPrix {
         
     public function upload($basepath)
     {
-        $this->uploadImage($this->miniatureFile, "setMiniature", 125, 125);
+        $this->uploadImage($this->iconeFile, "setIcone", 125, 125);
     }
     
     public function uploadImage($file, $fctName, $width, $height){
