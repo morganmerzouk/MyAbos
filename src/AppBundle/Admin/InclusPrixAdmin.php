@@ -33,19 +33,7 @@ class InclusPrixAdmin extends Admin
                                 ),
                             'required' => false,
                             )
-                        ),                  
-                        'description' => array(         
-                            'label' => 'Description: ',         
-                            'label_attr' => array('class' => 'control-description'),
-                            'attr' => array('class' => 'tinymce', 'data-theme' => 'advanced'),
-                            'locale_options' => array(
-                                'en' => array(
-                                    'label' => 'Description: '
-                                ),
-                            'required' => false,
-                            'class' => 'tinymce'
-                            )
-                        ),     
+                        ),
                         'translatable_id' => array(   
                             'field_type' => 'hidden'
                         ),

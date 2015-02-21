@@ -25,22 +25,7 @@ class BateauTranslation
      * @ORM\Column(type="integer")
      */
     protected $translatable_id;
-    
-    /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    protected $longueur;
-    
-    /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    protected $largeur;
-    
-    /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    protected $moteur;
-    
+        
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
      */
@@ -92,40 +77,6 @@ class BateauTranslation
     public function getDescription()
     {
         return $this->description;
-    }
-        
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-
-    /**
-     * Set locale
-     *
-     * @param string $locale
-     * @return PrestationTranslation
-     */
-    public function setLocale($locale)
-    {
-        $this->locale = $locale;
-
-        return $this;
-    }
-
-    /**
-     * Get locale
-     *
-     * @return string 
-     */
-    public function getLocale()
-    {
-        return $this->locale;
     }
 
 
@@ -335,5 +286,4 @@ class BateauTranslation
     {
         return $this->translatable_id;
     }
-    
 }

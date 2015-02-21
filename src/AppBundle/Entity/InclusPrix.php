@@ -107,7 +107,7 @@ class InclusPrix {
      *
      * @param UploadedFile $iconeFile
      */
-    public function setMiniatureFile(UploadedFile $iconeFile = null)
+    public function setIconeFile(UploadedFile $iconeFile = null)
     {
         $this->iconeFile = $iconeFile;
     }

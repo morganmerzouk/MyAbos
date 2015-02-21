@@ -81,7 +81,8 @@ class ServicePayantAdmin extends Admin
                     'choice_list' => $this->loadChoiceList("devise"),
                     'expanded' => true,
                     'attr' => array("class"=>"optionpayante-list-radio optionpayante-list-radio-devise"),
-                    'required' => true
+                    'required' => false,
+                    'empty_value'=>false
                 ))
                 ->add('tarifApplique', 'choice', array('label' => '',
                     'label_attr' => array('class' => 'control-optionpayante-tarifapplique'),    

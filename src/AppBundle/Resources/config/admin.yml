@@ -95,3 +95,27 @@ services:
             - [ setTranslationDomain, [AppBundle]]
             - [ setBaseRouteName, [servicepayant]]
             - [ setBaseRoutePattern, [servicepayant]]
+    sonata.admin.croisiere:
+        class: AppBundle\Admin\CroisiereAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Bateau", label: "Croisiere" }
+        arguments:
+            - ~
+            - AppBundle\Entity\Croisiere
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+            - [ setBaseRouteName, [croisiere]]
+            - [ setBaseRoutePattern, [croisiere]]
+    sonata.admin.datenondisponibilite:
+        class: AppBundle\Admin\DateNonDisponibiliteAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Bateau", label: "Date non disponibilité", show_in_dashboard: false }
+        arguments:
+            - ~
+            - AppBundle\Entity\DateNonDisponibilite
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+            - [ setBaseRouteName, [datenondisponibilite]]
+            - [ setBaseRoutePattern, [datenondisponibilite]]
