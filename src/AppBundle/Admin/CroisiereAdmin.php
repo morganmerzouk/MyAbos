@@ -10,7 +10,8 @@ use Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery;
 use Sonata\AdminBundle\Route\RouteCollection;
 
 class CroisiereAdmin extends Admin
-{    // Fields to be shown on create/edit forms
+{    
+    // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
         $optionsMiniature = array('label' => 'Miniature: ', 'required' => false, 'label_attr' => array('class' => 'control-miniature'), 'attr' => array('class' => 'croisiere-miniature'));
@@ -18,6 +19,13 @@ class CroisiereAdmin extends Admin
         $croisiere = $this->getSubject();
         
         if ($croisiere->getMiniatureWebPath()) {$optionsMiniature['help'] = '<img src="' . $croisiere->getMiniatureWebPath(). '" class="preview-img" />';}
+        $em = $this->modelManager->getEntityManager('AppBundle\Entity\InclusPrix');
+        
+        $queryServicePayant = $em->createQueryBuilder('sp')
+        ->select('sp')
+        ->from('AppBundle:ServicePayant', 'sp')
+        ->leftJoin('AppBundle:ServicePayantTranslation', 'spt', 'WITH', 'sp.id=spt.translatable_id')
+        ->orderBy('spt.name', 'ASC');
         
         $formMapper
             ->add('miniatureFile', 'file', $optionsMiniature)
@@ -59,14 +67,17 @@ class CroisiereAdmin extends Admin
                 ))
             ->add('dateNonDisponibilite', 'sonata_type_model',array('label'=>'Date de non disponibilité: ','multiple'=>true,'required'=>false))   
             ->add('tarifCroisiere', 'sonata_type_model',array('label'=>'Grille de tarif: ','multiple'=>true,'required'=>false))   
+            ->add('servicePayant', 'sonata_type_model', array('query' => $queryServicePayant,
+                'label_attr'=>array('class'=>'control-croisiere-servicepayant'),
+                'attr'=>array("class"=>"croisiere-servicepayant"),
+                'required'=>false,
+                'multiple'=>true,
+                'empty_value'=>'Service',
+                'label' => 'Services Payants: ',
+                'btn_add'=>false))
         ;
     }
-    
-    protected function configureRoutes(RouteCollection $collection)
-    {
-        $collection->add('clone', $this->getRouterIdParameter().'/clone');
-    }
-    
+
     // Fields to be shown on lists
     protected function configureListFields(ListMapper $listMapper)
     {
@@ -83,12 +94,18 @@ class CroisiereAdmin extends Admin
                     'actions' => array(
                         'edit' => array(),
                         'delete' => array(),
-                        'Clone' => array(
-                            'template' => 'AppBundle:Admin/CRUD:list__action_clone.html.twig'
-                        )
+                     //   'Clone' => array(
+                     //       'template' => 'AppBundle:Admin/CRUD:list__action_clone.html.twig'
+                     //   )
                     )
                 ))
         ;
+    }
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        //$collection->add('clone', $this->getRouterIdParameter().'/clone');
+        $collection->add('getServicePayant', 'getServicePayant/{id}', array('id'=>null));
     }
     
     public function setBaseRouteName($baseRouteName)

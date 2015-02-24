@@ -23,6 +23,11 @@ class Destination {
     protected $id;
     
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Itineraire", mappedBy="destination", cascade={"persist", "remove"})
+     */
+    private $itineraire;
+    
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $linkgmap;
@@ -539,5 +544,45 @@ class Destination {
     public function getInclusRecherche()
     {
         return $this->inclusRecherche;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->itineraire = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add itineraire
+     *
+     * @param \AppBundle\Entity\Itineraire $itineraire
+     * @return Destination
+     */
+    public function addItineraire(\AppBundle\Entity\Itineraire $itineraire)
+    {
+        $this->itineraire[] = $itineraire;
+
+        return $this;
+    }
+
+    /**
+     * Remove itineraire
+     *
+     * @param \AppBundle\Entity\Itineraire $itineraire
+     */
+    public function removeItineraire(\AppBundle\Entity\Itineraire $itineraire)
+    {
+        $this->itineraire->removeElement($itineraire);
+    }
+
+    /**
+     * Get itineraire
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getItineraire()
+    {
+        return $this->itineraire;
     }
 }

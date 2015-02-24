@@ -67,7 +67,7 @@ class ServicePayantAdmin extends Admin
                     'class'    => 'AppBundle\Entity\Bateau',
                     'label'  => 'Rattachement à un bateau spécifique',
                     'label_attr' => array('class' => 'control-optionpayante-bateau'),
-                    'required' => false,
+                    'required' => true,
                     
                 ))
                 ->add('fraisSupplementaires', 'text', array(

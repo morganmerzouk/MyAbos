@@ -6,11 +6,13 @@ namespace AppBundle\Admin;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery;
 
 
 class PortDepartAdmin extends Admin
-{    // Fields to be shown on create/edit forms
+{    
+    // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
         $optionsMiniature = array('label' => 'Miniature: ', 'required' => false, 'label_attr' => array('class' => 'control-miniature'), 'attr' => array('class' => 'destination-miniature'));
@@ -41,14 +43,6 @@ class PortDepartAdmin extends Admin
         ;
     }
     
-    public function createQuery($context = 'list') {
-        $query = parent::createQuery($context);
-    
-        return new ProxyQuery($query
-            ->leftjoin("AppBundle\Entity\PortDepartTranslation", "pdt", "WITH", "o.id=pdt.translatable_id")
-            ->orderBy("pdt.name", "ASC"));
-    }
-    
     // Fields to be shown on lists
     protected function configureListFields(ListMapper $listMapper)
     {
@@ -69,6 +63,20 @@ class PortDepartAdmin extends Admin
                 ))
         ;
     }
+
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper
+        ->add('name', null, array('label' => 'Nom: ', 'attr'=>array('class'=>'control-name')));
+    }
+
+    public function createQuery($context = 'list') {
+        $query = parent::createQuery($context);
+    
+        return new ProxyQuery($query
+            ->leftjoin("AppBundle\Entity\PortDepartTranslation", "pdt", "WITH", "o.id=pdt.translatable_id")
+            ->orderBy("pdt.name", "ASC"));
+    }
     
     public function setBaseRouteName($baseRouteName)
     {
@@ -79,8 +87,7 @@ class PortDepartAdmin extends Admin
     {
         $this->baseRoutePattern = $baseRoutePattern;
     }
-    
-    
+        
     public function prePersist($destination) {
         $this->saveFile($destination);
     }

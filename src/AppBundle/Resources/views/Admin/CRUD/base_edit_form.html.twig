@@ -8,6 +8,9 @@
             {{ "form_not_available"|trans({}, "SonataAdminBundle") }}
         </div>
     {% else %}
+    	<script type="text/javascript">
+	 		 {% if admin.hasRoute('getServicePayant')%}var croisiere_servicepayant_url = "{{admin.generateUrl('getServicePayant')}}";{% endif %}
+    	</script>
         <form
               {% if admin_pool.getOption('form_type') == 'horizontal' %}class="form-horizontal"{% endif %}
               role="form"

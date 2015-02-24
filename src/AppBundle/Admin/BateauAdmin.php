@@ -12,7 +12,8 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 
 
 class BateauAdmin extends Admin
-{    // Fields to be shown on create/edit forms
+{    
+    // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
         $optionsMiniature = array('label' => 'Miniature: ', 'required' => false, 'label_attr' => array('class' => 'control-miniature'), 'attr' => array('class' => 'bateau-miniature'));

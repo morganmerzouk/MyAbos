@@ -23,8 +23,8 @@ class Croisiere {
     protected $id;
     
     /**
-   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Bateau", cascade={"persist"})
-   */
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Bateau", cascade={"persist"})
+     */
     protected $bateau;
     
     /**
@@ -37,10 +37,16 @@ class Croisiere {
      * @ORM\ManyToMany(targetEntity="DateNonDisponibilite")
      */
     protected $dateNonDisponibilite;
+    
     /**
      * @ORM\ManyToMany(targetEntity="TarifCroisiere")
      */
     protected $tarifCroisiere;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="ServicePayant")
+     */
+    protected $servicePayant;
     
     /**
     * @ORM\Column(type="string", length=200, nullable=true)
@@ -191,7 +197,7 @@ class Croisiere {
     
     public function __toString()
     {
-            return 'Nouvel croisiÃ¨re';
+            return $this->getName() ?: 'Nouvel croisière';
     }
     
         /* hack */
@@ -329,5 +335,38 @@ class Croisiere {
     public function getTarifCroisiere()
     {
         return $this->tarifCroisiere;
+    }
+
+    /**
+     * Add servicePayant
+     *
+     * @param \AppBundle\Entity\ServicePayant $servicePayant
+     * @return Croisiere
+     */
+    public function addServicePayant(\AppBundle\Entity\ServicePayant $servicePayant)
+    {
+        $this->servicePayant[] = $servicePayant;
+
+        return $this;
+    }
+
+    /**
+     * Remove servicePayant
+     *
+     * @param \AppBundle\Entity\ServicePayant $servicePayant
+     */
+    public function removeServicePayant(\AppBundle\Entity\ServicePayant $servicePayant)
+    {
+        $this->servicePayant->removeElement($servicePayant);
+    }
+
+    /**
+     * Get servicePayant
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getServicePayant()
+    {
+        return $this->servicePayant;
     }
 }

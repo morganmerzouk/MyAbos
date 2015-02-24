@@ -5,8 +5,10 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sonata\AdminBundle\Controller\CRUDController as Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Response;
 
-class CRUDController extends Controller {
+class CroisiereController extends Controller {
+    
     public function cloneAction()
     {
         $id = $this->get('request')->get($this->admin->getIdParameter());
@@ -34,5 +36,20 @@ class CRUDController extends Controller {
         $this->addFlash('sonata_flash_success', 'Cloned successfully');
 
         return new RedirectResponse($this->admin->generateUrl('list'));
+    }
+
+    public function getServicePayantAction($id) {
+        if(!$id)
+            return;
+        
+        $servicesPayant=$this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\ServicePayant")
+                            ->findBy(array('bateau'=>$id));
+        
+        $html = "";
+        foreach($servicesPayant as $servicePayant){
+            $html .="<option value=".$servicePayant->getId().">".$servicePayant->getName()."</option>";
+        }
+        
+        return new Response($html);
     }
 }

@@ -28,11 +28,6 @@ class ServicePayant {
     protected $prestation;
 
     /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    protected $titreBackOffice;
-    
-    /**
     * @ORM\Column(type="string", length=200, nullable=true)
     */
     protected $categorie;
