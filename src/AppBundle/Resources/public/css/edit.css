@@ -1,4 +1,4 @@
-/*** Admin edit gï¿½nï¿½ral ***/
+/*** Admin edit général ***/
 .control-label {
     float: left;
     width: 150px;
@@ -133,13 +133,21 @@ height: auto
 .bateau-longueur,
 .bateau-largeur,
 .bateau-moteur {float:left; width: 250px;}
+.bateau-longueur,
+.bateau-largeur,
+.bateau-tirantdeau {float:left; width: 100px;}
+.bateau-reservoircarburant { width: 200px; }
 .control-bateau-longueur,
 .control-bateau-largeur,
 .control-bateau-moteur {width: 100px;}
+.control-surfacegrandvoile { clear: both}
 .control-bateau-equipement { clear: both;}
+.control-bateau-equipement {  width:200px;}]
 .bateau-list-radio {float: left; width: 16%}
 .bateau-list-radio li { display: block; float: left;}
 .form-group[id$='destination'] { float:left;}
+.control-bateau-inclusequipage,.control-bateau-fraisvoyage { clear: both};
+.bateau-inclusequipage { float:left;}
 .control-bateau-nbcabine,
 .control-bateau-nbdouche,
 .control-bateau-nbequipier,

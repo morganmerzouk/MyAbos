@@ -286,4 +286,5 @@ class BateauTranslation
     {
         return $this->translatable_id;
     }
+   
 }

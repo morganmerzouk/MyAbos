@@ -57,8 +57,8 @@ class CroisiereAdmin extends Admin
                     'class'    => 'AppBundle\Entity\Skipper',
                     'label'    => "Skipper: "
                 ))
-            ->add('dateNonDisponibilite', 'sonata_type_model',array('label'=>'Date de non disponibilité: ','multiple'=>true))   
-            ->add('tarifCroisiere', 'sonata_type_model',array('label'=>'Grille de tarif: ','multiple'=>true))   
+            ->add('dateNonDisponibilite', 'sonata_type_model',array('label'=>'Date de non disponibilité: ','multiple'=>true,'required'=>false))   
+            ->add('tarifCroisiere', 'sonata_type_model',array('label'=>'Grille de tarif: ','multiple'=>true,'required'=>false))   
         ;
     }
     

@@ -213,6 +213,8 @@ class BateauAdmin extends Admin
                     'choice_list'=> $this->loadChoiceList("type"),
                     'attr' => array("class"=>"bateau-list-radio")))
             ->add('inclusPrixEquipage', 'sonata_type_model', array('query' => $queryEquipage,
+                'label_attr'=>array('class'=>'control-bateau-inclusequipage'),
+                'attr'=>array("class"=>"bateau-inclusequipage"),
                 'required'=>false, 
                 'empty_value'=>'Inclus Prix Equipage',
                 'label' => '',
@@ -222,6 +224,7 @@ class BateauAdmin extends Admin
                 'multiple'=>true, 
                 'expanded'=>true,
                 'attr' => array('class'=> 'bateau-inclusprix-frais'),
+                'label_attr'=>array('class'=>'control-bateau-fraisvoyage'),
                 'label'=>'Frais du bateau: ',
                 'btn_add'=>false))  
             ->add('inclusPrixAvitaillement', 'sonata_type_model', array('query' => $queryAvitaillement,
