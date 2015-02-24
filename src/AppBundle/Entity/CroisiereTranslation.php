@@ -29,6 +29,10 @@ class CroisiereTranslation
      * @ORM\Column(type="integer")
      */
     protected $translatable_id;
+        
+    public function __clone() {
+        $this->id = null;
+    }
     
     /**
      * Set name

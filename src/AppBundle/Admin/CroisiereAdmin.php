@@ -7,7 +7,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery;
-
+use Sonata\AdminBundle\Route\RouteCollection;
 
 class CroisiereAdmin extends Admin
 {    // Fields to be shown on create/edit forms
@@ -62,6 +62,11 @@ class CroisiereAdmin extends Admin
         ;
     }
     
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->add('clone', $this->getRouterIdParameter().'/clone');
+    }
+    
     // Fields to be shown on lists
     protected function configureListFields(ListMapper $listMapper)
     {
@@ -77,7 +82,10 @@ class CroisiereAdmin extends Admin
                 array(
                     'actions' => array(
                         'edit' => array(),
-                        'delete' => array()
+                        'delete' => array(),
+                        'Clone' => array(
+                            'template' => 'AppBundle:Admin/CRUD:list__action_clone.html.twig'
+                        )
                     )
                 ))
         ;

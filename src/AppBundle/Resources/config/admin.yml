@@ -102,7 +102,7 @@ services:
         arguments:
             - ~
             - AppBundle\Entity\Croisiere
-            - ~
+            - AppBundle:CRUD
         calls:
             - [ setTranslationDomain, [AppBundle]]
             - [ setBaseRouteName, [croisiere]]

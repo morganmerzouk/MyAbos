@@ -23,13 +23,13 @@ class Croisiere {
     protected $id;
     
     /**
-   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Bateau", cascade={"remove"})
+   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Bateau", cascade={"persist"})
    */
     protected $bateau;
     
     /**
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Skipper",cascade={"remove"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Skipper",cascade={"persist"})
      */
     protected $skipper;
     
@@ -55,6 +55,22 @@ class Croisiere {
     {
         $this->dateNonDisponibilite=new \Doctrine\Common\Collections\ArrayCollection();;
     }
+    
+    public function __clone() {
+        $this->id = null;
+    }
+    
+    /**
+     * Set id
+     *
+     * @param string $id
+     * @return Croisiere
+
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
 
     /**
      * Get id
@@ -70,7 +86,7 @@ class Croisiere {
      * Set miniature
      *
      * @param string $miniature
-     * @return PortDepart
+     * @return Croisiere
      */
     public function setMiniature($miniature)
     {
@@ -175,7 +191,7 @@ class Croisiere {
     
     public function __toString()
     {
-            return 'Nouvel croisière';
+            return 'Nouvel croisiÃ¨re';
     }
     
         /* hack */
