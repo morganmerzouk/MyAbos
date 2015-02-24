@@ -9,6 +9,7 @@ encoding//src/AppBundle/Admin/PortDepartAdmin.php=UTF-8
 encoding//src/AppBundle/Admin/PrestationAdmin.php=UTF-8
 encoding//src/AppBundle/Admin/ServicePayantAdmin.php=UTF-8
 encoding//src/AppBundle/Admin/SkipperAdmin.php=UTF-8
+encoding//src/AppBundle/Admin/TarifCroisiereAdmin.php=UTF-8
 encoding//src/AppBundle/Entity/ServicePayant.php=UTF-8
 encoding//src/AppBundle/Entity/Skipper.php=UTF-8
 encoding//src/AppBundle/Resources/config/admin.yml=UTF-8

@@ -1,6 +1,6 @@
 <?php
 
-// src/AppBundle/Entity/Datenondisponibilite.php
+// src/AppBundle/Entity/TarifCroisiere.php
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -9,9 +9,9 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="datenondisponibilite")
+ * @ORM\Table(name="tarifcroisiere")
  */
-class DateNonDisponibilite
+class TarifCroisiere
 {
 
     /**
@@ -30,7 +30,49 @@ class DateNonDisponibilite
      * @ORM\Column(type="datetime")
      */
     protected $dateFin;
-
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $nombreJourMinimum;    
+    
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $nombreJourMaximum;
+    
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $tarifDeuxPersonnes;
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $tarifTroisPersonnes;
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $tarifQuatrePersonnes;
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $tarifCinqPersonnes;
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $tarifSixPersonnes;
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $tarifSeptPersonnes;
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $tarifHuitPersonnes;
+    
+    /**
+     * @ORM\Column(type="string", length=200)
+     */
+    protected $tarifPour;
     /**
      * Constructor
      */
@@ -49,7 +91,7 @@ class DateNonDisponibilite
 
     public function __toString()
     {
-        return (string) 'Du ' . $this->getDateDebut()->format('d/m/Y') . ' au ' . $this->getDateFin()->format('d/m/Y');
+        return (string) $this->getDateDebut()->format('d/m/Y') . '-' . $this->getDateFin()->format('d/m/Y');
     }
 
     /**

@@ -37,6 +37,10 @@ class Croisiere {
      * @ORM\ManyToMany(targetEntity="DateNonDisponibilite")
      */
     protected $dateNonDisponibilite;
+    /**
+     * @ORM\ManyToMany(targetEntity="TarifCroisiere")
+     */
+    protected $tarifCroisiere;
     
     /**
     * @ORM\Column(type="string", length=200, nullable=true)
@@ -276,5 +280,38 @@ class Croisiere {
     public function removeDateNonDisponibilite(\AppBundle\Entity\DateNonDisponibilite $dateNonDisponibilite)
     {
         $this->dateNonDisponibilite->removeElement($dateNonDisponibilite);
+    }
+
+    /**
+     * Add tarifCroisiere
+     *
+     * @param \AppBundle\Entity\TarifCroisiere $tarifCroisiere
+     * @return Croisiere
+     */
+    public function addTarifCroisiere(\AppBundle\Entity\TarifCroisiere $tarifCroisiere)
+    {
+        $this->tarifCroisiere[] = $tarifCroisiere;
+
+        return $this;
+    }
+
+    /**
+     * Remove tarifCroisiere
+     *
+     * @param \AppBundle\Entity\TarifCroisiere $tarifCroisiere
+     */
+    public function removeTarifCroisiere(\AppBundle\Entity\TarifCroisiere $tarifCroisiere)
+    {
+        $this->tarifCroisiere->removeElement($tarifCroisiere);
+    }
+
+    /**
+     * Get tarifCroisiere
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTarifCroisiere()
+    {
+        return $this->tarifCroisiere;
     }
 }

@@ -119,3 +119,16 @@ services:
             - [ setTranslationDomain, [AppBundle]]
             - [ setBaseRouteName, [datenondisponibilite]]
             - [ setBaseRoutePattern, [datenondisponibilite]]
+    sonata.admin.tarifcroisiere:
+        class: AppBundle\Admin\TarifCroisiereAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Bateau", label: "Tarif des croisières", show_in_dashboard: false }
+        arguments:
+            - ~
+            - AppBundle\Entity\TarifCroisiere
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+            - [ setBaseRouteName, [tarifcroisiere]]
+            - [ setBaseRoutePattern, [tarifcroisiere]]
+            

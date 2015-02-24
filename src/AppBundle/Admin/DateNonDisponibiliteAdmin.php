@@ -14,8 +14,8 @@ class DateNonDisponibiliteAdmin extends Admin
     {
          
         $formMapper
-            ->add('dateDebut', 'date', array('label' => 'Date début: ', 'required'=> true)) 
-            ->add('dateFin', 'date', array('label' => 'Date fin: ', 'required'=> true))    
+            ->add('dateDebut', 'sonata_type_date_picker', array('label' => 'Date début: ', 'required'=> true)) 
+            ->add('dateFin', 'sonata_type_date_picker', array('label' => 'Date fin: ', 'required'=> true))    
         ;
     }
     

@@ -37,6 +37,10 @@ class Croisiere {
      * @ORM\ManyToMany(targetEntity="DateNonDisponibilite")
      */
     protected $dateNonDisponibilite;
+    /**
+     * @ORM\ManyToMany(targetEntity="TarifCroisiere")
+     */
+    protected $tarifCroisiere;
     
     /**
     * @ORM\Column(type="string", length=200, nullable=true)
@@ -49,7 +53,7 @@ class Croisiere {
      */
     public function __construct()
     {
-        
+        $this->dateNonDisponibilite=new \Doctrine\Common\Collections\ArrayCollection();;
     }
 
     /**
@@ -253,5 +257,28 @@ class Croisiere {
     public function getDateNonDisponibilite()
     {
         return $this->dateNonDisponibilite;
+    }
+
+    /**
+     * Add dateNonDisponibilite
+     *
+     * @param \AppBundle\Entity\DateNonDisponibilite $dateNonDisponibilite
+     * @return Croisiere
+     */
+    public function addDateNonDisponibilite(\AppBundle\Entity\DateNonDisponibilite $dateNonDisponibilite)
+    {
+        $this->dateNonDisponibilite[] = $dateNonDisponibilite;
+
+        return $this;
+    }
+
+    /**
+     * Remove dateNonDisponibilite
+     *
+     * @param \AppBundle\Entity\DateNonDisponibilite $dateNonDisponibilite
+     */
+    public function removeDateNonDisponibilite(\AppBundle\Entity\DateNonDisponibilite $dateNonDisponibilite)
+    {
+        $this->dateNonDisponibilite->removeElement($dateNonDisponibilite);
     }
 }
