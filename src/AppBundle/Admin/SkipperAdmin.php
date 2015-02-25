@@ -115,7 +115,7 @@ class SkipperAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-        ->add('name', null, array('label' => 'Nom: '));
+        ->add('name', null, array('label' => 'Nom: ', 'attr'=>array('class'=>'filter-control-name')));
     }
     
     // Fields to be shown on lists

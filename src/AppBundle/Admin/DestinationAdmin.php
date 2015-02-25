@@ -32,7 +32,7 @@ class DestinationAdmin extends Admin
         $formMapper
             ->add('miniatureFile', 'file', $optionsMiniature)
             ->add('linkgmap', 'text', array('label' => 'Lien google map: ', 'required'=> false, 'label_attr' => array('class' => 'control-lien-google-map'),  'attr' => array('class' => 'destination-lien-google-map')))
-            ->add('inclusRecherche', 'checkbox', array('label' => 'Inclure dans la recherche: ', 'attr'=>array('class'=>'destination-inclusrecherche')))    
+            ->add('inclusRecherche', 'checkbox', array('label' => 'Inclure dans la recherche: ', 'attr'=>array('class'=>'destination-inclusrecherche'), 'required'=>false))    
             ->add('photo1File', 'file', $optionsPhoto1)
             ->add('photo2File', 'file', $optionsPhoto2)
             ->add('photo3File', 'file', $optionsPhoto3)

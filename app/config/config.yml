@@ -112,6 +112,34 @@ sonata_user:
     manager_type: orm # can be orm or mongodb
     
 sonata_admin:
+    dashboard:
+        blocks:
+            -
+                position: left
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [sonata.admin.group.content]
+            -
+                position: right
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [sonata.admin.group.bateau]
+        groups:
+            sonata.admin.group.content:
+                label: "Contenu"
+                items:
+                    - sonata.admin.prestation
+                    - sonata.admin.skipper
+                    - sonata.admin.portdepart
+                    - sonata.admin.destination
+                    - sonata.admin.itineraire
+            sonata.admin.group.bateau:
+                label: "Bateau"
+                items:
+                    - sonata.admin.bateau
+                    - sonata.admin.inclusprix
+                    - sonata.admin.servicepayant
+                    - sonata.admin.croisiere
     security:
         handler: sonata.admin.security.handler.acl
         # acl security information

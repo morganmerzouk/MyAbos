@@ -131,7 +131,6 @@ class CroisiereAdmin extends Admin
         $this->baseRoutePattern = $baseRoutePattern;
     }
     
-    
     public function prePersist($destination) {
         $this->saveFile($destination);
     }

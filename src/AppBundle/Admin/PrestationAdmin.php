@@ -9,7 +9,8 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery;
 
 class PrestationAdmin extends Admin
-{    // Fields to be shown on create/edit forms
+{    
+    // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
         $optionsIcone= array('label' => 'Icône: ', 'required' => false, 'label_attr' => array('class' => 'control-photo'), 'attr' => array('class' => 'prestation-icone'));
@@ -67,14 +68,6 @@ class PrestationAdmin extends Admin
             ->add('published', 'checkbox', array('label' => 'Publié: ', 'required'=> false))    
         ;
     }
-
-    public function createQuery($context = 'list') {
-        $query = parent::createQuery($context);
-    
-        return new ProxyQuery($query
-            ->leftjoin("AppBundle\Entity\PrestationTranslation", "pt", "WITH", "o.id=pt.translatable_id")
-            ->orderBy("pt.name", "ASC"));
-    }
     
     // Fields to be shown on lists
     protected function configureListFields(ListMapper $listMapper)
@@ -95,6 +88,14 @@ class PrestationAdmin extends Admin
                     )
                 ))
         ;
+    }
+
+    public function createQuery($context = 'list') {
+        $query = parent::createQuery($context);
+    
+        return new ProxyQuery($query
+            ->leftjoin("AppBundle\Entity\PrestationTranslation", "pt", "WITH", "o.id=pt.translatable_id")
+            ->orderBy("pt.name", "ASC"));
     }
     
     public function setBaseRouteName($baseRouteName)

@@ -2,7 +2,7 @@ services:
     sonata.admin.skipper:
         class: AppBundle\Admin\SkipperAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Contenu", label: "Skipper" }
+            - { name: sonata.admin, manager_type: orm, label: "Skipper" }
         arguments:
             - ~
             - AppBundle\Entity\Skipper
@@ -14,7 +14,7 @@ services:
     sonata.admin.destination:
         class: AppBundle\Admin\DestinationAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Contenu", label: "Destination" }
+            - { name: sonata.admin, manager_type: orm, label: "Destination" }
         arguments:
             - ~
             - AppBundle\Entity\Destination
@@ -26,7 +26,7 @@ services:
     sonata.admin.portdepart:
         class: AppBundle\Admin\PortDepartAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Contenu", label: "Port de départ" }
+            - { name: sonata.admin, manager_type: orm, label: "Port de départ" }
         arguments:
             - ~
             - AppBundle\Entity\PortDepart
@@ -38,7 +38,7 @@ services:
     sonata.admin.itineraire:
         class: AppBundle\Admin\ItineraireAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Contenu", label: "Itinéraire" }
+            - { name: sonata.admin, manager_type: orm, label: "Itinéraire" }
         arguments:
             - ~
             - AppBundle\Entity\Itineraire
@@ -50,7 +50,7 @@ services:
     sonata.admin.prestation:
         class: AppBundle\Admin\PrestationAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Contenu", label: "Prestation" }
+            - { name: sonata.admin, manager_type: orm, label: "Prestation" }
         arguments:
             - ~
             - AppBundle\Entity\Prestation
@@ -62,7 +62,7 @@ services:
     sonata.admin.bateau:
         class: AppBundle\Admin\BateauAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Bateau", label: "Bateau" }
+            - { name: sonata.admin, manager_type: orm, label: "Bateau" }
         arguments:
             - ~
             - AppBundle\Entity\Bateau
@@ -74,7 +74,7 @@ services:
     sonata.admin.inclusprix:
         class: AppBundle\Admin\InclusPrixAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Bateau", label: "Inclus Prix" }
+            - { name: sonata.admin, manager_type: orm, label: "Inclus Prix" }
         arguments:
             - ~
             - AppBundle\Entity\InclusPrix
@@ -86,7 +86,7 @@ services:
     sonata.admin.servicepayant:
         class: AppBundle\Admin\ServicePayantAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Bateau", label: "Services Payants" }
+            - { name: sonata.admin, manager_type: orm, label: "Services Payants" }
         arguments:
             - ~
             - AppBundle\Entity\ServicePayant
@@ -98,7 +98,7 @@ services:
     sonata.admin.croisiere:
         class: AppBundle\Admin\CroisiereAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Bateau", label: "Croisiere" }
+            - { name: sonata.admin, manager_type: orm, label: "Croisiere" }
         arguments:
             - ~
             - AppBundle\Entity\Croisiere
@@ -110,7 +110,7 @@ services:
     sonata.admin.datenondisponibilite:
         class: AppBundle\Admin\DateNonDisponibiliteAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Bateau", label: "Date non disponibilité", show_in_dashboard: false }
+            - { name: sonata.admin, manager_type: orm, label: "Date non disponibilité", show_in_dashboard: false }
         arguments:
             - ~
             - AppBundle\Entity\DateNonDisponibilite
@@ -122,7 +122,7 @@ services:
     sonata.admin.tarifcroisiere:
         class: AppBundle\Admin\TarifCroisiereAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Bateau", label: "Tarifs des croisières", show_in_dashboard: false }
+            - { name: sonata.admin, manager_type: orm, label: "Tarifs des croisières", show_in_dashboard: false }
         arguments:
             - ~
             - AppBundle\Entity\TarifCroisiere
@@ -134,7 +134,7 @@ services:
     sonata.admin.itinerairecroisiere:
         class: AppBundle\Admin\ItineraireCroisiereAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Bateau", label: "Itinéraires des croisières", show_in_dashboard: false }
+            - { name: sonata.admin, manager_type: orm, label: "Itinéraires des croisières", show_in_dashboard: false }
         arguments:
             - ~
             - AppBundle\Entity\ItineraireCroisiere
@@ -143,4 +143,3 @@ services:
             - [ setTranslationDomain, [AppBundle]]
             - [ setBaseRouteName, [itinerairecroisiere]]
             - [ setBaseRoutePattern, [itinerairecroisiere]]
-            

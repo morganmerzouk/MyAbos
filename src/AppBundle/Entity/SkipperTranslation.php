@@ -62,7 +62,7 @@ class SkipperTranslation
      */
     public function getDescription()
     {
-        return $this->description;
+        return stripslashes($this->description);
     }
     
     /**

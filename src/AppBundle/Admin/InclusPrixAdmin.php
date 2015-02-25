@@ -11,7 +11,9 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery;
 
 class InclusPrixAdmin extends Admin
-{    // Fields to be shown on create/edit forms
+{    
+
+    // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
         $optionsIcone = array('label' => 'Icone: ', 'required' => false, 'label_attr' => array('class' => 'control-miniature'), 'attr' => array('class' => 'inclusprix-miniature'));

@@ -64,12 +64,6 @@ class PortDepartAdmin extends Admin
         ;
     }
 
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
-        $datagridMapper
-        ->add('name', null, array('label' => 'Nom: ', 'attr'=>array('class'=>'control-name')));
-    }
-
     public function createQuery($context = 'list') {
         $query = parent::createQuery($context);
     

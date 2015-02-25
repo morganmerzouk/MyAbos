@@ -260,19 +260,6 @@ class BateauAdmin extends Admin
             ->add('published', 'checkbox', array('label' => 'Publié: ', 'required'=> false))    
         ;
     }
-
-    public function getInclusPrixEquipage($queryBuilder, $alias, $field, $value)
-    {
-        if (!$value) {
-            return;
-        }
-    
-        $queryBuilder->leftJoin(sprintf('%s.inclusprix', $alias), 'c');
-        $queryBuilder->andWhere('c.categorie = :categorie');
-        $queryBuilder->setParameter('categorie', "Equipage");
-    
-        return true;
-    }
     
     // Fields to be shown on lists
     protected function configureListFields(ListMapper $listMapper)
@@ -293,18 +280,30 @@ class BateauAdmin extends Admin
         ;
     }
     
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper
+        ->add('name', null, array('label' => 'Nom: ', 'attr'=>array('class'=>'filter-control-name')));
+    }
+
+    public function getInclusPrixEquipage($queryBuilder, $alias, $field, $value)
+    {
+        if (!$value) {
+            return;
+        }
+    
+        $queryBuilder->leftJoin(sprintf('%s.inclusprix', $alias), 'c');
+        $queryBuilder->andWhere('c.categorie = :categorie');
+        $queryBuilder->setParameter('categorie', "Equipage");
+    
+        return true;
+    }
+    
     protected $datagridValues = array(
         '_page' => 1,
         '_sort_order' => 'ASC',
         '_sort_by' => 'name',
     );
-    
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
-        $datagridMapper
-        ->add('name', null, array('label' => 'Nom: ', 'attr'=>array('class'=>'control-name')));
-    }
-    
     
     protected function loadChoiceList($type) {
         if($type=="cabine"){
