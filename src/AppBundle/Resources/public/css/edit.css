@@ -179,43 +179,25 @@ height: auto
 .inclusprix-miniature {float: left;width: 148px;padding: 0;height: auto;}
 .control-inclusprix-prestation { width: 300px;}
 /*** Fin Inclus Prix ***/
-/*** D�but Tarif Croisi�re ***/
-.control-tarifcroisiere-tarifdeuxpersonne,
-.control-tarifcroisiere-tariftroispersonne,
-.control-tarifcroisiere-tarifquatrepersonne,
-.control-tarifcroisiere-tarifcinqpersonne,
-.control-tarifcroisiere-tarifsixpersonne,
-.control-tarifcroisiere-tarifseptpersonne,
-.control-tarifcroisiere-tarifhuitpersonne {float:none; 
-										   width: 100px;
-										   text-align: center;
-										   border: 1px solid grey;
-										   margin-bottom: 0;}
-.control-tarifcroisiere-tarifdeuxpersonne { width: 200px;}
+/*** D�but Croisi�re ***/
 .tarifcroisiere-tarifdeuxpersonne,
 .tarifcroisiere-tariftroispersonne,
 .tarifcroisiere-tarifquatrepersonne,
 .tarifcroisiere-tarifcinqpersonne,
 .tarifcroisiere-tarifsixpersonne,
 .tarifcroisiere-tarifseptpersonne,
-.tarifcroisiere-tarifhuitpersonne {width: 100px;
-								   border: 1px solid grey;
-						   		   margin-bottom: 0;}
-.tarifcroisiere-tarifdeuxpersonne { width: 200px;text-align:right;}
-input.tarifcroisiere-tarifdeuxpersonne:before,
-input.tarifcroisiere-tarifdeuxpersonne::before { content: "Tarif "; display:block; position:absolute; }
+.tarifcroisiere-tarifhuitpersonne {width: 80px;
+                                    border: 1px solid grey;
+                                    margin-bottom: 0;}
 .form-group[id$='dateDebut'],
 .form-group[id$='dateFin'] { width: 30%; float:left; }
-.control-tarifcroisiere-nombrejourminimum{clear: both; width:260px;}
-.control-tarifcroisiere-nombrejourmaximum{width:260px;}
-.tarifcroisiere-nombrejourminimum,
-.tarifcroisiere-nombrejourmaximum,
-.tarifcroisiere-tarifpour {float:left;}
-.form-group[id$='tarifDeuxPersonnes'] { clear: both;}
-.form-group[id$='tarifDeuxPersonnes'],
-.form-group[id$='tarifTroisPersonnes'],
-.form-group[id$='tarifQuatrePersonnes'],
-.form-group[id$='tarifCinqPersonnes'],
-.form-group[id$='tarifSixPersonnes'],
-.form-group[id$='tarifSeptPersonnes'],
-.form-group[id$='tarifHuitPersonnes'] { float: left; }
+.croisiere-miniature {     
+    float: left;
+    width: 148px;
+    padding: 0;
+    height: auto;
+}
+/*** Début Itinéraire croisière ***/
+.control-croisere-datenondisponibilite { width: 180px;}
+span[id$='dateNonDisponibilite'] table { width: 30%;}
+/*** Fin Itinéraire ***/

@@ -28,6 +28,19 @@ class CroisiereAdmin extends Admin
         ->orderBy('spt.name', 'ASC');
         
         $formMapper
+            ->add('dateNonDisponibilite', 'sonata_type_collection', array('label'=>'Croisière non disponible: ','label_attr'=>array('class' => 'control-croisere-datenondisponibilite') ,'attr'=>array('class'=>'croisiere-datenondisponibilite'),'required'=>false), array(
+                'edit' => 'inline',
+                'inline' => 'table',
+                'sortable'  => 'position'
+            ))
+            ->add('bateau', 'entity', array(
+                    'class'    => 'AppBundle\Entity\Bateau',
+                    'label'    => "Bateau: "
+                ))
+            ->add('skipper', 'entity', array(
+                    'class'    => 'AppBundle\Entity\Skipper',
+                    'label'    => "Skipper: "
+                ))
             ->add('miniatureFile', 'file', $optionsMiniature)
             ->add('translations', 'a2lix_translations', array(
                     'fields' => array(                      
@@ -57,16 +70,11 @@ class CroisiereAdmin extends Admin
                         )
                     ),       
                 ))
-            ->add('bateau', 'entity', array(
-                    'class'    => 'AppBundle\Entity\Bateau',
-                    'label'    => "Bateau: "
-                ))
-            ->add('skipper', 'entity', array(
-                    'class'    => 'AppBundle\Entity\Skipper',
-                    'label'    => "Skipper: "
-                ))
-            ->add('dateNonDisponibilite', 'sonata_type_model',array('label'=>'Date de non disponibilité: ','multiple'=>true,'required'=>false))   
-            ->add('tarifCroisiere', 'sonata_type_model',array('label'=>'Grille de tarif: ','multiple'=>true,'required'=>false))   
+            ->add('tarifCroisiere', 'sonata_type_collection', array('label'=>'Grille de tarif: ','required'=>false), array(
+                'edit' => 'inline',
+                'inline' => 'table',
+                'sortable'  => 'position'
+            ))
             ->add('servicePayant', 'sonata_type_model', array('query' => $queryServicePayant,
                 'label_attr'=>array('class'=>'control-croisiere-servicepayant'),
                 'attr'=>array("class"=>"croisiere-servicepayant"),
@@ -75,6 +83,11 @@ class CroisiereAdmin extends Admin
                 'empty_value'=>'Service',
                 'label' => 'Services Payants: ',
                 'btn_add'=>false))
+            ->add('itineraireCroisiere', 'sonata_type_collection', array('label'=>'Itinéraires possible: ','required'=>false), array(
+                'edit' => 'inline',
+                'inline' => 'table',
+                'sortable'  => 'position'
+            ))
         ;
     }
 

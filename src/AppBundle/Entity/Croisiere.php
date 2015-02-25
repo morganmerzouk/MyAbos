@@ -34,14 +34,19 @@ class Croisiere {
     protected $skipper;
     
     /**
-     * @ORM\ManyToMany(targetEntity="DateNonDisponibilite")
+     * @ORM\ManyToMany(targetEntity="DateNonDisponibilite",cascade={"persist"})
      */
     protected $dateNonDisponibilite;
     
     /**
-     * @ORM\ManyToMany(targetEntity="TarifCroisiere")
+     * @ORM\ManyToMany(targetEntity="TarifCroisiere",cascade={"persist"})
      */
     protected $tarifCroisiere;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="ItineraireCroisiere",cascade={"persist"})
+     */
+    protected $itineraireCroisiere;
     
     /**
      * @ORM\ManyToMany(targetEntity="ServicePayant")
@@ -197,7 +202,7 @@ class Croisiere {
     
     public function __toString()
     {
-            return $this->getName() ?: 'Nouvel croisière';
+            return $this->getName() ?: 'Nouvel croisiÃ¨re';
     }
     
         /* hack */
@@ -368,5 +373,38 @@ class Croisiere {
     public function getServicePayant()
     {
         return $this->servicePayant;
+    }
+
+    /**
+     * Add itineraireCroisiere
+     *
+     * @param \AppBundle\Entity\ItineraireCroisiere $itineraireCroisiere
+     * @return Croisiere
+     */
+    public function addItineraireCroisiere(\AppBundle\Entity\ItineraireCroisiere $itineraireCroisiere)
+    {
+        $this->itineraireCroisiere[] = $itineraireCroisiere;
+
+        return $this;
+    }
+
+    /**
+     * Remove itineraireCroisiere
+     *
+     * @param \AppBundle\Entity\ItineraireCroisiere $itineraireCroisiere
+     */
+    public function removeItineraireCroisiere(\AppBundle\Entity\ItineraireCroisiere $itineraireCroisiere)
+    {
+        $this->itineraireCroisiere->removeElement($itineraireCroisiere);
+    }
+
+    /**
+     * Get itineraireCroisiere
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getItineraireCroisiere()
+    {
+        return $this->itineraireCroisiere;
     }
 }

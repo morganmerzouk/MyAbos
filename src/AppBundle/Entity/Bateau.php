@@ -24,6 +24,11 @@ class Bateau {
     protected $id;
 
     /**
+     * @ORM\ManyToMany(targetEntity="DateNonDisponibilite")
+     */
+    protected $dateNonDisponibilite;
+    
+    /**
      * @ORM\Column(type="string", length=200, nullable=true)
      */
     protected $name;
@@ -1215,5 +1220,38 @@ class Bateau {
     public function getInclusPrixCours()
     {
         return $this->inclusPrixCours;
+    }
+
+    /**
+     * Add dateNonDisponibilite
+     *
+     * @param \AppBundle\Entity\DateNonDisponibilite $dateNonDisponibilite
+     * @return Bateau
+     */
+    public function addDateNonDisponibilite(\AppBundle\Entity\DateNonDisponibilite $dateNonDisponibilite)
+    {
+        $this->dateNonDisponibilite[] = $dateNonDisponibilite;
+
+        return $this;
+    }
+
+    /**
+     * Remove dateNonDisponibilite
+     *
+     * @param \AppBundle\Entity\DateNonDisponibilite $dateNonDisponibilite
+     */
+    public function removeDateNonDisponibilite(\AppBundle\Entity\DateNonDisponibilite $dateNonDisponibilite)
+    {
+        $this->dateNonDisponibilite->removeElement($dateNonDisponibilite);
+    }
+
+    /**
+     * Get dateNonDisponibilite
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getDateNonDisponibilite()
+    {
+        return $this->dateNonDisponibilite;
     }
 }
