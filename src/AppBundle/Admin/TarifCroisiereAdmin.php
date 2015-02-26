@@ -29,25 +29,25 @@ class TarifCroisiereAdmin extends Admin
                     'label_attr' => array('class' => 'control-tarifcroisiere-tarifpour'),
                     'attr'       => array('class' => 'tarifcroisiere-tarifpour'),
                     'choice_list' => $this->loadChoiceList("tarifPour")))
-            ->add('tarifDeuxPersonnes', 'integer', array('label' => 'Nombre de personne: 2', 'required'=> false,
+            ->add('tarifDeuxPersonnes', 'integer', array('label' => 'Tarif pour 2', 'required'=> false,
                     'label_attr' => array('class' => 'control-tarifcroisiere-tarifdeuxpersonne'),
                     'attr'       => array('class' => 'tarifcroisiere-tarifdeuxpersonne')))
-            ->add('tarifTroisPersonnes', 'integer', array('label' => '3', 'required'=> false,
+            ->add('tarifTroisPersonnes', 'integer', array('label' => 'Tarif pour 3', 'required'=> false,
                     'label_attr' => array('class' => 'control-tarifcroisiere-tariftroispersonne'),
                     'attr'       => array('class' => 'tarifcroisiere-tariftroispersonne')))
-            ->add('tarifQuatrePersonnes', 'integer', array('label' => '4', 'required'=> false,
+            ->add('tarifQuatrePersonnes', 'integer', array('label' => 'Tarif pour 4', 'required'=> false,
                     'label_attr' => array('class' => 'control-tarifcroisiere-tarifquatrepersonne'),
                     'attr'       => array('class' => 'tarifcroisiere-tarifquatrepersonne')))
-            ->add('tarifCinqPersonnes', 'integer', array('label' => '5', 'required'=> false,
+            ->add('tarifCinqPersonnes', 'integer', array('label' => 'Tarif pour 5', 'required'=> false,
                     'label_attr' => array('class' => 'control-tarifcroisiere-tarifcinqpersonne'),
                     'attr'       => array('class' => 'tarifcroisiere-tarifcinqpersonne')))
-            ->add('tarifSixPersonnes', 'integer', array('label' => '6', 'required'=> false,
+            ->add('tarifSixPersonnes', 'integer', array('label' => 'Tarif pour 6', 'required'=> false,
                     'label_attr' => array('class' => 'control-tarifcroisiere-tarifsixpersonne'),
                     'attr'       => array('class' => 'tarifcroisiere-tarifsixpersonne')))
-            ->add('tarifSeptPersonnes', 'integer', array('label' => '7', 'required'=> false,
+            ->add('tarifSeptPersonnes', 'integer', array('label' => 'Tarif pour 7', 'required'=> false,
                     'label_attr' => array('class' => 'control-tarifcroisiere-tarifseptpersonne'),
                     'attr'       => array('class' => 'tarifcroisiere-tarifseptpersonne')))
-            ->add('tarifHuitPersonnes', 'integer', array('label' => '8', 'required'=> false,
+            ->add('tarifHuitPersonnes', 'integer', array('label' => 'Tarif pour 8', 'required'=> false,
                     'label_attr' => array('class' => 'control-tarifcroisiere-tarifhuitpersonne'),
                     'attr'       => array('class' => 'tarifcroisiere-tarifhuitpersonne')))
                     
