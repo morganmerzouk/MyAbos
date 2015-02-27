@@ -21,9 +21,9 @@ class TarifCroisiereAdmin extends Admin
                     'label_attr' => array('class' => 'control-tarifcroisiere-nombrejourminimum'), 
                     'attr'       => array('class' => 'tarifcroisiere-nombrejourminimum'),   
                     'choice_list' => $this->loadChoiceList("nombreJourMinimum")))
-            ->add('nombreJourMaximum', 'choice', array('label' => 'Nombre de jour minimum pour ce tarif: ',
+            ->add('nombreJourMaximum', 'choice', array('label' => 'Nombre de jour maximum pour ce tarif: ',
                     'label_attr' => array('class' => 'control-tarifcroisiere-nombrejourmaximum'),
-                    'attr'       => array('class' => 'tarifcroisiere-nombrejourminimum'),    
+                    'attr'       => array('class' => 'tarifcroisiere-nombrejourmaximum'),    
                     'choice_list' => $this->loadChoiceList("nombreJourMaximum")))
             ->add('tarifPour', 'choice', array('label' => 'Tarif pour: ',
                     'label_attr' => array('class' => 'control-tarifcroisiere-tarifpour'),

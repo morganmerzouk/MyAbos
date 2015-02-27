@@ -1,0 +1,18 @@
+.col-menu { clear: both; float: left; margin: 0; width: 20%;}
+
+.nav-accueil {      background-image: url("../images/menu/icones/icon-sprite-accueil.png");}
+.nav-offres {       background-image: url("../images/menu/icones/icon-sprite-offres.png");}
+.nav-prestations {  background-image: url("../images/menu/icones/icon-sprite-prestations.png");}
+.nav-destinations { background-image: url("../images/menu/icones/icon-sprite-destinations.png");}
+.nav-flotte {       background-image: url("../images/menu/icones/icon-sprite-flotte.png");}
+.nav-equipages {    background-image: url("../images/menu/icones/icon-sprite-equipages.png");}
+.nav-ensavoirplus { background-image: url("../images/menu/icones/icon-sprite-ensavoirplus.png");}
+.nav-liens {        background-image: url("../images/menu/icones/icon-sprite-liens.png");}
+
+.nav-stacked>li { padding-right: 11px;font-size:1em;}
+.nav-stacked>li+li { margin: 0px;}
+.nav-stacked>li.active { background: url("../images/menu/menu-item-active.png") no-repeat right center;}
+.nav-pills>li>a {border-radius:0;background-color:#127BBD; background-repeat: no-repeat; background-position: 10px -30px;color: white; text-transform: uppercase;padding: 7px 0px 7px 45px;line-height: 2em;}
+.nav-pills>li.active>a {color: black;}
+.nav-pills>li>a:hover, .nav-pills>li>a:focus, .nav-pills>li.active>a,.nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus 
+{background-color: #23B6E1; color:black;background-position: 10px 11px;}

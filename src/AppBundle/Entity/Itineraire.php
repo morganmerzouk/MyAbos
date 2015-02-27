@@ -29,7 +29,7 @@ class Itineraire {
     
     /**
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Destination")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Destination", inversedBy="itineraire", )
      */
     protected $destination;
     

@@ -1,0 +1,36 @@
+<form action="" class="searchHome" method="post" {{ form_enctype(form) }}>
+    <fieldset>
+        <legend>Trouver une croisière kite</legend>
+        <div class="criteria criteria-date">
+            {{ form_label(form.dateDepart) }}
+            {{ form_errors(form.dateDepart) }}
+            {{ form_widget(form.dateDepart) }}
+        </div>
+        <div class="criteria criteria-date">
+            {{ form_label(form.dateRetour) }}
+            {{ form_errors(form.dateRetour) }}
+            {{ form_widget(form.dateRetour) }}
+        </div>
+        <div class="criteria criteria-destination">
+            {{ form_label(form.destination) }}
+            {{ form_errors(form.destination) }}
+            {{ form_widget(form.destination) }}
+        </div>
+        <div class="criteria criteria-prestation">
+            {{ form_label(form.prestation) }}
+            {{ form_errors(form.prestation) }}
+            {{ form_widget(form.prestation) }}
+        </div>
+        <div class="criteria criteria-nb-passager">
+            {{ form_label(form.nbPassager) }}
+            {{ form_errors(form.nbPassager) }}
+            {{ form_widget(form.nbPassager) }}
+        </div>
+        <div class="btn-search">
+            <button class="btn btn-sm btn-danger" type="submit">
+                <span class="glyphicon glyphicon-search"></span>
+                Rechercher
+            </button>
+        </div>
+    </fieldset>
+</form>

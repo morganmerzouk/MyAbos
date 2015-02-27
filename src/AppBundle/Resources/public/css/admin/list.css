@@ -1,0 +1,10 @@
+/*** Admin list général ***/
+.sonata-ba-list-field-batch {width:3%;text-align: center;}
+.sonata-ba-list-field-boolean{width: 7%;text-align: center;}
+.sonata-ba-list-field-header-actions { width: 180px;text-align: center;}
+
+/*** Block Filtre ***/
+.filter_container .select2-container {float: left; width: 200px !important;}
+.filter_container label  { float: left;width: 150px;padding-right: 10px;text-align: right;}
+.filter_container .btn  { margin: 0 10px;}
+.filter_container input[type="text"] {float: left; width: 20%;}
