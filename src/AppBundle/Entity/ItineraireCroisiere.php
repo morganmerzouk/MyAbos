@@ -23,7 +23,7 @@ class ItineraireCroisiere
 
     
     /**
-     * @ORM\OneToOne(targetEntity="Itineraire")
+     * @ORM\ManyToOne(targetEntity="Itineraire")
      */
     protected $itineraire;
     

@@ -1,4 +1,4 @@
-/*** Admin edit gï¿½nï¿½ral ***/
+/*** Admin edit général ***/
 .control-label {
     float: left;
     width: 150px;
@@ -37,8 +37,8 @@ div.select2-container-multi { width: 505px !important;}
 .form-group[id$='published'] { clear: both; }
 .preview-img {clear: both;display: block;}
 .control-photo1 { clear: both;}
-/*** Fin Admin edit gï¿½nï¿½ral ***/
-/*** Dï¿½but Skipper ***/
+/*** Fin Admin edit général ***/
+/*** Début Skipper ***/
 .skipper-avatar {
     float: left;
     width: 14%;
@@ -83,7 +83,7 @@ height: auto
 .control-annee-navigation-caraibes { width: auto; float: none; display: inline;}
 .control-annee-kitesurfing { width: 185px;}
 /*** Fin Skipper ***/
-/*** Dï¿½but Destination ***/
+/*** Début Destination ***/
 .destination-miniature {     
     float: left;
     width: 148px;
@@ -102,7 +102,7 @@ height: auto
     float: left;
 }
 /*** Fin Destination ***/
-/*** Dï¿½but Itinï¿½raire ***/
+/*** Début Itinéraire ***/
 .form-group[id$='portDepart'],
 .form-group[id$='destination'] { float:left;}
 .itineraire-miniature {     
@@ -111,8 +111,8 @@ height: auto
     padding: 0;
     height: auto;
 }
-/*** Fin Itinï¿½raire ***/
-/*** Dï¿½but Prestation ***/
+/*** Fin Itinéraire ***/
+/*** Début Prestation ***/
 .prestation-icone,
 .prestation-photo {
     float: left;
@@ -122,7 +122,7 @@ height: auto
 }
 
 /*** Fin Prestation ***/
-/*** Dï¿½but Bateau ***/
+/*** Début Bateau ***/
 .bateau-miniature,
 .bateau-photo {
     float: left;
@@ -156,7 +156,7 @@ height: auto
 .bateau-inclusprix-frais {width: 500px;display: block;float: left;}
 .form-group[id$='inclusPrixAvitaillement'] { clear: both;}
 /*** Fin Bateau ***/
-/*** Dï¿½but Services payants ***/
+/*** Début Services payants ***/
 .optionpayante-miniature {float: left;width: 148px;padding: 0;height: auto;}
 .optionpayante-list-radio { float: left; display: block;}
 .optionpayante-list-radio-devise li {width: 40px;text-align: center;margin-top: 5px;float: left;}
@@ -173,13 +173,13 @@ height: auto
 .form-group[id$='prestation'] { margin-bottom: 0px; }
 .control-optionpayante_description { display: block; }
 /*** Fin Services payants ***/
-/*** Dï¿½but Inclus Prix ***/
+/*** Début Inclus Prix ***/
 .inclusprix-list-radio {float: left; display: block;}
 .inclusprix-list-radio-categorie li {float: left; display: block; width: 350px;}
 .inclusprix-miniature {float: left;width: 148px;padding: 0;height: auto;}
 .control-inclusprix-prestation { width: 300px;}
 /*** Fin Inclus Prix ***/
-/*** Dï¿½but Croisiï¿½re ***/
+/*** Début Croisière ***/
 .tarifcroisiere-tarifdeuxpersonne,
 .tarifcroisiere-tariftroispersonne,
 .tarifcroisiere-tarifquatrepersonne,
@@ -197,7 +197,7 @@ height: auto
     padding: 0;
     height: auto;
 }
-/*** DÃ©but ItinÃ©raire croisiÃ¨re ***/
+/*** Début Itinéraire croisière ***/
 .control-croisere-datenondisponibilite { width: 180px;}
-span[id$='dateNonDisponibilite'] table { width: 30%;}
-/*** Fin ItinÃ©raire ***/
+span[id$='dateNonDisponibilite'] table { width: 40%;}
+/*** Fin Itinéraire ***/
