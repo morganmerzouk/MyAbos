@@ -157,6 +157,11 @@ class Skipper {
     {
         return $this->name;
     }
+    
+    // Need this method for the admin list template
+    public function getDescription(){
+        return $this->translate()->getDescription();
+    }
 
     /**
      * Set email

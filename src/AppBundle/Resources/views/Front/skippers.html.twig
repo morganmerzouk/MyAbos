@@ -4,10 +4,44 @@
 {% endblock %}
 {% block stylesheets %}
     {{ parent() }}
+    <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/skippers.css') }}">
 {% endblock %}   
 {% block title %}{{toptitle}} - Equipages{% endblock %}
 
 
 {% block content %}
-	
+	<h2>Les skippers encadrant des croisières kite</h2>
+	<div class="block-croisiere">
+		<h4>Croisière kite à ste lucie<br />
+		Avril 2015
+		</h4>
+		<img class="img-thumbnail img-responsive" src="{{ asset("bundles/app/images/test/slider1.jpg") }}" />
+		<div class="row">
+			<img class="img-thumbnail" src="{{ asset("bundles/app/images/test/ICON-prestations-high-end-75 pixels-noir.png") }}" />
+			Bateau: lagoon 44
+		</div>
+		<div class="row">
+			<img class="img-thumbnail" src="{{ asset("bundles/app/images/test/ICON-prestations-hostess-75 pixels-noir.png") }}" />
+			Île de départ: Martinique
+		</div>
+		<div class="row">
+			<img class="img-thumbnail" src="{{ asset("bundles/app/images/test/ICON-prestations-chef-75 pixels-noir.png") }}" />
+			8 personnnes
+		</div>
+		<a href="#" class="btn btn-sm btn-warning pull-right">Détails</a>
+	</div>
+    {% for skipper in skippers %}
+	    {% if loop.index0 % 3 == 0 %}
+	    	<div class="row-skipper">
+	    {% endif %}
+        <div class="col-md-2 col-20 skipper">
+        	<img class="img-responsive img-thumbnail" src="{{ skipper.avatarWebPath }}" alt="photo {{ skipper.name }}" /><br />
+            <span>{{ skipper.name }}</span>
+            <p>{{ skipper.description|striptags|slice(0,100) ~ '...' }}</p>
+            <a class="btn btn-sm btn-warning pull-right" href="{{ path('skipper', { 'id': skipper.id }) }}">La suite</a>
+        </div>
+        {% if loop.index0 % 3 == 2 %}
+	        </div>
+        {% endif %}
+    {% endfor %}
 {% endblock content %}

@@ -1,0 +1,6 @@
+h2 {background: #23B6E1; padding: 10px;}
+.row-skipper { overflow: auto; }
+.skipper { width:30%; background: #23B6E1; padding: 10px; text-align: center; margin: 1%;}
+.skipper p { text-align:left; font-size:0.9em;}
+.block-croisiere { float: right; width: 30%; border: 1px solid black; padding: 10px;text-align:center; }
+.block-croisiere .row { margin: 10px; text-align:left;}

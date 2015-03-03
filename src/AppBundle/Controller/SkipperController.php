@@ -12,6 +12,32 @@ class SkipperController extends Controller
      */
     public function indexAction()
     {        
-        return $this->render('AppBundle:Front:skippers.html.twig');
+        $skippers = $this->getDoctrine()->getManager()->getRepository("AppBundle:skipper")
+        ->createQueryBuilder('s')
+        ->select('s, t')
+        ->join('s.translations', 't')
+        ->andWhere('s.published = true')
+        ->andWhere('t.locale = :locale')->setParameter(':locale', 'fr')
+        ->getQuery()
+        ->getResult();
+        return $this->render('AppBundle:Front:skippers.html.twig',array('skippers'=> $skippers));
+    }
+    
+    /**
+     * @Route("/skipper/{id}", requirements={"id" = "\d+"}, name="skipper")
+     */
+    public function skipperAction($id)
+    {
+        $skipper = $this->getDoctrine()->getManager()->getRepository("AppBundle:skipper")
+        ->createQueryBuilder('s')
+        ->select('s, t')
+        ->join('s.translations', 't')
+        ->where('s.id = :id')->setParameter(':id', $id)
+        ->andWhere('s.published = true')
+        ->andWhere('t.locale = :locale')->setParameter(':locale', 'fr')
+        ->getQuery()
+        ->getSingleResult();
+        
+        return $this->render('AppBundle:Front:skipper.html.twig',array('skipper'=> $skipper));
     }
 }
