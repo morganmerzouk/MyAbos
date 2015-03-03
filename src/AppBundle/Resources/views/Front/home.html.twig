@@ -1,8 +1,67 @@
 {% extends "AppBundle:Front:layout.html.twig" %}
-
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/app/js/lib/slick.js') }}" type="text/javascript"></script>  
+    <script src="{{ asset('bundles/app/js/home.js') }}" type="text/javascript"></script>  
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/lib/slick.css') }}">
+    <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/lib/slick-theme.css') }}">
+    <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/home.css') }}">
+{% endblock %}   
 {% block title %}{{toptitle}} - Accueil{% endblock %}
 
 
-{% block content %}    
-        Test
+{% block content %}
+	<div class="slider">
+		<div class="slider-item">
+		  	<div class="layer-left">
+		  		<div class="description">
+		  			<div>
+			  			Cabine disponible à bord d'une croisière Kite aux Grenadines.
+			  			Départ le 15 mars 2015
+				  	</div>
+				  	<img class="img-thumbnail" src="{{ asset('bundles/app/images/test/ICON-prestations-chef-75 pixels-noir.png') }}" />
+				  	<img class="img-thumbnail" src="{{ asset('bundles/app/images/test/ICON-prestations-high-end-75 pixels-noir.png') }}" />
+				  	<img class="img-thumbnail" src="{{ asset('bundles/app/images/test/ICON-prestations-hostess-75 pixels-noir.png') }}" />
+				  	<div class="price">$ 1280 / personne</div>
+		  		</div>
+			  	<a href="#" class="btn btn-danger btn-sm details">Détails</a>
+		  	</div>
+		  	<img class="img-responsive" src="{{ asset('bundles/app/images/test/slider1.jpg') }}" />
+		</div>		
+		<div class="slider-item">
+		  	<div class="layer-left">
+		  		<div class="description">
+		  			<div>
+			  			Cabine disponible à bord d'une croisière Kite en Guadeloupe.
+			  			Départ le 21 mai 2015
+		  			</div>
+				  	<img class="img-thumbnail" src="{{ asset('bundles/app/images/test/ICON-prestations-chef-75 pixels-noir.png') }}" />
+				  	<img class="img-thumbnail" src="{{ asset('bundles/app/images/test/ICON-prestations-high-end-75 pixels-noir.png') }}" />
+				  	<img class="img-thumbnail" src="{{ asset('bundles/app/images/test/ICON-prestations-hostess-75 pixels-noir.png') }}" />
+				  	<div class="price">$ 980 / personne</div>
+		  		</div>
+			  	<a href="#" class="btn btn-danger btn-sm details">Détails</a>
+		  	</div>
+		  	<img class="img-responsive" src="{{ asset('bundles/app/images/test/slider2.jpg') }}" />
+		</div>		
+		<div class="slider-item">
+		  	<div class="layer-left">
+		  		<div class="description">
+		  			<div>
+			  			Cabine disponible à bord d'une croisière Kite à St Barth'.
+			  			Départ le 5 avril 2015
+				  	</div>
+				  	<img class="img-thumbnail" src="{{ asset('bundles/app/images/test/ICON-prestations-chef-75 pixels-noir.png') }}" />
+				  	<img class="img-thumbnail" src="{{ asset('bundles/app/images/test/ICON-prestations-high-end-75 pixels-noir.png') }}" />
+				  	<img class="img-thumbnail" src="{{ asset('bundles/app/images/test/ICON-prestations-hostess-75 pixels-noir.png') }}" />
+				  	<div class="price">$ 2080 / personne</div>
+		  		</div>
+			  	<a href="#" class="btn btn-danger btn-sm details">Détails</a>
+		  	</div>
+		  	<img class="img-responsive" src="{{ asset('bundles/app/images/test/slider3.jpg') }}" />
+		</div>
+	</div>
 {% endblock content %}
