@@ -4,6 +4,6 @@
         <a class="logo" href="{{ path("homepage") }}"><img src="{{ asset('bundles/app/images/logo.png') }}" alt="logo kitesurfari" /></a>
     </div>
     <div>
-        {% include "AppBundle:Front:form/search_home.html.twig" %}
+        {%  render(controller('AppBundle:Front:searchHeader')) %}
     </div>
 </div>

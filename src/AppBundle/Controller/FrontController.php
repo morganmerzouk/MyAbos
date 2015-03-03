@@ -4,7 +4,7 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use AppBundle\Form\SearchHomeType;
+use AppBundle\Form\SearchHeaderType;
 
 class FrontController extends Controller
 {
@@ -13,7 +13,12 @@ class FrontController extends Controller
      */
     public function indexAction()
     {        
-        $form = $this->createForm(new SearchHomeType());
-        return $this->render('AppBundle:Front:home.html.twig', array('form' => $form->createView()));
+        return $this->render('AppBundle:Front:home.html.twig');
+    }
+    
+    public function searchHeaderAction()
+    {  
+        $form = $this->createForm(new SearchHeaderType());
+        return $this->render('AppBundle:Front:form/search_header.html.twig', array('form'=>$form->createView()));
     }
 }

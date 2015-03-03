@@ -1,7 +1,7 @@
 .slider .slick-prev {left: 10px;}
 .slider .slick-next {right: 10px;}
 .slider .layer-left { float: left; position: absolute; background: rgba(0,0,0,0.5); height: 100%; width: 33%;}
-.slider .description { width: 90%; background-color:#127BBD; margin: 20px auto;padding:15px;}
+.slider .description { width: 90%; background-color:#127BBD; margin: 20px auto;padding:15px;text-align: center;font-weight:bold;}
 .slider .description img {display: inline;}
 .slider .price {color: red;}
 .slider .details {display: block; margin: auto; margin-top: 20px;width: 80%;}

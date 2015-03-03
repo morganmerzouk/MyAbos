@@ -9,6 +9,14 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CroisiereController extends Controller {
     
+    /**
+     * @Route("/croisieres", name="croisieres")
+     */
+    public function indexAction()
+    {        
+        return $this->render('AppBundle:Front:croisieres.html.twig');
+    }
+    
     public function cloneAction()
     {
         $id = $this->get('request')->get($this->admin->getIdParameter());

@@ -1,0 +1,16 @@
+{% extends "AppBundle:Front:layout.html.twig" %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}   
+{% block title %}{{toptitle}} - Prestations{% endblock %}
+{% block content %}
+    {% for prestation in prestations %}
+        <div class="prestation">
+            {{ prestation.name }}
+            
+        </div>
+    {% endfor %}
+{% endblock content %}
