@@ -1,0 +1,32 @@
+{% extends "AppBundle:Front:layout.html.twig" %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/ensavoirplus.css') }}">
+{% endblock %}   
+{% block title %}{{toptitle}} - En savoir plus sur le réseau{% endblock %}
+
+
+{% block content %}
+	<h1>En savoir plus</h1>
+	{% include "AppBundle:Front:ensavoirplus/submenu.html.twig" %}
+	<div class="col-md-6">
+		Texte ici
+	</div>
+	<div class="col-md-6">
+		<a href="#" class="col-md-6 square">
+			Kitesurfari SXM's story
+		</a>
+		<a href="#" class="col-md-6 square">
+			Kitesurfari SXM's concept
+		</a>
+		<a href="#" class="col-md-6 square">
+			Kitesurfari SXM's partners
+		</a>
+		<a href="#" class="col-md-6 square">
+			How does it work
+		</a>
+	</div>
+{% endblock content %}

@@ -1,0 +1,15 @@
+{% extends "AppBundle:Front:layout.html.twig" %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/ensavoirplus.css') }}">
+{% endblock %}   
+{% block title %}{{toptitle}} - En savoir plus{% endblock %}
+
+
+{% block content %}
+	<h1>En savoir plus</h1>
+	{% include "AppBundle:Front:ensavoirplus/submenu.html.twig" %}
+{% endblock content %}

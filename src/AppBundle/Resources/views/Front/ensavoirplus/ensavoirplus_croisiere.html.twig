@@ -1,0 +1,31 @@
+{% extends "AppBundle:Front:layout.html.twig" %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/ensavoirplus.css') }}">
+{% endblock %}   
+{% block title %}{{toptitle}} - En savoir plus sur les croisières{% endblock %}
+
+
+{% block content %}
+	<h1>En savoir plus</h1>
+	{% include "AppBundle:Front:ensavoirplus/submenu.html.twig" %}
+	<div class="col-md-6">
+	</div>
+	<div class="col-md-6">
+		<a href="#" class="col-md-6 square">
+			What's a kite surfing cruise
+		</a>
+		<a href="#" class="col-md-6 square">
+			FAQ about kite surfing cruise
+		</a>
+		<a href="#" class="col-md-6 square">
+			Advantages of a kite surfing cruise
+		</a>
+		<a href="#" class="col-md-6 square">
+			The wind issue
+		</a>
+	</div>
+{% endblock content %}

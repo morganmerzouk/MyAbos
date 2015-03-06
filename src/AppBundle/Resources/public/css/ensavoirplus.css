@@ -1,0 +1,9 @@
+/*** Page En savoir plus ***/
+h1 {background: #23B6E1; font-size: 1.2em; padding: 10px;margin: 0;}
+.block-ensavoirplus-submenu { display: table; width: 100%; }
+.block-ensavoirplus-submenu a { display: table-cell; width: 33%; background: #127BBD; padding: 5px; font-size: 0.9em; text-align: center; color: black; }
+.block-ensavoirplus-submenu a:hover,
+.block-ensavoirplus-submenu a.active { text-decoration: none; color: black; background: #23B6E1; }
+
+.square, .square:focus, .square:visited, .square:active { background: #127BBD; text-align: center;color: black; text-decoration: none; line-height: 200px; height: 200px; margin: 10px 1% 0 1%; width: 48%; }
+.square:hover { background: #23B6E1;color: black; text-decoration: none;}
