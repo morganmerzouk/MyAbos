@@ -10,8 +10,17 @@
 
 
 {% block content %}
-	<h2>Captain {{ skipper.name }}</h2>
+	<h1>Captain {{ skipper.name }}</h1>
+        <div class="block-skipper-submenu">
+            <a href="#" class="skipper-home {{ true  ? "active" : "" }}">Présentation</a>
+            <a href="#" class="skipper-home {{ false  ? "active" : "" }}">Bateau</a>
+            <a href="#" class="skipper-home {{ false ? "active" : "" }}">XXXXXX</a>
+            <a href="#" class="skipper-dispo {{ false ? "active" : "" }}">XXXXXX</a>
+            <a href="#" class="skipper-home {{ false ? "active" : "" }}">Date non disponibilité</a>
+            <a href="#" class="skipper-home {{ false ? "active" : "" }}">XXXXXX</a>
+            <a href="#" class="skipper-contact {{ false ? "active" : "" }}">Contacter</a>
+        </div>
 	<div>
-	{{ skipper.description|raw }}
+            {{ skipper.description|raw }}
 	</div>
 {% endblock content %}

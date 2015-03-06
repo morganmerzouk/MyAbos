@@ -94,6 +94,10 @@ class Destination {
         return $this->id;
     }
 
+    public function getDescription(){
+        return $this->translate()->getDescription();
+    }
+    
     /**
      * Set published
      *

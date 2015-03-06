@@ -1,0 +1,39 @@
+{% extends "AppBundle:Front:layout.html.twig" %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/prestations.css') }}">
+{% endblock %}   
+{% block title %}{{toptitle}} - {{ prestation.name }}{% endblock %}
+
+
+{% block content %}
+	<h1>Prestations - Croisière Kite</h1>
+        <div class="block-prestations-name">
+        {% for prestationName in prestationsName %}<a href="{{ path('prestation', { 'id': prestationName.id }) }}" class="prestations-name {{ prestationName.name == prestation.name  ? "active" : "" }}">{{ prestationName.name|slice(14) }}</a>{% endfor %}
+        </div>
+	<div class="block-bateau-prestation">
+            <h4>Boat offering {{ prestation.name }}</h4>
+            <div class="row">
+                <img class="img-thumbnail" src="{{ asset("bundles/app/images/test/ICON-prestations-high-end-75 pixels-noir.png") }}" />
+                Bateau: lagoon 44
+            </div>
+            <div class="row">
+                <img class="img-thumbnail" src="{{ asset("bundles/app/images/test/ICON-prestations-high-end-75 pixels-noir.png") }}" />
+                Bateau: lagoon 44
+            </div>
+            <div class="row">
+                <img class="img-thumbnail" src="{{ asset("bundles/app/images/test/ICON-prestations-high-end-75 pixels-noir.png") }}" />
+                Bateau: lagoon 44
+            </div>
+            <div class="row">
+                <img class="img-thumbnail" src="{{ asset("bundles/app/images/test/ICON-prestations-high-end-75 pixels-noir.png") }}" />
+                Bateau: lagoon 44
+            </div>
+	</div>
+	<div>
+	{{ prestation.description|raw }}
+	</div>
+{% endblock content %}

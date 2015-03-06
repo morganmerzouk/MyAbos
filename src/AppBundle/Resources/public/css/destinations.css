@@ -1,0 +1,9 @@
+h1 {background: #23B6E1; font-size: 1.2em; padding: 10px;margin: 0;}
+.block-description-prestations { margin: 0; background: #127BBD; padding: 10px; }
+
+ul.menu-destinations { float: left; width: 15%; }
+
+/*** Page Destination ***/
+
+.block-bateau-destination { float: right; width: 30%; background: #23B6E1; border: 1px solid black; padding: 10px;text-align:center; margin: 10px 0 10px 10px; }
+.block-bateau-destination .row { background:#127BBD; padding: 10px; margin: 10px; text-align: left; }

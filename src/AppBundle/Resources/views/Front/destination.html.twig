@@ -1,0 +1,36 @@
+{% extends "AppBundle:Front:layout.html.twig" %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/destinations.css') }}">
+{% endblock %}   
+{% block title %}{{toptitle}} - {{ destination.name }}{% endblock %}
+
+
+{% block content %}
+	<h1>{{ destination.name }}</h1>
+	<div class="block-bateau-destination">
+            <h4>Les croisières vers {{ destination.name }}</h4>
+            <div class="row">
+                <img class="img-thumbnail" src="{{ asset("bundles/app/images/test/ICON-prestations-high-end-75 pixels-noir.png") }}" />
+                Bateau: lagoon 44
+            </div>
+            <div class="row">
+                <img class="img-thumbnail" src="{{ asset("bundles/app/images/test/ICON-prestations-high-end-75 pixels-noir.png") }}" />
+                Bateau: lagoon 44
+            </div>
+            <div class="row">
+                <img class="img-thumbnail" src="{{ asset("bundles/app/images/test/ICON-prestations-high-end-75 pixels-noir.png") }}" />
+                Bateau: lagoon 44
+            </div>
+            <div class="row">
+                <img class="img-thumbnail" src="{{ asset("bundles/app/images/test/ICON-prestations-high-end-75 pixels-noir.png") }}" />
+                Bateau: lagoon 44
+            </div>
+	</div>
+	<div>
+	{{ destination.description|raw }}
+	</div>
+{% endblock content %}

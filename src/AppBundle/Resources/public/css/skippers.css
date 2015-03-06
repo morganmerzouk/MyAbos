@@ -1,6 +1,14 @@
-h2 {background: #23B6E1; padding: 10px;}
+h1 {background: #23B6E1; font-size: 1.2em; padding: 10px;margin: 0;}
+
 .row-skipper { overflow: auto; }
-.skipper { width:30%; background: #23B6E1; padding: 10px; text-align: center; margin: 1%;}
+.skipper { width:30%; background: #127BBD; padding: 10px; text-align: center; margin: 1%;}
 .skipper p { text-align:left; font-size:0.9em;}
 .block-croisiere { float: right; width: 30%; border: 1px solid black; padding: 10px;text-align:center; }
 .block-croisiere .row { margin: 10px; text-align:left;}
+
+
+/*** Page Skipper ***/
+.block-skipper-submenu { display: table; width: 100%; }
+.block-skipper-submenu a { display: table-cell; background: #127BBD; padding: 5px; font-size: 0.9em; text-align: center; color: black; }
+.block-skipper-submenu a:hover,
+.block-skipper-submenu a.active { text-decoration: none; color: black; background: #23B6E1; }

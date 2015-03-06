@@ -79,6 +79,10 @@ class Prestation {
         return $this->id;
     }
 
+    public function getDescription(){
+        return $this->translate()->getDescription();
+    }
+    
     /**
      * Set published
      *
@@ -472,7 +476,7 @@ class Prestation {
         return $this->proxyCurrentLocaleTranslation($method, $arguments);
     }   
 
-        // Need this method for the admin list template
+    // Need this method for the admin list template
     public function getName(){
          return $this->translate()->getName();
     }

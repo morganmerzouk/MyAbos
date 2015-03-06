@@ -12,6 +12,32 @@ class BateauController extends Controller
      */
     public function indexAction()
     {        
-        return $this->render('AppBundle:Front:bateaux.html.twig');
+        $bateaux = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Bateau")
+        ->createQueryBuilder('s')
+        ->select('s, t')
+        ->join('s.translations', 't')
+        ->andWhere('s.published = true')
+        ->andWhere('t.locale = :locale')->setParameter(':locale', 'fr')
+        ->getQuery()
+        ->getResult();
+        return $this->render('AppBundle:Front:bateaux.html.twig',array('bateaux'=> $bateaux));
+    }
+    
+    /**
+     * @Route("/bateau/{id}", requirements={"id" = "\d+"}, name="bateau")
+     */
+    public function bateauAction($id)
+    {
+        $bateau = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Bateau")
+        ->createQueryBuilder('s')
+        ->select('s, t')
+        ->join('s.translations', 't')
+        ->where('s.id = :id')->setParameter(':id', $id)
+        ->andWhere('s.published = true')
+        ->andWhere('t.locale = :locale')->setParameter(':locale', 'fr')
+        ->getQuery()
+        ->getSingleResult();
+        
+        return $this->render('AppBundle:Front:bateau.html.twig',array('bateau'=> $bateau));
     }
 }

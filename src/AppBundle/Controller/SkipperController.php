@@ -12,7 +12,7 @@ class SkipperController extends Controller
      */
     public function indexAction()
     {        
-        $skippers = $this->getDoctrine()->getManager()->getRepository("AppBundle:skipper")
+        $skippers = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Skipper")
         ->createQueryBuilder('s')
         ->select('s, t')
         ->join('s.translations', 't')
@@ -28,7 +28,7 @@ class SkipperController extends Controller
      */
     public function skipperAction($id)
     {
-        $skipper = $this->getDoctrine()->getManager()->getRepository("AppBundle:skipper")
+        $skipper = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Skipper")
         ->createQueryBuilder('s')
         ->select('s, t')
         ->join('s.translations', 't')

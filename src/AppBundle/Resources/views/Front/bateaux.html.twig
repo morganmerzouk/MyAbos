@@ -4,10 +4,24 @@
 {% endblock %}
 {% block stylesheets %}
     {{ parent() }}
+    <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/bateaux.css') }}">
 {% endblock %}   
-{% block title %}{{toptitle}} - Flotte{% endblock %}
-
+{% block title %}{{toptitle}} - La Flotte{% endblock %}
 
 {% block content %}
-	
+    <h1>La flotte</h1>
+    {% for bateau in bateaux %}
+	    {% if loop.index0 % 3 == 0 %}
+	    	<div class="row-bateau">
+	    {% endif %}
+        <div class="col-md-2 col-20 bateau">
+        	<img class="img-responsive img-thumbnail" src="{{ bateau.miniatureWebPath }}" alt="photo {{ bateau.name }}" /><br />
+            <span>{{ bateau.name }}</span>
+            <p>{{ bateau.description|striptags|slice(0,100) ~ '...' }}</p>
+            <a class="btn btn-sm btn-warning pull-right" href="{{ path('bateau', { 'id': bateau.id }) }}">La suite</a>
+        </div>
+        {% if loop.index0 % 3 == 2 %}
+	        </div>
+        {% endif %}
+    {% endfor %}
 {% endblock content %}

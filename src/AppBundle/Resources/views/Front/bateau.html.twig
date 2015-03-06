@@ -1,0 +1,26 @@
+{% extends "AppBundle:Front:layout.html.twig" %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/bateaux.css') }}">
+{% endblock %}   
+{% block title %}{{toptitle}} - {{ bateau.name }}{% endblock %}
+
+
+{% block content %}
+	<h1>{{ bateau.name }}</h1>
+        <div class="block-bateau-submenu">
+            <a href="#" class="bateau-home {{ true  ? "active" : "" }}">Présentation</a>
+            <a href="#" class="bateau-home {{ false  ? "active" : "" }}">Fiche Technique</a>
+            <a href="#" class="bateau-home {{ false ? "active" : "" }}">Equipages</a>
+            <a href="#" class="bateau-dispo {{ false ? "active" : "" }}">Destinations et itinéraires</a>
+            <a href="#" class="bateau-home {{ false ? "active" : "" }}">Disponibilité</a>
+            <a href="#" class="bateau-home {{ false ? "active" : "" }}">Tarif</a>
+            <a href="#" class="bateau-contact {{ false ? "active" : "" }}">Contacter</a>
+        </div>
+	<div>
+            {{ bateau.description|raw }}
+	</div>
+{% endblock content %}

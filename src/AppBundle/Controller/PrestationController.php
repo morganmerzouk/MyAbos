@@ -13,7 +13,40 @@ class PrestationController extends Controller
     public function indexAction()
     {        
         $prestations = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Prestation")
-                   ->findBy(array('published'=> true));
-        return $this->render('AppBundle:Front:prestations.html.twig',array('prestations'=>$prestations));
+        ->createQueryBuilder('s')
+        ->select('s, t')
+        ->join('s.translations', 't')
+        ->andWhere('s.published = true')
+        ->andWhere('t.locale = :locale')->setParameter(':locale', 'fr')
+        ->getQuery()
+        ->getResult();
+        return $this->render('AppBundle:Front:prestations.html.twig',array('prestations'=> $prestations));
+    }
+    
+    /**
+     * @Route("/prestation/{id}", requirements={"id" = "\d+"}, name="prestation")
+     */
+    public function prestationAction($id)
+    {
+        $prestation = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Prestation")
+        ->createQueryBuilder('s')
+        ->select('s, t')
+        ->join('s.translations', 't')
+        ->where('s.id = :id')->setParameter(':id', $id)
+        ->andWhere('s.published = true')
+        ->andWhere('t.locale = :locale')->setParameter(':locale', 'fr')
+        ->getQuery()
+        ->getSingleResult();
+        
+        $prestationsName = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Prestation")
+        ->createQueryBuilder('s')
+        ->select('s.id, t.name')
+        ->join('s.translations', 't')
+        ->andWhere('s.published = true')
+        ->andWhere('t.locale = :locale')->setParameter(':locale', 'fr')
+        ->getQuery()
+        ->getResult();
+        
+        return $this->render('AppBundle:Front:prestation.html.twig',array('prestationsName' => $prestationsName, 'prestation'=> $prestation));
     }
 }
