@@ -9,10 +9,11 @@
         <li {% if app.request.attributes.get('_route') starts with 'ensavoirplus' %}class="active"{% endif %}><a href="{{ path('ensavoirplus') }}" class="nav-item nav-ensavoirplus">En savoir +</a></li>
         <li><a href="{{ path('liens') }}" class="nav-item nav-liens">Liens</a></li>
     </ul>
-    
-    <form type="action" class="newsletter">
-    	<legend>Newsletter</legend>
-    	<input type="text" placeholder="email" />
-    	<input type="submit" class="btn btn-danger" value="S'abonner" />
-    </form>
+    <div class="block-newsletter">
+	    <form type="action" class="newsletter">
+	    	<legend>Newsletter</legend>
+	    	<input type="text" class="newsletter-email" placeholder="email" />
+	    	<input type="submit" class="btn btn-sm btn-danger" value="S'abonner" />
+	    </form>
+    </div>
 </div>

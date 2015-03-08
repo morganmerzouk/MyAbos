@@ -17,5 +17,7 @@
 .nav-pills>li>a:hover, .nav-pills>li>a:focus, .nav-pills>li.active>a,.nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus 
 {background-color: #23B6E1; color:black;background-position: 10px 11px;}
 
-form.newsletter {background: #127BBD; text-align: center; }
-.newsletter legend { color:white; }
+.block-newsletter {background:white; padding-right: 11px; }
+form.newsletter {background: #127BBD; text-align: center; padding-bottom: 20px; }
+.newsletter legend { color:white;border: 0; margin-bottom: 5px;border-top: 1px solid white; }
+.newsletter-email { width: 60%;}

@@ -3,7 +3,7 @@
 .footer a:hover,.footer a:focus,.footer a:active { color: white; text-decoration:underline;}
 
 
-.social { list-style: none;overflow:auto; background:#127BBD;float: left;margin:0;padding: 3px;}
+.social { list-style: none;overflow:auto; background:#127BBD;float: left;margin:0;padding: 2px;}
 .social li {float:left;display:inline;margin-left: 4px;}
 .social li>a {display: block;width:31px; height:31px; background-repeat: no-repeat; background-position: 0 0;}
 .social>li>a:hover, .social>li>a:focus {background-position: 0px -31px;}
