@@ -64,4 +64,30 @@
 		  	<img class="img-responsive" src="{{ asset('bundles/app/images/test/slider3.jpg') }}" />
 		</div>
 	</div>
+	<ul class="lienHome">
+		<li class="flip">
+			<a href="{{ path("destinations") }}">
+				<div class="square-front square-destinations-front">Destinations</div>
+				<div class="square-back">Destinations<br /><br />Venez découvrir notre large choix de destination aux Caraïbes</div>
+			</a>
+		</li>
+		<li class="flip">
+			<a href="{{ path("prestations") }}">
+				<div class="square-front square-prestations-front">Prestations</div>
+				<div class="square-back">Prestations<br /><br />Bénéficiez de prestation en accord avec vos désirs</div>
+			</a>
+		</li>
+		<li class="flip">
+			<a href="{{ path("bateaux") }}">
+				<div class="square-front square-flotte-front">Flotte</div>
+				<div class="square-back">Flotte<br /><br />Découvrez les fiches techniques des bateaux que nous utilisons</div>
+			</a>
+		</li>
+		<li class="flip last">
+			<a href="{{ path("skippers") }}">
+				<div class="square-front square-equipages-front">Equipages</div>
+				<div class="square-back">Equipages<br /><br />Consultez les profils des skippers qui vous emmeneront en croisière</div>
+			</a>
+		</li>
+	</ul>
 {% endblock content %}
