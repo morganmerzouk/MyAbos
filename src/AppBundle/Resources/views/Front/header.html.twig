@@ -1,9 +1,13 @@
 <div class="container-header">
     <div class="title">
         <h1>Réseau de croisières kite aux Caraïbes</h1>
-        <a class="logo" href="{{ path("homepage") }}"><img src="{{ asset('bundles/app/images/logo.png') }}" alt="logo kitesurfari" /></a>
+        <a class="logo" href="{{ path("homepage") }}"><img src="{{ asset('bundles/app/images/general/logo.png') }}" alt="logo kitesurfari" /></a>
     </div>
     <div>
-        {%  render(controller('AppBundle:Front:searchHeader')) %}
+        <div class="lang">
+        	<a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}"><img src="{{ asset('bundles/app/images/general/drapeauEn.gif') }}" alt="logo kitesurfari" /></a>
+   	 		<a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}"><img src="{{ asset('bundles/app/images/general/drapeauFr.gif') }}" alt="logo kitesurfari" /></a>
+        </div>          
+        {%  render(controller('AppBundle:Front:searchHeader')) %}    
     </div>
 </div>

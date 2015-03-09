@@ -12,12 +12,15 @@ class SkipperController extends Controller
      */
     public function indexAction()
     {        
+        $request = $this->getRequest();
+        $locale = $request->getLocale();
+        
         $skippers = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Skipper")
         ->createQueryBuilder('s')
         ->select('s, t')
         ->join('s.translations', 't')
         ->andWhere('s.published = true')
-        ->andWhere('t.locale = :locale')->setParameter(':locale', 'fr')
+        ->andWhere('t.locale = :locale')->setParameter(':locale', $locale)
         ->getQuery()
         ->getResult();
         return $this->render('AppBundle:Front:skippers.html.twig',array('skippers'=> $skippers));

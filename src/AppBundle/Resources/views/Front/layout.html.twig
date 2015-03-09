@@ -6,8 +6,7 @@
         <!--[if lt IE 9]>
             <script src="{{ asset('bundles/jouveapp/js/plugins/respond.min.js') }}" type="text/javascript"></script>
         <![endif]-->
-        {% set toptitle = 'Kitesurfari SXM: Réseau de croisière aux Caraïbes' %}
-         <title>{% block title %}{{toptitle}}{% endblock %}</title>
+         <title>{% block title %}{{'toptitle'|trans}}{% endblock %}</title>
         {% block javascripts %}
             <script src="{{ asset('bundles/app/js/lib/modernizr.js') }}" type="text/javascript"></script> 
             <script src="{{ asset('bundles/app/js/lib/jquery.js') }}" type="text/javascript"></script>

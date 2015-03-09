@@ -13,6 +13,10 @@ class FrontController extends Controller
      */
     public function indexAction()
     {        
+        $request = $this->getRequest();
+        
+        $locale = $request->getLocale();
+        
         return $this->render('AppBundle:Front:home.html.twig');
     }
     

@@ -10,9 +10,7 @@
     <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/lib/slick-theme.css') }}">
     <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/home.css') }}">
 {% endblock %}   
-{% block title %}{{toptitle}} - Accueil{% endblock %}
-
-
+{% block title %}{{'toptitle'|trans}} - {{ 'home'|trans }}{% endblock %}
 {% block content %}
 	<div class="slider">
 		<div class="slider-item">

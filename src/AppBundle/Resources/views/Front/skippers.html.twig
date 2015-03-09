@@ -6,7 +6,7 @@
     {{ parent() }}
     <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/skippers.css') }}">
 {% endblock %}   
-{% block title %}{{toptitle}} - Equipages{% endblock %}
+{% block title %}{{'toptitle'|trans}} - Equipages{% endblock %}
 
 
 {% block content %}
@@ -37,7 +37,7 @@
         <div class="col-md-2 col-20 skipper">
         	<img class="img-responsive img-thumbnail" src="{{ skipper.avatarWebPath }}" alt="photo {{ skipper.name }}" /><br />
             <span>{{ skipper.name }}</span>
-            <p>{{ skipper.description|striptags|slice(0,100) ~ '...' }}</p>
+            <p>{{ skipper.description|trans|striptags|slice(0,100) ~ '...' }}</p>
             <a class="btn btn-sm btn-warning pull-right" href="{{ path('skipper', { 'id': skipper.id }) }}">La suite</a>
         </div>
         {% if loop.index0 % 3 == 2 %}
