@@ -12,12 +12,15 @@ class PrestationController extends Controller
      */
     public function indexAction()
     {        
+        $request = $this->getRequest();
+        $locale = $request->getLocale();
+        
         $prestations = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Prestation")
         ->createQueryBuilder('s')
         ->select('s, t')
         ->join('s.translations', 't')
         ->andWhere('s.published = true')
-        ->andWhere('t.locale = :locale')->setParameter(':locale', 'fr')
+        ->andWhere('t.locale = :locale')->setParameter(':locale', $locale)
         ->getQuery()
         ->getResult();
         return $this->render('AppBundle:Front:prestations.html.twig',array('prestations'=> $prestations));
@@ -28,13 +31,16 @@ class PrestationController extends Controller
      */
     public function prestationAction($id)
     {
+        $request = $this->getRequest();
+        $locale = $request->getLocale();
+        
         $prestation = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Prestation")
         ->createQueryBuilder('s')
         ->select('s, t')
         ->join('s.translations', 't')
         ->where('s.id = :id')->setParameter(':id', $id)
         ->andWhere('s.published = true')
-        ->andWhere('t.locale = :locale')->setParameter(':locale', 'fr')
+        ->andWhere('t.locale = :locale')->setParameter(':locale', $locale)
         ->getQuery()
         ->getSingleResult();
         
@@ -43,7 +49,7 @@ class PrestationController extends Controller
         ->select('s.id, t.name')
         ->join('s.translations', 't')
         ->andWhere('s.published = true')
-        ->andWhere('t.locale = :locale')->setParameter(':locale', 'fr')
+        ->andWhere('t.locale = :locale')->setParameter(':locale', $locale)
         ->getQuery()
         ->getResult();
         

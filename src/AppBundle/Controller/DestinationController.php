@@ -12,12 +12,15 @@ class DestinationController extends Controller
      */
     public function indexAction()
     {        
+        $request = $this->getRequest();
+        $locale = $request->getLocale();
+        
         $destinations = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Destination")
         ->createQueryBuilder('s')
         ->select('s, t')
         ->join('s.translations', 't')
         ->andWhere('s.published = true')
-        ->andWhere('t.locale = :locale')->setParameter(':locale', 'fr')
+        ->andWhere('t.locale = :locale')->setParameter(':locale', $locale)
         ->getQuery()
         ->getResult();
         return $this->render('AppBundle:Front:destinations.html.twig',array('destinations'=> $destinations));
@@ -29,13 +32,16 @@ class DestinationController extends Controller
      */
     public function skipperAction($id)
     {
+        $request = $this->getRequest();
+        $locale = $request->getLocale();
+        
         $destination = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Destination")
         ->createQueryBuilder('s')
         ->select('s, t')
         ->join('s.translations', 't')
         ->where('s.id = :id')->setParameter(':id', $id)
         ->andWhere('s.published = true')
-        ->andWhere('t.locale = :locale')->setParameter(':locale', 'fr')
+        ->andWhere('t.locale = :locale')->setParameter(':locale', $locale)
         ->getQuery()
         ->getSingleResult();
         

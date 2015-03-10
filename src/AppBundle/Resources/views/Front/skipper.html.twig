@@ -6,19 +6,19 @@
     {{ parent() }}
     <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/skippers.css') }}">
 {% endblock %}   
-{% block title %}{{toptitle}} - Equipages{% endblock %}
+{% block title %}{{'toptitle'|trans}} - {{'crew'|trans}}{% endblock %}
 
 
 {% block content %}
 	<h1>Captain {{ skipper.name }}</h1>
         <div class="block-skipper-submenu">
-            <a href="#" class="skipper-home {{ true  ? "active" : "" }}">Présentation</a>
-            <a href="#" class="skipper-home {{ false  ? "active" : "" }}">Bateau</a>
-            <a href="#" class="skipper-home {{ false ? "active" : "" }}">XXXXXX</a>
-            <a href="#" class="skipper-dispo {{ false ? "active" : "" }}">XXXXXX</a>
-            <a href="#" class="skipper-home {{ false ? "active" : "" }}">Date non disponibilité</a>
-            <a href="#" class="skipper-home {{ false ? "active" : "" }}">XXXXXX</a>
-            <a href="#" class="skipper-contact {{ false ? "active" : "" }}">Contacter</a>
+            <a href="#" class="skipper-home {{ true  ? "active" : "" }}">{{'skipper_presentation'|trans}}</a>
+            <a href="#" class="skipper-boat {{ false  ? "active" : "" }}">{{'skipper_boat'|trans}</a>
+            <a href="#" class="skipper-home {{ false ? "active" : "" }}">XXXXX</a>
+            <a href="#" class="skipper-desti {{ false ? "active" : "" }}">{{'skipper_desti'|trans}}</a>
+            <a href="#" class="skipper-available {{ false ? "active" : "" }}">{{'skipper_availability'|trans}}</a>
+            <a href="#" class="skipper-price {{ false ? "active" : "" }}">{{'skipper_price'|trans}}</a>
+            <a href="#" class="skipper-contact {{ false ? "active" : "" }}">{{'skipper_contact'|trans}}</a>
         </div>
 	<div>
             {{ skipper.description|raw }}

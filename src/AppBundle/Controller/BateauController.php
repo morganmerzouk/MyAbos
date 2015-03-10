@@ -12,12 +12,15 @@ class BateauController extends Controller
      */
     public function indexAction()
     {        
+        $request = $this->getRequest();
+        $locale = $request->getLocale();
+        
         $bateaux = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Bateau")
         ->createQueryBuilder('s')
         ->select('s, t')
         ->join('s.translations', 't')
         ->andWhere('s.published = true')
-        ->andWhere('t.locale = :locale')->setParameter(':locale', 'fr')
+        ->andWhere('t.locale = :locale')->setParameter(':locale', $locale)
         ->getQuery()
         ->getResult();
         return $this->render('AppBundle:Front:bateaux.html.twig',array('bateaux'=> $bateaux));
@@ -28,13 +31,16 @@ class BateauController extends Controller
      */
     public function bateauAction($id)
     {
+        $request = $this->getRequest();
+        $locale = $request->getLocale();
+        
         $bateau = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Bateau")
         ->createQueryBuilder('s')
         ->select('s, t')
         ->join('s.translations', 't')
         ->where('s.id = :id')->setParameter(':id', $id)
         ->andWhere('s.published = true')
-        ->andWhere('t.locale = :locale')->setParameter(':locale', 'fr')
+        ->andWhere('t.locale = :locale')->setParameter(':locale', $locale)
         ->getQuery()
         ->getSingleResult();
         

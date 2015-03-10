@@ -1,5 +1,5 @@
 <div class="block-ensavoirplus-submenu">
-    <a href="{{ path("ensavoirplus_croisiere") }}" class="ensavoirplus-croisiere {% if app.request.attributes.get('_route') ends with 'croisiere' %}active{% endif %}">Sur les croisières</a>
-    <a href="{{ path("ensavoirplus_reseau") }}" class="ensavoirplus-reseau {% if app.request.attributes.get('_route') ends with 'reseau' %}active{% endif %}">Sur le réseau</a>
-    <a href="{{ path("ensavoirplus_meteo") }}" class="ensavoirplus-meteo {% if app.request.attributes.get('_route') ends with 'meteo' %}active{% endif %}">Sur la météo aux Antilles</a>
+    <a href="{{ path("ensavoirplus_croisiere") }}" class="ensavoirplus-croisiere {% if app.request.attributes.get('_route') ends with 'croisiere' %}active{% endif %}">{{'know_more_cruise'|trans}}</a>
+    <a href="{{ path("ensavoirplus_reseau") }}" class="ensavoirplus-reseau {% if app.request.attributes.get('_route') ends with 'reseau' %}active{% endif %}">{{'know_more_network'|trans}}</a>
+    <a href="{{ path("ensavoirplus_meteo") }}" class="ensavoirplus-meteo {% if app.request.attributes.get('_route') ends with 'meteo' %}active{% endif %}">{{'know_more_weather'|trans}}</a>
 </div>

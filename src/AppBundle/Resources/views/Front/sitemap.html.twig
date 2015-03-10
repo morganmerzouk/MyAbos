@@ -6,8 +6,8 @@
     {{ parent() }}
     <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/sitemap.css') }}">
 {% endblock %}   
-{% block title %}{{'toptitle'|trans}} - Plan du site{% endblock %}
+{% block title %}{{'toptitle'|trans}} - {{'sitemap'|trans}}{% endblock %}
 
 {% block content %}
-    <h1>Plan du site</h1>
+    <h1>{{'sitemap'|trans}}</h1>
 {% endblock content %}

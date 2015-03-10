@@ -6,14 +6,13 @@
     {{ parent() }}
     <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/destinations.css') }}">
 {% endblock %}   
-{% block title %}{{toptitle}} - Destinations{% endblock %}
+{% block title %}{{'toptitle'|trans}} - {{'destinations'|trans}}{% endblock %}
 
 
 {% block content %}
-	<h1>Destinations</h1>
+	<h1>{{'destinations'|trans}}</h1>
         <div class="block-description-destinations">
-            Destination for a kite surfing cruise<br />
-            The carribean offer ideal conditions for kitesurfing 10 months per year. This heaven like islands offer a high diversities of identities, culture as well as unique (and for many of them world class) kiteboarding playground.
+            {{'destinations_intro'|trans}}
         </div>
         
         <ul class="menu-destinations">

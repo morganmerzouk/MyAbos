@@ -1,6 +1,6 @@
 <form action="" class="searchHome" method="post" {{ form_enctype(form) }}>
     <fieldset>
-        <legend>Trouver une croisière</legend>
+        <legend>{{'find_cruise'|trans}}</legend>
         <div class="criteria criteria-date">
             {{ form_label(form.dateDepart) }}
             {{ form_errors(form.dateDepart) }}
@@ -29,7 +29,7 @@
         <div class="btn-search">
             <button class="btn btn-sm btn-danger" type="submit">
                 <span class="glyphicon glyphicon-search"></span>
-                Rechercher
+                {{'find_button'|trans}}
             </button>
         </div>
     </fieldset>

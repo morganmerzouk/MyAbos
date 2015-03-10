@@ -31,13 +31,16 @@ class SkipperController extends Controller
      */
     public function skipperAction($id)
     {
+        $request = $this->getRequest();
+        $locale = $request->getLocale();
+        
         $skipper = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Skipper")
         ->createQueryBuilder('s')
         ->select('s, t')
         ->join('s.translations', 't')
         ->where('s.id = :id')->setParameter(':id', $id)
         ->andWhere('s.published = true')
-        ->andWhere('t.locale = :locale')->setParameter(':locale', 'fr')
+        ->andWhere('t.locale = :locale')->setParameter(':locale', $locale)
         ->getQuery()
         ->getSingleResult();
         

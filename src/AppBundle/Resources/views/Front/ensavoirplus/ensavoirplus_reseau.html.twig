@@ -6,11 +6,11 @@
     {{ parent() }}
     <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/ensavoirplus.css') }}">
 {% endblock %}   
-{% block title %}{{toptitle}} - En savoir plus sur le réseau{% endblock %}
+{% block title %}{{'toptitle'|trans}} - {{'know_more'|trans}} {{'know_more_network'|trans}}{% endblock %}
 
 
 {% block content %}
-	<h1>En savoir plus</h1>
+	<h1>{{'toptitle'|trans}}</h1>
 	{% include "AppBundle:Front:ensavoirplus/submenu.html.twig" %}
 	<div class="col-md-6">
 		Texte ici
