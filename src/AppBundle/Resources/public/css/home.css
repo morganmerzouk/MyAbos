@@ -11,10 +11,10 @@
 .lienHome li.last {margin-right:0px; }
 .square-front, .square-back {width: 100%;height: 100%; padding-top: 10px;}
 .square-back {width: 100%;height: 100%; padding: 10px 40px;background-image: none;background:#127BBD;color: white;}
-.square-destinations-front {background: url("../images/icones/icon-destinations-noir-75pix.png") #23B6E1 center center no-repeat;}
-.square-prestations-front {background: url("../images/icones/icon-prestations-noir-75pix.png") #23B6E1 center center no-repeat;}
-.square-flotte-front {background: url("../images/icones/icon-flotte-noir-75pix.png") #23B6E1 center center no-repeat;}
-.square-equipages-front {background: url("../images/icones/icon-equipages-noir-75pix.png") #23B6E1 center center no-repeat;margin-right:0;}
+.square-destinations-front {background: url("../images/icones/home/icon-destinations-noir-75pix.png") #23B6E1 center center no-repeat;}
+.square-prestations-front {background: url("../images/icones/home/icon-prestations-noir-75pix.png") #23B6E1 center center no-repeat;}
+.square-flotte-front {background: url("../images/icones/home/icon-flotte-noir-75pix.png") #23B6E1 center center no-repeat;}
+.square-equipages-front {background: url("../images/icones/home/icon-equipages-noir-75pix.png") #23B6E1 center center no-repeat;margin-right:0;}
 
 /*** Flip effect ***/
 .flip {

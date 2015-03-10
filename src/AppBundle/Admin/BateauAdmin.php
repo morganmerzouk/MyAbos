@@ -180,16 +180,84 @@ class BateauAdmin extends Admin
                             'required' => false,
                             )
                         ),                                                  
-                        
+                        'longueur' => array(
+                            'label' => 'Longueur: ',
+                            'label_attr' => array('class' => 'control-longueur'),
+                            'attr' => array('class' => 'bateau-longueur'),
+                            'locale_options' => array(
+                                'en' => array(
+                                    'label' => 'Length: '
+                                ),
+                                'required' => false,
+                            )
+                        ),
+                        'largeur' => array(
+                            'label' => 'Largeur: ',
+                            'label_attr' => array('class' => 'control-largeur'),
+                            'attr' => array('class' => 'bateau-largeur'),
+                            'locale_options' => array(
+                                'en' => array(
+                                    'label' => 'Width: '
+                                ),
+                                'required' => false,
+                            )
+                        ),
+                        'tirantdeau' => array(
+                            'label' => 'Tirant d\'eau: ',
+                            'label_attr' => array('class' => 'control-tirantdeau'),
+                            'attr' => array('class' => 'bateau-tirantdeau'),
+                            'locale_options' => array(
+                                'en' => array(
+                                    'label' => 'Tirant d\'eau: '
+                                ),
+                                'required' => false,
+                            )
+                        ),
+                        'moteur' => array(
+                            'label' => 'Moteur: ',
+                            'label_attr' => array('class' => 'control-moteur'),
+                            'attr' => array('class' => 'bateau-moteur'),
+                            'locale_options' => array(
+                                'en' => array(
+                                    'label' => 'Engine: '
+                                ),
+                                'required' => false,
+                            )
+                        ),
+                        'surfaceGrandVoile' => array(
+                            'label' => 'Surface grand voile: ',
+                            'label_attr' => array('class' => 'control-surfacegrandvoile'),
+                            'attr' => array('class' => 'bateau-surfacegrandvoile'),
+                            'locale_options' => array(
+                                'en' => array(
+                                    'label' => 'Surface grand voile: '
+                                ),
+                                'required' => false,
+                            )
+                        ),
+                        'reservoirCarburant' => array(
+                            'label' => 'Réservoir carburant: ',
+                            'label_attr' => array('class' => 'control-reservoirCarburant'),
+                            'attr' => array('class' => 'bateau-reservoirCarburant'),
+                            'locale_options' => array(
+                                'en' => array(
+                                    'label' => 'Fuel tank: '
+                                ),
+                                'required' => false,
+                            )
+                        ),
+                        'reservoirEau' => array(
+                            'label' => 'Réservoir d\'eau: ',
+                            'label_attr' => array('class' => 'control-reservoirEau'),
+                            'attr' => array('class' => 'bateau-reservoirEau'),
+                            'locale_options' => array(
+                                'en' => array(
+                                    'label' => 'Water tank: '
+                                ),
+                                'required' => false,
+                            )
+                        ),
                     )))
-            ->add('longueur', 'text', array('label' => 'Longueur: ', 'required'=> false, 'label_attr' => array('class' => 'control-longueur'),  'attr' => array('class' => 'bateau-longueur')))
-            ->add('largeur', 'text', array('label' => 'Largeur: ', 'required'=> false, 'label_attr' => array('class' => 'control-largeur'),  'attr' => array('class' => 'bateau-largeur')))
-            ->add('tirantdeau', 'text', array('label' => 'Tirant d\'eau: ', 'required'=> false, 'label_attr' => array('class' => 'control-tirantdeau'),  'attr' => array('class' => 'bateau-tirantdeau')))
-            ->add('surfaceGrandVoile', 'text', array('label' => 'Surface Grand voile: ', 'required'=> false, 'label_attr' => array('class' => 'control-surfacegrandvoile'),  'attr' => array('class' => 'bateau-surfacegrandvoile')))
-            ->add('moteur', 'text', array('label' => 'Moteur: ', 'required'=> false, 'label_attr' => array('class' => 'control-moteur'),  'attr' => array('class' => 'bateau-moteur')))
-            ->add('reservoirCarburant', 'text', array('label' => 'Réservoir carburant: ', 'required'=> false, 'label_attr' => array('class' => 'control-reservoircarburant'),  'attr' => array('class' => 'bateau-reservoircarburant')))
-            ->add('reservoirEau', 'text', array('label' => 'Réservoir d\'eau: ', 'required'=> false, 'label_attr' => array('class' => 'control-reservoireau'),  'attr' => array('class' => 'bateau-reservoireau')))
-            
             ->add('nbCabine', 'choice', array('label' => 'Nb de cabine: ',
                 'label_attr' => array('class' => 'control-bateau-nbcabine'),    
                 'choice_list' => $this->loadChoiceList("cabine"),
@@ -201,12 +269,6 @@ class BateauAdmin extends Admin
                 'choice_list' => $this->loadChoiceList("douche"),
                 'expanded' => true,
                 'attr' => array("class"=>"bateau-list-radio")
-            ))
-            ->add('nbEquipier', 'choice', array('label' => 'Nb d\'équipier: ',
-                'label_attr' => array('class' => 'control-bateau-nbequipier'),    
-                'choice_list' => $this->loadChoiceList("equipier"),
-                'expanded' => true,
-                'attr' => array("class"=>"bateau-list-radio"),
             ))
             ->add('type', 'choice', array('label' => 'Type: ',
                     'expanded'=>true,
@@ -316,7 +378,7 @@ class BateauAdmin extends Admin
                     '6' => '6'
                 );
         }
-        elseif($type=="type"){$item = array('Monohull','Catamaran');}
+        elseif($type=="type"){$item = array('Monohull' => 'Monohull','Catamaran' =>'Catamaran');}
         elseif($type=="equipier"){
             $item = array(
                     '1' => '1',

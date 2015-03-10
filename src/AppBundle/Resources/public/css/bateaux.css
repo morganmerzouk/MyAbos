@@ -1,4 +1,4 @@
-h1 {background: #23B6E1; font-size: 1.2em; padding: 10px;margin: 0;}
+h1 {background: url("../images/menu/icones/icon-sprite-flotte.png") no-repeat 5px 10px #23B6E1; font-size: 1.2em; padding: 10px 10px 10px 30px;margin: 0;}
 .block-description-bateaux { margin: 0; background: #127BBD; padding: 10px; }
 .row-prestation { overflow: auto; }
 .prestation { width:30%; background: #127BBD; padding: 10px; text-align: center; margin: 1%;}
@@ -6,11 +6,22 @@ h1 {background: #23B6E1; font-size: 1.2em; padding: 10px;margin: 0;}
 
 .block-croisiere .row { margin: 10px; text-align:left;}
 
-/*** Page Prestation ***/
-.block-prestations-name { display: table; width: 100%; }
-.prestations-name { display: table-cell; background: #127BBD; padding: 5px; font-size: 0.9em; text-align: center; color: black; }
-.prestations-name:hover,
-.prestations-name.active { text-decoration: none; color: black; background: #23B6E1; }
 
-.block-bateau-prestation { float: right; width: 30%; background: #23B6E1; border: 1px solid black; padding: 10px;text-align:center; margin: 10px 0 10px 10px; }
-.block-bateau-prestation .row { background:#127BBD; padding: 10px; margin: 10px; text-align: left; }
+/*** Page Bateau ***/
+.block-bateau-submenu { display: table; width: 100%; }
+.block-bateau-submenu a { display: table-cell; color: white;background-repeat: no-repeat; background-position: 5px -30px; background-color:#127BBD; padding: 10px; font-size: 0.9em; padding-left: 40px;}
+.block-bateau-submenu a:hover,
+.block-bateau-submenu a.active { text-decoration: none; color: black; background-repeat: no-repeat; background-color: #23B6E1; background-position: 5px 5px; }
+
+.bateau-home { background-image: url("../images/icones/boat/icon-boat%20file-25%20pix.png"); }
+.bateau-fiche { background-image: url("../images/icones/boat/icon-presentation-25%20pix.png"); }
+.bateau-crew { background-image: url("../images/icones/boat/icon-skipper-25%20pix.png"); }
+.bateau-desti { background-image: url("../images/icones/boat/icon-itineraires-25%20pix.png"); }
+.bateau-dispo { background-image: url("../images/icones/boat/icon-disponibilites-25%20pix.png"); }
+.bateau-price { background-image: url("../images/icones/boat/icon-tarifs-et-options-25%20pix.png"); }
+.bateau-contact { background-image: url("../images/icones/boat/icon-devis-et-contact-25%20pix.png"); }
+
+.col-fiche-bateau{ border: 3px solid #23B6E1; margin-top: 10px;padding:0;}
+.col-fiche-bateau div { margin: 0px 10px; border: 1px solid white;background: #127BBD;color:white;}
+.col-fiche-bateau img {background: #23B6E1;padding: 5px;border-right: 2px solid white;margin-right:10px;}
+.col-fiche-bateau h3 {background: #23B6E1; font-size: 1.1em; padding: 10px; margin: 0;font-weight:bold;}

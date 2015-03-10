@@ -44,7 +44,7 @@ class BateauTranslation
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
      */
-    protected $canot;
+    protected $dinghy;
     
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
@@ -55,6 +55,202 @@ class BateauTranslation
      * @ORM\Column(type="string", length=200, nullable=true)
      */
     protected $autre;
+    
+
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $longueur;
+    
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $largeur;
+    
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $tirantdeau;
+    
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $surfaceGrandVoile;
+    
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $moteur;
+    
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $reservoirCarburant;
+    
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $reservoirEau;
+    
+
+    /**
+     * Set longueur
+     *
+     * @param string $longueur
+     * @return Bateau
+     */
+    public function setLongueur($longueur)
+    {
+        $this->longueur = $longueur;
+    
+        return $this;
+    }
+    
+    /**
+     * Get longueur
+     *
+     * @return string
+     */
+    public function getLongueur()
+    {
+        return $this->longueur;
+    }
+    
+    /**
+     * Set largeur
+     *
+     * @param string $largeur
+     * @return Bateau
+     */
+    public function setLargeur($largeur)
+    {
+        $this->largeur = $largeur;
+    
+        return $this;
+    }
+    
+    /**
+     * Get largeur
+     *
+     * @return string
+     */
+    public function getLargeur()
+    {
+        return $this->largeur;
+    }
+    
+    /**
+     * Set moteur
+     *
+     * @param string $moteur
+     * @return Bateau
+     */
+    public function setMoteur($moteur)
+    {
+        $this->moteur = $moteur;
+    
+        return $this;
+    }
+    
+    /**
+     * Get moteur
+     *
+     * @return string
+     */
+    public function getMoteur()
+    {
+        return $this->moteur;
+    }
+    
+    /**
+     * Set tirantdeau
+     *
+     * @param string $tirantdeau
+     * @return Bateau
+     */
+    public function setTirantdeau($tirantdeau)
+    {
+        $this->tirantdeau = $tirantdeau;
+    }
+    
+    /**
+     * Get tirantdeau
+     *
+     * @return string
+     */
+    public function getTirantdeau()
+    {
+        return $this->tirantdeau;
+    }
+    
+    /**
+     * Set surfaceGrandVoile
+     *
+     * @param string $surfaceGrandVoile
+     * @return Bateau
+     */
+    public function setSurfaceGrandVoile($surfaceGrandVoile)
+    {
+        $this->surfaceGrandVoile = $surfaceGrandVoile;
+    
+        return $this;
+    }
+    
+    /**
+     * Get surfaceGrandVoile
+     *
+     * @return string
+     */
+    public function getSurfaceGrandVoile()
+    {
+        return $this->surfaceGrandVoile;
+    }
+    
+    /**
+     * Set reservoirCarburant
+     *
+     * @param string $reservoirCarburant
+     * @return Bateau
+     */
+    public function setReservoirCarburant($reservoirCarburant)
+    {
+        $this->reservoirCarburant = $reservoirCarburant;
+    
+        return $this;
+    }
+    
+    /**
+     * Get reservoirCarburant
+     *
+     * @return string
+     */
+    public function getReservoirCarburant()
+    {
+        return $this->reservoirCarburant;
+    }
+    
+    /**
+     * Set reservoirEau
+     *
+     * @param string $reservoirEau
+     * @return Bateau
+     */
+    public function setReservoirEau($reservoirEau)
+    {
+        $this->reservoirEau = $reservoirEau;
+    
+        return $this;
+    }
+    
+    /**
+     * Get reservoirEau
+     *
+     * @return string
+     */
+    public function getReservoirEau()
+    {
+        return $this->reservoirEau;
+    }
     
     /**
      * Set description
@@ -92,40 +288,7 @@ class BateauTranslation
 
         return $this;
     }
-
-    /**
-     * Get nbCabine
-     *
-     * @return integer 
-     */
-    public function getNbCabine()
-    {
-        return $this->nbCabine;
-    }
-
-    /**
-     * Set nbDouche
-     *
-     * @param integer $nbDouche
-     * @return BateauTranslation
-     */
-    public function setNbDouche($nbDouche)
-    {
-        $this->nbDouche = $nbDouche;
-
-        return $this;
-    }
-
-    /**
-     * Get nbDouche
-     *
-     * @return integer 
-     */
-    public function getNbDouche()
-    {
-        return $this->nbDouche;
-    }
-
+  
     /**
      * Set equipementCuisine
      *
@@ -196,26 +359,26 @@ class BateauTranslation
     }
 
     /**
-     * Set canot
+     * Set dinghy
      *
-     * @param string $canot
+     * @param string $dinghy
      * @return BateauTranslation
      */
-    public function setCanot($canot)
+    public function setDinghy($dinghy)
     {
-        $this->canot = $canot;
+        $this->dinghy = $dinghy;
 
         return $this;
     }
 
     /**
-     * Get canot
+     * Get dinghy
      *
      * @return string 
      */
-    public function getCanot()
+    public function getDinghy()
     {
-        return $this->canot;
+        return $this->dinghy;
     }
 
     /**

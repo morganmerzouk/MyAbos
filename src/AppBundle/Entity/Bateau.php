@@ -32,41 +32,6 @@ class Bateau {
      * @ORM\Column(type="string", length=200, nullable=true)
      */
     protected $name;
-
-    /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    protected $longueur;
-    
-    /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    protected $largeur;
-
-    /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    protected $tirantdeau;
-
-    /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    protected $surfaceGrandVoile;
-    
-    /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    protected $moteur;
-
-    /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    protected $reservoirCarburant;
-    
-    /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    protected $reservoirEau;
     
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
@@ -160,12 +125,7 @@ class Bateau {
      * @ORM\Column(type="integer", nullable=true)
      */
     protected $nbDouche;
-    
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    protected $nbEquipier;
-    
+        
     /**
      * @ORM\OneToOne(targetEntity="InclusPrix")
      */
@@ -217,7 +177,48 @@ class Bateau {
     {
         return $this->id;
     }
-        
+    
+    // Need this method for the admin list template and front
+    public function getDescription(){
+        return $this->translate()->getDescription();
+    }
+    
+    public function getLongueur(){
+        return $this->translate()->getLongueur();
+    }
+    public function getLargeur(){
+        return $this->translate()->getLargeur();
+    }
+    public function getMoteur(){
+        return $this->translate()->getMoteur();
+    }
+    public function getTirantdeau(){
+        return $this->translate()->getLargeur();
+    }
+    public function getSurfaceGrandVoile(){
+        return $this->translate()->getSurfaceGrandVoile();
+    }
+    public function getReservoirCarburant(){
+        return $this->translate()->getReservoirCarburant();
+    }
+    public function getReservoirEau(){
+        return $this->translate()->getReservoirEau();
+    }
+    public function getEquipementCuisine(){
+        return $this->translate()->getEquipementCuisine();
+    }
+    public function getLoisir(){
+        return $this->translate()->getLoisir();
+    }
+    public function getEnergie(){
+        return $this->translate()->getEnergie();
+    }
+    public function getDinghy(){
+        return $this->translate()->getDinghy();
+    }
+    public function getJouet(){
+        return $this->translate()->getJouet();
+    }
     /**
      * Set name
      *
@@ -241,74 +242,6 @@ class Bateau {
         return $this->name;
     }
     
-    /**
-     * Set longueur
-     *
-     * @param string $longueur
-     * @return Bateau
-     */
-    public function setLongueur($longueur)
-    {
-        $this->longueur = $longueur;
-    
-        return $this;
-    }
-    
-    /**
-     * Get longueur
-     *
-     * @return string
-     */
-    public function getLongueur()
-    {
-        return $this->longueur;
-    }
-    
-    /**
-     * Set largeur
-     *
-     * @param string $largeur
-     * @return Bateau
-     */
-    public function setLargeur($largeur)
-    {
-        $this->largeur = $largeur;
-    
-        return $this;
-    }
-    
-    /**
-     * Get largeur
-     *
-     * @return string
-     */
-    public function getLargeur()
-    {
-        return $this->largeur;
-    }
-    
-    /**
-     * Set moteur
-     *
-     * @param string $moteur
-     * @return Bateau
-     */
-    public function setMoteur($moteur)
-    {
-        $this->moteur = $moteur;
-    
-        return $this;
-    }
-    
-    /**
-     * Get moteur
-     *
-     * @return string
-     */
-    public function getMoteur()
-    {
-        return $this->moteur;
-    }
     
     /**
      * Set published
@@ -456,7 +389,7 @@ class Bateau {
     {
         return null === $this->miniature
         ? null
-        : $this->getUploadDir().'/'.$this->miniature;
+        : $this->getUploadDir().'/miniature/'.$this->miniature;
     }
     
     public function getPhotoVoileWebPath()
@@ -890,50 +823,6 @@ class Bateau {
     }
 
     /**
-     * Set nbEquipier
-     *
-     * @param integer $nbEquipier
-     * @return Bateau
-     */
-    public function setNbEquipier($nbEquipier)
-    {
-        $this->nbEquipier = $nbEquipier;
-
-        return $this;
-    }
-
-    /**
-     * Get nbEquipier
-     *
-     * @return integer 
-     */
-    public function getNbEquipier()
-    {
-        return $this->nbEquipier;
-    }
-
-    /**
-     * Set tirantdeau
-     *
-     * @param string $tirantdeau
-     * @return Bateau
-     */
-    public function setTirantdeau($tirantdeau)
-    {
-        $this->tirantdeau = $tirantdeau;
-    }
-    
-    /**
-     * Get tirantdeau
-     *
-     * @return string 
-     */
-    public function getTirantdeau()
-    {
-        return $this->tirantdeau;
-    }
-
-    /**
      * Constructor
      */
     public function __construct()
@@ -996,77 +885,7 @@ class Bateau {
     {
         return $this->inclusPrixAvitaillement;
     }
-
-
-    /**
-     * Set surfaceGrandVoile
-     *
-     * @param string $surfaceGrandVoile
-     * @return Bateau
-     */
-    public function setSurfaceGrandVoile($surfaceGrandVoile)
-    {
-        $this->surfaceGrandVoile = $surfaceGrandVoile;
-
-        return $this;
-    }
-
-    /**
-     * Get surfaceGrandVoile
-     *
-     * @return string 
-     */
-    public function getSurfaceGrandVoile()
-    {
-        return $this->surfaceGrandVoile;
-    }
-
-    /**
-     * Set reservoirCarburant
-     *
-     * @param string $reservoirCarburant
-     * @return Bateau
-     */
-    public function setReservoirCarburant($reservoirCarburant)
-    {
-        $this->reservoirCarburant = $reservoirCarburant;
-
-        return $this;
-    }
-
-    /**
-     * Get reservoirCarburant
-     *
-     * @return string 
-     */
-    public function getReservoirCarburant()
-    {
-        return $this->reservoirCarburant;
-    }
-
-    /**
-     * Set reservoirEau
-     *
-     * @param string $reservoirEau
-     * @return Bateau
-     */
-    public function setReservoirEau($reservoirEau)
-    {
-        $this->reservoirEau = $reservoirEau;
-
-        return $this;
-    }
-
-    /**
-     * Get reservoirEau
-     *
-     * @return string 
-     */
-    public function getReservoirEau()
-    {
-        return $this->reservoirEau;
-    }
-
+    
     /**
      * Set inclusPrixEquipage
      *

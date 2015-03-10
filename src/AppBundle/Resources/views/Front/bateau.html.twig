@@ -13,14 +13,37 @@
 	<h1>{{ bateau.name }}</h1>
         <div class="block-bateau-submenu">
             <a href="#" class="bateau-home {{ true  ? "active" : "" }}">{{'boat_presentation'|trans}}</a>
-            <a href="#" class="bateau-home {{ false  ? "active" : "" }}">{{'boat_fiche'|trans}}</a>
-            <a href="#" class="bateau-home {{ false ? "active" : "" }}">{{'boat_crew'|trans}}</a>
-            <a href="#" class="bateau-dispo {{ false ? "active" : "" }}">{{'boat_desti'|trans}}</a>
-            <a href="#" class="bateau-home {{ false ? "active" : "" }}">{{'boat_dispo'|trans}}</a>
-            <a href="#" class="bateau-home {{ false ? "active" : "" }}">{{'boat_price'|trans}}</a>
+            <a href="#" class="bateau-fiche {{ false  ? "active" : "" }}">{{'boat_fiche'|trans}}</a>
+            <a href="#" class="bateau-crew {{ false ? "active" : "" }}">{{'boat_crew'|trans}}</a>
+            <a href="#" class="bateau-desti {{ false ? "active" : "" }}">{{'boat_desti'|trans}}</a>
+            <a href="#" class="bateau-dispo {{ false ? "active" : "" }}">{{'boat_dispo'|trans}}</a>
+            <a href="#" class="bateau-price {{ false ? "active" : "" }}">{{'boat_price'|trans}}</a>
             <a href="#" class="bateau-contact {{ false ? "active" : "" }}">{{'boat_contact'|trans}}</a>
         </div>
 	<div>
+		<div class="col-fiche-bateau col-md-6">
+			<h3>Configuration du bateau</h3>
+			<div><img src="{{ asset('bundles/app/images/icones/boat/1-icons-boat-tech-file-50pix-'~bateau.type|lower~'-noir.png') }}" />{{bateau.type}}</div>
+			<div><img src="{{ asset('bundles/app/images/icones/boat/2-icons-boat-tech-file-50pix-CABINS-'~bateau.nbCabine~'-noir.png') }}" />{{bateau.nbCabine}} cabines</div>
+			<div><img src="{{ asset('bundles/app/images/icones/boat/1A-icons-boat-tech-file-50pix-monohull-noir.png') }}" />8 couchages</div>
+			<div><img src="{{ asset('bundles/app/images/icones/boat/1A-icons-boat-tech-file-50pix-monohull-noir.png') }}" />4 lits double</div>
+			<div><img src="{{ asset('bundles/app/images/icones/boat/4-icons-boat-tech-file-50pix-SHOWER-noir.png') }}" />{{bateau.nbDouche}} salle de bain</div>
+			<h3>Spécificités du bateau</h3>
+			<div><img src="{{ asset('bundles/app/images/icones/boat/5-icons-boat-tech-file-50pix-LENGTH-noir.png') }}" />Longueur: {{bateau.longueur}}</div>
+			<div><img src="{{ asset('bundles/app/images/icones/boat/6-icons-boat-tech-file-50pix-WIDTH-noir.png') }}" />Largeur: {{bateau.largeur}}</div>
+			<div><img src="{{ asset('bundles/app/images/icones/boat/7-icons-boat-tech-file-50pix-DRAFT-noir.png') }}" />Tirant d'eau: {{bateau.tirantdeau}}</div>
+			<div><img src="{{ asset('bundles/app/images/icones/boat/8-icons-boat-tech-file-50pix-MAINSAIL-noir.png') }}" />Surface grand voile: {{bateau.surfacegrandvoile}}</div>
+			<div><img src="{{ asset('bundles/app/images/icones/boat/9-icons-boat-tech-file-50pix-MOTOR-noir.png') }}" />Motorisation: {{bateau.moteur}}</div>
+			<div><img src="{{ asset('bundles/app/images/icones/boat/10-icons-boat-tech-file-50pix-FUEL-noir.png') }}" />Capacité réservoir fuel: {{bateau.reservoirCarburant}}</div>
+			<div><img src="{{ asset('bundles/app/images/icones/boat/11-icons-boat-tech-file-50pix-WATER-noir.png') }}" />Capacité réservoir eau: {{bateau.reservoirEau}}</div>
+			<h3>Equipements à bord</h3>
+			<div><img src="{{ asset('bundles/app/images/icones/boat/12-icons-boat-tech-file-50pix-NRG-noir.png') }}" />Alimentation: {{bateau.energie}}</div>
+			<div><img src="{{ asset('bundles/app/images/icones/boat/13-icons-boat-tech-file-50pix-GALLEY-noir.png') }}" />Equipements en cuisine: {{bateau.equipementCuisine}}</div>
+			<div><img src="{{ asset('bundles/app/images/icones/boat/14-icons-boat-tech-file-50pix-DINGHY-noir.png') }}" />Annexes: {{bateau.dinghy}}</div>
+			<h3>Activités à bord</h3>
+			<div><img src="{{ asset('bundles/app/images/icones/boat/15-icons-boat-tech-file-50pix-ENTERTAINMENT-noir.png') }}" />Equipements HIFI-Video: {{bateau.loisir}}</div>
+			<div><img src="{{ asset('bundles/app/images/icones/boat/16-icons-boat-tech-file-50pix-EQUIPMENTS-noir.png') }}" />Equipements de loisir: {{bateau.jouet}}</div>
+		</div>
             {{ bateau.description|raw }}
 	</div>
 {% endblock content %}
