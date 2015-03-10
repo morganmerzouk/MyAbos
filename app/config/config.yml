@@ -112,7 +112,7 @@ sonata_user:
     manager_type: orm # can be orm or mongodb
     
 sonata_admin:
-    title_logo:           bundles/app/images/logo.png
+    title_logo:           bundles/app/images/general/logo.png
     dashboard:
         blocks:
             -

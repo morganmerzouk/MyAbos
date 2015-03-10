@@ -21,6 +21,9 @@ class PrestationFixtures extends AbstractFixture implements FixtureInterface {
             $prestation->translate('fr')->setDescription($description[0]);
             $prestation->translate('en')->setDescription($description[1]);          
             $prestation->setPublished(true);
+            if(isset($item['icone'])) {
+                $prestation->setIcone($item['icone']);
+            }
             
             $manager->persist($prestation);
             $prestation->mergeNewTranslations();
