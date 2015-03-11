@@ -13,6 +13,7 @@
     padding: 10px;
     overflow: auto;
 }
+.form-group { clear: both; }
 div.select2-container { width: auto !important;}
 div.select2-container-multi { width: 505px !important;}
 .sonata-ba-field {display: inline;}
@@ -69,19 +70,6 @@ height: auto
 .control-description {
     display: none;
 }
-.form-group[id$='yearsSailing'],
-.form-group[id$='yearsSailingCarribean'],
-.form-group[id$='yearsKiteSurfing'],
-.form-group[id$='yearsKiteCruise'],
-.form-group[id$='languagesSpoken'],
-.form-group[id$='kitesurfInstructorSince'] { float:left;}
-.form-group[id$='yearsSailing'], .form-group[id$='yearsSailingCarribean'] { clear: both;}
-.skipper-professional-since { float:left; width: 200px;}
-.control-annee-navigation { width: auto; float: none; display: inline;}
-.skipper-kitesurf-certification-date,
-.skipper-date-certification { width: 305px; }
-.control-annee-navigation-caraibes { width: auto; float: none; display: inline;}
-.control-annee-kitesurfing { width: 185px;}
 /*** Fin Skipper ***/
 /*** Début Destination ***/
 .destination-miniature {     
@@ -143,16 +131,11 @@ height: auto
 .control-reservoirEau,
 .control-bateau-equipement { clear: both;}
 .control-bateau-equipement {  width:200px;}
-.bateau-list-radio {float: left; width: 16%}
+.bateau-list-radio {float: left; }
 .bateau-list-radio li { display: block; float: left;}
 .form-group[id$='destination'] { float:left;}
 .control-bateau-inclusequipage,.control-bateau-fraisvoyage { clear: both;}
 .bateau-moteur, .bateau-surfacegrandvoile, .bateau-reservoirCarburant, .bateau-reservoirEau, .bateau-inclusequipage { float:left;}
-.control-bateau-nbcabine,
-.control-bateau-nbdouche,
-.control-bateau-nbequipier,
-.control-bateau-type,
-.control-bateau-skipper{ width: 120px; }
 .bateau-inclusprix-frais {width: 500px;display: block;float: left;}
 .form-group[id$='inclusPrixEquipage'],
 .form-group[id$='inclusPrixAvitaillement'] { clear: both;}

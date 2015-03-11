@@ -24,6 +24,8 @@ boat_equipments: Equipement à bord
 boat_activity: Activité à bord
 boat_cabine: cabines
 boat_bed: couchages
+boat_beddouble: Double 
+boat_bedsimple: Simple
 boat_shower: salle de bain
 boat_length: Longueur
 boat_width: Largeur

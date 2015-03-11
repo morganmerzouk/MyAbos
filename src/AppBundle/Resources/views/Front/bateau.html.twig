@@ -25,8 +25,9 @@
 			<h3>{{'boat_configuration'|trans}}</h3>
 			<div><img src="{{ asset('bundles/app/images/icones/boat/1-icons-boat-tech-file-50pix-'~bateau.type|lower~'-noir.png') }}" />{{bateau.type}}</div>
 			<div><img src="{{ asset('bundles/app/images/icones/boat/2-icons-boat-tech-file-50pix-CABINS-'~bateau.nbCabine~'-noir.png') }}" />{{bateau.nbCabine}} {{'boat_cabine'|trans}}</div>
-			<div><img src="{{ asset('bundles/app/images/icones/boat/1A-icons-boat-tech-file-50pix-monohull-noir.png') }}" />8 {{'boat_bed'|trans}}</div>
-			<div><img src="{{ asset('bundles/app/images/icones/boat/1A-icons-boat-tech-file-50pix-monohull-noir.png') }}" />4 lits double</div>
+			{% if (bateau.nbCouchage > 0) %}<div><img src="{{ asset('bundles/app/images/icones/boat/3-icons-boat-tech-file-50pix-COUCHAGE-noir.png') }}" />{{bateau.nbCouchage}} {{'boat_bed'|trans}}</div>{% endif %}
+			{% if (bateau.nbLitDouble > 0) %}<div><img src="{{ asset('bundles/app/images/icones/boat/3B-icons-boat-tech-file-50pix-LIT%20DOUBLE-noir.png') }}" />{{bateau.nbLitDouble}} {{'boat_beddouble'|trans}}</div>{% endif %}
+			{% if (bateau.nbLitSimple > 0) %}<div><img src="{{ asset('bundles/app/images/icones/boat/3A-icons-boat-tech-file-50pix-LIT%20SIMPLE-noir.png') }}" />{{bateau.nbLitSimple}} {{'boat_bedsimple'|trans}}</div>{% endif %}
 			<div><img src="{{ asset('bundles/app/images/icones/boat/4-icons-boat-tech-file-50pix-SHOWER-noir.png') }}" />{{bateau.nbDouche}} {{'boat_shower'|trans}}</div>
 			<h3>{{'boat_specificites'|trans}}</h3>
 			<div><img src="{{ asset('bundles/app/images/icones/boat/5-icons-boat-tech-file-50pix-LENGTH-noir.png') }}" />{{'boat_length'|trans}}: {{bateau.longueur}}</div>

@@ -33,11 +33,6 @@ class SkipperTranslation
     protected $hobbies;
 
     /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    protected $greatestQualities;
-
-    /**
      * @ORM\Column(type="integer")
      */
     protected $translatable_id;
@@ -114,29 +109,6 @@ class SkipperTranslation
     public function getHobbies()
     {
         return $this->hobbies;
-    }
-
-    /**
-     * Set greatestQualities
-     *
-     * @param string $greatestQualities            
-     * @return Skipper
-     */
-    public function setGreatestQualities($greatestQualities)
-    {
-        $this->greatestQualities = $greatestQualities;
-        
-        return $this;
-    }
-
-    /**
-     * Get greatestQualities
-     *
-     * @return string
-     */
-    public function getGreatestQualities()
-    {
-        return $this->greatestQualities;
     }
     
     /**

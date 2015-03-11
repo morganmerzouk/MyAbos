@@ -40,25 +40,6 @@ class SkipperAdmin extends Admin
             ->add('photo3File', 'file', $optionsPhoto3)
             ->add('photo4File', 'file', $optionsPhoto4)
             ->add('photo5File', 'file', $optionsPhoto5)
-            ->add('yearsSailing', 'choice', array('label' => 'Nombre d\'années de navigation: ', 'required'=> false, 'label_attr' => array('class' => 'control-annee-navigation'),
-                'choice_list' => $this->loadChoiceList()
-            ))
-            ->add('professionalSince', 'text', array('label' => 'Professionel depuis: ', 'required'=> false, 'attr' => array('class' => 'skipper-professional-since')))
-            ->add('certificationDate', 'text', array('label' => 'Date de certification: ', 'required'=> false, 'attr' => array('class' => 'skipper-date-certification')))
-            ->add('languagesSpoken', 'choice', array('label' => 'Langues parlées: ', 'choice_list' => $this->loadLanguagesList(), 'multiple' => true, 'required' => false, 'label_attr' => array('class' => 'control-languages-spoken')))
-            ->add('kitesurfCertificationDate', 'text', array('label' => 'Kitesurf Certification Granted: ', 'required'=> false, 'attr' => array('class' => 'skipper-kitesurf-certification-date'), 'label_attr' => array('class' => 'control-kitesurf-certification-date')))
-            ->add('yearsSailingCarribean', 'choice', array('label' => 'Nombre d\'années de navigation dans les Caraïbes: ', 'required'=> false,  'label_attr' => array('class' => 'control-annee-navigation-caraibes'), 'attr' => array('class' => 'skipper-annee-navigation-caraibes'),
-                'choice_list' => $this->loadChoiceList()
-            ))
-            ->add('yearsKiteSurfing', 'choice', array('label' => 'Nombre d\'années de KiteSurfing: ', 'required'=> false, 'label_attr' => array('class' => 'control-annee-kitesurfing'),
-                'choice_list' => $this->loadChoiceList()
-            ))
-            ->add('yearsKiteCruise', 'choice', array('label' => 'Nombre d\'années de croisière: ', 'required'=> false,
-                'choice_list' => $this->loadChoiceList()
-            ))
-            ->add('kitesurfInstructorSince', 'choice', array('label' => 'Instructeur de Kitesurf depuis: ', 'required'=> false,
-                'choice_list' => $this->loadYearsList()
-            ))
             ->add('translations', 'a2lix_translations', array(
                     'fields' => array(                  
                         'description' => array(
@@ -81,7 +62,10 @@ class SkipperAdmin extends Admin
                                 ),
                             'required' => false
                             )
-                        ),                  
+                        ),              
+                        'translatable_id' => array(   
+                            'field_type' => 'hidden'
+                        ),      
                         'hobbies' => array(         
                             'label' => 'Hobbies: ',
                             'locale_options' => array(
@@ -90,19 +74,29 @@ class SkipperAdmin extends Admin
                                 ),
                             'required' => false
                             )
-                        ),                  
-                        'greatestQualities' => array(         
-                            'label' => 'Qualités: ',
-                            'locale_options' => array(
-                                'en' => array(
-                                    'label' => 'Greatest qualities: '
-                                ),
-                            'required' => false
-
-                            )
                         )
                     )))
-                ->add('published', 'checkbox', array('label' => 'Publié: ', 'required'=> false))   
+            ->add('yearsSailing', 'choice', array('label' => 'Années de navigation: ', 'required'=> false, 'label_attr' => array('class' => 'control-annee-navigation'),
+                'choice_list' => $this->loadChoiceList()
+            ))
+            ->add('professionalSince', 'text', array('label' => 'Skipper professionnel depuis: ', 'required'=> false, 'attr' => array('class' => 'skipper-professional-since')))
+            ->add('certificationDate', 'text', array('label' => 'Diplômes de voile: ', 'required'=> false, 'attr' => array('class' => 'skipper-date-certification')))
+            ->add('yearsSailingCarribean', 'choice', array('label' => 'Années de navigation aux Antilles: ', 'required'=> false,  'label_attr' => array('class' => 'control-annee-navigation-caraibes'), 'attr' => array('class' => 'skipper-annee-navigation-caraibes'),
+                'choice_list' => $this->loadChoiceList()
+            ))
+            ->add('yearsKiteSurfing', 'choice', array('label' => 'Pratique du Kitesurf depuis: ', 'required'=> false, 'label_attr' => array('class' => 'control-annee-kitesurfing'),
+                'choice_list' => $this->loadYearsList("1997")
+            ))
+            ->add('yearsKiteCruise', 'choice', array('label' => 'Propose des croisières kite depuis: ', 'required'=> false,
+                'choice_list' => $this->loadYearsList("2002")
+            ))
+            ->add('kitesurfInstructorSince', 'choice', array('label' => 'Instructeur de Kitesurf depuis: ', 'required'=> false,
+                'choice_list' => $this->loadYearsList("2000")
+            ))
+            ->add('kitesurfCertification', 'text', array('label' => 'Diplôme de Kitesurf: ', 'required'=> false, 'attr' => array('class' => 'skipper-kitesurf-certification'), 'label_attr' => array('class' => 'control-kitesurf-certification')))
+            ->add('languagesSpoken', 'choice', array('label' => 'Langues parlées: ', 'choice_list' => $this->loadLanguagesList(), 'multiple' => true, 'required' => false, 'label_attr' => array('class' => 'control-languages-spoken')))
+            
+            ->add('published', 'checkbox', array('label' => 'Publié: ', 'required'=> false))   
         ;
     }
     
@@ -188,8 +182,11 @@ class SkipperAdmin extends Admin
         return $choices;
     }
 
-    protected function loadYearsList() {
+    protected function loadYearsList($year) {
         $years = array(
+            '1997' => '1997',
+            '1998' => '1998',
+            '1999' => '1999',
             '2000' => '2000',
             '2001' => '2001',
             '2002' => '2002',
@@ -207,7 +204,8 @@ class SkipperAdmin extends Admin
             '2014' => '2014',
             '2015' => '2015',
         );
-        $choices = new SimpleChoiceList($years);
+        
+        $choices = new SimpleChoiceList(array_slice($years,array_search($year,array_keys($years))));
     
         return $choices;
     }

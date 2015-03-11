@@ -70,7 +70,7 @@ class Skipper {
     /**
     * @ORM\Column(type="string", length=30, nullable=true)
     */
-    protected $kitesurfCertificationDate;
+    protected $kitesurfCertification;
     
     /**
     * @ORM\Column(type="string", length=200, nullable=true)
@@ -349,26 +349,26 @@ class Skipper {
     }
 
     /**
-     * Set kitesurfCertificationDate
+     * Set kitesurfCertification
      *
-     * @param string $kitesurfCertificationDate
+     * @param string $kitesurfCertification
      * @return Skipper
      */
-    public function setKitesurfCertificationDate($kitesurfCertificationDate)
+    public function setKitesurfCertification($kitesurfCertification)
     {
-        $this->kitesurfCertificationDate = $kitesurfCertificationDate;
+        $this->kitesurfCertification = $kitesurfCertification;
 
         return $this;
     }
 
     /**
-     * Get kitesurfCertificationDate
+     * Get kitesurfCertification
      *
      * @return string 
      */
-    public function getKitesurfCertificationDate()
+    public function getKitesurfCertification()
     {
-        return $this->kitesurfCertificationDate;
+        return $this->kitesurfCertification;
     }
 
     /**

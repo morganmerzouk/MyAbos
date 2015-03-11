@@ -125,6 +125,21 @@ class Bateau {
      * @ORM\Column(type="integer", nullable=true)
      */
     protected $nbDouche;
+    
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $nbCouchage;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $nbLitSimple;
+    
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $nbLitDouble;
         
     /**
      * @ORM\OneToOne(targetEntity="InclusPrix")
@@ -1072,5 +1087,74 @@ class Bateau {
     public function getDateNonDisponibilite()
     {
         return $this->dateNonDisponibilite;
+    }
+
+    /**
+     * Set nbCouchage
+     *
+     * @param integer $nbCouchage
+     * @return Bateau
+     */
+    public function setNbCouchage($nbCouchage)
+    {
+        $this->nbCouchage = $nbCouchage;
+    
+        return $this;
+    }
+
+    /**
+     * Get nbCouchage
+     *
+     * @return integer 
+     */
+    public function getNbCouchage()
+    {
+        return $this->nbCouchage;
+    }
+
+    /**
+     * Set nbLitSimple
+     *
+     * @param integer $nbLitSimple
+     * @return Bateau
+     */
+    public function setNbLitSimple($nbLitSimple)
+    {
+        $this->nbLitSimple = $nbLitSimple;
+    
+        return $this;
+    }
+
+    /**
+     * Get nbLitSimple
+     *
+     * @return integer 
+     */
+    public function getNbLitSimple()
+    {
+        return $this->nbLitSimple;
+    }
+
+    /**
+     * Set nbLitDouble
+     *
+     * @param integer $nbLitDouble
+     * @return Bateau
+     */
+    public function setNbLitDouble($nbLitDouble)
+    {
+        $this->nbLitDouble = $nbLitDouble;
+    
+        return $this;
+    }
+
+    /**
+     * Get nbLitDouble
+     *
+     * @return integer 
+     */
+    public function getNbLitDouble()
+    {
+        return $this->nbLitDouble;
     }
 }
