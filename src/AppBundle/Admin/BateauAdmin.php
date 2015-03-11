@@ -147,8 +147,8 @@ class BateauAdmin extends Admin
                             'required' => false,
                             )
                         ),      
-                        'canot' => array(         
-                            'label' => 'Canot: ',             
+                        'dinghy' => array(         
+                            'label' => 'Annexe: ',             
                             'label_attr' => array('class' => 'control-bateau-canot'),               
                             'attr' => array('class' => 'bateau-canot'),
                             'locale_options' => array(
@@ -230,7 +230,7 @@ class BateauAdmin extends Admin
                             'attr' => array('class' => 'bateau-surfacegrandvoile'),
                             'locale_options' => array(
                                 'en' => array(
-                                    'label' => 'Surface grand voile: '
+                                    'label' => 'Main sail: '
                                 ),
                                 'required' => false,
                             )

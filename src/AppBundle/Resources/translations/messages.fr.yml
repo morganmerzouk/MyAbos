@@ -18,6 +18,26 @@ boat_desti: Destinations et itinéraires
 boat_crew: Equipages
 boat_fiche: Fiche technique
 boat_presentation: Présentation
+boat_configuration: Configuration du bateau
+boat_specificites: Spécificité du bateau
+boat_equipments: Equipement à bord
+boat_activity: Activité à bord
+boat_cabine: cabines
+boat_bed: couchages
+boat_shower: salle de bain
+boat_length: Longueur
+boat_width: Largeur
+boat_draft: Tirant d'eau
+boat_main_sail: Surface grand voile
+boat_motor: Motorisation
+boat_galley: Equipement de cuisine
+boat_dinghy: Annexes
+boat_fuelcapacity: Capacité réservoirs fuel
+boat_watercapacity: Capacité réservoirs eau
+boat_power: Alimentation
+boat_loisir: Equipement HIFI/Vidéo
+boat_jouet: Loisirs
+
 contact: Contact
 cruise_to: Les croisières vers
 destinations: Destinations

@@ -139,13 +139,15 @@ height: auto
 .control-bateau-tirantdeau {width: 100px;}
 .control-moteur,
 .control-surfacegrandvoile,
+.control-reservoirCarburant,
+.control-reservoirEau,
 .control-bateau-equipement { clear: both;}
 .control-bateau-equipement {  width:200px;}
 .bateau-list-radio {float: left; width: 16%}
 .bateau-list-radio li { display: block; float: left;}
 .form-group[id$='destination'] { float:left;}
-.control-bateau-inclusequipage,.control-bateau-fraisvoyage { clear: both};
-.bateau-inclusequipage { float:left;}
+.control-bateau-inclusequipage,.control-bateau-fraisvoyage { clear: both;}
+.bateau-moteur, .bateau-surfacegrandvoile, .bateau-reservoirCarburant, .bateau-reservoirEau, .bateau-inclusequipage { float:left;}
 .control-bateau-nbcabine,
 .control-bateau-nbdouche,
 .control-bateau-nbequipier,

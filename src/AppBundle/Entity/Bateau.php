@@ -193,7 +193,7 @@ class Bateau {
         return $this->translate()->getMoteur();
     }
     public function getTirantdeau(){
-        return $this->translate()->getLargeur();
+        return $this->translate()->getTirantdeau();
     }
     public function getSurfaceGrandVoile(){
         return $this->translate()->getSurfaceGrandVoile();
