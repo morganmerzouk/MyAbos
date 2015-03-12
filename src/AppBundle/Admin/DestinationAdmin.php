@@ -63,7 +63,7 @@ class DestinationAdmin extends Admin
                         ),  
                         'infosPratique' => array(         
                             'label' => 'Infos Pratique: ',         
-                            'label_attr' => array('class' => 'control-description'),
+                            'label_attr' => array('class' => 'control-infospratique'),
                             'attr' => array('class' => 'tinymce', 'data-theme' => 'advanced'),
                             'locale_options' => array(
                                 'en' => array(

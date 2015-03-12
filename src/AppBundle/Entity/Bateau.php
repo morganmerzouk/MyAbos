@@ -147,7 +147,8 @@ class Bateau {
     protected $inclusPrixEquipage;
         
     /**
-     * @ORM\OneToOne(targetEntity="InclusPrix")
+     * @ORM\ManyToMany(targetEntity="InclusPrix")
+     * @ORM\JoinTable(name="bateau_inclusprix_avitaillement")
      */
     protected $inclusPrixAvitaillement;
     
@@ -877,29 +878,41 @@ class Bateau {
     {
         return $this->inclusPrixFraisVoyage;
     }
-
+    
+    
     /**
-     * Set inclusPrixAvitaillement
+     * Add inclusPrixAvitaillement
      *
      * @param \AppBundle\Entity\InclusPrix $inclusPrixAvitaillement
      * @return Bateau
      */
-    public function setInclusPrixAvitaillement(\AppBundle\Entity\InclusPrix $inclusPrixAvitaillement = null)
+    public function addInclusPrixAvitaillement(\AppBundle\Entity\InclusPrix $inclusPrixAvitaillement)
     {
-        $this->inclusPrixAvitaillement = $inclusPrixAvitaillement;
+        $this->inclusPrixAvitaillement[] = $inclusPrixAvitaillement;
 
         return $this;
     }
 
     /**
-     * Get inclusPrixAvitaillement
+     * Remove inclusPrixAvitaillement
      *
-     * @return \AppBundle\Entity\InclusPrix 
+     * @param \AppBundle\Entity\InclusPrix $inclusPrixAvitaillement
+     */
+    public function removeInclusPrixAvitaillement(\AppBundle\Entity\InclusPrix $inclusPrixAvitaillement)
+    {
+        $this->inclusPrixAvitaillement->removeElement($inclusPrixAvitaillement);
+    }
+
+    /**
+     * Get inclusPrixFraisVoyage
+     *
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getInclusPrixAvitaillement()
     {
         return $this->inclusPrixAvitaillement;
     }
+
     
     /**
      * Set inclusPrixEquipage

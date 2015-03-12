@@ -486,6 +486,7 @@ class BateauAdmin extends Admin
             ->add('inclusPrixAvitaillement', 'sonata_type_model', array(
             'query' => $queryAvitaillement,
             'required' => false,
+            'multiple' => true,
             'label' => 'Avitaillement: ',
             'empty_value' => 'Avitaillement',
             'btn_add' => false

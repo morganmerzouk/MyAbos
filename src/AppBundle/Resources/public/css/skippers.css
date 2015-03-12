@@ -9,6 +9,14 @@ h1 {background: #23B6E1; font-size: 1.2em; padding: 10px;margin: 0;}
 
 /*** Page Skipper ***/
 .block-skipper-submenu { display: table; width: 100%; }
-.block-skipper-submenu a { display: table-cell; background: #127BBD; padding: 5px; font-size: 0.9em; text-align: center; color: black; }
+.block-skipper-submenu a { display: table-cell; width: 17%; color: white;background-repeat: no-repeat; background-position: 5px -30px; background-color: #127BBD; padding: 10px; font-size: 0.9em; text-align: center; }
 .block-skipper-submenu a:hover,
-.block-skipper-submenu a.active { text-decoration: none; color: black; background: #23B6E1; }
+.block-skipper-submenu a.active { text-decoration: none; color: black; background-repeat: no-repeat; background-color: #23B6E1; background-position: 5px 5px;background-color: #23B6E1; }
+
+.skipper-home { background-image: url("../images/icones/boat/icon-skipper-25%20pix.png"); }
+.skipper-boat { background-image: url("../images/icones/boat/icon-boat%20file-25%20pix.png"); }
+.skipper-desti { background-image: url("../images/icones/boat/icon-itineraires-25%20pix.png"); }
+.skipper-available { background-image: url("../images/icones/boat/icon-disponibilites-25%20pix.png"); }
+.skipper-price { background-image: url("../images/icones/boat/icon-tarifs-et-options-25%20pix.png"); }
+.skipper-contact { background-image: url("../images/icones/boat/icon-devis-et-contact-25%20pix.png"); }
+

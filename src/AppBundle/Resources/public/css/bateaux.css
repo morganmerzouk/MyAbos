@@ -6,7 +6,13 @@ h1 {background: url("../images/menu/icones/icon-sprite-flotte.png") no-repeat 5p
 
 .block-croisiere .row { margin: 10px; text-align:left;}
 
-
+.bateau { text-align: center; border: 1px solid #B3B3B3; margin-top: 10px; padding: 0;}
+.bateau h3 { background: #23B6E1; color:white; text-align: center; margin: 0; }
+.bateau .img-responsive { margin: 10px; }
+.bateau .bateau-prix-semaine {background: #23B6E1; color:white; text-align: center; margin: 0; }
+.bateau .bateaux-icones { float: left; padding: 5px; }
+.bateau .bateaux-description {clear: both;}
+.bateau .btn-warning {margin: 10px;}
 /*** Page Bateau ***/
 .block-bateau-submenu { display: table; width: 100%; }
 .block-bateau-submenu a { display: table-cell; color: white;background-repeat: no-repeat; background-position: 5px -30px; background-color:#127BBD; padding: 10px; font-size: 0.9em; padding-left: 40px;}
