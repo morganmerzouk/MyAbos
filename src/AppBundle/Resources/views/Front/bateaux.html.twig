@@ -27,7 +27,7 @@
             
 			{% if (bateau.nbCouchage > 0) %}<div><img src="{{ asset('bundles/app/images/icones/boat/3-icons-boat-tech-file-50pix-COUCHAGE-noir.png') }}" />{{bateau.nbCouchage}} {{'boat_bed'|trans}}</div>{% endif %}
             <p class="bateaux-description">{{ bateau.description|striptags|slice(0,100) ~ '...' }}</p>
-            <a class="btn btn-sm btn-warning pull-right" href="{{ path('bateau', { 'id': bateau.id }) }}">{{'suite'|trans}}</a>
+            <a class="btn btn-sm btn-warning pull-right" href="{{ path('boat', { 'id': bateau.id }) }}">{{'suite'|trans}}</a>
         </div>
         {% if loop.index0 % 3 == 2 %}
 	        </div>

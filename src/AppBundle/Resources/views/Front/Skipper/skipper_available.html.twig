@@ -1,0 +1,15 @@
+{% extends "AppBundle:Front:Skipper/skipper.html.twig" %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/skippers.css') }}">
+{% endblock %}   
+{% block title %}{{'toptitle'|trans}} - {{'crew'|trans}}{% endblock %}
+{% block content %}
+    {{ parent() }}
+    <div>
+        Disponibilités
+    </div>  
+{% endblock content %}

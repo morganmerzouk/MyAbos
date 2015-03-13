@@ -1,0 +1,30 @@
+{% extends "AppBundle:Front:Bateau/boat.html.twig" %}
+{% block content %}
+    {{ parent() }}
+    <div>
+        <div class="col-fiche-bateau col-md-6">
+            <h3>{{'boat_configuration'|trans}}</h3>
+            <div><img src="{{ asset('bundles/app/images/icones/boat/1-icons-boat-tech-file-50pix-'~boat.type|lower~'-noir.png') }}" />{{boat.type}}</div>
+            <div><img src="{{ asset('bundles/app/images/icones/boat/2-icons-boat-tech-file-50pix-CABINS-'~boat.nbCabine~'-noir.png') }}" />{{boat.nbCabine}} {{'boat_cabine'|trans}}</div>
+            {% if (boat.nbCouchage > 0) %}<div><img src="{{ asset('bundles/app/images/icones/boat/3-icons-boat-tech-file-50pix-COUCHAGE-noir.png') }}" />{{boat.nbCouchage}} {{'boat_bed'|trans}}</div>{% endif %}
+            {% if (boat.nbLitDouble > 0) %}<div><img src="{{ asset('bundles/app/images/icones/boat/3B-icons-boat-tech-file-50pix-LIT%20DOUBLE-noir.png') }}" />{{boat.nbLitDouble}} {{'boat_beddouble'|trans}}</div>{% endif %}
+            {% if (boat.nbLitSimple > 0) %}<div><img src="{{ asset('bundles/app/images/icones/boat/3A-icons-boat-tech-file-50pix-LIT%20SIMPLE-noir.png') }}" />{{boat.nbLitSimple}} {{'boat_bedsimple'|trans}}</div>{% endif %}
+            <div><img src="{{ asset('bundles/app/images/icones/boat/4-icons-boat-tech-file-50pix-SHOWER-noir.png') }}" />{{boat.nbDouche}} {{'boat_shower'|trans}}</div>
+            <h3>{{'boat_specificites'|trans}}</h3>
+            <div><img src="{{ asset('bundles/app/images/icones/boat/5-icons-boat-tech-file-50pix-LENGTH-noir.png') }}" />{{'boat_length'|trans}}: {{boat.longueur}}</div>
+            <div><img src="{{ asset('bundles/app/images/icones/boat/6-icons-boat-tech-file-50pix-WIDTH-noir.png') }}" />{{'boat_width'|trans}}: {{boat.largeur}}</div>
+            <div><img src="{{ asset('bundles/app/images/icones/boat/7-icons-boat-tech-file-50pix-DRAFT-noir.png') }}" />{{'boat_draft'|trans}}: {{boat.tirantDEau}}</div>
+            <div><img src="{{ asset('bundles/app/images/icones/boat/8-icons-boat-tech-file-50pix-MAINSAIL-noir.png') }}" />{{'boat_main_sail'|trans}}: {{boat.surfacegrandvoile}}</div>
+            <div><img src="{{ asset('bundles/app/images/icones/boat/9-icons-boat-tech-file-50pix-MOTOR-noir.png') }}" />{{'boat_motor'|trans}}: {{boat.moteur}}</div>
+            <div><img src="{{ asset('bundles/app/images/icones/boat/10-icons-boat-tech-file-50pix-FUEL-noir.png') }}" />{{'boat_fuelcapacity'|trans}}: {{boat.reservoirCarburant}}</div>
+            <div><img src="{{ asset('bundles/app/images/icones/boat/11-icons-boat-tech-file-50pix-WATER-noir.png') }}" />{{'boat_watercapacity'|trans}}: {{boat.reservoirEau}}</div>
+            <h3>{{'boat_equipments'|trans}}</h3>
+            <div><img src="{{ asset('bundles/app/images/icones/boat/12-icons-boat-tech-file-50pix-NRG-noir.png') }}" />{{'boat_power'|trans}}: {{boat.energie}}</div>
+            <div><img src="{{ asset('bundles/app/images/icones/boat/13-icons-boat-tech-file-50pix-GALLEY-noir.png') }}" />{{'boat_galley'|trans}}: {{boat.equipementCuisine}}</div>
+            <div><img src="{{ asset('bundles/app/images/icones/boat/14-icons-boat-tech-file-50pix-DINGHY-noir.png') }}" />{{'boat_dinghy'|trans}}: {{boat.dinghy}}</div>
+            <h3>{{'boat_activity'|trans}}</h3>
+            <div><img src="{{ asset('bundles/app/images/icones/boat/15-icons-boat-tech-file-50pix-ENTERTAINMENT-noir.png') }}" />{{'boat_loisir'|trans}}: {{boat.loisir}}</div>
+            <div><img src="{{ asset('bundles/app/images/icones/boat/16-icons-boat-tech-file-50pix-EQUIPMENTS-noir.png') }}" />{{'boat_jouet'|trans}}: {{boat.jouet}}</div>
+        </div>
+    </div>
+{% endblock content %}

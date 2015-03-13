@@ -4,7 +4,7 @@
         <li {% if app.request.attributes.get('_route') starts with 'offresspeciale' %}class="active"{% endif %}><a href="{{ path('offresspeciales') }}" class="nav-item nav-offres">{{'offres_speciales'|trans}}</a></li>
         <li {% if app.request.attributes.get('_route') starts with 'prestation' %}class="active"{% endif %}><a href="{{ path('prestations') }}" class="nav-item nav-prestations">{{'home_prestations'|trans}}</a></li>
         <li {% if app.request.attributes.get('_route') starts with 'destination' %}class="active"{% endif %}><a href="{{ path('destinations') }}" class="nav-item nav-destinations">{{'home_destinations'|trans}}</a></li>
-        <li {% if app.request.attributes.get('_route') starts with 'bateau' %}class="active"{% endif %}><a href="{{ path('bateaux') }}" class="nav-item nav-flotte">{{'home_flotte'|trans}}</a></li>
+        <li {% if app.request.attributes.get('_route') starts with 'boat' %}class="active"{% endif %}><a href="{{ path('boats') }}" class="nav-item nav-flotte">{{'home_flotte'|trans}}</a></li>
         <li {% if app.request.attributes.get('_route') starts with 'skipper' %}class="active"{% endif %}><a href="{{ path('skippers') }}" class="nav-item nav-equipages">{{'home_equipages'|trans}}</a></li>
         <li {% if app.request.attributes.get('_route') starts with 'ensavoirplus' %}class="active"{% endif %}><a href="{{ path('ensavoirplus') }}" class="nav-item nav-ensavoirplus">{{'know_more'|trans}}</a></li>
         <li {% if app.request.attributes.get('_route') starts with 'lien' %}class="active"{% endif %}><a href="{{ path('liens') }}" class="nav-item nav-liens">{{'liens'|trans}}</a></li>

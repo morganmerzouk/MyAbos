@@ -1,0 +1,11 @@
+<h1>{{ boat.name }}</h1>
+<div class="block-bateau-submenu">
+    
+    <a href="{{ path('boat', { 'id': app.request.get("id") }) }}" class="bateau-home {% if route == 'boat' %}active{% endif %}">{{'boat_presentation'|trans}}</a>
+    <a href="{{ path('boat_details', { 'id': app.request.get("id") }) }}" class="bateau-fiche {% if route == 'boat_details' %}active{% endif %}">{{'boat_fiche'|trans}}</a>
+    <a href="{{ path('boat_crew', { 'id': app.request.get("id") }) }}" class="bateau-crew {% if route == 'boat_crew' %}active{% endif %}">{{'boat_crew'|trans}}</a>
+    <a href="{{ path('boat_desti', { 'id': app.request.get("id") }) }}" class="bateau-desti {% if route == 'boat_desti' %}active{% endif %}">{{'boat_desti'|trans}}</a>
+    <a href="{{ path('boat_available', { 'id': app.request.get("id") }) }}" class="bateau-dispo {% if route == 'boat_available' %}active{% endif %}">{{'boat_dispo'|trans}}</a>
+    <a href="{{ path('boat_price', { 'id': app.request.get("id") }) }}" class="bateau-price {% if route == 'boat_price' %}active{% endif %}">{{'boat_price'|trans}}</a>
+    <a href="{{ path('boat_contact', { 'id': app.request.get("id") }) }}" class="bateau-contact {% if route == 'boat_contact' %}active{% endif %}">{{'boat_contact'|trans}}</a>
+</div>

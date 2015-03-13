@@ -1,0 +1,7 @@
+{% extends "AppBundle:Front:Skipper/skipper.html.twig" %}
+{% block content %}
+    {{ parent() }}
+    <div>
+        {{ skipper.description|raw }}
+    </div>  
+{% endblock content %}

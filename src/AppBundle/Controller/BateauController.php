@@ -8,14 +8,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class BateauController extends Controller
 {
     /**
-     * @Route("/bateaux", name="bateaux")
+     * @Route("/bateaux", name="boats")
      */
     public function indexAction()
     {        
         $request = $this->getRequest();
         $locale = $request->getLocale();
         
-        $bateaux = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Bateau")
+        $boats = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Bateau")
         ->createQueryBuilder('s')
         ->select('s, t')
         ->join('s.translations', 't')
@@ -23,18 +23,18 @@ class BateauController extends Controller
         ->andWhere('t.locale = :locale')->setParameter(':locale', $locale)
         ->getQuery()
         ->getResult();
-        return $this->render('AppBundle:Front:bateaux.html.twig',array('bateaux'=> $bateaux));
+        return $this->render('AppBundle:Front:Bateau/boats.html.twig',array('boats'=> $boats));
     }
     
     /**
-     * @Route("/bateau/{id}", requirements={"id" = "\d+"}, name="bateau")
+     * @Route("/bateau/{id}", requirements={"id" = "\d+"}, name="boat")
      */
     public function bateauAction($id)
     {
         $request = $this->getRequest();
         $locale = $request->getLocale();
         
-        $bateau = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Bateau")
+        $boat = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Bateau")
         ->createQueryBuilder('s')
         ->select('s, t')
         ->join('s.translations', 't')
@@ -44,6 +44,150 @@ class BateauController extends Controller
         ->getQuery()
         ->getSingleResult();
         
-        return $this->render('AppBundle:Front:bateau.html.twig',array('bateau'=> $bateau));
+        return $this->render('AppBundle:Front:Bateau/boat.html.twig',array('boat'=> $boat));
+    }
+   
+    /**
+     * @Route("/bateau/{id}/details", requirements={"id" = "\d+"}, name="boat_details")
+     */
+    public function bateauDetailAction($id)
+    {
+        $request = $this->getRequest();
+        $locale = $request->getLocale();
+        
+        $boat = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Bateau")
+        ->createQueryBuilder('s')
+        ->select('s, t')
+        ->join('s.translations', 't')
+        ->where('s.id = :id')->setParameter(':id', $id)
+        ->andWhere('s.published = true')
+        ->andWhere('t.locale = :locale')->setParameter(':locale', $locale)
+        ->getQuery()
+        ->getSingleResult();
+        
+        return $this->render('AppBundle:Front:Bateau/boat_details.html.twig',array('boat'=> $boat));
+    }
+    
+    /**
+     * @Route("/bateau/{id}/crew", requirements={"id" = "\d+"}, name="boat_crew")
+     */
+    public function bateauCrewAction($id)
+    {
+        $request = $this->getRequest();
+        $locale = $request->getLocale();
+        
+        $boat = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Bateau")
+        ->createQueryBuilder('s')
+        ->select('s, t')
+        ->join('s.translations', 't')
+        ->where('s.id = :id')->setParameter(':id', $id)
+        ->andWhere('s.published = true')
+        ->andWhere('t.locale = :locale')->setParameter(':locale', $locale)
+        ->getQuery()
+        ->getSingleResult();
+        
+        return $this->render('AppBundle:Front:Bateau/boat_crew.html.twig',array('boat'=> $boat));
+    }
+    
+        /**
+     * @Route("/bateau/{id}/available", requirements={"id" = "\d+"}, name="boat_available")
+     */
+    public function bateauAvailableAction($id)
+    {
+        $request = $this->getRequest();
+        $locale = $request->getLocale();
+        
+        $boat = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Bateau")
+        ->createQueryBuilder('s')
+        ->select('s, t')
+        ->join('s.translations', 't')
+        ->where('s.id = :id')->setParameter(':id', $id)
+        ->andWhere('s.published = true')
+        ->andWhere('t.locale = :locale')->setParameter(':locale', $locale)
+        ->getQuery()
+        ->getSingleResult();
+        
+        return $this->render('AppBundle:Front:Bateau/boat_available.html.twig',array('boat'=> $boat));
+    }
+    
+    /**
+     * @Route("/bateau/{id}/desti", requirements={"id" = "\d+"}, name="boat_desti")
+     */
+    public function bateauDestiAction($id)
+    {
+        $request = $this->getRequest();
+        $locale = $request->getLocale();
+        
+        $boat = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Bateau")
+        ->createQueryBuilder('s')
+        ->select('s, t')
+        ->join('s.translations', 't')
+        ->where('s.id = :id')->setParameter(':id', $id)
+        ->andWhere('s.published = true')
+        ->andWhere('t.locale = :locale')->setParameter(':locale', $locale)
+        ->getQuery()
+        ->getSingleResult();
+        
+        return $this->render('AppBundle:Front:Bateau/boat_desti.html.twig',array('boat'=> $boat));
+    }
+    
+    /**
+     * @Route("/bateau/{id}/price", requirements={"id" = "\d+"}, name="boat_price")
+     */
+    public function bateauPriceAction($id)
+    {
+        $request = $this->getRequest();
+        $locale = $request->getLocale();
+        
+        $boat = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Bateau")
+        ->createQueryBuilder('s')
+        ->select('s, t')
+        ->join('s.translations', 't')
+        ->where('s.id = :id')->setParameter(':id', $id)
+        ->andWhere('s.published = true')
+        ->andWhere('t.locale = :locale')->setParameter(':locale', $locale)
+        ->getQuery()
+        ->getSingleResult();
+        
+        return $this->render('AppBundle:Front:Bateau/boat_price.html.twig',array('boat'=> $boat));
+    }
+    
+    /**
+     * @Route("/bateau/{id}/contact", requirements={"id" = "\d+"}, name="boat_contact")
+     */
+    public function bateauContactAction($id)
+    {
+        $request = $this->getRequest();
+        $locale = $request->getLocale();
+        
+        $boat = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Bateau")
+        ->createQueryBuilder('s')
+        ->select('s, t')
+        ->join('s.translations', 't')
+        ->where('s.id = :id')->setParameter(':id', $id)
+        ->andWhere('s.published = true')
+        ->andWhere('t.locale = :locale')->setParameter(':locale', $locale)
+        ->getQuery()
+        ->getSingleResult();
+        
+        return $this->render('AppBundle:Front:Bateau/boat_contact.html.twig',array('boat'=> $boat));
+    }
+      
+    public function subMenuAction($route, $id)
+    {  
+        $request = $this->getRequest();
+        $locale = $request->getLocale();
+        
+        $boat = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Bateau")
+        ->createQueryBuilder('s')
+        ->select('s, t')
+        ->join('s.translations', 't')
+        ->where('s.id = :id')->setParameter(':id', $id)
+        ->andWhere('s.published = true')
+        ->andWhere('t.locale = :locale')->setParameter(':locale', $locale)
+        ->getQuery()
+        ->getSingleResult();
+        
+        return $this->render('AppBundle:Front:Bateau/boat_submenu.html.twig',array('boat'=> $boat, 'route'=> $route));
     }
 }
