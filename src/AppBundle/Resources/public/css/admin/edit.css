@@ -19,12 +19,6 @@ div.select2-container-multi { width: 505px !important;}
 .sonata-ba-field {display: inline;}
 .select2-container.select2-allowclear .select2-choice abbr.select2-search-choice-close { display: none;}
 .a2lix_translations.tabbable {clear:both;}
-.control-photo {
-    width: 63px;
-}
-.control-miniature {
-    width: 70px;
-}
 .form-group[id$='translations']>.control-label{ display:none;}
 .mce-panel { 
     clear: both; 
@@ -42,7 +36,7 @@ div.select2-container-multi { width: 505px !important;}
 /*** Début Skipper ***/
 .skipper-avatar {
     float: left;
-    width: 14%;
+    width: 33%;
     padding: 0;
     height: auto;
 }
@@ -63,7 +57,7 @@ div.select2-container-multi { width: 505px !important;}
 }
 .skipper-photo {
 float: left;
-width: 14%;
+width: 33%;
 padding: 0;
 height: auto
 }
@@ -74,13 +68,13 @@ height: auto
 /*** Début Destination ***/
 .destination-miniature {     
     float: left;
-    width: 148px;
+    width: 33%;
     padding: 0;
     height: auto;
 }
 .destination-photo {
 float: left;
-width: 14%;
+width: 33%%;
 padding: 0;
 height: auto
 }
@@ -95,7 +89,7 @@ height: auto
 .form-group[id$='destination'] { float:left;}
 .itineraire-miniature {     
     float: left;
-    width: 148px;
+    width: 33%;
     padding: 0;
     height: auto;
 }
@@ -104,7 +98,7 @@ height: auto
 .prestation-icone,
 .prestation-photo {
     float: left;
-    width: 148px;
+    width: 33%;
     padding: 0;
     height: auto
 }
@@ -114,9 +108,9 @@ height: auto
 .bateau-miniature,
 .bateau-photo {
     float: left;
-    width: 148px;
+    width: 33%;
     padding: 0;
-    height: auto
+    height: auto;
 }
 .bateau-longueur,
 .bateau-largeur,
@@ -141,7 +135,7 @@ height: auto
 .form-group[id$='inclusPrixAvitaillement'] { clear: both;}
 /*** Fin Bateau ***/
 /*** Début Services payants ***/
-.optionpayante-miniature {float: left;width: 148px;padding: 0;height: auto;}
+.optionpayante-miniature {float: left;width: 33%;padding: 0;height: auto;}
 .optionpayante-list-radio { float: left; display: block;}
 .optionpayante-list-radio-devise li {width: 40px;text-align: center;margin-top: 5px;float: left;}
 .optionpayante-list-radio-categorie li {float: left; width: 350px;}
@@ -160,7 +154,7 @@ height: auto
 /*** Début Inclus Prix ***/
 .inclusprix-list-radio {float: left; display: block;}
 .inclusprix-list-radio-categorie li {float: left; display: block; width: 350px;}
-.inclusprix-miniature {float: left;width: 148px;padding: 0;height: auto;}
+.inclusprix-miniature {float: left;width: 33%;padding: 0;height: auto;}
 .control-inclusprix-prestation { width: 300px;}
 /*** Fin Inclus Prix ***/
 /*** Début Croisiére ***/

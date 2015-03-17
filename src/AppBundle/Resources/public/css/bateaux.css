@@ -6,12 +6,12 @@ h1 {background: url("../images/menu/icones/icon-sprite-flotte.png") no-repeat 5p
 
 .block-croisiere .row { margin: 10px; text-align:left;}
 
-.bateau { text-align: center; border: 1px solid #B3B3B3; margin-top: 10px; padding: 0;}
+.bateau { text-align: center; border: 1px solid #B3B3B3; margin-top: 10px; padding: 0;  overflow: auto;}
 .bateau h3 { background: #23B6E1; color:white; text-align: center; margin: 0; }
 .bateau .img-responsive { margin: 10px; }
 .bateau .bateau-prix-semaine {background: #23B6E1; color:white; text-align: center; margin: 0; }
 .bateau .bateaux-icones { float: left; padding: 5px; }
-.bateau .bateaux-description {clear: both;}
+.bateau .bateaux-description {clear: both;text-align: justify;padding:0 10px;}
 .bateau .btn-warning {margin: 10px;}
 /*** Page Bateau ***/
 .block-bateau-submenu { display: table; width: 100%; margin-bottom: 10px; }
@@ -38,7 +38,28 @@ table.month { border: 1px solid black;}
 td .active { margin: 1px; border-radius: 3px; background: lightgrey; }
 .ligne { overflow: auto; margin-bottom: 10px;}
 
+/*** Page Disponibilités ***/
 .tableLegend { display: inline-block; margin-right: 10px; }
 td.legend  { border: 1px solid black; width: 20px; border-radius: 0; }
 td.libelleLegend { padding-left: 5px;}
 .legend div {  padding: 1px 5px; }
+
+/*** Page Boat ***/
+.skipper-boat-description {overflow: auto; margin-bottom: 10px;}
+.img-details {padding: 0; padding-left: 1%;}
+.img-detail { margin: 1%; width: 48%; padding: 5px;}
+
+/*** Page crew ***/
+.col-md-9 h2 { margin: 0; background: #127BBD; padding:5px; font-size: 1.1em; color: white; }
+.bateau .offreName { margin: 0; margin-bottom: 10px; padding:10px; color: white; background: #127BBD; font-size: 1.2em; }
+.bateau .boatName { padding:5px; font-size: 1em; }
+
+.col-devis { border: 1px solid #B3B3B3; padding: 0;}
+.col-devis .row { padding: 5px 10px; margin: 10px; color: black;}
+.col-devis .odd { background: #127BBD;}
+.col-devis .even { background: #23B6E1;padding: 5px;clear: both;}
+.col-devis .row label { width: 215px;text-align: right;}
+.col-devis .row label.label-date-retour { width: 50px; }
+.col-devis .optionspayantes { padding: 10px; margin: 10px; border: 3px solid #23B6E1; overflow: auto;}
+.col-devis .optionspayantes .col-md-5 { width: 45%; padding: 5px 10px; margin: 1%; color: black;}
+.col-devis .optionspayantes .col-md-1 { width: 3%; height: 25px;padding: 5px 10px;  margin: 1%;}

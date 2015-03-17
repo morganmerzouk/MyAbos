@@ -39,6 +39,24 @@ boat_watercapacity: Water tank capacity
 boat_power: Power supplies
 boat_loisir: HIFI/Video equipment
 boat_jouet: Entertainment
+see_available: Check availability
+contact_skipper: Contact Skipper
+
+special_offer_with: Special offer with
+
+form_sejour_possible_debut: Cruise possible between: 
+form_sejour_possible_fin: and: 
+form_sejour_duree: Cruise duration: 
+form_sejour_nb_passager: Number of passenger: 
+form_sejour_port_depart: Departure: 
+form_sejour_destination: Destination: 
+passagers: passengers
+jours: days
+choose_your_options: Choose your options
+equipier_supplementaire: Supplementary Crew
+option_avitaillement: Provisioning option
+equipement_supplementaire: Supplementary Equipments
+prestation_kite_disponible: Kitesurf services available
 
 cal_mon: "Mon."
 cal_tue: "Tue."

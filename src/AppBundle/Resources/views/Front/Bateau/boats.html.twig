@@ -22,11 +22,17 @@
                 <br />
                 <span class="small">Tarif par personne sur une base de 8 personnes</span>
             </p>
-            <div class="bateaux-icones"><img src="{{ asset('bundles/app/images/icones/boat/1-icons-boat-tech-file-50pix-'~boat.type|lower~'-noir.png') }}" /><br />{{boat.type}}</div>
-            <div class="bateaux-icones"><img src="{{ asset('bundles/app/images/icones/boat/2-icons-boat-tech-file-50pix-CABINS-'~boat.nbCabine~'-noir.png') }}" /><br />{{boat.nbCabine}} {{'boat_cabine'|trans}}</div>
+            <div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/1-icons-boat-tech-file-50pix-'~boat.type|lower~'-noir.png') }}" /><br />{{boat.type}}</div>
+            <div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/2-icons-boat-tech-file-50pix-CABINS-'~boat.nbCabine~'-noir.png') }}" /><br />{{boat.nbCabine}} {{'boat_cabine'|trans}}</div>
             
-			{% if (boat.nbCouchage > 0) %}<div><img src="{{ asset('bundles/app/images/icones/boat/3-icons-boat-tech-file-50pix-COUCHAGE-noir.png') }}" /><br />{{boat.nbCouchage}} {{'boat_bed'|trans}}</div>{% endif %}
-            <p class="bateaux-description">{{ boat.description|striptags|slice(0,100) ~ '...' }}</p>
+			{% if (boat.nbCouchage > 0) %}<div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/3-icons-boat-tech-file-50pix-COUCHAGE-noir.png') }}" /><br />{{boat.nbCouchage}} {{'boat_bed'|trans}}</div>{% endif %}
+            <p class="bateaux-description">
+            	{% if boat.description|length > 100 %}
+            		{{ boat.description|striptags|slice(0,100) ~ '...' }}
+            	{% else %}
+            		{{ boat.description|striptags }}
+        		{% endif %}
+    		</p>
             <a class="btn btn-sm btn-warning pull-right" href="{{ path('boat', { 'id': boat.id }) }}">{{'suite'|trans}}</a>
         </div>
         {% if loop.index0 % 3 == 2 %}

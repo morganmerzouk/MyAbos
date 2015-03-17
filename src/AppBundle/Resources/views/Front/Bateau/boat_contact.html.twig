@@ -1,5 +1,62 @@
 {% extends "AppBundle:Front:Bateau/boat.html.twig" %}
 {% block content %}
     {{ parent() }}
-    Contact
+    <div class="col-devis col-md-9">
+    	<h2>Obtenez un devis en un clic!</h2>
+    	<div class="row odd">
+			{{ form_label(form.dateDepart) }}
+	        {{ form_errors(form.dateDepart) }}
+	        {{ form_widget(form.dateDepart) }}
+	        
+			{{ form_label(form.dateRetour) }}
+	        {{ form_errors(form.dateRetour) }}
+	        {{ form_widget(form.dateRetour) }}
+        </div>
+    	<div class="row even">	        
+			{{ form_label(form.dureeCroisiere) }}
+	        {{ form_errors(form.dureeCroisiere) }}
+	        {{ form_widget(form.dureeCroisiere) }} {{'jours'|trans}}
+        </div>
+    	<div class="row odd">	        
+			{{ form_label(form.nbPassager) }}
+	        {{ form_errors(form.nbPassager) }}
+	        {{ form_widget(form.nbPassager) }} {{'passagers'|trans}}
+        </div>
+    	<div class="row even">	        
+			{{ form_label(form.portDepart) }}
+	        {{ form_errors(form.portDepart) }}
+	        {{ form_widget(form.portDepart) }}
+        </div>
+    	<div class="row odd">
+			{{ form_label(form.destination) }}
+	        {{ form_errors(form.destination) }}
+	        {{ form_widget(form.destination) }}
+    	</div>
+    	<div class="optionspayantes">
+    		{{'choose_your_options'|trans }}
+    		<div class="col-md-12 even">{{'equipier_supplementaire'|trans }}</div>
+    		<div class="col-md-5 odd">Hotesse / Cuisinier</div>
+    		<div class="col-md-5 odd">150 euros par jour, pour le bateau</div>
+    		<div class="col-md-1"><input type="checkbox" value="" /></div>
+		
+	    	<div class="col-md-12 even">{{'option_avitaillement'|trans }}</div>
+    		<div class="col-md-5 odd">Boissons alcoolisés</div>
+    		<div class="col-md-5 odd">10 euros par jour, par personne</div>
+    		<div class="col-md-1"><input type="checkbox" value="" /></div>
+	    	
+	    	<div class="col-md-12 even">{{'equipement_supplementaire'|trans }}</div>
+			<div class="col-md-5 odd">La location de matériel de kitesurf</div>
+    		<div class="col-md-5 odd">350 euros la semaine, par personne</div>
+    		<div class="col-md-1"><input type="checkbox" value="" /></div>
+
+	    	<div class="col-md-12 even">{{'prestation_kite_disponible'|trans }}</div>
+    		<div class="col-md-5 odd">Cours de kitesurf</div>
+    		<div class="col-md-5 odd">50 euros par heure</div>
+    		<div class="col-md-1"><input type="checkbox" value="" /></div>
+    		<a href="#" class="btn btn-warning pull-right">Calculer</a>
+    	</div>
+    </div>
+    <div class="col-md-3">
+    
+    </div>
 {% endblock content %}

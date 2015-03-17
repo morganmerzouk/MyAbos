@@ -39,7 +39,24 @@ boat_watercapacity: Capacité réservoirs eau
 boat_power: Alimentation
 boat_loisir: Equipement HIFI/Vidéo
 boat_jouet: Loisirs
+see_available: Voir les disponibilités
+contact_skipper: Contacter le skipper
 
+special_offer_with: Offres spéciales avec 
+
+form_sejour_possible_debut: Croisière possible entre le: 
+form_sejour_possible_fin: et le: 
+form_sejour_duree: Durée de la croisière:  
+form_sejour_nb_passager: Nombre de passager:
+form_sejour_port_depart: Port de départ: 
+form_sejour_destination: Destination:  
+passagers: passagers
+jours: jours
+choose_your_options: Sélectionnez vos options payantes
+equipier_supplementaire: Equipier supplémentaire
+option_avitaillement: Option d'avitaillement
+equipement_supplementaire: Equipements supplémentaires
+prestation_kite_disponible: Prestations kitesurf disponibles
 
 cal_mon: "Lun."
 cal_tue: "Mar."
