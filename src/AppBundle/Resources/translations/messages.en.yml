@@ -40,6 +40,14 @@ boat_power: Power supplies
 boat_loisir: HIFI/Video equipment
 boat_jouet: Entertainment
 
+cal_mon: "Mon."
+cal_tue: "Tue."
+cal_wed: "Wed."
+cal_thu: "Thu."
+cal_fri: "Fri."
+cal_sat: "Sat."
+cal_sun: "Sun."
+
 contact: Contact
 cruise_to: Cruise to
 destinations: Destinations

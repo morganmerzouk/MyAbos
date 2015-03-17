@@ -4,7 +4,7 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Doctrine\ORM\Query;
 class BateauController extends Controller
 {
     /**
@@ -97,17 +97,15 @@ class BateauController extends Controller
         $request = $this->getRequest();
         $locale = $request->getLocale();
         
-        $boat = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Bateau")
-        ->createQueryBuilder('s')
-        ->select('s, t')
-        ->join('s.translations', 't')
-        ->where('s.id = :id')->setParameter(':id', $id)
-        ->andWhere('s.published = true')
-        ->andWhere('t.locale = :locale')->setParameter(':locale', $locale)
+        $croisieres = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Croisiere")
+        ->createQueryBuilder('c')
+        ->select('c,d')
+        ->join('c.bateau', 'b')
+        ->join('c.dateNonDisponibilite', 'd')
+        ->where('b.id = :id')->setParameter(':id', $id)
         ->getQuery()
-        ->getSingleResult();
-        
-        return $this->render('AppBundle:Front:Bateau/boat_available.html.twig',array('boat'=> $boat));
+        ->getResult(Query::HYDRATE_OBJECT);
+        return $this->render('AppBundle:Front:Bateau/boat_available.html.twig',array('datesNonDisponibilite'=> $croisieres[0]->getDateNonDisponibilite()));
     }
     
     /**

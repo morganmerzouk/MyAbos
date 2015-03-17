@@ -97,6 +97,15 @@ services:
     sonata.user.admin.user:
       abstract: true
       public: false
+      services:
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }
+    .twig.datetime_extension:
+        class: AppBundle\Twig\DatetimeExtension
+        tags:
+            - { name: twig.extension }
 fos_user:
     db_driver: orm
     firewall_name: main

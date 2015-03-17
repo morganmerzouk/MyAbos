@@ -40,6 +40,16 @@ boat_power: Alimentation
 boat_loisir: Equipement HIFI/Vidéo
 boat_jouet: Loisirs
 
+
+cal_mon: "Lun."
+cal_tue: "Mar."
+cal_wed: "Mer."
+cal_thu: "Jeu."
+cal_fri: "Ven."
+cal_sat: "Sam."
+cal_sun: "Dim."
+
+
 contact: Contact
 cruise_to: Les croisières vers
 destinations: Destinations

@@ -183,5 +183,6 @@ height: auto
 }
 /*** Début Itinéraire croisière ***/
 .control-croisere-datenondisponibilite { width: 180px;}
-span[id$='dateNonDisponibilite'] table { width: 30%;}
+span[id$='dateNonDisponibilite'] table { width: 50%;}
+td .form-group { margin: 0px;}
 /*** Fin Itinéraire ***/
