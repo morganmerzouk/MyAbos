@@ -37,3 +37,8 @@ table.month { border: 1px solid black;}
 .month td { text-align: center; border: 1px solid black; }
 td .active { margin: 1px; border-radius: 3px; background: lightgrey; }
 .ligne { overflow: auto; margin-bottom: 10px;}
+
+.tableLegend { display: inline-block; margin-right: 10px; }
+td.legend  { border: 1px solid black; width: 20px; border-radius: 0; }
+td.libelleLegend { padding-left: 5px;}
+.legend div {  padding: 1px 5px; }

@@ -1,6 +1,8 @@
 {% extends "AppBundle:Front:Bateau/boat.html.twig" %}
 {% block content %}
     {{ parent() }}
+    <table class="tableLegend"><td class="legend"><div class="active">X</div></td><td class="libelleLegend">Booked</td></table> 
+    <table class="tableLegend"><td class="legend"><div class=>X</div></td><td class="libelleLegend">Available</td></table>
     {% for i in 0..11 %}
     {% set time = "now"|date_modify("+"~ i ~ " month")|date("U") %}
     {% if(i%3==0)%}
@@ -36,13 +38,23 @@
 					<td>
 						<div class="day">
 							<div
-								{% for dateNonDisponibilite in datesNonDisponibilite %}
-									{% if ((dateNonDisponibilite.dateDebut|date("Ym") == time|date("Ym") and dateNonDisponibilite.dateDebut|date("d") <= day 
-										and (dateNonDisponibilite.dateFin|date("Ym") > time|date("Ym") or dateNonDisponibilite.dateFin|date("d") >= day))
-										or (dateNonDisponibilite.dateDebut|date("Ym") == time|date_modify("-1 month")|date("Ym") and dateNonDisponibilite.dateFin|date("Ym") == time|date('Ym') and dateNonDisponibilite.dateFin|date("d") >= day)) %}
-										class="active"
-									{% endif %}
-								{% endfor %}
+                                                            {% for dateNonDisponibilite in datesNonDisponibilite %}
+                                                                {% if dateNonDisponibilite.dateDebut|date("Ym") == time|date("Ym") 
+                                                                        and dateNonDisponibilite.dateDebut|date("d") <= day 
+                                                                        and (dateNonDisponibilite.dateFin|date("Ym") > time|date("Ym") 
+                                                                            or (dateNonDisponibilite.dateFin|date("Ym") == time|date("Ym") 
+                                                                                and dateNonDisponibilite.dateFin|date("d") >= day)
+                                                                        )
+                                                                        or (dateNonDisponibilite.dateDebut|date("Ym") < time|date("Ym") 
+                                                                            and dateNonDisponibilite.dateFin|date("Ym") > time|date('Ym')
+                                                                            or (dateNonDisponibilite.dateFin|date("Ym") == time|date('Ym') 
+                                                                                and dateNonDisponibilite.dateFin|date("d") >= day
+                                                                                and dateNonDisponibilite.dateDebut|date('Ym') < time|date("Ym")
+                                                                            )) 
+                                                                %}
+                                                                    class="active"
+                                                                {% endif %}
+                                                            {% endfor %}
 							>{{ day }}
 							<div>
 							 {# day content here #}

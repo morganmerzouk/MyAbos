@@ -1,7 +1,22 @@
 {% extends "AppBundle:Front:Skipper/skipper.html.twig" %}
 {% block content %}
     {{ parent() }}
-    <div>
-        bateau
-    </div>  
+    {% if bateaux|length == 1 %}
+        <div class="skipper-boat-description">
+            <div class="col-md-6">
+                <img src="{{ bateaux.miniatureWebPath }}" alt="photo {{ bateaux.name }}" />
+            </div>
+            <div class="col-md-6">
+                {{ bateaux.description|raw }}
+                <a class="btn btn-xs btn-warning" href="{{ path("boat", { "id": bateaux.id }) }}">{{'suite'|trans }}</a>
+            </div>
+        </div>
+        <div class="clearfix">
+            <img class="col-md-2 img-responsive" src="{{ bateaux.photoVoileWebPath }}" alt="photo voile" />
+            <img class="col-md-2 img-responsive" src="{{ bateaux.photoMouillageWebPath }}" alt="photo mouillage" />
+            <img class="col-md-2 img-responsive" src="{{ bateaux.photoCockpitWebPath }}" alt="photo cockpit"  />
+            <img class="col-md-2 img-responsive" src="{{ bateaux.photoCarreWebPath }}" alt="photo carre" />
+            <img class="col-md-2 img-responsive" src="{{ bateaux.photoCabineWebPath }}" alt="photo cabine" />
+        </div>  
+    {% endif %}
 {% endblock content %}

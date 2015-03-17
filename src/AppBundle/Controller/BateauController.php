@@ -94,8 +94,6 @@ class BateauController extends Controller
      */
     public function bateauAvailableAction($id)
     {
-        $request = $this->getRequest();
-        $locale = $request->getLocale();
         
         $croisieres = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Croisiere")
         ->createQueryBuilder('c')
@@ -105,7 +103,7 @@ class BateauController extends Controller
         ->where('b.id = :id')->setParameter(':id', $id)
         ->getQuery()
         ->getResult(Query::HYDRATE_OBJECT);
-        return $this->render('AppBundle:Front:Bateau/boat_available.html.twig',array('datesNonDisponibilite'=> $croisieres[0]->getDateNonDisponibilite()));
+        return $this->render('AppBundle:Front:Bateau/boat_available.html.twig',array('datesNonDisponibilite'=> isset($croisieres[0]) ? $croisieres[0]->getDateNonDisponibilite() : null));
     }
     
     /**

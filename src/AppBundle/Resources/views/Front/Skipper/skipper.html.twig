@@ -8,5 +8,5 @@
 {% endblock %}   
 {% block title %}{{'toptitle'|trans}} - {{'crew'|trans}}{% endblock %}
 {% block content %}
-    {%  render(controller('AppBundle:Skipper:submenu', { 'route': app.request.get('_route'), 'id': id })) %}
+    {%  render(controller('AppBundle:Skipper:submenu', { 'route': app.request.get('_route'), 'id': app.request.get('id') })) %}
 {% endblock content %}

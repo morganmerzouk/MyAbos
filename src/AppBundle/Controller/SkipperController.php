@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Doctrine\ORM\Query;
 
 class SkipperController extends Controller
 {
@@ -55,17 +56,16 @@ class SkipperController extends Controller
         $request = $this->getRequest();
         $locale = $request->getLocale();
         
-        $bateaux = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Croisiere")
+        $croisiere = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Croisiere")
         ->createQueryBuilder('c')
-        ->select('c, b')
+        ->select('c, b, t')
         ->join('AppBundle\Entity\Bateau', 'b', 'WITH', 'c.bateau = b.id')
         ->join('b.translations', 't')
         ->where('c.skipper = :id')->setParameter(':id', $id)
         ->andWhere('t.locale = :locale')->setParameter(':locale', $locale)
         ->getQuery()
-        ->getResult();
-        
-        return $this->render('AppBundle:Front:Skipper/skipper_bateau.html.twig',array('bateaux'=> $bateaux, 'id' => $id));
+        ->getResult(Query::HYDRATE_OBJECT);
+        return $this->render('AppBundle:Front:Skipper/skipper_bateau.html.twig',array('bateaux'=> ($croisiere[0]->getBateau())));
     }
     
     /**
@@ -96,22 +96,17 @@ class SkipperController extends Controller
      */
     public function skipperAvailableAction($id)
     {
-        $request = $this->getRequest();
-        $locale = $request->getLocale();
-        
-        $destinations = null;
-        
-        /*$this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Croisiere")
+        $croisieres = $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Croisiere")
         ->createQueryBuilder('c')
-        ->select('c, b')
-        ->join('AppBundle\Entity\Bateau', 'b', 'WITH', 'c.bateau = b.id')
-        ->join('b.translations', 't')
-        ->where('c.skipper = :id')->setParameter(':id', $id)
-        ->andWhere('t.locale = :locale')->setParameter(':locale', $locale)
+        ->select('c,d')
+        ->join('c.skipper', 's')
+        ->join('c.dateNonDisponibilite', 'd')
+        ->where('s.id = :id')->setParameter(':id', $id)
         ->getQuery()
-        ->getResult();*/
+        ->getResult(Query::HYDRATE_OBJECT);
         
-        return $this->render('AppBundle:Front:Skipper/skipper_available.html.twig',array('destinations'=> $destinations, 'id' => $id));
+        return $this->render('AppBundle:Front:Skipper/skipper_available.html.twig',array('datesNonDisponibilite'=> isset($croisieres[0]) ? $croisieres[0]->getDateNonDisponibilite() : null));
+    
     }
     
         /**
