@@ -51,7 +51,7 @@ class BateauDevisType extends AbstractType
             ),
             'choice_list' => $this->loadChoiceList("dureeCroisiere"),
             'attr' => array(
-                "class" => "bateau-list-radio"
+                "class" => "select-duree-croisiere"
             )
         ))
             ->add('nbPassager', 'choice', array(
@@ -61,7 +61,7 @@ class BateauDevisType extends AbstractType
             ),
             'choice_list' => $this->loadChoiceList("nbPassager"),
             'attr' => array(
-                "class" => "input-nb-passager"
+                "class" => "select-nb-passager"
             )
         ))
             ->add('portDepart', 'choice', array(
@@ -131,14 +131,13 @@ class BateauDevisType extends AbstractType
             ->select('d.translatable_id as id, d.name')
             ->where("d.locale = :locale")
             ->setParameter(":locale", $this->locale)
-            ->orderBy('d.name', 'ASC');
+            ->orderBy('d.name', 'ASC')
+            ->getQuery()
+            ->getResult();
         
         $destination = array();
         foreach ($results as $dest) {
-            $destination[] = array(
-                "id" => $dest->getId(),
-                "name" => $dest->getName()
-            );
+            $destination[$dest['id']] = $dest['name'];
         }
         
         return $destination;
@@ -151,17 +150,16 @@ class BateauDevisType extends AbstractType
             ->select('d.translatable_id as id, d.name')
             ->where("d.locale = :locale")
             ->setParameter(":locale", $this->locale)
-            ->orderBy('d.name', 'ASC');
+            ->orderBy('d.name', 'ASC')
+            ->getQuery()
+            ->getResult();
         
-        $prestation = array();
-        foreach ($results as $prest) {
-            $prestation[] = array(
-                "id" => $prest->getId(),
-                "name" => $prest->getName()
-            );
+        $portDepart = array();
+        foreach ($results as $port) {
+            $portDepart[$port['id']] = $port['name'];
         }
         
-        return $prestation;
+        return $portDepart;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

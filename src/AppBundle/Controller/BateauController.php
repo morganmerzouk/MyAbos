@@ -65,8 +65,7 @@ class BateauController extends Controller
      */
     public function bateauDetailAction($id)
     {
-        $request = $this->getRequest();
-        $locale = $request->getLocale();
+        $locale = $this->getRequest()->getLocale();
         
         $boat = $this->getDoctrine()
             ->getManager()
@@ -107,8 +106,7 @@ class BateauController extends Controller
      */
     public function bateauCrewAction($id)
     {
-        $request = $this->getRequest();
-        $locale = $request->getLocale();
+        $locale = $this->getRequest()->getLocale();
         
         $boat = $this->getDoctrine()
             ->getManager()
@@ -170,8 +168,7 @@ class BateauController extends Controller
      */
     public function bateauDestiAction($id)
     {
-        $request = $this->getRequest();
-        $locale = $request->getLocale();
+        $locale = $this->getRequest()->getLocale();
         
         $boat = $this->getDoctrine()
             ->getManager()
@@ -197,8 +194,7 @@ class BateauController extends Controller
      */
     public function bateauPriceAction($id)
     {
-        $request = $this->getRequest();
-        $locale = $request->getLocale();
+        $locale = $this->getRequest()->getLocale();
         
         $boat = $this->getDoctrine()
             ->getManager()
@@ -224,6 +220,7 @@ class BateauController extends Controller
      */
     public function bateauContactAction($id)
     {
+        $locale = $this->getRequest()->getLocale();
         $form = $this->createForm(new BateauDevisType($this->getDoctrine()
             ->getEntityManager(), $this->getRequest()
             ->getLocale()));
@@ -234,8 +231,24 @@ class BateauController extends Controller
             return $this->redirect($this->generateUrl('task_success'));
         }
         
+        
+        $croisiere = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("AppBundle\Entity\Croisiere")
+            ->createQueryBuilder('c')
+            ->select('c, b, t')
+            ->join('AppBundle\Entity\Bateau', 'b', 'WITH', 'c.bateau = b.id')
+            ->join('b.translations', 't')
+            ->where('c.bateau = :id')
+            ->setParameter(':id', $id)
+            ->andWhere('t.locale = :locale')
+            ->setParameter(':locale', $locale)
+            ->getQuery()
+            ->getResult(Query::HYDRATE_OBJECT);
+        
         return $this->render('AppBundle:Front:Bateau/boat_contact.html.twig', array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'skipper' => isset($croisiere[0]) ? $croisiere[0]->getSkipper() : null
         ));
     }
 

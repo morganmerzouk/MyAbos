@@ -50,13 +50,19 @@ form_sejour_duree: Cruise duration:
 form_sejour_nb_passager: Number of passenger: 
 form_sejour_port_depart: Departure: 
 form_sejour_destination: Destination: 
+devis_option: Options included in the estimate:
 passagers: passengers
 jours: days
+devis_croisiere: Kite cruise of
+votre_devis: Your customized estimate
+between: between
+price_for: Price for
 choose_your_options: Choose your options
 equipier_supplementaire: Supplementary Crew
 option_avitaillement: Provisioning option
 equipement_supplementaire: Supplementary Equipments
 prestation_kite_disponible: Kitesurf services available
+par_passager: per passenger
 
 cal_mon: "Mon."
 cal_tue: "Tue."

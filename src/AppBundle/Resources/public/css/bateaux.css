@@ -38,7 +38,7 @@ table.month { border: 1px solid black;}
 td .active { margin: 1px; border-radius: 3px; background: lightgrey; }
 .ligne { overflow: auto; margin-bottom: 10px;}
 
-/*** Page Disponibilités ***/
+/*** Page Disponibilitï¿½s ***/
 .tableLegend { display: inline-block; margin-right: 10px; }
 td.legend  { border: 1px solid black; width: 20px; border-radius: 0; }
 td.libelleLegend { padding-left: 5px;}
@@ -50,11 +50,11 @@ td.libelleLegend { padding-left: 5px;}
 .img-detail { margin: 1%; width: 48%; padding: 5px;}
 
 /*** Page crew ***/
-.col-md-9 h2 { margin: 0; background: #127BBD; padding:5px; font-size: 1.1em; color: white; }
 .bateau .offreName { margin: 0; margin-bottom: 10px; padding:10px; color: white; background: #127BBD; font-size: 1.2em; }
 .bateau .boatName { padding:5px; font-size: 1em; }
 
 .col-devis { border: 1px solid #B3B3B3; padding: 0;}
+.col-devis h2 { margin: 0; background: #127BBD; padding:5px; font-size: 1.1em; color: white; }
 .col-devis .row { padding: 5px 10px; margin: 10px; color: black;}
 .col-devis .odd { background: #127BBD;}
 .col-devis .even { background: #23B6E1;padding: 5px;clear: both;}
@@ -63,3 +63,6 @@ td.libelleLegend { padding-left: 5px;}
 .col-devis .optionspayantes { padding: 10px; margin: 10px; border: 3px solid #23B6E1; overflow: auto;}
 .col-devis .optionspayantes .col-md-5 { width: 45%; padding: 5px 10px; margin: 1%; color: black;}
 .col-devis .optionspayantes .col-md-1 { width: 3%; height: 25px;padding: 5px 10px;  margin: 1%;}
+
+.col-right-devis { position: fixed; right: 0; width: 20%; overflow: auto; padding-bottom: 10px; margin-bottom: 10px;}
+.bloc-final-price { background: white; text-align: center; margin: auto; padding:10px;}

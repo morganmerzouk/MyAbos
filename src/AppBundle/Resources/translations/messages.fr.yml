@@ -48,15 +48,21 @@ form_sejour_possible_debut: Croisière possible entre le:
 form_sejour_possible_fin: et le: 
 form_sejour_duree: Durée de la croisière:  
 form_sejour_nb_passager: Nombre de passager:
-form_sejour_port_depart: Port de départ: 
-form_sejour_destination: Destination:  
+form_sejour_port_depart: Port de départ souhaité: 
+form_sejour_destination: Destination souhaitée: 
+devis_option: Options inclues dans le devis:
 passagers: passagers
 jours: jours
+devis_croisiere: Croisière kite de
+votre_devis: Votre devis sur mesure
+between: entre le
+price_for: Tarif pour
 choose_your_options: Sélectionnez vos options payantes
 equipier_supplementaire: Equipier supplémentaire
 option_avitaillement: Option d'avitaillement
 equipement_supplementaire: Equipements supplémentaires
 prestation_kite_disponible: Prestations kitesurf disponibles
+par_passager: par passager
 
 cal_mon: "Lun."
 cal_tue: "Mar."

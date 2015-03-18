@@ -69,16 +69,13 @@ class SearchHeaderType extends AbstractType
             ->select('d.translatable_id as id, d.name')
             ->where("d.locale = :locale")
             ->setParameter(":locale", $this->locale)
-            ->orderBy('d.name', 'ASC');
-        
+            ->orderBy('d.name', 'ASC')
+            ->getQuery()
+            ->getResult();
         $destination = array();
         foreach ($results as $dest) {
-            $destination[] = array(
-                "id" => $dest->getId(),
-                "name" => $dest->getName()
-            );
+            $destination[$dest['id']] = $dest['name'];
         }
-        
         return $destination;
     }
 
@@ -89,14 +86,13 @@ class SearchHeaderType extends AbstractType
             ->select('d.translatable_id as id, d.name')
             ->where("d.locale = :locale")
             ->setParameter(":locale", $this->locale)
-            ->orderBy('d.name', 'ASC');
+            ->orderBy('d.name', 'ASC')
+            ->getQuery()
+            ->getResult();
         
         $prestation = array();
         foreach ($results as $prest) {
-            $prestation[] = array(
-                "id" => $prest->getId(),
-                "name" => $prest->getName()
-            );
+            $prestation[$prest['id']] = $prest['name'];
         }
         
         return $prestation;
