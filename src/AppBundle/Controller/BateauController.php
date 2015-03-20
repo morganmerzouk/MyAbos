@@ -194,24 +194,19 @@ class BateauController extends Controller
      */
     public function bateauPriceAction($id)
     {
-        $locale = $this->getRequest()->getLocale();
         
-        $boat = $this->getDoctrine()
+        $croisiere = $this->getDoctrine()
             ->getManager()
-            ->getRepository("AppBundle\Entity\Bateau")
-            ->createQueryBuilder('s')
-            ->select('s, t')
-            ->join('s.translations', 't')
-            ->where('s.id = :id')
+            ->getRepository("AppBundle\Entity\Croisiere")
+            ->createQueryBuilder('c')
+            ->select('c, t')
+            ->join('c.tarifCroisiere', 't')
+            ->where('c.bateau = :id')
             ->setParameter(':id', $id)
-            ->andWhere('s.published = true')
-            ->andWhere('t.locale = :locale')
-            ->setParameter(':locale', $locale)
             ->getQuery()
             ->getSingleResult();
-        
         return $this->render('AppBundle:Front:Bateau/boat_price.html.twig', array(
-            'boat' => $boat
+            'tarifs' => $croisiere->getTarifCroisiere()
         ));
     }
 

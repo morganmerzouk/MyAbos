@@ -1,5 +1,46 @@
 {% extends "AppBundle:Front:Bateau/boat.html.twig" %}
 {% block content %}
     {{ parent() }}
-    Price
+    <div class="col-md-9">
+        Tarif du Bateau
+        {% for tarif in tarifs %}
+            <div class="periode">
+                <div class="periode-title">
+                    {{'periode_du'|trans }}  {{ tarif.dateDebut|date('d/m/Y') }} {{'periode_au'|trans }} {{ tarif.dateFin|date('d/m/Y') }}
+                    <div class="pull-right">-</div>
+                </div>
+                {{'periode_tarif_du'|trans }} {{ tarif.nombreJourMinimum }} {{'day'|trans }} {{'periode_tarif_au'|trans }} {{ tarif.nombreJourMaximum }} {{'days'|trans }} {{'periode_tarif_cruise'|trans }}
+                {{ tarif.tarifPour }}
+                <table>
+                    <tr><td>{{'nombre_de_personne'|trans }}</td>
+                        {% if tarif.tarifDeuxPersonnes is not null %}<td>2</td>{% endif %}
+                        {% if tarif.tarifTroisPersonnes is not null %}<td>3</td>{% endif %}
+                        {% if tarif.tarifQuatrePersonnes is not null %}<td>4</td>{% endif %}
+                        {% if tarif.tarifCinqPersonnes is not null %}<td>5</td>{% endif %}
+                        {% if tarif.tarifSixPersonnes is not null %}<td>6</td>{% endif %}
+                        {% if tarif.tarifSeptPersonnes is not null %}<td>7</td>{% endif %}
+                        {% if tarif.tarifHuitPersonnes is not null %}<td>8</td>{% endif %}
+                    </tr>
+                    <tr><td>{{'prix_par_personne'|trans }}</td>
+                        {% if tarif.tarifDeuxPersonnes is not null %}<td>{{ tarif.tarifDeuxPersonnes }}</td>{% endif %}
+                        {% if tarif.tarifTroisPersonnes is not null %}<td>{{ tarif.tarifTroisPersonnes }}</td>{% endif %}
+                        {% if tarif.tarifQuatrePersonnes is not null %}<td>{{ tarif.tarifQuatrePersonnes }}</td>{% endif %}
+                        {% if tarif.tarifCinqPersonnes is not null %}<td>{{ tarif.tarifCinqPersonnes }}</td>{% endif %}
+                        {% if tarif.tarifSixPersonnes is not null %}<td>{{ tarif.tarifSixPersonnes }}</td>{% endif %}
+                        {% if tarif.tarifSeptPersonnes is not null %}<td>{{ tarif.tarifSeptPersonnes }}</td>{% endif %}
+                        {% if tarif.tarifHuitPersonnes is not null %}<td>{{ tarif.tarifHuitPersonnes }}</td>{% endif %}
+                    </tr>
+                    <tr><td>{{'prix_du_bateau'|trans }}</td>
+                        {% if tarif.tarifDeuxPersonnes is not null %}<td>{{ tarif.tarifDeuxPersonnes * 2 }}</td>{% endif %}
+                        {% if tarif.tarifTroisPersonnes is not null %}<td>{{ tarif.tarifTroisPersonnes * 3 }}</td>{% endif %}
+                        {% if tarif.tarifQuatrePersonnes is not null %}<td>{{ tarif.tarifQuatrePersonnes * 4 }}</td>{% endif %}
+                        {% if tarif.tarifCinqPersonnes is not null %}<td>{{ tarif.tarifCinqPersonnes * 5 }}</td>{% endif %}
+                        {% if tarif.tarifSixPersonnes is not null %}<td>{{ tarif.tarifSixPersonnes * 6 }}</td>{% endif %}
+                        {% if tarif.tarifSeptPersonnes is not null %}<td>{{ tarif.tarifSeptPersonnes * 7 }}</td>{% endif %}
+                        {% if tarif.tarifHuitPersonnes is not null %}<td>{{ tarif.tarifHuitPersonnes * 8 }}</td>{% endif %}
+                    </tr>
+                </table>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock content %}

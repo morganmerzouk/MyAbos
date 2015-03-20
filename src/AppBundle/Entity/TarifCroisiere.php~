@@ -41,31 +41,31 @@ class TarifCroisiere
     protected $nombreJourMaximum;
     
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     protected $tarifDeuxPersonnes;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     protected $tarifTroisPersonnes;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     protected $tarifQuatrePersonnes;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     protected $tarifCinqPersonnes;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     protected $tarifSixPersonnes;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     protected $tarifSeptPersonnes;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     protected $tarifHuitPersonnes;
     
@@ -91,7 +91,7 @@ class TarifCroisiere
 
     public function __toString()
     {
-        return (string) $this->getDateDebut()->format('d/m/Y') . '-' . $this->getDateFin()->format('d/m/Y');
+        return (string) 'Du ' . $this->getDateDebut()->format('d/m/Y') . ' au ' . $this->getDateFin()->format('d/m/Y') . ' pour ' . $this->tarifPour;
     }
 
     /**
@@ -138,5 +138,235 @@ class TarifCroisiere
     public function getDateFin()
     {
         return $this->dateFin;
+    }
+
+    /**
+     * Set nombreJourMinimum
+     *
+     * @param integer $nombreJourMinimum
+     * @return TarifCroisiere
+     */
+    public function setNombreJourMinimum($nombreJourMinimum)
+    {
+        $this->nombreJourMinimum = $nombreJourMinimum;
+
+        return $this;
+    }
+
+    /**
+     * Get nombreJourMinimum
+     *
+     * @return integer 
+     */
+    public function getNombreJourMinimum()
+    {
+        return $this->nombreJourMinimum;
+    }
+
+    /**
+     * Set nombreJourMaximum
+     *
+     * @param integer $nombreJourMaximum
+     * @return TarifCroisiere
+     */
+    public function setNombreJourMaximum($nombreJourMaximum)
+    {
+        $this->nombreJourMaximum = $nombreJourMaximum;
+
+        return $this;
+    }
+
+    /**
+     * Get nombreJourMaximum
+     *
+     * @return integer 
+     */
+    public function getNombreJourMaximum()
+    {
+        return $this->nombreJourMaximum;
+    }
+
+    /**
+     * Set tarifDeuxPersonnes
+     *
+     * @param integer $tarifDeuxPersonnes
+     * @return TarifCroisiere
+     */
+    public function setTarifDeuxPersonnes($tarifDeuxPersonnes)
+    {
+        $this->tarifDeuxPersonnes = $tarifDeuxPersonnes;
+
+        return $this;
+    }
+
+    /**
+     * Get tarifDeuxPersonnes
+     *
+     * @return integer 
+     */
+    public function getTarifDeuxPersonnes()
+    {
+        return $this->tarifDeuxPersonnes;
+    }
+
+    /**
+     * Set tarifTroisPersonnes
+     *
+     * @param integer $tarifTroisPersonnes
+     * @return TarifCroisiere
+     */
+    public function setTarifTroisPersonnes($tarifTroisPersonnes)
+    {
+        $this->tarifTroisPersonnes = $tarifTroisPersonnes;
+
+        return $this;
+    }
+
+    /**
+     * Get tarifTroisPersonnes
+     *
+     * @return integer 
+     */
+    public function getTarifTroisPersonnes()
+    {
+        return $this->tarifTroisPersonnes;
+    }
+
+    /**
+     * Set tarifQuatrePersonnes
+     *
+     * @param integer $tarifQuatrePersonnes
+     * @return TarifCroisiere
+     */
+    public function setTarifQuatrePersonnes($tarifQuatrePersonnes)
+    {
+        $this->tarifQuatrePersonnes = $tarifQuatrePersonnes;
+
+        return $this;
+    }
+
+    /**
+     * Get tarifQuatrePersonnes
+     *
+     * @return integer 
+     */
+    public function getTarifQuatrePersonnes()
+    {
+        return $this->tarifQuatrePersonnes;
+    }
+
+    /**
+     * Set tarifCinqPersonnes
+     *
+     * @param integer $tarifCinqPersonnes
+     * @return TarifCroisiere
+     */
+    public function setTarifCinqPersonnes($tarifCinqPersonnes)
+    {
+        $this->tarifCinqPersonnes = $tarifCinqPersonnes;
+
+        return $this;
+    }
+
+    /**
+     * Get tarifCinqPersonnes
+     *
+     * @return integer 
+     */
+    public function getTarifCinqPersonnes()
+    {
+        return $this->tarifCinqPersonnes;
+    }
+
+    /**
+     * Set tarifSixPersonnes
+     *
+     * @param integer $tarifSixPersonnes
+     * @return TarifCroisiere
+     */
+    public function setTarifSixPersonnes($tarifSixPersonnes)
+    {
+        $this->tarifSixPersonnes = $tarifSixPersonnes;
+
+        return $this;
+    }
+
+    /**
+     * Get tarifSixPersonnes
+     *
+     * @return integer 
+     */
+    public function getTarifSixPersonnes()
+    {
+        return $this->tarifSixPersonnes;
+    }
+
+    /**
+     * Set tarifSeptPersonnes
+     *
+     * @param integer $tarifSeptPersonnes
+     * @return TarifCroisiere
+     */
+    public function setTarifSeptPersonnes($tarifSeptPersonnes)
+    {
+        $this->tarifSeptPersonnes = $tarifSeptPersonnes;
+
+        return $this;
+    }
+
+    /**
+     * Get tarifSeptPersonnes
+     *
+     * @return integer 
+     */
+    public function getTarifSeptPersonnes()
+    {
+        return $this->tarifSeptPersonnes;
+    }
+
+    /**
+     * Set tarifHuitPersonnes
+     *
+     * @param integer $tarifHuitPersonnes
+     * @return TarifCroisiere
+     */
+    public function setTarifHuitPersonnes($tarifHuitPersonnes)
+    {
+        $this->tarifHuitPersonnes = $tarifHuitPersonnes;
+
+        return $this;
+    }
+
+    /**
+     * Get tarifHuitPersonnes
+     *
+     * @return integer 
+     */
+    public function getTarifHuitPersonnes()
+    {
+        return $this->tarifHuitPersonnes;
+    }
+
+    /**
+     * Set tarifPour
+     *
+     * @param string $tarifPour
+     * @return TarifCroisiere
+     */
+    public function setTarifPour($tarifPour)
+    {
+        $this->tarifPour = $tarifPour;
+
+        return $this;
+    }
+
+    /**
+     * Get tarifPour
+     *
+     * @return string 
+     */
+    public function getTarifPour()
+    {
+        return $this->tarifPour;
     }
 }

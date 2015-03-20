@@ -7,9 +7,9 @@
 	    	{{ skipper.description|raw }}
 		</div>
 	 	<div class="col-md-3">
-	 		{% if skipper is not null %}<a href="{{ path('skipper_contact', {'id': skipper.id }) }}" class="btn btn-lg btn-warning">{{'contact_skipper'|trans}}</a>{% endif %}    
+                    {% if skipper is not null %}<div class="text-center"><a href="{{ path('skipper_contact', {'id': skipper.id }) }}" class="btn btn-lg btn-warning">{{'contact_skipper'|trans}}</a></div>{% endif %}    
 	        <div class="bateau">
-		    	<h2 class="offreName">{{'special_offer_with'|trans }}{{ skipper.name }}</h3>
+		    	<h2 class="offreName">{{'special_offer_with'|trans }} {{ skipper.name }}</h3>
 		        <h3 class="boatName">{{ boat.name }}</h3>
 		        <img class="img-responsive img-thumbnail" src="{{ boat.miniatureWebPath }}" alt="photo {{ boat.name }}" /><br />
 		        <p class="bateau-prix-semaine"> 
@@ -23,9 +23,9 @@
 				{% if (boat.nbCouchage > 0) %}<div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/3-icons-boat-tech-file-50pix-COUCHAGE-noir.png') }}" /><br />{{boat.nbCouchage}} {{'boat_bed'|trans}}</div>{% endif %}
 		        <p class="bateaux-description">
 		        	{% if boat.description|length > 100 %}
-		        		{{ boat.description|striptags|slice(0,100) ~ '...' }}
+		        		{{ boat.description|striptags|raw|slice(0,100) ~ '...' }}
 		        	{% else %}
-		        		{{ boat.description|striptags }}
+		        		{{ boat.description|striptags|raw }}
 		    		{% endif %}
 				</p>
 		        <a class="btn btn-sm btn-warning pull-right" href="{{ path('boat', { 'id': boat.id }) }}">{{'suite'|trans}}</a>

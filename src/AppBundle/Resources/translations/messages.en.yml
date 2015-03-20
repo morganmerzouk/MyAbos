@@ -64,6 +64,16 @@ equipement_supplementaire: Supplementary Equipments
 prestation_kite_disponible: Kitesurf services available
 par_passager: per passenger
 
+periode_du: Periods from
+periode_au: to
+periode_tarif_du: Price available for a duration between
+periode_tarif_au: and
+periode_tarif_cruise: of cruise
+
+nombre_de_personne: Number of passenger
+prix_par_personne: Price per passenger
+prix_du_bateau: Price of the boat
+
 cal_mon: "Mon."
 cal_tue: "Tue."
 cal_wed: "Wed."

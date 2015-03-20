@@ -26,14 +26,16 @@
         <div><img src="{{ asset('bundles/app/images/icones/boat/16-icons-boat-tech-file-50pix-EQUIPMENTS-noir.png') }}" />{{'boat_jouet'|trans}}: {{boat.jouet}}</div>
     </div>
 	<div class="col-md-6 img-details">
-		<img class="col-md-6 img-thumbnail img-responsive img-detail" src="{{ boat.miniatureWebPath }}" alt="photo voile" />
-		<img class="col-md-6 img-thumbnail img-responsive img-detail" src="{{ boat.photoVoileWebPath }}" alt="photo voile" />
-		<img class="col-md-6 img-thumbnail img-responsive img-detail" src="{{ boat.photoMouillageWebPath }}" alt="photo mouillage" />
-		<img class="col-md-6 img-thumbnail img-responsive img-detail" src="{{ boat.photoCockpitWebPath }}" alt="photo cockpit"  />
-		<img class="col-md-6 img-thumbnail img-responsive img-detail" src="{{ boat.photoCarreWebPath }}" alt="photo carre" />
-		<img class="col-md-6 img-thumbnail img-responsive img-detail" src="{{ boat.photoCabineWebPath }}" alt="photo cabine" />
-		{% if skipper is not null %}<a href="{{ path('skipper_contact', {'id': skipper.id }) }}" class="btn btn-lg btn-warning">{{'contact_skipper'|trans}}</a>{% endif %}
-    	<a href="{{ path('boat_available', {'id': boat.id }) }}" class=" btn btn-lg btn-danger">{{'see_available'|trans}}</a>
+            <img class="col-md-6 img-thumbnail img-responsive img-detail" src="{{ boat.miniatureWebPath }}" alt="photo voile" />
+            <img class="col-md-6 img-thumbnail img-responsive img-detail" src="{{ boat.photoVoileWebPath }}" alt="photo voile" />
+            <img class="col-md-6 img-thumbnail img-responsive img-detail" src="{{ boat.photoMouillageWebPath }}" alt="photo mouillage" />
+            <img class="col-md-6 img-thumbnail img-responsive img-detail" src="{{ boat.photoCockpitWebPath }}" alt="photo cockpit"  />
+            <img class="col-md-6 img-thumbnail img-responsive img-detail" src="{{ boat.photoCarreWebPath }}" alt="photo carre" />
+            <img class="col-md-6 img-thumbnail img-responsive img-detail" src="{{ boat.photoCabineWebPath }}" alt="photo cabine" />
+            <div class="text-center">
+                {% if skipper is not null %}<a href="{{ path('skipper_contact', {'id': skipper.id }) }}" class="btn btn-lg btn-warning">{{'contact_skipper'|trans}}</a>{% endif %}
+                <a href="{{ path('boat_available', {'id': boat.id }) }}" class=" btn btn-lg btn-danger">{{'see_available'|trans}}</a>
+            </div>
     </div>
 {% endblock content %}
     

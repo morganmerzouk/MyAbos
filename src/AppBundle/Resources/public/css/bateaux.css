@@ -66,3 +66,8 @@ td.libelleLegend { padding-left: 5px;}
 
 .col-right-devis { position: fixed; right: 0; width: 20%; overflow: auto; padding-bottom: 10px; margin-bottom: 10px;}
 .bloc-final-price { background: white; text-align: center; margin: auto; padding:10px;}
+
+/*** Page tarif ***/
+.periode { border: 1px solid #B3B3B3; margin: 10px auto; padding: 10px; padding-top: 0;}
+.periode-title { font-weight: bold; border-bottom: 1px solid #B3B3B3; }
+.periode table td { border: 1px solid #B3B3B3;}

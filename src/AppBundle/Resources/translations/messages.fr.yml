@@ -64,6 +64,15 @@ equipement_supplementaire: Equipements supplémentaires
 prestation_kite_disponible: Prestations kitesurf disponibles
 par_passager: par passager
 
+periode_du: Période du
+periode_au: au
+periode_tarif_du: Tarifs disponibles pour une durée de
+periode_tarif_au: à
+periode_tarif_cruise: de croisière
+nombre_de_personne: Nombre de personnes
+prix_par_personne: Prix par personne
+prix_du_bateau: Prix du bateau
+
 cal_mon: "Lun."
 cal_tue: "Mar."
 cal_wed: "Mer."
