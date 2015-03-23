@@ -1,6 +1,6 @@
 <?php
 
-// src/AppBundle/Entity/Skipper.php
+// src/AppBundle/Entity/Croisiere.php
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -9,9 +9,9 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="portdepart")
+ * @ORM\Table(name="offrespeciale")
  */
-class PortDepart
+class OffreSpeciale
 {
     
     use ORMBehaviors\Translatable\Translatable;
@@ -23,7 +23,30 @@ class PortDepart
      */
     protected $id;
 
-    protected $name;
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Bateau", cascade={"persist"})
+     */
+    protected $bateau;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Skipper",cascade={"persist"})
+     */
+    protected $skipper;
+
+    /**
+     * @ORM\OneToOne(targetEntity="TarifCroisiere",cascade={"remove"})
+     */
+    protected $tarif;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Itineraire",cascade={"persist"})
+     */
+    protected $itineraire;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="ServicePayant")
+     */
+    protected $servicePayant;
 
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
@@ -32,17 +55,21 @@ class PortDepart
 
     protected $miniatureFile;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    protected $published;
+    public function __clone()
+    {
+        $this->id = null;
+    }
 
     /**
-     * Constructor
+     * Set id
+     *
+     * @param string $id            
+     * @return Croisiere
+     *
      */
-    public function __construct()
+    public function setId($id)
     {
-        $this->itineraire = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->id = $id;
     }
 
     /**
@@ -59,7 +86,7 @@ class PortDepart
      * Set miniature
      *
      * @param string $miniature            
-     * @return PortDepart
+     * @return Croisiere
      */
     public function setMiniature($miniature)
     {
@@ -98,62 +125,6 @@ class PortDepart
         return $this->miniatureFile;
     }
 
-    /**
-     * Set published
-     *
-     * @param boolean $published            
-     * @return PortDepart
-     */
-    public function setPublished($published)
-    {
-        $this->published = $published;
-        
-        return $this;
-    }
-
-    /**
-     * Get published
-     *
-     * @return boolean
-     */
-    public function getPublished()
-    {
-        return $this->published;
-    }
-
-    /**
-     * Add itineraire
-     *
-     * @param \AppBundle\Entity\Itineraire $itineraire            
-     * @return PortDepart
-     */
-    public function addItineraire(\AppBundle\Entity\Itineraire $itineraire)
-    {
-        $this->itineraire[] = $itineraire;
-        
-        return $this;
-    }
-
-    /**
-     * Remove itineraire
-     *
-     * @param \AppBundle\Entity\Itineraire $itineraire            
-     */
-    public function removeItineraire(\AppBundle\Entity\Itineraire $itineraire)
-    {
-        $this->itineraire->removeElement($itineraire);
-    }
-
-    /**
-     * Get itineraire
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getItineraire()
-    {
-        return $this->itineraire;
-    }
-
     public function getMiniatureWebPath()
     {
         return null === $this->miniature ? null : $this->getUploadDir() . '/miniature/' . $this->miniature;
@@ -161,7 +132,7 @@ class PortDepart
 
     protected function getUploadDir()
     {
-        return '/uploads/portdepart';
+        return '/uploads/offrespeciale';
     }
 
     protected function getUploadRootDir()
@@ -220,6 +191,11 @@ class PortDepart
         $file = null;
     }
 
+    public function __toString()
+    {
+        return $this->getName() ?  : 'Nouvel croisière';
+    }
+
     /* hack */
     public function __call($method, $arguments)
     {
@@ -231,23 +207,50 @@ class PortDepart
     {
         return $this->translate()->getName();
     }
-    
-    // Work even the precedent method not here, the proxy call work fine.
-    public function __toString()
+
+    /**
+     * Set bateau
+     *
+     * @param \AppBundle\Entity\Bateau $bateau            
+     * @return Croisiere
+     */
+    public function setBateau(\AppBundle\Entity\Bateau $bateau = null)
     {
-        return $this->getName() ?  : "Nouveau port";
+        $this->bateau = $bateau;
+        
+        return $this;
     }
 
     /**
-     * Set itineraire
+     * Get bateau
      *
-     * @param \AppBundle\Entity\Itineraire $itineraire            
-     * @return PortDepart
+     * @return \AppBundle\Entity\Bateau
      */
-    public function setItineraire(\AppBundle\Entity\Itineraire $itineraire = null)
+    public function getBateau()
     {
-        $this->itineraire = $itineraire;
+        return $this->bateau;
+    }
+
+    /**
+     * Set skipper
+     *
+     * @param \AppBundle\Entity\Skipper $skipper            
+     * @return Croisiere
+     */
+    public function setSkipper(\AppBundle\Entity\Skipper $skipper = null)
+    {
+        $this->skipper = $skipper;
         
         return $this;
+    }
+
+    /**
+     * Get skipper
+     *
+     * @return \AppBundle\Entity\Skipper
+     */
+    public function getSkipper()
+    {
+        return $this->skipper;
     }
 }

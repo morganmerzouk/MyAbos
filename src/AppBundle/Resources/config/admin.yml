@@ -143,3 +143,15 @@ services:
             - [ setTranslationDomain, [AppBundle]]
             - [ setBaseRouteName, [itinerairecroisiere]]
             - [ setBaseRoutePattern, [itinerairecroisiere]]
+    sonata.admin.offrespeciale:
+        class: AppBundle\Admin\OffreSpecialeAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Offre spéciale" }
+        arguments:
+            - ~
+            - AppBundle\Entity\OffreSpeciale
+            - AppBundle:OffreSpeciale
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+            - [ setBaseRouteName, [offrespeciale]]
+            - [ setBaseRoutePattern, [offrespeciale]]

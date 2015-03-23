@@ -37,11 +37,11 @@
 9:
     name_fr: "Croisière Kite avec avitaillement inclus"
     name_en: "Kite cruise with provisioning included"
-    icone: "ICON-prestations-chef-75%20pixels-noir.png"
+    icone: "ICON-prestations-avitaillement-75%20pixels-noir.png"
 10:
     name_fr: "Croisière Kite avec hôtesse et cuisinier"
     name_en: "Kite cruise with hostess/cook"
-    icone: "ICON-prestations-hostess-75%20pixels-noir.png"
+    icone: "ICON-prestations-chef-75%20pixels-noir.png"
 11:
     name_fr: "Croisière Kite haut standing"
     name_en: "High end kite cruise"

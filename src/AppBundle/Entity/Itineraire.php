@@ -11,34 +11,35 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  * @ORM\Entity
  * @ORM\Table(name="itineraire")
  */
-class Itineraire {
-
+class Itineraire
+{
+    
     use ORMBehaviors\Translatable\Translatable;
-        
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
+
     /**
-   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\PortDepart", cascade={"remove"})
-   */
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\PortDepart", cascade={"remove"})
+     */
     protected $portDepart;
-    
+
     /**
-     *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Destination", inversedBy="itineraire", )
      */
     protected $destination;
-    
+
     /**
-    * @ORM\Column(type="string", length=200, nullable=true)
-    */
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
     protected $miniature;
-    
+
     protected $miniatureFile;
+
     /**
      * Constructor
      */
@@ -50,7 +51,7 @@ class Itineraire {
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -60,20 +61,20 @@ class Itineraire {
     /**
      * Set miniature
      *
-     * @param string $miniature
+     * @param string $miniature            
      * @return PortDepart
      */
     public function setMiniature($miniature)
     {
         $this->miniature = $miniature;
-
+        
         return $this;
     }
 
     /**
      * Get miniature
      *
-     * @return string 
+     * @return string
      */
     public function getMiniature()
     {
@@ -83,13 +84,13 @@ class Itineraire {
     /**
      * Sets miniatureFile.
      *
-     * @param UploadedFile $miniatureFile
+     * @param UploadedFile $miniatureFile            
      */
     public function setMiniatureFile(UploadedFile $miniatureFile = null)
     {
         $this->miniatureFile = $miniatureFile;
     }
-    
+
     /**
      * Get miniatureFile.
      *
@@ -103,20 +104,20 @@ class Itineraire {
     /**
      * Add destination
      *
-     * @param \AppBundle\Entity\Destination $destination
+     * @param \AppBundle\Entity\Destination $destination            
      * @return Itineraire
      */
     public function setDestination(\AppBundle\Entity\Destination $destination)
     {
         $this->destination = $destination;
-
+        
         return $this;
     }
 
     /**
      * Get destination
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getDestination()
     {
@@ -126,74 +127,76 @@ class Itineraire {
     /**
      * Set portDepart
      *
-     * @param \AppBundle\Entity\PortDepart $portDepart
+     * @param \AppBundle\Entity\PortDepart $portDepart            
      * @return PortDepart
      */
     public function setPortDepart(\AppBundle\Entity\PortDepart $portDepart)
     {
         $this->portDepart = $portDepart;
-
+        
         return $this;
     }
-    
+
     /**
      * Get portDepart
      *
-     * @return PortDepart 
+     * @return PortDepart
      */
     public function getPortDepart()
     {
         return $this->portDepart;
     }
-    
+
     public function getMiniatureWebPath()
     {
-        return null === $this->miniature
-        ? null
-        : $this->getUploadDir().'/miniature/'.$this->miniature;
+        return null === $this->miniature ? null : $this->getUploadDir() . '/miniature/' . $this->miniature;
     }
-    
+
     protected function getUploadDir()
     {
         return '/uploads/itineraire';
     }
-        
-    protected function getUploadRootDir(){
-        return __DIR__.'/../../../web/'.$this->getUploadDir();
+
+    protected function getUploadRootDir()
+    {
+        return __DIR__ . '/../../../web/' . $this->getUploadDir();
     }
-        
+
     public function upload($basepath)
     {
         $this->uploadImage($this->miniatureFile, "setMiniature", 125, 125);
     }
-    
-    public function uploadImage($file, $fctName, $width, $height){
 
+    public function uploadImage($file, $fctName, $width, $height)
+    {
         if (null === $file) {
             return;
         }
         $destination = imagecreatetruecolor($width, $height);
-
+        
         $extension = $file->getClientOriginalExtension();
         switch (strtolower($extension)) {
             case "png":
                 $source = imagecreatefrompng($file);
+                imagealphablending($destination, false);
+                $colorTransparent = imagecolorallocatealpha($destination, 0, 0, 0, 0x7fff0000);
+                imagefill($destination, 0, 0, $colorTransparent);
+                imagesavealpha($destination, true);
                 $fct = 'imagepng';
-            break;
+                break;
             case "jpg":
             case "jpeg":
                 $source = imagecreatefromjpeg($file);
                 $fct = 'imagejpeg';
-            break;
+                break;
             case "gif":
                 $source = imagecreatefromgif($file);
                 $fct = 'imagegif';
-            break;
-                    
+                break;
         }
         
         // On r�cup�re la taille de l'image source
-        $largeur_source = imagesx($source);        
+        $largeur_source = imagesx($source);
         $hauteur_source = imagesy($source);
         
         // On redimensionne tout !
@@ -203,63 +206,62 @@ class Itineraire {
         } else {
             $fct($destination, $this->getUploadRootDir() . '/' . $file->getClientOriginalName());
         }
-
+        
         // set the path property to the filename where you'ved saved the file
         $this->$fctName($file->getClientOriginalName());
         // clean up the file property as you won't need it anymore
         $file = null;
     }
-    
 
     /**
      * Add destination
      *
-     * @param \AppBundle\Entity\Destination $destination
+     * @param \AppBundle\Entity\Destination $destination            
      * @return Itineraire
      */
     public function addDestination(\AppBundle\Entity\Destination $destination)
     {
         $this->destination[] = $destination;
-
+        
         return $this;
     }
-    
+
     public function __toString()
     {
-        if(!$this->getPortDepart())
+        if (! $this->getPortDepart())
             return 'Nouvel itinéraire';
-        return (string) $this->getPortDepart()->getName().'-'.$this->getDestination()->getName();
+        return (string) $this->getPortDepart()->getName() . '-' . $this->getDestination()->getName();
     }
-    
-        /* hack */
+
+    /* hack */
     public function __call($method, $arguments)
     {
         return $this->proxyCurrentLocaleTranslation($method, $arguments);
-    }   
-
-    // Need this method for the admin list template
-    public function getName(){
-         return $this->translate()->getName();
     }
-
+    
+    // Need this method for the admin list template
+    public function getName()
+    {
+        return $this->translate()->getName();
+    }
 
     /**
      * Add portDepart
      *
-     * @param \AppBundle\Entity\PortDepart $portDepart
+     * @param \AppBundle\Entity\PortDepart $portDepart            
      * @return Itineraire
      */
     public function addPortDepart(\AppBundle\Entity\PortDepart $portDepart)
     {
         $this->portDepart[] = $portDepart;
-
+        
         return $this;
     }
 
     /**
      * Remove portDepart
      *
-     * @param \AppBundle\Entity\PortDepart $portDepart
+     * @param \AppBundle\Entity\PortDepart $portDepart            
      */
     public function removePortDepart(\AppBundle\Entity\PortDepart $portDepart)
     {
@@ -269,7 +271,7 @@ class Itineraire {
     /**
      * Remove destination
      *
-     * @param \AppBundle\Entity\Destination $destination
+     * @param \AppBundle\Entity\Destination $destination            
      */
     public function removeDestination(\AppBundle\Entity\Destination $destination)
     {

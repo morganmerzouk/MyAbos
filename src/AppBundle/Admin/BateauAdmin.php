@@ -213,8 +213,7 @@ class BateauAdmin extends Admin
                 "class" => "bateau-list-radio"
             )
         ))
-            ->
-        add('nbLitSimple', 'choice', array(
+            ->add('nbLitSimple', 'choice', array(
             'label' => 'Nb de lit simple: ',
             'label_attr' => array(
                 'class' => 'control-bateau-nblitsimple'
@@ -225,8 +224,7 @@ class BateauAdmin extends Admin
                 "class" => "bateau-list-radio"
             )
         ))
-            ->
-        add('nbLitDouble', 'choice', array(
+            ->add('nbLitDouble', 'choice', array(
             'label' => 'Nb de lit double: ',
             'label_attr' => array(
                 'class' => 'control-bateau-nblitdouble'
@@ -258,96 +256,6 @@ class BateauAdmin extends Admin
                 ),
                 'translatable_id' => array(
                     'field_type' => 'hidden'
-                ),
-                'equipementCuisine' => array(
-                    'label' => 'Equipement en cuisine: ',
-                    'label_attr' => array(
-                        'class' => 'control-bateau-equipement'
-                    ),
-                    'attr' => array(
-                        'class' => 'bateau-equipement'
-                    ),
-                    'locale_options' => array(
-                        'en' => array(
-                            'label' => 'Galley Equipments: '
-                        ),
-                        'required' => false
-                    )
-                ),
-                'loisir' => array(
-                    'label' => 'Loisirs: ',
-                    'label_attr' => array(
-                        'class' => 'control-bateau-loisir'
-                    ),
-                    'attr' => array(
-                        'class' => 'bateau-loisir'
-                    ),
-                    'locale_options' => array(
-                        'en' => array(
-                            'label' => 'Entertainment: '
-                        ),
-                        'required' => false
-                    )
-                ),
-                'energie' => array(
-                    'label' => 'Energie: ',
-                    'label_attr' => array(
-                        'class' => 'control-bateau-energie'
-                    ),
-                    'attr' => array(
-                        'class' => 'bateau-energie'
-                    ),
-                    'locale_options' => array(
-                        'en' => array(
-                            'label' => 'Energy supplies: '
-                        ),
-                        'required' => false
-                    )
-                ),
-                'dinghy' => array(
-                    'label' => 'Annexe: ',
-                    'label_attr' => array(
-                        'class' => 'control-bateau-canot'
-                    ),
-                    'attr' => array(
-                        'class' => 'bateau-canot'
-                    ),
-                    'locale_options' => array(
-                        'en' => array(
-                            'label' => 'Dinghy: '
-                        ),
-                        'required' => false
-                    )
-                ),
-                'jouet' => array(
-                    'label' => 'Jouet: ',
-                    'label_attr' => array(
-                        'class' => 'control-bateau-jouet'
-                    ),
-                    'attr' => array(
-                        'class' => 'bateau-jouet'
-                    ),
-                    'locale_options' => array(
-                        'en' => array(
-                            'label' => 'Toys available: '
-                        ),
-                        'required' => false
-                    )
-                ),
-                'autre' => array(
-                    'label' => 'Autres informations: ',
-                    'label_attr' => array(
-                        'class' => 'control-bateau-autre'
-                    ),
-                    'attr' => array(
-                        'class' => 'bateau-autre'
-                    ),
-                    'locale_options' => array(
-                        'en' => array(
-                            'label' => 'Additional infos: '
-                        ),
-                        'required' => false
-                    )
                 ),
                 'longueur' => array(
                     'label' => 'Longueur: ',
@@ -450,6 +358,96 @@ class BateauAdmin extends Admin
                     'locale_options' => array(
                         'en' => array(
                             'label' => 'Water tank: '
+                        ),
+                        'required' => false
+                    )
+                ),
+                'energie' => array(
+                    'label' => 'Energie: ',
+                    'label_attr' => array(
+                        'class' => 'control-bateau-energie'
+                    ),
+                    'attr' => array(
+                        'class' => 'bateau-energie'
+                    ),
+                    'locale_options' => array(
+                        'en' => array(
+                            'label' => 'Energy supplies: '
+                        ),
+                        'required' => false
+                    )
+                ),
+                'equipementCuisine' => array(
+                    'label' => 'Equipement en cuisine: ',
+                    'label_attr' => array(
+                        'class' => 'control-bateau-equipement'
+                    ),
+                    'attr' => array(
+                        'class' => 'bateau-equipement'
+                    ),
+                    'locale_options' => array(
+                        'en' => array(
+                            'label' => 'Galley Equipments: '
+                        ),
+                        'required' => false
+                    )
+                ),
+                'dinghy' => array(
+                    'label' => 'Annexe: ',
+                    'label_attr' => array(
+                        'class' => 'control-bateau-canot'
+                    ),
+                    'attr' => array(
+                        'class' => 'bateau-canot'
+                    ),
+                    'locale_options' => array(
+                        'en' => array(
+                            'label' => 'Dinghy: '
+                        ),
+                        'required' => false
+                    )
+                ),
+                'loisir' => array(
+                    'label' => 'Loisirs: ',
+                    'label_attr' => array(
+                        'class' => 'control-bateau-loisir'
+                    ),
+                    'attr' => array(
+                        'class' => 'bateau-loisir'
+                    ),
+                    'locale_options' => array(
+                        'en' => array(
+                            'label' => 'Entertainment: '
+                        ),
+                        'required' => false
+                    )
+                ),
+                'jouet' => array(
+                    'label' => 'Jouet: ',
+                    'label_attr' => array(
+                        'class' => 'control-bateau-jouet'
+                    ),
+                    'attr' => array(
+                        'class' => 'bateau-jouet'
+                    ),
+                    'locale_options' => array(
+                        'en' => array(
+                            'label' => 'Toys aboard: '
+                        ),
+                        'required' => false
+                    )
+                ),
+                'autre' => array(
+                    'label' => 'Autres informations: ',
+                    'label_attr' => array(
+                        'class' => 'control-bateau-autre'
+                    ),
+                    'attr' => array(
+                        'class' => 'bateau-autre'
+                    ),
+                    'locale_options' => array(
+                        'en' => array(
+                            'label' => 'Additional infos: '
                         ),
                         'required' => false
                     )

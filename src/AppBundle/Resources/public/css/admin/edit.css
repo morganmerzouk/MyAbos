@@ -24,11 +24,6 @@ div.select2-container-multi { width: 505px !important;}
     clear: both; 
     margin-top: 10px;
 }
-.form-group[id$='photo1File'],
-.form-group[id$='photo2File'],
-.form-group[id$='photo3File'],
-.form-group[id$='photo4File'],
-.form-group[id$='photo5File']{ width: 300px; display: inline;}
 .form-group[id$='published'] { clear: both; }
 .preview-img {clear: both;display: block;}
 .control-photo1 { clear: both;}
@@ -114,7 +109,7 @@ height: auto
 }
 .bateau-longueur,
 .bateau-largeur,
-.bateau-tirantdeau {float:left; width: 100px;}
+.bateau-tirantdeau {float:left; }
 .bateau-reservoircarburant { width: 200px; }
 .control-bateau-longueur,
 .control-bateau-largeur,
@@ -124,7 +119,6 @@ height: auto
 .control-reservoirCarburant,
 .control-reservoirEau,
 .control-bateau-equipement { clear: both;}
-.control-bateau-equipement {  width:200px;}
 .bateau-list-radio {float: left; }
 .bateau-list-radio li { display: block; float: left;}
 .form-group[id$='destination'] { float:left;}
@@ -175,6 +169,10 @@ height: auto
     padding: 0;
     height: auto;
 }
+.control-croisiere-tarif, .control-croisiere-itineraire {float: none;}
+.itinerairecroisiere-variation-prix{ width:100px;}
+div.select2-container.itinerairecroisiere-itineraire { width:400px !important;}
+.itinerairecroisiere-tarifappliquesur{ width: 200px;}
 /*** Début Itinéraire croisière ***/
 .control-croisere-datenondisponibilite { width: 180px;}
 span[id$='dateNonDisponibilite'] table { width: 50%;}

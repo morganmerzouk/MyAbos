@@ -1,5 +1,5 @@
 <?php
-// src/AppBundle/Admin/CroisiereAdmin.php
+// src/AppBundle/Admin/OffreSpecialeAdmin.php
 namespace AppBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery;
 use Sonata\AdminBundle\Route\RouteCollection;
 
-class CroisiereAdmin extends Admin
+class OffreSpecialeAdmin extends Admin
 {
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
@@ -20,14 +20,14 @@ class CroisiereAdmin extends Admin
                 'class' => 'control-miniature'
             ),
             'attr' => array(
-                'class' => 'croisiere-miniature'
+                'class' => 'offrespeciale-miniature'
             )
         );
         
-        $croisiere = $this->getSubject();
+        $offreSpeciale = $this->getSubject();
         
-        if ($croisiere->getMiniatureWebPath()) {
-            $optionsMiniature['help'] = '<img src="' . $croisiere->getMiniatureWebPath() . '" class="preview-img" />';
+        if ($offreSpeciale->getMiniatureWebPath()) {
+            $optionsMiniature['help'] = '<img src="' . $offreSpeciale->getMiniatureWebPath() . '" class="preview-img" />';
         }
         $em = $this->modelManager->getEntityManager('AppBundle\Entity\InclusPrix');
         
@@ -37,21 +37,7 @@ class CroisiereAdmin extends Admin
             ->leftJoin('AppBundle:ServicePayantTranslation', 'spt', 'WITH', 'sp.id=spt.translatable_id')
             ->orderBy('spt.name', 'ASC');
         
-        $formMapper->add('dateNonDisponibilite', 'sonata_type_collection', array(
-            'label' => 'Croisière non disponible: ',
-            'label_attr' => array(
-                'class' => 'control-croisere-datenondisponibilite'
-            ),
-            'attr' => array(
-                'class' => 'croisiere-datenondisponibilite'
-            ),
-            'required' => false
-        ), array(
-            'edit' => 'inline',
-            'inline' => 'table',
-            'sortable' => 'position'
-        ))
-            ->add('bateau', 'entity', array(
+        $formMapper->add('bateau', 'entity', array(
             'class' => 'AppBundle\Entity\Bateau',
             'label' => "Bateau: "
         ))
@@ -63,12 +49,29 @@ class CroisiereAdmin extends Admin
             ->add('translations', 'a2lix_translations', array(
             'fields' => array(
                 'name' => array(
-                    'label' => 'Nom: ',
+                    'label' => 'Titre de l\'offre: ',
                     'locale_options' => array(
                         'en' => array(
-                            'label' => 'Name: '
+                            'label' => 'Offer name: '
                         ),
                         'required' => false
+                    )
+                ),
+                'description' => array(
+                    'label' => 'Description: ',
+                    'label_attr' => array(
+                        'class' => 'control-description'
+                    ),
+                    'attr' => array(
+                        'class' => 'tinymce',
+                        'data-theme' => 'advanced'
+                    ),
+                    'locale_options' => array(
+                        'en' => array(
+                            'label' => 'Description: '
+                        ),
+                        'required' => false,
+                        'class' => 'tinymce'
                     )
                 ),
                 'translatable_id' => array(
@@ -76,7 +79,7 @@ class CroisiereAdmin extends Admin
                 )
             )
         ))
-            ->add('tarifCroisiere', 'sonata_type_collection', array(
+            ->add('tarif', 'sonata_type_model', array(
             'label' => 'Grille de tarif: ',
             'label_attr' => array(
                 'class' => 'control-croisiere-tarif'
@@ -101,8 +104,8 @@ class CroisiereAdmin extends Admin
             'label' => 'Services Payants: ',
             'btn_add' => false
         ))
-            ->add('itineraireCroisiere', 'sonata_type_collection', array(
-            'label' => 'Itinéraires possible: ',
+            ->add('itineraire', 'sonata_type_model', array(
+            'label' => 'Itinéraires: ',
             'label_attr' => array(
                 'class' => 'control-croisiere-itineraire'
             ),
@@ -119,7 +122,7 @@ class CroisiereAdmin extends Admin
     {
         $listMapper->addIdentifier('name', 'translatable_field', array(
             'field' => 'name',
-            'personal_translation' => 'AppBundle\Entity\CroisiereTranslation',
+            'personal_translation' => 'AppBundle\Entity\OffreSpecialeTranslation',
             'property_path' => 'translations',
             'label' => 'Nom: '
         ))
@@ -129,19 +132,17 @@ class CroisiereAdmin extends Admin
             ->add('_action', 'actions', array(
             'actions' => array(
                 'edit' => array(),
-                'delete' => array()
+                'delete' => array(),
+                'Clone' => array(
+                    'template' => 'AppBundle:Admin/CRUD:list__action_clone.html.twig'
+                )
             )
         ));
-        // 'Clone' => array(
-        // 'template' => 'AppBundle:Admin/CRUD:list__action_clone.html.twig'
-        // )
-        
-        
     }
 
     protected function configureRoutes(RouteCollection $collection)
     {
-        // $collection->add('clone', $this->getRouterIdParameter().'/clone');
+        $collection->add('clone', $this->getRouterIdParameter() . '/clone');
         $collection->add('getServicePayant', 'getServicePayant/{id}', array(
             'id' => null
         ));
@@ -157,19 +158,19 @@ class CroisiereAdmin extends Admin
         $this->baseRoutePattern = $baseRoutePattern;
     }
 
-    public function prePersist($destination)
+    public function prePersist($offreSpeciale)
     {
-        $this->saveFile($destination);
+        $this->saveFile($offreSpeciale);
     }
 
-    public function preUpdate($destination)
+    public function preUpdate($offreSpeciale)
     {
-        $this->saveFile($destination);
+        $this->saveFile($offreSpeciale);
     }
 
-    public function saveFile($destination)
+    public function saveFile($offreSpeciale)
     {
         $basepath = $this->getRequest()->getBasePath();
-        $destination->upload($basepath);
+        $offreSpeciale->upload($basepath);
     }
 }

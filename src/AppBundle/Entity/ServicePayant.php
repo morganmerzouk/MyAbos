@@ -11,65 +11,64 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  * @ORM\Entity
  * @ORM\Table(name="servicepayant")
  */
-class ServicePayant {
-
+class ServicePayant
+{
+    
     use ORMBehaviors\Translatable\Translatable;
-        
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
+
     /**
-    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Prestation", cascade={"persist"})
-    */
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Prestation", cascade={"persist"})
+     */
     protected $prestation;
 
     /**
-    * @ORM\Column(type="string", length=200, nullable=true)
-    */
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
     protected $categorie;
-    
+
     /**
-    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Bateau", cascade={"persist"})
-    */
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Bateau", cascade={"persist"})
+     */
     protected $bateau;
-    
-    
+
     /**
-    * @ORM\Column(type="string", length=200, nullable=true)
-    */
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
     protected $fraisSupplementaires;
-    
-        /**
-    * @ORM\Column(type="string", length=200, nullable=true)
-    */
+
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
     protected $devise;
 
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
      */
     protected $tarifApplique;
-    
+
     /**
      * @ORM\Column(type="boolean")
      */
     protected $published;
-    
+
     /**
-    * @ORM\Column(type="string", length=200, nullable=true)
-    */
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
     protected $icone;
-    
+
     protected $iconeFile;
-    
-    
+
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -79,39 +78,40 @@ class ServicePayant {
     /**
      * Set published
      *
-     * @param boolean $published
+     * @param boolean $published            
      * @return Destination
      */
     public function setPublished($published)
     {
         $this->published = $published;
-
+        
         return $this;
     }
 
     /**
      * Get published
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getPublished()
     {
         return $this->published;
     }
-    
+
     /**
      * Set icone
      *
-     * @param string icone
+     * @param
+     *            string icone
      * @return ServicePayant
      */
     public function setIcone($icone)
     {
         $this->icone = $icone;
-    
+        
         return $this;
     }
-    
+
     /**
      * Get icone
      *
@@ -121,17 +121,17 @@ class ServicePayant {
     {
         return $this->icone;
     }
-    
+
     /**
      * Sets iconeFile.
      *
-     * @param UploadedFile $iconeFile
+     * @param UploadedFile $iconeFile            
      */
     public function setIconeFile(UploadedFile $iconeFile = null)
     {
         $this->iconeFile = $iconeFile;
     }
-    
+
     /**
      * Get iconeFile.
      *
@@ -141,102 +141,104 @@ class ServicePayant {
     {
         return $this->iconeFile;
     }
-    
+
     public function getIconeWebPath()
     {
-        return null === $this->icone
-        ? null
-        : $this->getUploadDir().'/'.$this->icone;
+        return null === $this->icone ? null : $this->getUploadDir() . '/' . $this->icone;
     }
-    
+
     protected function getUploadDir()
     {
         return '/uploads/servicepayant';
     }
-        
-    protected function getUploadRootDir(){
-        return __DIR__.'/../../../web/'.$this->getUploadDir();
+
+    protected function getUploadRootDir()
+    {
+        return __DIR__ . '/../../../web/' . $this->getUploadDir();
     }
-        
+
     public function upload($basepath)
     {
         $this->uploadImage($this->iconeFile, "setIcone", 125, 125);
     }
-    
-    public function uploadImage($file, $fctName, $width, $height){
 
+    public function uploadImage($file, $fctName, $width, $height)
+    {
         if (null === $file) {
             return;
         }
         $destination = imagecreatetruecolor($width, $height);
-
+        
         $extension = $file->getClientOriginalExtension();
         switch (strtolower($extension)) {
             case "png":
                 $source = imagecreatefrompng($file);
+                imagealphablending($destination, false);
+                $colorTransparent = imagecolorallocatealpha($destination, 0, 0, 0, 0x7fff0000);
+                imagefill($destination, 0, 0, $colorTransparent);
+                imagesavealpha($destination, true);
                 $fct = 'imagepng';
-            break;
+                break;
             case "jpg":
             case "jpeg":
                 $source = imagecreatefromjpeg($file);
                 $fct = 'imagejpeg';
-            break;
+                break;
             case "gif":
                 $source = imagecreatefromgif($file);
                 $fct = 'imagegif';
-            break;
-                    
+                break;
         }
         
         // On récupère la taille de l'image source
-        $largeur_source = imagesx($source);        
+        $largeur_source = imagesx($source);
         $hauteur_source = imagesy($source);
         
         // On redimensionne tout !
         imagecopyresampled($destination, $source, 0, 0, 0, 0, $width, $height, $largeur_source, $hauteur_source);
         $fct($destination, $this->getUploadRootDir() . '/' . $file->getClientOriginalName());
         
-
         // set the path property to the filename where you'ved saved the file
         $this->$fctName($file->getClientOriginalName());
         // clean up the file property as you won't need it anymore
         $file = null;
     }
-    
+
     /* hack */
     public function __call($method, $arguments)
     {
         return $this->proxyCurrentLocaleTranslation($method, $arguments);
-    }   
-
-        // Need this method for the admin list template
-    public function getName(){
-         return $this->translate()->getName();
     }
-
+    
+    // Need this method for the admin list template
+    public function getName()
+    {
+        return $this->translate()->getName();
+    }
+    
     // Work even the precedent method not here, the proxy call work fine.
-    public function __toString(){
-         return $this->getName() ?: "Nouveau service payant";
+    public function __toString()
+    {
+        return $this->getName() ?  : "Nouveau service payant";
     }
-   
 
     /**
      * Set categorie
      *
-     * @param string $categorie
+     * @param string $categorie            
      * @return InclusPrix
      */
     public function setCategorie($categorie)
     {
         $this->categorie = $categorie;
-
+        
         return $this;
     }
 
     /**
      * Get categorie
      *
-     * @return string 
+     * @return string
      */
     public function getCategorie()
     {
@@ -246,20 +248,20 @@ class ServicePayant {
     /**
      * Set prestation
      *
-     * @param \AppBundle\Entity\Prestation $prestation
+     * @param \AppBundle\Entity\Prestation $prestation            
      * @return InclusPrix
      */
     public function setPrestation(\AppBundle\Entity\Prestation $prestation = null)
     {
         $this->prestation = $prestation;
-
+        
         return $this;
     }
 
     /**
      * Get prestation
      *
-     * @return \AppBundle\Entity\Prestation 
+     * @return \AppBundle\Entity\Prestation
      */
     public function getPrestation()
     {
@@ -269,20 +271,20 @@ class ServicePayant {
     /**
      * Set fraisSupplémentaires
      *
-     * @param string $fraisSupplementaires
+     * @param string $fraisSupplementaires            
      * @return ServicePayant
      */
     public function setFraisSupplémentaires($fraisSupplementaires)
     {
         $this->fraisSupplementaires = $fraisSupplementaires;
-
+        
         return $this;
     }
 
     /**
      * Get fraisSupplémentaires
      *
-     * @return string 
+     * @return string
      */
     public function getFraisSupplementaires()
     {
@@ -292,20 +294,20 @@ class ServicePayant {
     /**
      * Set bateau
      *
-     * @param \AppBundle\Entity\Bateau $bateau
+     * @param \AppBundle\Entity\Bateau $bateau            
      * @return ServicePayant
      */
     public function setBateau(\AppBundle\Entity\Bateau $bateau = null)
     {
         $this->bateau = $bateau;
-
+        
         return $this;
     }
 
     /**
      * Get bateau
      *
-     * @return \AppBundle\Entity\Bateau 
+     * @return \AppBundle\Entity\Bateau
      */
     public function getBateau()
     {
@@ -315,33 +317,33 @@ class ServicePayant {
     /**
      * Set fraisSupplementaires
      *
-     * @param string $fraisSupplementaires
+     * @param string $fraisSupplementaires            
      * @return ServicePayant
      */
     public function setFraisSupplementaires($fraisSupplementaires)
     {
         $this->fraisSupplementaires = $fraisSupplementaires;
-
+        
         return $this;
     }
 
     /**
      * Set devise
      *
-     * @param string $devise
+     * @param string $devise            
      * @return ServicePayant
      */
     public function setDevise($devise)
     {
         $this->devise = $devise;
-
+        
         return $this;
     }
 
     /**
      * Get devise
      *
-     * @return string 
+     * @return string
      */
     public function getDevise()
     {
@@ -351,20 +353,20 @@ class ServicePayant {
     /**
      * Set tarifApplique
      *
-     * @param string $tarifApplique
+     * @param string $tarifApplique            
      * @return ServicePayant
      */
     public function setTarifApplique($tarifApplique)
     {
         $this->tarifApplique = $tarifApplique;
-
+        
         return $this;
     }
 
     /**
      * Get tarifApplique
      *
-     * @return string 
+     * @return string
      */
     public function getTarifApplique()
     {

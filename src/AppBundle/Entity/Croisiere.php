@@ -11,72 +11,75 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  * @ORM\Entity
  * @ORM\Table(name="croisiere")
  */
-class Croisiere {
-
+class Croisiere
+{
+    
     use ORMBehaviors\Translatable\Translatable;
-        
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
+
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Bateau", cascade={"persist"})
      */
     protected $bateau;
-    
+
     /**
-     *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Skipper",cascade={"persist"})
      */
     protected $skipper;
-    
+
     /**
      * @ORM\ManyToMany(targetEntity="DateNonDisponibilite",cascade={"persist"})
      */
     protected $dateNonDisponibilite;
-    
+
     /**
      * @ORM\ManyToMany(targetEntity="TarifCroisiere",cascade={"persist"})
      */
     protected $tarifCroisiere;
-    
+
     /**
      * @ORM\ManyToMany(targetEntity="ItineraireCroisiere",cascade={"persist"})
      */
     protected $itineraireCroisiere;
-    
+
     /**
      * @ORM\ManyToMany(targetEntity="ServicePayant")
      */
     protected $servicePayant;
-    
+
     /**
-    * @ORM\Column(type="string", length=200, nullable=true)
-    */
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
     protected $miniature;
-    
+
     protected $miniatureFile;
+
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->dateNonDisponibilite=new \Doctrine\Common\Collections\ArrayCollection();;
+        $this->dateNonDisponibilite = new \Doctrine\Common\Collections\ArrayCollection();
+        ;
     }
-    
-    public function __clone() {
+
+    public function __clone()
+    {
         $this->id = null;
     }
-    
+
     /**
      * Set id
      *
-     * @param string $id
+     * @param string $id            
      * @return Croisiere
-
+     *
      */
     public function setId($id)
     {
@@ -86,7 +89,7 @@ class Croisiere {
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -96,20 +99,20 @@ class Croisiere {
     /**
      * Set miniature
      *
-     * @param string $miniature
+     * @param string $miniature            
      * @return Croisiere
      */
     public function setMiniature($miniature)
     {
         $this->miniature = $miniature;
-
+        
         return $this;
     }
 
     /**
      * Get miniature
      *
-     * @return string 
+     * @return string
      */
     public function getMiniature()
     {
@@ -119,13 +122,13 @@ class Croisiere {
     /**
      * Sets miniatureFile.
      *
-     * @param UploadedFile $miniatureFile
+     * @param UploadedFile $miniatureFile            
      */
     public function setMiniatureFile(UploadedFile $miniatureFile = null)
     {
         $this->miniatureFile = $miniatureFile;
     }
-    
+
     /**
      * Get miniatureFile.
      *
@@ -135,55 +138,57 @@ class Croisiere {
     {
         return $this->miniatureFile;
     }
-    
+
     public function getMiniatureWebPath()
     {
-        return null === $this->miniature
-        ? null
-        : $this->getUploadDir().'/miniature/'.$this->miniature;
+        return null === $this->miniature ? null : $this->getUploadDir() . '/miniature/' . $this->miniature;
     }
-    
+
     protected function getUploadDir()
     {
         return '/uploads/croisiere';
     }
-        
-    protected function getUploadRootDir(){
-        return __DIR__.'/../../../web/'.$this->getUploadDir();
+
+    protected function getUploadRootDir()
+    {
+        return __DIR__ . '/../../../web/' . $this->getUploadDir();
     }
-        
+
     public function upload($basepath)
     {
         $this->uploadImage($this->miniatureFile, "setMiniature", 125, 125);
     }
-    
-    public function uploadImage($file, $fctName, $width, $height){
 
+    public function uploadImage($file, $fctName, $width, $height)
+    {
         if (null === $file) {
             return;
         }
         $destination = imagecreatetruecolor($width, $height);
-
+        
         $extension = $file->getClientOriginalExtension();
         switch (strtolower($extension)) {
             case "png":
                 $source = imagecreatefrompng($file);
+                imagealphablending($destination, false);
+                $colorTransparent = imagecolorallocatealpha($destination, 0, 0, 0, 0x7fff0000);
+                imagefill($destination, 0, 0, $colorTransparent);
+                imagesavealpha($destination, true);
                 $fct = 'imagepng';
-            break;
+                break;
             case "jpg":
             case "jpeg":
                 $source = imagecreatefromjpeg($file);
                 $fct = 'imagejpeg';
-            break;
+                break;
             case "gif":
                 $source = imagecreatefromgif($file);
                 $fct = 'imagegif';
-            break;
-                    
+                break;
         }
         
         // On r�cup�re la taille de l'image source
-        $largeur_source = imagesx($source);        
+        $largeur_source = imagesx($source);
         $hauteur_source = imagesy($source);
         
         // On redimensionne tout !
@@ -193,47 +198,47 @@ class Croisiere {
         } else {
             $fct($destination, $this->getUploadRootDir() . '/' . $file->getClientOriginalName());
         }
-
+        
         // set the path property to the filename where you'ved saved the file
         $this->$fctName($file->getClientOriginalName());
         // clean up the file property as you won't need it anymore
         $file = null;
     }
-    
+
     public function __toString()
     {
-            return $this->getName() ?: 'Nouvel croisière';
+        return $this->getName() ?  : 'Nouvel croisière';
     }
-    
-        /* hack */
+
+    /* hack */
     public function __call($method, $arguments)
     {
         return $this->proxyCurrentLocaleTranslation($method, $arguments);
-    }   
-
-    // Need this method for the admin list template
-    public function getName(){
-         return $this->translate()->getName();
     }
-
+    
+    // Need this method for the admin list template
+    public function getName()
+    {
+        return $this->translate()->getName();
+    }
 
     /**
      * Set bateau
      *
-     * @param \AppBundle\Entity\Bateau $bateau
+     * @param \AppBundle\Entity\Bateau $bateau            
      * @return Croisiere
      */
     public function setBateau(\AppBundle\Entity\Bateau $bateau = null)
     {
         $this->bateau = $bateau;
-
+        
         return $this;
     }
 
     /**
      * Get bateau
      *
-     * @return \AppBundle\Entity\Bateau 
+     * @return \AppBundle\Entity\Bateau
      */
     public function getBateau()
     {
@@ -243,20 +248,20 @@ class Croisiere {
     /**
      * Set skipper
      *
-     * @param \AppBundle\Entity\Skipper $skipper
+     * @param \AppBundle\Entity\Skipper $skipper            
      * @return Croisiere
      */
     public function setSkipper(\AppBundle\Entity\Skipper $skipper = null)
     {
         $this->skipper = $skipper;
-
+        
         return $this;
     }
 
     /**
      * Get skipper
      *
-     * @return \AppBundle\Entity\Skipper 
+     * @return \AppBundle\Entity\Skipper
      */
     public function getSkipper()
     {
@@ -266,20 +271,20 @@ class Croisiere {
     /**
      * Set dateNonDisponibilite
      *
-     * @param \AppBundle\Entity\DateNonDisponibilite $dateNonDisponibilite
+     * @param \AppBundle\Entity\DateNonDisponibilite $dateNonDisponibilite            
      * @return Croisiere
      */
     public function setDateNonDisponibilite(\AppBundle\Entity\DateNonDisponibilite $dateNonDisponibilite = null)
     {
         $this->dateNonDisponibilite = $dateNonDisponibilite;
-
+        
         return $this;
     }
 
     /**
      * Get dateNonDisponibilite
      *
-     * @return \AppBundle\Entity\DateNonDisponibilite 
+     * @return \AppBundle\Entity\DateNonDisponibilite
      */
     public function getDateNonDisponibilite()
     {
@@ -289,20 +294,20 @@ class Croisiere {
     /**
      * Add dateNonDisponibilite
      *
-     * @param \AppBundle\Entity\DateNonDisponibilite $dateNonDisponibilite
+     * @param \AppBundle\Entity\DateNonDisponibilite $dateNonDisponibilite            
      * @return Croisiere
      */
     public function addDateNonDisponibilite(\AppBundle\Entity\DateNonDisponibilite $dateNonDisponibilite)
     {
         $this->dateNonDisponibilite[] = $dateNonDisponibilite;
-
+        
         return $this;
     }
 
     /**
      * Remove dateNonDisponibilite
      *
-     * @param \AppBundle\Entity\DateNonDisponibilite $dateNonDisponibilite
+     * @param \AppBundle\Entity\DateNonDisponibilite $dateNonDisponibilite            
      */
     public function removeDateNonDisponibilite(\AppBundle\Entity\DateNonDisponibilite $dateNonDisponibilite)
     {
@@ -312,20 +317,20 @@ class Croisiere {
     /**
      * Add tarifCroisiere
      *
-     * @param \AppBundle\Entity\TarifCroisiere $tarifCroisiere
+     * @param \AppBundle\Entity\TarifCroisiere $tarifCroisiere            
      * @return Croisiere
      */
     public function addTarifCroisiere(\AppBundle\Entity\TarifCroisiere $tarifCroisiere)
     {
         $this->tarifCroisiere[] = $tarifCroisiere;
-
+        
         return $this;
     }
 
     /**
      * Remove tarifCroisiere
      *
-     * @param \AppBundle\Entity\TarifCroisiere $tarifCroisiere
+     * @param \AppBundle\Entity\TarifCroisiere $tarifCroisiere            
      */
     public function removeTarifCroisiere(\AppBundle\Entity\TarifCroisiere $tarifCroisiere)
     {
@@ -335,7 +340,7 @@ class Croisiere {
     /**
      * Get tarifCroisiere
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTarifCroisiere()
     {
@@ -345,20 +350,20 @@ class Croisiere {
     /**
      * Add servicePayant
      *
-     * @param \AppBundle\Entity\ServicePayant $servicePayant
+     * @param \AppBundle\Entity\ServicePayant $servicePayant            
      * @return Croisiere
      */
     public function addServicePayant(\AppBundle\Entity\ServicePayant $servicePayant)
     {
         $this->servicePayant[] = $servicePayant;
-
+        
         return $this;
     }
 
     /**
      * Remove servicePayant
      *
-     * @param \AppBundle\Entity\ServicePayant $servicePayant
+     * @param \AppBundle\Entity\ServicePayant $servicePayant            
      */
     public function removeServicePayant(\AppBundle\Entity\ServicePayant $servicePayant)
     {
@@ -368,7 +373,7 @@ class Croisiere {
     /**
      * Get servicePayant
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getServicePayant()
     {
@@ -378,20 +383,20 @@ class Croisiere {
     /**
      * Add itineraireCroisiere
      *
-     * @param \AppBundle\Entity\ItineraireCroisiere $itineraireCroisiere
+     * @param \AppBundle\Entity\ItineraireCroisiere $itineraireCroisiere            
      * @return Croisiere
      */
     public function addItineraireCroisiere(\AppBundle\Entity\ItineraireCroisiere $itineraireCroisiere)
     {
         $this->itineraireCroisiere[] = $itineraireCroisiere;
-
+        
         return $this;
     }
 
     /**
      * Remove itineraireCroisiere
      *
-     * @param \AppBundle\Entity\ItineraireCroisiere $itineraireCroisiere
+     * @param \AppBundle\Entity\ItineraireCroisiere $itineraireCroisiere            
      */
     public function removeItineraireCroisiere(\AppBundle\Entity\ItineraireCroisiere $itineraireCroisiere)
     {
@@ -401,7 +406,7 @@ class Croisiere {
     /**
      * Get itineraireCroisiere
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getItineraireCroisiere()
     {

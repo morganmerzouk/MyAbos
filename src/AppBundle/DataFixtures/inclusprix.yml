@@ -1,0 +1,45 @@
+0:
+    name_fr: "Eau"
+    name_en: "Water"
+    icone: "icon-inclus-prix-basique-35pix-WATER-noir.png"
+    categorie: "Frais de voyage"
+1:
+    name_fr: "Carburant"
+    name_en: "Fuel"
+    icone: "icon-inclus-prix-basique-35pix-FUEL-noir.png"
+    categorie: "Frais de voyage"
+2:
+    name_fr: "1er plein d'essence"
+    name_en: "1st fuel tank"
+    icone: "icon-inclus-prix-basique-35pix-1ST-FUEL-TANK-noir.png"
+    categorie: "Frais de voyage"
+3:
+    name_fr: "Frais de douane"
+    name_en: "Clearance"
+    icone: "icon-inclus-prix-basique-35pix-CLEARANCE-noir.png"
+    categorie: "Frais de voyage"
+4:
+    name_fr: "Frais de mouillage"
+    name_en: "Mooring Fee"
+    icone: "icon-inclus-prix-basique-35pix-MOORING-FEES-noir.png"
+    categorie: "Frais de voyage"
+5:
+    name_fr: "Frais de Port/Marina"
+    name_en: "Harbour/ Marina Fees"
+    icone: "icon-inclus-prix-basique-35pix-HARBOUR-MARINA-FEES-noir.png"
+    categorie: "Frais de voyage"
+6:
+    name_fr: "Nettoyage du bateau"
+    name_en: "Boat Cleaning"
+    icone: "icon-inclus-prix-basique-35pix-BOAT-CLEANING-noir.png"
+    categorie: "Frais de voyage"
+7:
+    name_fr: "Transferts de l'aéroport"
+    name_en: "Airport transfert"
+    icone: "icon-inclus-prix-basique-35pix-AIRPORT-TRANSFER-noir.png"
+    categorie: "Frais de voyage"
+8:
+    name_fr: "Matériel de pêche"
+    name_en: "Fishing equipment"
+    icone: "icon-inclus-prix-basique-35pix-FISHING-GEAR-noir.png"
+    categorie: "Activités à bord"

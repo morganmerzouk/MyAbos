@@ -21,12 +21,11 @@ class ItineraireCroisiere
      */
     protected $id;
 
-    
     /**
      * @ORM\ManyToOne(targetEntity="Itineraire")
      */
     protected $itineraire;
-    
+
     /**
      * @ORM\Column(type="datetime")
      */
@@ -36,16 +35,22 @@ class ItineraireCroisiere
      * @ORM\Column(type="datetime")
      */
     protected $dateFin;
-    
+
     /**
      * @ORM\Column(type="integer", length=200, nullable=true)
      */
     protected $variationPrix;
-    
+
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
      */
     protected $tarifAppliqueSur;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $parDefaut;
+
     /**
      * Constructor
      */
@@ -70,20 +75,20 @@ class ItineraireCroisiere
     /**
      * Set dateDebut
      *
-     * @param \DateTime $dateDebut
+     * @param \DateTime $dateDebut            
      * @return DateNonDisponibilite
      */
     public function setDateDebut($dateDebut)
     {
         $this->dateDebut = $dateDebut;
-
+        
         return $this;
     }
 
     /**
      * Get dateDebut
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateDebut()
     {
@@ -93,20 +98,20 @@ class ItineraireCroisiere
     /**
      * Set dateFin
      *
-     * @param \DateTime $dateFin
+     * @param \DateTime $dateFin            
      * @return DateNonDisponibilite
      */
     public function setDateFin($dateFin)
     {
         $this->dateFin = $dateFin;
-
+        
         return $this;
     }
 
     /**
      * Get dateFin
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateFin()
     {
@@ -116,20 +121,20 @@ class ItineraireCroisiere
     /**
      * Set nombreJourMinimum
      *
-     * @param integer $nombreJourMinimum
+     * @param integer $nombreJourMinimum            
      * @return TarifCroisiere
      */
     public function setNombreJourMinimum($nombreJourMinimum)
     {
         $this->nombreJourMinimum = $nombreJourMinimum;
-
+        
         return $this;
     }
 
     /**
      * Get nombreJourMinimum
      *
-     * @return integer 
+     * @return integer
      */
     public function getNombreJourMinimum()
     {
@@ -139,20 +144,20 @@ class ItineraireCroisiere
     /**
      * Set nombreJourMaximum
      *
-     * @param integer $nombreJourMaximum
+     * @param integer $nombreJourMaximum            
      * @return TarifCroisiere
      */
     public function setNombreJourMaximum($nombreJourMaximum)
     {
         $this->nombreJourMaximum = $nombreJourMaximum;
-
+        
         return $this;
     }
 
     /**
      * Get nombreJourMaximum
      *
-     * @return integer 
+     * @return integer
      */
     public function getNombreJourMaximum()
     {
@@ -162,20 +167,20 @@ class ItineraireCroisiere
     /**
      * Set tarifDeuxPersonnes
      *
-     * @param integer $tarifDeuxPersonnes
+     * @param integer $tarifDeuxPersonnes            
      * @return TarifCroisiere
      */
     public function setTarifDeuxPersonnes($tarifDeuxPersonnes)
     {
         $this->tarifDeuxPersonnes = $tarifDeuxPersonnes;
-
+        
         return $this;
     }
 
     /**
      * Get tarifDeuxPersonnes
      *
-     * @return integer 
+     * @return integer
      */
     public function getTarifDeuxPersonnes()
     {
@@ -185,20 +190,20 @@ class ItineraireCroisiere
     /**
      * Set tarifTroisPersonnes
      *
-     * @param integer $tarifTroisPersonnes
+     * @param integer $tarifTroisPersonnes            
      * @return TarifCroisiere
      */
     public function setTarifTroisPersonnes($tarifTroisPersonnes)
     {
         $this->tarifTroisPersonnes = $tarifTroisPersonnes;
-
+        
         return $this;
     }
 
     /**
      * Get tarifTroisPersonnes
      *
-     * @return integer 
+     * @return integer
      */
     public function getTarifTroisPersonnes()
     {
@@ -208,20 +213,20 @@ class ItineraireCroisiere
     /**
      * Set tarifQuatrePersonnes
      *
-     * @param integer $tarifQuatrePersonnes
+     * @param integer $tarifQuatrePersonnes            
      * @return TarifCroisiere
      */
     public function setTarifQuatrePersonnes($tarifQuatrePersonnes)
     {
         $this->tarifQuatrePersonnes = $tarifQuatrePersonnes;
-
+        
         return $this;
     }
 
     /**
      * Get tarifQuatrePersonnes
      *
-     * @return integer 
+     * @return integer
      */
     public function getTarifQuatrePersonnes()
     {
@@ -231,20 +236,20 @@ class ItineraireCroisiere
     /**
      * Set tarifCinqPersonnes
      *
-     * @param integer $tarifCinqPersonnes
+     * @param integer $tarifCinqPersonnes            
      * @return TarifCroisiere
      */
     public function setTarifCinqPersonnes($tarifCinqPersonnes)
     {
         $this->tarifCinqPersonnes = $tarifCinqPersonnes;
-
+        
         return $this;
     }
 
     /**
      * Get tarifCinqPersonnes
      *
-     * @return integer 
+     * @return integer
      */
     public function getTarifCinqPersonnes()
     {
@@ -254,20 +259,20 @@ class ItineraireCroisiere
     /**
      * Set tarifSixPersonnes
      *
-     * @param integer $tarifSixPersonnes
+     * @param integer $tarifSixPersonnes            
      * @return TarifCroisiere
      */
     public function setTarifSixPersonnes($tarifSixPersonnes)
     {
         $this->tarifSixPersonnes = $tarifSixPersonnes;
-
+        
         return $this;
     }
 
     /**
      * Get tarifSixPersonnes
      *
-     * @return integer 
+     * @return integer
      */
     public function getTarifSixPersonnes()
     {
@@ -277,20 +282,20 @@ class ItineraireCroisiere
     /**
      * Set tarifSeptPersonnes
      *
-     * @param integer $tarifSeptPersonnes
+     * @param integer $tarifSeptPersonnes            
      * @return TarifCroisiere
      */
     public function setTarifSeptPersonnes($tarifSeptPersonnes)
     {
         $this->tarifSeptPersonnes = $tarifSeptPersonnes;
-
+        
         return $this;
     }
 
     /**
      * Get tarifSeptPersonnes
      *
-     * @return integer 
+     * @return integer
      */
     public function getTarifSeptPersonnes()
     {
@@ -300,20 +305,20 @@ class ItineraireCroisiere
     /**
      * Set tarifHuitPersonnes
      *
-     * @param integer $tarifHuitPersonnes
+     * @param integer $tarifHuitPersonnes            
      * @return TarifCroisiere
      */
     public function setTarifHuitPersonnes($tarifHuitPersonnes)
     {
         $this->tarifHuitPersonnes = $tarifHuitPersonnes;
-
+        
         return $this;
     }
 
     /**
      * Get tarifHuitPersonnes
      *
-     * @return integer 
+     * @return integer
      */
     public function getTarifHuitPersonnes()
     {
@@ -323,20 +328,20 @@ class ItineraireCroisiere
     /**
      * Set tarifPour
      *
-     * @param string $tarifPour
+     * @param string $tarifPour            
      * @return TarifCroisiere
      */
     public function setTarifPour($tarifPour)
     {
         $this->tarifPour = $tarifPour;
-
+        
         return $this;
     }
 
     /**
      * Get tarifPour
      *
-     * @return string 
+     * @return string
      */
     public function getTarifPour()
     {
@@ -346,20 +351,20 @@ class ItineraireCroisiere
     /**
      * Set variationPrix
      *
-     * @param integer $variationPrix
+     * @param integer $variationPrix            
      * @return ItineraireCroisiere
      */
     public function setVariationPrix($variationPrix)
     {
         $this->variationPrix = $variationPrix;
-
+        
         return $this;
     }
 
     /**
      * Get variationPrix
      *
-     * @return integer 
+     * @return integer
      */
     public function getVariationPrix()
     {
@@ -369,20 +374,20 @@ class ItineraireCroisiere
     /**
      * Set tarifAppliqueSur
      *
-     * @param string $tarifAppliqueSur
+     * @param string $tarifAppliqueSur            
      * @return ItineraireCroisiere
      */
     public function setTarifAppliqueSur($tarifAppliqueSur)
     {
         $this->tarifAppliqueSur = $tarifAppliqueSur;
-
+        
         return $this;
     }
 
     /**
      * Get tarifAppliqueSur
      *
-     * @return string 
+     * @return string
      */
     public function getTarifAppliqueSur()
     {
@@ -390,22 +395,45 @@ class ItineraireCroisiere
     }
 
     /**
+     * Set parDefaut
+     *
+     * @param boolean $parDefaut            
+     * @return ItineraireCroisiere
+     */
+    public function setParDefaut($parDefaut)
+    {
+        $this->parDefaut = $parDefaut;
+        
+        return $this;
+    }
+
+    /**
+     * Get parDefaut
+     *
+     * @return boolean
+     */
+    public function getParDefaut()
+    {
+        return $this->parDefaut;
+    }
+
+    /**
      * Set itineraire
      *
-     * @param \AppBundle\Entity\Itineraire $itineraire
+     * @param \AppBundle\Entity\Itineraire $itineraire            
      * @return ItineraireCroisiere
      */
     public function setItineraire(\AppBundle\Entity\Itineraire $itineraire = null)
     {
         $this->itineraire = $itineraire;
-
+        
         return $this;
     }
 
     /**
      * Get itineraire
      *
-     * @return \AppBundle\Entity\Itineraire 
+     * @return \AppBundle\Entity\Itineraire
      */
     public function getItineraire()
     {

@@ -12,10 +12,11 @@ use AppBundle\Entity\InclusPrix;
  * @ORM\Entity
  * @ORM\Table(name="bateau")
  */
-class Bateau {
-
+class Bateau
+{
+    
     use ORMBehaviors\Translatable\Translatable;
-        
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -27,105 +28,69 @@ class Bateau {
      * @ORM\ManyToMany(targetEntity="DateNonDisponibilite")
      */
     protected $dateNonDisponibilite;
-    
+
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
      */
     protected $name;
-    
+
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
      */
     protected $type;
-    
+
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
      */
     protected $miniature;
-    
+
     protected $miniatureFile;
-    
-    /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    protected $photo1;
-    
-    protected $photo1File;
-    
-    /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    protected $photo2;
-    
-    protected $photo2File;    
-    
-    /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    protected $photo3;
-    
-    protected $photo3File;   
-     
-    /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    protected $photo4;
-    
-    protected $photo4File; 
-       
-    /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    protected $photo5;
-    
-    protected $photo5File;
-    
+
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
      */
     protected $photoVoile;
-    
+
     protected $photoVoileFile;
-    
+
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
      */
     protected $photoMouillage;
-    
+
     protected $photoMouillageFile;
-    
+
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
      */
     protected $photoCockpit;
-    
+
     protected $photoCockpitFile;
-    
+
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
      */
     protected $photoCarre;
-    
+
     protected $photoCarreFile;
-    
+
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
      */
     protected $photoCabine;
-    
+
     protected $photoCabineFile;
-    
-                
+
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
     protected $nbCabine;
-    
+
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
     protected $nbDouche;
-    
+
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
@@ -135,59 +100,62 @@ class Bateau {
      * @ORM\Column(type="integer", nullable=true)
      */
     protected $nbLitSimple;
-    
+
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
     protected $nbLitDouble;
-        
+
     /**
      * @ORM\OneToOne(targetEntity="InclusPrix")
      */
     protected $inclusPrixEquipage;
-        
+
     /**
      * @ORM\ManyToMany(targetEntity="InclusPrix")
      * @ORM\JoinTable(name="bateau_inclusprix_avitaillement")
      */
     protected $inclusPrixAvitaillement;
-    
+
     /**
      * @ORM\ManyToMany(targetEntity="InclusPrix")
      * @ORM\JoinTable(name="bateau_inclusprix_fraisvoyage")
      */
     protected $inclusPrixFraisVoyage;
-    
+
     /**
      * @ORM\ManyToMany(targetEntity="InclusPrix")
      * @ORM\JoinTable(name="bateau_inclusprix_autreservices")
      */
     protected $inclusPrixAutresServices;
+
     /**
      * @ORM\ManyToMany(targetEntity="InclusPrix")
      * @ORM\JoinTable(name="bateau_inclusprix_equipement")
      */
     protected $inclusPrixEquipement;
+
     /**
      * @ORM\ManyToMany(targetEntity="InclusPrix")
      * @ORM\JoinTable(name="bateau_inclusprix_activite")
      */
     protected $inclusPrixActivite;
+
     /**
      * @ORM\ManyToMany(targetEntity="InclusPrix")
      * @ORM\JoinTable(name="bateau_inclusprix_cours")
      */
     protected $inclusPrixCours;
-    
+
     /**
      * @ORM\Column(type="boolean")
      */
     protected $published;
-    
+
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -195,59 +163,84 @@ class Bateau {
     }
     
     // Need this method for the admin list template and front
-    public function getDescription(){
+    public function getDescription()
+    {
         return $this->translate()->getDescription();
     }
-    
-    public function getLongueur(){
+
+    public function getLongueur()
+    {
         return $this->translate()->getLongueur();
     }
-    public function getLargeur(){
+
+    public function getLargeur()
+    {
         return $this->translate()->getLargeur();
     }
-    public function getMoteur(){
+
+    public function getMoteur()
+    {
         return $this->translate()->getMoteur();
     }
-    public function getTirantdeau(){
+
+    public function getTirantdeau()
+    {
         return $this->translate()->getTirantdeau();
     }
-    public function getSurfaceGrandVoile(){
+
+    public function getSurfaceGrandVoile()
+    {
         return $this->translate()->getSurfaceGrandVoile();
     }
-    public function getReservoirCarburant(){
+
+    public function getReservoirCarburant()
+    {
         return $this->translate()->getReservoirCarburant();
     }
-    public function getReservoirEau(){
+
+    public function getReservoirEau()
+    {
         return $this->translate()->getReservoirEau();
     }
-    public function getEquipementCuisine(){
+
+    public function getEquipementCuisine()
+    {
         return $this->translate()->getEquipementCuisine();
     }
-    public function getLoisir(){
+
+    public function getLoisir()
+    {
         return $this->translate()->getLoisir();
     }
-    public function getEnergie(){
+
+    public function getEnergie()
+    {
         return $this->translate()->getEnergie();
     }
-    public function getDinghy(){
+
+    public function getDinghy()
+    {
         return $this->translate()->getDinghy();
     }
-    public function getJouet(){
+
+    public function getJouet()
+    {
         return $this->translate()->getJouet();
     }
+
     /**
      * Set name
      *
-     * @param string $name
+     * @param string $name            
      * @return Bateau
      */
     public function setName($name)
     {
         $this->name = $name;
-    
+        
         return $this;
     }
-    
+
     /**
      * Get name
      *
@@ -257,40 +250,40 @@ class Bateau {
     {
         return $this->name;
     }
-    
-    
+
     /**
      * Set published
      *
-     * @param boolean $published
+     * @param boolean $published            
      * @return Bateau
      */
     public function setPublished($published)
     {
         $this->published = $published;
-
+        
         return $this;
     }
 
     /**
      * Get published
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getPublished()
     {
         return $this->published;
     }
+
     /**
      * Sets photoVoileFile.
      *
-     * @param UploadedFile $photoVoileFile
+     * @param UploadedFile $photoVoileFile            
      */
     public function setMiniatureFile(UploadedFile $miniatureFile = null)
     {
         $this->miniatureFile = $miniatureFile;
     }
-    
+
     /**
      * Get miniatureFile.
      *
@@ -300,17 +293,17 @@ class Bateau {
     {
         return $this->miniatureFile;
     }
-    
+
     /**
      * Sets photoVoileFile.
      *
-     * @param UploadedFile $photoVoileFile
+     * @param UploadedFile $photoVoileFile            
      */
     public function setPhotoVoileFile(UploadedFile $photoVoileFile = null)
     {
         $this->photoVoileFile = $photoVoileFile;
     }
-    
+
     /**
      * Get photoVoileFile.
      *
@@ -320,17 +313,17 @@ class Bateau {
     {
         return $this->photoVoileFile;
     }
-    
+
     /**
      * Sets photoMouillageFile.
      *
-     * @param UploadedFile $photoMouillageFile
+     * @param UploadedFile $photoMouillageFile            
      */
     public function setPhotoMouillageFile(UploadedFile $photoMouillageFile = null)
     {
         $this->photoMouillageFile = $photoMouillageFile;
     }
-    
+
     /**
      * Get photoMouillageFile.
      *
@@ -340,17 +333,17 @@ class Bateau {
     {
         return $this->photoMouillageFile;
     }
-    
+
     /**
      * Sets photoCockpitFile.
      *
-     * @param UploadedFile $photoCockpitFile
+     * @param UploadedFile $photoCockpitFile            
      */
     public function setPhotoCockpitFile(UploadedFile $photoCockpitFile = null)
     {
         $this->photoCockpitFile = $photoCockpitFile;
     }
-    
+
     /**
      * Get photoCockpitFile.
      *
@@ -360,17 +353,17 @@ class Bateau {
     {
         return $this->photoCockpitFile;
     }
-    
+
     /**
      * Sets photoCarreFile.
      *
-     * @param UploadedFile $photoCarreFile
+     * @param UploadedFile $photoCarreFile            
      */
     public function setPhotoCarreFile(UploadedFile $photoCarreFile = null)
     {
         $this->photoCarreFile = $photoCarreFile;
     }
-    
+
     /**
      * Get photoCarreFile.
      *
@@ -380,17 +373,17 @@ class Bateau {
     {
         return $this->photoCarreFile;
     }
-    
+
     /**
      * Sets photoCabineFile.
      *
-     * @param UploadedFile $photoCabineFile
+     * @param UploadedFile $photoCabineFile            
      */
     public function setPhotoCabineFile(UploadedFile $photoCabineFile = null)
     {
         $this->photoCabineFile = $photoCabineFile;
     }
-    
+
     /**
      * Get photoCabineFile.
      *
@@ -400,59 +393,47 @@ class Bateau {
     {
         return $this->photoCabineFile;
     }
-    
+
     public function getMiniatureWebPath()
     {
-        return null === $this->miniature
-        ? null
-        : $this->getUploadDir().'/miniature/'.$this->miniature;
+        return null === $this->miniature ? null : $this->getUploadDir() . '/miniature/' . $this->miniature;
     }
-    
+
     public function getPhotoVoileWebPath()
     {
-        return null === $this->photoVoile
-        ? null
-        : $this->getUploadDir().'/'.$this->photoVoile;
+        return null === $this->photoVoile ? null : $this->getUploadDir() . '/' . $this->photoVoile;
     }
-    
+
     public function getPhotoMouillageWebPath()
     {
-        return null === $this->photoMouillage
-        ? null
-        : $this->getUploadDir().'/'.$this->photoMouillage;
+        return null === $this->photoMouillage ? null : $this->getUploadDir() . '/' . $this->photoMouillage;
     }
-    
+
     public function getPhotoCockpitWebPath()
     {
-        return null === $this->photoCockpit
-        ? null
-        : $this->getUploadDir().'/'.$this->photoCockpit;
+        return null === $this->photoCockpit ? null : $this->getUploadDir() . '/' . $this->photoCockpit;
     }
-    
+
     public function getPhotoCarreWebPath()
     {
-        return null === $this->photoCarre
-        ? null
-        : $this->getUploadDir().'/'.$this->photoCarre;
+        return null === $this->photoCarre ? null : $this->getUploadDir() . '/' . $this->photoCarre;
     }
-    
+
     public function getPhotoCabineWebPath()
     {
-        return null === $this->photoCabine
-        ? null
-        : $this->getUploadDir().'/'.$this->photoCabine;
+        return null === $this->photoCabine ? null : $this->getUploadDir() . '/' . $this->photoCabine;
     }
-    
-    
+
     protected function getUploadDir()
     {
         return '/uploads/bateau';
     }
-        
-    protected function getUploadRootDir(){
-        return __DIR__.'/../../../web/'.$this->getUploadDir();
+
+    protected function getUploadRootDir()
+    {
+        return __DIR__ . '/../../../web/' . $this->getUploadDir();
     }
-        
+
     public function upload($basepath)
     {
         $this->uploadImage($this->miniatureFile, "setMiniature", 200, 200);
@@ -462,34 +443,37 @@ class Bateau {
         $this->uploadImage($this->photoCarreFile, "setPhotoCarre", 300, 300);
         $this->uploadImage($this->photoCabineFile, "setPhotoCabine", 300, 300);
     }
-    
-    public function uploadImage($file, $fctName, $width, $height){
 
+    public function uploadImage($file, $fctName, $width, $height)
+    {
         if (null === $file) {
             return;
         }
         $destination = imagecreatetruecolor($width, $height);
-
+        
         $extension = $file->getClientOriginalExtension();
         switch (strtolower($extension)) {
             case "png":
                 $source = imagecreatefrompng($file);
+                imagealphablending($destination, false);
+                $colorTransparent = imagecolorallocatealpha($destination, 0, 0, 0, 0x7fff0000);
+                imagefill($destination, 0, 0, $colorTransparent);
+                imagesavealpha($destination, true);
                 $fct = 'imagepng';
-            break;
+                break;
             case "jpg":
             case "jpeg":
                 $source = imagecreatefromjpeg($file);
                 $fct = 'imagejpeg';
-            break;
+                break;
             case "gif":
                 $source = imagecreatefromgif($file);
                 $fct = 'imagegif';
-            break;
-                    
+                break;
         }
         
         // On récupère la taille de l'image source
-        $largeur_source = imagesx($source);        
+        $largeur_source = imagesx($source);
         $hauteur_source = imagesy($source);
         
         // On redimensionne tout !
@@ -499,30 +483,30 @@ class Bateau {
         } else {
             $fct($destination, $this->getUploadRootDir() . '/' . $file->getClientOriginalName());
         }
-
+        
         // set the path property to the filename where you'ved saved the file
         $this->$fctName($file->getClientOriginalName());
         // clean up the file property as you won't need it anymore
         $file = null;
     }
-    
+
     /**
      * Set photoVoile
      *
-     * @param string $photoVoile
+     * @param string $photoVoile            
      * @return Bateau
      */
     public function setPhotoVoile($photoVoile)
     {
         $this->photoVoile = $photoVoile;
-
+        
         return $this;
     }
 
     /**
      * Get photoVoile
      *
-     * @return string 
+     * @return string
      */
     public function getPhotoVoile()
     {
@@ -533,29 +517,30 @@ class Bateau {
     public function __call($method, $arguments)
     {
         return $this->proxyCurrentLocaleTranslation($method, $arguments);
-    }   
-    
-    public function __toString(){
-         return $this->getName() ?: "Nouveau bateau";
+    }
+
+    public function __toString()
+    {
+        return $this->getName() ?  : "Nouveau bateau";
     }
 
     /**
      * Set type
      *
-     * @param string $type
+     * @param string $type            
      * @return Bateau
      */
     public function setType($type)
     {
         $this->type = $type;
-
+        
         return $this;
     }
 
     /**
      * Get type
      *
-     * @return string 
+     * @return string
      */
     public function getType()
     {
@@ -565,20 +550,20 @@ class Bateau {
     /**
      * Set miniature
      *
-     * @param string $miniature
+     * @param string $miniature            
      * @return Bateau
      */
     public function setMiniature($miniature)
     {
         $this->miniature = $miniature;
-
+        
         return $this;
     }
 
     /**
      * Get miniature
      *
-     * @return string 
+     * @return string
      */
     public function getMiniature()
     {
@@ -588,20 +573,20 @@ class Bateau {
     /**
      * Set photoMouillage
      *
-     * @param string $photoMouillage
+     * @param string $photoMouillage            
      * @return Bateau
      */
     public function setPhotoMouillage($photoMouillage)
     {
         $this->photoMouillage = $photoMouillage;
-
+        
         return $this;
     }
 
     /**
      * Get photoMouillage
      *
-     * @return string 
+     * @return string
      */
     public function getPhotoMouillage()
     {
@@ -611,20 +596,20 @@ class Bateau {
     /**
      * Set photoCockpit
      *
-     * @param string $photoCockpit
+     * @param string $photoCockpit            
      * @return Bateau
      */
     public function setPhotoCockpit($photoCockpit)
     {
         $this->photoCockpit = $photoCockpit;
-
+        
         return $this;
     }
 
     /**
      * Get photoCockpit
      *
-     * @return string 
+     * @return string
      */
     public function getPhotoCockpit()
     {
@@ -634,20 +619,20 @@ class Bateau {
     /**
      * Set photoCarre
      *
-     * @param string $photoCarre
+     * @param string $photoCarre            
      * @return Bateau
      */
     public function setPhotoCarre($photoCarre)
     {
         $this->photoCarre = $photoCarre;
-
+        
         return $this;
     }
 
     /**
      * Get photoCarre
      *
-     * @return string 
+     * @return string
      */
     public function getPhotoCarre()
     {
@@ -657,20 +642,20 @@ class Bateau {
     /**
      * Set photoCabine
      *
-     * @param string $photoCabine
+     * @param string $photoCabine            
      * @return Bateau
      */
     public function setPhotoCabine($photoCabine)
     {
         $this->photoCabine = $photoCabine;
-
+        
         return $this;
     }
 
     /**
      * Get photoCabine
      *
-     * @return string 
+     * @return string
      */
     public function getPhotoCabine()
     {
@@ -678,137 +663,22 @@ class Bateau {
     }
 
     /**
-     * Set photo1
-     *
-     * @param string $photo1
-     * @return Bateau
-     */
-    public function setPhoto1($photo1)
-    {
-        $this->photo1 = $photo1;
-
-        return $this;
-    }
-
-    /**
-     * Get photo1
-     *
-     * @return string 
-     */
-    public function getPhoto1()
-    {
-        return $this->photo1;
-    }
-
-    /**
-     * Set photo2
-     *
-     * @param string $photo2
-     * @return Bateau
-     */
-    public function setPhoto2($photo2)
-    {
-        $this->photo2 = $photo2;
-
-        return $this;
-    }
-
-    /**
-     * Get photo2
-     *
-     * @return string 
-     */
-    public function getPhoto2()
-    {
-        return $this->photo2;
-    }
-
-    /**
-     * Set photo3
-     *
-     * @param string $photo3
-     * @return Bateau
-     */
-    public function setPhoto3($photo3)
-    {
-        $this->photo3 = $photo3;
-
-        return $this;
-    }
-
-    /**
-     * Get photo3
-     *
-     * @return string 
-     */
-    public function getPhoto3()
-    {
-        return $this->photo3;
-    }
-
-    /**
-     * Set photo4
-     *
-     * @param string $photo4
-     * @return Bateau
-     */
-    public function setPhoto4($photo4)
-    {
-        $this->photo4 = $photo4;
-
-        return $this;
-    }
-
-    /**
-     * Get photo4
-     *
-     * @return string 
-     */
-    public function getPhoto4()
-    {
-        return $this->photo4;
-    }
-
-    /**
-     * Set photo5
-     *
-     * @param string $photo5
-     * @return Bateau
-     */
-    public function setPhoto5($photo5)
-    {
-        $this->photo5 = $photo5;
-
-        return $this;
-    }
-
-    /**
-     * Get photo5
-     *
-     * @return string 
-     */
-    public function getPhoto5()
-    {
-        return $this->photo5;
-    }
-
-    /**
      * Set nbCabine
      *
-     * @param integer $nbCabine
+     * @param integer $nbCabine            
      * @return Bateau
      */
     public function setNbCabine($nbCabine)
     {
         $this->nbCabine = $nbCabine;
-
+        
         return $this;
     }
 
     /**
      * Get nbCabine
      *
-     * @return integer 
+     * @return integer
      */
     public function getNbCabine()
     {
@@ -818,20 +688,20 @@ class Bateau {
     /**
      * Set nbDouche
      *
-     * @param integer $nbDouche
+     * @param integer $nbDouche            
      * @return Bateau
      */
     public function setNbDouche($nbDouche)
     {
         $this->nbDouche = $nbDouche;
-
+        
         return $this;
     }
 
     /**
      * Get nbDouche
      *
-     * @return integer 
+     * @return integer
      */
     public function getNbDouche()
     {
@@ -849,20 +719,20 @@ class Bateau {
     /**
      * Add inclusPrixFraisVoyage
      *
-     * @param \AppBundle\Entity\InclusPrix $inclusPrixFraisVoyage
+     * @param \AppBundle\Entity\InclusPrix $inclusPrixFraisVoyage            
      * @return Bateau
      */
     public function addInclusPrixFraisVoyage(\AppBundle\Entity\InclusPrix $inclusPrixFraisVoyage)
     {
         $this->inclusPrixFraisVoyage[] = $inclusPrixFraisVoyage;
-
+        
         return $this;
     }
 
     /**
      * Remove inclusPrixFraisVoyage
      *
-     * @param \AppBundle\Entity\InclusPrix $inclusPrixFraisVoyage
+     * @param \AppBundle\Entity\InclusPrix $inclusPrixFraisVoyage            
      */
     public function removeInclusPrixFraisVoyage(\AppBundle\Entity\InclusPrix $inclusPrixFraisVoyage)
     {
@@ -872,31 +742,30 @@ class Bateau {
     /**
      * Get inclusPrixFraisVoyage
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getInclusPrixFraisVoyage()
     {
         return $this->inclusPrixFraisVoyage;
     }
-    
-    
+
     /**
      * Add inclusPrixAvitaillement
      *
-     * @param \AppBundle\Entity\InclusPrix $inclusPrixAvitaillement
+     * @param \AppBundle\Entity\InclusPrix $inclusPrixAvitaillement            
      * @return Bateau
      */
     public function addInclusPrixAvitaillement(\AppBundle\Entity\InclusPrix $inclusPrixAvitaillement)
     {
         $this->inclusPrixAvitaillement[] = $inclusPrixAvitaillement;
-
+        
         return $this;
     }
 
     /**
      * Remove inclusPrixAvitaillement
      *
-     * @param \AppBundle\Entity\InclusPrix $inclusPrixAvitaillement
+     * @param \AppBundle\Entity\InclusPrix $inclusPrixAvitaillement            
      */
     public function removeInclusPrixAvitaillement(\AppBundle\Entity\InclusPrix $inclusPrixAvitaillement)
     {
@@ -906,31 +775,30 @@ class Bateau {
     /**
      * Get inclusPrixFraisVoyage
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getInclusPrixAvitaillement()
     {
         return $this->inclusPrixAvitaillement;
     }
 
-    
     /**
      * Set inclusPrixEquipage
      *
-     * @param \AppBundle\Entity\InclusPrix $inclusPrixEquipage
+     * @param \AppBundle\Entity\InclusPrix $inclusPrixEquipage            
      * @return Bateau
      */
     public function setInclusPrixEquipage(\AppBundle\Entity\InclusPrix $inclusPrixEquipage = null)
     {
         $this->inclusPrixEquipage = $inclusPrixEquipage;
-
+        
         return $this;
     }
 
     /**
      * Get inclusPrixEquipage
      *
-     * @return \AppBundle\Entity\InclusPrix 
+     * @return \AppBundle\Entity\InclusPrix
      */
     public function getInclusPrixEquipage()
     {
@@ -940,20 +808,20 @@ class Bateau {
     /**
      * Add inclusPrixAutresServices
      *
-     * @param \AppBundle\Entity\InclusPrix $inclusPrixAutresServices
+     * @param \AppBundle\Entity\InclusPrix $inclusPrixAutresServices            
      * @return Bateau
      */
     public function addInclusPrixAutresService(\AppBundle\Entity\InclusPrix $inclusPrixAutresServices)
     {
         $this->inclusPrixAutresServices[] = $inclusPrixAutresServices;
-
+        
         return $this;
     }
 
     /**
      * Remove inclusPrixAutresServices
      *
-     * @param \AppBundle\Entity\InclusPrix $inclusPrixAutresServices
+     * @param \AppBundle\Entity\InclusPrix $inclusPrixAutresServices            
      */
     public function removeInclusPrixAutresService(\AppBundle\Entity\InclusPrix $inclusPrixAutresServices)
     {
@@ -963,7 +831,7 @@ class Bateau {
     /**
      * Get inclusPrixAutresServices
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getInclusPrixAutresServices()
     {
@@ -973,20 +841,20 @@ class Bateau {
     /**
      * Add inclusPrixEquipement
      *
-     * @param \AppBundle\Entity\InclusPrix $inclusPrixEquipement
+     * @param \AppBundle\Entity\InclusPrix $inclusPrixEquipement            
      * @return Bateau
      */
     public function addInclusPrixEquipement(\AppBundle\Entity\InclusPrix $inclusPrixEquipement)
     {
         $this->inclusPrixEquipement[] = $inclusPrixEquipement;
-
+        
         return $this;
     }
 
     /**
      * Remove inclusPrixEquipement
      *
-     * @param \AppBundle\Entity\InclusPrix $inclusPrixEquipement
+     * @param \AppBundle\Entity\InclusPrix $inclusPrixEquipement            
      */
     public function removeInclusPrixEquipement(\AppBundle\Entity\InclusPrix $inclusPrixEquipement)
     {
@@ -996,7 +864,7 @@ class Bateau {
     /**
      * Get inclusPrixEquipement
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getInclusPrixEquipement()
     {
@@ -1006,20 +874,20 @@ class Bateau {
     /**
      * Add inclusPrixActivite
      *
-     * @param \AppBundle\Entity\InclusPrix $inclusPrixActivite
+     * @param \AppBundle\Entity\InclusPrix $inclusPrixActivite            
      * @return Bateau
      */
     public function addInclusPrixActivite(\AppBundle\Entity\InclusPrix $inclusPrixActivite)
     {
         $this->inclusPrixActivite[] = $inclusPrixActivite;
-
+        
         return $this;
     }
 
     /**
      * Remove inclusPrixActivite
      *
-     * @param \AppBundle\Entity\InclusPrix $inclusPrixActivite
+     * @param \AppBundle\Entity\InclusPrix $inclusPrixActivite            
      */
     public function removeInclusPrixActivite(\AppBundle\Entity\InclusPrix $inclusPrixActivite)
     {
@@ -1029,7 +897,7 @@ class Bateau {
     /**
      * Get inclusPrixActivite
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getInclusPrixActivite()
     {
@@ -1039,20 +907,20 @@ class Bateau {
     /**
      * Add inclusPrixCours
      *
-     * @param \AppBundle\Entity\InclusPrix $inclusPrixCours
+     * @param \AppBundle\Entity\InclusPrix $inclusPrixCours            
      * @return Bateau
      */
     public function addInclusPrixCour(\AppBundle\Entity\InclusPrix $inclusPrixCours)
     {
         $this->inclusPrixCours[] = $inclusPrixCours;
-
+        
         return $this;
     }
 
     /**
      * Remove inclusPrixCours
      *
-     * @param \AppBundle\Entity\InclusPrix $inclusPrixCours
+     * @param \AppBundle\Entity\InclusPrix $inclusPrixCours            
      */
     public function removeInclusPrixCour(\AppBundle\Entity\InclusPrix $inclusPrixCours)
     {
@@ -1062,7 +930,7 @@ class Bateau {
     /**
      * Get inclusPrixCours
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getInclusPrixCours()
     {
@@ -1072,20 +940,20 @@ class Bateau {
     /**
      * Add dateNonDisponibilite
      *
-     * @param \AppBundle\Entity\DateNonDisponibilite $dateNonDisponibilite
+     * @param \AppBundle\Entity\DateNonDisponibilite $dateNonDisponibilite            
      * @return Bateau
      */
     public function addDateNonDisponibilite(\AppBundle\Entity\DateNonDisponibilite $dateNonDisponibilite)
     {
         $this->dateNonDisponibilite[] = $dateNonDisponibilite;
-
+        
         return $this;
     }
 
     /**
      * Remove dateNonDisponibilite
      *
-     * @param \AppBundle\Entity\DateNonDisponibilite $dateNonDisponibilite
+     * @param \AppBundle\Entity\DateNonDisponibilite $dateNonDisponibilite            
      */
     public function removeDateNonDisponibilite(\AppBundle\Entity\DateNonDisponibilite $dateNonDisponibilite)
     {
@@ -1095,7 +963,7 @@ class Bateau {
     /**
      * Get dateNonDisponibilite
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getDateNonDisponibilite()
     {
@@ -1105,20 +973,20 @@ class Bateau {
     /**
      * Set nbCouchage
      *
-     * @param integer $nbCouchage
+     * @param integer $nbCouchage            
      * @return Bateau
      */
     public function setNbCouchage($nbCouchage)
     {
         $this->nbCouchage = $nbCouchage;
-    
+        
         return $this;
     }
 
     /**
      * Get nbCouchage
      *
-     * @return integer 
+     * @return integer
      */
     public function getNbCouchage()
     {
@@ -1128,20 +996,20 @@ class Bateau {
     /**
      * Set nbLitSimple
      *
-     * @param integer $nbLitSimple
+     * @param integer $nbLitSimple            
      * @return Bateau
      */
     public function setNbLitSimple($nbLitSimple)
     {
         $this->nbLitSimple = $nbLitSimple;
-    
+        
         return $this;
     }
 
     /**
      * Get nbLitSimple
      *
-     * @return integer 
+     * @return integer
      */
     public function getNbLitSimple()
     {
@@ -1151,20 +1019,20 @@ class Bateau {
     /**
      * Set nbLitDouble
      *
-     * @param integer $nbLitDouble
+     * @param integer $nbLitDouble            
      * @return Bateau
      */
     public function setNbLitDouble($nbLitDouble)
     {
         $this->nbLitDouble = $nbLitDouble;
-    
+        
         return $this;
     }
 
     /**
      * Get nbLitDouble
      *
-     * @return integer 
+     * @return integer
      */
     public function getNbLitDouble()
     {
