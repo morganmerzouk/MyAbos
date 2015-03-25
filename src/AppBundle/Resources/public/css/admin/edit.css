@@ -178,3 +178,22 @@ div.select2-container.itinerairecroisiere-itineraire { width:400px !important;}
 span[id$='dateNonDisponibilite'] table { width: 50%;}
 td .form-group { margin: 0px;}
 /*** Fin Itinéraire ***/
+/*** Début offre spéciale ***/
+.form-group[id$='tarifDeuxPersonnes'],
+.form-group[id$='tarifTroisPersonnes'],
+.form-group[id$='tarifQuatrePersonnes'],
+.form-group[id$='tarifCinqPersonnes'],
+.form-group[id$='tarifSixPersonnes'],
+.form-group[id$='tarifSeptPersonnes'],
+.form-group[id$='tarifHuitPersonnes'] { display: block;float: left; width: 7%; clear: none;}
+
+.control-tarifcroisiere-tarifdeuxpersonne,
+.control-tarifcroisiere-tariftroispersonne,
+.control-tarifcroisiere-tarifquatrepersonne,
+.control-tarifcroisiere-tarifcinqpersonne,
+.control-tarifcroisiere-tarifsixpersonne,
+.control-tarifcroisiere-tarifseptpersonne,
+.control-tarifcroisiere-tarifhuitpersonne { width: auto; }
+
+.offrespeciale-list-radio {float: left; }
+.offrespeciale-list-radio li { display: block; float: left;}

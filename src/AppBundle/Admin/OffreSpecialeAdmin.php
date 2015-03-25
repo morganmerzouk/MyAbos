@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Symfony\Component\Form\Extension\Core\ChoiceList\SimpleChoiceList;
 
 class OffreSpecialeAdmin extends Admin
 {
@@ -37,16 +38,7 @@ class OffreSpecialeAdmin extends Admin
             ->leftJoin('AppBundle:ServicePayantTranslation', 'spt', 'WITH', 'sp.id=spt.translatable_id')
             ->orderBy('spt.name', 'ASC');
         
-        $formMapper->add('bateau', 'entity', array(
-            'class' => 'AppBundle\Entity\Bateau',
-            'label' => "Bateau: "
-        ))
-            ->add('skipper', 'entity', array(
-            'class' => 'AppBundle\Entity\Skipper',
-            'label' => "Skipper: "
-        ))
-            ->add('miniatureFile', 'file', $optionsMiniature)
-            ->add('translations', 'a2lix_translations', array(
+        $formMapper->add('translations', 'a2lix_translations', array(
             'fields' => array(
                 'name' => array(
                     'label' => 'Titre de l\'offre: ',
@@ -77,44 +69,136 @@ class OffreSpecialeAdmin extends Admin
                 'translatable_id' => array(
                     'field_type' => 'hidden'
                 )
-            )
-        ))
-            ->add('tarif', 'sonata_type_model', array(
-            'label' => 'Grille de tarif: ',
-            'label_attr' => array(
-                'class' => 'control-croisiere-tarif'
-            ),
-            'required' => false
-        ), array(
-            'edit' => 'inline',
-            'inline' => 'table',
-            'sortable' => 'position'
-        ))
+            )))
+            ->add('miniatureFile', 'file', $optionsMiniature)
+            ->add('portDepart', 'entity', array(
+                'class'    => 'AppBundle\Entity\PortDepart',
+                'label'    => "Port de départ: "
+            ))
+            ->add('destination', 'entity', array(
+                'class'    => 'AppBundle\Entity\Destination',
+                'label'    => "Destination: "
+            )) 
+            ->add('bateau', 'entity', array(
+                'class' => 'AppBundle\Entity\Bateau',
+                'label' => "Bateau: "
+            ))
+            ->add('skipper', 'entity', array(
+                'class' => 'AppBundle\Entity\Skipper',
+                'label' => "Skipper: "
+            ))
+            ->add('nbCabine', 'choice', array(
+                'label' => 'Nb de cabine: ',
+                'label_attr' => array(
+                    'class' => 'control-offrespeciale-nbcabine'
+                ),
+                'choice_list' => $this->loadChoiceList("cabine"),
+                'expanded' => true,
+                'attr' => array(
+                    "class" => "offrespeciale-list-radio"
+            )))
+            ->add('dateDebut', 'sonata_type_date_picker', array(
+                'label' => 'Date début: ',
+                'required' => true
+            ))
+            ->add('dateFin', 'sonata_type_date_picker', array(
+                'label' => 'Date fin: ',
+                'required' => true
+            ))
+            ->add('tarifPour', 'choice', array(
+                'label' => 'Tarif pour: ',
+                'label_attr' => array(
+                    'class' => 'control-tarifcroisiere-tarifpour'
+                ),
+                'attr' => array(
+                    'class' => 'tarifcroisiere-tarifpour'
+                ),
+                'choice_list' => $this->loadChoiceList("tarifPour")
+            ))
+            ->add('tarifDeuxPersonnes', 'integer', array(
+                'label' => 'Tarif pour 2',
+                'required' => false,
+                'label_attr' => array(
+                    'class' => 'control-tarifcroisiere-tarifdeuxpersonne'
+                ),
+                'attr' => array(
+                    'class' => 'tarifcroisiere-tarifdeuxpersonne'
+                )
+            ))
+            ->add('tarifTroisPersonnes', 'integer', array(
+                'label' => 'Tarif pour 3',
+                'required' => false,
+                'label_attr' => array(
+                    'class' => 'control-tarifcroisiere-tariftroispersonne'
+                ),
+                'attr' => array(
+                    'class' => 'tarifcroisiere-tariftroispersonne'
+                )
+            ))
+            ->add('tarifQuatrePersonnes', 'integer', array(
+                'label' => 'Tarif pour 4',
+                'required' => false,
+                'label_attr' => array(
+                    'class' => 'control-tarifcroisiere-tarifquatrepersonne'
+                ),
+                'attr' => array(
+                    'class' => 'tarifcroisiere-tarifquatrepersonne'
+                )
+            ))
+            ->add('tarifCinqPersonnes', 'integer', array(
+                'label' => 'Tarif pour 5',
+                'required' => false,
+                'label_attr' => array(
+                    'class' => 'control-tarifcroisiere-tarifcinqpersonne'
+                ),
+                'attr' => array(
+                    'class' => 'tarifcroisiere-tarifcinqpersonne'
+                )
+            ))
+            ->add('tarifSixPersonnes', 'integer', array(
+                'label' => 'Tarif pour 6',
+                'required' => false,
+                'label_attr' => array(
+                    'class' => 'control-tarifcroisiere-tarifsixpersonne'
+                ),
+                'attr' => array(
+                    'class' => 'tarifcroisiere-tarifsixpersonne'
+                )
+            ))
+            ->add('tarifSeptPersonnes', 'integer', array(
+                'label' => 'Tarif pour 7',
+                'required' => false,
+                'label_attr' => array(
+                    'class' => 'control-tarifcroisiere-tarifseptpersonne'
+                ),
+                'attr' => array(
+                    'class' => 'tarifcroisiere-tarifseptpersonne'
+                )
+            ))
+            ->add('tarifHuitPersonnes', 'integer', array(
+                'label' => 'Tarif pour 8',
+                'required' => false,
+                'label_attr' => array(
+                    'class' => 'control-tarifcroisiere-tarifhuitpersonne'
+                ),
+                'attr' => array(
+                    'class' => 'tarifcroisiere-tarifhuitpersonne'
+                )
+            ))
             ->add('servicePayant', 'sonata_type_model', array(
-            'query' => $queryServicePayant,
-            'label_attr' => array(
-                'class' => 'control-croisiere-servicepayant'
-            ),
-            'attr' => array(
-                "class" => "croisiere-servicepayant"
-            ),
-            'required' => false,
-            'multiple' => true,
-            'empty_value' => 'Service',
-            'label' => 'Services Payants: ',
-            'btn_add' => false
-        ))
-            ->add('itineraire', 'sonata_type_model', array(
-            'label' => 'Itinéraires: ',
-            'label_attr' => array(
-                'class' => 'control-croisiere-itineraire'
-            ),
-            'required' => false
-        ), array(
-            'edit' => 'inline',
-            'inline' => 'table',
-            'sortable' => 'position'
-        ));
+                'query' => $queryServicePayant,
+                'label_attr' => array(
+                    'class' => 'control-croisiere-servicepayant'
+                ),
+                'attr' => array(
+                    "class" => "croisiere-servicepayant"
+                ),
+                'required' => false,
+                'multiple' => true,
+                'empty_value' => 'Service',
+                'label' => 'Services Payants: ',
+                'btn_add' => false
+            ));
     }
     
     // Fields to be shown on lists
@@ -138,6 +222,33 @@ class OffreSpecialeAdmin extends Admin
                 )
             )
         ));
+    }
+    
+    protected function loadChoiceList($type)
+    {
+        if ($type == "tarifPour") {
+            $item = array(
+                '1 jour/bateau' => '1 jour/bateau',
+                '1 jour/personne' => '1 jour/personne',
+                '7 jours/bateau' => '7 jours/bateau',
+                '7 jours/personne' => '7 jours/personne',
+                '10 jours/bateau' => '10 jours/bateau',
+                '10 jours/personne' => '10 jours/personne'
+            );
+        } elseif ($type == "cabine") {
+            $item = array(
+                '1' => '1',
+                '2' => '2',
+                '3' => '3',
+                '4' => '4',
+                '5' => '5',
+                '6' => '6'
+            );
+        } 
+        
+        $choices = new SimpleChoiceList($item);
+        
+        return $choices;
     }
 
     protected function configureRoutes(RouteCollection $collection)
