@@ -162,11 +162,6 @@ class SkipperAdmin extends Admin
             'label_attr' => array(
                 'class' => 'control-languages-spoken'
             )
-        ))
-            ->
-        add('published', 'checkbox', array(
-            'label' => 'Publié: ',
-            'required' => false
         ));
     }
 
@@ -194,9 +189,6 @@ class SkipperAdmin extends Admin
             'sortable' => true
         ))
             ->add('email')
-            ->add('published', null, array(
-            'label' => 'Publié: '
-        ))
             ->add('_action', 'actions', array(
             'actions' => array(
                 'edit' => array(),

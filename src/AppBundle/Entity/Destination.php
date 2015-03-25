@@ -39,11 +39,6 @@ class Destination
     protected $inclusRecherche = true;
 
     /**
-     * @ORM\Column(type="boolean")
-     */
-    protected $published;
-
-    /**
      * @ORM\Column(type="string", length=200, nullable=true)
      */
     protected $miniature;
@@ -63,29 +58,6 @@ class Destination
     public function getDescription()
     {
         return $this->translate()->getDescription();
-    }
-
-    /**
-     * Set published
-     *
-     * @param boolean $published            
-     * @return Destination
-     */
-    public function setPublished($published)
-    {
-        $this->published = $published;
-        
-        return $this;
-    }
-
-    /**
-     * Get published
-     *
-     * @return boolean
-     */
-    public function getPublished()
-    {
-        return $this->published;
     }
 
     /**

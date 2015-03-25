@@ -33,11 +33,6 @@ class PortDepart
     protected $miniatureFile;
 
     /**
-     * @ORM\Column(type="boolean")
-     */
-    protected $published;
-
-    /**
      * Constructor
      */
     public function __construct()
@@ -96,29 +91,6 @@ class PortDepart
     public function getMiniatureFile()
     {
         return $this->miniatureFile;
-    }
-
-    /**
-     * Set published
-     *
-     * @param boolean $published            
-     * @return PortDepart
-     */
-    public function setPublished($published)
-    {
-        $this->published = $published;
-        
-        return $this;
-    }
-
-    /**
-     * Get published
-     *
-     * @return boolean
-     */
-    public function getPublished()
-    {
-        return $this->published;
     }
 
     /**

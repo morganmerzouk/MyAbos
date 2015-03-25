@@ -24,7 +24,6 @@ div.select2-container-multi { width: 505px !important;}
     clear: both; 
     margin-top: 10px;
 }
-.form-group[id$='published'] { clear: both; }
 .preview-img {clear: both;display: block;}
 .control-photo1 { clear: both;}
 /*** Fin Admin edit général ***/

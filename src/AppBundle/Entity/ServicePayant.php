@@ -54,11 +54,6 @@ class ServicePayant
     protected $tarifApplique;
 
     /**
-     * @ORM\Column(type="boolean")
-     */
-    protected $published;
-
-    /**
      * @ORM\Column(type="string", length=200, nullable=true)
      */
     protected $icone;
@@ -73,29 +68,6 @@ class ServicePayant
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set published
-     *
-     * @param boolean $published            
-     * @return Destination
-     */
-    public function setPublished($published)
-    {
-        $this->published = $published;
-        
-        return $this;
-    }
-
-    /**
-     * Get published
-     *
-     * @return boolean
-     */
-    public function getPublished()
-    {
-        return $this->published;
     }
 
     /**

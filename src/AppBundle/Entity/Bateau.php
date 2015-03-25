@@ -148,11 +148,6 @@ class Bateau
     protected $inclusPrixCours;
 
     /**
-     * @ORM\Column(type="boolean")
-     */
-    protected $published;
-
-    /**
      * Get id
      *
      * @return integer
@@ -249,29 +244,6 @@ class Bateau
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set published
-     *
-     * @param boolean $published            
-     * @return Bateau
-     */
-    public function setPublished($published)
-    {
-        $this->published = $published;
-        
-        return $this;
-    }
-
-    /**
-     * Get published
-     *
-     * @return boolean
-     */
-    public function getPublished()
-    {
-        return $this->published;
     }
 
     /**

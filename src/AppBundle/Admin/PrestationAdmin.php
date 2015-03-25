@@ -29,8 +29,7 @@ class PrestationAdmin extends Admin
             $optionsIcone['help'] = '<img src="' . $prestation->getIconeWebPath() . '" class="preview-img" />';
         }
         
-        $formMapper->add('iconeFile', 'file', $optionsIcone)
-            ->add('translations', 'a2lix_translations', array(
+        $formMapper->add('iconeFile', 'file', $optionsIcone)->add('translations', 'a2lix_translations', array(
             'fields' => array(
                 'name' => array(
                     'label' => 'Nom: ',
@@ -68,11 +67,6 @@ class PrestationAdmin extends Admin
                     'field_type' => 'hidden'
                 )
             )
-            
-        ))
-            ->add('published', 'checkbox', array(
-            'label' => 'Publié: ',
-            'required' => false
         ));
     }
     
@@ -84,11 +78,7 @@ class PrestationAdmin extends Admin
             'personal_translation' => 'AppBundle\Entity\PrestationTranslation',
             'property_path' => 'translations',
             'label' => 'Nom: '
-        ))
-            ->add('published', null, array(
-            'label' => 'Publié: '
-        ))
-            ->add('_action', 'actions', array(
+        ))->add('_action', 'actions', array(
             'actions' => array(
                 'edit' => array(),
                 'delete' => array()

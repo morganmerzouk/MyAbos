@@ -23,7 +23,6 @@ class BateauController extends Controller
             ->createQueryBuilder('s')
             ->select('s, t')
             ->join('s.translations', 't')
-            ->andWhere('s.published = true')
             ->andWhere('t.locale = :locale')
             ->setParameter(':locale', $locale)
             ->getQuery()
@@ -49,7 +48,6 @@ class BateauController extends Controller
             ->join('s.translations', 't')
             ->where('s.id = :id')
             ->setParameter(':id', $id)
-            ->andWhere('s.published = true')
             ->andWhere('t.locale = :locale')
             ->setParameter(':locale', $locale)
             ->getQuery()
@@ -75,7 +73,6 @@ class BateauController extends Controller
             ->join('s.translations', 't')
             ->where('s.id = :id')
             ->setParameter(':id', $id)
-            ->andWhere('s.published = true')
             ->andWhere('t.locale = :locale')
             ->setParameter(':locale', $locale)
             ->getQuery()
@@ -116,7 +113,6 @@ class BateauController extends Controller
             ->join('s.translations', 't')
             ->where('s.id = :id')
             ->setParameter(':id', $id)
-            ->andWhere('s.published = true')
             ->andWhere('t.locale = :locale')
             ->setParameter(':locale', $locale)
             ->getQuery()
@@ -178,7 +174,6 @@ class BateauController extends Controller
             ->join('s.translations', 't')
             ->where('s.id = :id')
             ->setParameter(':id', $id)
-            ->andWhere('s.published = true')
             ->andWhere('t.locale = :locale')
             ->setParameter(':locale', $locale)
             ->getQuery()
@@ -194,7 +189,6 @@ class BateauController extends Controller
      */
     public function bateauPriceAction($id)
     {
-        
         $croisiere = $this->getDoctrine()
             ->getManager()
             ->getRepository("AppBundle\Entity\Croisiere")
@@ -225,7 +219,6 @@ class BateauController extends Controller
             $data = $form->getData();
             return $this->redirect($this->generateUrl('task_success'));
         }
-        
         
         $croisiere = $this->getDoctrine()
             ->getManager()
@@ -260,7 +253,6 @@ class BateauController extends Controller
             ->join('s.translations', 't')
             ->where('s.id = :id')
             ->setParameter(':id', $id)
-            ->andWhere('s.published = true')
             ->andWhere('t.locale = :locale')
             ->setParameter(':locale', $locale)
             ->getQuery()

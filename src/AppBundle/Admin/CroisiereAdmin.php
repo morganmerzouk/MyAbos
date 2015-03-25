@@ -122,11 +122,7 @@ class CroisiereAdmin extends Admin
             'personal_translation' => 'AppBundle\Entity\CroisiereTranslation',
             'property_path' => 'translations',
             'label' => 'Nom: '
-        ))
-            ->add('published', null, array(
-            'label' => 'Publié: '
-        ))
-            ->add('_action', 'actions', array(
+        ))->add('_action', 'actions', array(
             'actions' => array(
                 'edit' => array(),
                 'delete' => array()
@@ -135,8 +131,6 @@ class CroisiereAdmin extends Admin
         // 'Clone' => array(
         // 'template' => 'AppBundle:Admin/CRUD:list__action_clone.html.twig'
         // )
-        
-        
     }
 
     protected function configureRoutes(RouteCollection $collection)

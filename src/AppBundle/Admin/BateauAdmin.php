@@ -520,10 +520,6 @@ class BateauAdmin extends Admin
             'label' => 'Cours de kitesurf: ',
             'empty_value' => 'Cours de kitesurf',
             'btn_add' => false
-        ))
-            ->add('published', 'checkbox', array(
-            'label' => 'Publié: ',
-            'required' => false
         ));
     }
     
@@ -532,11 +528,7 @@ class BateauAdmin extends Admin
     {
         $listMapper->addIdentifier('name', null, array(
             'label' => 'Nom: '
-        ))
-            ->add('published', null, array(
-            'label' => 'Publié: '
-        ))
-            ->add('_action', 'actions', array(
+        ))->add('_action', 'actions', array(
             'actions' => array(
                 'edit' => array(),
                 'delete' => array()

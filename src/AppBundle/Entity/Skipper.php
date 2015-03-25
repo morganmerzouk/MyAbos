@@ -86,11 +86,6 @@ class Skipper
     protected $avatarFile;
 
     /**
-     * @ORM\Column(type="boolean")
-     */
-    protected $published;
-
-    /**
      * Get id
      *
      * @return integer
@@ -426,29 +421,6 @@ class Skipper
     public function getGreatestQualities()
     {
         return $this->greatestQualities;
-    }
-
-    /**
-     * Set published
-     *
-     * @param boolean $published            
-     * @return Skipper
-     */
-    public function setPublished($published)
-    {
-        $this->published = $published;
-        
-        return $this;
-    }
-
-    /**
-     * Get published
-     *
-     * @return boolean
-     */
-    public function getPublished()
-    {
-        return $this->published;
     }
 
     /**

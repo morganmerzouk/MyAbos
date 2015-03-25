@@ -99,16 +99,7 @@ class DestinationAdmin extends Admin
                     'field_type' => 'hidden'
                 )
             )
-        ))
-            ->add('published', 'checkbox', array(
-            'label' => 'Publié: ',
-            'required' => false,
-            'attr' => array(
-                'class' => 'destination-publie'
-            )
         ));
-
-        
     }
     
     // Fields to be shown on lists
@@ -119,11 +110,7 @@ class DestinationAdmin extends Admin
             'personal_translation' => 'AppBundle\Entity\DestinationTranslation',
             'property_path' => 'translations',
             'label' => 'Nom: '
-        ))
-            ->add('published', null, array(
-            'label' => 'Publié: '
-        ))
-            ->add('_action', 'actions', array(
+        ))->add('_action', 'actions', array(
             'actions' => array(
                 'edit' => array(),
                 'delete' => array()

@@ -69,136 +69,138 @@ class OffreSpecialeAdmin extends Admin
                 'translatable_id' => array(
                     'field_type' => 'hidden'
                 )
-            )))
+            )
+        ))
             ->add('miniatureFile', 'file', $optionsMiniature)
             ->add('portDepart', 'entity', array(
-                'class'    => 'AppBundle\Entity\PortDepart',
-                'label'    => "Port de départ: "
-            ))
+            'class' => 'AppBundle\Entity\PortDepart',
+            'label' => "Port de départ: "
+        ))
             ->add('destination', 'entity', array(
-                'class'    => 'AppBundle\Entity\Destination',
-                'label'    => "Destination: "
-            )) 
+            'class' => 'AppBundle\Entity\Destination',
+            'label' => "Destination: "
+        ))
             ->add('bateau', 'entity', array(
-                'class' => 'AppBundle\Entity\Bateau',
-                'label' => "Bateau: "
-            ))
+            'class' => 'AppBundle\Entity\Bateau',
+            'label' => "Bateau: "
+        ))
             ->add('skipper', 'entity', array(
-                'class' => 'AppBundle\Entity\Skipper',
-                'label' => "Skipper: "
-            ))
+            'class' => 'AppBundle\Entity\Skipper',
+            'label' => "Skipper: "
+        ))
             ->add('nbCabine', 'choice', array(
-                'label' => 'Nb de cabine: ',
-                'label_attr' => array(
-                    'class' => 'control-offrespeciale-nbcabine'
-                ),
-                'choice_list' => $this->loadChoiceList("cabine"),
-                'expanded' => true,
-                'attr' => array(
-                    "class" => "offrespeciale-list-radio"
-            )))
+            'label' => 'Nb de cabine: ',
+            'label_attr' => array(
+                'class' => 'control-offrespeciale-nbcabine'
+            ),
+            'choice_list' => $this->loadChoiceList("cabine"),
+            'expanded' => true,
+            'attr' => array(
+                "class" => "offrespeciale-list-radio"
+            )
+        ))
             ->add('dateDebut', 'sonata_type_date_picker', array(
-                'label' => 'Date début: ',
-                'required' => true
-            ))
+            'label' => 'Date début: ',
+            'required' => true
+        ))
             ->add('dateFin', 'sonata_type_date_picker', array(
-                'label' => 'Date fin: ',
-                'required' => true
-            ))
+            'label' => 'Date fin: ',
+            'required' => true
+        ))
             ->add('tarifPour', 'choice', array(
-                'label' => 'Tarif pour: ',
-                'label_attr' => array(
-                    'class' => 'control-tarifcroisiere-tarifpour'
-                ),
-                'attr' => array(
-                    'class' => 'tarifcroisiere-tarifpour'
-                ),
-                'choice_list' => $this->loadChoiceList("tarifPour")
-            ))
+            'label' => 'Tarif pour: ',
+            'label_attr' => array(
+                'class' => 'control-tarifcroisiere-tarifpour'
+            ),
+            'attr' => array(
+                'class' => 'tarifcroisiere-tarifpour'
+            ),
+            'choice_list' => $this->loadChoiceList("tarifPour")
+        ))
             ->add('tarifDeuxPersonnes', 'integer', array(
-                'label' => 'Tarif pour 2',
-                'required' => false,
-                'label_attr' => array(
-                    'class' => 'control-tarifcroisiere-tarifdeuxpersonne'
-                ),
-                'attr' => array(
-                    'class' => 'tarifcroisiere-tarifdeuxpersonne'
-                )
-            ))
+            'label' => 'Tarif pour 2',
+            'required' => false,
+            'label_attr' => array(
+                'class' => 'control-tarifcroisiere-tarifdeuxpersonne'
+            ),
+            'attr' => array(
+                'class' => 'tarifcroisiere-tarifdeuxpersonne'
+            )
+        ))
             ->add('tarifTroisPersonnes', 'integer', array(
-                'label' => 'Tarif pour 3',
-                'required' => false,
-                'label_attr' => array(
-                    'class' => 'control-tarifcroisiere-tariftroispersonne'
-                ),
-                'attr' => array(
-                    'class' => 'tarifcroisiere-tariftroispersonne'
-                )
-            ))
+            'label' => 'Tarif pour 3',
+            'required' => false,
+            'label_attr' => array(
+                'class' => 'control-tarifcroisiere-tariftroispersonne'
+            ),
+            'attr' => array(
+                'class' => 'tarifcroisiere-tariftroispersonne'
+            )
+        ))
             ->add('tarifQuatrePersonnes', 'integer', array(
-                'label' => 'Tarif pour 4',
-                'required' => false,
-                'label_attr' => array(
-                    'class' => 'control-tarifcroisiere-tarifquatrepersonne'
-                ),
-                'attr' => array(
-                    'class' => 'tarifcroisiere-tarifquatrepersonne'
-                )
-            ))
+            'label' => 'Tarif pour 4',
+            'required' => false,
+            'label_attr' => array(
+                'class' => 'control-tarifcroisiere-tarifquatrepersonne'
+            ),
+            'attr' => array(
+                'class' => 'tarifcroisiere-tarifquatrepersonne'
+            )
+        ))
             ->add('tarifCinqPersonnes', 'integer', array(
-                'label' => 'Tarif pour 5',
-                'required' => false,
-                'label_attr' => array(
-                    'class' => 'control-tarifcroisiere-tarifcinqpersonne'
-                ),
-                'attr' => array(
-                    'class' => 'tarifcroisiere-tarifcinqpersonne'
-                )
-            ))
+            'label' => 'Tarif pour 5',
+            'required' => false,
+            'label_attr' => array(
+                'class' => 'control-tarifcroisiere-tarifcinqpersonne'
+            ),
+            'attr' => array(
+                'class' => 'tarifcroisiere-tarifcinqpersonne'
+            )
+        ))
             ->add('tarifSixPersonnes', 'integer', array(
-                'label' => 'Tarif pour 6',
-                'required' => false,
-                'label_attr' => array(
-                    'class' => 'control-tarifcroisiere-tarifsixpersonne'
-                ),
-                'attr' => array(
-                    'class' => 'tarifcroisiere-tarifsixpersonne'
-                )
-            ))
+            'label' => 'Tarif pour 6',
+            'required' => false,
+            'label_attr' => array(
+                'class' => 'control-tarifcroisiere-tarifsixpersonne'
+            ),
+            'attr' => array(
+                'class' => 'tarifcroisiere-tarifsixpersonne'
+            )
+        ))
             ->add('tarifSeptPersonnes', 'integer', array(
-                'label' => 'Tarif pour 7',
-                'required' => false,
-                'label_attr' => array(
-                    'class' => 'control-tarifcroisiere-tarifseptpersonne'
-                ),
-                'attr' => array(
-                    'class' => 'tarifcroisiere-tarifseptpersonne'
-                )
-            ))
+            'label' => 'Tarif pour 7',
+            'required' => false,
+            'label_attr' => array(
+                'class' => 'control-tarifcroisiere-tarifseptpersonne'
+            ),
+            'attr' => array(
+                'class' => 'tarifcroisiere-tarifseptpersonne'
+            )
+        ))
             ->add('tarifHuitPersonnes', 'integer', array(
-                'label' => 'Tarif pour 8',
-                'required' => false,
-                'label_attr' => array(
-                    'class' => 'control-tarifcroisiere-tarifhuitpersonne'
-                ),
-                'attr' => array(
-                    'class' => 'tarifcroisiere-tarifhuitpersonne'
-                )
-            ))
+            'label' => 'Tarif pour 8',
+            'required' => false,
+            'label_attr' => array(
+                'class' => 'control-tarifcroisiere-tarifhuitpersonne'
+            ),
+            'attr' => array(
+                'class' => 'tarifcroisiere-tarifhuitpersonne'
+            )
+        ))
             ->add('servicePayant', 'sonata_type_model', array(
-                'query' => $queryServicePayant,
-                'label_attr' => array(
-                    'class' => 'control-croisiere-servicepayant'
-                ),
-                'attr' => array(
-                    "class" => "croisiere-servicepayant"
-                ),
-                'required' => false,
-                'multiple' => true,
-                'empty_value' => 'Service',
-                'label' => 'Services Payants: ',
-                'btn_add' => false
-            ));
+            'query' => $queryServicePayant,
+            'label_attr' => array(
+                'class' => 'control-croisiere-servicepayant'
+            ),
+            'attr' => array(
+                "class" => "croisiere-servicepayant"
+            ),
+            'required' => false,
+            'multiple' => true,
+            'empty_value' => 'Service',
+            'label' => 'Services Payants: ',
+            'btn_add' => false
+        ));
     }
     
     // Fields to be shown on lists
@@ -209,11 +211,7 @@ class OffreSpecialeAdmin extends Admin
             'personal_translation' => 'AppBundle\Entity\OffreSpecialeTranslation',
             'property_path' => 'translations',
             'label' => 'Nom: '
-        ))
-            ->add('published', null, array(
-            'label' => 'Publié: '
-        ))
-            ->add('_action', 'actions', array(
+        ))->add('_action', 'actions', array(
             'actions' => array(
                 'edit' => array(),
                 'delete' => array(),
@@ -223,7 +221,7 @@ class OffreSpecialeAdmin extends Admin
             )
         ));
     }
-    
+
     protected function loadChoiceList($type)
     {
         if ($type == "tarifPour") {
@@ -244,7 +242,7 @@ class OffreSpecialeAdmin extends Admin
                 '5' => '5',
                 '6' => '6'
             );
-        } 
+        }
         
         $choices = new SimpleChoiceList($item);
         

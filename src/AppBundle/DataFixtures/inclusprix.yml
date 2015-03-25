@@ -42,4 +42,34 @@
     name_fr: "Matériel de pêche"
     name_en: "Fishing equipment"
     icone: "icon-inclus-prix-basique-35pix-FISHING-GEAR-noir.png"
-    categorie: "Activités à bord"
+    categorie: "Equipements à bord"
+9:
+    name_fr: "Palmes, masques et tubas"
+    name_en: "Snorkelling equipment"
+    icone: ""
+    categorie: "Equipements à bord"
+10:
+    name_fr: "Stand Up Paddle"
+    name_en: "Stand Up Paddle"
+    icone: ""
+    categorie: "Equipements à bord"
+11:
+    name_fr: "Planche(s) de surf"
+    name_en: "Surfboard(s)"
+    icone: ""
+    categorie: "Equipements à bord"
+12:
+    name_fr: "Kayak"
+    name_en: "Kayak"
+    icone: ""
+    categorie: "Equipements à bord"
+13:
+    name_fr: "Equipements de kitesurf"
+    name_en: "Kitesurfing gear"
+    icone: ""
+    categorie: "Equipements à bord"
+14:
+    name_fr: "Enregistrement vidéo"
+    name_en: "Video film"
+    icone: ""
+    categorie: "Autres services"

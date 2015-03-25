@@ -31,11 +31,6 @@ class Prestation
     protected $iconeFile;
 
     /**
-     * @ORM\Column(type="boolean")
-     */
-    protected $published;
-
-    /**
      * Get id
      *
      * @return integer
@@ -48,29 +43,6 @@ class Prestation
     public function getDescription()
     {
         return $this->translate()->getDescription();
-    }
-
-    /**
-     * Set published
-     *
-     * @param boolean $published            
-     * @return Destination
-     */
-    public function setPublished($published)
-    {
-        $this->published = $published;
-        
-        return $this;
-    }
-
-    /**
-     * Get published
-     *
-     * @return boolean
-     */
-    public function getPublished()
-    {
-        return $this->published;
     }
 
     /**
