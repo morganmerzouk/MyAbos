@@ -101,11 +101,13 @@ class OffreSpecialeAdmin extends Admin
         ))
             ->add('dateDebut', 'sonata_type_date_picker', array(
             'label' => 'Date début: ',
-            'required' => true
+            'required' => true,
+            'format' => 'dd/MM/yyyy'
         ))
             ->add('dateFin', 'sonata_type_date_picker', array(
             'label' => 'Date fin: ',
-            'required' => true
+            'required' => true,
+            'format' => 'dd/MM/yyyy'
         ))
             ->add('tarifPour', 'choice', array(
             'label' => 'Tarif pour: ',
@@ -255,6 +257,7 @@ class OffreSpecialeAdmin extends Admin
         $collection->add('getServicePayant', 'getServicePayant/{id}', array(
             'id' => null
         ));
+        $collection->add('offresspeciales', $this->getRouterIdParameter() . '/offresspeciales');
     }
 
     public function setBaseRouteName($baseRouteName)

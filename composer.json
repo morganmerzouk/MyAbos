@@ -27,8 +27,7 @@
     "doctrine/doctrine-fixtures-bundle" : "dev-master",
     "coresphere/console-bundle" : "dev-master",
     "hautelook/alice-bundle" : "0.2.*",
-    "helios-ag/fm-elfinder-bundle" : "~2.3.0",
-    "egeloen/ckeditor-bundle" : "=3.0.1"
+    "helios-ag/fm-elfinder-bundle" : "~2.3.0"
   },
   "scripts" : {
     "post-install-cmd" : [ "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters", "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap", "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache", "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets", "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile" ],
@@ -53,6 +52,6 @@
   "config" : {
     "bin-dir" : "bin"
   },
-  "type" : "project",
-  "license" : "MIT"
+  "license" : "MIT",
+  "type" : "project"
 }

@@ -27,12 +27,12 @@ class ItineraireCroisiere
     protected $itineraire;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     protected $dateDebut;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     protected $dateFin;
 

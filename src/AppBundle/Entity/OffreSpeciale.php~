@@ -33,14 +33,13 @@ class OffreSpeciale
      */
     protected $skipper;
 
-
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     protected $dateDebut;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     protected $dateFin;
 
@@ -58,36 +57,42 @@ class OffreSpeciale
      * @ORM\Column(type="integer", nullable=true)
      */
     protected $nbCabine;
-    
+
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
     protected $tarifDeuxPersonnes;
+
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
     protected $tarifTroisPersonnes;
+
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
     protected $tarifQuatrePersonnes;
+
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
     protected $tarifCinqPersonnes;
+
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
     protected $tarifSixPersonnes;
+
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
     protected $tarifSeptPersonnes;
+
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
     protected $tarifHuitPersonnes;
-    
+
     /**
      * @ORM\Column(type="string", length=200)
      */
@@ -308,6 +313,7 @@ class OffreSpeciale
     {
         return $this->skipper;
     }
+
     /**
      * Constructor
      */
@@ -319,20 +325,20 @@ class OffreSpeciale
     /**
      * Add servicePayant
      *
-     * @param \AppBundle\Entity\ServicePayant $servicePayant
+     * @param \AppBundle\Entity\ServicePayant $servicePayant            
      * @return OffreSpeciale
      */
     public function addServicePayant(\AppBundle\Entity\ServicePayant $servicePayant)
     {
         $this->servicePayant[] = $servicePayant;
-    
+        
         return $this;
     }
 
     /**
      * Remove servicePayant
      *
-     * @param \AppBundle\Entity\ServicePayant $servicePayant
+     * @param \AppBundle\Entity\ServicePayant $servicePayant            
      */
     public function removeServicePayant(\AppBundle\Entity\ServicePayant $servicePayant)
     {
@@ -342,7 +348,7 @@ class OffreSpeciale
     /**
      * Get servicePayant
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getServicePayant()
     {
@@ -352,20 +358,20 @@ class OffreSpeciale
     /**
      * Set dateDebut
      *
-     * @param \DateTime $dateDebut
+     * @param \DateTime $dateDebut            
      * @return OffreSpeciale
      */
     public function setDateDebut($dateDebut)
     {
         $this->dateDebut = $dateDebut;
-
+        
         return $this;
     }
 
     /**
      * Get dateDebut
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateDebut()
     {
@@ -375,20 +381,20 @@ class OffreSpeciale
     /**
      * Set dateFin
      *
-     * @param \DateTime $dateFin
+     * @param \DateTime $dateFin            
      * @return OffreSpeciale
      */
     public function setDateFin($dateFin)
     {
         $this->dateFin = $dateFin;
-
+        
         return $this;
     }
 
     /**
      * Get dateFin
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateFin()
     {
@@ -398,20 +404,20 @@ class OffreSpeciale
     /**
      * Set tarifDeuxPersonnes
      *
-     * @param integer $tarifDeuxPersonnes
+     * @param integer $tarifDeuxPersonnes            
      * @return OffreSpeciale
      */
     public function setTarifDeuxPersonnes($tarifDeuxPersonnes)
     {
         $this->tarifDeuxPersonnes = $tarifDeuxPersonnes;
-
+        
         return $this;
     }
 
     /**
      * Get tarifDeuxPersonnes
      *
-     * @return integer 
+     * @return integer
      */
     public function getTarifDeuxPersonnes()
     {
@@ -421,20 +427,20 @@ class OffreSpeciale
     /**
      * Set tarifTroisPersonnes
      *
-     * @param integer $tarifTroisPersonnes
+     * @param integer $tarifTroisPersonnes            
      * @return OffreSpeciale
      */
     public function setTarifTroisPersonnes($tarifTroisPersonnes)
     {
         $this->tarifTroisPersonnes = $tarifTroisPersonnes;
-
+        
         return $this;
     }
 
     /**
      * Get tarifTroisPersonnes
      *
-     * @return integer 
+     * @return integer
      */
     public function getTarifTroisPersonnes()
     {
@@ -444,20 +450,20 @@ class OffreSpeciale
     /**
      * Set tarifQuatrePersonnes
      *
-     * @param integer $tarifQuatrePersonnes
+     * @param integer $tarifQuatrePersonnes            
      * @return OffreSpeciale
      */
     public function setTarifQuatrePersonnes($tarifQuatrePersonnes)
     {
         $this->tarifQuatrePersonnes = $tarifQuatrePersonnes;
-
+        
         return $this;
     }
 
     /**
      * Get tarifQuatrePersonnes
      *
-     * @return integer 
+     * @return integer
      */
     public function getTarifQuatrePersonnes()
     {
@@ -467,20 +473,20 @@ class OffreSpeciale
     /**
      * Set tarifCinqPersonnes
      *
-     * @param integer $tarifCinqPersonnes
+     * @param integer $tarifCinqPersonnes            
      * @return OffreSpeciale
      */
     public function setTarifCinqPersonnes($tarifCinqPersonnes)
     {
         $this->tarifCinqPersonnes = $tarifCinqPersonnes;
-
+        
         return $this;
     }
 
     /**
      * Get tarifCinqPersonnes
      *
-     * @return integer 
+     * @return integer
      */
     public function getTarifCinqPersonnes()
     {
@@ -490,20 +496,20 @@ class OffreSpeciale
     /**
      * Set tarifSixPersonnes
      *
-     * @param integer $tarifSixPersonnes
+     * @param integer $tarifSixPersonnes            
      * @return OffreSpeciale
      */
     public function setTarifSixPersonnes($tarifSixPersonnes)
     {
         $this->tarifSixPersonnes = $tarifSixPersonnes;
-
+        
         return $this;
     }
 
     /**
      * Get tarifSixPersonnes
      *
-     * @return integer 
+     * @return integer
      */
     public function getTarifSixPersonnes()
     {
@@ -513,20 +519,20 @@ class OffreSpeciale
     /**
      * Set tarifSeptPersonnes
      *
-     * @param integer $tarifSeptPersonnes
+     * @param integer $tarifSeptPersonnes            
      * @return OffreSpeciale
      */
     public function setTarifSeptPersonnes($tarifSeptPersonnes)
     {
         $this->tarifSeptPersonnes = $tarifSeptPersonnes;
-
+        
         return $this;
     }
 
     /**
      * Get tarifSeptPersonnes
      *
-     * @return integer 
+     * @return integer
      */
     public function getTarifSeptPersonnes()
     {
@@ -536,20 +542,20 @@ class OffreSpeciale
     /**
      * Set tarifHuitPersonnes
      *
-     * @param integer $tarifHuitPersonnes
+     * @param integer $tarifHuitPersonnes            
      * @return OffreSpeciale
      */
     public function setTarifHuitPersonnes($tarifHuitPersonnes)
     {
         $this->tarifHuitPersonnes = $tarifHuitPersonnes;
-
+        
         return $this;
     }
 
     /**
      * Get tarifHuitPersonnes
      *
-     * @return integer 
+     * @return integer
      */
     public function getTarifHuitPersonnes()
     {
@@ -559,20 +565,20 @@ class OffreSpeciale
     /**
      * Set tarifPour
      *
-     * @param string $tarifPour
+     * @param string $tarifPour            
      * @return OffreSpeciale
      */
     public function setTarifPour($tarifPour)
     {
         $this->tarifPour = $tarifPour;
-
+        
         return $this;
     }
 
     /**
      * Get tarifPour
      *
-     * @return string 
+     * @return string
      */
     public function getTarifPour()
     {
@@ -582,20 +588,20 @@ class OffreSpeciale
     /**
      * Set portDepart
      *
-     * @param \AppBundle\Entity\PortDepart $portDepart
+     * @param \AppBundle\Entity\PortDepart $portDepart            
      * @return OffreSpeciale
      */
     public function setPortDepart(\AppBundle\Entity\PortDepart $portDepart = null)
     {
         $this->portDepart = $portDepart;
-
+        
         return $this;
     }
 
     /**
      * Get portDepart
      *
-     * @return \AppBundle\Entity\PortDepart 
+     * @return \AppBundle\Entity\PortDepart
      */
     public function getPortDepart()
     {
@@ -605,20 +611,20 @@ class OffreSpeciale
     /**
      * Set destination
      *
-     * @param \AppBundle\Entity\Destination $destination
+     * @param \AppBundle\Entity\Destination $destination            
      * @return OffreSpeciale
      */
     public function setDestination(\AppBundle\Entity\Destination $destination = null)
     {
         $this->destination = $destination;
-
+        
         return $this;
     }
 
     /**
      * Get destination
      *
-     * @return \AppBundle\Entity\Destination 
+     * @return \AppBundle\Entity\Destination
      */
     public function getDestination()
     {
@@ -628,23 +634,46 @@ class OffreSpeciale
     /**
      * Set itineraire
      *
-     * @param \AppBundle\Entity\Itineraire $itineraire
+     * @param \AppBundle\Entity\Itineraire $itineraire            
      * @return OffreSpeciale
      */
     public function setItineraire(\AppBundle\Entity\Itineraire $itineraire = null)
     {
         $this->itineraire = $itineraire;
-
+        
         return $this;
     }
 
     /**
      * Get itineraire
      *
-     * @return \AppBundle\Entity\Itineraire 
+     * @return \AppBundle\Entity\Itineraire
      */
     public function getItineraire()
     {
         return $this->itineraire;
+    }
+
+    /**
+     * Set nbCabine
+     *
+     * @param integer $nbCabine            
+     * @return OffreSpeciale
+     */
+    public function setNbCabine($nbCabine)
+    {
+        $this->nbCabine = $nbCabine;
+        
+        return $this;
+    }
+
+    /**
+     * Get nbCabine
+     *
+     * @return integer
+     */
+    public function getNbCabine()
+    {
+        return $this->nbCabine;
     }
 }

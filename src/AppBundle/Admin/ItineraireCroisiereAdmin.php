@@ -15,11 +15,13 @@ class ItineraireCroisiereAdmin extends Admin
     {
         $formMapper->add('dateDebut', 'sonata_type_date_picker', array(
             'label' => 'Date début: ',
-            'required' => false
+            'required' => true,
+            'format' => 'dd/MM/yyyy'
         ))
             ->add('dateFin', 'sonata_type_date_picker', array(
             'label' => 'Date fin: ',
-            'required' => false
+            'required' => true,
+            'format' => 'dd/MM/yyyy'
         ))
             ->add('itineraire', 'entity', array(
             'class' => 'AppBundle\Entity\Itineraire',

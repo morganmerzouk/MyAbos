@@ -22,57 +22,65 @@ class TarifCroisiere
     protected $id;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     protected $dateDebut;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     protected $dateFin;
+
     /**
      * @ORM\Column(type="integer")
      */
-    protected $nombreJourMinimum;    
-    
+    protected $nombreJourMinimum;
+
     /**
      * @ORM\Column(type="integer")
      */
     protected $nombreJourMaximum;
-    
+
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
     protected $tarifDeuxPersonnes;
+
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
     protected $tarifTroisPersonnes;
+
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
     protected $tarifQuatrePersonnes;
+
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
     protected $tarifCinqPersonnes;
+
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
     protected $tarifSixPersonnes;
+
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
     protected $tarifSeptPersonnes;
+
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
     protected $tarifHuitPersonnes;
-    
+
     /**
      * @ORM\Column(type="string", length=200)
      */
     protected $tarifPour;
+
     /**
      * Constructor
      */
@@ -97,20 +105,20 @@ class TarifCroisiere
     /**
      * Set dateDebut
      *
-     * @param \DateTime $dateDebut
+     * @param \DateTime $dateDebut            
      * @return DateNonDisponibilite
      */
     public function setDateDebut($dateDebut)
     {
         $this->dateDebut = $dateDebut;
-
+        
         return $this;
     }
 
     /**
      * Get dateDebut
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateDebut()
     {
@@ -120,20 +128,20 @@ class TarifCroisiere
     /**
      * Set dateFin
      *
-     * @param \DateTime $dateFin
+     * @param \DateTime $dateFin            
      * @return DateNonDisponibilite
      */
     public function setDateFin($dateFin)
     {
         $this->dateFin = $dateFin;
-
+        
         return $this;
     }
 
     /**
      * Get dateFin
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateFin()
     {
@@ -143,20 +151,20 @@ class TarifCroisiere
     /**
      * Set nombreJourMinimum
      *
-     * @param integer $nombreJourMinimum
+     * @param integer $nombreJourMinimum            
      * @return TarifCroisiere
      */
     public function setNombreJourMinimum($nombreJourMinimum)
     {
         $this->nombreJourMinimum = $nombreJourMinimum;
-
+        
         return $this;
     }
 
     /**
      * Get nombreJourMinimum
      *
-     * @return integer 
+     * @return integer
      */
     public function getNombreJourMinimum()
     {
@@ -166,20 +174,20 @@ class TarifCroisiere
     /**
      * Set nombreJourMaximum
      *
-     * @param integer $nombreJourMaximum
+     * @param integer $nombreJourMaximum            
      * @return TarifCroisiere
      */
     public function setNombreJourMaximum($nombreJourMaximum)
     {
         $this->nombreJourMaximum = $nombreJourMaximum;
-
+        
         return $this;
     }
 
     /**
      * Get nombreJourMaximum
      *
-     * @return integer 
+     * @return integer
      */
     public function getNombreJourMaximum()
     {
@@ -189,20 +197,20 @@ class TarifCroisiere
     /**
      * Set tarifDeuxPersonnes
      *
-     * @param integer $tarifDeuxPersonnes
+     * @param integer $tarifDeuxPersonnes            
      * @return TarifCroisiere
      */
     public function setTarifDeuxPersonnes($tarifDeuxPersonnes)
     {
         $this->tarifDeuxPersonnes = $tarifDeuxPersonnes;
-
+        
         return $this;
     }
 
     /**
      * Get tarifDeuxPersonnes
      *
-     * @return integer 
+     * @return integer
      */
     public function getTarifDeuxPersonnes()
     {
@@ -212,20 +220,20 @@ class TarifCroisiere
     /**
      * Set tarifTroisPersonnes
      *
-     * @param integer $tarifTroisPersonnes
+     * @param integer $tarifTroisPersonnes            
      * @return TarifCroisiere
      */
     public function setTarifTroisPersonnes($tarifTroisPersonnes)
     {
         $this->tarifTroisPersonnes = $tarifTroisPersonnes;
-
+        
         return $this;
     }
 
     /**
      * Get tarifTroisPersonnes
      *
-     * @return integer 
+     * @return integer
      */
     public function getTarifTroisPersonnes()
     {
@@ -235,20 +243,20 @@ class TarifCroisiere
     /**
      * Set tarifQuatrePersonnes
      *
-     * @param integer $tarifQuatrePersonnes
+     * @param integer $tarifQuatrePersonnes            
      * @return TarifCroisiere
      */
     public function setTarifQuatrePersonnes($tarifQuatrePersonnes)
     {
         $this->tarifQuatrePersonnes = $tarifQuatrePersonnes;
-
+        
         return $this;
     }
 
     /**
      * Get tarifQuatrePersonnes
      *
-     * @return integer 
+     * @return integer
      */
     public function getTarifQuatrePersonnes()
     {
@@ -258,20 +266,20 @@ class TarifCroisiere
     /**
      * Set tarifCinqPersonnes
      *
-     * @param integer $tarifCinqPersonnes
+     * @param integer $tarifCinqPersonnes            
      * @return TarifCroisiere
      */
     public function setTarifCinqPersonnes($tarifCinqPersonnes)
     {
         $this->tarifCinqPersonnes = $tarifCinqPersonnes;
-
+        
         return $this;
     }
 
     /**
      * Get tarifCinqPersonnes
      *
-     * @return integer 
+     * @return integer
      */
     public function getTarifCinqPersonnes()
     {
@@ -281,20 +289,20 @@ class TarifCroisiere
     /**
      * Set tarifSixPersonnes
      *
-     * @param integer $tarifSixPersonnes
+     * @param integer $tarifSixPersonnes            
      * @return TarifCroisiere
      */
     public function setTarifSixPersonnes($tarifSixPersonnes)
     {
         $this->tarifSixPersonnes = $tarifSixPersonnes;
-
+        
         return $this;
     }
 
     /**
      * Get tarifSixPersonnes
      *
-     * @return integer 
+     * @return integer
      */
     public function getTarifSixPersonnes()
     {
@@ -304,20 +312,20 @@ class TarifCroisiere
     /**
      * Set tarifSeptPersonnes
      *
-     * @param integer $tarifSeptPersonnes
+     * @param integer $tarifSeptPersonnes            
      * @return TarifCroisiere
      */
     public function setTarifSeptPersonnes($tarifSeptPersonnes)
     {
         $this->tarifSeptPersonnes = $tarifSeptPersonnes;
-
+        
         return $this;
     }
 
     /**
      * Get tarifSeptPersonnes
      *
-     * @return integer 
+     * @return integer
      */
     public function getTarifSeptPersonnes()
     {
@@ -327,20 +335,20 @@ class TarifCroisiere
     /**
      * Set tarifHuitPersonnes
      *
-     * @param integer $tarifHuitPersonnes
+     * @param integer $tarifHuitPersonnes            
      * @return TarifCroisiere
      */
     public function setTarifHuitPersonnes($tarifHuitPersonnes)
     {
         $this->tarifHuitPersonnes = $tarifHuitPersonnes;
-
+        
         return $this;
     }
 
     /**
      * Get tarifHuitPersonnes
      *
-     * @return integer 
+     * @return integer
      */
     public function getTarifHuitPersonnes()
     {
@@ -350,20 +358,20 @@ class TarifCroisiere
     /**
      * Set tarifPour
      *
-     * @param string $tarifPour
+     * @param string $tarifPour            
      * @return TarifCroisiere
      */
     public function setTarifPour($tarifPour)
     {
         $this->tarifPour = $tarifPour;
-
+        
         return $this;
     }
 
     /**
      * Get tarifPour
      *
-     * @return string 
+     * @return string
      */
     public function getTarifPour()
     {

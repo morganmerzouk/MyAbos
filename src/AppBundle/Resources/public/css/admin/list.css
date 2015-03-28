@@ -1,7 +1,7 @@
 /*** Admin list général ***/
 .sonata-ba-list-field-batch {width:3%;text-align: center;}
 .sonata-ba-list-field-boolean{width: 7%;text-align: center;}
-.sonata-ba-list-field-header-actions { width: 180px;text-align: center;}
+.sonata-ba-list-field-header-actions { width: 250px;text-align: center;}
 
 /*** Block Filtre ***/
 .filter_container .select2-container {float: left; width: 200px !important;}

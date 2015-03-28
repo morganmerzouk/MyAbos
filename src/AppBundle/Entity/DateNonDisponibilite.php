@@ -22,12 +22,12 @@ class DateNonDisponibilite
     protected $id;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     protected $dateDebut;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     protected $dateFin;
 
@@ -55,20 +55,20 @@ class DateNonDisponibilite
     /**
      * Set dateDebut
      *
-     * @param \DateTime $dateDebut
+     * @param \DateTime $dateDebut            
      * @return DateNonDisponibilite
      */
     public function setDateDebut($dateDebut)
     {
         $this->dateDebut = $dateDebut;
-
+        
         return $this;
     }
 
     /**
      * Get dateDebut
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateDebut()
     {
@@ -78,20 +78,20 @@ class DateNonDisponibilite
     /**
      * Set dateFin
      *
-     * @param \DateTime $dateFin
+     * @param \DateTime $dateFin            
      * @return DateNonDisponibilite
      */
     public function setDateFin($dateFin)
     {
         $this->dateFin = $dateFin;
-
+        
         return $this;
     }
 
     /**
      * Get dateFin
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateFin()
     {

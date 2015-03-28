@@ -10,16 +10,18 @@ use Symfony\Component\Form\Extension\Core\ChoiceList\SimpleChoiceList;
 
 class TarifCroisiereAdmin extends Admin
 {
- // Fields to be shown on create/edit forms
+    // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('dateDebut', 'sonata_type_date_picker', array(
             'label' => 'Date début: ',
-            'required' => true
+            'required' => true,
+            'format' => 'dd/MM/yyyy'
         ))
             ->add('dateFin', 'sonata_type_date_picker', array(
             'label' => 'Date fin: ',
-            'required' => true
+            'required' => true,
+            'format' => 'dd/MM/yyyy'
         ))
             ->add('nombreJourMinimum', 'choice', array(
             'label' => 'Nb jour minimum: ',
@@ -121,8 +123,6 @@ class TarifCroisiereAdmin extends Admin
                 'class' => 'tarifcroisiere-tarifhuitpersonne'
             )
         ));
-
-        
     }
     
     // Fields to be shown on lists
