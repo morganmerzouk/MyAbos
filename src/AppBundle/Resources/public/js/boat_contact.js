@@ -23,7 +23,7 @@ $(document).ready(function() {
         if($(this).is(":checked")) {
             $('.devis-options-payantes').append('<div data-item-reference="' + item.data("item") + '">' + item.html() + "</div>");
         } else {
-            $("devis-options-payantes").find("[data-item-reference='" + item.data("item") + "']").remove();
+            $(".devis-options-payantes").find("[data-item-reference='" + item.data("item") + "']").remove();
         }
     });
     

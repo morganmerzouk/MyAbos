@@ -9,14 +9,6 @@ use Symfony\Component\HttpFoundation\Response;
 class OffreSpecialeAdminController extends Controller
 {
 
-    /**
-     * @Route("/offresspeciales", name="offresspeciales")
-     */
-    public function indexAction()
-    {
-        return $this->render('AppBundle:Front:offresspeciales.html.twig');
-    }
-
     public function cloneAction()
     {
         $id = $this->get('request')->get($this->admin->getIdParameter());
