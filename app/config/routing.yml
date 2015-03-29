@@ -21,4 +21,4 @@ elfinder:
      
 _console:
     resource: "@CoreSphereConsoleBundle/Resources/config/routing.yml"
-    prefix: /{_locale}/_console
+    prefix: /admin/_console
