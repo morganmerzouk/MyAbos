@@ -14,7 +14,7 @@ boats: Boats
 boat_contact: Contact
 boat_price: Price
 boat_dispo: Availability
-boat_desti: Destinations and itineraries
+boat_desti: Destinations
 boat_crew: Crew
 boat_fiche: Details
 boat_presentation: Overview
@@ -48,7 +48,7 @@ form_sejour_possible_debut: Cruise possible between:
 form_sejour_possible_fin: and: 
 form_sejour_duree: Cruise duration: 
 form_sejour_nb_passager: Number of passenger: 
-form_sejour_port_depart: Departure: 
+form_sejour_portdepart: Departure: 
 form_sejour_destination: Destination: 
 devis_option: Options included in the estimate:
 passagers: passengers
@@ -98,7 +98,7 @@ prestations_intro: The Lorem Ipsum is simply a dummy text used to fill out layou
 
 skipper_presentation: Presentation
 skipper_boat: Boats
-skipper_desti: Destinations and itineraries
+skipper_desti: Destinations
 skipper_availability: Availability
 skipper_price: Price
 skipper_contact: Contact

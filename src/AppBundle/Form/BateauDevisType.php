@@ -66,6 +66,7 @@ class BateauDevisType extends AbstractType
         ))
             ->add('portDepart', 'choice', array(
             "choices" => $this->fillPortDepart(),
+            'label' => 'form_sejour_portdepart',
             'attr' => array(
                 'class' => 'select-portdepart'
             ),

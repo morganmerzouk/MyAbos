@@ -53,6 +53,7 @@ td.libelleLegend { padding-left: 5px;}
 .bateau .offreName { margin: 0; margin-bottom: 10px; padding:10px; color: white; background: #127BBD; font-size: 1.2em; }
 .bateau .boatName { padding:5px; font-size: 1em; }
 
+/*** Page devis ***/
 .col-devis { border: 1px solid #B3B3B3; padding: 0;}
 .col-devis h2 { margin: 0; background: #127BBD; padding:5px; font-size: 1.1em; color: white; }
 .col-devis .row { padding: 5px 10px; margin: 10px; color: black;}
@@ -63,7 +64,8 @@ td.libelleLegend { padding-left: 5px;}
 .col-devis .optionspayantes { padding: 10px; margin: 10px; border: 3px solid #23B6E1; overflow: auto;}
 .col-devis .optionspayantes .col-md-5 { width: 45%; padding: 5px 10px; margin: 1%; color: black;}
 .col-devis .optionspayantes .col-md-1 { width: 3%; height: 25px;padding: 5px 10px;  margin: 1%;}
-
+.input-date-depart, .input-date-retour { width:90px;}
+.select-portdepart, .select-destination {width: 150px;}
 .col-right-devis { position: fixed; right: 0; width: 20%; overflow: auto; padding-bottom: 10px; margin-bottom: 10px;}
 .bloc-final-price { background: white; text-align: center; margin: auto; padding:10px;}
 

@@ -14,7 +14,7 @@ boats: La Flotte
 boat_contact: Devis / Contact
 boat_price: Tarifs
 boat_dispo: Disponibilités
-boat_desti: Destinations et itinéraires
+boat_desti: Destinations
 boat_crew: Equipages
 boat_fiche: Fiche technique
 boat_presentation: Présentation
@@ -48,7 +48,7 @@ form_sejour_possible_debut: Croisière possible entre le:
 form_sejour_possible_fin: et le: 
 form_sejour_duree: Durée de la croisière:  
 form_sejour_nb_passager: Nombre de passager:
-form_sejour_port_depart: Port de départ souhaité: 
+form_sejour_portdepart: Port de départ: 
 form_sejour_destination: Destination souhaitée: 
 devis_option: Options inclues dans le devis:
 passagers: passagers
@@ -98,8 +98,8 @@ prestations_intro: Le Lorem Ipsum est simplement du faux texte employé dans la 
 
 skipper_presentation: Présentation
 skipper_boat: Bateau
-skipper_desti: Destinations et itinéraires
-skipper_availability: Date de non disponibilité
+skipper_desti: Destinations
+skipper_availability: Disponibilités
 skipper_price: Tarif
 skipper_contact: Contacter
 
