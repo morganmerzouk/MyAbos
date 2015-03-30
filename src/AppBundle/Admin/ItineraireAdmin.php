@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery;
+use Doctrine\ORM\EntityRepository;
 
 class ItineraireAdmin extends Admin
 {
@@ -29,12 +30,30 @@ class ItineraireAdmin extends Admin
         
         $formMapper->add('miniatureFile', 'file', $optionsMiniature)
             ->add('portDepart', 'entity', array(
-            'class' => 'AppBundle\Entity\PortDepart',
-            'label' => "Port de départ: "
+            'class' => 'AppBundle:PortDepart',
+            'property' => 'name',
+            'query_builder' => function(EntityRepository $er) {
+                return $er->createQueryBuilder('pd')
+                        ->select('pd,pdt')
+                    ->join("pd.translations", "pdt")
+                    ->where("pdt.locale='en'")
+                    ->orderBy('pdt.name', 'ASC');
+            },
+            'label' => "Port de départ: ",
+            'required' => true
         ))
             ->add('destination', 'entity', array(
-            'class' => 'AppBundle\Entity\Destination',
-            'label' => "Destination: "
+            'class' => 'AppBundle:Destination',
+            'property' => 'name',
+            'query_builder' => function(EntityRepository $er) {
+                return $er->createQueryBuilder('d')
+                        ->select('d,dt')
+                    ->join("d.translations", "dt")
+                    ->where("dt.locale='en'")
+                    ->orderBy('dt.name', 'ASC');
+            },
+            'label' => "Destination: ",
+            'required' => true
         ))
             ->add('translations', 'a2lix_translations', array(
             'fields' => array(
@@ -96,7 +115,7 @@ class ItineraireAdmin extends Admin
             )
         ));
     }
-
+    
     /**
      *
      * @return \Sonata\AdminBundle\Datagrid\ProxyQueryInterface
