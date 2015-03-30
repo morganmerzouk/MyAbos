@@ -8,6 +8,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\ChoiceList\SimpleChoiceList;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery;
+use Doctrine\ORM\EntityRepository;
 
 class InclusPrixAdmin extends Admin
 {
@@ -50,16 +51,25 @@ class InclusPrixAdmin extends Admin
             )
         ))
             ->add('prestation', 'entity', array(
-            'class' => 'AppBundle\Entity\Prestation',
+            'class' => 'AppBundle:Prestation',
+            'property' => 'name',
+            'query_builder' => function (EntityRepository $er) {
+                return $er->createQueryBuilder('ic')
+                    ->select('ic,ict')
+                    ->join("ic.translations", "ict")
+                    ->where("ict.locale='en'")
+                    ->orderBy('ict.name', 'ASC');
+            },
             'label' => 'Rattachement à une prestation: ',
-            'required' => false,
-            "empty_value" => "Aucune",
             'label_attr' => array(
                 'class' => 'control-inclusprix-prestation'
             ),
             'attr' => array(
                 "class" => "inclusprix-list-radio"
-            )
+            ),
+            'required' => false,
+            'empty_value' => 'Aucune',
+            'multiple' => true
         ))
             ->add('categorie', 'choice', array(
             'label' => 'Catégorie: ',
@@ -104,12 +114,6 @@ class InclusPrixAdmin extends Admin
             ->add('categorie', 'translatable_field', array(
             'label' => 'Catégorie: '
         ))
-            ->add('prestation.name', 'translatable_field', array(
-            'field' => 'name',
-            'personal_translation' => 'AppBundle\Entity\InclusPrixTranslation',
-            'property_path' => 'translations',
-            'label' => 'Prestation: '
-        ))
             ->add('_action', 'actions', array(
             'actions' => array(
                 'edit' => array(),
@@ -122,7 +126,7 @@ class InclusPrixAdmin extends Admin
     {
         $query = parent::createQuery($context);
         
-        return new ProxyQuery($query->leftjoin("AppBundle\Entity\InclusPrixTranslation", "ipt", "WITH", "o.id=ipt.translatable_id")->orderBy("ipt.name", "ASC"));
+        return new ProxyQuery($query->leftjoin("AppBundle\Entity\InclusPrixTranslation", "ipt", "WITH", "o.id=ipt.translatable_id AND ipt.locale='en'")->orderBy("ipt.name", "ASC"));
     }
 
     public function setBaseRouteName($baseRouteName)

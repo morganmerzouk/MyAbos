@@ -29,7 +29,7 @@ class InclusPrix
     protected $categorie;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Prestation", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Prestation", cascade={"persist"})
      */
     protected $prestation;
 
@@ -111,7 +111,7 @@ class InclusPrix
 
     public function upload($basepath)
     {
-        $this->uploadImage($this->iconeFile, "setIcone", 125, 125);
+        $this->uploadImage($this->iconeFile, "setIcone", 35, 35);
     }
 
     public function uploadImage($file, $fctName, $width, $height)
@@ -198,22 +198,40 @@ class InclusPrix
     }
 
     /**
-     * Set prestation
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->prestation = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add prestation
      *
      * @param \AppBundle\Entity\Prestation $prestation            
      * @return InclusPrix
      */
-    public function setPrestation(\AppBundle\Entity\Prestation $prestation = null)
+    public function addPrestation(\AppBundle\Entity\Prestation $prestation)
     {
-        $this->prestation = $prestation;
+        $this->prestation[] = $prestation;
         
         return $this;
     }
 
     /**
+     * Remove prestation
+     *
+     * @param \AppBundle\Entity\Prestation $prestation            
+     */
+    public function removePrestation(\AppBundle\Entity\Prestation $prestation)
+    {
+        $this->prestation->removeElement($prestation);
+    }
+
+    /**
      * Get prestation
      *
-     * @return \AppBundle\Entity\Prestation
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getPrestation()
     {

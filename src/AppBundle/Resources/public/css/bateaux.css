@@ -27,18 +27,22 @@ h1 {background: url("../images/menu/icones/icon-sprite-flotte.png") no-repeat 5p
 .bateau-price { background-image: url("../images/icones/boat/icon-tarifs-et-options-25%20pix.png"); }
 .bateau-contact { background-image: url("../images/icones/boat/icon-devis-et-contact-25%20pix.png"); }
 
+/*** Page boat spec ***/
+ { }
+.boat-spec-content {border: 0;}
+
 .col-fiche-bateau{ border: 3px solid #23B6E1; margin-top: 10px;padding:0;}
-.col-fiche-bateau div { margin: 0px 10px; border: 1px solid white;background: #127BBD;color:white;}
+.col-fiche-bateau .block-boat-spec { overflow: auto;  margin: 0px 10px; border: 1px solid white;background: #127BBD;color:white;}
 .col-fiche-bateau img {background: #23B6E1;padding: 5px;border-right: 2px solid white;margin-right:10px;}
 .col-fiche-bateau h3 {background: #23B6E1; font-size: 1.1em; padding: 10px; margin: 0;font-weight:bold;}
 
+/*** Page Disponibilités ***/
 table.month { border: 1px solid black;}
 .monthname th { text-align: center; background: #127BBD; color: white; font-weight: bold; padding:5px;}
 .month td { text-align: center; border: 1px solid black; }
 td .active { margin: 1px; border-radius: 3px; background: lightgrey; }
 .ligne { overflow: auto; margin-bottom: 10px;}
 
-/*** Page Disponibilitï¿½s ***/
 .tableLegend { display: inline-block; margin-right: 10px; }
 td.legend  { border: 1px solid black; width: 20px; border-radius: 0; }
 td.libelleLegend { padding-left: 5px;}

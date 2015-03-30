@@ -186,7 +186,7 @@ class ServicePayantAdmin extends Admin
     {
         $query = parent::createQuery($context);
         
-        return new ProxyQuery($query->leftjoin("AppBundle\Entity\ServicePayantTranslation", "sp", "WITH", "o.id=sp.translatable_id")->orderBy("sp.name", "ASC"));
+        return new ProxyQuery($query->leftjoin("AppBundle\Entity\ServicePayantTranslation", "sp", "WITH", "o.id=sp.translatable_id AND sp.locale='en'")->orderBy("sp.name", "ASC"));
     }
 
     public function setBaseRouteName($baseRouteName)

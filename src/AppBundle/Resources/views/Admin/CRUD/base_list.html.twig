@@ -155,6 +155,7 @@ file that was distributed with this source code.
                                                     {% endif %}
 
                                                     {% block pager_results %}
+                                                        {% include admin.getTemplate('pager_results') %}
                                                         {% include 'SonataAdminBundle:Core:create_button.html.twig' %}
                                                     {% endblock %}
                                                 </div>

@@ -68,7 +68,7 @@ class PortDepartAdmin extends Admin
     {
         $query = parent::createQuery($context);
         
-        return new ProxyQuery($query->leftjoin("AppBundle\Entity\PortDepartTranslation", "pdt", "WITH", "o.id=pdt.translatable_id")->orderBy("pdt.name", "ASC"));
+        return new ProxyQuery($query->leftjoin("AppBundle\Entity\PortDepartTranslation", "pdt", "WITH", "o.id=pdt.translatable_id AND pdt.locale='en'")->orderBy("pdt.name", "ASC"));
     }
 
     public function setBaseRouteName($baseRouteName)

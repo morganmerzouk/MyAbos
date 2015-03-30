@@ -179,7 +179,7 @@ sonata_block:
             contexts:   [admin]
             
 a2lix_translation_form:
-        default_locale: fr
+        default_locale: en
         locales: [fr,en]               # [Optionnal] Array of translations locales. Can be specified in the form.
         templating: "A2lixTranslationFormBundle::default.html.twig"      # [4]
 

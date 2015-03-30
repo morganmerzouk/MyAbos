@@ -32,9 +32,9 @@ class ItineraireAdmin extends Admin
             ->add('portDepart', 'entity', array(
             'class' => 'AppBundle:PortDepart',
             'property' => 'name',
-            'query_builder' => function(EntityRepository $er) {
+            'query_builder' => function (EntityRepository $er) {
                 return $er->createQueryBuilder('pd')
-                        ->select('pd,pdt')
+                    ->select('pd,pdt')
                     ->join("pd.translations", "pdt")
                     ->where("pdt.locale='en'")
                     ->orderBy('pdt.name', 'ASC');
@@ -45,9 +45,9 @@ class ItineraireAdmin extends Admin
             ->add('destination', 'entity', array(
             'class' => 'AppBundle:Destination',
             'property' => 'name',
-            'query_builder' => function(EntityRepository $er) {
+            'query_builder' => function (EntityRepository $er) {
                 return $er->createQueryBuilder('d')
-                        ->select('d,dt')
+                    ->select('d,dt')
                     ->join("d.translations", "dt")
                     ->where("dt.locale='en'")
                     ->orderBy('dt.name', 'ASC');
@@ -73,15 +73,12 @@ class ItineraireAdmin extends Admin
                         ),
                         'required' => false
                     )
-                    
                 ),
                 'translatable_id' => array(
                     'field_type' => 'hidden'
                 )
             )
         ));
-
-        
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -106,8 +103,7 @@ class ItineraireAdmin extends Admin
             'personal_translation' => 'AppBundle\Entity\ItineraireTranslation',
             'property_path' => 'translations',
             'label' => 'Destination: '
-        )
-        )
+        ))
             ->add('_action', 'actions', array(
             'actions' => array(
                 'edit' => array(),
@@ -115,7 +111,7 @@ class ItineraireAdmin extends Admin
             )
         ));
     }
-    
+
     /**
      *
      * @return \Sonata\AdminBundle\Datagrid\ProxyQueryInterface
@@ -125,7 +121,8 @@ class ItineraireAdmin extends Admin
         $query = parent::createQuery($context);
         
         return new ProxyQuery($query->join(sprintf('%s.portDepart', $query->getRootAlias()), 'c')
-            ->join('AppBundle\Entity\PortDepartTranslation', 'pt', 'WITH', 'c.id = pt.translatable_id')
+            ->join('AppBundle\Entity\PortDepartTranslation', 'pt', 'WITH', 'c.id = pt.translatable_id AND pt.locale=:locale')
+            ->setParameter(':locale', "en")
             ->orderBy('pt.name'));
     }
 

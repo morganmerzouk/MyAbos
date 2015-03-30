@@ -122,7 +122,7 @@ class DestinationAdmin extends Admin
     {
         $query = parent::createQuery($context);
         
-        return new ProxyQuery($query->leftjoin("AppBundle\Entity\DestinationTranslation", "dt", "WITH", "o.id=dt.translatable_id")->orderBy("dt.name", "ASC"));
+        return new ProxyQuery($query->leftjoin("AppBundle\Entity\DestinationTranslation", "dt", "WITH", "o.id=dt.translatable_id AND dt.locale='en'")->orderBy("dt.name", "ASC"));
     }
 
     public function setBaseRouteName($baseRouteName)

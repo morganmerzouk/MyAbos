@@ -131,7 +131,7 @@ class ServicePayant
 
     public function upload($basepath)
     {
-        $this->uploadImage($this->iconeFile, "setIcone", 125, 125);
+        $this->uploadImage($this->iconeFile, "setIcone", 35, 35);
     }
 
     public function uploadImage($file, $fctName, $width, $height)

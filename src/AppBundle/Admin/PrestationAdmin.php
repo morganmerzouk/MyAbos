@@ -90,7 +90,7 @@ class PrestationAdmin extends Admin
     {
         $query = parent::createQuery($context);
         
-        return new ProxyQuery($query->leftjoin("AppBundle\Entity\PrestationTranslation", "pt", "WITH", "o.id=pt.translatable_id")->orderBy("pt.name", "ASC"));
+        return new ProxyQuery($query->leftjoin("AppBundle\Entity\PrestationTranslation", "pt", "WITH", "o.id=pt.translatable_id AND pt.locale='en'")->orderBy("pt.name", "ASC"));
     }
 
     public function setBaseRouteName($baseRouteName)

@@ -164,7 +164,7 @@ class Itineraire
 
     public function upload($basepath)
     {
-        $this->uploadImage($this->miniatureFile, "setMiniature", 125, 125);
+        $this->uploadImage($this->miniatureFile, "setMiniature", 300, 200);
     }
 
     public function uploadImage($file, $fctName, $width, $height)

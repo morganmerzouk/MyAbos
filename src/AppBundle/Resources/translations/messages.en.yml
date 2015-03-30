@@ -2,8 +2,8 @@ toptitle: Kitesurfari SXM: Kite cruise network in the Carribean
 logotitle: Kite cruise network in the Carribean
 home: Home
 home_destinations: Destinations
-home_prestations: Categories
-home_flotte: Boats
+home_prestations: Services
+home_flotte: Fleet
 home_equipages: Crew
 home_destinations_text: Discover our broad choice of destination in the Carribean
 home_prestations_text: Choose the cruise that best fit your wishes
@@ -16,7 +16,7 @@ boat_price: Price
 boat_dispo: Availability
 boat_desti: Destinations
 boat_crew: Crew
-boat_fiche: Details
+boat_fiche: Boat specs
 boat_presentation: Overview
 boat_configuration: Configuration of the boat
 boat_specificite: Specificities of the boat
@@ -90,7 +90,7 @@ suite: More
 sitemap: Sitemap
 mentionslegales: Terms of use
 liens: Links
-know_more: Know more
+know_more: About
 newsletter: Newsletter
 newsletter_subscribe: Subscribe
 prestation_boats: Boat offering
