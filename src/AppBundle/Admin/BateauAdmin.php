@@ -586,10 +586,13 @@ class BateauAdmin extends Admin
                 '5' => '5',
                 '6' => '6',
                 '7' => '7',
-                '8' => '8'
+                '8' => '8',
+                '9' => '9',
+                '10' => '10'
             );
         } elseif ($type == "litsimple") {
             $item = array(
+                '0' => '0',
                 '1' => '1',
                 '2' => '2',
                 '3' => '3',
@@ -599,6 +602,7 @@ class BateauAdmin extends Admin
             );
         } elseif ($type == "litdouble") {
             $item = array(
+                '0' => '0',
                 '1' => '1',
                 '2' => '2',
                 '3' => '3',
