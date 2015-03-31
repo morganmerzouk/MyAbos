@@ -20,8 +20,10 @@ boat_fiche: Fiche technique
 boat_presentation: Présentation
 boat_configuration: Configuration du bateau
 boat_specificites: Spécificité du bateau
-boat_equipments: Equipement à bord
+boat_equipments: Equipements à bord
 boat_activity: Activité à bord
+boat_otherservice: Autres services
+boat_cours: Cours de kitesurf
 boat_cabine: cabines
 boat_bed: couchages
 boat_beddouble: Double 
@@ -43,6 +45,7 @@ see_available: Voir les disponibilités
 contact_skipper: Contacter le skipper
 
 special_offer_with: Offres spéciales avec 
+tarif_bateau_title: Tarif du bateau
 
 form_sejour_possible_debut: Croisière possible entre le: 
 form_sejour_possible_fin: et le: 
@@ -69,9 +72,16 @@ periode_au: au
 periode_tarif_du: Tarifs disponibles pour une durée de
 periode_tarif_au: à
 periode_tarif_cruise: de croisière
+periode_tarif_cruise_pour: Tarif pour
+
 nombre_de_personne: Nombre de personnes
 prix_par_personne: Prix par personne
 prix_du_bateau: Prix du bateau
+inclus_prix: Inclus dans le prix
+the_crew: L'équipage
+frais_de_voyage: Frais de voyage
+fueling: L'avitaillement
+en_option: En option
 
 cal_mon: "Lun."
 cal_tue: "Mar."

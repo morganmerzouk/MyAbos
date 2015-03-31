@@ -20,8 +20,10 @@ boat_fiche: Boat specs
 boat_presentation: Overview
 boat_configuration: Configuration of the boat
 boat_specificite: Specificities of the boat
-boat_equipment: Equipments on board
+boat_equipments: Equipments on board
 boat_activity: Activities on board
+boat_otherservice: Other services
+boat_cours: Kitesurf lesson
 boat_cabine: cabins
 boat_bed: beds
 boat_beddouble: Double 
@@ -43,7 +45,7 @@ see_available: Check availability
 contact_skipper: Contact Skipper
 
 special_offer_with: Special offer with
-
+tarif_bateau_title: Price of the boat
 form_sejour_possible_debut: Cruise possible between: 
 form_sejour_possible_fin: and: 
 form_sejour_duree: Cruise duration: 
@@ -69,10 +71,16 @@ periode_au: to
 periode_tarif_du: Price available for a duration between
 periode_tarif_au: and
 periode_tarif_cruise: of cruise
+periode_tarif_cruise_pour: Price for
 
 nombre_de_personne: Number of passenger
 prix_par_personne: Price per passenger
 prix_du_bateau: Price of the boat
+inclus_prix: Included in the price
+frais_de_voyage: Travel expenses
+fueling: Fueling
+the_crew: The crew
+en_option: Optionally
 
 cal_mon: "Mon."
 cal_tue: "Tue."

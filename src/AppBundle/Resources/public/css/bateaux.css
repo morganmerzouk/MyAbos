@@ -74,6 +74,18 @@ td.libelleLegend { padding-left: 5px;}
 .bloc-final-price { background: white; text-align: center; margin: auto; padding:10px;}
 
 /*** Page tarif ***/
-.periode { border: 1px solid #B3B3B3; margin: 10px auto; padding: 10px; padding-top: 0;}
-.periode-title { font-weight: bold; border-bottom: 1px solid #B3B3B3; }
-.periode table td { border: 1px solid #B3B3B3;}
+.tarif-accordion { margin: 10px auto; padding-top: 0;}
+#tarifBateau h2 {margin: 0;}
+#tarifBateau h3 { font-weight: bold; font-size: 1.2em;padding: 5px;background: #127BBD; color: white; border: 1px solid black;margin: 0; }
+#tarifBateau h3:hover { cursor: pointer; background: #23B6E1; color: black; }
+#tarifBateau h3.title-hover { background: #23B6E1; color: black; }
+.subblock-periode { margin: 0 0 10px 0;border: 1px solid #B3B3B3;  padding: 5px;overflow: auto;}
+.periode table td { border: 1px solid black;padding: 10px; color: black;}
+.periode-table-personne { text-align: center; }
+.periode-table-title {background: #23B6E1; text-align: left; }
+.odd { background: #127BBD;color: white;}
+.even { background: #23B6E1;color: black;}
+.tarif-accordion .even, .subblock-periode .odd { padding: 5px;margin: 1px; }
+.service-payant-categorie {display:block; float:none;clear: both;}
+.tarif-accordion .col-md-6 { border: 1px solid white;padding:0; }
+.tarif-accordion .servicepayant div {margin: 0;padding:5px;}

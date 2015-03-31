@@ -66,7 +66,6 @@ class Croisiere
     public function __construct()
     {
         $this->dateNonDisponibilite = new \Doctrine\Common\Collections\ArrayCollection();
-        ;
     }
 
     public function __clone()

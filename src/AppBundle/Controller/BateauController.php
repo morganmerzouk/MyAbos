@@ -189,6 +189,8 @@ class BateauController extends Controller
      */
     public function bateauPriceAction($id)
     {
+        $locale = $this->getRequest()->getLocale();
+        
         $croisiere = $this->getDoctrine()
             ->getManager()
             ->getRepository("AppBundle\Entity\Croisiere")
@@ -198,9 +200,43 @@ class BateauController extends Controller
             ->where('c.bateau = :id')
             ->setParameter(':id', $id)
             ->getQuery()
-            ->getSingleResult();
+            ->getOneOrNullResult();
+        
+        $servicePayant = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("AppBundle\Entity\ServicePayant")
+            ->createQueryBuilder('s')
+            ->select('s, t')
+            ->join('s.translations', 't')
+            ->where('s.bateau = :id')
+            ->orderby('s.categorie', 'ASC')
+            ->setParameter(':id', $id)
+            ->getQuery()
+            ->getResult();
+        
+        $boat = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("AppBundle\Entity\Bateau")
+            ->createQueryBuilder('s')
+            ->select('s, t')
+            ->join('s.translations', 't')
+            ->where('s.id = :id')
+            ->setParameter(':id', $id)
+            ->andWhere('t.locale = :locale')
+            ->setParameter(':locale', $locale)
+            ->getQuery()
+            ->getOneOrNullResult();
+        
         return $this->render('AppBundle:Front:Bateau/boat_price.html.twig', array(
-            'tarifs' => $croisiere->getTarifCroisiere()
+            'tarifs' => $croisiere != null ? $croisiere->getTarifCroisiere() : null,
+            'servicepayant' => $servicePayant,
+            'inclusprixavitaillement' => $boat->getInclusPrixAvitaillement(),
+            'inclusprixequipage' => $boat->getInclusPrixEquipage(),
+            'inclusprixfraisdevoyage' => $boat->getInclusPrixFraisVoyage(),
+            'inclusprixautresservices' => $boat->getInclusPrixAutresServices(),
+            'inclusprixequipement' => $boat->getInclusPrixEquipement(),
+            'inclusprixactivite' => $boat->getInclusPrixActivite(),
+            'inclusprixcours' => $boat->getInclusPrixCours()
         ));
     }
 
