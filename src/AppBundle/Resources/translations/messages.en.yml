@@ -44,6 +44,12 @@ boat_jouet: Entertainment
 see_available: Check availability
 contact_skipper: Contact Skipper
 
+boat-desti-localisation-boat: Localisation of the boat
+boat-desti-localisation-boat-label-portdepart: The usual departure place of this boat is
+boat-desti-localisation-boat-label-destination: From there, you can sail to 
+boat-desti-date-operation: Itinerary available from
+
+
 special_offer_with: Special offer with
 tarif_bateau_title: Price of the boat
 form_sejour_possible_debut: Cruise possible between: 

@@ -6,7 +6,7 @@ h1 {background: url("../images/menu/icones/icon-sprite-flotte.png") no-repeat 5p
 
 .block-croisiere .row { margin: 10px; text-align:left;}
 
-.bateau { text-align: center; border: 1px solid #B3B3B3; margin-top: 10px; padding: 0;  overflow: auto;}
+.bateau { text-align: center; border: 1px solid #B3B3B3; margin: 10px; padding: 0;  overflow: auto;}
 .bateau h3 { background: #23B6E1; color:white; text-align: center; margin: 0; }
 .bateau .img-responsive { margin: 10px; }
 .bateau .bateau-prix-semaine {background: #23B6E1; color:white; text-align: center; margin: 0; }
@@ -28,7 +28,6 @@ h1 {background: url("../images/menu/icones/icon-sprite-flotte.png") no-repeat 5p
 .bateau-contact { background-image: url("../images/icones/boat/icon-devis-et-contact-25%20pix.png"); }
 
 /*** Page boat spec ***/
- { }
 .boat-spec-content {border: 0;}
 
 .col-fiche-bateau{ border: 3px solid #23B6E1; margin-top: 10px;padding:0;}
@@ -36,7 +35,7 @@ h1 {background: url("../images/menu/icones/icon-sprite-flotte.png") no-repeat 5p
 .col-fiche-bateau img {background: #23B6E1;padding: 5px;border-right: 2px solid white;margin-right:10px;}
 .col-fiche-bateau h3 {background: #23B6E1; font-size: 1.1em; padding: 10px; margin: 0;font-weight:bold;}
 
-/*** Page Disponibilités ***/
+/*** Page Disponibilitï¿½s ***/
 table.month { border: 1px solid black;}
 .monthname th { text-align: center; background: #127BBD; color: white; font-weight: bold; padding:5px;}
 .month td { text-align: center; border: 1px solid black; }
@@ -57,6 +56,8 @@ td.libelleLegend { padding-left: 5px;}
 .bateau .offreName { margin: 0; margin-bottom: 10px; padding:10px; color: white; background: #127BBD; font-size: 1.2em; }
 .bateau .boatName { padding:5px; font-size: 1em; }
 
+/*** Page desti ***/
+.boat-desti h3 { font-size: 1.2em;padding: 5px;border: 1px solid black;margin: 0; background: #23B6E1; color: black; }
 /*** Page devis ***/
 .col-devis { border: 1px solid #B3B3B3; padding: 0;}
 .col-devis h2 { margin: 0; background: #127BBD; padding:5px; font-size: 1.1em; color: white; }
@@ -80,7 +81,7 @@ td.libelleLegend { padding-left: 5px;}
 #tarifBateau h3:hover { cursor: pointer; background: #23B6E1; color: black; }
 #tarifBateau h3.title-hover { background: #23B6E1; color: black; }
 .subblock-periode { margin: 0 0 10px 0;border: 1px solid #B3B3B3;  padding: 5px;overflow: auto;}
-.periode table td { border: 1px solid black;padding: 10px; color: black;}
+.subblock-periode table td { border: 1px solid black;padding: 10px; color: black;}
 .periode-table-personne { text-align: center; }
 .periode-table-title {background: #23B6E1; text-align: left; }
 .odd { background: #127BBD;color: white;}

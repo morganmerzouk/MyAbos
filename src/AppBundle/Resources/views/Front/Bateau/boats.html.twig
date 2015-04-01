@@ -28,7 +28,7 @@
 			{% if (boat.nbCouchage > 0) %}<div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/3-icons-boat-tech-file-50pix-COUCHAGE-noir.png') }}" /><br />{{boat.nbCouchage}} {{'boat_bed'|trans}}</div>{% endif %}
             <p class="bateaux-description">
             	{% if boat.description|length > 100 %}
-            		{{ boat.description|striptags|raw|slice(0,100) ~ '...' }}
+                    {{ boat.description|striptags|raw|slice(0,100) ~ '...' }}
             	{% else %}
             		{{ boat.description|striptags|raw }}
         		{% endif %}

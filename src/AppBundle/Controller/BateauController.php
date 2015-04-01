@@ -166,21 +166,37 @@ class BateauController extends Controller
     {
         $locale = $this->getRequest()->getLocale();
         
-        $boat = $this->getDoctrine()
+        $croisiere = $this->getDoctrine()
             ->getManager()
-            ->getRepository("AppBundle\Entity\Bateau")
-            ->createQueryBuilder('s')
-            ->select('s, t')
-            ->join('s.translations', 't')
-            ->where('s.id = :id')
+            ->getRepository("AppBundle\Entity\Croisiere")
+            ->createQueryBuilder('c')
+            ->select('c, ic, i, pd, d')
+            ->join('c.itineraireCroisiere', 'ic')
+            ->join('ic.itineraire', 'i')
+            ->join('i.translations', 'it')
+            ->join('i.portDepart', 'pd')
+            ->join('pd.translations', 'pdt')
+            ->join('i.destination', 'd')
+            ->join('d.translations', 'dt')
+            ->where('c.bateau = :id')
+            ->andWhere('it.locale = :locale')
+            ->andWhere('pdt.locale = :locale')
+            ->andWhere('dt.locale = :locale')
             ->setParameter(':id', $id)
-            ->andWhere('t.locale = :locale')
             ->setParameter(':locale', $locale)
             ->getQuery()
-            ->getSingleResult();
+            ->getOneOrNullResult();
+        
+        $portDepart = null;
+        foreach($croisiere->getItineraireCroisiere() as $itineraireCroisiere) {
+            if($itineraireCroisiere->getParDefaut() == 1) {
+                $portDepart = $itineraireCroisiere->getItineraire()->getPortDepart();
+            }
+        }
         
         return $this->render('AppBundle:Front:Bateau/boat_desti.html.twig', array(
-            'boat' => $boat
+            'portDepart' => $portDepart,
+            'itinerairesCroisiere' => $croisiere->getItineraireCroisiere()
         ));
     }
 

@@ -240,9 +240,9 @@ class Itineraire
     }
     
     // Need this method for the admin list template
-    public function getName()
+    public function getDescription()
     {
-        return $this->translate()->getName();
+        return $this->translate()->getDescription();
     }
 
     /**
