@@ -18,8 +18,9 @@ boat_desti: Destinations
 boat_crew: Crew
 boat_fiche: Boat specs
 boat_presentation: Overview
+boat_prestation_available: Service available on board
 boat_configuration: Configuration of the boat
-boat_specificite: Specificities of the boat
+boat_specificites: Specificities of the boat
 boat_equipments: Equipments on board
 boat_activity: Activities on board
 boat_otherservice: Other services

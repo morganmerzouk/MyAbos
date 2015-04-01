@@ -1,39 +1,45 @@
 {% extends "AppBundle:Front:Bateau/boat.html.twig" %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/app/js/boat_desti.js') }}" type="text/javascript"></script>
+{% endblock %}
 {% block content %}
     {{ parent() }}
     <div class="col-md-9 boat-desti">
-        <h3>
+        <h3 class="boat-desti-localisation">
             {{'boat-desti-localisation-boat'|trans }}
         </h3>
-        <div>
-            <img src="{{ portDepart.miniatureWebPath }}" class="img-responsive img-thumbnail" />
+        <div class="boat-desti-block-localisation">
+            <img src="{{ portDepart.miniatureWebPath }}" class="img-responsive img-thumbnail pull-right" />
             <div>
                 {{'boat-desti-localisation-boat-label-portdepart'|trans }} {{ portDepart.name }}<br />
                 {{'boat-desti-localisation-boat-label-destination'|trans }}:
                 {% if itinerairesCroisiere|length > 0 %}
                     <ul>
                         {% for itineraireCroisiere in itinerairesCroisiere %}
-                            <li><a href="#">{{ itineraireCroisiere.itineraire.destination }}</a></li>
+                            <li><a href="#" id="lien-{{itineraireCroisiere.itineraire.id}}">{{ itineraireCroisiere.itineraire.destination }}</a></li>
                         {% endfor %}
                     </ul>
                 {% endif %}
             </div>
         </div>
         {% for itineraireCroisiere in itinerairesCroisiere %}
-            <h3>
+            <h3 id="cible-{{itineraireCroisiere.itineraire.id}}" class="cible">
                 {{ itineraireCroisiere.itineraire }}
             </h3>
-            <div class="col-md-9">
-                <div>
-                    {{ itineraireCroisiere.itineraire.description|raw }}
-                </div>
-                <div>
-                    {{'boat-desti-date-operation'|trans }} {{ itineraireCroisiere.dateDebut|date('d/m/Y') }}
-                    {{'periode_au'|trans }} {{ itineraireCroisiere.dateFin|date('d/m/Y') }}
-                </div>
-            </div>
-            <div class="col-md-3">
-                <img src="{{ itineraireCroisiere.itineraire.miniatureWebPath }}" />
+            <div class="boat-desti-itineraire">
+	            <div class="col-md-9">
+	                <div>
+	                    {{ itineraireCroisiere.itineraire.description|raw }}
+	                </div>
+	                <div>
+	                    {{'boat-desti-date-operation'|trans }} {{ itineraireCroisiere.dateDebut|date('d/m/Y') }}
+	                    {{'periode_au'|trans }} {{ itineraireCroisiere.dateFin|date('d/m/Y') }}
+	                </div>
+	            </div>
+	            <div class="col-md-3">
+	                <img src="{{ itineraireCroisiere.itineraire.miniatureWebPath }}" />
+	            </div>
             </div>
         {% endfor %}
     </div>

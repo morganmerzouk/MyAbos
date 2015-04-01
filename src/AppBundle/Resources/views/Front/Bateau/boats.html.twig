@@ -14,7 +14,7 @@
 	    {% if loop.index0 % 3 == 0 %}
 	    	<div class="row-bateau">
 	    {% endif %}
-        <div class="col-md-3 bateau">
+        <div class="col-md-4 bateau {% if loop.index0 % 3 == 2 %}bateau-last{% endif %}">
             <h3>{{ boat.name }}</h3>
             <img class="img-responsive img-thumbnail" src="{{ boat.miniatureWebPath }}" alt="photo {{ boat.name }}" /><br />
             <p class="bateau-prix-semaine"> 
@@ -27,11 +27,11 @@
             
 			{% if (boat.nbCouchage > 0) %}<div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/3-icons-boat-tech-file-50pix-COUCHAGE-noir.png') }}" /><br />{{boat.nbCouchage}} {{'boat_bed'|trans}}</div>{% endif %}
             <p class="bateaux-description">
-            	{% if boat.description|length > 100 %}
-                    {{ boat.description|striptags|raw|slice(0,100) ~ '...' }}
-            	{% else %}
-            		{{ boat.description|striptags|raw }}
-        		{% endif %}
+        		{% if boat.description|length > 100 %}
+	        		{{ boat.description|striptags|slice(0,100)|raw }}...
+	        	{% else %}
+	        		{{ boat.description|striptags|raw }}
+	    		{% endif %}
     		</p>
             <a class="btn btn-sm btn-warning pull-right" href="{{ path('boat', { 'id': boat.id }) }}">{{'suite'|trans}}</a>
         </div>

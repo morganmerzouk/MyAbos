@@ -53,8 +53,72 @@ class BateauController extends Controller
             ->getQuery()
             ->getSingleResult();
         
+        $inclusPrix = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("AppBundle\Entity\Bateau")
+            ->createQueryBuilder('b')
+            ->select('b, ipe, ipa, ipf, ipet, ipac, ipc, ipas')
+            ->leftJoin('b.inclusPrixEquipage', 'ipe')
+            ->leftJoin('b.inclusPrixAvitaillement', 'ipa')
+            ->leftJoin('b.inclusPrixFraisVoyage', 'ipf')
+            ->leftJoin('b.inclusPrixEquipement', 'ipet')
+            ->leftJoin('b.inclusPrixActivite', 'ipac')
+            ->leftJoin('b.inclusPrixCours', 'ipc')
+            ->leftJoin('b.inclusPrixAutresServices', 'ipas')
+            ->where('b.id = :id')
+            ->setParameter(':id', $id)
+            ->getQuery()
+            ->getResult();
+        
+        $ids = array();
+        
+        if (isset($inclusPrix[0]) && $inclusPrix[0]->getInclusPrixEquipage() != null)
+            array_push($ids, $inclusPrix[0]->getInclusPrixEquipage()->getId());
+        foreach ($inclusPrix[0]->getInclusPrixAvitaillement() as $inclusPrixAvitaillement)
+            array_push($ids, $inclusPrixAvitaillement->getId());
+        foreach ($inclusPrix[0]->getInclusPrixFraisVoyage() as $inclusPrixFraisVoyage)
+            array_push($ids, $inclusPrixFraisVoyage->getId());
+        foreach ($inclusPrix[0]->getInclusPrixEquipement() as $inclusPrixEquipement)
+            array_push($ids, $inclusPrixEquipement->getId());
+        foreach ($inclusPrix[0]->getInclusPrixActivite() as $inclusPrixActivite)
+            array_push($ids, $inclusPrixActivite->getId());
+        foreach ($inclusPrix[0]->getInclusPrixCours() as $inclusPrixCours)
+            array_push($ids, $inclusPrixCours->getId());
+        foreach ($inclusPrix[0]->getInclusPrixAutresServices() as $inclusPrixAutresServices)
+            array_push($ids, $inclusPrixAutresServices->getId());
+        
+        $inclusPrix = $this->getDoctrine()
+            ->getManager()
+            ->createQueryBuilder('ip')
+            ->select('ip,p,pt')
+            ->from("AppBundle\Entity\InclusPrix", "ip")
+            ->join('ip.prestation', 'p')
+            ->join('p.translations', 'pt')
+            ->andWhere('pt.locale = :locale')
+            ->andWhere('ip.id IN (' . implode(',', $ids) . ')')
+            ->setParameter(':locale', $locale)
+            ->getQuery()
+            ->getResult();
+        
+        $idPrestations = array();
+        foreach ($inclusPrix[0]->getPrestation() as $prestation) {
+            array_push($idPrestations, $prestation->getId());
+        }
+        
+        $prestation = $this->getDoctrine()
+            ->getManager()
+            ->createQueryBuilder('p')
+            ->select('p,pt')
+            ->from("AppBundle\Entity\Prestation", "p")
+            ->join('p.translations', 'pt')
+            ->andWhere('pt.locale = :locale')
+            ->andWhere('p.id IN (' . implode(',', $idPrestations) . ')')
+            ->setParameter(':locale', $locale)
+            ->getQuery()
+            ->getResult();
         return $this->render('AppBundle:Front:Bateau/boat_presentation.html.twig', array(
-            'boat' => $boat
+            'boat' => $boat,
+            'prestations' => $prestation
         ));
     }
 
@@ -132,9 +196,27 @@ class BateauController extends Controller
             ->getQuery()
             ->getResult(Query::HYDRATE_OBJECT);
         
+        $offreSpeciale = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("AppBundle\Entity\OffreSpeciale")
+            ->createQueryBuilder('os')
+            ->select('os, b, ost, bt')
+            ->join('AppBundle\Entity\Bateau', 'b', 'WITH', 'os.bateau = b.id')
+            ->join('os.translations', 'ost')
+            ->join('b.translations', 'bt')
+            ->where('os.bateau = :id')
+            ->setParameter(':id', $id)
+            ->andWhere('bt.locale = :locale')
+            ->andWhere('ost.locale = :locale')
+            ->setParameter(':locale', $locale)
+            ->getQuery()
+            ->getResult(Query::HYDRATE_OBJECT);
+        
         return $this->render('AppBundle:Front:Bateau/boat_crew.html.twig', array(
             'boat' => $boat,
-            'skipper' => isset($croisiere[0]) ? $croisiere[0]->getSkipper() : null
+            'skipper' => isset($croisiere[0]) ? $croisiere[0]->getSkipper() : null,
+            'offrespeciale_id' => isset($offreSpeciale[0]) ? $offreSpeciale[0]->getId() : null,
+            'offrespeciale_bateau' => isset($offreSpeciale[0]) ? $offreSpeciale[0]->getBateau() : null
         ));
     }
 
@@ -160,7 +242,7 @@ class BateauController extends Controller
     }
 
     /**
-     * @Route("/bateau/{id}/desti", requirements={"id" = "\d+"}, name="boat_desti")
+     * @Route("/bateau/{id}/destination", requirements={"id" = "\d+"}, name="boat_destination")
      */
     public function bateauDestiAction($id)
     {
@@ -188,8 +270,8 @@ class BateauController extends Controller
             ->getOneOrNullResult();
         
         $portDepart = null;
-        foreach($croisiere->getItineraireCroisiere() as $itineraireCroisiere) {
-            if($itineraireCroisiere->getParDefaut() == 1) {
+        foreach ($croisiere->getItineraireCroisiere() as $itineraireCroisiere) {
+            if ($itineraireCroisiere->getParDefaut() == 1) {
                 $portDepart = $itineraireCroisiere->getItineraire()->getPortDepart();
             }
         }

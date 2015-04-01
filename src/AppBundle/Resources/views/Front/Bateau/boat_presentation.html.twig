@@ -1,19 +1,30 @@
 {% extends "AppBundle:Front:Bateau/boat.html.twig" %}
 {% block content %}
     {{ parent() }}
-    <div class="skipper-boat-description">
-        <div class="col-md-6">
-            <img src="{{ boat.miniatureWebPath }}" alt="photo {{ boat.name }}" />
-        </div>
-        <div class="col-md-6">
-            {{ boat.description|raw }}
-        </div>
+    <div class="col-md-9">
+	    <div class="skipper-boat-description">
+	        <div class="col-md-6 ">
+	            <img src="{{ boat.miniatureWebPath }}" class="center-block img-responsive img-thumbnails" alt="photo {{ boat.name }}" />
+	        </div>
+	        <div class="col-md-6">
+	            {{ boat.description|striptags|raw }}
+	        </div>
+	    </div>
+	    <div class="bateau-photo clearfix">
+	        <img class="col-md-2 img-responsive img-thumbnails" src="{{ boat.photoVoileWebPath }}" alt="photo voile" />
+	        <img class="col-md-2 img-responsive img-thumbnails" src="{{ boat.photoMouillageWebPath }}" alt="photo mouillage" />
+	        <img class="col-md-2 img-responsive img-thumbnails" src="{{ boat.photoCockpitWebPath }}" alt="photo cockpit"  />
+	        <img class="col-md-2 img-responsive img-thumbnails" src="{{ boat.photoCarreWebPath }}" alt="photo carre" />
+	        <img class="col-md-2 img-responsive img-thumbnails" src="{{ boat.photoCabineWebPath }}" alt="photo cabine" />
+	    </div>
     </div>
-    <div class="clearfix">
-        <img class="col-md-2 img-responsive" src="{{ boat.photoVoileWebPath }}" alt="photo voile" />
-        <img class="col-md-2 img-responsive" src="{{ boat.photoMouillageWebPath }}" alt="photo mouillage" />
-        <img class="col-md-2 img-responsive" src="{{ boat.photoCockpitWebPath }}" alt="photo cockpit"  />
-        <img class="col-md-2 img-responsive" src="{{ boat.photoCarreWebPath }}" alt="photo carre" />
-        <img class="col-md-2 img-responsive" src="{{ boat.photoCabineWebPath }}" alt="photo cabine" />
+    <div class="col-md-3 boat-prestation">
+	<h2 class="boat-prestation-title">{{'boat_prestation_available'|trans }}</h2>
+    	{% for prestation in prestations %}
+    		<div class="prestation">
+    			<img src="{{ prestation.iconeWebPath }}" class="img-responsive img-thumbnails pull-left" />
+    			{{ prestation.name }}
+    		</div>
+    	{% endfor %}
     </div>
 {% endblock content %}
