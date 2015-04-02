@@ -1,0 +1,30 @@
+{% extends "AppBundle:Front:OffreSpeciale/offrespeciale.html.twig" %}
+{% block content %}
+    {{ parent() }}
+    <div class="col-md-9">
+	    <div class="offrespeciale-boat-description">
+	        <div class="col-md-6 ">
+	            <img src="{{ boat.miniatureWebPath }}" class="center-block img-responsive img-thumbnails" alt="photo {{ boat.name }}" />
+	        </div>
+	        <div class="col-md-6">
+	            {{ boat.description|striptags|raw }}
+	        </div>
+	    </div>
+	    <div class="bateau-photo clearfix">
+	        <img class="col-md-2 img-responsive img-thumbnails" src="{{ boat.photoVoileWebPath }}" alt="photo voile" />
+	        <img class="col-md-2 img-responsive img-thumbnails" src="{{ boat.photoMouillageWebPath }}" alt="photo mouillage" />
+	        <img class="col-md-2 img-responsive img-thumbnails" src="{{ boat.photoCockpitWebPath }}" alt="photo cockpit"  />
+	        <img class="col-md-2 img-responsive img-thumbnails" src="{{ boat.photoCarreWebPath }}" alt="photo carre" />
+	        <img class="col-md-2 img-responsive img-thumbnails" src="{{ boat.photoCabineWebPath }}" alt="photo cabine" />
+	    </div>
+    </div>
+    <div class="col-md-3 boat-prestation">
+	<h2 class="boat-prestation-title">{{'boat_prestation_available'|trans }}</h2>
+    	{% for prestation in prestations %}
+    		<div class="prestation">
+    			<img src="{{ prestation.iconeWebPath }}" class="img-responsive img-thumbnails pull-left" />
+    			{{ prestation.name }}
+    		</div>
+    	{% endfor %}
+    </div>
+{% endblock content %}

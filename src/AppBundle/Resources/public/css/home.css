@@ -1,9 +1,9 @@
 .slider .slick-prev {left: 10px;}
 .slider .slick-next {right: 10px;}
-.slider .layer-left {float: left; position: absolute; background: rgba(0,0,0,0.5); height: 100%; width: 33%;}
+.slider .layer-left {float: left; position: absolute; background: rgba(0,0,0,0.5); height: 100%; width: 33%;overflow: auto;}
 .slider .description {width: 90%; background-color:#23B6E1; margin: 10px auto;padding:10px;overflow: auto;text-align: center;font-weight:bold;}
 .slider .description img {display: inline;}
-.slider .description .col-md-4 {font-size: 0.7em;font-weight: normal;padding: 1px; margin: 8px 0;text-align:left; }  
+.slider .description .col-md-4 {font-size: 0.6em;font-weight: normal;padding: 1px; margin: 8px 0;text-align:left; }  
 .slider .description .col-md-4.type { text-align: center; }
 .slider .price {color: white;clear:both;}
 .see-all-special-offers { color: white; text-decoration: none; font-size: 0.7em; font-weight: normal; margin: 5px 5px 0 0; }

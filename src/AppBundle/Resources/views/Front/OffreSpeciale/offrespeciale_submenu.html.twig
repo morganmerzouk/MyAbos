@@ -1,0 +1,10 @@
+<h1>{{ offrespeciale.name }}</h1>
+<div class="block-offrespeciale-submenu">
+    
+    <a href="{{ path('offrespeciale', { 'id': app.request.get("id") }) }}" class="offrespeciale-home {% if route == 'boat' %}active{% endif %}">{{'offrespeciale_presentation'|trans}}</a>
+    <a href="{{ path('offrespeciale_crew', { 'id': app.request.get("id") }) }}" class="offrespeciale-crew {% if route == 'offrespeciale_boat' %}active{% endif %}">{{'boat_crew'|trans}}</a>
+    <a href="{{ path('offrespeciale_boat', { 'id': app.request.get("id") }) }}" class="offrespeciale-boat {% if route == 'offrespeciale_boat' %}active{% endif %}">{{'boat'|trans}}</a>
+    <a href="{{ path('offrespeciale_destination', { 'id': app.request.get("id") }) }}" class="offrespeciale-desti {% if route == 'offrespeciale_destination' %}active{% endif %}">{{'boat_desti'|trans}}</a>
+    <a href="{{ path('offrespeciale_price', { 'id': app.request.get("id") }) }}" class="offrespeciale-price {% if route == 'offrespeciale_price' %}active{% endif %}">{{'boat_price'|trans}}</a>
+    <a href="{{ path('offrespeciale_contact', { 'id': app.request.get("id") }) }}" class="offrespeciale-contact {% if route == 'offrespeciale_contact' %}active{% endif %}">{{'boat_contact'|trans}}</a>
+</div>
