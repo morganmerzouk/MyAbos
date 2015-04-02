@@ -1,0 +1,35 @@
+{% extends "AppBundle:Front:layout.html.twig" %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/offresspeciales.css') }}">
+{% endblock %}   
+{% block title %}{{'toptitle'|trans}} - {{'offres_speciales'|trans}}{% endblock %}
+
+{% block content %}
+    <h1>{{ offreSpeciale.name }}</h1>
+	<h2>Départ le {{ offreSpeciale.dateDebut|date('d/m/Y') }}</h2>
+  			<img class="img-responsive special-offer-img" src="{{ offreSpeciale.miniatureWebPath }}" />
+		  	<div class="col-md-4 type text-center">
+			  	<img class="img-thumbnail" src="{{ asset('bundles/app/images/icones/boat/1-icons-boat-tech-file-50pix-' ~ offreSpeciale.bateau.type|lower ~ '-noir.png') }}" /><br />
+			  	{{ offreSpeciale.bateau.type }}
+		  	</div>
+		  	<div class="col-md-4 text-center">
+			  	<img class="img-thumbnail" src="{{ offreSpeciale.bateau.inclusPrixEquipage.iconeWebPath }}" /><br />
+			  	{{ offreSpeciale.bateau.inclusPrixEquipage.name }}
+		  	</div>
+		  	<div class="col-md-4 text-center">
+			  	{% for inclusPrixAvitaillement in offreSpeciale.bateau.inclusPrixAvitaillement %}
+			  		{% if loop.index == 1 %}
+			  			<img class="img-thumbnail" src="{{ inclusPrixAvitaillement.iconeWebPath }}" /><br />
+			  		{% endif %}
+			  		{{ inclusPrixAvitaillement.name }}
+			  	{% endfor %}
+		  	</div>
+	  		<div class="description-content">
+	  		{{ offreSpeciale.description|striptags|raw }}
+	  		</div>
+	  	</div>
+{% endblock content %}

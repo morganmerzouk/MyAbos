@@ -99,23 +99,26 @@ class BateauController extends Controller
             ->setParameter(':locale', $locale)
             ->getQuery()
             ->getResult();
-        
-        $idPrestations = array();
-        foreach ($inclusPrix[0]->getPrestation() as $prestation) {
-            array_push($idPrestations, $prestation->getId());
+        if (count($inclusPrix) > 0) {
+            $idPrestations = array();
+            foreach ($inclusPrix[0]->getPrestation() as $prestation) {
+                array_push($idPrestations, $prestation->getId());
+            }
+            
+            $prestation = $this->getDoctrine()
+                ->getManager()
+                ->createQueryBuilder('p')
+                ->select('p,pt')
+                ->from("AppBundle\Entity\Prestation", "p")
+                ->join('p.translations', 'pt')
+                ->andWhere('pt.locale = :locale')
+                ->andWhere('p.id IN (' . implode(',', $idPrestations) . ')')
+                ->setParameter(':locale', $locale)
+                ->getQuery()
+                ->getResult();
+        } else {
+            $prestation = null;
         }
-        
-        $prestation = $this->getDoctrine()
-            ->getManager()
-            ->createQueryBuilder('p')
-            ->select('p,pt')
-            ->from("AppBundle\Entity\Prestation", "p")
-            ->join('p.translations', 'pt')
-            ->andWhere('pt.locale = :locale')
-            ->andWhere('p.id IN (' . implode(',', $idPrestations) . ')')
-            ->setParameter(':locale', $locale)
-            ->getQuery()
-            ->getResult();
         return $this->render('AppBundle:Front:Bateau/boat_presentation.html.twig', array(
             'boat' => $boat,
             'prestations' => $prestation

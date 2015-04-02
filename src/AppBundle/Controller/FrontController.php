@@ -13,11 +13,41 @@ class FrontController extends Controller
      */
     public function indexAction()
     {
-        $request = $this->getRequest();
-        
-        $locale = $request->getLocale();
-        
-        return $this->render('AppBundle:Front:home.html.twig');
+        $locale = $this->getRequest()->getLocale();
+        $offresSpeciales = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("AppBundle\Entity\OffreSpeciale")
+            ->createQueryBuilder('os')
+            ->select('os, t')
+            ->join('os.translations', 't')
+            ->andWhere('t.locale = :locale')
+            ->setParameter(':locale', $locale)
+            ->getQuery()
+            ->getResult();
+        return $this->render('AppBundle:Front:home.html.twig', array(
+            'offresSpeciales' => $offresSpeciales
+        ));
+    }
+
+    /**
+     * @Route("/offresspeciales", name="offresSpeciales")
+     */
+    public function offresSpecialesAction()
+    {
+        $locale = $this->getRequest()->getLocale();
+        $offresSpeciales = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("AppBundle\Entity\OffreSpeciale")
+            ->createQueryBuilder('os')
+            ->select('os, t')
+            ->join('os.translations', 't')
+            ->andWhere('t.locale = :locale')
+            ->setParameter(':locale', $locale)
+            ->getQuery()
+            ->getResult();
+        return $this->render('AppBundle:Front:offresspeciales.html.twig', array(
+            'offresSpeciales' => $offresSpeciales
+        ));
     }
 
     public function searchHeaderAction()

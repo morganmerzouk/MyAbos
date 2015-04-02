@@ -36,7 +36,7 @@ class OffreSpecialeController extends Controller
             ->getSingleResult();
         
         return $this->render('AppBundle:Front:offrespeciale.html.twig', array(
-            'offrespeciale' => $offrespeciale
+            'offreSpeciale' => $offrespeciale
         ));
     }
 }

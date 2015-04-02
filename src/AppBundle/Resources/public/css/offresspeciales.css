@@ -1,1 +1,8 @@
 h1 {background: #23B6E1; font-size: 1.2em; padding: 10px;margin: 0;}
+.description h2 { font-size: 1.2em; font-weight: bolder; margin: 8px 0;text-align:center;}
+.description {background-color:#23B6E1; margin: 10px 0;padding:10px;overflow: auto;font-size: 0.7em;font-weight: normal;padding: 1px; margin: 8px 0;text-align:left;}
+.description .col-md-4 { text-align: left; padding: 1px;}
+.description .col-md-4.type { text-align: center; }
+.description-content { text-align: center; padding: 10px; clear: both;}
+.special-offer-img { margin: 10px 0; }
+.price, .btn-more { margin: 5px; }
