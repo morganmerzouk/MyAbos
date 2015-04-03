@@ -10,8 +10,14 @@ home_prestations_text: Bénéficiez de prestation en accord avec vos désirs
 home_flotte_text: Découvrez les fiches techniques des bateaux que nous utilisons
 home_equipages_text: Consultez les profils des skippers qui vous emmeneront en croisière
 departure_date: Départ le
+return_date: Retour le
+nb_cabine_dispo: Nombre de cabine disponible
 see_specials_offers: Voir toutes les offres spéciales
 offres_speciales: Offres spéciales
+
+offrespeciale_presentation: Présentation
+offrespeciale_boat: Bateau
+
 boats: La Flotte
 boat_contact: Devis / Contact
 boat_price: Tarifs

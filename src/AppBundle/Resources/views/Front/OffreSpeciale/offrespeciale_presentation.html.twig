@@ -1,22 +1,16 @@
-<h1>{{ offreSpeciale.name }}</h1>
-<h2>Départ le {{ offreSpeciale.dateDebut|date('d/m/Y') }}</h2>
-<img class="img-responsive special-offer-img" src="{{ offreSpeciale.miniatureWebPath }}" />
-<div class="col-md-4 type text-center">
-  	<img class="img-thumbnail" src="{{ asset('bundles/app/images/icones/boat/1-icons-boat-tech-file-50pix-' ~ offreSpeciale.bateau.type|lower ~ '-noir.png') }}" /><br />
-  	{{ offreSpeciale.bateau.type }}
-</div>
-<div class="col-md-4 text-center">
-  	<img class="img-thumbnail" src="{{ offreSpeciale.bateau.inclusPrixEquipage.iconeWebPath }}" /><br />
-  	{{ offreSpeciale.bateau.inclusPrixEquipage.name }}
-</div>
-<div class="col-md-4 text-center">
-  	{% for inclusPrixAvitaillement in offreSpeciale.bateau.inclusPrixAvitaillement %}
-  		{% if loop.index == 1 %}
-  			<img class="img-thumbnail" src="{{ inclusPrixAvitaillement.iconeWebPath }}" /><br />
-  		{% endif %}
-  		{{ inclusPrixAvitaillement.name }}
-  	{% endfor %}
-</div>
-<div class="description-content">
-{{ offreSpeciale.description|striptags|raw }}
-</div>
+{% extends "AppBundle:Front:OffreSpeciale/offrespeciale.html.twig" %}
+{% block content %}
+    {{ parent() }}
+    <div class="col-md-9">
+        {{ offreSpeciale.description|raw }}
+    </div>
+    <div class="col-md-3 boat-prestation">
+	<h2 class="boat-prestation-title">{{'boat_prestation_available'|trans }}</h2>
+    	{% for prestation in prestations %}
+    		<div class="prestation">
+    			<img src="{{ prestation.iconeWebPath }}" class="img-responsive img-thumbnails pull-left" />
+    			{{ prestation.name }}
+    		</div>
+    	{% endfor %}
+    </div>
+{% endblock %}

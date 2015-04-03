@@ -49,8 +49,76 @@ class OffreSpecialeController extends Controller
             ->getQuery()
             ->getSingleResult();
         
-        return $this->render('AppBundle:Front:OffreSpeciale/offrespeciale.html.twig', array(
-            'offreSpeciale' => $offrespeciale
+        $inclusPrix = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("AppBundle\Entity\Bateau")
+            ->createQueryBuilder('b')
+            ->select('b, ipe, ipa, ipf, ipet, ipac, ipc, ipas')
+            ->leftJoin('b.inclusPrixEquipage', 'ipe')
+            ->leftJoin('b.inclusPrixAvitaillement', 'ipa')
+            ->leftJoin('b.inclusPrixFraisVoyage', 'ipf')
+            ->leftJoin('b.inclusPrixEquipement', 'ipet')
+            ->leftJoin('b.inclusPrixActivite', 'ipac')
+            ->leftJoin('b.inclusPrixCours', 'ipc')
+            ->leftJoin('b.inclusPrixAutresServices', 'ipas')
+            ->where('b.id = :id')
+            ->setParameter(':id', $offrespeciale->getBateau()->getId())
+            ->getQuery()
+            ->getResult();
+        
+        $ids = array();
+        
+        if (isset($inclusPrix[0]) && $inclusPrix[0]->getInclusPrixEquipage() != null)
+            array_push($ids, $inclusPrix[0]->getInclusPrixEquipage()->getId());
+        foreach ($inclusPrix[0]->getInclusPrixAvitaillement() as $inclusPrixAvitaillement)
+            array_push($ids, $inclusPrixAvitaillement->getId());
+        foreach ($inclusPrix[0]->getInclusPrixFraisVoyage() as $inclusPrixFraisVoyage)
+            array_push($ids, $inclusPrixFraisVoyage->getId());
+        foreach ($inclusPrix[0]->getInclusPrixEquipement() as $inclusPrixEquipement)
+            array_push($ids, $inclusPrixEquipement->getId());
+        foreach ($inclusPrix[0]->getInclusPrixActivite() as $inclusPrixActivite)
+            array_push($ids, $inclusPrixActivite->getId());
+        foreach ($inclusPrix[0]->getInclusPrixCours() as $inclusPrixCours)
+            array_push($ids, $inclusPrixCours->getId());
+        foreach ($inclusPrix[0]->getInclusPrixAutresServices() as $inclusPrixAutresServices)
+            array_push($ids, $inclusPrixAutresServices->getId());
+        
+        $inclusPrix = $this->getDoctrine()
+            ->getManager()
+            ->createQueryBuilder('ip')
+            ->select('ip,p,pt')
+            ->from("AppBundle\Entity\InclusPrix", "ip")
+            ->join('ip.prestation', 'p')
+            ->join('p.translations', 'pt')
+            ->andWhere('pt.locale = :locale')
+            ->andWhere('ip.id IN (' . implode(',', $ids) . ')')
+            ->setParameter(':locale', $locale)
+            ->getQuery()
+            ->getResult();
+        if (count($inclusPrix) > 0) {
+            $idPrestations = array();
+            foreach ($inclusPrix[0]->getPrestation() as $prestation) {
+                array_push($idPrestations, $prestation->getId());
+            }
+            
+            $prestation = $this->getDoctrine()
+                ->getManager()
+                ->createQueryBuilder('p')
+                ->select('p,pt')
+                ->from("AppBundle\Entity\Prestation", "p")
+                ->join('p.translations', 'pt')
+                ->andWhere('pt.locale = :locale')
+                ->andWhere('p.id IN (' . implode(',', $idPrestations) . ')')
+                ->setParameter(':locale', $locale)
+                ->getQuery()
+                ->getResult();
+        } else {
+            $prestation = null;
+        }
+        
+        return $this->render('AppBundle:Front:OffreSpeciale/offrespeciale_presentation.html.twig', array(
+            'offreSpeciale' => $offrespeciale,
+            'prestations' => $prestation
         ));
     }
 
@@ -192,8 +260,50 @@ class OffreSpecialeController extends Controller
             ->getQuery()
             ->getOneOrNullResult();
         
+        $bateau = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("AppBundle\Entity\Bateau")
+            ->createQueryBuilder('b')
+            ->select('b, ipe, ipa, ipf, ipet, ipac, ipc, ipas, ipetr, ipat, ipft, ipett, ipact, ipct, ipast')
+            ->leftJoin('b.inclusPrixEquipage', 'ipe')
+            ->leftJoin('ipe.translations', 'ipetr', 'WITH', 'ipe.id = ipetr.translatable_id AND ipetr.locale= :locale')
+            ->leftJoin('b.inclusPrixAvitaillement', 'ipa')
+            ->leftJoin('ipa.translations', 'ipat', 'WITH', 'ipa.id = ipat.translatable_id AND ipat.locale= :locale')
+            ->leftJoin('b.inclusPrixFraisVoyage', 'ipf')
+            ->leftJoin('ipf.translations', 'ipft', 'WITH', 'ipf.id = ipft.translatable_id AND ipft.locale= :locale')
+            ->leftJoin('b.inclusPrixEquipement', 'ipet')
+            ->leftJoin('ipet.translations', 'ipett', 'WITH', 'ipet.id = ipett.translatable_id AND ipett.locale= :locale')
+            ->leftJoin('b.inclusPrixActivite', 'ipac')
+            ->leftJoin('ipac.translations', 'ipact', 'WITH', 'ipac.id = ipact.translatable_id AND ipact.locale= :locale')
+            ->leftJoin('b.inclusPrixCours', 'ipc')
+            ->leftJoin('ipc.translations', 'ipct', 'WITH', 'ipc.id = ipct.translatable_id AND ipct.locale= :locale')
+            ->leftJoin('b.inclusPrixAutresServices', 'ipas')
+            ->leftJoin('ipas.translations', 'ipast', 'WITH', 'ipas.id = ipast.translatable_id AND ipast.locale= :locale')
+            ->where('b.id = :id')
+            ->setParameter(":locale", $locale)
+            ->setParameter(':id', $offreSpeciale->getBateau()->getId())
+            ->getQuery()
+            ->getResult();
+        $inclusPrix= array();
+        
+        if (isset($bateau[0]) && $bateau[0]->getInclusPrixEquipage() != null)
+            array_push($inclusPrix, $bateau[0]->getInclusPrixEquipage());
+        foreach ($bateau[0]->getInclusPrixAvitaillement() as $inclusPrixAvitaillement)
+            array_push($inclusPrix, $inclusPrixAvitaillement);
+        foreach ($bateau[0]->getInclusPrixFraisVoyage() as $inclusPrixFraisVoyage)
+            array_push($inclusPrix, $inclusPrixFraisVoyage);
+        foreach ($bateau[0]->getInclusPrixEquipement() as $inclusPrixEquipement)
+            array_push($inclusPrix, $inclusPrixEquipement);
+        foreach ($bateau[0]->getInclusPrixActivite() as $inclusPrixActivite)
+            array_push($inclusPrix, $inclusPrixActivite);
+        foreach ($bateau[0]->getInclusPrixCours() as $inclusPrixCours)
+            array_push($inclusPrix, $inclusPrixCours);
+        foreach ($bateau[0]->getInclusPrixAutresServices() as $inclusPrixAutresServices)
+            array_push($inclusPrix, $inclusPrixAutresServices);
+        
         return $this->render('AppBundle:Front:OffreSpeciale/offrespeciale_desti.html.twig', array(
-            'offreSpeciale' => $offreSpeciale
+            'offreSpeciale' => $offreSpeciale,
+            'inclusPrix'    => $inclusPrix
         ));
     }
 

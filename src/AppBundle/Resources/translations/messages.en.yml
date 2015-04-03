@@ -10,8 +10,14 @@ home_prestations_text: Choose the cruise that best fit your wishes
 home_flotte_text: See the technical details of the boats
 home_equipages_text: Meet the different members of our crew
 departure_date: Departure on 
+return_date: Back on 
+nb_cabine_dispo: Number of cabin available
 see_specials_offers: See all special offers
 offres_speciales: Special Offers
+
+offrespeciale_presentation: Presentation
+offrespeciale_boat: Boat
+
 boats: Boats
 boat_contact: Contact
 boat_price: Price

@@ -1,4 +1,4 @@
-h1 {background: #23B6E1; font-size: 1.2em; padding: 10px;margin: 0;}
+h1.special-offer-title {background: url("../images/menu/icones/icon-sprite-offres.png") no-repeat 5px 10px #23B6E1;font-size: 1.2em;padding: 15px 10px 10px 40px;margin: 0; }
 .description h2 { font-size: 1.2em; font-weight: bolder; margin: 8px 0;text-align:center;}
 .description {background-color:#23B6E1; margin: 10px 0;padding:10px;overflow: auto;font-size: 0.7em;font-weight: normal;padding: 1px; margin: 8px 0;text-align:left;}
 .description .col-md-4 { text-align: left; padding: 1px;}
@@ -6,3 +6,17 @@ h1 {background: #23B6E1; font-size: 1.2em; padding: 10px;margin: 0;}
 .description-content { text-align: center; padding: 10px; clear: both;}
 .special-offer-img { margin: 10px 0; }
 .price, .btn-more { margin: 5px; }
+
+/*** Sous-menu ***/
+.block-offrespeciale-submenu { display: table; width: 100%; margin-bottom: 10px; }
+.block-offrespeciale-submenu a { display: table-cell; width: 18%; color: white;background-repeat: no-repeat; background-position: 5px -30px; background-color:#127BBD; padding: 10px; font-size: 0.9em; padding-left: 40px;}
+.block-offrespeciale-submenu a:hover,
+.block-offrespeciale-submenu a.active { text-decoration: none; color: black; background-repeat: no-repeat; background-color: #23B6E1; background-position: 5px 5px; }
+
+.offrespeciale-home { background-image: url("../images/icones/boat/icon-presentation-25%20pix.png"); }
+.offrespeciale-crew { background-image: url("../images/icones/boat/icon-skipper-25%20pix.png"); }
+.offrespeciale-boat { background-image: url("../images/icones/boat/icon-boat%20file-25%20pix.png"); }
+.offrespeciale-desti { background-image: url("../images/icones/boat/icon-itineraires-25%20pix.png"); }
+.bateau-dispo { background-image: url("../images/icones/boat/icon-disponibilites-25%20pix.png"); }
+.offrespeciale-price { background-image: url("../images/icones/boat/icon-tarifs-et-options-25%20pix.png"); }
+.offrespeciale-contact { background-image: url("../images/icones/boat/icon-devis-et-contact-25%20pix.png"); }

@@ -24,6 +24,7 @@ class FrontController extends Controller
             ->setParameter(':locale', $locale)
             ->getQuery()
             ->getResult();
+        
         return $this->render('AppBundle:Front:home.html.twig', array(
             'offresSpeciales' => $offresSpeciales
         ));
