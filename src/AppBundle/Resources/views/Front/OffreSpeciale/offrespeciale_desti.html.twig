@@ -8,17 +8,20 @@
     <div class="col-md-9">
         {{ offreSpeciale.destination.description|raw }}
     </div>
-    <div class="col-md-3">
-        <h2>{{'cruise_to'|trans}} {{ offreSpeciale.destination.name }}</h2>
-        {{'departure_date'|trans}}: {{ offreSpeciale.dateDebut|date('d/m/Y') }}<br />
-        {{'return_date'|trans}}: {{ offreSpeciale.dateFin|date('d/m/Y') }}<br />
-        {{'cruise_to'|trans}}: {{ offreSpeciale.portDepart.name }}<br />
-        {{'nb_cabine_dispo'|trans}}: {{ offreSpeciale.nbCabine }}<br />
-        {{'inclus_prix'|trans }}: 
-        <ul>
-            {% for inclus in inclusPrix %}
-                <li>{{ inclus.name }}</li>
-            {% endfor %}
-        </ul>
+    <div class="col-md-3 offre-desti text-center">
+	    <h2 class="offre-desti-title text-left">{{'cruise_to'|trans}} {{ offreSpeciale.destination.name }}</h2>
+	    <div class="offre-desti-content">
+	        <strong>{{'departure_date'|trans}}:</strong> {{ offreSpeciale.dateDebut|date('d/m/Y') }}<br />
+	        <strong>{{'return_date'|trans}}:</strong> {{ offreSpeciale.dateFin|date('d/m/Y') }}<br />
+	        <strong>{{'cruise_to'|trans}}:</strong> {{ offreSpeciale.portDepart.name }}<br />
+	        <strong>{{'nb_cabine_dispo'|trans}}:</strong> {{ offreSpeciale.nbCabine }}<br />
+	        <strong>{{'inclus_prix'|trans }}:</strong> 
+	        <ul>
+	            {% for inclus in inclusPrix %}
+	                <li>{{ inclus.name }}</li>
+	            {% endfor %}
+	        </ul>
+	    </div>
+        <a href="{{ path('skipper_available', { 'id': offreSpeciale.skipper.id }) }}" class="btn btn-warning">{{'contact_skipper'|trans }}</a>
     </div>
 {% endblock content %}

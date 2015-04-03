@@ -1,30 +1,43 @@
 {% extends "AppBundle:Front:OffreSpeciale/offrespeciale.html.twig" %}
 {% block content %}
     {{ parent() }}
-    <div class="col-md-9">
-	    <div class="offrespeciale-boat-description">
-	        <div class="col-md-6 ">
-	            <img src="{{ boat.miniatureWebPath }}" class="center-block img-responsive img-thumbnails" alt="photo {{ boat.name }}" />
-	        </div>
-	        <div class="col-md-6">
-	            {{ boat.description|striptags|raw }}
-	        </div>
-	    </div>
-	    <div class="bateau-photo clearfix">
-	        <img class="col-md-2 img-responsive img-thumbnails" src="{{ boat.photoVoileWebPath }}" alt="photo voile" />
-	        <img class="col-md-2 img-responsive img-thumbnails" src="{{ boat.photoMouillageWebPath }}" alt="photo mouillage" />
-	        <img class="col-md-2 img-responsive img-thumbnails" src="{{ boat.photoCockpitWebPath }}" alt="photo cockpit"  />
-	        <img class="col-md-2 img-responsive img-thumbnails" src="{{ boat.photoCarreWebPath }}" alt="photo carre" />
-	        <img class="col-md-2 img-responsive img-thumbnails" src="{{ boat.photoCabineWebPath }}" alt="photo cabine" />
-	    </div>
+    <div class="offrespeciale-boat-description col-fiche-bateau col-md-6">
+    	<h2>{{ boat.name }}</h2>
+        <h3>{{'boat_configuration'|trans}}</h3>
+        <div class="block-boat-spec"><img src="{{ asset('bundles/app/images/icones/boat/1-icons-boat-tech-file-50pix-'~boat.type|lower~'-noir.png') }}" class="pull-left"  /><div class="boat-spec-content">{{boat.type}}</div></div>
+        <div class="block-boat-spec"><img src="{{ asset('bundles/app/images/icones/boat/2-icons-boat-tech-file-50pix-CABINS-'~boat.nbCabine~'-noir.png') }}" class="pull-left"  /><div class="boat-spec-content">{{boat.nbCabine}} {{'boat_cabine'|trans}}</div></div>
+        {% if (boat.nbCouchage > 0) %}<div class="block-boat-spec"><img src="{{ asset('bundles/app/images/icones/boat/3-icons-boat-tech-file-50pix-COUCHAGE-noir.png') }}" class="pull-left" /><div class="boat-spec-content">{{boat.nbCouchage}} {{'boat_bed'|trans}}</div></div>{% endif %}
+        {% if (boat.nbLitDouble > 0) %}<div class="block-boat-spec"><img src="{{ asset('bundles/app/images/icones/boat/3B-icons-boat-tech-file-50pix-LIT%20DOUBLE-noir.png') }}" class="pull-left" /><div class="boat-spec-content">{{boat.nbLitDouble}} {{'boat_beddouble'|trans}}</div></div>{% endif %}
+        {% if (boat.nbLitSimple > 0) %}<div class="block-boat-spec"><img src="{{ asset('bundles/app/images/icones/boat/3A-icons-boat-tech-file-50pix-LIT%20SIMPLE-noir.png') }}" class="pull-left" /><div class="boat-spec-content">{{boat.nbLitSimple}} {{'boat_bedsimple'|trans}}</div></div>{% endif %}
+        {% if (boat.nbDouche > 0) %}<div class="block-boat-spec"><img src="{{ asset('bundles/app/images/icones/boat/4-icons-boat-tech-file-50pix-SHOWER-noir.png') }}" class="pull-left" /><div class="boat-spec-content">{{boat.nbDouche}} {{'boat_shower'|trans}}</div></div>{% endif %}
+        <h3>{{'boat_specificites'|trans}}</h3>
+        {% if boat.longueur is not null %}<div class="block-boat-spec"><img src="{{ asset('bundles/app/images/icones/boat/5-icons-boat-tech-file-50pix-LENGTH-noir.png') }}" class="pull-left" /><div class="boat-spec-content">{{'boat_length'|trans}}: {{boat.longueur}}</div></div>{% endif %}
+        {% if boat.largeur is not null %}<div class="block-boat-spec"><img src="{{ asset('bundles/app/images/icones/boat/6-icons-boat-tech-file-50pix-WIDTH-noir.png') }}" class="pull-left" /><div class="boat-spec-content">{{'boat_width'|trans}}: {{boat.largeur}}</div></div>{% endif %}
+        {% if boat.tirantDEau is not null %}<div class="block-boat-spec"><img src="{{ asset('bundles/app/images/icones/boat/7-icons-boat-tech-file-50pix-DRAFT-noir.png') }}" class="pull-left" /><div class="boat-spec-content">{{'boat_draft'|trans}}: {{boat.tirantDEau}}</div></div>{% endif %}
+        {% if boat.surfacegrandvoile is not null %}<div class="block-boat-spec"><img src="{{ asset('bundles/app/images/icones/boat/8-icons-boat-tech-file-50pix-MAINSAIL-noir.png') }}" class="pull-left" /><div class="boat-spec-content">{{'boat_main_sail'|trans}}: {{boat.surfacegrandvoile}}</div></div>{% endif %}
+        {% if boat.moteur is not null %}<div class="block-boat-spec"><img src="{{ asset('bundles/app/images/icones/boat/9-icons-boat-tech-file-50pix-MOTOR-noir.png') }}" class="pull-left" /><div class="boat-spec-content">{{'boat_motor'|trans}}: {{boat.moteur}}</div></div>{% endif %}
+        {% if boat.reservoirCarburant is not null %}<div class="block-boat-spec"><img src="{{ asset('bundles/app/images/icones/boat/10-icons-boat-tech-file-50pix-FUEL-noir.png') }}" class="pull-left" /><div class="boat-spec-content">{{'boat_fuelcapacity'|trans}}: {{boat.reservoirCarburant}}</div></div>{% endif %}
+        {% if boat.reservoirEau is not null %}<div class="block-boat-spec"><img src="{{ asset('bundles/app/images/icones/boat/11-icons-boat-tech-file-50pix-WATER-noir.png') }}" class="pull-left" /><div class="boat-spec-content">{{'boat_watercapacity'|trans}}: {{boat.reservoirEau}}</div></div>{% endif %}
+        <h3>{{'boat_equipments'|trans}}</h3>
+        {% if boat.energie is not null %}<div class="block-boat-spec"><img src="{{ asset('bundles/app/images/icones/boat/12-icons-boat-tech-file-50pix-NRG-noir.png') }}" class="pull-left" /><div class="boat-spec-content">{{'boat_power'|trans}}: {{boat.energie}}</div></div>{% endif %}
+        {% if boat.equipementCuisine is not null %}<div class="block-boat-spec"><img src="{{ asset('bundles/app/images/icones/boat/13-icons-boat-tech-file-50pix-GALLEY-noir.png') }}" class="pull-left" /><div class="boat-spec-content">{{'boat_galley'|trans}}: {{boat.equipementCuisine}}</div></div>{% endif %}
+        {% if boat.dinghy is not null %}<div class="block-boat-spec"><img src="{{ asset('bundles/app/images/icones/boat/14-icons-boat-tech-file-50pix-DINGHY-noir.png') }}" class="pull-left" /><div class="boat-spec-content">{{'boat_dinghy'|trans}}: {{boat.dinghy}}</div></div>{% endif %}
+        <h3>{{'boat_activity'|trans}}</h3>
+        {% if boat.loisir is not null %}<div class="block-boat-spec"><img src="{{ asset('bundles/app/images/icones/boat/15-icons-boat-tech-file-50pix-ENTERTAINMENT-noir.png') }}" class="pull-left" /><div class="boat-spec-content">{{'boat_loisir'|trans}}: {{boat.loisir}}</div></div>{% endif %}
+        {% if boat.jouet is not null %}<div class="block-boat-spec"><img src="{{ asset('bundles/app/images/icones/boat/16-icons-boat-tech-file-50pix-EQUIPMENTS-noir.png') }}" class="pull-left" /><div class="boat-spec-content">{{'boat_jouet'|trans}}: {{boat.jouet}}</div></div>{% endif %}
     </div>
-    <div class="col-md-3 boat-prestation">
-	<h2 class="boat-prestation-title">{{'boat_prestation_available'|trans }}</h2>
-    	{% for prestation in prestations %}
-    		<div class="prestation">
-    			<img src="{{ prestation.iconeWebPath }}" class="img-responsive img-thumbnails pull-left" />
-    			{{ prestation.name }}
-    		</div>
-    	{% endfor %}
+    <div class="col-md-6">
+    	<div class="col-md-6 text-center btn-contact">
+        	<a href="{{ path("boat_available", { id: boat.id }) }}" class="btn btn-primary">{{'see_available'|trans }}</a>
+        </div>
+    	<div class="col-md-6 text-center btn-contact">
+        	<a href="{{ path("skipper_contact", { id: skipper.id }) }}" class="btn btn-warning">{{'contact_skipper'|trans }}</a>
+        </div>
+        {% if boat.miniatureWebPath is not null %}<img class="col-md-6 img-responsive img-thumbnails" src="{{ boat.miniatureWebPath }}" alt="photo {{ boat.name }}" />{% endif %}
+        {% if boat.photoVoileWebPath is not null %}<img class="col-md-6 img-responsive img-thumbnails" src="{{ boat.photoVoileWebPath }}" alt="photo voile" />{% endif %}
+        {% if boat.photoMouillageWebPath is not null %}<img class="col-md-6 img-responsive img-thumbnails" src="{{ boat.photoMouillageWebPath }}" alt="photo mouillage" />{% endif %}
+        {% if boat.photoCockpitWebPath is not null %}<img class="col-md-6 img-responsive img-thumbnails" src="{{ boat.photoCockpitWebPath }}" alt="photo cockpit"  />{% endif %}
+        {% if boat.photoCarreWebPath is not null %}<img class="col-md-6 img-responsive img-thumbnails" src="{{ boat.photoCarreWebPath }}" alt="photo carre" />{% endif %}
+        {% if boat.photoCabineWebPath is not null %}<img class="col-md-6 img-responsive img-thumbnails" src="{{ boat.photoCabineWebPath }}" alt="photo cabine" />{% endif %}
     </div>
 {% endblock content %}

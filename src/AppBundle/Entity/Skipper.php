@@ -124,6 +124,16 @@ class Skipper
         return $this->translate()->getDescription();
     }
 
+    public function getOtherCertifications()
+    {
+        return $this->translate()->getOtherCertifications();
+    }
+
+    public function getHobbies()
+    {
+        return $this->translate()->getHobbies();
+    }
+
     /**
      * Set email
      *
@@ -332,52 +342,6 @@ class Skipper
     }
 
     /**
-     * Set otherCertifications
-     *
-     * @param string $otherCertifications            
-     * @return Skipper
-     */
-    public function setOtherCertifications($otherCertifications)
-    {
-        $this->otherCertifications = $otherCertifications;
-        
-        return $this;
-    }
-
-    /**
-     * Get otherCertifications
-     *
-     * @return string
-     */
-    public function getOtherCertifications()
-    {
-        return $this->otherCertifications;
-    }
-
-    /**
-     * Set hobbies
-     *
-     * @param string $hobbies            
-     * @return Skipper
-     */
-    public function setHobbies($hobbies)
-    {
-        $this->hobbies = $hobbies;
-        
-        return $this;
-    }
-
-    /**
-     * Get hobbies
-     *
-     * @return string
-     */
-    public function getHobbies()
-    {
-        return $this->hobbies;
-    }
-
-    /**
      * Set languagesSpoken
      *
      * @param string $languagesSpoken            
@@ -483,7 +447,7 @@ class Skipper
 
     public function upload($basepath)
     {
-        $this->uploadImage($this->avatarFile, "setAvatar", 125, 125);
+        $this->uploadImage($this->avatarFile, "setAvatar");
     }
 
     public function uploadImage($file, $fctName, $width, $height)
@@ -491,39 +455,11 @@ class Skipper
         if (null === $file) {
             return;
         }
-        $destination = imagecreatetruecolor($width, 125);
         
-        $extension = $file->getClientOriginalExtension();
-        switch (strtolower($extension)) {
-            case "png":
-                $source = imagecreatefrompng($file);
-                imagealphablending($destination, false);
-                $colorTransparent = imagecolorallocatealpha($destination, 0, 0, 0, 0x7fff0000);
-                imagefill($destination, 0, 0, $colorTransparent);
-                imagesavealpha($destination, true);
-                $fct = 'imagepng';
-                break;
-            case "jpg":
-            case "jpeg":
-                $source = imagecreatefromjpeg($file);
-                $fct = 'imagejpeg';
-                break;
-            case "gif":
-                $source = imagecreatefromgif($file);
-                $fct = 'imagegif';
-                break;
-        }
-        
-        // On récupère la taille de l'image source
-        $largeur_source = imagesx($source);
-        $hauteur_source = imagesy($source);
-        
-        // On redimensionne tout !
-        imagecopyresampled($destination, $source, 0, 0, 0, 0, $width, $height, $largeur_source, $hauteur_source);
         if ($fctName == "setAvatar") {
-            $fct($destination, $this->getUploadRootDir() . '/avatar/' . $file->getClientOriginalName());
+            $file->move($this->getUploadRootDir() . '/avatar/', $file->getClientOriginalName());
         } else {
-            $fct($destination, $this->getUploadRootDir() . '/' . $file->getClientOriginalName());
+            $file->move($this->getUploadRootDir() . '/', $file->getClientOriginalName());
         }
         
         // set the path property to the filename where you'ved saved the file

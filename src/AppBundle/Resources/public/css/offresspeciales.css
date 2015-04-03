@@ -20,3 +20,32 @@ h1.special-offer-title {background: url("../images/menu/icones/icon-sprite-offre
 .bateau-dispo { background-image: url("../images/icones/boat/icon-disponibilites-25%20pix.png"); }
 .offrespeciale-price { background-image: url("../images/icones/boat/icon-tarifs-et-options-25%20pix.png"); }
 .offrespeciale-contact { background-image: url("../images/icones/boat/icon-devis-et-contact-25%20pix.png"); }
+
+/*** Offres Speciales - Presentation ***/
+.boat-prestation { background: #23B6E1; border: 1px solid #127BBD; padding: 0 0 10px 0;  }
+.boat-prestation-title { font-size: 1.1em;margin: 0 0 10px 0;padding: 10px;background: #127BBD;color: white;}
+.boat-prestation .prestation { overflow: auto; clear: both; margin: 2px 10px;background: white;padding:10px; }
+.boat-prestation .prestation img { margin-right: 10px;}
+
+/*** Offres Spéciales - Crew ***/
+.offre-crew { background: #23B6E1; border: 1px solid #127BBD; padding: 0 0 10px 0;  }
+.offre-crew-title { font-size: 1em;margin: 0 0 10px 0;padding: 10px;background: #127BBD;color: white;}
+.offre-crew .qualif { overflow: auto; clear: both; margin: 2px 10px;background: white;padding:10px; }
+.offre-crew .qualif img { margin-right: 10px;}
+.btn-dispo { margin: 10px 0px; }
+
+/*** Offres Spéciales - Boat ***/
+.offrespeciale-boat-description { overflow:auto; margin-bottom: 5px;}
+.offrespeciale-boat-description h2 { text-align: center;margin: 5px;}
+.col-fiche-bateau{ border: 3px solid #23B6E1; margin-top: 10px;padding:0;}
+.col-fiche-bateau .block-boat-spec { overflow: auto;  margin: 0px 10px; border: 1px solid white;background: #127BBD;color:white;}
+.col-fiche-bateau img {background: #23B6E1;padding: 5px;border-right: 2px solid white;margin-right:10px;}
+.col-fiche-bateau h3 {background: #23B6E1; font-size: 1.1em; padding: 10px; margin: 0;font-weight:bold;}
+.btn-contact {margin-bottom: 10px;}
+
+/*** Offres Spéciales - Desti ***/
+.offre-desti { background: #23B6E1; border: 1px solid #127BBD; padding: 0 0 10px 0; overflow: auto; }
+.offre-desti-title { font-size: 1em;margin: 0 0 10px 0;padding: 10px;background: #127BBD;color: white;}
+.offre-desti-content { margin: 5px; padding:5px; background: white;text-align: left;}
+.offre-desti ul { list-style-position: inside; margin: 0px; padding: 0px;  }
+.offre-desti-content strong { font-size: 0.9em; }

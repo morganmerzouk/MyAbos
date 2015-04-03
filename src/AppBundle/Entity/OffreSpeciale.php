@@ -211,11 +211,7 @@ class OffreSpeciale
             return;
         }
         
-        if ($fctName == "setMiniature") {
-            $file->move($this->getUploadRootDir() . '/miniature/', $file->getClientOriginalName());
-        } else {
-            $file->move($this->getUploadRootDir() . '/', $file->getClientOriginalName());
-        }
+        $file->move($this->getUploadRootDir() . '/miniature/', $file->getClientOriginalName());
         
         // set the path property to the filename where you'ved saved the file
         $this->$fctName($file->getClientOriginalName());
