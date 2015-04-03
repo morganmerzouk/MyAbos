@@ -33,11 +33,11 @@
     	<div class="col-md-6 text-center btn-contact">
         	<a href="{{ path("skipper_contact", { id: skipper.id }) }}" class="btn btn-warning">{{'contact_skipper'|trans }}</a>
         </div>
-        {% if boat.miniatureWebPath is not null %}<img class="col-md-6 img-responsive img-thumbnails" src="{{ boat.miniatureWebPath }}" alt="photo {{ boat.name }}" />{% endif %}
-        {% if boat.photoVoileWebPath is not null %}<img class="col-md-6 img-responsive img-thumbnails" src="{{ boat.photoVoileWebPath }}" alt="photo voile" />{% endif %}
-        {% if boat.photoMouillageWebPath is not null %}<img class="col-md-6 img-responsive img-thumbnails" src="{{ boat.photoMouillageWebPath }}" alt="photo mouillage" />{% endif %}
-        {% if boat.photoCockpitWebPath is not null %}<img class="col-md-6 img-responsive img-thumbnails" src="{{ boat.photoCockpitWebPath }}" alt="photo cockpit"  />{% endif %}
-        {% if boat.photoCarreWebPath is not null %}<img class="col-md-6 img-responsive img-thumbnails" src="{{ boat.photoCarreWebPath }}" alt="photo carre" />{% endif %}
-        {% if boat.photoCabineWebPath is not null %}<img class="col-md-6 img-responsive img-thumbnails" src="{{ boat.photoCabineWebPath }}" alt="photo cabine" />{% endif %}
+        {% if boat.miniatureWebPath is not null %}<img class="col-md-6 offre-boat-img img-responsive img-thumbnail" src="{{ boat.miniatureWebPath }}" alt="photo {{ boat.name }}" />{% endif %}
+        {% if boat.photoVoileWebPath is not null %}<img class="col-md-6 offre-boat-img img-responsive img-thumbnail" src="{{ boat.photoVoileWebPath }}" alt="photo voile" />{% endif %}
+        {% if boat.photoMouillageWebPath is not null %}<img class="col-md-6 offre-boat-img img-responsive img-thumbnail" src="{{ boat.photoMouillageWebPath }}" alt="photo mouillage" />{% endif %}
+        {% if boat.photoCockpitWebPath is not null %}<img class="col-md-6 offre-boat-img img-responsive img-thumbnail" src="{{ boat.photoCockpitWebPath }}" alt="photo cockpit"  />{% endif %}
+        {% if boat.photoCarreWebPath is not null %}<img class="col-md-6 offre-boat-img img-responsive img-thumbnail" src="{{ boat.photoCarreWebPath }}" alt="photo carre" />{% endif %}
+        {% if boat.photoCabineWebPath is not null %}<img class="col-md-6 offre-boat-img img-responsive img-thumbnail" src="{{ boat.photoCabineWebPath }}" alt="photo cabine" />{% endif %}
     </div>
 {% endblock content %}

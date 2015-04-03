@@ -1,0 +1,114 @@
+{% extends "AppBundle:Front:OffreSpeciale/offrespeciale.html.twig" %}
+{% block content %}
+    {{ parent() }}
+    <div id="tarifOffre" class="offre-contact col-md-9">
+	    <h2>{{'cruise_recap'|trans }}</h2>
+        <div class="subblock-periode">
+		    <h3>{{ offreSpeciale.bateau.name }}</h3>
+		    <strong>{{'departure_date'|trans }}:</strong> {{ offreSpeciale.dateDebut|date('d/m/Y') }}<br />
+		    <strong>{{'return_date'|trans }}:</strong> {{ offreSpeciale.dateFin|date('d/m/Y') }}<br />
+		    <strong>{{'form_sejour_portdepart'|trans }}</strong> {{ offreSpeciale.portDepart.name }}<br />
+		    <strong>{{'form_sejour_destination'|trans }}</strong> {{ offreSpeciale.destination.name }}<br />
+		    <strong>{{'nb_cabine_dispo'|trans }}:</strong> {{ offreSpeciale.nbCabine }}<br />
+        </div>
+	    <div class="price btn btn-sm btn-primary">
+		  	${% if offreSpeciale.tarifHuitPersonnes > 0 %}
+		  		{{ (offreSpeciale.tarifHuitPersonnes/8)|round }}
+	  		 {% elseif offreSpeciale.tarifSeptPersonnes > 0 %}
+	  		 	{{ (offreSpeciale.tarifSeptPersonnes/7)|round }}
+	  		 {% elseif offreSpeciale.tarifSixPersonnes > 0 %}
+	  		 	{{ (offreSpeciale.tarifSixPersonnes/6)|round }}
+	  		 {% elseif offreSpeciale.tarifCinqPersonnes > 0 %}
+	  		 	{{ (offreSpeciale.tarifCinqPersonnes/5)|round }}
+	  		 {% elseif offreSpeciale.tarifQuatrePersonnes > 0 %}
+	  		 	{{ (offreSpeciale.tarifQuatrePersonnes/4)|round }}
+	  		 {% elseif offreSpeciale.tarifTroisPersonnes > 0 %}
+	  		 	{{ (offreSpeciale.tarifTroisPersonnes/3)|round }}
+	  		 {% elseif offreSpeciale.tarifDeuxPersonnes > 0 %}
+	  		 	{{ (offreSpeciale.tarifDeuxPersonnes/2)|round }}
+			 {% endif %}/{{ offreSpeciale.tarifPour }}
+		</div>
+        <div class="tarif-accordion">
+	        <h3 class="periode_inclus_prix">
+	            {{'inclus_prix'|trans }}
+	        </h3>      
+	        <div class="subblock-periode">
+	        	{% if inclusprixequipage|length > 0 %}
+	        		<div class="col-md-6">
+		        		<div class="col-md-12 even">{{'the_crew'|trans }}</div>
+                    	<div class="col-md-12 odd">{{ inclusprixequipage.name }}</div>
+	        		</div>
+	        	{% endif %}
+	        	{% if inclusprixavitaillement|length > 0 %}
+	        		<div class="col-md-6">
+		        		<div class="col-md-12 even">{{'fueling'|trans }}</div>
+		        		{% for inclusprix in inclusprixavitaillement %}
+	                    	<div class="col-md-12 odd">{{ inclusprix.name }}</div>
+	                	{% endfor %}
+	        		</div>
+	        	{% endif %}
+	        	{% if inclusprixfraisdevoyage|length > 0 %}
+	        		<div class="col-md-6">
+		        		<div class="col-md-12 even">{{'frais_de_voyage'|trans }}</div>
+		        		{% for inclusprix in inclusprixfraisdevoyage %}
+	                    	<div class="col-md-12 odd">{{ inclusprix.name }}</div>
+	                	{% endfor %}
+	        		</div>
+	        	{% endif %}
+	        	{% if inclusprixautresservices|length > 0 %}
+	        		<div class="col-md-6">
+		        		<div class="col-md-12 even">{{'boat_otherservice'|trans }}</div>
+		        		{% for inclusprix in inclusprixautresservices %}
+	                    	<div class="col-md-12 odd">{{ inclusprix.name }}</div>
+	                	{% endfor %}
+	        		</div>
+	        	{% endif %}
+	        	{% if inclusprixequipement|length > 0 %}
+	        		<div class="col-md-6">
+		        		<div class="col-md-12 even">{{'boat_equipments'|trans }}</div>
+		        		{% for inclusprix in inclusprixequipement %}
+	                    	<div class="col-md-12 odd">{{ inclusprix.name }}</div>
+	                	{% endfor %}
+	        		</div>
+	        	{% endif %}
+	        	{% if inclusprixactivite|length > 0 %}
+	        		<div class="col-md-6">
+		        		<div class="col-md-12 even">{{'boat_activity'|trans }}</div>
+		        		{% for inclusprix in inclusprixactivite %}
+	                    	<div class="col-md-12 odd">{{ inclusprix.name }}</div>
+	                	{% endfor %}
+	        		</div>
+	        	{% endif %}
+	        	{% if inclusprixcours is not null %}
+	        		<div class="col-md-6">
+		        		<div class="col-md-12 even">{{'boat_cours'|trans }}</div>
+		        		{% for inclusprix in inclusprixcours %}
+	                    	<div class="col-md-12 odd">{{ inclusprix.name }}</div>
+	                	{% endfor %}
+	        		</div>
+	        	{% endif %}
+	        </div>  
+	        {% if servicepayant is not null %}
+		        <div class="tarif-accordion">
+			        <h3 class="periode-title">
+			            {{'en_option'|trans }}
+			        </h3>
+	                <div class="subblock-periode servicepayant">
+	                	{% set currentCategory = null %}
+		        		{% for service in servicepayant %}
+			        		{% if service.categorie != currentCategory %}
+			        			{% set currentCategory = service.categorie %}
+		                    	<div class="col-md-5 even service-payant-categorie">{{service.categorie}}</div>
+		                    	<div class="col-md-5 even service-payant-categorie"></div>
+		                    	<div class="col-md-2 even service-payant-categorie">{{'selectionner'|trans }}</div>
+		                    {% endif %}
+		                    <div class="col-md-5 odd">{{service.name}}</div>
+		                    <div class="col-md-5 odd">50 euros par heure</div>
+		                    <div class="col-md-2 odd"><input type="checkbox" class="selection" /></div>
+	                    {% endfor %}
+	                </div>
+		        </div>
+	    	{% endif %}
+    	</div>
+    </div>
+{% endblock %}

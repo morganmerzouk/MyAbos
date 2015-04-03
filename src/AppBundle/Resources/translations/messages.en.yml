@@ -18,6 +18,12 @@ offres_speciales: Special Offers
 offrespeciale_presentation: Presentation
 offrespeciale_boat: Boat
 skipper_qualification_experience: Qualifications and Experience
+tarif_croisiere_title: Price of the cruise
+tarif_croisiere_from: From
+tarif_croisiere_to: to
+tarif_croisiere_nbcabine: Number of cabins available on board: 
+cruise_recap: Cruise recap':
+selectionner: Selection
 boats: Boats
 boat_contact: Contact
 boat_price: Price

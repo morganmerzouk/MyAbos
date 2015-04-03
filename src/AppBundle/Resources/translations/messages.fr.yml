@@ -12,13 +12,18 @@ home_equipages_text: Consultez les profils des skippers qui vous emmeneront en c
 departure_date: Départ le
 return_date: Retour le
 nb_cabine_dispo: Nombre de cabine disponible
+selectionner: Sélectionner
 see_specials_offers: Voir toutes les offres spéciales
 offres_speciales: Offres spéciales
 
 offrespeciale_presentation: Présentation
 offrespeciale_boat: Bateau
 skipper_qualification_experience: Qualifications et Expérience
-
+tarif_croisiere_title: Tarif de la croisière
+tarif_croisiere_from: Du
+tarif_croisiere_to: au
+tarif_croisiere_nbcabine: Nombre de cabine disponible à bord:
+cruise_recap: Récapitulatif de la croisière
 boats: La Flotte
 boat_contact: Devis / Contact
 boat_price: Tarifs
@@ -110,6 +115,7 @@ cal_sun: "Dim."
 contact: Contact
 cruise_to: Les croisières vers
 destinations: Destinations
+destination: Destination: 
 destinations_intro: Les destinations pour une croisière de kitesurf. Les Caraïbes offres des confitions parfaites pour le kite surf 10 mois par ans. Ces îles paradisiaques proposent différentes identités, culture ainsi que d'unique (et pour beaucoup d'entre elles de classe mondiale) spots de kite.
 suite: La suite
 info: Plus d'infos

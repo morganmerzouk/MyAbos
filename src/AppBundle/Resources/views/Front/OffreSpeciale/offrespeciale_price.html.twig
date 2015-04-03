@@ -5,48 +5,43 @@
 {% endblock %}
 {% block content %}
     {{ parent() }}
-    <div id="tarifBateau" class="col-md-9">
-        <h2>{{'tarif_bateau_title'|trans }}</h2>
-        {% for tarif in tarifs %}
-            <div class="tarif-accordion">
-                <h3 class="periode-title">
-                    {{'periode_du'|trans }}  {{ tarif.dateDebut|date('d/m/Y') }} {{'periode_au'|trans }} {{ tarif.dateFin|date('d/m/Y') }}
-                </h3>
-                <div class="subblock-periode">
-	                {{'periode_tarif_du'|trans }} {{ tarif.nombreJourMinimum }} {{'day'|trans }} {{'periode_tarif_au'|trans }} {{ tarif.nombreJourMaximum }} {{'days'|trans }} {{'periode_tarif_cruise'|trans }}<br />
-	                {{'periode_tarif_cruise_pour'|trans }} {{ tarif.tarifPour }}
-	                <table>
-	                    <tr class="periode-table-personne"><td class="periode-table-title">{{'nombre_de_personne'|trans }}</td>
-	                        {% if tarif.tarifDeuxPersonnes is not null %}<td>2</td>{% endif %}
-	                        {% if tarif.tarifTroisPersonnes is not null %}<td>3</td>{% endif %}
-	                        {% if tarif.tarifQuatrePersonnes is not null %}<td>4</td>{% endif %}
-	                        {% if tarif.tarifCinqPersonnes is not null %}<td>5</td>{% endif %}
-	                        {% if tarif.tarifSixPersonnes is not null %}<td>6</td>{% endif %}
-	                        {% if tarif.tarifSeptPersonnes is not null %}<td>7</td>{% endif %}
-	                        {% if tarif.tarifHuitPersonnes is not null %}<td>8</td>{% endif %}
-	                    </tr>
-	                    <tr><td class="periode-table-title">{{'prix_par_personne'|trans }}</td>
-	                        {% if tarif.tarifDeuxPersonnes is not null %}<td>{{ tarif.tarifDeuxPersonnes }}</td>{% endif %}
-	                        {% if tarif.tarifTroisPersonnes is not null %}<td>{{ tarif.tarifTroisPersonnes }}</td>{% endif %}
-	                        {% if tarif.tarifQuatrePersonnes is not null %}<td>{{ tarif.tarifQuatrePersonnes }}</td>{% endif %}
-	                        {% if tarif.tarifCinqPersonnes is not null %}<td>{{ tarif.tarifCinqPersonnes }}</td>{% endif %}
-	                        {% if tarif.tarifSixPersonnes is not null %}<td>{{ tarif.tarifSixPersonnes }}</td>{% endif %}
-	                        {% if tarif.tarifSeptPersonnes is not null %}<td>{{ tarif.tarifSeptPersonnes }}</td>{% endif %}
-	                        {% if tarif.tarifHuitPersonnes is not null %}<td>{{ tarif.tarifHuitPersonnes }}</td>{% endif %}
-	                    </tr>
-	                    <tr><td class="periode-table-title">{{'prix_du_bateau'|trans }}</td>
-	                        {% if tarif.tarifDeuxPersonnes is not null %}<td>{{ tarif.tarifDeuxPersonnes * 2 }}</td>{% endif %}
-	                        {% if tarif.tarifTroisPersonnes is not null %}<td>{{ tarif.tarifTroisPersonnes * 3 }}</td>{% endif %}
-	                        {% if tarif.tarifQuatrePersonnes is not null %}<td>{{ tarif.tarifQuatrePersonnes * 4 }}</td>{% endif %}
-	                        {% if tarif.tarifCinqPersonnes is not null %}<td>{{ tarif.tarifCinqPersonnes * 5 }}</td>{% endif %}
-	                        {% if tarif.tarifSixPersonnes is not null %}<td>{{ tarif.tarifSixPersonnes * 6 }}</td>{% endif %}
-	                        {% if tarif.tarifSeptPersonnes is not null %}<td>{{ tarif.tarifSeptPersonnes * 7 }}</td>{% endif %}
-	                        {% if tarif.tarifHuitPersonnes is not null %}<td>{{ tarif.tarifHuitPersonnes * 8 }}</td>{% endif %}
-	                    </tr>
-	                </table>
-                </div>
-            </div>
-        {% endfor %}
+    <div id="tarifOffre" class="col-md-9">
+        <h2>{{'tarif_croisiere_title'|trans }}</h2>
+        <h3>{{'tarif_croisiere_from'|trans }} {{ offreSpeciale.dateDebut|date('d/m/Y') }}
+        {{'tarif_croisiere_to'|trans }} {{ offreSpeciale.dateFin|date('d/m/Y') }}</h3>
+        <div class="tarif-croisiere-tarif">
+        	{{'tarif_croisiere_nbcabine'|trans }}{{ offreSpeciale.nbCabine }}<br />
+        	{{'periode_tarif_cruise_pour'|trans }} {{ offreSpeciale.tarifPour }}
+            <table>
+                <tr class="periode-table-personne"><td class="periode-table-title">{{'nombre_de_personne'|trans }}</td>
+                    {% if offreSpeciale.tarifDeuxPersonnes is not null %}<td>2</td>{% endif %}
+                    {% if offreSpeciale.tarifTroisPersonnes is not null %}<td>3</td>{% endif %}
+                    {% if offreSpeciale.tarifQuatrePersonnes is not null %}<td>4</td>{% endif %}
+                    {% if offreSpeciale.tarifCinqPersonnes is not null %}<td>5</td>{% endif %}
+                    {% if offreSpeciale.tarifSixPersonnes is not null %}<td>6</td>{% endif %}
+                    {% if offreSpeciale.tarifSeptPersonnes is not null %}<td>7</td>{% endif %}
+                    {% if offreSpeciale.tarifHuitPersonnes is not null %}<td>8</td>{% endif %}
+                </tr>
+                <tr><td class="periode-table-title">{{'prix_par_personne'|trans }}</td>
+                    {% if offreSpeciale.tarifDeuxPersonnes is not null %}<td>{{ offreSpeciale.tarifDeuxPersonnes }}</td>{% endif %}
+                    {% if offreSpeciale.tarifTroisPersonnes is not null %}<td>{{ offreSpeciale.tarifTroisPersonnes }}</td>{% endif %}
+                    {% if offreSpeciale.tarifQuatrePersonnes is not null %}<td>{{ offreSpeciale.tarifQuatrePersonnes }}</td>{% endif %}
+                    {% if offreSpeciale.tarifCinqPersonnes is not null %}<td>{{ offreSpeciale.tarifCinqPersonnes }}</td>{% endif %}
+                    {% if offreSpeciale.tarifSixPersonnes is not null %}<td>{{ offreSpeciale.tarifSixPersonnes }}</td>{% endif %}
+                    {% if offreSpeciale.tarifSeptPersonnes is not null %}<td>{{ offreSpeciale.tarifSeptPersonnes }}</td>{% endif %}
+                    {% if offreSpeciale.tarifHuitPersonnes is not null %}<td>{{ offreSpeciale.tarifHuitPersonnes }}</td>{% endif %}
+                </tr>
+                <tr><td class="periode-table-title">{{'prix_du_bateau'|trans }}</td>
+                    {% if offreSpeciale.tarifDeuxPersonnes is not null %}<td>{{ offreSpeciale.tarifDeuxPersonnes * 2 }}</td>{% endif %}
+                    {% if offreSpeciale.tarifTroisPersonnes is not null %}<td>{{ offreSpeciale.tarifTroisPersonnes * 3 }}</td>{% endif %}
+                    {% if offreSpeciale.tarifQuatrePersonnes is not null %}<td>{{ offreSpeciale.tarifQuatrePersonnes * 4 }}</td>{% endif %}
+                    {% if offreSpeciale.tarifCinqPersonnes is not null %}<td>{{ offreSpeciale.tarifCinqPersonnes * 5 }}</td>{% endif %}
+                    {% if offreSpeciale.tarifSixPersonnes is not null %}<td>{{ offreSpeciale.tarifSixPersonnes * 6 }}</td>{% endif %}
+                    {% if offreSpeciale.tarifSeptPersonnes is not null %}<td>{{ offreSpeciale.tarifSeptPersonnes * 7 }}</td>{% endif %}
+                    {% if offreSpeciale.tarifHuitPersonnes is not null %}<td>{{ offreSpeciale.tarifHuitPersonnes * 8 }}</td>{% endif %}
+                </tr>
+            </table>
+    	</div>
         <div class="tarif-accordion">
 	        <h3 class="periode_inclus_prix">
 	            {{'inclus_prix'|trans }}
@@ -125,5 +120,20 @@
                 </div>
 	        </div>
     	{% endif %}
+    	</div>
+    </div>
+    <div class="col-md-3 offre-prestation-container">
+    	<div class="offre-prestation">
+			<h2 class="offre-prestation-title">{{'boat_prestation_available'|trans }}</h2>
+	    	{% for prestation in prestations %}
+	    		<div class="prestation">
+	    			<img src="{{ prestation.iconeWebPath|replace({ ('75'): '25' }) }}" class="img-responsive img-thumbnails pull-left" />
+	    			<div class="prestation-name">{{ prestation.name }}</div>
+	    		</div>
+	    	{% endfor %}
+    	</div>
+    	<div class="text-center">
+	    	<a href="{{ path('skipper_contact', { 'id': offreSpeciale.skipper.id }) }}" class="btn btn-warning">{{'contact_skipper'|trans}}</a> 
+    	</div>
     </div>
 {% endblock content %}

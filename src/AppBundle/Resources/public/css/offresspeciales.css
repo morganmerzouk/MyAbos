@@ -40,6 +40,7 @@ h1.special-offer-title {background: url("../images/menu/icones/icon-sprite-offre
 .col-fiche-bateau{ border: 3px solid #23B6E1; margin-top: 10px;padding:0;}
 .col-fiche-bateau .block-boat-spec { overflow: auto;  margin: 0px 10px; border: 1px solid white;background: #127BBD;color:white;}
 .col-fiche-bateau img {background: #23B6E1;padding: 5px;border-right: 2px solid white;margin-right:10px;}
+.offre-boat-img { margin: 1%; width: 48%; padding: 0;}
 .col-fiche-bateau h3 {background: #23B6E1; font-size: 1.1em; padding: 10px; margin: 0;font-weight:bold;}
 .btn-contact {margin-bottom: 10px;}
 
@@ -49,3 +50,30 @@ h1.special-offer-title {background: url("../images/menu/icones/icon-sprite-offre
 .offre-desti-content { margin: 5px; padding:5px; background: white;text-align: left;}
 .offre-desti ul { list-style-position: inside; margin: 0px; padding: 0px;  }
 .offre-desti-content strong { font-size: 0.9em; }
+
+/*** Offres Spéciales - Price ***/
+.col-md-3.offre-prestation-container { padding: 0;}
+.offre-prestation-title { font-size: 1.1em; color: white; margin: 0px 0px 10px 0px; padding: 10px;text-align: center;  background: #127BBD; }
+.offre-prestation { background: #23B6E1; padding: 0 0 10px 0; margin-bottom: 5px; }
+.prestation { background: white; width: 90%; margin: 5px auto; overflow: auto; clear: both;padding: 5px; }
+.prestation .prestation-name { margin-left: 30px;}
+.tarif-accordion { margin: 10px auto; padding-top: 0;}
+#tarifOffre h2 {margin: 0 0 10px 0; background: #23B6E1; padding: 5px; font-size: 1.3em;  border: 1px solid black; }
+#tarifOffre h3 { font-weight: bold; font-size: 1.2em;padding: 5px;background: #127BBD; color: white; border: 1px solid black;margin: 0; }
+#tarifOffre h3:hover { cursor: pointer; background: #23B6E1; color: black; }
+#tarifOffre h3.title-hover { background: #23B6E1; color: black; }
+#tarifOffre table td { padding: 5px; border: 1px solid black;}
+.tarif-croisiere-tarif {padding: 5px; border: 1px solid #B3B3B3;}
+.subblock-periode { margin: 0 0 10px 0;border: 1px solid #B3B3B3;  padding: 5px;overflow: auto;}
+.subblock-periode table td { border: 1px solid black;padding: 10px; color: black;}
+.periode-table-personne { text-align: center; }
+.periode-table-title {background: #23B6E1; text-align: left; }
+.odd { background: #127BBD;color: white;}
+.even { background: #23B6E1;color: black;}
+.tarif-accordion .even, .subblock-periode .odd { padding: 5px;margin: 1px; }
+.service-payant-categorie {display:block; float:none;clear: both;}
+.tarif-accordion .col-md-6 { border: 1px solid white;padding:0; }
+.tarif-accordion .servicepayant div {margin: 0;padding:5px;}
+
+/*** Offres Spéciales - Contact ***/
+.offre-contact { border: 3px solid #23B6E1; padding: 10px; }
