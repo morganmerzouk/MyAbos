@@ -1,16 +1,20 @@
-h1 {background: #23B6E1; font-size: 1.2em; padding: 10px;margin: 0;}
-.block-description-prestations { margin: 0; background: #127BBD; padding: 10px; }
+h1 {background: url("../images/menu/icones/icon-sprite-prestations.png") no-repeat 5px 10px #23B6E1; font-size: 1.2em; padding: 10px 10px 10px 30px;margin: 0;}
+.block-description-prestations { margin: 0; background: #127BBD; padding: 10px;color: white;  }
 .row-prestation { overflow: auto; }
-.prestation { width:30%; background: #127BBD; padding: 10px; text-align: center; margin: 1%;}
-.prestation a { color: black; }
+.prestation { background: #127BBD; padding: 10px; text-align: center; border: 5px solid white;}
+.prestation a { color: white;  }
 
 .block-croisiere .row { margin: 10px; text-align:left;}
 
 /*** Page Prestation ***/
 .block-prestations-name { display: table; width: 100%; }
-.prestations-name { display: table-cell; background: #127BBD; padding: 5px; font-size: 0.9em; text-align: center; color: black; }
+.prestations-name { display: table-cell; background: #127BBD; padding: 5px; font-size: 0.9em; text-align: center; color: white; }
 .prestations-name:hover,
 .prestations-name.active { text-decoration: none; color: black; background: #23B6E1; }
 
-.block-bateau-prestation { float: right; width: 30%; background: #23B6E1; border: 1px solid black; padding: 10px;text-align:center; margin: 10px 0 10px 10px; }
-.block-bateau-prestation .row { background:#127BBD; padding: 10px; margin: 10px; text-align: left; }
+.col-md-3.prestation-boat-container { padding: 0;}
+.prestation-boat-title { font-size: 1.1em; color: white; margin: 10px 0px 10px 0px; padding: 10px;text-align: center;  background: #127BBD; }
+.prestation-boat { background: #23B6E1; padding: 0 0 10px 0; margin-bottom: 5px; }
+.boat { background: white; width: 90%; margin: 5px auto; overflow: auto; clear: both;padding: 5px; }
+.boat img { padding: 0; margin-right: 10px; }
+.boat .boat-name { margin-left: 30px;}

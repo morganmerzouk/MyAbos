@@ -109,13 +109,17 @@
 		        </h3>
                 <div class="subblock-periode servicepayant">
                 	{% set currentCategory = null %}
-	        		{% for service in servicepayant %}
+	        		{% for service in offreSpeciale.servicepayant %}
 		        		{% if service.categorie != currentCategory %}
 		        			{% set currentCategory = service.categorie %}
 	                    	<div class="col-md-6 even service-payant-categorie">{{service.categorie}}</div>
 	                    {% endif %}
 	                    <div class="col-md-6 odd">{{service.name}}</div>
-	                    <div class="col-md-6 odd">50 euros par heure</div>
+			            {% if service.fraisSupplementaires > 0 %}
+			            	<div class="col-md-6 odd">{{service.fraisSupplementaires}}{{service.devise}} {{service.tarifApplique }}</div>
+                    	{% else %}
+	                    	<div class="col-md-6"></div>
+                    	{% endif %}
                     {% endfor %}
                 </div>
 	        </div>

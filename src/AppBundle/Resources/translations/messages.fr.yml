@@ -32,6 +32,7 @@ boat_desti: Destinations
 boat_crew: Equipages
 boat_fiche: Fiche technique
 boat_presentation: Présentation
+boat_offering: Bateaux proposant
 boat_prestation_available: Prestations proposées à bord
 boat_configuration: Configuration du bateau
 boat_specificites: Spécificité du bateau
