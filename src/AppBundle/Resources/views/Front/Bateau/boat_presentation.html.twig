@@ -11,18 +11,18 @@
 	        </div>
 	    </div>
 	    <div class="bateau-photo clearfix">
-	        <img class="col-md-2 img-responsive img-thumbnails" src="{{ boat.photoVoileWebPath }}" alt="photo voile" />
-	        <img class="col-md-2 img-responsive img-thumbnails" src="{{ boat.photoMouillageWebPath }}" alt="photo mouillage" />
-	        <img class="col-md-2 img-responsive img-thumbnails" src="{{ boat.photoCockpitWebPath }}" alt="photo cockpit"  />
-	        <img class="col-md-2 img-responsive img-thumbnails" src="{{ boat.photoCarreWebPath }}" alt="photo carre" />
-	        <img class="col-md-2 img-responsive img-thumbnails" src="{{ boat.photoCabineWebPath }}" alt="photo cabine" />
+	        {% if boat.photoVoileWebPath is not null %}<img class="col-md-2 img-responsive img-thumbnails" src="{{ boat.photoVoileWebPath }}" alt="photo voile" />{% endif %}
+	        {% if boat.photoMouillageWebPath is not null %}<img class="col-md-2 img-responsive img-thumbnails" src="{{ boat.photoMouillageWebPath }}" alt="photo mouillage" />{% endif %}
+	        {% if boat.photoCockpitWebPath is not null %}<img class="col-md-2 img-responsive img-thumbnails" src="{{ boat.photoCockpitWebPath }}" alt="photo cockpit"  />{% endif %}
+	        {% if boat.photoCarreWebPath is not null %}<img class="col-md-2 img-responsive img-thumbnails" src="{{ boat.photoCarreWebPath }}" alt="photo carre" />{% endif %}
+	        {% if boat.photoCabineWebPath is not null %}<img class="col-md-2 img-responsive img-thumbnails" src="{{ boat.photoCabineWebPath }}" alt="photo cabine" />{% endif %}
 	    </div>
     </div>
     <div class="col-md-3 boat-prestation">
 	<h2 class="boat-prestation-title">{{'boat_prestation_available'|trans }}</h2>
     	{% for prestation in prestations %}
     		<div class="prestation">
-    			<img src="{{ prestation.iconeWebPath }}" class="img-responsive img-thumbnails pull-left" />
+    			<img src="{{ prestation.iconeWebPath|replace({ ('75'): '25' }) }}" class="img-responsive img-thumbnails pull-left" />
     			{{ prestation.name }}
     		</div>
     	{% endfor %}

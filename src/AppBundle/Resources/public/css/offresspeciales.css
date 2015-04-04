@@ -43,7 +43,8 @@ h1.special-offer-title {background: url("../images/menu/icones/icon-sprite-offre
 .offre-boat-img { margin: 1%; width: 48%; padding: 0;}
 .col-fiche-bateau h3 {background: #23B6E1; font-size: 1.1em; padding: 10px; margin: 0;font-weight:bold;}
 .btn-contact {margin-bottom: 10px;}
-
+.boat-spec-content {border: 0;line-height: 50px;}
+.boat-spec-content.multiline {border: 0;line-height: normal; padding: 5px;}
 /*** Offres Spéciales - Desti ***/
 .offre-desti { background: #23B6E1; border: 1px solid #127BBD; padding: 0 0 10px 0; overflow: auto; }
 .offre-desti-title { font-size: 1em;margin: 0 0 10px 0;padding: 10px;background: #127BBD;color: white;}

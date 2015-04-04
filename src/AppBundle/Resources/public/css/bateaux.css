@@ -39,7 +39,8 @@ h1 {background: url("../images/menu/icones/icon-sprite-flotte.png") no-repeat 5p
 .prestation { background: white; width: 90%; margin: 5px auto; overflow: auto; clear: both; }
 
 /*** Page boat spec ***/
-.boat-spec-content {border: 0;}
+.boat-spec-content {border: 0;line-height: 50px;}
+.boat-spec-content.multiline {border: 0;line-height: normal; padding: 5px;}
 
 .col-fiche-bateau{ border: 3px solid #23B6E1; margin-top: 10px;padding:0;}
 .col-fiche-bateau .block-boat-spec { overflow: auto;  margin: 0px 10px; border: 1px solid white;background: #127BBD;color:white;}
