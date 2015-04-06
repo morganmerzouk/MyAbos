@@ -1,9 +1,10 @@
-h1.special-offer-title {background: url("../images/menu/icones/icon-sprite-offres.png") no-repeat 5px 10px #23B6E1;font-size: 1.2em;padding: 15px 10px 10px 40px;margin: 0; }
+h1.specials-offers-title {background: url("../images/menu/icones/icon-sprite-offres.png") no-repeat 5px 5px #23B6E1;font-size: 1.4em;padding: 7px 10px 5px 35px;margin: 0; }
+h1.special-offer-title {background: url("../images/menu/icones/icon-sprite-offres.png") no-repeat 5px 5px #23B6E1;font-size: 1.2em;padding: 10px 10px 10px 35px;margin: 0; }
 .description h2 { font-size: 1.2em; font-weight: bolder; margin: 8px 0;text-align:center;}
 .description {background-color:#23B6E1; margin: 10px 0;padding:10px;overflow: auto;font-size: 0.7em;font-weight: normal;padding: 1px; margin: 8px 0;text-align:left;}
 .description .col-md-4 { text-align: left; padding: 1px;}
 .description .col-md-4.type { text-align: center; }
-.description-content { text-align: center; padding: 10px; clear: both;}
+.description-content { text-align: left; padding: 10px; clear: both;}
 .special-offer-img { margin: 10px 0; }
 .price, .btn-more { margin: 5px; }
 
@@ -37,7 +38,7 @@ h1.special-offer-title {background: url("../images/menu/icones/icon-sprite-offre
 /*** Offres Spéciales - Boat ***/
 .offrespeciale-boat-description { overflow:auto; margin-bottom: 5px;}
 .offrespeciale-boat-description h2 { text-align: center;margin: 5px;}
-.col-fiche-bateau{ border: 3px solid #23B6E1; margin-top: 10px;padding:0;}
+.col-fiche-bateau{ border: 3px solid #23B6E1; margin:0px;padding:0;}
 .col-fiche-bateau .block-boat-spec { overflow: auto;  margin: 0px 10px; border: 1px solid white;background: #127BBD;color:white;}
 .col-fiche-bateau img {background: #23B6E1;padding: 5px;border-right: 2px solid white;margin-right:10px;}
 .offre-boat-img { margin: 1%; width: 48%; padding: 0;}

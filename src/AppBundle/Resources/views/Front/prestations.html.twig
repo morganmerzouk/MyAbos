@@ -11,21 +11,18 @@
 
 {% block content %}
 	<h1>{{'home_prestations'|trans }}</h1>
-        <div class="block-description-prestations">
-            {{'prestations_intro'|trans }}
-        </div>
-        {% for prestation in prestations %}
-                {% if loop.index0 % 4 == 0 %}
-                    <div class="row-prestation">
-                {% endif %}
-            <div class="col-md-3 col-20 prestation">
-                <a href="{{ path('prestation', { 'id': prestation.id }) }}">
-                    <img class="img-responsive img-thumbnail" src="{{ prestation.iconeWebPath }}" alt="photo {{ prestation.name }}" /><br />
-                    <span>{{ prestation.name }}</span>
-                </a>
-            </div>
-            {% if loop.index0 % 4 == 3 %}
-                    </div>
+    {% for prestation in prestations %}
+            {% if loop.index0 % 4 == 0 %}
+                <div class="row-prestation">
             {% endif %}
-        {% endfor %}
+        <div class="col-md-3 col-20 prestation">
+            <a href="{{ path('prestation', { 'id': prestation.id }) }}">
+                <img class="img-responsive img-thumbnail" src="{{ prestation.iconeWebPath }}" alt="photo {{ prestation.name }}" /><br />
+                <span>{{ prestation.name }}</span>
+            </a>
+        </div>
+        {% if loop.index0 % 4 == 3 %}
+                </div>
+        {% endif %}
+    {% endfor %}
 {% endblock content %}

@@ -1,7 +1,8 @@
 h1 {background: #23B6E1; font-size: 1.2em; padding: 10px;margin: 0;}
 
 .row-skipper { overflow: auto; }
-.skipper { width:30%; background: #127BBD; padding: 10px; text-align: center; margin: 1%;margin-top:10px;}
+.skipper { width:30%; background: #127BBD; padding: 10px; text-align: center; margin: 1%;margin-top:10px;color: white;}
+.skipper:hover { background: #23B6E1; color: black; border: 1px solid black;}
 .skipper p { text-align:left; font-size:0.9em;}
 .block-croisiere { float: right; width: 30%; border: 1px solid black; padding: 10px;text-align:center;margin-top:10px; }
 .block-croisiere .row { margin: 10px; text-align:left;}
@@ -20,17 +21,49 @@ h1 {background: #23B6E1; font-size: 1.2em; padding: 10px;margin: 0;}
 .skipper-price { background-image: url("../images/icones/boat/icon-tarifs-et-options-25%20pix.png"); }
 .skipper-contact { background-image: url("../images/icones/boat/icon-devis-et-contact-25%20pix.png"); }
 
+.boat-block-special-offer .offreName { margin: 0; margin-bottom: 10px; padding:10px; color: white; background: #127BBD; font-size: 1.2em; }
+.boat-block-special-offer .boatName { padding:5px; font-size: 1em; }
+.boat-block-special-offer { text-align: center; border: 1px solid #B3B3B3; margin: 10px 0 0 0; padding: 0;  overflow: auto; }
+.boat-block-special-offer h3 { background: #23B6E1; color:white; text-align: center; margin: 0;padding: 5px;  font-size: 1.5em; }
+.boat-block-special-offer .img-responsive { margin: 10px; }
+.boat-block-special-offer .bateau-prix-semaine {background: #23B6E1; color:white; text-align: center; margin: 0; }
+.boat-block-special-offer .bateaux-icones { float: left; padding: 5px; }
+.boat-block-special-offer .bateaux-description {clear: both;text-align: justify;padding:0 10px;}
+.boat-block-special-offer .btn-warning {margin: 10px;}
+
+.col-offre-speciale  {padding: 0;}
+.boat-tarif-pour { font-size: 0.8em;}
+/*** Skipper - Destinations ***/
+
+.boat-desti h3 { font-size: 1.2em;padding: 5px;border: 1px solid black;margin: 0; background: #23B6E1; color: black; }
+.boat-desti-itineraire { overflow: auto; border: 1px solid #B3B3B3; padding: 5px; }
+.boat-desti h3 .boat-desti-localisation {margin: 0 0 10px 0; }
+.boat-desti-block-localisation { padding: 5px;}
+.boat-desti h3.cible { background: #127BBD; color: white; }
+.boat-desti h3.cible.title-hover { background: #23B6E1; color: black; }
+.boat-desti h3.cible:hover { cursor: pointer; background: #23B6E1; color: black; }
+
+/*** Skipper - Disponibilités ***/
+
 table.month { border: 1px solid black;}
 .monthname th { text-align: center; background: #127BBD; color: white; font-weight: bold; padding:5px;}
 .month td { text-align: center; border: 1px solid black; }
 td .active { margin: 1px; border-radius: 3px; background: lightgrey; }
 .ligne { overflow: auto; margin-bottom: 10px;}
-
-/*** Page Disponibilités ***/
 .tableLegend { display: inline-block; margin-right: 10px; }
 td.legend  { border: 1px solid black; width: 20px; border-radius: 0; }
 td.libelleLegend { padding-left: 5px;}
 .legend div {  padding: 1px 5px; }
 
-/*** Page Boat ***/
-.skipper-boat-description {overflow: auto; margin-bottom: 10px;}
+/*** Skipper - Boat ***/
+.offrespeciale-boat-description { overflow:auto; margin-bottom: 5px;}
+.offrespeciale-boat-description h2 { text-align: center;margin: 5px;}
+.col-fiche-bateau{ border: 3px solid #23B6E1; margin:0px;padding:0;}
+.col-fiche-bateau .block-boat-spec { overflow: auto;  margin: 0px 10px; border: 1px solid white;background: #127BBD;color:white;}
+.col-fiche-bateau img {background: #23B6E1;padding: 5px;border-right: 2px solid white;margin-right:10px;}
+.offre-boat-img { margin: 1%; width: 48%; padding: 0;}
+.col-fiche-bateau h3 {background: #23B6E1; font-size: 1.1em; padding: 10px; margin: 0;font-weight:bold;}
+.btn-contact {margin-bottom: 10px;}
+.boat-spec-content {border: 0;line-height: 50px;}
+.boat-spec-content.multiline {border: 0;line-height: normal; padding: 5px;}
+

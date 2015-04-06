@@ -11,7 +11,7 @@
         {{'tarif_croisiere_to'|trans }} {{ offreSpeciale.dateFin|date('d/m/Y') }}</h3>
         <div class="tarif-croisiere-tarif">
         	{{'tarif_croisiere_nbcabine'|trans }}{{ offreSpeciale.nbCabine }}<br />
-        	{{'periode_tarif_cruise_pour'|trans }} {{ offreSpeciale.tarifPour }}
+        	{{'periode_tarif_cruise_pour'|trans }} {{ offreSpeciale.tarifPour|trans }}
             <table>
                 <tr class="periode-table-personne"><td class="periode-table-title">{{'nombre_de_personne'|trans }}</td>
                     {% if offreSpeciale.tarifDeuxPersonnes is not null %}<td>2</td>{% endif %}
@@ -112,11 +112,11 @@
 	        		{% for service in offreSpeciale.servicepayant %}
 		        		{% if service.categorie != currentCategory %}
 		        			{% set currentCategory = service.categorie %}
-	                    	<div class="col-md-6 even service-payant-categorie">{{service.categorie}}</div>
+	                    	<div class="col-md-6 even service-payant-categorie">{{service.categorie|trans}}</div>
 	                    {% endif %}
 	                    <div class="col-md-6 odd">{{service.name}}</div>
 			            {% if service.fraisSupplementaires > 0 %}
-			            	<div class="col-md-6 odd">{{service.fraisSupplementaires}}{{service.devise}} {{service.tarifApplique }}</div>
+			            	<div class="col-md-6 odd">{% if service.devise == "$"%}{{service.devise}}{%endif%}{{service.fraisSupplementaires}}{% if service.devise == "€"%}{{service.devise}}{%endif%} {{service.tarifApplique|trans }}</div>
                     	{% else %}
 	                    	<div class="col-md-6"></div>
                     	{% endif %}

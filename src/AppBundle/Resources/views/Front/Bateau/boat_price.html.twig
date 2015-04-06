@@ -14,7 +14,7 @@
                 </h3>
                 <div class="subblock-periode">
 	                {{'periode_tarif_du'|trans }} {{ tarif.nombreJourMinimum }} {{'day'|trans }} {{'periode_tarif_au'|trans }} {{ tarif.nombreJourMaximum }} {{'days'|trans }} {{'periode_tarif_cruise'|trans }}<br />
-	                {{'periode_tarif_cruise_pour'|trans }} {{ tarif.tarifPour }}
+	                {{'periode_tarif_cruise_pour'|trans }} {{ tarif.tarifPour|trans }}
 	                <table>
 	                    <tr class="periode-table-personne"><td class="periode-table-title">{{'nombre_de_personne'|trans }}</td>
 	                        {% if tarif.tarifDeuxPersonnes is not null %}<td>2</td>{% endif %}

@@ -16,6 +16,27 @@ selectionner: Sélectionner
 see_specials_offers: Voir toutes les offres spéciales
 offres_speciales: Offres spéciales
 
+Activités supplémentaires: Activités supplémentaires
+Equipiers supplémentaires: Equipiers supplémentaires
+Service d'avitaillement supplémentaire: Service d'avitaillement supplémentaire
+Equipements supplémentaires: Equipements supplémentaires
+Autres prestations disponibles à bord: Autres prestations disponibles à bord
+Cours de kitesurf: Cours de kitesurf
+Prix par personnejour: par personne par jour
+Prix par personne/jour: par personne/jour
+Prix par personnesemaine: par personne par semaine
+Prix par personne/semaine: par personne/semaine
+Prix du bateaujour: par bateau par jour
+Prix du bateau/jour: par bateau/jour
+Prix du bateausemaine: par bateau par semaine
+Prix du bateau/semaine: par bateau/semaine
+1 jour/bateau: 1 jour/bateau
+7 jours/bateau: 7 jours/bateau
+10 jours/bateau: 10 jours/bateau
+1 jour/personne: 1 jour/personne
+7 jours/personne: 7 jours/personne
+10 jours/personne: 10 jours/personne
+
 offrespeciale_presentation: Présentation
 offrespeciale_boat: Bateau
 skipper_qualification_experience: Qualifications et Expérience
@@ -32,6 +53,9 @@ boat_desti: Destinations
 boat_crew: Equipages
 boat_fiche: Fiche technique
 boat_presentation: Présentation
+boat_price_from: A partir de
+boat_price_personnes: personnes
+boat_price_for: Tarif par personne sur une base de
 boat_offering: Bateaux proposant
 boat_prestation_available: Prestations proposées à bord
 boat_configuration: Configuration du bateau
@@ -79,6 +103,7 @@ passagers: passagers
 jours: jours
 devis_croisiere: Croisière kite de
 votre_devis: Votre devis sur mesure
+boat_get_estimate: Obtenez votre devis en un click!
 between: entre le
 price_for: Tarif pour
 choose_your_options: Sélectionnez vos options payantes
@@ -127,7 +152,6 @@ know_more: En savoir +
 newsletter: Newsletter
 newsletter_subscribe: S'abonner
 prestation_boats: Bateaux proposants
-prestations_intro: Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.
 
 skipper_presentation: Présentation
 skipper_boat: Bateau
@@ -135,6 +159,11 @@ skipper_desti: Destinations
 skipper_availability: Disponibilités
 skipper_price: Tarif
 skipper_contact: Contacter
+
+skipper-desti-localisation-boat: Localisation du skipper
+skipper-desti-localisation-boat-label-portdepart: Le port de départ habituel de ce skipper est
+skipper-desti-localisation-boat-label-destination: D'ici, les destinations possibles sont
+skipper-desti-date-operation: Dates d'opération de cet itinéraire:
 
 crew_title: Les skippers encadrant des croisières kite
 

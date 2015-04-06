@@ -15,6 +15,27 @@ nb_cabine_dispo: Number of cabin available
 see_specials_offers: See all special offers
 offres_speciales: Special Offers
 
+Activités supplémentaires: Additional activities
+Equipiers supplémentaires: Additional crew
+Service d'avitaillement supplémentaire: Additional provisioning
+Equipements supplémentaires: Additional gear
+Autres prestations disponibles à bord: Additional services on board
+Cours de kitesurf: Kitesurf lesson
+Prix par personnejour: per passenger per day
+Prix par personne/jour: per passenger/day
+Prix par personnesemaine: per passenger per week
+Prix par personne/semaine: per passenger/week
+Prix du bateaujour: per boat per day
+Prix du bateau/jour: per boat/day
+Prix du bateausemaine: per boat per week
+Prix du bateau/semaine: per boat/week
+1 jour/bateau: 1 day/boat
+7 jours/bateau: 7 days/boat
+10 jours/bateau: 10 days/boat
+1 jour/personne: 1 day/passenger
+7 jours/personne: 7 days/passenger
+10 jours/personne: 10 days/passenger
+
 offrespeciale_presentation: Presentation
 offrespeciale_boat: Boat
 skipper_qualification_experience: Qualifications and Experience
@@ -32,6 +53,9 @@ boat_desti: Destinations
 boat_crew: Crew
 boat_fiche: Boat specs
 boat_presentation: Overview
+boat_price_for: Price per passenger for
+boat_price_from: From
+boat_price_personnes: passengers
 boat_offering: Boats offering
 boat_prestation_available: Service available on board
 boat_configuration: Configuration of the boat
@@ -65,7 +89,6 @@ boat-desti-localisation-boat-label-portdepart: The usual departure place of this
 boat-desti-localisation-boat-label-destination: From there, you can sail to 
 boat-desti-date-operation: Itinerary available from
 
-
 special_offer_with: Special offer with
 tarif_bateau_title: Price of the boat
 form_sejour_possible_debut: Cruise possible between: 
@@ -79,6 +102,7 @@ passagers: passengers
 jours: days
 devis_croisiere: Kite cruise of
 votre_devis: Your customized estimate
+boat_get_estimate: Get your estimate in one click
 between: between
 price_for: Price for
 choose_your_options: Choose your options
@@ -125,7 +149,6 @@ know_more: About
 newsletter: Newsletter
 newsletter_subscribe: Subscribe
 prestation_boats: Boat offering
-prestations_intro: The Lorem Ipsum is simply a dummy text used to fill out layout.The Lorem Ipsum is simply a dummy text used to fill out layoutThe Lorem Ipsum is simply a dummy text used to fill out layoutThe Lorem Ipsum is simply a dummy text used to fill out layoutThe Lorem Ipsum is simply a dummy text used to fill out layout
 
 skipper_presentation: Presentation
 skipper_boat: Boats
@@ -133,6 +156,11 @@ skipper_desti: Destinations
 skipper_availability: Availability
 skipper_price: Price
 skipper_contact: Contact
+
+skipper-desti-localisation-boat: Localisation of the skipper
+skipper-desti-localisation-boat-label-portdepart: The usual departure place of this skipper is
+skipper-desti-localisation-boat-label-destination: From there, you can sail to 
+skipper-desti-date-operation: Itinerary available from
 
 crew_title: Crew on board
 find_cruise: Find a cruise

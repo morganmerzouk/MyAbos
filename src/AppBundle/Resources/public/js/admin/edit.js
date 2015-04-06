@@ -1,7 +1,7 @@
 $(document).ready(function()  {
 	//Page servicepayant
     if($("form.servicepayant_edit, form.servicepayant_create").length) {
-    	var equipierAvitaillement = ["Equipiers supplémentaires","Service d'avitaillement supplémentaire"];
+    	var equipierAvitaillement = ["Equipiers supplémentaires", "Additional crew", "Additional provisioning","Service d'avitaillement supplémentaire"];
     	//On récupère la catégorie actuelle pour afficher les bons éléments
     	var categorie = $("select[id$='categorie'] option:selected").text();
     	afficherElementCategorie(categorie);

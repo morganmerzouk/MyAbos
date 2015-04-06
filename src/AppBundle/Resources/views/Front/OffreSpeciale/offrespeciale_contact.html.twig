@@ -102,13 +102,14 @@
 		        		{% for service in offreSpeciale.servicepayant %}
 			        		{% if service.categorie != currentCategory %}
 			        			{% set currentCategory = service.categorie %}
-		                    	<div class="col-md-5 even text-center">{{service.categorie}}</div>
+		                    	<div class="col-md-5 even text-center">{{service.categorie|trans}}</div>
 		                    	<div class="col-md-5 even text-center">{{'boat_price'|trans }}</div>
 		                    	<div class="col-md-2 even text-center">{{'selectionner'|trans }}</div>
 		                    {% endif %}
 		                    <div class="col-md-5 odd">{{service.name}}</div>
 		                    {% if service.fraisSupplementaires > 0 %}
-		                    	<div class="col-md-5 odd">{{service.fraisSupplementaires}}{{service.devise}} {{service.tarifApplique }}</div>
+		                    	
+		                    	<div class="col-md-5 odd">{% if service.devise == "$"%}{{service.devise}}{%endif%}{{service.fraisSupplementaires}}{% if service.devise == "€"%}{{service.devise}}{%endif%} {{service.tarifApplique|trans}}</div>
 		                    {% else %}
 		                    	<div class="col-md-5"></div>
 	                    	{% endif %}

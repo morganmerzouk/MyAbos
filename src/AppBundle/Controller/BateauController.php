@@ -16,10 +16,9 @@ class BateauController extends Controller
     {
         $request = $this->getRequest();
         $locale = $request->getLocale();
-        
-        $boats = $this->getDoctrine()
+        $croisieres = $this->getDoctrine()
             ->getManager()
-            ->getRepository("AppBundle\Entity\Bateau")
+            ->getRepository("AppBundle\Entity\Croisiere")
             ->createQueryBuilder('s')
             ->select('s, t')
             ->join('s.translations', 't')
@@ -28,7 +27,7 @@ class BateauController extends Controller
             ->getQuery()
             ->getResult();
         return $this->render('AppBundle:Front:Bateau/boats.html.twig', array(
-            'boats' => $boats
+            'croisieres' => $croisieres
         ));
     }
 
@@ -218,8 +217,7 @@ class BateauController extends Controller
         return $this->render('AppBundle:Front:Bateau/boat_crew.html.twig', array(
             'boat' => $boat,
             'skipper' => isset($croisiere[0]) ? $croisiere[0]->getSkipper() : null,
-            'offrespeciale_id' => isset($offreSpeciale[0]) ? $offreSpeciale[0]->getId() : null,
-            'offrespeciale_bateau' => isset($offreSpeciale[0]) ? $offreSpeciale[0]->getBateau() : null
+            'offrespeciale' => isset($offreSpeciale[0]) ? $offreSpeciale[0] : null
         ));
     }
 

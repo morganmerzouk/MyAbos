@@ -52,9 +52,26 @@ class SkipperController extends Controller
             ->getQuery()
             ->getSingleResult();
         
+        $offreSpeciale = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("AppBundle\Entity\OffreSpeciale")
+            ->createQueryBuilder('os')
+            ->select('os, b, ost, bt')
+            ->join('AppBundle\Entity\Bateau', 'b', 'WITH', 'os.bateau = b.id')
+            ->join('os.translations', 'ost')
+            ->join('b.translations', 'bt')
+            ->where('os.skipper = :id')
+            ->setParameter(':id', $id)
+            ->andWhere('bt.locale = :locale')
+            ->andWhere('ost.locale = :locale')
+            ->setParameter(':locale', $locale)
+            ->getQuery()
+            ->getResult(Query::HYDRATE_OBJECT);
+        
         return $this->render('AppBundle:Front:Skipper/skipper_presentation.html.twig', array(
             'skipper' => $skipper,
-            'id' => $id
+            'id' => $id,
+            'offrespeciale' => isset($offreSpeciale[0]) ? $offreSpeciale[0] : null
         ));
     }
 
@@ -80,7 +97,9 @@ class SkipperController extends Controller
             ->getQuery()
             ->getResult(Query::HYDRATE_OBJECT);
         return $this->render('AppBundle:Front:Skipper/skipper_bateau.html.twig', array(
-            'bateaux' => ($croisiere[0]->getBateau())
+            'boat' => ($croisiere[0]->getBateau()),
+            'skipper_id' => $croisiere[0]->getSkipper()
+                ->getId()
         ));
     }
 
@@ -89,26 +108,58 @@ class SkipperController extends Controller
      */
     public function skipperDestiAction($id)
     {
-        $request = $this->getRequest();
-        $locale = $request->getLocale();
+        $locale = $this->getRequest()->getLocale();
         
-        $destinations = null;
+        $croisiere = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("AppBundle\Entity\Croisiere")
+            ->createQueryBuilder('c')
+            ->select('c, ic, i, pd, d')
+            ->join('c.itineraireCroisiere', 'ic')
+            ->join('ic.itineraire', 'i')
+            ->join('i.translations', 'it')
+            ->join('i.portDepart', 'pd')
+            ->join('pd.translations', 'pdt')
+            ->join('i.destination', 'd')
+            ->join('d.translations', 'dt')
+            ->where('c.skipper = :id')
+            ->andWhere('it.locale = :locale')
+            ->andWhere('pdt.locale = :locale')
+            ->andWhere('dt.locale = :locale')
+            ->setParameter(':id', $id)
+            ->setParameter(':locale', $locale)
+            ->getQuery()
+            ->getOneOrNullResult();
         
-        /*
-         * $this->getDoctrine()->getManager()->getRepository("AppBundle\Entity\Croisiere")
-         * ->createQueryBuilder('c')
-         * ->select('c, b')
-         * ->join('AppBundle\Entity\Bateau', 'b', 'WITH', 'c.bateau = b.id')
-         * ->join('b.translations', 't')
-         * ->where('c.skipper = :id')->setParameter(':id', $id)
-         * ->andWhere('t.locale = :locale')->setParameter(':locale', $locale)
-         * ->getQuery()
-         * ->getResult();
-         */
+        $portDepart = null;
+        if ($croisiere != null) {
+            foreach ($croisiere->getItineraireCroisiere() as $itineraireCroisiere) {
+                if ($itineraireCroisiere->getParDefaut() == 1) {
+                    $portDepart = $itineraireCroisiere->getItineraire()->getPortDepart();
+                }
+            }
+        }
+        
+        $offreSpeciale = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("AppBundle\Entity\OffreSpeciale")
+            ->createQueryBuilder('os')
+            ->select('os, b, ost, bt')
+            ->join('AppBundle\Entity\Bateau', 'b', 'WITH', 'os.bateau = b.id')
+            ->join('os.translations', 'ost')
+            ->join('b.translations', 'bt')
+            ->where('os.skipper = :id')
+            ->setParameter(':id', $id)
+            ->andWhere('bt.locale = :locale')
+            ->andWhere('ost.locale = :locale')
+            ->setParameter(':locale', $locale)
+            ->getQuery()
+            ->getResult(Query::HYDRATE_OBJECT);
         
         return $this->render('AppBundle:Front:Skipper/skipper_desti.html.twig', array(
-            'destinations' => $destinations,
-            'id' => $id
+            'portDepart' => $portDepart,
+            'itinerairesCroisiere' => $croisiere != null ? $croisiere->getItineraireCroisiere() : null,
+            'offrespeciale' => isset($offreSpeciale[0]) ? $offreSpeciale[0] : null
         ));
     }
 

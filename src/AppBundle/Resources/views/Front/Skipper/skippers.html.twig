@@ -11,26 +11,7 @@
 
 {% block content %}
 	<h1>{{'crew_title'|trans}}</h1>
-	<div class="block-croisiere">
-		<h4>Croisière kite à ste lucie<br />
-		Avril 2015
-		</h4>
-		<img class="img-thumbnail img-responsive" src="{{ asset("bundles/app/images/test/slider1.jpg") }}" />
-		<div class="row">
-			<img class="img-thumbnail" src="{{ asset("bundles/app/images/test/ICON-prestations-high-end-75 pixels-noir.png") }}" />
-			Bateau: lagoon 44
-		</div>
-		<div class="row">
-			<img class="img-thumbnail" src="{{ asset("bundles/app/images/test/ICON-prestations-hostess-75 pixels-noir.png") }}" />
-			Île de départ: Martinique
-		</div>
-		<div class="row">
-			<img class="img-thumbnail" src="{{ asset("bundles/app/images/test/ICON-prestations-chef-75 pixels-noir.png") }}" />
-			8 personnnes
-		</div>
-		<a href="#" class="btn btn-sm btn-warning pull-right">Détails</a>
-	</div>
-    {% for skipper in skippers %}
+	{% for skipper in skippers %}
 	    {% if loop.index0 % 3 == 0 %}
 	    	<div class="row-skipper">
 	    {% endif %}

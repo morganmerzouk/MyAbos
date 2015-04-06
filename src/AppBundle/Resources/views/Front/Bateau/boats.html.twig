@@ -10,30 +10,37 @@
 
 {% block content %}
     <h1>{{'boats'|trans}}</h1>
-    {% for boat in boats %}
+    {% for croisiere in croisieres %}
 	    {% if loop.index0 % 3 == 0 %}
 	    	<div class="row-bateau">
 	    {% endif %}
         <div class="col-md-4 bateau {% if loop.index0 % 3 == 2 %}bateau-last{% endif %}">
-            <h3>{{ boat.name }}</h3>
-            <img class="img-responsive img-thumbnail" src="{{ boat.miniatureWebPath }}" alt="photo {{ boat.name }}" /><br />
+            <h3>{{ croisiere.bateau.name }}</h3>
+            <img class="img-responsive img-thumbnail" src="{{ croisiere.bateau.miniatureWebPath }}" alt="photo {{ croisiere.bateau.name }}" /><br />
             <p class="bateau-prix-semaine"> 
-                A partir de 1250 € la semaine*
-                <br />
-                <span class="small">Tarif par personne sur une base de 8 personnes</span>
+                {{'boat_price_from'|trans}} 	                       
+                 {% if croisiere.tarifCroisiere[0].tarifHuitPersonnes is not null %}{% set base= 8 %}{{croisiere.tarifCroisiere[0].tarifHuitPersonnes/8}}
+	             {% elseif croisiere.tarifCroisiere[0].tarifSeptPersonnes is not null %}{% set base= 7 %}{{croisiere.tarifCroisiere[0].tarifSeptPersonnes/7}}
+	             {% elseif croisiere.tarifCroisiere[0].tarifSixPersonnes is not null %}{% set base= 6 %}{{croisiere.tarifCroisiere[0].tarifSixPersonnes/6}}
+	             {% elseif croisiere.tarifCroisiere[0].tarifCinqPersonnes is not null %}{% set base= 5 %}{{croisiere.tarifCroisiere[0].tarifCinqPersonnes/5}}
+	             {% elseif croisiere.tarifCroisiere[0].tarifQuatrePersonnes is not null %}{% set base= 4 %}{{croisiere.tarifCroisiere[0].tarifQuatrePersonnes/4}}
+	             {% elseif croisiere.tarifCroisiere[0].tarifTroisPersonnes is not null %}{% set base= 3 %}{{croisiere.tarifCroisiere[0].tarifTroisPersonnes/3}}
+	             {% elseif croisiere.tarifCroisiere[0].tarifDeuxPersonnes is not null %}{% set base= 2 %}{{croisiere.tarifCroisiere[0].tarifDeuxPersonnes/2}}
+	             {% endif %}
+	             € <span class="boat-tarif-pour text-center">({{ croisiere.tarifCroisiere[0].tarifPour|trans}})</span>
             </p>
-            <div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/1-icons-boat-tech-file-50pix-'~boat.type|lower~'-noir.png') }}" /><br />{{boat.type}}</div>
-            <div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/2-icons-boat-tech-file-50pix-CABINS-'~boat.nbCabine~'-noir.png') }}" /><br />{{boat.nbCabine}} {{'boat_cabine'|trans}}</div>
+            <div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/1-icons-boat-tech-file-50pix-'~croisiere.bateau.type|lower~'-noir.png') }}" /><br />{{croisiere.bateau.type}}</div>
+            <div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/2-icons-boat-tech-file-50pix-CABINS-'~croisiere.bateau.nbCabine~'-noir.png') }}" /><br />{{croisiere.bateau.nbCabine}} {{'boat_cabine'|trans}}</div>
             
-			{% if (boat.nbCouchage > 0) %}<div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/3-icons-boat-tech-file-50pix-COUCHAGE-noir.png') }}" /><br />{{boat.nbCouchage}} {{'boat_bed'|trans}}</div>{% endif %}
+			{% if (croisiere.bateau.nbCouchage > 0) %}<div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/3-icons-boat-tech-file-50pix-COUCHAGE-noir.png') }}" /><br />{{croisiere.bateau.nbCouchage}} {{'boat_bed'|trans}}</div>{% endif %}
             <p class="bateaux-description">
-        		{% if boat.description|length > 100 %}
-	        		{{ boat.description|striptags|slice(0,100)|raw }}...
+        		{% if croisiere.bateau.description|length > 100 %}
+	        		{{ croisiere.bateau.description|striptags|slice(0,100)|raw }}...
 	        	{% else %}
-	        		{{ boat.description|striptags|raw }}
+	        		{{ croisiere.bateau.description|striptags|raw }}
 	    		{% endif %}
     		</p>
-            <a class="btn btn-sm btn-warning pull-right" href="{{ path('boat', { 'id': boat.id }) }}">{{'suite'|trans}}</a>
+            <a class="btn btn-sm btn-warning pull-right" href="{{ path('boat', { 'id': croisiere.bateau.id }) }}">{{'suite'|trans}}</a>
         </div>
         {% if loop.index0 % 3 == 2 %}
 	        </div>

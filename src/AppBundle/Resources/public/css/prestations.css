@@ -1,5 +1,4 @@
 h1 {background: url("../images/menu/icones/icon-sprite-prestations.png") no-repeat 5px 10px #23B6E1; font-size: 1.2em; padding: 10px 10px 10px 30px;margin: 0;}
-.block-description-prestations { margin: 0; background: #127BBD; padding: 10px;color: white;  }
 .row-prestation { overflow: auto; }
 .prestation { background: #127BBD; padding: 10px; text-align: center; border: 5px solid white;}
 .prestation a { color: white;  }
@@ -17,4 +16,4 @@ h1 {background: url("../images/menu/icones/icon-sprite-prestations.png") no-repe
 .prestation-boat { background: #23B6E1; padding: 0 0 10px 0; margin-bottom: 5px; }
 .boat { background: white; width: 90%; margin: 5px auto; overflow: auto; clear: both;padding: 5px; }
 .boat img { padding: 0; margin-right: 10px; }
-.boat .boat-name { margin-left: 30px;}
+.boat .boat-name { margin-left: 30px;line-height: 70px;}

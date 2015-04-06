@@ -6,7 +6,7 @@
 {% block content %}
     {{ parent() }}
     <div class="col-devis col-md-9">
-    	<h2>Obtenez un devis en un clic!</h2>
+    	<h2>{{'boat_get_estimate'|trans}}</h2>
     	<div class="row odd">
                 {{ form_label(form.dateDepart) }}
 	        {{ form_errors(form.dateDepart) }}
