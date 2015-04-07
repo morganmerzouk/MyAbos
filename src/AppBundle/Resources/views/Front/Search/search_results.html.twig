@@ -1,0 +1,24 @@
+{% extends "AppBundle:Front:layout.html.twig" %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/app/js/search_result.js') }}" type="text/javascript"></script>
+	<script type="text/javascript">var search_result_content_url = "{{ path('search_result_content') }}";</script>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/search.css') }}">
+{% endblock %}   
+{% block title %}{{'toptitle'|trans}} - {{ 'search_results'|trans }}{% endblock %}
+{% block content %}
+    <h1>{{'search_results'|trans}}</h1>
+    <div class="block-filter-search">
+    	{{ 'sort_by'|trans }} 
+    	<a href="#" class="filter-price btn-default btn" data-attr="price_desc">
+    		<span class="glyphicon glyphicon-sort-by-order" aria-hidden="true"></span>
+    		{{'filter_price'|trans}}
+		</a>
+    </div>
+    <div class="search-result-content">
+    	{% include "AppBundle:Front:Search/search_results_content.html.twig" %}
+	</div>
+{% endblock content %}

@@ -21,6 +21,11 @@ class SearchHeaderType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        if ($this->locale == "en") {
+            $format = 'MM/dd/yyyy';
+        } else {
+            $format = 'dd/MM/yyyy';
+        }
         $builder->add('dateDepart', 'date', array(
             'label' => "form_depart",
             'required' => false,
@@ -28,7 +33,7 @@ class SearchHeaderType extends AbstractType
             'attr' => array(
                 'class' => 'input-date-depart'
             ),
-            'format' => 'dd/MM/yyyy'
+            'format' => $format
         ))
             ->add('dateRetour', 'date', array(
             'label' => "form_retour",
@@ -37,10 +42,11 @@ class SearchHeaderType extends AbstractType
             'attr' => array(
                 'class' => 'input-date-retour'
             ),
-            'format' => 'dd/MM/yyyy'
+            'format' => $format
         ))
             ->add('destination', 'choice', array(
             "choices" => $this->fillDestination(),
+            'required' => false,
             'attr' => array(
                 'class' => 'select-destination'
             ),
@@ -48,6 +54,7 @@ class SearchHeaderType extends AbstractType
         ))
             ->add('prestation', 'choice', array(
             "choices" => $this->fillPrestation(),
+            'required' => false,
             'attr' => array(
                 'class' => 'select-prestation'
             ),
@@ -59,7 +66,8 @@ class SearchHeaderType extends AbstractType
             'attr' => array(
                 'class' => 'input-nb-passager'
             )
-        ));
+        ))
+            ->setMethod("POST");
     }
 
     private function fillDestination()

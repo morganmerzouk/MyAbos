@@ -173,3 +173,7 @@ toutes: All
 know_more_cruise: on the cruise
 know_more_network: on the network
 know_more_weather: on the weather
+
+search_results: Search results
+sort_by: Sort by:
+filter_price: Price

@@ -30,16 +30,6 @@ class FrontController extends Controller
         ));
     }
 
-    public function searchHeaderAction()
-    {
-        $form = $this->createForm(new SearchHeaderType($this->getDoctrine()
-            ->getEntityManager(), $this->getRequest()
-            ->getLocale()));
-        return $this->render('AppBundle:Front:form/search_header.html.twig', array(
-            'form' => $form->createView()
-        ));
-    }
-
     /**
      * @Route("/mentionslegales", name="mentionslegales")
      */

@@ -1,0 +1,36 @@
+{% for result in results %}
+    {% if loop.index0 % 3 == 0 %}
+    	<div class="row-bateau">
+    {% endif %}
+    <div class="col-md-4 bateau {% if loop.index0 % 3 == 2 %}bateau-last{% endif %}">
+        <h3>{{ result.bateau.name }}</h3>
+        <img class="img-responsive img-thumbnail" src="{{ result.bateau.miniatureWebPath }}" alt="photo {{ result.bateau.name }}" /><br />
+        <p class="bateau-prix-semaine"> 
+            {{'boat_price_from'|trans}} 	                       
+             {% if result.tarifCroisiere[0].tarifHuitPersonnes is not null %}{% set base= 8 %}{{result.tarifCroisiere[0].tarifHuitPersonnes/8}}
+             {% elseif result.tarifCroisiere[0].tarifSeptPersonnes is not null %}{% set base= 7 %}{{result.tarifCroisiere[0].tarifSeptPersonnes/7}}
+             {% elseif result.tarifCroisiere[0].tarifSixPersonnes is not null %}{% set base= 6 %}{{result.tarifCroisiere[0].tarifSixPersonnes/6}}
+             {% elseif result.tarifCroisiere[0].tarifCinqPersonnes is not null %}{% set base= 5 %}{{result.tarifCroisiere[0].tarifCinqPersonnes/5}}
+             {% elseif result.tarifCroisiere[0].tarifQuatrePersonnes is not null %}{% set base= 4 %}{{result.tarifCroisiere[0].tarifQuatrePersonnes/4}}
+             {% elseif result.tarifCroisiere[0].tarifTroisPersonnes is not null %}{% set base= 3 %}{{result.tarifCroisiere[0].tarifTroisPersonnes/3}}
+             {% elseif result.tarifCroisiere[0].tarifDeuxPersonnes is not null %}{% set base= 2 %}{{result.tarifCroisiere[0].tarifDeuxPersonnes/2}}
+             {% endif %}
+             € <span class="boat-tarif-pour text-center">({{ result.tarifCroisiere[0].tarifPour|trans}})</span>
+        </p>
+        <div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/1-icons-boat-tech-file-50pix-'~result.bateau.type|lower~'-noir.png') }}" /><br />{{result.bateau.type}}</div>
+        <div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/2-icons-boat-tech-file-50pix-CABINS-'~result.bateau.nbCabine~'-noir.png') }}" /><br />{{result.bateau.nbCabine}} {{'boat_cabine'|trans}}</div>
+        
+		{% if (result.bateau.nbCouchage > 0) %}<div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/3-icons-boat-tech-file-50pix-COUCHAGE-noir.png') }}" /><br />{{result.bateau.nbCouchage}} {{'boat_bed'|trans}}</div>{% endif %}
+        <p class="bateaux-description">
+    		{% if result.bateau.description|length > 100 %}
+        		{{ result.bateau.description|striptags|slice(0,100)|raw }}...
+        	{% else %}
+        		{{ result.bateau.description|striptags|raw }}
+    		{% endif %}
+		</p>
+        <a class="btn btn-sm btn-warning pull-right" href="{{ path('boat', { 'id': result.bateau.id }) }}">{{'suite'|trans}}</a>
+    </div>
+    {% if loop.index0 % 3 == 2 %}
+        </div>
+    {% endif %}
+{% endfor %}

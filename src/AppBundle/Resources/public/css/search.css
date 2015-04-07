@@ -1,0 +1,17 @@
+h1 {background: #23B6E1; font-size: 1.2em; padding: 10px 10px 10px 30px;margin: 0;}
+.block-filter-search { margin: 0; background: #127BBD; padding: 10px; color: white;}
+.row-prestation { overflow: auto; }
+.prestation { width:30%; background: #127BBD; padding: 10px; text-align: center; margin: 1%;}
+.prestation a { color: black; }
+
+.block-croisiere .row { margin: 10px; text-align:left;}
+
+.bateau { text-align: center; border: 1px solid #B3B3B3; margin: 10px 2% 0 0; padding: 0;  overflow: auto; width: 32%; }
+.bateau-last { margin-right: 0;}
+.bateau h3 { background: #23B6E1; color:white; text-align: center; margin: 0;padding: 5px;  font-size: 1.5em; }
+.bateau .img-responsive { margin: 10px; }
+.bateau .bateau-prix-semaine {background: #23B6E1; color:white; text-align: center; margin: 0;overflow: auto; }
+.bateau .bateaux-icones { float: left; padding: 5px; }
+.bateau .bateaux-description {clear: both;text-align: justify;padding:0 10px;}
+.bateau .btn-warning {margin: 10px;}
+.boat-tarif-pour { font-size: 0.7em; }

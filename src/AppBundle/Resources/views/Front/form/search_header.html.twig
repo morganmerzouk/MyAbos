@@ -1,4 +1,7 @@
-<form action="" class="searchHome" method="post" {{ form_enctype(form) }}>
+<script type="text/javascript">
+var locale="{{locale}}";
+</script>
+<form action="{{ path('search_results')}}" class="searchHome" method="post" {{ form_enctype(form) }}>
     <fieldset>
         <legend>{{'find_cruise'|trans}}</legend>
         <div class="criteria criteria-date">
@@ -26,6 +29,7 @@
             {{ form_errors(form.nbPassager) }}
             {{ form_widget(form.nbPassager) }}
         </div>
+        {{ form_rest(form) }}
         <div class="btn-search">
             <button class="btn btn-sm btn-warning" type="submit">
                 <span class="glyphicon glyphicon-search"></span>
