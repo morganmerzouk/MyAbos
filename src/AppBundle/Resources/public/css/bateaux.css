@@ -16,6 +16,8 @@ h1 {background: url("../images/menu/icones/icon-sprite-flotte.png") no-repeat 5p
 .bateau .btn-warning {margin: 10px;}
 .boat-tarif-pour { font-size: 0.7em; }
 
+.loading { display: none; position: absolute; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%;padding: 10%; background: black; opacity: 0.8;}
+
 /*** Sous-menu ***/
 .block-bateau-submenu { display: table; width: 100%; margin-bottom: 10px; }
 .block-bateau-submenu a { display: table-cell; color: white;background-repeat: no-repeat; background-position: 5px -30px; background-color:#127BBD; padding: 10px; font-size: 0.9em; padding-left: 40px;}
@@ -30,7 +32,7 @@ h1 {background: url("../images/menu/icones/icon-sprite-flotte.png") no-repeat 5p
 .bateau-price { background-image: url("../images/icones/boat/icon-tarifs-et-options-25%20pix.png"); }
 .bateau-contact { background-image: url("../images/icones/boat/icon-devis-et-contact-25%20pix.png"); }
 
-/*** Page présentation ***/
+/*** Page prï¿½sentation ***/
 .skipper-boat-description {overflow: auto; margin-bottom: 10px;}
 .img-details {padding: 0; padding-left: 1%;}
 .img-detail { margin: 1%; width: 48%; padding: 5px;}
@@ -69,7 +71,7 @@ h1 {background: url("../images/menu/icones/icon-sprite-flotte.png") no-repeat 5p
 .boat-desti h3.cible.title-hover { background: #23B6E1; color: black; }
 .boat-desti h3.cible:hover { cursor: pointer; background: #23B6E1; color: black; }
 
-/*** Page Disponibilités ***/
+/*** Page Disponibilitï¿½s ***/
 table.month { border: 1px solid black;}
 .monthname th { text-align: center; background: #127BBD; color: white; font-weight: bold; padding:5px;}
 .month td { text-align: center; border: 1px solid black; }

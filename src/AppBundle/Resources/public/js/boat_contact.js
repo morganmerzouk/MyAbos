@@ -13,7 +13,26 @@ $(document).ready(function() {
     $('.select-nb-passager').on("change", function () { $('.devis-nb-passager').html($(this).val()); });
     
     // Faut surement faire un appel ajax pour récupérer le tarif
-    //$('.devis-sejour-tarif').on("change", function () { $('.input-nb-passager').html($(this).val()); });
+    $('.select-nb-passager').on("change", function () { 
+        $('.loading').css("display", "block");
+        
+        nbPassager = $(this).val();
+        dateDepart = encodeURIComponent($(".col-devis .input-date-depart").val().replace(new RegExp("/", "g"), "-"));
+        nbDays = $('.select-duree-croisiere').val();
+        console.log(dateDepart);
+        $.ajax
+        ({
+            type: "POST",
+            url: urlBoatPriceAjax + '/' + nbPassager + '/' + nbDays + '/' + dateDepart,
+            cache: false,
+            success: function(html)
+            {
+                $('.loading').css("display", "none");
+                $(".devis-sejour-tarif").html(html);
+            } 
+        });
+        $('.input-nb-passager').html($(this).val()); 
+    });
     $('.select-portdepart').on("change", function () { $('.devis-port-depart').html($(this).find("option:selected").text()); });
     $('.select-destination').on("change", function () { $('.devis-destination').html($(this).find("option:selected").text()); });
     

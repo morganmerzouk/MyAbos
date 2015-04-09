@@ -5,6 +5,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Doctrine\ORM\Query;
 use AppBundle\Form\BateauDevisType;
+use Symfony\Component\HttpFoundation\Response;
 
 class BateauController extends Controller
 {
@@ -374,7 +375,64 @@ class BateauController extends Controller
             'skipper' => isset($croisiere[0]) ? $croisiere[0]->getSkipper() : null
         ));
     }
-
+    
+    /**
+     * @Route("/bateau/{id}/contact/price/{nbPassager}/{nbDays}/{dateDepart}", requirements={"id" = "\d+"}, defaults={"nbPassager" = null, "nbDays" = null, "dateDepart" = null}, name="boat_contact_price")
+     */
+    public function bateauContactPriceAction($id, $nbPassager = null, $nbDays = null, $dateDepart = null)
+    {
+        
+        $croisiere = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("AppBundle\Entity\Croisiere")
+            ->createQueryBuilder('c')
+            ->select('c, tc')
+            ->join('c.tarifCroisiere', 'tc')
+            ->where('c.bateau = :id')
+            ->setParameter(':id', $id);
+        
+        $dateDepart = explode('-', $dateDepart)[2].'-'.explode('-', $dateDepart)[0].'-'.explode('-', $dateDepart)[1];
+        
+        if($dateDepart != null) {
+            $croisiere->andWhere("tc.dateDebut < :dateDepart")
+                        ->andWhere("tc.dateFin > :dateDepart")
+                        ->setParameter(":dateDepart", $dateDepart);
+        }
+        if($nbDays != null) {
+            $croisiere->andWhere("tc.nombreJourMinimum > :nbDays")
+                        ->andWhere("tc.nombreJourMaximum > :nbDays")
+                        ->setParameter(":nbDays", $nbDays);
+        }
+        
+        $croisiere = $croisiere->getQuery()
+                                ->getOneOrNullResult();
+        
+        $tarif = $croisiere->getTarifCroisiere();
+        if(count($tarif)==1) {
+            switch($nbPassager) {
+                case '2':
+                    $tarif->getTarifDeuxPersonne();
+                break;
+                case '3':
+                    $tarif->getTarifTroisPersonne();
+                break;
+                case '4':
+                    $tarif->getTarifQuatrePersonne();
+                break;
+                case '5':
+                    $tarif->getTarifCinqPersonne();
+                break;
+                case '6':
+                    $tarif->getTarifSixPersonne();
+                break;
+                case '7':
+                break;
+                case '8':
+                break;
+            }
+        }
+        return new Response(var_dump($tarif));
+    }
     public function subMenuAction($route, $id)
     {
         $request = $this->getRequest();
