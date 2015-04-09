@@ -348,7 +348,7 @@ class BateauController extends Controller
         $locale = $this->getRequest()->getLocale();
         $form = $this->createForm(new BateauDevisType($this->getDoctrine()
             ->getEntityManager(), $this->getRequest()
-            ->getLocale()));
+            ->getLocale(), $id));
         $form->handleRequest($this->getRequest());
         
         if ($form->isValid()) {
@@ -375,13 +375,12 @@ class BateauController extends Controller
             'skipper' => isset($croisiere[0]) ? $croisiere[0]->getSkipper() : null
         ));
     }
-    
+
     /**
-     * @Route("/bateau/{id}/contact/price/{nbPassager}/{nbDays}/{dateDepart}", requirements={"id" = "\d+"}, defaults={"nbPassager" = null, "nbDays" = null, "dateDepart" = null}, name="boat_contact_price")
+     * @Route("/bateau/{id}/contact/price/{nbPassager}/{nbDays}/{dateDepart}/{dateFin}", requirements={"id" = "\d+"}, defaults={"nbPassager" = 0, "nbDays" = 0, "dateDepart" = 0, "dateFin" = 0}, name="boat_contact_price")
      */
-    public function bateauContactPriceAction($id, $nbPassager = null, $nbDays = null, $dateDepart = null)
+    public function bateauContactPriceAction($id, $nbPassager = 0, $nbDays = 0, $dateDepart = 0, $dateFin = 0)
     {
-        
         $croisiere = $this->getDoctrine()
             ->getManager()
             ->getRepository("AppBundle\Entity\Croisiere")
@@ -391,48 +390,122 @@ class BateauController extends Controller
             ->where('c.bateau = :id')
             ->setParameter(':id', $id);
         
-        $dateDepart = explode('-', $dateDepart)[2].'-'.explode('-', $dateDepart)[0].'-'.explode('-', $dateDepart)[1];
+        $locale = $this->getRequest()->getLocale();
         
-        if($dateDepart != null) {
-            $croisiere->andWhere("tc.dateDebut < :dateDepart")
-                        ->andWhere("tc.dateFin > :dateDepart")
-                        ->setParameter(":dateDepart", $dateDepart);
+        $formatPattern = $locale == "en" ? 'm/d/Y' : 'd/m/Y';
+        $formatPatternSql = $locale == "en" ? 'm-d-Y' : 'd-m-Y';
+        
+        if ($dateDepart != 0) {
+            $dateDepart = \DateTime::createFromFormat($formatPatternSql, $dateDepart);
+            $croisiere->andWhere("(tc.dateDebut < :dateDepart AND tc.dateFin > :dateDepart)")->setParameter(":dateDepart", $dateDepart->format('Y-m-d'));
         }
-        if($nbDays != null) {
-            $croisiere->andWhere("tc.nombreJourMinimum > :nbDays")
-                        ->andWhere("tc.nombreJourMaximum > :nbDays")
-                        ->setParameter(":nbDays", $nbDays);
-        }
-        
-        $croisiere = $croisiere->getQuery()
-                                ->getOneOrNullResult();
-        
-        $tarif = $croisiere->getTarifCroisiere();
-        if(count($tarif)==1) {
-            switch($nbPassager) {
-                case '2':
-                    $tarif->getTarifDeuxPersonne();
-                break;
-                case '3':
-                    $tarif->getTarifTroisPersonne();
-                break;
-                case '4':
-                    $tarif->getTarifQuatrePersonne();
-                break;
-                case '5':
-                    $tarif->getTarifCinqPersonne();
-                break;
-                case '6':
-                    $tarif->getTarifSixPersonne();
-                break;
-                case '7':
-                break;
-                case '8':
-                break;
+        if ($dateFin != 0) {
+            $dateFin = \DateTime::createFromFormat($formatPatternSql, $dateFin);
+            if ($dateDepart) {
+                $croisiere->orWhere("(tc.dateDebut < :dateFin AND tc.dateFin > :dateFin)")->setParameter(":dateFin", $dateFin->format('Y-m-d'));
+            } else {
+                $croisiere->andWhere("(tc.dateDebut < :dateFin AND tc.dateFin > :dateFin)")->setParameter(":dateFin", $dateFin->format('Y-m-d'));
             }
         }
-        return new Response(var_dump($tarif));
+        if ($nbDays != 0) {
+            $croisiere->andWhere("tc.nombreJourMinimum < :nbDays")
+                ->andWhere("tc.nombreJourMaximum > :nbDays")
+                ->setParameter(":nbDays", $nbDays);
+        }
+        $croisiere = $croisiere->getQuery()->getOneOrNullResult();
+        if ($croisiere == null) {
+            return new Response("N/A");
+        }
+        
+        $tarif = $croisiere->getTarifCroisiere();
+        // Y a chevauchement de date, on vérifie que les prix diffèrent bien
+        if (count($tarif) == 2 && $this->getPricePerPassenger($nbPassager, $tarif[0]) != $this->getPricePerPassenger($nbPassager, $tarif[1])) {
+            $tarifPersonne = "<br />";
+            foreach ($tarif as $tarifPeriode) {
+                $tarifPersonne .= $this->getPricePerPassengerPerDay($nbPassager, $tarifPeriode) . ' ' . $this->get('translator')->trans('Prix par personne/jour') . ' ' . $this->get('translator')->trans('from') . ' ' . ($dateDepart > $tarifPeriode->getDateDebut() ? $dateDepart->format($formatPattern) : $tarifPeriode->getDateDebut()->format($formatPattern)) . ' ' . $this->get('translator')->trans('to') . ' ' . ($dateFin > $tarifPeriode->getDateFin() ? $tarifPeriode->getDateFin()->format($formatPattern) : $dateFin->format($formatPattern)) . '<br />';
+            }
+        } else {
+            $tarifPersonne = $this->getPricePerPassengerPerDay($nbPassager, $tarif[0]) . ' ' . $this->get('translator')->trans('Prix par personne/jour');
+        }
+        
+        return new Response($tarifPersonne);
     }
+
+    function getPricePerPassenger($nbPassager, $tarif)
+    {
+        switch ($nbPassager) {
+            case '2':
+                $tarifPersonne = $tarif->getTarifDeuxPersonnes();
+                break;
+            case '3':
+                $tarifPersonne = $tarif->getTarifTroisPersonnes();
+                break;
+            case '4':
+                $tarifPersonne = $tarif->getTarifQuatrePersonnes();
+                break;
+            case '5':
+                $tarifPersonne = $tarif->getTarifCinqPersonnes();
+                break;
+            case '6':
+                $tarifPersonne = $tarif->getTarifSixPersonnes();
+                break;
+            case '7':
+                $tarifPersonne = $tarif->getTarifSeptPersonnes();
+                break;
+            case '8':
+                $tarifPersonne = $tarif->getTarifHuitPersonnes();
+                break;
+        }
+    }
+
+    function getPricePerPassengerPerDay($nbPassager, $tarif)
+    {
+        switch ($nbPassager) {
+            case '2':
+                $tarifPersonne = $tarif->getTarifDeuxPersonnes();
+                break;
+            case '3':
+                $tarifPersonne = $tarif->getTarifTroisPersonnes();
+                break;
+            case '4':
+                $tarifPersonne = $tarif->getTarifQuatrePersonnes();
+                break;
+            case '5':
+                $tarifPersonne = $tarif->getTarifCinqPersonnes();
+                break;
+            case '6':
+                $tarifPersonne = $tarif->getTarifSixPersonnes();
+                break;
+            case '7':
+                $tarifPersonne = $tarif->getTarifSeptPersonnes();
+                break;
+            case '8':
+                $tarifPersonne = $tarif->getTarifHuitPersonnes();
+                break;
+        }
+        switch ($tarif->getTarifPour()) {
+            case "1 day/boat":
+                $tarifPersonne = round($tarifPersonne / $nbPassager, 2);
+                break;
+            case "7 days/boat":
+                $tarifPersonne = round($tarifPersonne / 7 / $nbPassager, 2);
+                break;
+            case "10 days/boat":
+                $tarifPersonne = round($tarifPersonne / 10 / $nbPassager, 2);
+                break;
+            case "1 day/passenger":
+                $tarifPersonne = round($tarifPersonne, 2);
+                break;
+            case "7 days/passenger":
+                $tarifPersonne = round($tarifPersonne / 7, 2);
+                break;
+            case "10 days/passenger":
+                $tarifPersonne = round($tarifPersonne / 10, 2);
+                break;
+        }
+        return $tarifPersonne;
+    }
+
     public function subMenuAction($route, $id)
     {
         $request = $this->getRequest();

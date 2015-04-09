@@ -97,6 +97,9 @@ form_sejour_duree: Cruise duration:
 form_sejour_nb_passager: Number of passenger: 
 form_sejour_portdepart: Departure: 
 form_sejour_destination: Destination: 
+form_sejour_message: Additional Infos: 
+form_sejour_from:  from  
+form_sejour_to:  to 
 devis_option: Options included in the estimate:
 passagers: passengers
 jours: days
@@ -104,7 +107,7 @@ devis_croisiere: Kite cruise of
 votre_devis: Your customized estimate
 boat_get_estimate: Get your estimate in one click
 between: between
-price_for: Price for
+price: Price
 choose_your_options: Choose your options
 equipier_supplementaire: Supplementary Crew
 option_avitaillement: Provisioning option

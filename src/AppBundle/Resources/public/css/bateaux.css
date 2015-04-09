@@ -113,5 +113,22 @@ td.libelleLegend { padding-left: 5px;}
 .col-devis .optionspayantes .col-md-1 { width: 3%; height: 25px;padding: 5px 10px;  margin: 1%;}
 .input-date-depart, .input-date-retour { width:90px;}
 .select-portdepart, .select-destination {width: 150px;}
-.col-right-devis { position: fixed; right: 0; width: 20%; overflow: auto; padding-bottom: 10px; margin-bottom: 10px;}
+.textarea-message {
+	width: 95%;
+  	margin: auto;
+  	display: block;
+  	height: 100px;
+}
+.label-textarea-message { 
+	width: auto !important;
+}
+.col-right-devis { position: fixed; right: 0; width: 20%; overflow: auto; padding-bottom: 10px; margin-bottom: 10px;background: white;}
 .bloc-final-price { background: white; text-align: center; margin: auto; padding:10px;}
+
+.devis-content-duree-sejour,
+.devis-content-date-sejour,
+.devis-content-nb-passager,
+.devis-content-port-depart,
+.devis-content-destination,
+.devis-content-option-payante {display: none;}
+
