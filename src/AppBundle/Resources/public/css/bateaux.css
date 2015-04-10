@@ -104,7 +104,7 @@ td.libelleLegend { padding-left: 5px;}
 .col-devis { border: 1px solid #B3B3B3; padding: 0;}
 .col-devis h2 { margin: 0; background: #127BBD; padding:5px; font-size: 1.1em; color: white; }
 .col-devis .row { padding: 5px 10px; margin: 10px; color: black;}
-.col-devis .odd { background: #127BBD;}
+.col-devis .odd { background: #127BBD;padding: 5px;}
 .col-devis .even { background: #23B6E1;padding: 5px;clear: both;}
 .col-devis .row label { width: 215px;text-align: right;}
 .col-devis .row label.label-date-retour { width: 50px; }
@@ -128,7 +128,9 @@ td.libelleLegend { padding-left: 5px;}
 .devis-content-duree-sejour,
 .devis-content-date-sejour,
 .devis-content-nb-passager,
+.devis-content-tarif,
 .devis-content-port-depart,
 .devis-content-destination,
-.devis-content-option-payante {display: none;}
+.devis-content-option-payante, 
+.devis-content-final-price {display: none;}
 

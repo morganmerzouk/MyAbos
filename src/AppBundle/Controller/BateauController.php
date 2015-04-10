@@ -408,8 +408,8 @@ class BateauController extends Controller
             }
         }
         if ($nbDays != 0) {
-            $croisiere->andWhere("tc.nombreJourMinimum < :nbDays")
-                ->andWhere("tc.nombreJourMaximum > :nbDays")
+            $croisiere->andWhere("tc.nombreJourMinimum <= :nbDays")
+                ->andWhere("tc.nombreJourMaximum >= :nbDays")
                 ->setParameter(":nbDays", $nbDays);
         }
         $croisiere = $croisiere->getQuery()->getOneOrNullResult();
@@ -422,10 +422,10 @@ class BateauController extends Controller
         if (count($tarif) == 2 && $this->getPricePerPassenger($nbPassager, $tarif[0]) != $this->getPricePerPassenger($nbPassager, $tarif[1])) {
             $tarifPersonne = "<br />";
             foreach ($tarif as $tarifPeriode) {
-                $tarifPersonne .= $this->getPricePerPassengerPerDay($nbPassager, $tarifPeriode) . ' ' . $this->get('translator')->trans('Prix par personne/jour') . ' ' . $this->get('translator')->trans('from') . ' ' . ($dateDepart > $tarifPeriode->getDateDebut() ? $dateDepart->format($formatPattern) : $tarifPeriode->getDateDebut()->format($formatPattern)) . ' ' . $this->get('translator')->trans('to') . ' ' . ($dateFin > $tarifPeriode->getDateFin() ? $tarifPeriode->getDateFin()->format($formatPattern) : $dateFin->format($formatPattern)) . '<br />';
+                $tarifPersonne .= $this->getPricePerPassengerPerDay($nbPassager, $tarifPeriode) . ' ' . $this->get('translator')->trans('from') . ' ' . ($dateDepart > $tarifPeriode->getDateDebut() ? $dateDepart->format($formatPattern) : $tarifPeriode->getDateDebut()->format($formatPattern)) . ' ' . $this->get('translator')->trans('to') . ' ' . ($dateFin > $tarifPeriode->getDateFin() ? $tarifPeriode->getDateFin()->format($formatPattern) : $dateFin->format($formatPattern)) . '<br />';
             }
         } else {
-            $tarifPersonne = $this->getPricePerPassengerPerDay($nbPassager, $tarif[0]) . ' ' . $this->get('translator')->trans('Prix par personne/jour');
+            $tarifPersonne = $this->getPricePerPassengerPerDay($nbPassager, $tarif[0]);
         }
         
         return new Response($tarifPersonne);

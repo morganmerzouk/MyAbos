@@ -250,6 +250,7 @@ class SkipperController extends Controller
         
         if ($form->isValid()) {
             $data = $form->getData();
+            var_dump($data);
             return $this->redirect($this->generateUrl('task_success'));
         }
         
@@ -273,6 +274,26 @@ class SkipperController extends Controller
         ));
     }
 
+    /**
+     * @Route("/skipper/{id}/contact/step2/{bateauId}", requirements={"id" = "\d+"}, name="skipper_contact_step2")
+     */
+    public function skipperContactStep2Action($id, $bateauId)
+    {
+        $locale = $this->getRequest()->getLocale();
+        $form = $this->createForm(new BateauDevisType($this->getDoctrine()
+            ->getEntityManager(), $this->getRequest()
+            ->getLocale(),$bateauId));
+        $form->handleRequest($this->getRequest());
+        
+        if ($form->isValid()) {
+            $data = $form->getData();
+        }
+        
+        return $this->render('AppBundle:Front:Skipper/skipper_contact_step2.html.twig', array(
+            'recap' => $data
+        ));
+    }
+    
     public function subMenuAction($route, $id)
     {
         $request = $this->getRequest();

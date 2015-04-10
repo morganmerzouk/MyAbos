@@ -17,7 +17,7 @@ class BateauDevisType extends AbstractType
 
     private $id;
 
-    public function __construct(EntityManager $em, $locale, $id)
+    public function __construct(EntityManager $em, $locale, $id = null)
     {
         $this->em = $em;
         $this->locale = $locale;

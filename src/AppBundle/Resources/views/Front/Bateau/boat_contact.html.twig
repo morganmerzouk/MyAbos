@@ -9,36 +9,36 @@
 {% block content %}
     {{ parent() }}
     <div class="col-devis col-md-9">
-    	<form method="post" action="{{ path('skipper_contact', {'id': skipper.id }) }}">
+    	<form method="post" action="{{ path('skipper_contact_step2', {'id': skipper.id, 'bateauId': app.request.get('id') }) }}">
 	    	<h2>{{'boat_get_estimate'|trans}}</h2>
 	    	<div class="row odd">
 	            {{ form_label(form.dateDepart) }}
-		        {{ form_errors(form.dateDepart) }}
-		        {{ form_widget(form.dateDepart) }}
+                    {{ form_errors(form.dateDepart) }}
+                    {{ form_widget(form.dateDepart) }}
 		        
 	            {{ form_label(form.dateRetour) }}
-		        {{ form_errors(form.dateRetour) }}
-		        {{ form_widget(form.dateRetour) }}
+                    {{ form_errors(form.dateRetour) }}
+                    {{ form_widget(form.dateRetour) }}
 	        </div>
 	    	<div class="row even">	        
 	            {{ form_label(form.dureeCroisiere) }}
-		        {{ form_errors(form.dureeCroisiere) }}
-		        {{ form_widget(form.dureeCroisiere) }} {{'jours'|trans}}
+                    {{ form_errors(form.dureeCroisiere) }}
+                    {{ form_widget(form.dureeCroisiere) }} {{'jours'|trans}}
 	        </div>
 	    	<div class="row odd">	        
 	            {{ form_label(form.nbPassager) }}
-		        {{ form_errors(form.nbPassager) }}
-		        {{ form_widget(form.nbPassager) }} {{'passagers'|trans}}
+                    {{ form_errors(form.nbPassager) }}
+                    {{ form_widget(form.nbPassager) }} {{'passagers'|trans}}
 	        </div>
 	    	<div class="row even">	        
 	            {{ form_label(form.portDepart) }}
-		        {{ form_errors(form.portDepart) }}
-		        {{ form_widget(form.portDepart) }}
+                    {{ form_errors(form.portDepart) }}
+                    {{ form_widget(form.portDepart) }}
 	        </div>
 	    	<div class="row odd">
 	            {{ form_label(form.destination) }}
-		        {{ form_errors(form.destination) }}
-		        {{ form_widget(form.destination) }}
+                    {{ form_errors(form.destination) }}
+                    {{ form_widget(form.destination) }}
 	    	</div>
 	    	<div class="optionspayantes">
 	    		<strong>{{'choose_your_options'|trans }}: </strong>
@@ -70,10 +70,11 @@
 	    	</div>
 	    	<div class="row even">	        
 	            {{ form_label(form.message) }}
-		        {{ form_errors(form.message) }}
-		        {{ form_widget(form.message) }} 
+                    {{ form_errors(form.message) }}
+                    {{ form_widget(form.message) }} 
 	        </div>
-        	{% if skipper is not null %}<button type="submit" class="pull-right btn btn-warning">{{'contact_skipper'|trans}}</button>{% endif %}
+                {{ form_rest(form) }}
+        	{% if skipper is not null %}<button type="submit" class="pull-right btn btn-warning">{{'recapitulatif_contact'|trans}}</button>{% endif %}
     	</form>
     </div>
     <div class="col-devis col-right-devis col-md-3">
@@ -86,14 +87,14 @@
         </div>
         <div class="row even devis-content-duree-sejour">
             <strong>{{'form_sejour_duree'|trans }} </strong><span class="devis-duree-sejour">X</span> {{'jours'|trans }}
-		</div>
-		<div class="row odd devis-content-nb-passager">
+        </div>
+        <div class="row odd devis-content-nb-passager">
         	<strong>{{'form_sejour_nb_passager'|trans}} </strong>
         	<span class="devis-nb-passager">X</span> {{'passagers'|trans }}
         </div>
-        <div class="row even devis-content-nb-passager">
+        <div class="row even devis-content-tarif">
             <strong>{{'price'|trans }}: </strong>
-            <span class="devis-sejour-tarif"></span>
+            <span class="devis-sejour-tarif"></span> {{'Prix par personne/jour'|trans}}
         </div>
         <div class="row odd devis-content-port-depart">
             <strong>{{'form_sejour_portdepart'|trans }}</strong> <span class="devis-port-depart">X</span>
@@ -107,10 +108,10 @@
             
             </div>
         </div>
-        <div class="row odd">
+        <div class="row even">
             <div class="bloc-final-price">
                 Total:<br />
-                <span class="finalPrice"></span>X euros {{'par_passager'|trans }}
+                <span class="devis-content-final-price"><span class="final-price"></span> euros {{'par_passager'|trans }}</span>
             </div>
         </div>
     </div>
