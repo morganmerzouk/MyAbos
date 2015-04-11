@@ -85,6 +85,7 @@ $(document).ready(function() {
                 {
                     $(".devis-content-tarif").show();
                     $(".devis-sejour-tarif").html(html);
+                    $('.field_prix').val(html);
                     displayFinalPrice();
                     $('.loading').css("display", "none");
                 },

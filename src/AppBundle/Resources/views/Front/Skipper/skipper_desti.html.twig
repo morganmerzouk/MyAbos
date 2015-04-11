@@ -1,79 +1,85 @@
 {% extends "AppBundle:Front:Skipper/skipper.html.twig" %}
 {% block javascripts %}
     {{ parent() }}
-    <script src="{{ asset('bundles/app/js/skipper_desti.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/app/js/skipper/skipper_desti.js') }}" type="text/javascript"></script>
 {% endblock %}
 {% block content %}
     {{ parent() }}
-    <div class="{% if offrespeciale is not null %}col-md-9{% else %}col-md-12{% endif %} boat-desti">
-        <h3 class="boat-desti-localisation">
-            {{'skipper-desti-localisation-boat'|trans }}
-        </h3>
-        <div class="boat-desti-block-localisation">
-            <img src="{{ portDepart.miniatureWebPath }}" class="img-responsive img-thumbnail pull-right" />
-            <div>
-                {{'skipper-desti-localisation-boat-label-portdepart'|trans }} {{ portDepart.name }}<br />
-                {{'skipper-desti-localisation-boat-label-destination'|trans }}:
-                {% if itinerairesCroisiere|length > 0 %}
-                    <ul>
-                        {% for itineraireCroisiere in itinerairesCroisiere %}
-                            <li><a href="#" id="lien-{{itineraireCroisiere.itineraire.id}}">{{ itineraireCroisiere.itineraire.destination }}</a></li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-            </div>
-        </div>
-        {% for itineraireCroisiere in itinerairesCroisiere %}
-            <h3 id="cible-{{itineraireCroisiere.itineraire.id}}" class="cible">
-                {{ itineraireCroisiere.itineraire }}
-            </h3>
-            <div class="boat-desti-itineraire">
-	            <div class="col-md-9">
-	                <div>
-	                    {{ itineraireCroisiere.itineraire.description|raw }}
-	                </div>
-	                <div>
-	                    {{'skipper-desti-date-operation'|trans }} {{ itineraireCroisiere.dateDebut|date('d/m/Y') }}
-	                    {{'periode_au'|trans }} {{ itineraireCroisiere.dateFin|date('d/m/Y') }}
-	                </div>
+    {% if portDepart is not null %}
+	    <div class="{% if offrespeciale is not null %}col-md-9{% else %}col-md-12{% endif %} boat-desti">
+	        <h3 class="boat-desti-localisation">
+	            {{'skipper-desti-localisation-boat'|trans }}
+	        </h3>
+	        <div class="boat-desti-block-localisation">
+	            <img src="{{ portDepart.miniatureWebPath }}" class="img-responsive img-thumbnail pull-right" />
+	            <div>
+	                {{'skipper-desti-localisation-boat-label-portdepart'|trans }} {{ portDepart.name }}<br />
+	                {{'skipper-desti-localisation-boat-label-destination'|trans }}:
+	                {% if itinerairesCroisiere|length > 0 %}
+	                    <ul>
+	                        {% for itineraireCroisiere in itinerairesCroisiere %}
+	                            <li><a href="#" id="lien-{{itineraireCroisiere.itineraire.id}}">{{ itineraireCroisiere.itineraire.destination }}</a></li>
+	                        {% endfor %}
+	                    </ul>
+	                {% endif %}
 	            </div>
-	            <div class="col-md-3">
-	                <img src="{{ itineraireCroisiere.itineraire.miniatureWebPath }}" />
+	        </div>
+	        {% for itineraireCroisiere in itinerairesCroisiere %}
+	            <h3 id="cible-{{itineraireCroisiere.itineraire.id}}" class="cible">
+	                {{ itineraireCroisiere.itineraire }}
+	            </h3>
+	            <div class="boat-desti-itineraire">
+		            <div class="col-md-9">
+		                <div>
+		                    {{ itineraireCroisiere.itineraire.description|raw }}
+		                </div>
+		                <div>
+		                    {{'skipper-desti-date-operation'|trans }} {{ itineraireCroisiere.dateDebut|date('d/m/Y') }}
+		                    {{'periode_au'|trans }} {{ itineraireCroisiere.dateFin|date('d/m/Y') }}
+		                </div>
+		            </div>
+		            <div class="col-md-3">
+		                <img src="{{ itineraireCroisiere.itineraire.miniatureWebPath }}" />
+		            </div>
 	            </div>
-            </div>
-        {% endfor %}
-    </div>
-    {% if offrespeciale is not null %}
-	 	<div class="col-md-3 col-offre-speciale">
-            <div class="text-center"><a href="{{ path('skipper_contact', {'id': offrespeciale.skipper.id }) }}" class="btn btn-lg btn-warning">{{'contact_skipper'|trans}}</a></div>
-	        <div class="boat-block-special-offer">
-		    	<h2 class="offreName">{{'special_offer_with'|trans }} {{ offrespeciale.skipper.name }}</h3>
-		        <h3 class="boatName">{{ offrespeciale.bateau.name }}</h3>
-		        <img class="img-thumbnail" src="{{ offrespeciale.bateau.miniatureWebPath }}" alt="photo {{ offrespeciale.bateau.name }}" /><br />
-		        <p class="bateau-prix-semaine"> 
-		             {{'boat_price_from'|trans}} 	                       
-	                 {% if offrespeciale.tarifHuitPersonnes is not null %}{% set base= 8 %}{{offrespeciale.tarifHuitPersonnes/8}}
-		             {% elseif offrespeciale.tarifSeptPersonnes is not null %}{% set base= 7 %}{{offrespeciale.tarifSeptPersonnes/7}}
-		             {% elseif offrespeciale.tarifSixPersonnes is not null %}{% set base= 6 %}{{offrespeciale.tarifSixPersonnes/6}}
-		             {% elseif offrespeciale.tarifCinqPersonnes is not null %}{% set base= 5 %}{{offrespeciale.tarifCinqPersonnes/5}}
-		             {% elseif offrespeciale.tarifQuatrePersonnes is not null %}{% set base= 4 %}{{offrespeciale.tarifQuatrePersonnes/4}}
-		             {% elseif offrespeciale.tarifTroisPersonnes is not null %}{% set base= 3 %}{{offrespeciale.tarifTroisPersonnes/3}}
-		             {% elseif offrespeciale.tarifDeuxPersonnes is not null %}{% set base= 2 %}{{offrespeciale.tarifDeuxPersonnes/2}}
-		             {% endif %}
-		             € <br /><span class="boat-tarif-pour text-center">({{ offrespeciale.tarifPour|trans}})</span>
-		        </p>
-		        <div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/1-icons-boat-tech-file-50pix-'~offrespeciale.bateau.type|lower~'-noir.png') }}" /><br />{{offrespeciale.bateau.type}}</div>
-		        <div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/2-icons-boat-tech-file-50pix-CABINS-'~offrespeciale.bateau.nbCabine~'-noir.png') }}" /><br />{{offrespeciale.bateau.nbCabine}} {{'boat_cabine'|trans}}</div>
-		        {% if (offrespeciale.bateau.nbCouchage > 0) %}<div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/3-icons-boat-tech-file-50pix-COUCHAGE-noir.png') }}" /><br />{{offrespeciale.bateau.nbCouchage}} {{'boat_bed'|trans}}</div>{% endif %}
-		        <p class="bateaux-description">
-		        	{% if offrespeciale.bateau.description|length > 100 %}
-		        		{{ offrespeciale.bateau.description|striptags|slice(0,100)|raw }}...
-		        	{% else %}
-		        		{{ offrespeciale.bateau.description|striptags|raw }}
-		    		{% endif %}
-				</p>
-		        <a class="btn btn-sm btn-warning pull-right" href="{{ path('offrespeciale', { 'id': offrespeciale.id }) }}">{{'suite'|trans}}</a>
-	    	</div>
+	        {% endfor %}
 	    </div>
-    {% endif %}
+	    {% if offrespeciale is not null %}
+		 	<div class="col-md-3 col-offre-speciale">
+	            <div class="text-center"><a href="{{ path('skipper_contact', {'id': offrespeciale.skipper.id }) }}" class="btn btn-lg btn-warning">{{'contact_skipper'|trans}}</a></div>
+		        <div class="boat-block-special-offer">
+			    	<h2 class="offreName">{{'special_offer_with'|trans }} {{ offrespeciale.skipper.name }}</h3>
+			        <h3 class="boatName">{{ offrespeciale.bateau.name }}</h3>
+			        <img class="img-thumbnail" src="{{ offrespeciale.bateau.miniatureWebPath }}" alt="photo {{ offrespeciale.bateau.name }}" /><br />
+			        <p class="bateau-prix-semaine"> 
+			             {{'boat_price_from'|trans}} 	                       
+		                 {% if offrespeciale.tarifHuitPersonnes is not null %}{% set base= 8 %}{{offrespeciale.tarifHuitPersonnes/8}}
+			             {% elseif offrespeciale.tarifSeptPersonnes is not null %}{% set base= 7 %}{{offrespeciale.tarifSeptPersonnes/7}}
+			             {% elseif offrespeciale.tarifSixPersonnes is not null %}{% set base= 6 %}{{offrespeciale.tarifSixPersonnes/6}}
+			             {% elseif offrespeciale.tarifCinqPersonnes is not null %}{% set base= 5 %}{{offrespeciale.tarifCinqPersonnes/5}}
+			             {% elseif offrespeciale.tarifQuatrePersonnes is not null %}{% set base= 4 %}{{offrespeciale.tarifQuatrePersonnes/4}}
+			             {% elseif offrespeciale.tarifTroisPersonnes is not null %}{% set base= 3 %}{{offrespeciale.tarifTroisPersonnes/3}}
+			             {% elseif offrespeciale.tarifDeuxPersonnes is not null %}{% set base= 2 %}{{offrespeciale.tarifDeuxPersonnes/2}}
+			             {% endif %}
+			             € <br /><span class="boat-tarif-pour text-center">({{ offrespeciale.tarifPour|trans}})</span>
+			        </p>
+			        <div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/1-icons-boat-tech-file-50pix-'~offrespeciale.bateau.type|lower~'-noir.png') }}" /><br />{{offrespeciale.bateau.type}}</div>
+			        <div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/2-icons-boat-tech-file-50pix-CABINS-'~offrespeciale.bateau.nbCabine~'-noir.png') }}" /><br />{{offrespeciale.bateau.nbCabine}} {{'boat_cabine'|trans}}</div>
+			        {% if (offrespeciale.bateau.nbCouchage > 0) %}<div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/3-icons-boat-tech-file-50pix-COUCHAGE-noir.png') }}" /><br />{{offrespeciale.bateau.nbCouchage}} {{'boat_bed'|trans}}</div>{% endif %}
+			        <p class="bateaux-description">
+			        	{% if offrespeciale.bateau.description|length > 100 %}
+			        		{{ offrespeciale.bateau.description|striptags|slice(0,100)|raw }}...
+			        	{% else %}
+			        		{{ offrespeciale.bateau.description|striptags|raw }}
+			    		{% endif %}
+					</p>
+			        <a class="btn btn-sm btn-warning pull-right" href="{{ path('offrespeciale', { 'id': offrespeciale.id }) }}">{{'suite'|trans}}</a>
+		    	</div>
+		    </div>
+	    {% endif %}
+    {% else %}
+    	<div class="col-md-12">
+    		{{ 'no_cruise_skipper'|trans }}
+		</div>
+	{% endif %}
 {% endblock content %}

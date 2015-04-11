@@ -26,6 +26,7 @@ class BateauDevisType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $formatPattern = $this->locale == "en" ? 'MM/dd/yyyy' : 'dd/MM/yyyy';
         $builder->add('dateDepart', 'date', array(
             'label' => "form_sejour_possible_debut",
             'required' => false,
@@ -33,7 +34,7 @@ class BateauDevisType extends AbstractType
             'attr' => array(
                 'class' => 'input-date-depart'
             ),
-            'format' => 'dd/MM/yyyy'
+            'format' => $formatPattern
         ))
             ->add('dateRetour', 'date', array(
             'label' => "form_sejour_possible_fin",
@@ -45,7 +46,7 @@ class BateauDevisType extends AbstractType
             'attr' => array(
                 'class' => 'input-date-retour'
             ),
-            'format' => 'dd/MM/yyyy'
+            'format' => $formatPattern
         ))
             ->add('dureeCroisiere', 'choice', array(
             'label' => 'form_sejour_duree',
@@ -91,6 +92,29 @@ class BateauDevisType extends AbstractType
             'attr' => array(
                 'class' => 'textarea-message'
             )
+        ))
+            ->add('nom', 'text', array(
+            'label' => 'form_sejour_nom',
+            'label_attr' => array(
+                'class' => 'label-nom'
+            ),
+            'attr' => array(
+                'class' => 'input-nom'
+            )
+        ))
+            ->add('email', 'email', array(
+            'label' => 'form_sejour_email',
+            'label_attr' => array(
+                'class' => 'label-email'
+            ),
+            'attr' => array(
+                'class' => 'input-email'
+            )
+        ))
+            ->add('prix', 'hidden', array(
+            'attr' => array(
+                'class' => 'field_prix'
+            )
         ));
     }
 
@@ -109,28 +133,29 @@ class BateauDevisType extends AbstractType
             $listeNbPassager = array(
                 '' => '-'
             );
-            
-            foreach ($results[0]->getTarifCroisiere() as $result) {
-                if ($result->getTarifDeuxPersonnes() != null) {
-                    $listeNbPassager['2'] = '2';
-                }
-                if ($result->getTarifTroisPersonnes() != null) {
-                    $listeNbPassager['3'] = '3';
-                }
-                if ($result->getTarifQuatrePersonnes() != null) {
-                    $listeNbPassager['4'] = '4';
-                }
-                if ($result->getTarifCinqPersonnes() != null) {
-                    $listeNbPassager['5'] = '5';
-                }
-                if ($result->getTarifSixPersonnes() != null) {
-                    $listeNbPassager['6'] = '6';
-                }
-                if ($result->getTarifSeptPersonnes() != null) {
-                    $listeNbPassager['7'] = '7';
-                }
-                if ($result->getTarifHuitPersonnes() != null) {
-                    $listeNbPassager['8'] = '8';
+            if (count($results) > 0) {
+                foreach ($results[0]->getTarifCroisiere() as $result) {
+                    if ($result->getTarifDeuxPersonnes() != null) {
+                        $listeNbPassager['2'] = '2';
+                    }
+                    if ($result->getTarifTroisPersonnes() != null) {
+                        $listeNbPassager['3'] = '3';
+                    }
+                    if ($result->getTarifQuatrePersonnes() != null) {
+                        $listeNbPassager['4'] = '4';
+                    }
+                    if ($result->getTarifCinqPersonnes() != null) {
+                        $listeNbPassager['5'] = '5';
+                    }
+                    if ($result->getTarifSixPersonnes() != null) {
+                        $listeNbPassager['6'] = '6';
+                    }
+                    if ($result->getTarifSeptPersonnes() != null) {
+                        $listeNbPassager['7'] = '7';
+                    }
+                    if ($result->getTarifHuitPersonnes() != null) {
+                        $listeNbPassager['8'] = '8';
+                    }
                 }
             }
             
@@ -145,15 +170,19 @@ class BateauDevisType extends AbstractType
                 ->orderBy("tc.nombreJourMinimum", 'ASC')
                 ->getQuery()
                 ->getResult();
-            
-            $nbJourMinimum = $results[0]->getTarifCroisiere()[0]->getNombreJourMinimum();
-            $nbJourMaximum = 0;
-            foreach ($results[0]->getTarifCroisiere() as $result) {
-                $nbJourMaximum = $result->getNombreJourMaximum() > $nbJourMaximum ? $result->getNombreJourMaximum() : $nbJourMaximum;
-            }
             $item = array(
                 '' => '-'
-            ) + array_combine(range($nbJourMinimum, $nbJourMaximum), range($nbJourMinimum, $nbJourMaximum));
+            );
+            if (count($results) > 0) {
+                $nbJourMinimum = $results[0]->getTarifCroisiere()[0]->getNombreJourMinimum();
+                $nbJourMaximum = 0;
+                foreach ($results[0]->getTarifCroisiere() as $result) {
+                    $nbJourMaximum = $result->getNombreJourMaximum() > $nbJourMaximum ? $result->getNombreJourMaximum() : $nbJourMaximum;
+                }
+                $item = array(
+                    '' => '-'
+                ) + array_combine(range($nbJourMinimum, $nbJourMaximum), range($nbJourMinimum, $nbJourMaximum));
+            }
         }
         $choices = new SimpleChoiceList($item);
         
@@ -179,7 +208,7 @@ class BateauDevisType extends AbstractType
         
         $destination = array();
         foreach ($results as $dest) {
-            $destination[$dest['id']] = $dest['name'];
+            $destination[$dest['name']] = $dest['name'];
         }
         
         return $destination;
@@ -204,7 +233,7 @@ class BateauDevisType extends AbstractType
         
         $portDepart = array();
         foreach ($results as $port) {
-            $portDepart[$port['id']] = $port['name'];
+            $portDepart[$port['name']] = $port['name'];
         }
         
         return $portDepart;

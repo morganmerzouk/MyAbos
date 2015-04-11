@@ -5,6 +5,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Doctrine\ORM\Query;
 use AppBundle\Form\BateauDevisType;
+use AppBundle\Entity\Devis;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Response;
 
 class SkipperController extends Controller
 {
@@ -14,8 +17,7 @@ class SkipperController extends Controller
      */
     public function indexAction()
     {
-        $request = $this->getRequest();
-        $locale = $request->getLocale();
+        $locale = $this->getRequest()->getLocale();
         
         $skippers = $this->getDoctrine()
             ->getManager()
@@ -37,8 +39,7 @@ class SkipperController extends Controller
      */
     public function skipperAction($id)
     {
-        $request = $this->getRequest();
-        $locale = $request->getLocale();
+        $locale = $this->getRequest()->getLocale();
         
         $skipper = $this->getDoctrine()
             ->getManager()
@@ -81,8 +82,7 @@ class SkipperController extends Controller
      */
     public function skipperFlottesAction($id)
     {
-        $request = $this->getRequest();
-        $locale = $request->getLocale();
+        $locale = $this->getRequest()->getLocale();
         
         $croisiere = $this->getDoctrine()
             ->getManager()
@@ -204,36 +204,23 @@ class SkipperController extends Controller
             ->getQuery()
             ->getOneOrNullResult();
         
-        $servicePayant = $this->getDoctrine()
-            ->getManager()
-            ->getRepository("AppBundle\Entity\ServicePayant")
-            ->createQueryBuilder('s')
-            ->select('s, t')
-            ->join('s.translations', 't')
-            ->where('s.bateau = :id')
-            ->orderby('s.categorie', 'ASC')
-            ->setParameter(':id', $croisiere->getBateau()
-            ->getId())
-            ->getQuery()
-            ->getResult();
-        
         return $this->render('AppBundle:Front:Skipper/skipper_price.html.twig', array(
             'tarifs' => $croisiere != null ? $croisiere->getTarifCroisiere() : null,
-            'servicepayant' => $servicePayant,
-            'inclusprixavitaillement' => $croisiere->getBateau()
-                ->getInclusPrixAvitaillement(),
-            'inclusprixequipage' => $croisiere->getBateau()
-                ->getInclusPrixEquipage(),
-            'inclusprixfraisdevoyage' => $croisiere->getBateau()
-                ->getInclusPrixFraisVoyage(),
-            'inclusprixautresservices' => $croisiere->getBateau()
-                ->getInclusPrixAutresServices(),
-            'inclusprixequipement' => $croisiere->getBateau()
-                ->getInclusPrixEquipement(),
-            'inclusprixactivite' => $croisiere->getBateau()
-                ->getInclusPrixActivite(),
-            'inclusprixcours' => $croisiere->getBateau()
-                ->getInclusPrixCours()
+            'servicepayant' => $croisiere != null ? $croisiere->getServicePayant() : null,
+            'inclusprixavitaillement' => $croisiere != null ? $croisiere->getBateau()
+                ->getInclusPrixAvitaillement() : null,
+            'inclusprixequipage' => $croisiere != null ? $croisiere->getBateau()
+                ->getInclusPrixEquipage() : null,
+            'inclusprixfraisdevoyage' => $croisiere != null ? $croisiere->getBateau()
+                ->getInclusPrixFraisVoyage() : null,
+            'inclusprixautresservices' => $croisiere != null ? $croisiere->getBateau()
+                ->getInclusPrixAutresServices() : null,
+            'inclusprixequipement' => $croisiere != null ? $croisiere->getBateau()
+                ->getInclusPrixEquipement() : null,
+            'inclusprixactivite' => $croisiere != null ? $croisiere->getBateau()
+                ->getInclusPrixActivite() : null,
+            'inclusprixcours' => $croisiere != null ? $croisiere->getBateau()
+                ->getInclusPrixCours() : null
         ));
     }
 
@@ -251,7 +238,6 @@ class SkipperController extends Controller
         if ($form->isValid()) {
             $data = $form->getData();
             var_dump($data);
-            return $this->redirect($this->generateUrl('task_success'));
         }
         
         $croisiere = $this->getDoctrine()
@@ -270,7 +256,8 @@ class SkipperController extends Controller
         
         return $this->render('AppBundle:Front:Skipper/skipper_contact.html.twig', array(
             'form' => $form->createView(),
-            'skipper' => isset($croisiere[0]) ? $croisiere[0]->getSkipper() : null
+            'skipper' => isset($croisiere[0]) ? $croisiere[0]->getSkipper() : null,
+            'locale' => $locale
         ));
     }
 
@@ -282,22 +269,102 @@ class SkipperController extends Controller
         $locale = $this->getRequest()->getLocale();
         $form = $this->createForm(new BateauDevisType($this->getDoctrine()
             ->getEntityManager(), $this->getRequest()
-            ->getLocale(),$bateauId));
+            ->getLocale(), $bateauId));
         $form->handleRequest($this->getRequest());
+        
+        $skipper = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("AppBundle\Entity\Skipper")
+            ->createQueryBuilder('s')
+            ->select('s, t')
+            ->join('s.translations', 't')
+            ->where('s.id = :id')
+            ->setParameter(':id', $id)
+            ->andWhere('t.locale = :locale')
+            ->setParameter(':locale', $locale)
+            ->getQuery()
+            ->getSingleResult();
+        $bateau = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("AppBundle\Entity\Bateau")
+            ->createQueryBuilder('s')
+            ->select('s, t')
+            ->join('s.translations', 't')
+            ->where('s.id = :id')
+            ->setParameter(':id', $bateauId)
+            ->andWhere('t.locale = :locale')
+            ->setParameter(':locale', $locale)
+            ->getQuery()
+            ->getSingleResult();
         
         if ($form->isValid()) {
             $data = $form->getData();
+            $servicePayant_id = array_values($this->getRequest()->get('servicepayant'));
+            $servicePayant = $this->getDoctrine()
+                ->getManager()
+                ->getRepository("AppBundle\Entity\ServicePayant")
+                ->createQueryBuilder('sp')
+                ->select('sp, t')
+                ->join('sp.translations', 't')
+                ->where('sp.id IN (:id)')
+                ->andWhere('t.locale = :locale')
+                ->setParameter(':locale', $locale)
+                ->setParameter(':id', $servicePayant_id)
+                ->getQuery()
+                ->getResult();
+            
+            $session = $this->get('session');
+            $data['skipper'] = $skipper->getName();
+            $data['bateau'] = $bateau->getName();
+            $session->set('data', $data);
+            $session->set('servicePayant', $servicePayant);
         }
         
         return $this->render('AppBundle:Front:Skipper/skipper_contact_step2.html.twig', array(
-            'recap' => $data
+            'recap' => $data,
+            'servicepayant' => $servicePayant,
+            'locale' => $locale,
+            'boat_id' => $bateauId,
+            'skipper_name' => $skipper->getName()
         ));
     }
-    
+
+    /**
+     * @Route("/skipper/{id}/contact/step3/", requirements={"id" = "\d+"}, name="skipper_contact_step3")
+     */
+    public function skipperContactStep3Action($id)
+    {
+        $session = $this->get('session');
+        $data = $session->get('data');
+        $servicePayant = $session->get('servicePayant');
+        
+        if ($data != null && $servicePayant != null) {
+            $formatPattern = $this->getRequest()->getLocale() == "en" ? "M/d/Y" : "d/M/Y";
+            $devis = new Devis();
+            $devis->setDateDebut($data['dateDepart']->format($formatPattern))
+                ->setDateFin($data['dateRetour']->format($formatPattern))
+                ->setNbPassager($data['nbPassager'])
+                ->setDureeCroisiere($data['dureeCroisiere'])
+                ->setPortDepart($data['portDepart'])
+                ->setDestination($data['destination'])
+                ->setMessage($data['message'])
+                ->setNom($data['nom'])
+                ->setEmail($data['email'])
+                ->setPrix($data['prix'])
+                ->setSkipper($data['skipper'])
+                ->setBateau($data['bateau'])
+                ->setCreatedAt(new \Datetime('now'));
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($devis);
+            $em->flush();
+        }
+        
+        return new Response("");
+    }
+
     public function subMenuAction($route, $id)
     {
-        $request = $this->getRequest();
-        $locale = $request->getLocale();
+        $locale = $this->getRequest()->getLocale();
         
         $skipper = $this->getDoctrine()
             ->getManager()

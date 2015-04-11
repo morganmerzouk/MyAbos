@@ -99,8 +99,15 @@ form_sejour_portdepart: Departure:
 form_sejour_destination: Destination: 
 form_sejour_message: Additional Infos: 
 form_sejour_from:  from  
-form_sejour_to:  to 
-devis_option: Options included in the estimate:
+form_sejour_From:  From:
+form_sejour_to:  to  
+form_sejour_To:  To:
+form_sejour_nom: Your name: 
+form_sejour_email: Your email: 
+modify: Modify
+send_to_skipper: Send to skipper
+devis_option_wanted: Options wanted not included in the estimate: 
+devis_option: Options not included in the estimate:
 passagers: passengers
 jours: days
 devis_croisiere: Kite cruise of
@@ -159,7 +166,7 @@ skipper_desti: Destinations
 skipper_availability: Availability
 skipper_price: Price
 skipper_contact: Contact
-
+no_boat_skipper: No cruise available for this skipper
 skipper-desti-localisation-boat: Localisation of the skipper
 skipper-desti-localisation-boat-label-portdepart: The usual departure place of this skipper is
 skipper-desti-localisation-boat-label-destination: From there, you can sail to 

@@ -1,7 +1,7 @@
 {% extends "AppBundle:Front:Bateau/boat.html.twig" %}
 {% block javascripts %}
     {{ parent() }}
-    <script src="{{ asset('bundles/app/js/boat_contact.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/app/js/boat/boat_contact.js') }}" type="text/javascript"></script>
     <script type="text/javascript">
         var urlBoatPriceAjax = "{{ path('boat_contact_price', {'id': app.request.get('id')}) }}";
     </script>
@@ -40,41 +40,40 @@
                     {{ form_errors(form.destination) }}
                     {{ form_widget(form.destination) }}
 	    	</div>
-	    	<div class="optionspayantes">
-	    		<strong>{{'choose_your_options'|trans }}: </strong>
-	    		<div class="col-md-12 even">{{'equipier_supplementaire'|trans }}</div>
-	                <div>
-	                    <div class="col-md-5 optionpayante-name odd" data-item="1">Hotesse / Cuisinier</div>
-	                    <div class="col-md-5 odd">150 euros par jour, pour le bateau</div>
-	                    <div class="col-md-1"><input type="checkbox" value="" /></div>
-	                </div>
-	                
-		    	<div class="col-md-12 even">{{'option_avitaillement'|trans }}</div>
-	                <div>
-	                    <div class="col-md-5 optionpayante-name odd" data-item="2">Boissons alcoolisés</div>
-	                    <div class="col-md-5 odd">10 euros par jour, par personne</div>
-	                    <div class="col-md-1"><input type="checkbox" value="" /></div>
-	                </div>
-		    	<div class="col-md-12 even">{{'equipement_supplementaire'|trans }}</div>
-	                <div>
-	                    <div class="col-md-5 optionpayante-name odd" data-item="3">La location de matériel de kitesurf</div>
-	                    <div class="col-md-5 odd">350 euros la semaine, par personne</div>
-	                    <div class="col-md-1"><input type="checkbox" value="" /></div>
-	                </div>
-		    	<div class="col-md-12 even">{{'prestation_kite_disponible'|trans }}</div>
-	                <div>
-	                    <div class="col-md-5 optionpayante-name odd" data-item="4">Cours de kitesurf</div>
-	                    <div class="col-md-5 odd">50 euros par heure</div>
-	                    <div class="col-md-1"><input type="checkbox" value="" /></div>
-	                </div>
-	    	</div>
+	    	{% if servicepayant|length > 0 %}
+	    		<div class="optionspayantes">
+		    		<strong>{{'choose_your_options'|trans }}: </strong>
+                	{% set currentCategory = null %}
+	        		{% for service in servicepayant %}
+		        		{% if service.categorie != currentCategory %}
+		        			{% set currentCategory = service.categorie %}
+	                    	<div class="col-md-12 even">{{service.categorie|trans}}</div>
+	                    {% endif %}
+	                    <div>
+		                    <div class="col-md-5 optionpayante-name odd" data-item="1">{{service.name}}</div>
+		                    <div class="col-md-5 odd">{% if service.fraisSupplementaires != "" %}{% if service.devise == "$" %}${% endif %}{{service.fraisSupplementaires}}{% if service.devise == "€" %}€{% endif %} {{service.tarifApplique|trans}}{% else %} N/A {% endif %}</div>
+		                    <div class="col-md-1"><input type="checkbox" name="servicepayant[]" value="{{service.id}}" /></div>
+		                </div>
+                    {% endfor %}
+		        </div>
+	    	{% endif %}
 	    	<div class="row even">	        
 	            {{ form_label(form.message) }}
                     {{ form_errors(form.message) }}
                     {{ form_widget(form.message) }} 
 	        </div>
+	    	<div class="row odd">	        
+	            {{ form_label(form.nom) }}
+                    {{ form_errors(form.nom) }}
+                    {{ form_widget(form.nom) }} 
+	        </div>
+	    	<div class="row even">	        
+	            {{ form_label(form.email) }}
+                    {{ form_errors(form.email) }}
+                    {{ form_widget(form.email) }} 
+	        </div>
                 {{ form_rest(form) }}
-        	{% if skipper is not null %}<button type="submit" class="pull-right btn btn-warning">{{'recapitulatif_contact'|trans}}</button>{% endif %}
+        	{% if skipper is not null %}<button type="submit" class="btn-recap pull-right btn btn-warning">{{'recapitulatif_contact'|trans}}</button>{% endif %}
     	</form>
     </div>
     <div class="col-devis col-right-devis col-md-3">
@@ -82,33 +81,33 @@
             <img class="img-responsive" src='{{ asset("bundles/app/images/general/loader.gif")  }}' />
         </div>
         <h2>{{'votre_devis'|trans }}</h2>
-        <div class="row odd devis-content-date-sejour">
+        <div class="row even devis-content-date-sejour">
          	<strong>{{'between'|trans }}:</strong> <span class="devis-date-depart">X</span> <strong>{{ 'form_sejour_possible_fin'|trans }}</strong> <span class="devis-date-retour">X</span> 
         </div>
-        <div class="row even devis-content-duree-sejour">
+        <div class="row odd devis-content-duree-sejour">
             <strong>{{'form_sejour_duree'|trans }} </strong><span class="devis-duree-sejour">X</span> {{'jours'|trans }}
         </div>
-        <div class="row odd devis-content-nb-passager">
+        <div class="row even devis-content-nb-passager">
         	<strong>{{'form_sejour_nb_passager'|trans}} </strong>
         	<span class="devis-nb-passager">X</span> {{'passagers'|trans }}
         </div>
-        <div class="row even devis-content-tarif">
+        <div class="row odd devis-content-tarif">
             <strong>{{'price'|trans }}: </strong>
             <span class="devis-sejour-tarif"></span> {{'Prix par personne/jour'|trans}}
         </div>
-        <div class="row odd devis-content-port-depart">
+        <div class="row even devis-content-port-depart">
             <strong>{{'form_sejour_portdepart'|trans }}</strong> <span class="devis-port-depart">X</span>
         </div>
-        <div class="row even devis-content-destination">
+        <div class="row odd devis-content-destination">
             <strong>{{'form_sejour_destination'|trans }}</strong> <span class="devis-destination">X</span>
         </div>
-        <div class="row odd devis-content-option-payante">
+        <div class="row even devis-content-option-payante">
             <strong>{{'devis_option'|trans }}</strong><br />
             <div class="devis-options-payantes">
             
             </div>
         </div>
-        <div class="row even">
+        <div class="row odd">
             <div class="bloc-final-price">
                 Total:<br />
                 <span class="devis-content-final-price"><span class="final-price"></span> euros {{'par_passager'|trans }}</span>

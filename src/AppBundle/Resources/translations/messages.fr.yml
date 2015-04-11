@@ -100,8 +100,15 @@ form_sejour_portdepart: Port de départ:
 form_sejour_destination: Destination souhaitée: 
 form_sejour_message: Message complémentaires:
 form_sejour_from:  du  
+form_sejour_From:  De: 
 form_sejour_to:  au 
-devis_option: Options inclues dans le devis:
+form_sejour_To:  à: 
+form_sejour_nom: Votre nom: 
+form_sejour_email: Votre email: 
+modify: Modifier
+send_to_skipper: Envoyer au skipper
+devis_option_wanted: Options souhaitées non inclues dans le devis:
+devis_option: Options non inclues dans le devis:
 passagers: passagers
 jours: jours
 devis_croisiere: Croisière kite de
@@ -162,6 +169,7 @@ skipper_desti: Destinations
 skipper_availability: Disponibilités
 skipper_price: Tarif
 skipper_contact: Contacter
+no_cruise_skipper: Ce skipper n'a pas de croisière disponible
 
 skipper-desti-localisation-boat: Localisation du skipper
 skipper-desti-localisation-boat-label-portdepart: Le port de départ habituel de ce skipper est

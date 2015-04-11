@@ -302,18 +302,6 @@ class BateauController extends Controller
             ->getQuery()
             ->getOneOrNullResult();
         
-        $servicePayant = $this->getDoctrine()
-            ->getManager()
-            ->getRepository("AppBundle\Entity\ServicePayant")
-            ->createQueryBuilder('s')
-            ->select('s, t')
-            ->join('s.translations', 't')
-            ->where('s.bateau = :id')
-            ->orderby('s.categorie', 'ASC')
-            ->setParameter(':id', $id)
-            ->getQuery()
-            ->getResult();
-        
         $boat = $this->getDoctrine()
             ->getManager()
             ->getRepository("AppBundle\Entity\Bateau")
@@ -326,10 +314,9 @@ class BateauController extends Controller
             ->setParameter(':locale', $locale)
             ->getQuery()
             ->getOneOrNullResult();
-        
         return $this->render('AppBundle:Front:Bateau/boat_price.html.twig', array(
             'tarifs' => $croisiere != null ? $croisiere->getTarifCroisiere() : null,
-            'servicepayant' => $servicePayant,
+            'servicepayant' => $croisiere != null ? $croisiere->getServicePayant() : null,
             'inclusprixavitaillement' => $boat->getInclusPrixAvitaillement(),
             'inclusprixequipage' => $boat->getInclusPrixEquipage(),
             'inclusprixfraisdevoyage' => $boat->getInclusPrixFraisVoyage(),
@@ -372,7 +359,8 @@ class BateauController extends Controller
         
         return $this->render('AppBundle:Front:Bateau/boat_contact.html.twig', array(
             'form' => $form->createView(),
-            'skipper' => isset($croisiere[0]) ? $croisiere[0]->getSkipper() : null
+            'skipper' => isset($croisiere[0]) ? $croisiere[0]->getSkipper() : null,
+            'servicepayant' => isset($croisiere[0]) ? $croisiere[0]->getServicePayant() : null
         ));
     }
 

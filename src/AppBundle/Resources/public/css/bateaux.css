@@ -1,3 +1,9 @@
+.slider .slick-prev {left: 10px;}
+.slider .slick-next {right: 10px;}
+.slider .slick-prev,
+.slider .slick-next {width: 22px;height: 20px;border-radius: 10px;}
+.slider .slick-prev:before,
+.slider .slick-next:before {font-size: 24px; background: white; opacity: 1; color: black; border-radius: 30px;}
 h1 {background: url("../images/menu/icones/icon-sprite-flotte.png") no-repeat 5px 10px #23B6E1; font-size: 1.2em; padding: 10px 10px 10px 30px;margin: 0;}
 .block-description-bateaux { margin: 0; background: #127BBD; padding: 10px; }
 .row-prestation { overflow: auto; }
@@ -122,7 +128,7 @@ td.libelleLegend { padding-left: 5px;}
 .label-textarea-message { 
 	width: auto !important;
 }
-.col-right-devis { position: fixed; right: 0; width: 20%; overflow: auto; padding-bottom: 10px; margin-bottom: 10px;background: white;}
+.col-right-devis { position: absolute; right: 0; width: 20%; overflow: auto; padding-bottom: 10px; margin-bottom: 10px;background: white;}
 .bloc-final-price { background: white; text-align: center; margin: auto; padding:10px;}
 
 .devis-content-duree-sejour,
@@ -134,3 +140,4 @@ td.libelleLegend { padding-left: 5px;}
 .devis-content-option-payante, 
 .devis-content-final-price {display: none;}
 
+.btn-recap { margin: 0 10px 10px 0;}
