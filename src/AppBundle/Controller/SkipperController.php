@@ -298,26 +298,27 @@ class SkipperController extends Controller
             ->getSingleResult();
         
         if ($form->isValid()) {
-            $data = $form->getData();
-            $servicePayant_id = array_values($this->getRequest()->get('servicepayant'));
-            $servicePayant = $this->getDoctrine()
-                ->getManager()
-                ->getRepository("AppBundle\Entity\ServicePayant")
-                ->createQueryBuilder('sp')
-                ->select('sp, t')
-                ->join('sp.translations', 't')
-                ->where('sp.id IN (:id)')
-                ->andWhere('t.locale = :locale')
-                ->setParameter(':locale', $locale)
-                ->setParameter(':id', $servicePayant_id)
-                ->getQuery()
-                ->getResult();
-            
             $session = $this->get('session');
+            $data = $form->getData();
             $data['skipper'] = $skipper->getName();
             $data['bateau'] = $bateau->getName();
+            if ($this->getRequest()->get('servicepayant')) {
+                $servicePayant_id = array_values($this->getRequest()->get('servicepayant'));
+                $servicePayant = $this->getDoctrine()
+                    ->getManager()
+                    ->getRepository("AppBundle\Entity\ServicePayant")
+                    ->createQueryBuilder('sp')
+                    ->select('sp, t')
+                    ->join('sp.translations', 't')
+                    ->where('sp.id IN (:id)')
+                    ->andWhere('t.locale = :locale')
+                    ->setParameter(':locale', $locale)
+                    ->setParameter(':id', $servicePayant_id)
+                    ->getQuery()
+                    ->getResult();
+                $session->set('servicePayant', $servicePayant);
+            }
             $session->set('data', $data);
-            $session->set('servicePayant', $servicePayant);
         }
         
         return $this->render('AppBundle:Front:Skipper/skipper_contact_step2.html.twig', array(

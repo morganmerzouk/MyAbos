@@ -3,4 +3,10 @@ $(document).ready(function(){
         autoplay: 	true,
         fade: 		true
     });
+
+    $('.lienHome li').css("height", $('.lienHome li').css('width'));
+});
+
+$(window).on('resize', function() {
+    $('.lienHome li').css("height", $('.lienHome li').css('width'));
 });

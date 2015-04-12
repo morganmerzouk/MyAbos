@@ -4,6 +4,10 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Doctrine\ORM\Query;
+use AppBundle\Form\OffreSpecialeContactType;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Entity\Devis;
 
 class OffreSpecialeController extends Controller
 {
@@ -32,7 +36,7 @@ class OffreSpecialeController extends Controller
     /**
      * @Route("/offrespeciale/{id}", requirements={"id" = "\d+"}, name="offrespeciale")
      */
-    public function offrespecialeAction($id)
+    public function offreSpecialeAction($id)
     {
         $locale = $this->getRequest()->getLocale();
         
@@ -402,9 +406,14 @@ class OffreSpecialeController extends Controller
             ->getQuery()
             ->getResult();
         
+        $form = $this->createForm(new OffreSpecialeContactType($this->getDoctrine()
+            ->getEntityManager(), $this->getRequest()
+            ->getLocale()));
+        
         return $this->render('AppBundle:Front:OffreSpeciale/offrespeciale_contact.html.twig', array(
             'offreSpeciale' => $offreSpeciale,
             'servicepayant' => $servicePayant,
+            'form' => $form->createView(),
             'inclusprixavitaillement' => $offreSpeciale->getBateau()
                 ->getInclusPrixAvitaillement(),
             'inclusprixequipage' => $offreSpeciale->getBateau()
@@ -420,6 +429,50 @@ class OffreSpecialeController extends Controller
             'inclusprixcours' => $offreSpeciale->getBateau()
                 ->getInclusPrixCours()
         ));
+    }
+
+    /**
+     * @Route("/offrespeciale/{id}/contact/send", requirements={"id" = "\d+"}, name="offrespeciale_contact_send")
+     */
+    public function offreSpecialeContactSendAction($id)
+    {
+        $locale = $this->getRequest()->getLocale();
+        
+        $email = $this->getRequest()->request->get('email');
+        $nom = $this->getRequest()->request->get('nom');
+        $message = $this->getRequest()->request->get('message');
+        if ($this->getRequest()->request->get('servicePayant')) {
+            $servicePayant_id = array_values($this->getRequest()->request->get('servicePayant'));
+            $servicesPayant = $this->getDoctrine()
+                ->getManager()
+                ->getRepository("AppBundle\Entity\ServicePayant")
+                ->createQueryBuilder('sp')
+                ->select('sp, t')
+                ->join('sp.translations', 't')
+                ->where('sp.id IN (:id)')
+                ->andWhere('t.locale = :locale')
+                ->setParameter(':locale', $locale)
+                ->setParameter(':id', $servicePayant_id)
+                ->getQuery()
+                ->getResult();
+            $html = "";
+            foreach ($servicesPayant as $servicePayant) {
+                $html .= $servicePayant->getName() . '<br />';
+            }
+        }
+        $devis = new Devis();
+        $devis->setOffreSpecialeId($id)
+            ->setNom($nom)
+            ->setEmail($email)
+            ->setMessage($message)
+            ->setCreatedAt(new \DateTime("now"));
+        if (isset($html)) {
+            $devis->setServicePayant($html);
+        }
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($devis);
+        $em->flush();
+        return new Response("OK");
     }
 
     public function subMenuAction($route, $id)

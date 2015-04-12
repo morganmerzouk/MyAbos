@@ -14,17 +14,17 @@
     <div class="block-prestations-name">
         {% for prestationName in prestationsName %}<a href="{{ path('prestation', { 'id': prestationName.id }) }}" class="prestations-name {{ prestationName.name == prestation.name  ? "active" : "" }}">{{ prestationName.name }}</a>{% endfor %}
     </div>
-	<div class="{% if boats is not null %}col-md-9{% else %}col-md-12{% endif %}">
+	<div class="{% if boats|length > 0 %}col-md-9{% else %}col-md-12{% endif %}">
 		{{ prestation.description|raw }}
 	</div>
-	{% if boats is not null %}
+	{% if boats|length > 0 %}
 		<div class="col-md-3 prestation-boat-container">
 	    	<div class="prestation-boat">
 				<h2 class="prestation-boat-title">{{'boat_offering'|trans }} {{ prestation.name }}</h2>
 		    	{% for boat in boats %}
 		    		<div class="boat">
 		    			<img src="{{ boat.miniatureWebPath }}" class="col-md-4 img-responsive img-thumbnails pull-left" />
-		    			<div class="boat-name">{{ boat.name }}</div>
+		    			<div class="boat-name"><a href="{{ path("boat", {'id': boat.id}) }}">{{ boat.name }}</a></div>
 		    		</div>
 		    	{% endfor %}
 	    	</div>

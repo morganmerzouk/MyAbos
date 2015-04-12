@@ -336,12 +336,6 @@ class BateauController extends Controller
         $form = $this->createForm(new BateauDevisType($this->getDoctrine()
             ->getEntityManager(), $this->getRequest()
             ->getLocale(), $id));
-        $form->handleRequest($this->getRequest());
-        
-        if ($form->isValid()) {
-            $data = $form->getData();
-            return $this->redirect($this->generateUrl('task_success'));
-        }
         
         $croisiere = $this->getDoctrine()
             ->getManager()

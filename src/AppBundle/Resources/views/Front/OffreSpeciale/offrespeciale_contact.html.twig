@@ -2,36 +2,40 @@
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('bundles/app/js/offrespeciale_contact.js') }}" type="text/javascript"></script>
+    <script type="text/javascript">
+        var urlOffreSpecialeContactAjax = "{{ path('offrespeciale_contact_send', {'id': offreSpeciale.id }) }}";
+    </script>
 {% endblock %}
 {% block content %}
-    {{ parent() }}
-    <div id="tarifOffre" class="offre-contact col-md-9">
+    {{ parent() }}	    
+    <div id="tarifOffre" class="offre-contact col-md-8">
 	    <h2>{{'cruise_recap'|trans }}</h2>
         <div class="subblock-periode">
-		    <h3>{{ offreSpeciale.bateau.name }}</h3>
+		    <strong>Skipper: </strong> {{ offreSpeciale.skipper.name }}<br />
+		    <strong>{{'offrespeciale_boat'|trans }}: </strong> {{ offreSpeciale.bateau.name }}<br />
 		    <strong>{{'departure_date'|trans }}:</strong> {{ offreSpeciale.dateDebut|date('d/m/Y') }}<br />
 		    <strong>{{'return_date'|trans }}:</strong> {{ offreSpeciale.dateFin|date('d/m/Y') }}<br />
 		    <strong>{{'form_sejour_portdepart'|trans }}</strong> {{ offreSpeciale.portDepart.name }}<br />
 		    <strong>{{'form_sejour_destination'|trans }}</strong> {{ offreSpeciale.destination.name }}<br />
-		    <strong>{{'nb_cabine_dispo'|trans }}:</strong> {{ offreSpeciale.nbCabine }}<br />
+		    <strong>{{'nb_cabine_dispo'|trans }}:</strong> {{ offreSpeciale.nbCabine }}
+		    <div class="price btn btn-lg btn-primary pull-right">
+			  	${% if offreSpeciale.tarifHuitPersonnes > 0 %}
+			  		{{ offreSpeciale.tarifHuitPersonnes }}
+		  		 {% elseif offreSpeciale.tarifSeptPersonnes > 0 %}
+		  		 	{{ offreSpeciale.tarifSeptPersonnes }}
+		  		 {% elseif offreSpeciale.tarifSixPersonnes > 0 %}
+		  		 	{{ offreSpeciale.tarifSixPersonnes }}
+		  		 {% elseif offreSpeciale.tarifCinqPersonnes > 0 %}
+		  		 	{{ offreSpeciale.tarifCinqPersonnes }}
+		  		 {% elseif offreSpeciale.tarifQuatrePersonnes > 0 %}
+		  		 	{{ offreSpeciale.tarifQuatrePersonnes }}
+		  		 {% elseif offreSpeciale.tarifTroisPersonnes > 0 %}
+		  		 	{{ offreSpeciale.tarifTroisPersonnes }}
+		  		 {% elseif offreSpeciale.tarifDeuxPersonnes > 0 %}
+		  		 	{{ offreSpeciale.tarifDeuxPersonnes }}
+				 {% endif %}/ {{ offreSpeciale.tarifPour|trans }}
+			</div>
         </div>
-	    <div class="price btn btn-sm btn-primary">
-		  	${% if offreSpeciale.tarifHuitPersonnes > 0 %}
-		  		{{ (offreSpeciale.tarifHuitPersonnes/8)|round }}
-	  		 {% elseif offreSpeciale.tarifSeptPersonnes > 0 %}
-	  		 	{{ (offreSpeciale.tarifSeptPersonnes/7)|round }}
-	  		 {% elseif offreSpeciale.tarifSixPersonnes > 0 %}
-	  		 	{{ (offreSpeciale.tarifSixPersonnes/6)|round }}
-	  		 {% elseif offreSpeciale.tarifCinqPersonnes > 0 %}
-	  		 	{{ (offreSpeciale.tarifCinqPersonnes/5)|round }}
-	  		 {% elseif offreSpeciale.tarifQuatrePersonnes > 0 %}
-	  		 	{{ (offreSpeciale.tarifQuatrePersonnes/4)|round }}
-	  		 {% elseif offreSpeciale.tarifTroisPersonnes > 0 %}
-	  		 	{{ (offreSpeciale.tarifTroisPersonnes/3)|round }}
-	  		 {% elseif offreSpeciale.tarifDeuxPersonnes > 0 %}
-	  		 	{{ (offreSpeciale.tarifDeuxPersonnes/2)|round }}
-			 {% endif %}/{{ offreSpeciale.tarifPour }}
-		</div>
         <div class="tarif-accordion">
 	        <h3 class="periode_inclus_prix">
 	            {{'inclus_prix'|trans }}
@@ -113,11 +117,36 @@
 		                    {% else %}
 		                    	<div class="col-md-5"></div>
 	                    	{% endif %}
-		                    <div class="col-md-2 text-center"><input type="checkbox" class="selection" /></div>
+		                    <div class="col-md-2 text-center"><input type="checkbox" class="selection" name="servicepayant[]" value="{{ service.id }}" /></div>
 	                    {% endfor %}
 	                </div>
 		        </div>
 	    	{% endif %}
     	</div>
+    </div>
+    <div class="col-md-4 offrespeciale-contact-col-form">
+    	<div class="offrespeciale-contact-col-form-content">
+	        <div class="loading">
+	            <img class="img-responsive" src='{{ asset("bundles/app/images/general/loader.gif")  }}' />
+	        </div>
+	    	<div class="even">	        
+	            {{ form_label(form.message) }}
+	            {{ form_errors(form.message) }}
+	            {{ form_widget(form.message) }} 
+	        </div>
+	    	<div class="odd">	        
+	            {{ form_label(form.nom) }}
+	            {{ form_errors(form.nom) }}
+	            {{ form_widget(form.nom) }} 
+	        </div>
+	    	<div class="even">	        
+	            {{ form_label(form.email) }}
+	            {{ form_errors(form.email) }}
+	            {{ form_widget(form.email) }} 
+	        </div>
+	        {{ form_rest(form) }}
+        </div>
+        <div class="alert alert-success btn-sent" role="alert">{{'message_sent'|trans}}...</div>
+		<button type="submit" class="btn-send center-block btn btn-warning">{{'send_to_skipper'|trans}}</button>
     </div>
 {% endblock %}

@@ -59,18 +59,18 @@
 	    	{% endif %}
 	    	<div class="row even">	        
 	            {{ form_label(form.message) }}
-                    {{ form_errors(form.message) }}
-                    {{ form_widget(form.message) }} 
+                {{ form_errors(form.message) }}
+                {{ form_widget(form.message) }} 
 	        </div>
 	    	<div class="row odd">	        
 	            {{ form_label(form.nom) }}
-                    {{ form_errors(form.nom) }}
-                    {{ form_widget(form.nom) }} 
+                {{ form_errors(form.nom) }}
+                {{ form_widget(form.nom) }} 
 	        </div>
 	    	<div class="row even">	        
 	            {{ form_label(form.email) }}
-                    {{ form_errors(form.email) }}
-                    {{ form_widget(form.email) }} 
+                {{ form_errors(form.email) }}
+                {{ form_widget(form.email) }} 
 	        </div>
                 {{ form_rest(form) }}
         	{% if skipper is not null %}<button type="submit" class="btn-recap pull-right btn btn-warning">{{'recapitulatif_contact'|trans}}</button>{% endif %}

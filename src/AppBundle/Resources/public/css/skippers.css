@@ -13,7 +13,7 @@ h1 {background: #23B6E1; font-size: 1.2em; padding: 10px;margin: 0;}
 .block-croisiere { float: right; width: 30%; border: 1px solid black; padding: 10px;text-align:center;margin-top:10px; }
 .block-croisiere .row { margin: 10px; text-align:left;}
 
-.skipper-contact-step2-loading {display: none; position: absolute; z-index: 1000; width: 25%; height: 20%; position: absolute; top: 40%; left: 33%;padding: 10px; background: black; opacity: 0.8}
+.skipper-contact-step2-loading {display: none; position: absolute; z-index: 1000; width: 25%; height: 20%; top: 40%; left: 33%;padding: 10px; background: black; opacity: 0.8}
 .skipper-contact-step2-loading img {height: 80%;}
 /*** Page Skipper ***/
 .block-skipper-submenu { display: table; width: 100%; margin-bottom: 10px; }

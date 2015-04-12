@@ -29,6 +29,11 @@ class Devis
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
      */
+    protected $offreSpecialeId;
+
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
     protected $email;
 
     /**
@@ -37,12 +42,12 @@ class Devis
     protected $prix;
 
     /**
-     * @ORM\Column(type="string", length=200)
+     * @ORM\Column(type="string", length=200, nullable=true)
      */
     protected $bateau;
 
     /**
-     * @ORM\Column(type="string", length=200)
+     * @ORM\Column(type="string", length=200, nullable=true)
      */
     protected $skipper;
 
@@ -439,5 +444,28 @@ class Devis
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * Set offreSpecialeId
+     *
+     * @param string $offreSpecialeId
+     * @return Devis
+     */
+    public function setOffreSpecialeId($offreSpecialeId)
+    {
+        $this->offreSpecialeId = $offreSpecialeId;
+
+        return $this;
+    }
+
+    /**
+     * Get offreSpecialeId
+     *
+     * @return string 
+     */
+    public function getOffreSpecialeId()
+    {
+        return $this->offreSpecialeId;
     }
 }

@@ -54,7 +54,7 @@
 					  		 {% elseif offreSpeciale.tarifDeuxPersonnes > 0 %}
 					  		 	{{ (offreSpeciale.tarifDeuxPersonnes/2)|round }}
 							 {% endif %}
-						  		  / {{ offreSpeciale.tarifPour }}
+						  		  / {{ offreSpeciale.tarifPour|trans }}
 					  		</div>
 				  		</div>
 				  		<a href="{{ path('offresspeciales') }}" class="see-all-special-offers pull-left">{{'see_specials_offers'|trans }}</a>

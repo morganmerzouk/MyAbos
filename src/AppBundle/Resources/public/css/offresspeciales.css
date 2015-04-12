@@ -79,3 +79,10 @@ h1.special-offer-title {background: url("../images/menu/icones/icon-sprite-offre
 
 /*** Offres Spéciales - Contact ***/
 .offre-contact { border: 3px solid #23B6E1; padding: 10px; }
+.offrespeciale-contact-col-form-content .loading { display: none; position: absolute; z-index: 1000; height: 90%; padding: 20% 0px 0px 0px; background: black; opacity: 0.8; margin-right: 15px;}
+.offrespeciale-contact-col-form-content .loading img { width: 80%; margin: auto; }
+.offrespeciale-contact-col-form-content div { padding: 10px;}
+.offrespeciale-contact-col-form-content textarea { width: 100%; height: 200px;}
+.offrespeciale-contact-col-form-content input { width: 100%; color: black;}
+.offrespeciale-contact-col-form .btn-send {margin-top: 10px; }
+.offrespeciale-contact-col-form .btn-sent { display: none;margin: 10px auto; }
