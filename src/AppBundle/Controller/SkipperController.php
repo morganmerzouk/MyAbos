@@ -231,7 +231,7 @@ class SkipperController extends Controller
     {
         $locale = $this->getRequest()->getLocale();
         $form = $this->createForm(new BateauDevisType($this->getDoctrine()
-            ->getEntityManager(), $this->getRequest()
+            ->getManager(), $this->getRequest()
             ->getLocale()));
         $form->handleRequest($this->getRequest());
         
@@ -268,8 +268,9 @@ class SkipperController extends Controller
     {
         $locale = $this->getRequest()->getLocale();
         $form = $this->createForm(new BateauDevisType($this->getDoctrine()
-            ->getEntityManager(), $this->getRequest()
-            ->getLocale(), $bateauId));
+            ->getManager(), $this->getRequest()
+            ->getLocale(),$bateauId));
+
         $form->handleRequest($this->getRequest());
         
         $skipper = $this->getDoctrine()

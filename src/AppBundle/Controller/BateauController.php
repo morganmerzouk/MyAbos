@@ -334,7 +334,7 @@ class BateauController extends Controller
     {
         $locale = $this->getRequest()->getLocale();
         $form = $this->createForm(new BateauDevisType($this->getDoctrine()
-            ->getEntityManager(), $this->getRequest()
+            ->getManager(), $this->getRequest()
             ->getLocale(), $id));
         
         $croisiere = $this->getDoctrine()
