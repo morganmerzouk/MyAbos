@@ -5,6 +5,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Doctrine\ORM\Query;
 use AppBundle\Form\BateauDevisType;
+use AppBundle\Entity\Devis;
 use Symfony\Component\HttpFoundation\Response;
 
 class BateauController extends Controller
@@ -15,8 +16,7 @@ class BateauController extends Controller
      */
     public function indexAction()
     {
-        $request = $this->getRequest();
-        $locale = $request->getLocale();
+        $locale = $this->getRequest()->getLocale();
         $croisieres = $this->getDoctrine()
             ->getManager()
             ->getRepository("AppBundle\Entity\Croisiere")
@@ -356,6 +356,109 @@ class BateauController extends Controller
             'skipper' => isset($croisiere[0]) ? $croisiere[0]->getSkipper() : null,
             'servicepayant' => isset($croisiere[0]) ? $croisiere[0]->getServicePayant() : null
         ));
+    }
+
+    /**
+     * @Route("/bateau/{id}/contact/step2/{skipperId}", requirements={"id" = "\d+"}, name="boat_contact_step2")
+     */
+    public function boatContactStep2Action($id, $skipperId)
+    {
+        $locale = $this->getRequest()->getLocale();
+        $form = $this->createForm(new BateauDevisType($this->getDoctrine()
+            ->getManager(), $this->getRequest()
+            ->getLocale(), $id));
+        
+        $form->handleRequest($this->getRequest());
+        
+        $skipper = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("AppBundle\Entity\Skipper")
+            ->createQueryBuilder('s')
+            ->select('s, t')
+            ->join('s.translations', 't')
+            ->where('s.id = :id')
+            ->setParameter(':id', $skipperId)
+            ->andWhere('t.locale = :locale')
+            ->setParameter(':locale', $locale)
+            ->getQuery()
+            ->getSingleResult();
+        $bateau = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("AppBundle\Entity\Bateau")
+            ->createQueryBuilder('s')
+            ->select('s, t')
+            ->join('s.translations', 't')
+            ->where('s.id = :id')
+            ->setParameter(':id', $id)
+            ->andWhere('t.locale = :locale')
+            ->setParameter(':locale', $locale)
+            ->getQuery()
+            ->getSingleResult();
+        
+        if ($form->isValid()) {
+            $session = $this->get('session');
+            $data = $form->getData();
+            $data['skipper'] = $skipper->getName();
+            $data['bateau'] = $bateau->getName();
+            if ($this->getRequest()->get('servicepayant')) {
+                $servicePayant_id = array_values($this->getRequest()->get('servicepayant'));
+                $servicePayant = $this->getDoctrine()
+                    ->getManager()
+                    ->getRepository("AppBundle\Entity\ServicePayant")
+                    ->createQueryBuilder('sp')
+                    ->select('sp, t')
+                    ->join('sp.translations', 't')
+                    ->where('sp.id IN (:id)')
+                    ->andWhere('t.locale = :locale')
+                    ->setParameter(':locale', $locale)
+                    ->setParameter(':id', $servicePayant_id)
+                    ->getQuery()
+                    ->getResult();
+                $session->set('servicePayant', $servicePayant);
+            }
+            $session->set('data', $data);
+        }
+        
+        return $this->render('AppBundle:Front:Bateau/boat_contact_step2.html.twig', array(
+            'recap' => $data,
+            'servicepayant' => $servicePayant,
+            'locale' => $locale,
+            'boat_id' => $id,
+            'skipper_name' => $skipper->getName()
+        ));
+    }
+
+    /**
+     * @Route("/bateau/{id}/contact/step3/", requirements={"id" = "\d+"}, name="boat_contact_step3")
+     */
+    public function boatContactStep3Action($id)
+    {
+        $session = $this->get('session');
+        $data = $session->get('data');
+        $servicePayant = $session->get('servicePayant');
+        
+        if ($data != null && $servicePayant != null) {
+            $formatPattern = $this->getRequest()->getLocale() == "en" ? "M/d/Y" : "d/M/Y";
+            $devis = new Devis();
+            $devis->setDateDebut($data['dateDepart']->format($formatPattern))
+                ->setDateFin($data['dateRetour']->format($formatPattern))
+                ->setNbPassager($data['nbPassager'])
+                ->setDureeCroisiere($data['dureeCroisiere'])
+                ->setPortDepart($data['portDepart'])
+                ->setDestination($data['destination'])
+                ->setMessage($data['message'])
+                ->setNom($data['nom'])
+                ->setEmail($data['email'])
+                ->setPrix($data['prix'])
+                ->setSkipper($data['skipper'])
+                ->setBateau($data['bateau'])
+                ->setCreatedAt(new \Datetime('now'));
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($devis);
+            $em->flush();
+        }
+        
+        return new Response("");
     }
 
     /**

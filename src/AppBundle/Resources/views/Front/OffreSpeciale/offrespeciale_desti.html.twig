@@ -5,14 +5,15 @@
 {% endblock %}
 {% block content %}
     {{ parent() }}
+    {% set format = app.request.locale == "en" ? 'm/d/Y' : 'd/m/Y' %}
     <div class="col-md-9">
         {{ offreSpeciale.destination.description|raw }}
     </div>
     <div class="col-md-3 offre-desti text-center">
 	    <h2 class="offre-desti-title text-left">{{'cruise_to'|trans}} {{ offreSpeciale.destination.name }}</h2>
 	    <div class="offre-desti-content">
-	        <strong>{{'departure_date'|trans}}:</strong> {{ offreSpeciale.dateDebut|date('d/m/Y') }}<br />
-	        <strong>{{'return_date'|trans}}:</strong> {{ offreSpeciale.dateFin|date('d/m/Y') }}<br />
+	        <strong>{{'departure_date'|trans}}:</strong> {{ offreSpeciale.dateDebut|date(format) }}<br />
+	        <strong>{{'return_date'|trans}}:</strong> {{ offreSpeciale.dateFin|date(format) }}<br />
 	        <strong>{{'cruise_to'|trans}}:</strong> {{ offreSpeciale.portDepart.name }}<br />
 	        <strong>{{'nb_cabine_dispo'|trans}}:</strong> {{ offreSpeciale.nbCabine }}<br />
 	        <strong>{{'inclus_prix'|trans }}:</strong> 

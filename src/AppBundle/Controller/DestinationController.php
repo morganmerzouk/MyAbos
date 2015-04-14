@@ -12,8 +12,7 @@ class DestinationController extends Controller
      */
     public function indexAction()
     {
-        $request = $this->getRequest();
-        $locale = $request->getLocale();
+        $locale = $this->getRequest()->getLocale();
         
         $destinations = $this->getDoctrine()
             ->getManager()
@@ -33,10 +32,9 @@ class DestinationController extends Controller
     /**
      * @Route("/destination/{id}", requirements={"id" = "\d+"}, name="destination")
      */
-    public function skipperAction($id)
+    public function destinationAction($id)
     {
-        $request = $this->getRequest();
-        $locale = $request->getLocale();
+        $locale = $this->getRequest()->getLocale();
         
         $destination = $this->getDoctrine()
             ->getManager()
@@ -51,8 +49,21 @@ class DestinationController extends Controller
             ->getQuery()
             ->getSingleResult();
         
+        $offresSpeciales = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("AppBundle\Entity\OffreSpeciale")
+            ->createQueryBuilder('os')
+            ->select('os, t')
+            ->join('os.translations', 't')
+            ->andWhere('os.destination = :destination')
+            ->setParameter(':destination', $id)
+            ->andWhere('t.locale = :locale')
+            ->setParameter(':locale', $locale)
+            ->getQuery()
+            ->getResult();
         return $this->render('AppBundle:Front:destination.html.twig', array(
-            'destination' => $destination
+            'destination' => $destination,
+            'offresSpeciales' => $offresSpeciales
         ));
     }
 }

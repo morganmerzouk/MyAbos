@@ -1,9 +1,12 @@
-h1 {background: #23B6E1; font-size: 1.2em; padding: 10px;margin: 0;}
-.block-description-destinations { margin: 0 0 10px 0; background: #127BBD; padding: 10px; }
+h1.destinations {background: url("../images/menu/icones/icon-sprite-destinations.png") no-repeat 5px 5px #23B6E1;font-size: 1.4em;padding: 7px 10px 5px 35px;margin: 0; }
+.block-description-destinations { margin: 0 0 10px 0; background: #127BBD;color:white; padding: 10px; }
 
-ul.menu-destinations { float: left; width: 15%; }
+ul.menu-destinations { float: left; width: 25%;list-style: none;padding: 0px; background: #127BBD;}
+ul.menu-destinations a {color: white;display: block;padding: 5px;}
+ul.menu-destinations a:hover {color: black;background: #23B6E1;color:white;text-decoration:none;}
+iframe { width: 75%;}
 
 /*** Page Destination ***/
-
-.block-bateau-destination { float: right; width: 30%; background: #23B6E1; border: 1px solid black; padding: 10px;text-align:center; margin: 10px 0 10px 10px; }
-.block-bateau-destination .row { background:#127BBD; padding: 10px; margin: 10px; text-align: left; }
+.block-bateau-destination { background: #23B6E1; border: 1px solid black; padding: 10px;text-align:center; margin: 10px 0 10px 0px; }
+.block-bateau-destination .row { background:#127BBD; padding: 10px; margin: 10px 0; text-align: left; }
+.block-bateau-destination .row a { color: white; }

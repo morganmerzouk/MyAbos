@@ -20,4 +20,4 @@
 .block-newsletter {background:white; padding-right: 11px; }
 form.newsletter {background: #127BBD; text-align: center; padding-bottom: 20px; }
 .newsletter legend { color:white;border: 0; margin-bottom: 5px;border-top: 1px solid white; }
-.newsletter-email { width: 60%;}
+.newsletter-email { width: 60%;font-size: 0.7em;}

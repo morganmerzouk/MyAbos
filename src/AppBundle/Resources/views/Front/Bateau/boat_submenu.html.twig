@@ -1,6 +1,5 @@
 <h1>{{ boat.name }}</h1>
 <div class="block-bateau-submenu">
-    
     <a href="{{ path('boat', { 'id': app.request.get("id") }) }}" class="bateau-home {% if route == 'boat' %}active{% endif %}">{{'boat_presentation'|trans}}</a>
     <a href="{{ path('boat_details', { 'id': app.request.get("id") }) }}" class="bateau-fiche {% if route == 'boat_details' %}active{% endif %}">{{'boat_fiche'|trans}}</a>
     <a href="{{ path('boat_crew', { 'id': app.request.get("id") }) }}" class="bateau-crew {% if route == 'boat_crew' %}active{% endif %}">{{'boat_crew'|trans}}</a>

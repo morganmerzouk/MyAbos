@@ -7,15 +7,15 @@
     <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/offresspeciales.css') }}">
 {% endblock %}   
 {% block title %}{{'toptitle'|trans}} - {{'offres_speciales'|trans}}{% endblock %}
-
 {% block content %}
+    {% set format = app.request.locale == "en" ? 'm/d/Y' : 'd/m/Y' %}
     <h1 class="specials-offers-title">{{'offres_speciales'|trans}}</h1>
 	{% for offreSpeciale in offresSpeciales  %}
 	  	<div class="col-md-4">
 	  		<div class="description">
 	  			<h2>
 	  				{{ offreSpeciale.name }}
-		  			Départ le {{ offreSpeciale.dateDebut|date('d/m/Y') }}
+		  			Départ le {{ offreSpeciale.dateDebut|date(format) }}
 			  	</h2>
 	  			<img class="img-responsive special-offer-img" src="{{ offreSpeciale.miniatureWebPath }}" />
 			  	<div class="col-md-4 type text-center">

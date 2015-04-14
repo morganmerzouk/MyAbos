@@ -8,7 +8,7 @@ h1 {background: #23B6E1; font-size: 1.2em; padding: 10px;margin: 0;}
 
 .row-skipper { overflow: auto; }
 .skipper { width:30%; background: #127BBD; padding: 10px; text-align: center; margin: 1%;margin-top:10px;color: white;}
-.skipper:hover { background: #23B6E1; color: black; border: 1px solid black;}
+.skipper:hover { background: #23B6E1; color: black;}
 .skipper p { text-align:left; font-size:0.9em;}
 .block-croisiere { float: right; width: 30%; border: 1px solid black; padding: 10px;text-align:center;margin-top:10px; }
 .block-croisiere .row { margin: 10px; text-align:left;}

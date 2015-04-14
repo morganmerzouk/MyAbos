@@ -1,18 +1,18 @@
-{% extends "AppBundle:Front:Skipper/skipper.html.twig" %}
+{% extends "AppBundle:Front:Bateau/boat.html.twig" %}
 {% block javascripts %}
     {{ parent() }}
-    <script src="{{ asset('bundles/app/js/skipper/skipper_contact_step2.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/app/js/boat/boat_contact_step2.js') }}" type="text/javascript"></script>
     <script type="text/javascript">
-    	urlContact = "{{ path('skipper_contact_step3', { 'id': app.request.get('id') }) }}";
+    	urlContact = "{{ path('boat_contact_step3', { 'id': app.request.get('id') }) }}";
 	</script>
 {% endblock %}
 {% block content %}
     {{ parent() }}
     {% set format = app.request.locale == "en" ? 'm/d/Y' : 'd/m/Y' %}
-    <div class="skipper-contact-step2-loading">
-        <img class="img-responsive" src='{{ asset("bundles/app/images/general/loader.gif")  }}' />
-    </div>
     <div class="col-devis col-md-9">
+	    <div class="boat-contact-step2-loading">
+	        <img class="img-responsive" src='{{ asset("bundles/app/images/general/loader.gif")  }}' />
+	    </div>
     	<h2>{{'recapitulatif_de_votre_demande'|trans}}</h2>
     	<div class="row odd">
     		<strong>{{'form_sejour_possible_debut'|trans }}</strong> 

@@ -5,6 +5,7 @@
 {% endblock %}
 {% block content %}
     {{ parent() }}
+    {% set format = app.request.locale == "en" ? 'm/d/Y' : 'd/m/Y' %}
     {% if portDepart is not null %}
 	    <div class="{% if offrespeciale is not null %}col-md-9{% else %}col-md-12{% endif %} boat-desti">
 	        <h3 class="boat-desti-localisation">
@@ -34,8 +35,8 @@
 		                    {{ itineraireCroisiere.itineraire.description|raw }}
 		                </div>
 		                <div>
-		                    {{'skipper-desti-date-operation'|trans }} {{ itineraireCroisiere.dateDebut|date('d/m/Y') }}
-		                    {{'periode_au'|trans }} {{ itineraireCroisiere.dateFin|date('d/m/Y') }}
+		                    {{'skipper-desti-date-operation'|trans }} {{ itineraireCroisiere.dateDebut|date(format) }}
+		                    {{'periode_au'|trans }} {{ itineraireCroisiere.dateFin|date(format) }}
 		                </div>
 		            </div>
 		            <div class="col-md-3">

@@ -9,7 +9,7 @@
 {% block content %}
     {{ parent() }}
     <div class="col-devis col-md-9">
-    	<form method="post" action="{{ path('skipper_contact_step2', {'id': skipper.id, 'bateauId': app.request.get('id') }) }}">
+    	<form method="post" action="{{ path('boat_contact_step2', {'id': app.request.get('id'), 'skipperId': skipper.id }) }}">
 	    	<h2>{{'boat_get_estimate'|trans}}</h2>
 	    	<div class="row odd">
 	            {{ form_label(form.dateDepart) }}

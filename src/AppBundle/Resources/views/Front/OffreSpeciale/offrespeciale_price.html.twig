@@ -5,10 +5,11 @@
 {% endblock %}
 {% block content %}
     {{ parent() }}
+    {% set format = app.request.locale == "en" ? 'm/d/Y' : 'd/m/Y' %}
     <div id="tarifOffre" class="col-md-9">
         <h2>{{'tarif_croisiere_title'|trans }}</h2>
-        <h3>{{'tarif_croisiere_from'|trans }} {{ offreSpeciale.dateDebut|date('d/m/Y') }}
-        {{'tarif_croisiere_to'|trans }} {{ offreSpeciale.dateFin|date('d/m/Y') }}</h3>
+        <h3>{{'tarif_croisiere_from'|trans }} {{ offreSpeciale.dateDebut|date(format) }}
+        {{'tarif_croisiere_to'|trans }} {{ offreSpeciale.dateFin|date(format) }}</h3>
         <div class="tarif-croisiere-tarif">
         	{{'tarif_croisiere_nbcabine'|trans }}{{ offreSpeciale.nbCabine }}<br />
         	{{'periode_tarif_cruise_pour'|trans }} {{ offreSpeciale.tarifPour|trans }}

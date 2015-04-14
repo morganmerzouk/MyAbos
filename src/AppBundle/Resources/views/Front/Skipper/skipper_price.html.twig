@@ -5,13 +5,14 @@
 {% endblock %}
 {% block content %}
     {{ parent() }}
+    {% set format = app.request.locale == "en" ? 'm/d/Y' : 'd/m/Y' %}
     <div id="tarifBateau" class="col-md-9">
     	{% if tarifs is not null %}
 	        <h2>{{'tarif_bateau_title'|trans }}</h2>
 	        {% for tarif in tarifs %}
 	            <div class="tarif-accordion">
 	                <h3 class="periode-title">
-	                    {{'periode_du'|trans }}  {{ tarif.dateDebut|date('d/m/Y') }} {{'periode_au'|trans }} {{ tarif.dateFin|date('d/m/Y') }}
+	                    {{'periode_du'|trans }}  {{ tarif.dateDebut|date(format) }} {{'periode_au'|trans }} {{ tarif.dateFin|date(format) }}
 	                </h3>
 	                <div class="subblock-periode">
 		                {{'periode_tarif_du'|trans }} {{ tarif.nombreJourMinimum }} {{'day'|trans }} {{'periode_tarif_au'|trans }} {{ tarif.nombreJourMaximum }} {{'days'|trans }} {{'periode_tarif_cruise'|trans }}<br />
@@ -121,7 +122,7 @@
 		                    	<div class="col-md-6 even service-payant-categorie">{{service.categorie|trans}}</div>
 		                    {% endif %}
 		                    <div class="col-md-6 odd">{{service.name}}</div>
-		                    <div class="col-md-6 odd">50 euros par heure</div>
+		                    <div class="col-md-6 odd">{% if service.fraisSupplementaires != "" %}{% if service.devise == "$" %}${% endif %}{{service.fraisSupplementaires}}{% if service.devise == "€" %}€{% endif %} {{service.tarifApplique|trans}}{% else %} N/A {% endif %}</div>
 	                    {% endfor %}
 	                </div>
 		        </div>

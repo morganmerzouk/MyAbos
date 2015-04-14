@@ -33,6 +33,7 @@ class AppKernel extends Kernel
             new Hautelook\AliceBundle\HautelookAliceBundle(),
             new CoreSphere\ConsoleBundle\CoreSphereConsoleBundle(),
             new FM\ElfinderBundle\FMElfinderBundle(),
+            new Sonata\SeoBundle\SonataSeoBundle(),
             new AppBundle\AppBundle()
         );
         

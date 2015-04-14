@@ -8,13 +8,14 @@
 {% endblock %}
 {% block content %}
     {{ parent() }}	    
+    {% set format = app.request.locale == "en" ? 'm/d/Y' : 'd/m/Y' %}
     <div id="tarifOffre" class="offre-contact col-md-8">
 	    <h2>{{'cruise_recap'|trans }}</h2>
         <div class="subblock-periode">
 		    <strong>Skipper: </strong> {{ offreSpeciale.skipper.name }}<br />
 		    <strong>{{'offrespeciale_boat'|trans }}: </strong> {{ offreSpeciale.bateau.name }}<br />
-		    <strong>{{'departure_date'|trans }}:</strong> {{ offreSpeciale.dateDebut|date('d/m/Y') }}<br />
-		    <strong>{{'return_date'|trans }}:</strong> {{ offreSpeciale.dateFin|date('d/m/Y') }}<br />
+		    <strong>{{'departure_date'|trans }}:</strong> {{ offreSpeciale.dateDebut|date(format) }}<br />
+		    <strong>{{'return_date'|trans }}:</strong> {{ offreSpeciale.dateFin|date(format) }}<br />
 		    <strong>{{'form_sejour_portdepart'|trans }}</strong> {{ offreSpeciale.portDepart.name }}<br />
 		    <strong>{{'form_sejour_destination'|trans }}</strong> {{ offreSpeciale.destination.name }}<br />
 		    <strong>{{'nb_cabine_dispo'|trans }}:</strong> {{ offreSpeciale.nbCabine }}

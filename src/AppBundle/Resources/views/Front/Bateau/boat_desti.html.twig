@@ -5,6 +5,7 @@
 {% endblock %}
 {% block content %}
     {{ parent() }}
+    {% set format = app.request.locale == "en" ? 'm/d/Y' : 'd/m/Y' %}
     <div class="col-md-9 boat-desti">
         <h3 class="boat-desti-localisation">
             {{'boat-desti-localisation-boat'|trans }}
@@ -33,8 +34,8 @@
 	                    {{ itineraireCroisiere.itineraire.description|raw }}
 	                </div>
 	                <div>
-	                    {{'boat-desti-date-operation'|trans }} {{ itineraireCroisiere.dateDebut|date('d/m/Y') }}
-	                    {{'periode_au'|trans }} {{ itineraireCroisiere.dateFin|date('d/m/Y') }}
+	                    {{'boat-desti-date-operation'|trans }} {{ itineraireCroisiere.dateDebut|date(format) }}
+	                    {{'periode_au'|trans }} {{ itineraireCroisiere.dateFin|date(format) }}
 	                </div>
 	            </div>
 	            <div class="col-md-3">

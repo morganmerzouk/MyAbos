@@ -1,7 +1,7 @@
 h1 {background: url("../images/menu/icones/icon-sprite-prestations.png") no-repeat 5px 10px #23B6E1; font-size: 1.2em; padding: 10px 10px 10px 30px;margin: 0;}
 .row-prestation { overflow: auto; }
-.prestation { background: #127BBD; padding: 10px; text-align: center; border: 5px solid white;}
-.prestation a { color: white;  }
+.prestation { background: #127BBD; padding: 10px; text-align: center; border: 5px solid white; color: white;}
+.prestation:hover {background: #23B6E1;color: black;}
 
 .block-croisiere .row { margin: 10px; text-align:left;}
 
