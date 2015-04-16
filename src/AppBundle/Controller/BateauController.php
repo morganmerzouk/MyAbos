@@ -16,6 +16,12 @@ class BateauController extends Controller
      */
     public function indexAction()
     {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("fleet_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("fleet_meta_description"));
+        
         $locale = $this->getRequest()->getLocale();
         $croisieres = $this->getDoctrine()
             ->getManager()
@@ -37,8 +43,13 @@ class BateauController extends Controller
      */
     public function bateauAction($id)
     {
-        $request = $this->getRequest();
-        $locale = $request->getLocale();
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("fleet_overview_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("fleet_overview_meta_description"));
+        
+        $locale = $this->getRequest()->getLocale();
         
         $boat = $this->getDoctrine()
             ->getManager()
@@ -130,6 +141,12 @@ class BateauController extends Controller
      */
     public function bateauDetailAction($id)
     {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("fleet_spec_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("fleet_spec_meta_description"));
+        
         $locale = $this->getRequest()->getLocale();
         
         $boat = $this->getDoctrine()
@@ -170,6 +187,11 @@ class BateauController extends Controller
      */
     public function bateauCrewAction($id)
     {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("fleet_crew_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("fleet_crew_meta_description"));
         $locale = $this->getRequest()->getLocale();
         
         $boat = $this->getDoctrine()
@@ -227,6 +249,12 @@ class BateauController extends Controller
      */
     public function bateauAvailableAction($id)
     {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("fleet_availability_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("fleet_availability_meta_description"));
+        
         $croisieres = $this->getDoctrine()
             ->getManager()
             ->getRepository("AppBundle\Entity\Croisiere")
@@ -248,6 +276,12 @@ class BateauController extends Controller
      */
     public function bateauDestiAction($id)
     {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("fleet_destination_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("fleet_destination_meta_description"));
+        
         $locale = $this->getRequest()->getLocale();
         
         $croisiere = $this->getDoctrine()
@@ -289,6 +323,11 @@ class BateauController extends Controller
      */
     public function bateauPriceAction($id)
     {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("fleet_price_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("fleet_price_meta_description"));
         $locale = $this->getRequest()->getLocale();
         
         $croisiere = $this->getDoctrine()
@@ -332,6 +371,11 @@ class BateauController extends Controller
      */
     public function bateauContactAction($id)
     {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("fleet_contact_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("fleet_contact_meta_description"));
         $locale = $this->getRequest()->getLocale();
         $form = $this->createForm(new BateauDevisType($this->getDoctrine()
             ->getManager(), $this->getRequest()

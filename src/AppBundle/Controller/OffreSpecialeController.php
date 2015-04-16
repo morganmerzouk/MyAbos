@@ -17,6 +17,12 @@ class OffreSpecialeController extends Controller
      */
     public function offresSpecialesAction()
     {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("specialoffers_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("specialoffers_meta_description"));
+        
         $locale = $this->getRequest()->getLocale();
         $offresSpeciales = $this->getDoctrine()
             ->getManager()
@@ -38,6 +44,12 @@ class OffreSpecialeController extends Controller
      */
     public function offreSpecialeAction($id)
     {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("specialoffer_presentation_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("specialoffer_presentation_meta_description"));
+        
         $locale = $this->getRequest()->getLocale();
         
         $offrespeciale = $this->getDoctrine()
@@ -132,6 +144,12 @@ class OffreSpecialeController extends Controller
      */
     public function offreSpecialeCrewAction($id)
     {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("specialoffer_crew_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("specialoffer_crew_meta_description"));
+        
         $locale = $this->getRequest()->getLocale();
         
         $offreSpeciale = $this->getDoctrine()
@@ -160,6 +178,12 @@ class OffreSpecialeController extends Controller
      */
     public function offreSpecialeBoatAction($id)
     {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("specialoffer_boat_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("specialoffer_boat_meta_description"));
+        
         $locale = $this->getRequest()->getLocale();
         
         $offreSpeciale = $this->getDoctrine()
@@ -187,6 +211,12 @@ class OffreSpecialeController extends Controller
      */
     public function offreSpecialeDestiAction($id)
     {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("specialoffer_destination_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("specialoffer_destination_meta_description"));
+        
         $locale = $this->getRequest()->getLocale();
         
         $offreSpeciale = $this->getDoctrine()
@@ -251,6 +281,11 @@ class OffreSpecialeController extends Controller
      */
     public function offreSpecialePriceAction($id)
     {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("specialoffer_price_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("specialoffer_price_meta_description"));
         $locale = $this->getRequest()->getLocale();
         
         $offreSpeciale = $this->getDoctrine()
@@ -382,6 +417,12 @@ class OffreSpecialeController extends Controller
      */
     public function offreSpecialeContactAction($id)
     {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("specialoffer_contact_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("specialoffer_contact_meta_description"));
+        
         $locale = $this->getRequest()->getLocale();
         
         $offreSpeciale = $this->getDoctrine()

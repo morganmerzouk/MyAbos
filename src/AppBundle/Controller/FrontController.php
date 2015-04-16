@@ -13,6 +13,12 @@ class FrontController extends Controller
      */
     public function indexAction()
     {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("home_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("home_meta_description"));
+        
         $locale = $this->getRequest()->getLocale();
         $offresSpeciales = $this->getDoctrine()
             ->getManager()
@@ -35,6 +41,11 @@ class FrontController extends Controller
      */
     public function mentionsLegalesAction()
     {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("legals_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("legals_meta_description"));
         return $this->render('AppBundle:Front:mentionslegales.html.twig');
     }
 
@@ -43,6 +54,11 @@ class FrontController extends Controller
      */
     public function sitemapAction()
     {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("sitemap_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("sitemap_meta_description"));
         return $this->render('AppBundle:Front:sitemap.html.twig');
     }
 
@@ -51,6 +67,11 @@ class FrontController extends Controller
      */
     public function contactAction()
     {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("contact_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("contact_meta_description"));
         return $this->render('AppBundle:Front:contact.html.twig');
     }
 }

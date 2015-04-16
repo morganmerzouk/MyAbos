@@ -1,4 +1,6 @@
 {% extends "AppBundle:Front:Bateau/boat.html.twig" %}
+
+{% block title %}{{ parent() }} - {% endblock %}
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('bundles/app/js/lib/slick.js') }}" type="text/javascript"></script>  

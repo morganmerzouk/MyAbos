@@ -12,6 +12,12 @@ class DestinationController extends Controller
      */
     public function indexAction()
     {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("destinations_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("destinations_meta_description"));
+        
         $locale = $this->getRequest()->getLocale();
         
         $destinations = $this->getDoctrine()
@@ -34,6 +40,12 @@ class DestinationController extends Controller
      */
     public function destinationAction($id)
     {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("destination_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("destination_meta_description"));
+        
         $locale = $this->getRequest()->getLocale();
         
         $destination = $this->getDoctrine()

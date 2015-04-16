@@ -13,8 +13,13 @@ class PrestationController extends Controller
      */
     public function indexAction()
     {
-        $request = $this->getRequest();
-        $locale = $request->getLocale();
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("services_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("services_meta_description"));
+        
+        $locale = $this->getRequest()->getLocale();
         
         $prestations = $this->getDoctrine()
             ->getManager()
@@ -36,8 +41,13 @@ class PrestationController extends Controller
      */
     public function prestationAction($id)
     {
-        $request = $this->getRequest();
-        $locale = $request->getLocale();
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("service_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("service_meta_description"));
+        
+        $locale = $this->getRequest()->getLocale();
         
         $prestation = $this->getDoctrine()
             ->getManager()

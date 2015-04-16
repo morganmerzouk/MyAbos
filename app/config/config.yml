@@ -221,12 +221,9 @@ fm_elfinder:
                         upload_max_size: 5M
 sonata_seo:
     page:
-        title: Kitesurfari
         metas:
             name:
-                keywords: kitesurf
-                description: Kitesurfari - The description
-                robots: index, follow
+                robots: noindex, nofollow
             property:
                 # Facebook application settings
                 #'fb:app_id':          XXXXXX

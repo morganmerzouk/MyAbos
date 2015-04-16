@@ -1,4 +1,5 @@
 {% extends "AppBundle:Front:Bateau/boat.html.twig" %}
+{% block title %}{{ parent() }} - {{ boat.type }} {{ boat.name }} - Skipper {{ skipper.name }}{% endblock %}
 {% block content %}
     {{ parent() }}
     {% if skipper is not null %}

@@ -6,7 +6,7 @@
     {{ parent() }}
     <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/bateaux.css') }}">
 {% endblock %}   
-{% block title %}{{'toptitle'|trans}} - {{ 'boat'|trans }}{% endblock %}
+{% block title %}{{'toptitle'|trans}}{% endblock %}
 {% block content %}
     {%  render(controller('AppBundle:Bateau:submenu', { 'route': app.request.get('_route'), 'id': app.request.get('id') })) %}
 {% endblock content %}

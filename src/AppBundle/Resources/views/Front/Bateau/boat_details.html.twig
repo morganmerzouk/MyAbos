@@ -1,4 +1,5 @@
 {% extends "AppBundle:Front:Bateau/boat.html.twig" %}
+{% block title %}{{ parent() }} - {{ boat.type }} {{ boat.name }}{% endblock %}
 {% block content %}
     {{ parent() }}
     <div class="col-fiche-bateau col-md-6">

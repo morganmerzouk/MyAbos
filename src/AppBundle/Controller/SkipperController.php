@@ -17,6 +17,12 @@ class SkipperController extends Controller
      */
     public function indexAction()
     {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("crew_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("crew_meta_description"));
+        
         $locale = $this->getRequest()->getLocale();
         
         $skippers = $this->getDoctrine()
@@ -39,6 +45,12 @@ class SkipperController extends Controller
      */
     public function skipperAction($id)
     {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("crew_presentation_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("crew_presentation_meta_description"));
+        
         $locale = $this->getRequest()->getLocale();
         
         $skipper = $this->getDoctrine()
@@ -82,6 +94,12 @@ class SkipperController extends Controller
      */
     public function skipperFlottesAction($id)
     {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("crew_boat_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("crew_boat_meta_description"));
+        
         $locale = $this->getRequest()->getLocale();
         
         $croisiere = $this->getDoctrine()
@@ -109,6 +127,12 @@ class SkipperController extends Controller
      */
     public function skipperDestiAction($id)
     {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("crew_destinations_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("crew_destinations_meta_description"));
+        
         $locale = $this->getRequest()->getLocale();
         
         $croisiere = $this->getDoctrine()
@@ -169,6 +193,12 @@ class SkipperController extends Controller
      */
     public function skipperAvailableAction($id)
     {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("crew_availability_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("crew_availability_meta_description"));
+        
         $croisieres = $this->getDoctrine()
             ->getManager()
             ->getRepository("AppBundle\Entity\Croisiere")
@@ -191,6 +221,12 @@ class SkipperController extends Controller
      */
     public function skipperPriceAction($id)
     {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("crew_price_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("crew_price_meta_description"));
+        
         $locale = $this->getRequest()->getLocale();
         
         $croisiere = $this->getDoctrine()
@@ -229,16 +265,17 @@ class SkipperController extends Controller
      */
     public function skipperContactAction($id)
     {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("crew_contact_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("crew_contact_meta_description"));
+        
         $locale = $this->getRequest()->getLocale();
         $form = $this->createForm(new BateauDevisType($this->getDoctrine()
             ->getManager(), $this->getRequest()
             ->getLocale()));
         $form->handleRequest($this->getRequest());
-        
-        if ($form->isValid()) {
-            $data = $form->getData();
-            var_dump($data);
-        }
         
         $croisiere = $this->getDoctrine()
             ->getManager()
@@ -269,8 +306,8 @@ class SkipperController extends Controller
         $locale = $this->getRequest()->getLocale();
         $form = $this->createForm(new BateauDevisType($this->getDoctrine()
             ->getManager(), $this->getRequest()
-            ->getLocale(),$bateauId));
-
+            ->getLocale(), $bateauId));
+        
         $form->handleRequest($this->getRequest());
         
         $skipper = $this->getDoctrine()
