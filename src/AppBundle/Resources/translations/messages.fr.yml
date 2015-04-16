@@ -231,6 +231,9 @@ liens: Liens
 know_more: En savoir +
 newsletter: Newsletter
 newsletter_subscribe: S'abonner
+newsletter_subscribe_invalide: Inscrit avec succès.
+newsletter_subscribe_invalide: est une adresse email invalide. Merci de réessayer.
+something_wrong: Erreur lors de l'enregistrement ... Merci de réessayer plus tard.
 prestation_boats: Bateaux proposants
 
 skipper_presentation: Présentation

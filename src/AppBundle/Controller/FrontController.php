@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Form\SearchHeaderType;
+use Symfony\Component\HttpFoundation\Response;
 
 class FrontController extends Controller
 {
@@ -73,5 +74,23 @@ class FrontController extends Controller
             ->addMeta('name', 'description', $this->get('translator')
             ->trans("contact_meta_description"));
         return $this->render('AppBundle:Front:contact.html.twig');
+    }
+
+    /**
+     * @Route("/newsletter_subscribe", name="newsletter_subscribe")
+     */
+    public function newsletterAction()
+    {
+        $email = $this->getRequest()->request->get('email');
+        
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $mc = $this->get('hype_mailchimp');
+            $data = $mc->getList()->subscribe($email, 'html', false);
+            $success = 1;
+        } else {
+            $success = 0;
+        }
+        
+        return new Response($success);
     }
 }

@@ -18,6 +18,7 @@
 {background-color: #23B6E1; color:black;background-position: 10px 11px;}
 
 .block-newsletter {background:white; padding-right: 11px; }
-form.newsletter {background: #127BBD; text-align: center; padding-bottom: 20px; }
+.newsletter-message-container{ padding: 5px; width: 90%; margin: 10px auto;}
+.newsletter {background: #127BBD; text-align: center; padding-bottom: 20px; }
 .newsletter legend { color:white;border: 0; margin-bottom: 5px;border-top: 1px solid white; }
 .newsletter-email { width: 60%;font-size: 0.7em;}

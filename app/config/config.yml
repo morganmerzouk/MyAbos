@@ -241,4 +241,8 @@ sonata_seo:
         head:
             'xmlns':              http://www.w3.org/1999/xhtml
             'xmlns:og':           http://opengraphprotocol.org/schema/
-            #'xmlns:fb':           "http://www.facebook.com/2008/fbml"            
+            #'xmlns:fb':           "http://www.facebook.com/2008/fbml"    
+hype_mailchimp:
+    api_key: e8f5aabe96969269a626ac40623ddff9-us10
+    default_list: 8bc398fa0a
+    ssl: true #optional configuring curl connection        

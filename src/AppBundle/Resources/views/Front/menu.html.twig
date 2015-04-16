@@ -10,10 +10,22 @@
         <li {% if app.request.attributes.get('_route') starts with 'lien' %}class="active"{% endif %}><a href="{{ path('liens') }}" class="nav-item nav-liens">{{'liens'|trans}}</a></li>
     </ul>
     <div class="block-newsletter">
-	    <form type="action" class="newsletter">
+	    <div class="newsletter">
 	    	<legend>{{'newsletter'|trans }}</legend>
-	    	<input type="text" class="newsletter-email" placeholder="email" />
-	    	<input type="submit" class="btn btn-xs btn-warning" value="{{'newsletter_subscribe'|trans }}" />
-	    </form>
+	    	<input type="text" name="email" class="newsletter-email" placeholder="email" />
+	    	<input type="button" class="btn btn-xs btn-warning btn-newsletter-subscribe" value="{{'newsletter_subscribe'|trans }}" />
+	    	
+		    <div class="alert alert-success newsletter-succes newsletter-message-container" role="alert">
+			  	{{'newsletter_subscribe_valide'|trans}}
+			</div>
+		    <div class="alert alert-danger newsletter-wrong newsletter-message-container" role="alert">
+			  	<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+	    		{{'something_wrong'|trans}}
+			</div>
+		    <div class="alert alert-danger newsletter-fail newsletter-message-container" role="alert">
+			  	<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+	    		<span class="newsletter-email-invalide"></span> {{'newsletter_subscribe_invalide'|trans}}
+			</div>
+	    </div>
     </div>
 </div>

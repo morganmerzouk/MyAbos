@@ -34,6 +34,7 @@ class AppKernel extends Kernel
             new CoreSphere\ConsoleBundle\CoreSphereConsoleBundle(),
             new FM\ElfinderBundle\FMElfinderBundle(),
             new Sonata\SeoBundle\SonataSeoBundle(),
+            new Hype\MailchimpBundle\HypeMailchimpBundle(),
             new AppBundle\AppBundle()
         );
         

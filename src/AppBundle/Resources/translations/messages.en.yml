@@ -227,6 +227,9 @@ liens: Links
 know_more: About
 newsletter: Newsletter
 newsletter_subscribe: Subscribe
+newsletter_subscribe_valide: Subscribed successfully.
+newsletter_subscribe_invalide: is an invalid email. Please try again.
+something_wrong: Something went wrong ... try again later.
 prestation_boats: Boat offering
 
 skipper_presentation: Presentation
