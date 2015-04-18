@@ -10,9 +10,9 @@ h1.special-offer-title {background: url("../images/menu/icones/icon-sprite-offre
 
 /*** Sous-menu ***/
 .block-offrespeciale-submenu { display: table; width: 100%; margin-bottom: 10px; }
-.block-offrespeciale-submenu a { display: table-cell; width: 18%; color: white;background-repeat: no-repeat; background-position: 5px -30px; background-color:#127BBD; padding: 10px; font-size: 0.9em; padding-left: 40px;}
+.block-offrespeciale-submenu a { display: table-cell; border: 1px solid white; width: 18%; color: white;background-repeat: no-repeat; background-position: 5px -30px; background-color:#127BBD; padding: 10px; font-size: 0.9em; padding-left: 40px;}
 .block-offrespeciale-submenu a:hover,
-.block-offrespeciale-submenu a.active { text-decoration: none; color: black; background-repeat: no-repeat; background-color: #23B6E1; background-position: 5px 5px; }
+.block-offrespeciale-submenu a.active { text-decoration: none; color: black; border: 1px solid black; background-repeat: no-repeat; background-color: #23B6E1; background-position: 5px 5px; }
 
 .offrespeciale-home { background-image: url("../images/icones/boat/icon-presentation-25%20pix.png"); }
 .offrespeciale-crew { background-image: url("../images/icones/boat/icon-skipper-25%20pix.png"); }
@@ -60,7 +60,7 @@ h1.special-offer-title {background: url("../images/menu/icones/icon-sprite-offre
 .prestation { background: white; width: 90%; margin: 5px auto; overflow: auto; clear: both;padding: 5px; }
 .prestation .prestation-name { margin-left: 30px;}
 .tarif-accordion { margin: 10px auto; padding-top: 0;}
-#tarifOffre h2 {margin: 0 0 10px 0; background: #23B6E1; padding: 5px; font-size: 1.3em;  border: 1px solid black; }
+#tarifOffre h2 {margin: 0 0 -1px 0; background: #23B6E1; padding: 5px; font-size: 1.3em;  border: 1px solid black; }
 #tarifOffre h3 { font-weight: bold; font-size: 1.2em;padding: 5px;background: #127BBD; color: white; border: 1px solid black;margin: 0; }
 #tarifOffre h3:hover { cursor: pointer; background: #23B6E1; color: black; }
 #tarifOffre h3.title-hover { background: #23B6E1; color: black; }
@@ -79,6 +79,10 @@ h1.special-offer-title {background: url("../images/menu/icones/icon-sprite-offre
 
 /*** Offres Spéciales - Contact ***/
 .offre-contact { border: 3px solid #23B6E1; padding: 10px; }
+.subblock-periode { coloe: black; }
+.subblock-periode .btn-warning {margin: 10px auto;}
+.subblock-periode strong { color: white; display:inline-block; text-align: right; }
+.col-cruise-recap { padding: 5px; background: #127BBD; }
 .offrespeciale-contact-col-form-content .loading { display: none; position: absolute; z-index: 1000; height: 90%; padding: 20% 0px 0px 0px; background: black; opacity: 0.8; margin-right: 15px;}
 .offrespeciale-contact-col-form-content .loading img { width: 80%; margin: auto; }
 .offrespeciale-contact-col-form-content div { padding: 10px;}

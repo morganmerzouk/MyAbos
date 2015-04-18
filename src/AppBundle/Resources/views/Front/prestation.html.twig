@@ -11,9 +11,14 @@
 
 {% block content %}
 	<h1>{{'home_prestations'|trans}} - {{ prestation.name }}</h1>
-    <div class="block-prestations-name">
-        {% for prestationName in prestationsName %}<a href="{{ path('prestation', { 'id': prestationName.id }) }}" class="prestations-name {{ prestationName.name == prestation.name  ? "active" : "" }}">{{ prestationName.name }}</a>{% endfor %}
-    </div>
+    <ul class="lienMenu block-prestations-name">
+        {% for prestationMenu in prestationsMenu %}
+		    <li class="flip">
+		        <div class="square-front"><img src="{{ prestationMenu.iconeWebPath|replace({ ('75'): '25' }) }}" /></div>
+		        <div class="square-back"><a href="{{ path('prestation', { 'id': prestationMenu.id }) }}" class="prestations-name {{ prestationMenu.name == prestation.name  ? "active" : "" }}">{{ prestationMenu.name }}</a></div> 
+			</li>
+        {% endfor %}
+	</ul>
 	<div class="{% if boats|length > 0 %}col-md-9{% else %}col-md-12{% endif %}">
 		{{ prestation.description|raw }}
 	</div>

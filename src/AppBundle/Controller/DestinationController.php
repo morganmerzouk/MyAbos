@@ -61,6 +61,8 @@ class DestinationController extends Controller
             ->getQuery()
             ->getSingleResult();
         
+        $seoPage->addMeta('name', 'keyword', $destination->getName());
+        $seoPage->addMeta('name', 'description', substr($destination->getDescription(), 0, 255));
         $offresSpeciales = $this->getDoctrine()
             ->getManager()
             ->getRepository("AppBundle\Entity\OffreSpeciale")

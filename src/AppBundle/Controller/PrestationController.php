@@ -43,9 +43,9 @@ class PrestationController extends Controller
     {
         $seoPage = $this->container->get('sonata.seo.page');
         $seoPage->addMeta('name', 'keyword', $this->get('translator')
-            ->trans("service_meta_keywords"))
+            ->trans("destination_meta_keywords"))
             ->addMeta('name', 'description', $this->get('translator')
-            ->trans("service_meta_description"));
+            ->trans("destination_meta_description"));
         
         $locale = $this->getRequest()->getLocale();
         
@@ -62,11 +62,13 @@ class PrestationController extends Controller
             ->getQuery()
             ->getSingleResult();
         
-        $prestationsName = $this->getDoctrine()
+        $seoPage->addMeta('name', 'keyword', $prestation->getName());
+        $seoPage->addMeta('name', 'description', substr($prestation->getDescription(), 0, 255));
+        $prestationsMenu = $this->getDoctrine()
             ->getManager()
             ->getRepository("AppBundle\Entity\Prestation")
             ->createQueryBuilder('s')
-            ->select('s.id, t.name')
+            ->select('s, t')
             ->join('s.translations', 't')
             ->andWhere('t.locale = :locale')
             ->setParameter(':locale', $locale)
@@ -109,7 +111,7 @@ class PrestationController extends Controller
         }
         
         return $this->render('AppBundle:Front:prestation.html.twig', array(
-            'prestationsName' => $prestationsName,
+            'prestationsMenu' => $prestationsMenu,
             'prestation' => $prestation,
             'boats' => $boats
         ));

@@ -12,14 +12,20 @@
     <div id="tarifOffre" class="offre-contact col-md-8">
 	    <h2>{{'cruise_recap'|trans }}</h2>
         <div class="subblock-periode">
-		    <strong>Skipper: </strong> {{ offreSpeciale.skipper.name }}<br />
-		    <strong>{{'offrespeciale_boat'|trans }}: </strong> {{ offreSpeciale.bateau.name }}<br />
-		    <strong>{{'departure_date'|trans }}:</strong> {{ offreSpeciale.dateDebut|date(format) }}<br />
-		    <strong>{{'return_date'|trans }}:</strong> {{ offreSpeciale.dateFin|date(format) }}<br />
-		    <strong>{{'form_sejour_portdepart'|trans }}</strong> {{ offreSpeciale.portDepart.name }}<br />
-		    <strong>{{'form_sejour_destination'|trans }}</strong> {{ offreSpeciale.destination.name }}<br />
-		    <strong>{{'nb_cabine_dispo'|trans }}:</strong> {{ offreSpeciale.nbCabine }}
-		    <div class="price btn btn-lg btn-primary pull-right">
+	        <div class="col-md-12 col-cruise-recap">
+	        	<div class="col-md-6">
+				    <strong>Skipper: </strong> {{ offreSpeciale.skipper.name }}<br />
+				    <strong>{{'departure_date'|trans }}:</strong> {{ offreSpeciale.dateDebut|date(format) }}<br />
+				    <strong>{{'form_sejour_portdepart'|trans }}</strong> {{ offreSpeciale.portDepart.name }}<br />
+				    <strong>{{'nb_cabine_dispo'|trans }}:</strong> {{ offreSpeciale.nbCabine }}
+	        	</div>
+	        	<div class="col-md-6">
+				    <strong>{{'offrespeciale_boat'|trans }}: </strong> {{ offreSpeciale.bateau.name }}<br />
+				    <strong>{{'return_date'|trans }}:</strong> {{ offreSpeciale.dateFin|date(format) }}<br />
+				    <strong>{{'form_sejour_destination'|trans }}</strong> {{ offreSpeciale.destination.name }}
+	        	</div>
+	        </div>
+        	<div class="col-md-6 pull-right center-block btn btn-warning">
 			  	${% if offreSpeciale.tarifHuitPersonnes > 0 %}
 			  		{{ offreSpeciale.tarifHuitPersonnes }}
 		  		 {% elseif offreSpeciale.tarifSeptPersonnes > 0 %}
@@ -34,7 +40,7 @@
 		  		 	{{ offreSpeciale.tarifTroisPersonnes }}
 		  		 {% elseif offreSpeciale.tarifDeuxPersonnes > 0 %}
 		  		 	{{ offreSpeciale.tarifDeuxPersonnes }}
-				 {% endif %}/ {{ offreSpeciale.tarifPour|trans }}
+				 {% endif %} / {{ offreSpeciale.tarifPour|trans }}
 			</div>
         </div>
         <div class="tarif-accordion">

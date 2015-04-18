@@ -82,6 +82,8 @@ class SkipperController extends Controller
             ->getQuery()
             ->getResult(Query::HYDRATE_OBJECT);
         
+        $seoPage->addMeta('name', 'keyword', $skipper->getName());
+        $seoPage->addMeta('name', 'description', substr($skipper->getDescription(), 0, 255));
         return $this->render('AppBundle:Front:Skipper/skipper_presentation.html.twig', array(
             'skipper' => $skipper,
             'id' => $id,

@@ -63,6 +63,8 @@ class BateauController extends Controller
             ->setParameter(':locale', $locale)
             ->getQuery()
             ->getSingleResult();
+        $seoPage->addMeta('name', 'keyword', $boat->getType() . ' ' . $boat->getName());
+        $seoPage->addMeta('name', 'description', substr($boat->getDescription(), 0, 255));
         
         $inclusPrix = $this->getDoctrine()
             ->getManager()

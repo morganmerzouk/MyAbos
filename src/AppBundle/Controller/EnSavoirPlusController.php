@@ -60,6 +60,11 @@ class EnSavoirPlusController extends Controller
             ->addMeta('name', 'description', $this->get('translator')
             ->trans("about_weather_meta_description"));
         
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "http://api.weatherunlocked.com/api/forecast/19,-72?app_id=361f6a5c&app_key=fd5c716dcc505124543301d907c3d6de");
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        $test = curl_exec($ch);
+        var_dump($test);
         return $this->render('AppBundle:Front:ensavoirplus/ensavoirplus_meteo.html.twig');
     }
 }

@@ -64,6 +64,8 @@ class OffreSpecialeController extends Controller
             ->setParameter(':locale', $locale)
             ->getQuery()
             ->getSingleResult();
+        $seoPage->addMeta('name', 'keyword', $offrespeciale->getName());
+        $seoPage->addMeta('name', 'description', substr($offrespeciale->getDescription(), 0, 255));
         
         $inclusPrix = $this->getDoctrine()
             ->getManager()
