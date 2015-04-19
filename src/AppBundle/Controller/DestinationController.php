@@ -3,6 +3,8 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Cmfcmf\OpenWeatherMap;
+use Cmfcmf\OpenWeatherMap\Exception as OWMException;
 
 class DestinationController extends Controller
 {
@@ -75,9 +77,19 @@ class DestinationController extends Controller
             ->setParameter(':locale', $locale)
             ->getQuery()
             ->getResult();
+        
+        $units = $locale == "en" ? 'imperial' : 'metric';
+        $owm = new OpenWeatherMap();
+        
+        $weather = null;
+        try {
+            $weather = $owm->getWeatherForecast($destination->getName(), $units, $locale, '', '10');
+        } catch (OWMException $e) {} catch (\Exception $e) {}
+        
         return $this->render('AppBundle:Front:destination.html.twig', array(
             'destination' => $destination,
-            'offresSpeciales' => $offresSpeciales
+            'offresSpeciales' => $offresSpeciales,
+            'weathers' => $weather
         ));
     }
 }

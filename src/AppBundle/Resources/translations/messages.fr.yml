@@ -223,6 +223,9 @@ cruise_to: Les croisières vers
 destinations: Destinations
 destination: Destination: 
 destinations_intro: Les destinations pour une croisière de kitesurf. Les Caraïbes offres des confitions parfaites pour le kite surf 10 mois par ans. Ces îles paradisiaques proposent différentes identités, culture ainsi que d'unique (et pour beaucoup d'entre elles de classe mondiale) spots de kite.
+Weather: Prévisions météorologiques
+wind_speed: Vitesse du vent
+wind_direction: Direction du vent
 suite: La suite
 info: Plus d'infos
 sitemap: Plan du site
@@ -269,3 +272,8 @@ filter_price: Prix
 recapitulatif_de_votre_demande: Récapitulatif de votre demande
 recapitulatif_contact: Voir le récapitulatif de votre demande
 message_sent: Message envoyé avec succès
+
+about_weather_temperature: Température
+about_weather_wind: Vents
+about_weather_pressure: Pression atmosphérique
+about_weather_clouds: Couverture nuageuse

@@ -10,3 +10,13 @@ iframe { width: 75%;}
 .block-bateau-destination { background: #23B6E1; border: 1px solid black; padding: 10px;text-align:center; margin: 10px 0 10px 0px; }
 .block-bateau-destination .row { background:#127BBD; padding: 10px; margin: 10px 0; text-align: left; }
 .block-bateau-destination .row a { color: white; }
+
+
+h2.weather-forecast { font-weight: bold; font-size: 1.2em;padding: 5px;background: #127BBD; color: white; border: 1px solid black;margin-top: 10px; }
+h2:hover { cursor: pointer; background: #23B6E1; color: black; }
+h2.title-hover { background: #23B6E1; color: black; }
+
+.col-md-12 {padding: 0;}
+.col-md-weather-container { overflow: auto; float: none; }
+.col-md-weather {float:left; margin: 0 0 10px 0; width: 20%; padding: 5px 0 0 0; overflow: auto; border: 1px solid #B3B3B3;}
+.even { background: #23B6E1;color: black; border-top:1px solid white;}

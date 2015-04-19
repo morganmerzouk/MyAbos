@@ -1,9 +1,24 @@
 /*** Page En savoir plus ***/
 h1 {background: #23B6E1; font-size: 1.2em; padding: 10px;margin: 0;}
-.block-ensavoirplus-submenu { display: table; width: 100%; }
+.block-ensavoirplus-submenu { display: table; width: 100%; margin-bottom: 10px; }
 .block-ensavoirplus-submenu a { display: table-cell; width: 33%; background: #127BBD; padding: 5px; font-size: 0.9em; text-align: center; color: black; }
 .block-ensavoirplus-submenu a:hover,
 .block-ensavoirplus-submenu a.active { text-decoration: none; color: black; background: #23B6E1; }
 
-.square, .square:focus, .square:visited, .square:active { background: #127BBD; text-align: center;color: black; text-decoration: none; line-height: 200px; height: 200px; margin: 10px 1% 0 1%; width: 48%; }
-.square:hover { background: #23B6E1;color: black; text-decoration: none;}
+.square, .square:focus, .square:visited, .square:active {text-align: center; color:white; text-decoration: none; font-weight: bold; padding-top: 20px;height: 200px; margin: 0px 1% 10px 1%; width: 48%; }
+.square:hover { color: black; text-decoration: none; cursor: pointer;}
+
+/*** Page En savoir plus - Météo ***/
+.col-md-6.map {
+  	height: 400px;
+	padding: 0;
+}
+.square-temperature {background: url("../images/icones/ensavoirplus/icon-temperature-blanc.png") #127BBD center center no-repeat;}
+.square-pressure {background: url("../images/icones/ensavoirplus/icon-barometer-blanc.png") #127BBD center center no-repeat;}
+.square-wind {background: url("../images/icones/ensavoirplus/icon-wind-blanc.png") #127BBD center center no-repeat;}
+.square-cloud {background: url("../images/icones/ensavoirplus/icon-cloud-blanc.png") #127BBD center center no-repeat;}
+
+.square-temperature:hover, .square-temperature.active {color: black; background: url("../images/icones/ensavoirplus/icon-temperature.png") #23B6E1 center center no-repeat;}
+.square-pressure:hover, .square-pressure.active {color: black; background: url("../images/icones/ensavoirplus/icon-barometer.png") #23B6E1 center center no-repeat;}
+.square-wind:hover, .square-wind.active {color: black; background: url("../images/icones/ensavoirplus/icon-wind.png") #23B6E1 center center no-repeat;}
+.square-cloud:hover, .square-cloud.active {color: black; background: url("../images/icones/ensavoirplus/icon-cloud.png") #23B6E1 center center no-repeat;}

@@ -10,9 +10,10 @@ h1.special-offer-title {background: url("../images/menu/icones/icon-sprite-offre
 
 /*** Sous-menu ***/
 .block-offrespeciale-submenu { display: table; width: 100%; margin-bottom: 10px; }
-.block-offrespeciale-submenu a { display: table-cell; border: 1px solid white; width: 18%; color: white;background-repeat: no-repeat; background-position: 5px -30px; background-color:#127BBD; padding: 10px; font-size: 0.9em; padding-left: 40px;}
+.block-offrespeciale-submenu a { display: table-cell; border: 1px solid white; border-bottom: 0; border-top: none; width: 18%; color: white;background-repeat: no-repeat; background-position: 5px -30px; background-color:#127BBD; padding: 10px; font-size: 0.9em; padding-left: 40px;}
+.block-offrespeciale-submenu:first-child {border-left: none;}
 .block-offrespeciale-submenu a:hover,
-.block-offrespeciale-submenu a.active { text-decoration: none; color: black; border: 1px solid black; background-repeat: no-repeat; background-color: #23B6E1; background-position: 5px 5px; }
+.block-offrespeciale-submenu a.active { text-decoration: none; color: black; border: 0; background-repeat: no-repeat; background-color: #23B6E1; background-position: 5px 5px; }
 
 .offrespeciale-home { background-image: url("../images/icones/boat/icon-presentation-25%20pix.png"); }
 .offrespeciale-crew { background-image: url("../images/icones/boat/icon-skipper-25%20pix.png"); }

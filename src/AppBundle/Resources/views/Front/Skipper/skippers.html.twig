@@ -15,12 +15,12 @@
 	    {% if loop.index0 % 3 == 0 %}
 	    	<div class="row-skipper">
 	    {% endif %}
-        <div class="col-md-2 col-20 skipper">
+        <a class="col-md-4 skipper" href="{{ path('skipper', { 'id': skipper.id }) }}">
         	<img class="img-responsive img-thumbnail" src="{{ skipper.avatarWebPath }}" alt="photo {{ skipper.name }}" /><br />
             <span>{{ skipper.name }}</span>
-            <p>{{ skipper.description|trans|striptags|slice(0,100) ~ '...' }}</p>
-            <a class="btn btn-sm btn-warning pull-right" href="{{ path('skipper', { 'id': skipper.id }) }}">{{'suite'|trans}}</a>
-        </div>
+            <p>{{ skipper.description|trans|striptags|slice(0,150) ~ '...' }}</p>
+            <span class="btn btn-warning pull-right">{{'suite'|trans}}</span>
+        </a>
         {% if loop.index0 % 3 == 2 %}
 	        </div>
         {% endif %}

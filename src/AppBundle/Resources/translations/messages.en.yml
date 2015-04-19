@@ -1,5 +1,5 @@
-home_meta_keywords: Kitesurf, cruise, fleet, skipper, boat, special offer, carribean
-home_meta_description: Kite cruise network in the Carribean, book online and get your estimate, check out the fleet and their skippers
+home_meta_keywords: Kitesurf, cruise, fleet, skipper, boat, special offer, caribbean
+home_meta_description: Kite cruise network in the Caribbean, book online and get your estimate, check out the fleet and their skippers
 sitemap_meta_keywords: Sitemap
 sitemap_meta_description: Sitemap of the site
 legals_meta_keywords: Terms of use
@@ -67,14 +67,14 @@ about_weather_meta_description:
 links_meta_keywords: 
 links_meta_description: 
 
-toptitle: Kitesurfari SXM: Kite cruise network in the Carribean
-logotitle: Kite cruise network in the Carribean
+toptitle: Kitesurfari SXM: Kite cruise network in the Caribbean
+logotitle: Kite cruise network in the Caribbean
 home: Home
 home_destinations: Destinations
 home_prestations: Services
 home_flotte: Fleet
 home_equipages: Crew
-home_destinations_text: Discover our broad choice of destination in the Carribean
+home_destinations_text: Discover our broad choice of destination in the Caribbean
 home_prestations_text: Choose the cruise that best fit your wishes
 home_flotte_text: See the technical details of the boats
 home_equipages_text: Meet the different members of our crew
@@ -218,7 +218,10 @@ cal_sun: "Sun."
 contact: Contact
 cruise_to: Cruise to
 destinations: Destinations
-destinations_intro: Destination for a kite surfing cruise. The carribean offer ideal conditions for kitesurfing 10 months per year. This heaven like islands offer a high diversities of identities, culture as well as unique (and for many of them world class) kiteboarding playground.
+destinations_intro: Destination for a kite surfing cruise. The caribbean offer ideal conditions for kitesurfing 10 months per year. This heaven like islands offer a high diversities of identities, culture as well as unique (and for many of them world class) kiteboarding playground.
+Weather: Weather Forecast
+wind_speed: Wind speed
+wind_direction: Wind direction
 suite: More
 info: More
 sitemap: Sitemap
@@ -263,3 +266,8 @@ filter_price: Price
 recapitulatif_de_votre_demande: Recap'
 recapitulatif_contact: Recap'
 message_sent: Message sent
+
+about_weather_temperature: Temperature
+about_weather_wind: Winds
+about_weather_pressure: Sea level pressure
+about_weather_clouds: Clouds
