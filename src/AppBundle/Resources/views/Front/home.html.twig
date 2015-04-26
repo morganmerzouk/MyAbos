@@ -12,83 +12,63 @@
 {% endblock %}   
 {% block title %}{{'toptitle'|trans}} - {{ 'home'|trans }}{% endblock %}
 {% block content %}
+<div class="col-md-9">
 	<div class="slider">
 		{%  for offreSpeciale in offresSpeciales  %}
 			<div class="slider-item">
 			  	<div class="layer-left">
-			  		<div class="description">
-			  			<div>
-			  				{{ offreSpeciale.name }}<br />
-				  			{{'departure_date'|trans }} {{ offreSpeciale.dateDebut|date('d/m/Y') }}
-					  	</div>
-					  	<div class="col-md-4 type text-center">
-						  	<img class="img-thumbnail" src="{{ asset('bundles/app/images/icones/boat/1-icons-boat-tech-file-50pix-' ~ offreSpeciale.bateau.type|lower ~ '-noir.png') }}" /><br />
-						  	{{ offreSpeciale.bateau.type }}
-					  	</div>
-					  	<div class="col-md-4 text-center">
-						  	<img class="img-thumbnail" src="{{ offreSpeciale.bateau.inclusPrixEquipage.iconeWebPath }}" /><br />
-						  	{{ offreSpeciale.bateau.inclusPrixEquipage.name }}
-					  	</div>
-					  	<div class="col-md-4 text-center">
-						  	{% for inclusPrixAvitaillement in offreSpeciale.bateau.inclusPrixAvitaillement %}
-						  		{% if loop.index == 1 %}
-						  			<img class="img-thumbnail" src="{{ inclusPrixAvitaillement.iconeWebPath }}" /><br />
-						  		{% endif %}
-						  		{{ inclusPrixAvitaillement.name }}
-						  	{% endfor %}
-					  	</div>
-					  	<div class="text-center">
-						  	<div class="price btn btn-warning text-center">
-						  	${% if offreSpeciale.tarifHuitPersonnes > 0 %}
-						  		{{ (offreSpeciale.tarifHuitPersonnes/8)|round }}
-					  		 {% elseif offreSpeciale.tarifSeptPersonnes > 0 %}
-					  		 	{{ (offreSpeciale.tarifSeptPersonnes/7)|round }}
-					  		 {% elseif offreSpeciale.tarifSixPersonnes > 0 %}
-					  		 	{{ (offreSpeciale.tarifSixPersonnes/6)|round }}
-					  		 {% elseif offreSpeciale.tarifCinqPersonnes > 0 %}
-					  		 	{{ (offreSpeciale.tarifCinqPersonnes/5)|round }}
-					  		 {% elseif offreSpeciale.tarifQuatrePersonnes > 0 %}
-					  		 	{{ (offreSpeciale.tarifQuatrePersonnes/4)|round }}
-					  		 {% elseif offreSpeciale.tarifTroisPersonnes > 0 %}
-					  		 	{{ (offreSpeciale.tarifTroisPersonnes/3)|round }}
-					  		 {% elseif offreSpeciale.tarifDeuxPersonnes > 0 %}
-					  		 	{{ (offreSpeciale.tarifDeuxPersonnes/2)|round }}
-							 {% endif %}
-						  		  / {{ offreSpeciale.tarifPour|trans }}
+					<div class="panel panel-info description">
+						<div class="panel-heading">
+					        <h3 class="panel-title">
+					        	{{ offreSpeciale.name }}<br />
+					  			{{'departure_date'|trans }} {{ offreSpeciale.dateDebut|date('d/m/Y') }}
+							</h3>
+						</div>
+						<div class="panel-body">
+					        <div class="col-md-4 type text-center">
+							  	<img class="img-thumbnail" src="{{ asset('bundles/app/images/icones/boat/1-icons-boat-tech-file-50pix-' ~ offreSpeciale.bateau.type|lower ~ '-noir.png') }}" /><br />
+							  	{{ offreSpeciale.bateau.type }}
+						  	</div>
+						  	<div class="col-md-4 text-center">
+							  	<img class="img-thumbnail" src="{{ offreSpeciale.bateau.inclusPrixEquipage.iconeWebPath }}" /><br />
+							  	{{ offreSpeciale.bateau.inclusPrixEquipage.name }}
+						  	</div>
+						  	<div class="col-md-4 text-center">
+							  	{% for inclusPrixAvitaillement in offreSpeciale.bateau.inclusPrixAvitaillement %}
+							  		{% if loop.index == 1 %}
+							  			<img class="img-thumbnail" src="{{ inclusPrixAvitaillement.iconeWebPath }}" /><br />
+							  		{% endif %}
+							  		{{ inclusPrixAvitaillement.name }}
+							  	{% endfor %}
+						  	</div>
+						  	<div class="text-center">
+							  	<div class="price btn btn-warning text-center">
+							  	${% if offreSpeciale.tarifHuitPersonnes > 0 %}
+							  		{{ (offreSpeciale.tarifHuitPersonnes/8)|round }}
+						  		 {% elseif offreSpeciale.tarifSeptPersonnes > 0 %}
+						  		 	{{ (offreSpeciale.tarifSeptPersonnes/7)|round }}
+						  		 {% elseif offreSpeciale.tarifSixPersonnes > 0 %}
+						  		 	{{ (offreSpeciale.tarifSixPersonnes/6)|round }}
+						  		 {% elseif offreSpeciale.tarifCinqPersonnes > 0 %}
+						  		 	{{ (offreSpeciale.tarifCinqPersonnes/5)|round }}
+						  		 {% elseif offreSpeciale.tarifQuatrePersonnes > 0 %}
+						  		 	{{ (offreSpeciale.tarifQuatrePersonnes/4)|round }}
+						  		 {% elseif offreSpeciale.tarifTroisPersonnes > 0 %}
+						  		 	{{ (offreSpeciale.tarifTroisPersonnes/3)|round }}
+						  		 {% elseif offreSpeciale.tarifDeuxPersonnes > 0 %}
+						  		 	{{ (offreSpeciale.tarifDeuxPersonnes/2)|round }}
+								 {% endif %}
+							  		  / {{ offreSpeciale.tarifPour|trans }}
+						  		</div>
 					  		</div>
-				  		</div>
-				  		<a href="{{ path('offresspeciales') }}" class="see-all-special-offers pull-left">{{'see_specials_offers'|trans }}</a>
-			  		</div>
+					  		<a href="{{ path('offresspeciales') }}" class="see-all-special-offers pull-left">{{'see_specials_offers'|trans }}</a>
+						</div>
+					</div>
 				  	<a href="{{ path('offrespeciale', { id: offreSpeciale.id }) }}" class="btn btn-warning btn-sm details">{{'details'|trans }}</a>
 			  	</div>
 			  	<img class="img-responsive" src="{{ offreSpeciale.miniatureWebPath }}" />
 			</div>
 		{% endfor %}	
 	</div>
-	<ul class="lienHome">
-		<li class="flip">
-			<a href="{{ path("destinations") }}">
-				<div class="square-front square-destinations-front">{{ 'home_destinations'|trans }}</div>
-				<div class="square-back">{{ 'home_destinations'|trans }}<br /><br />{{ 'home_destinations_text'|trans }}</div>
-			</a>
-		</li>
-		<li class="flip">
-			<a href="{{ path("prestations") }}">
-				<div class="square-front square-prestations-front">{{ 'home_prestations'|trans }}</div>
-				<div class="square-back">{{ 'home_prestations'|trans }}<br /><br />{{ 'home_prestations_text'|trans }}</div>
-			</a>
-		</li>
-		<li class="flip">
-			<a href="{{ path("boats") }}">
-				<div class="square-front square-flotte-front">{{ 'home_flotte'|trans }}</div>
-				<div class="square-back">{{ 'home_flotte'|trans }}<br /><br />{{ 'home_flotte_text'|trans }}</div>
-			</a>
-		</li>
-		<li class="flip last">
-			<a href="{{ path("skippers") }}">
-				<div class="square-front square-equipages-front">{{ 'home_equipages'|trans }}</div>
-				<div class="square-back">{{ 'home_equipages'|trans }}<br /><br />{{ 'home_equipages_text'|trans }}</div>
-			</a>
-		</li>
-	</ul>
+</div>
 {% endblock content %}

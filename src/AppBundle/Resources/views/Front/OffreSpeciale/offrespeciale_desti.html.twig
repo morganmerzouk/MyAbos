@@ -9,9 +9,11 @@
     <div class="col-md-9">
         {{ offreSpeciale.destination.description|raw }}
     </div>
-    <div class="col-md-3 offre-desti text-center">
-	    <h2 class="offre-desti-title text-left">{{'cruise_to'|trans}} {{ offreSpeciale.destination.name }}</h2>
-	    <div class="offre-desti-content">
+    <div class="col-md-3 offre-desti panel panel-info">
+    	<div class="panel-heading">
+    		<h2 class="panel-title">{{'cruise_to'|trans}} {{ offreSpeciale.destination.name }}</h2>
+	    </div>
+	    <div class="panel-body">
 	        <strong>{{'departure_date'|trans}}:</strong> {{ offreSpeciale.dateDebut|date(format) }}<br />
 	        <strong>{{'return_date'|trans}}:</strong> {{ offreSpeciale.dateFin|date(format) }}<br />
 	        <strong>{{'cruise_to'|trans}}:</strong> {{ offreSpeciale.portDepart.name }}<br />
@@ -22,7 +24,7 @@
 	                <li>{{ inclus.name }}</li>
 	            {% endfor %}
 	        </ul>
-	    </div>
-        <a href="{{ path('skipper_available', { 'id': offreSpeciale.skipper.id }) }}" class="btn btn-warning">{{'contact_skipper'|trans }}</a>
+		    <a href="{{ path('skipper_available', { 'id': offreSpeciale.skipper.id }) }}" class="btn btn-warning pull-right"">{{'contact_skipper'|trans }}</a>
+        </div>
     </div>
 {% endblock content %}

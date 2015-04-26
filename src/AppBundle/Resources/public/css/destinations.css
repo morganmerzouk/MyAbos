@@ -1,22 +1,30 @@
-h1.destinations {background: url("../images/menu/icones/icon-sprite-destinations.png") no-repeat 5px 5px #23B6E1;font-size: 1.4em;padding: 7px 10px 5px 35px;margin: 0; }
-.block-description-destinations { margin: 0 0 10px 0; background: #127BBD;color:white; padding: 10px; }
+h1.destinations {background: url("../images/menu/icones/icon-destinations.png") no-repeat 5px 3px #31708f;font-size: 1.4em;padding: 7px 10px 5px 40px;margin: 0;color: white; }
+.block-description-destinations { margin: 0 0 10px 0; background: #d9edf7;color:#31708f; padding: 10px; }
 
-ul.menu-destinations { float: left; width: 25%;list-style: none;padding: 0px; background: #127BBD;}
-ul.menu-destinations a {color: white;display: block;padding: 5px;}
-ul.menu-destinations a:hover {color: black;background: #23B6E1;color:white;text-decoration:none;}
+ul.menu-destinations { float: left; width: 25%;list-style: none;padding: 0px; background: #d9edf7;}
+ul.menu-destinations a {color: #31708f;display: block;padding: 5px;}
+ul.menu-destinations a:hover {color: white;background: #31708f;color:white;text-decoration:none;}
 iframe { width: 75%;}
 
 /*** Page Destination ***/
-.block-bateau-destination { background: #23B6E1; border: 1px solid black; padding: 10px;text-align:center; margin: 10px 0 10px 0px; }
-.block-bateau-destination .row { background:#127BBD; padding: 10px; margin: 10px 0; text-align: left; }
-.block-bateau-destination .row a { color: white; }
+.slick-slider { margin-bottom: 10px !important; }
+.slider .slick-prev {left: 10px;}
+.slider .slick-next {right: 10px;}
+.slider .slick-prev,
+.slider .slick-next {width: 22px;height: 20px;border-radius: 10px;}
+.slider .slick-prev:before,
+.slider .slick-next:before {font-size: 24px; background: white; opacity: 1; color: black; border-radius: 30px;}
+
+.block-bateau-destination { padding: 0;}
+.block-bateau-destination .row { background:#d9edf7; padding: 10px; margin: 10px 0; text-align: left; }
+.block-bateau-destination .row a { color: #31708f; }
 
 
 h2.weather-forecast { font-weight: bold; font-size: 1.2em;padding: 5px;background: #127BBD; color: white; border: 1px solid black;margin-top: 10px; }
 h2:hover { cursor: pointer; background: #23B6E1; color: black; }
 h2.title-hover { background: #23B6E1; color: black; }
 
+.last-update { padding: 5px; margin: 5px 0; border-top: 1px solid #B3B3B3; border-bottom: 1px solid #B3B3B3;}
 .col-md-12 {padding: 0;}
-.col-md-weather-container { overflow: auto; float: none; }
-.col-md-weather {float:left; margin: 0 0 10px 0; width: 20%; padding: 5px 0 0 0; overflow: auto; border: 1px solid #B3B3B3;}
-.even { background: #23B6E1;color: black; border-top:1px solid white;}
+.col-md-weather {float:left; margin: 0; width: 20%; padding: 0; overflow: auto; border: 1px solid #B3B3B3;}
+.even { background: #31708f;color: white; padding-left: 5px;}

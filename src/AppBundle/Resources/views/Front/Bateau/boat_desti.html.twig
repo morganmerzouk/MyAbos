@@ -8,39 +8,47 @@
     {{ parent() }}
     {% set format = app.request.locale == "en" ? 'm/d/Y' : 'd/m/Y' %}
     <div class="col-md-9 boat-desti">
-        <h3 class="boat-desti-localisation">
-            {{'boat-desti-localisation-boat'|trans }}
-        </h3>
-        <div class="boat-desti-block-localisation">
-            <img src="{{ portDepart.miniatureWebPath }}" class="img-responsive img-thumbnail pull-right" />
-            <div>
-                {{'boat-desti-localisation-boat-label-portdepart'|trans }} {{ portDepart.name }}<br />
-                {{'boat-desti-localisation-boat-label-destination'|trans }}:
-                {% if itinerairesCroisiere|length > 0 %}
-                    <ul>
-                        {% for itineraireCroisiere in itinerairesCroisiere %}
-                            <li><a href="#" id="lien-{{itineraireCroisiere.itineraire.id}}">{{ itineraireCroisiere.itineraire.destination }}</a></li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
+        <div class="boat-desti-block-localisation panel panel-info">
+	        <div class="panel-heading">
+		        <h3 class="boat-desti-localisation panel-title">
+		            {{'boat-desti-localisation-boat'|trans }}
+		        </h3>
+	        </div>
+	        <div class="panel-body">
+	            <img src="{{ portDepart.miniatureWebPath }}" class="img-responsive img-thumbnail pull-right" />
+	            <div>
+	                {{'boat-desti-localisation-boat-label-portdepart'|trans }} {{ portDepart.name }}<br />
+	                {{'boat-desti-localisation-boat-label-destination'|trans }}:
+	                {% if itinerairesCroisiere|length > 0 %}
+	                    <ul>
+	                        {% for itineraireCroisiere in itinerairesCroisiere %}
+	                            <li><a href="#" id="lien-{{itineraireCroisiere.itineraire.id}}">{{ itineraireCroisiere.itineraire.destination }}</a></li>
+	                        {% endfor %}
+	                    </ul>
+	                {% endif %}
+	            </div>
             </div>
         </div>
         {% for itineraireCroisiere in itinerairesCroisiere %}
-            <h3 id="cible-{{itineraireCroisiere.itineraire.id}}" class="cible">
-                {{ itineraireCroisiere.itineraire }}
-            </h3>
-            <div class="boat-desti-itineraire">
-	            <div class="col-md-9">
-	                <div>
-	                    {{ itineraireCroisiere.itineraire.description|raw }}
-	                </div>
-	                <div>
-	                    {{'boat-desti-date-operation'|trans }} {{ itineraireCroisiere.dateDebut|date(format) }}
-	                    {{'periode_au'|trans }} {{ itineraireCroisiere.dateFin|date(format) }}
-	                </div>
+        	<div class="panel panel-info">
+	        	<div class="panel-heading cible">
+		            <h3 id="cible-{{itineraireCroisiere.itineraire.id}}" class="panel-title">
+		                {{ itineraireCroisiere.itineraire }}
+		            </h3>
 	            </div>
-	            <div class="col-md-3">
-	                <img src="{{ itineraireCroisiere.itineraire.miniatureWebPath }}" />
+	            <div class="boat-desti-itineraire panel-body">
+		            <div class="col-md-9">
+		                <div>
+		                    {{ itineraireCroisiere.itineraire.description|raw }}
+		                </div>
+		                <div>
+		                    {{'boat-desti-date-operation'|trans }} {{ itineraireCroisiere.dateDebut|date(format) }}
+		                    {{'periode_au'|trans }} {{ itineraireCroisiere.dateFin|date(format) }}
+		                </div>
+		            </div>
+		            <div class="col-md-3">
+		                <img src="{{ itineraireCroisiere.itineraire.miniatureWebPath }}" />
+		            </div>
 	            </div>
             </div>
         {% endfor %}

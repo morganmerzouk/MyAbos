@@ -1,24 +1,15 @@
 .slider .slick-prev {left: 10px;}
 .slider .slick-next {right: 10px;}
 .slider .layer-left {float: left; position: absolute; background: rgba(0,0,0,0.5); height: 100%; width: 33%;overflow: auto;}
-.slider .description {width: 90%; background-color:#23B6E1; margin: 10px auto;padding:10px;overflow: auto;text-align: center;font-weight:bold;}
+.slider .description {width: 90%; margin: 10px auto;padding:0px;overflow: auto;text-align: center;font-weight:bold;}
+.slider .description .panel-body { padding: 5px;}
 .slider .description img {display: inline;}
-.slider .description .col-md-4 {font-size: 0.6em;font-weight: normal;padding: 1px; margin: 8px 0;text-align:left; }  
+.slider .description .col-md-4 {font-size: 0.6em;font-weight: normal;padding: 1px; margin:0;text-align:left; }  
 .slider .description .col-md-4.type { text-align: center; }
 .slider .price {color: white;clear:both;}
-.see-all-special-offers { color: white; text-decoration: none; font-size: 0.7em; font-weight: normal; margin: 5px 5px 0 0; }
+.see-all-special-offers { color: #127BBD; text-decoration: none; font-size: 0.7em; font-weight: normal; margin: 5px 5px 0 0; }
 .see-all-special-offers:hover,.see-all-special-offers:active, .see-all-special-offers:visited { color: white; }
 .slider .details {display: block; margin: auto; margin-top: 8px;width: 80%;}
-
-.lienHome {list-style: none;margin-left: -40px;margin-top: -20px;}
-.lienHome li { float: left;text-align: center; width: 24%;margin: 0 1.3% 10px 0;padding: 30px;padding-top: 140px; color: black; font-weight:bold;}
-.lienHome li.last {margin-right:0px; }
-.square-front, .square-back {width: 100%;height: 100%; padding-top: 10px;}
-.square-back {width: 100%;height: 100%; padding: 10px 40px;background-image: none;background:#127BBD;color: white;}
-.square-destinations-front {background: url("../images/icones/home/icon-destinations-noir-75pix.png") #23B6E1 center center no-repeat;}
-.square-prestations-front {background: url("../images/icones/home/icon-prestations-noir-75pix.png") #23B6E1 center center no-repeat;}
-.square-flotte-front {background: url("../images/icones/home/icon-flotte-noir-75pix.png") #23B6E1 center center no-repeat;}
-.square-equipages-front {background: url("../images/icones/home/icon-equipages-noir-75pix.png") #23B6E1 center center no-repeat;margin-right:0;}
 
 /*** Flip effect ***/
 .flip {

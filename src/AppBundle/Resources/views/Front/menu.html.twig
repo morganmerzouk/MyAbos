@@ -1,12 +1,29 @@
-<nav class="col-md-9 navbar navbar-default nav-pills">
-	<ul class="nav navbar-nav">
-        <!-- <li {% if app.request.attributes.get('_route') starts with 'homepage' %}class="active"{% endif %}><a href="{{ path('homepage') }}" class="nav-item nav-accueil">{{'home'|trans}}</a></li> -->
-        <li {% if app.request.attributes.get('_route') starts with 'offrespeciale' %}class="active"{% endif %}><a href="{{ path('offresspeciales') }}" class="nav-item nav-offres">{{'offres_speciales'|trans}}</a></li>
-        <li {% if app.request.attributes.get('_route') starts with 'prestation' %}class="active"{% endif %}><a href="{{ path('prestations') }}" class="nav-item nav-prestations">{{'home_prestations'|trans}}</a></li>
-        <li {% if app.request.attributes.get('_route') starts with 'destination' %}class="active"{% endif %}><a href="{{ path('destinations') }}" class="nav-item nav-destinations">{{'home_destinations'|trans}}</a></li>
-        <li {% if app.request.attributes.get('_route') starts with 'boat' %}class="active"{% endif %}><a href="{{ path('boats') }}" class="nav-item nav-flotte">{{'home_flotte'|trans}}</a></li>
-        <li {% if app.request.attributes.get('_route') starts with 'skipper' %}class="active"{% endif %}><a href="{{ path('skippers') }}" class="nav-item nav-equipages">{{'home_equipages'|trans}}</a></li>
-        <li {% if app.request.attributes.get('_route') starts with 'ensavoirplus' %}class="active"{% endif %}><a href="{{ path('ensavoirplus') }}" class="nav-item nav-ensavoirplus">{{'know_more'|trans}}</a></li>
-        <!-- <li {% if app.request.attributes.get('_route') starts with 'lien' %}class="active"{% endif %}><a href="{{ path('liens') }}" class="nav-item nav-liens">{{'liens'|trans}}</a></li> -->
-	</ul>
-</nav>
+<div class="col-md-10">
+	<nav class="navbar navbar-default nav-pills">
+		<ul class="nav navbar-nav">
+	        <li {% if route starts with 'homepage' %}class="active"{% endif %}><a href="{{ path('homepage') }}" class="nav-item nav-accueil">{{'home'|trans}}</a></li>
+	        <li {% if route starts with 'offrespeciale' %}class="active"{% endif %}><a href="{{ path('offresspeciales') }}" class="nav-item nav-offres">{{'offres_speciales'|trans}}</a></li>
+	        <li {% if route starts with 'destination' %}class="dropdown active"{% endif %}>
+	        	<a href="{{ path('destinations') }}" class="dropdown-toggle nav-item nav-destinations" data-toggle="dropdown" >{{'home_destinations'|trans}} <span class="caret"></span></a>
+				
+				<ul class="dropdown-menu" role="menu">
+					{% for destination in menuDestinations %}
+						{% if loop.index%9 == 1 %}
+							<div class="col-md-4">
+						{% endif %}
+						<li class="menu-item-destination"><a href="{{ path('destination', {'id': destination.id}) }}">{{ destination.name }}</a></li>
+						{% if loop.index%9 == 0 %}
+							</div>
+						{% else %}
+							<li class="divider"></li>
+						{% endif %} 
+					{% endfor %}
+					<a href="{{ path('destinations') }}" class="see-destinations pull-right">{{'see_destinations'|trans }} >></a>
+				</ul>
+        	</li>
+	        <li {% if route starts with 'boat' %}class="active"{% endif %}><a href="{{ path('boats') }}" class="nav-item nav-flotte">{{'home_flotte'|trans}}</a></li>
+	        <li {% if route starts with 'skipper' %}class="active"{% endif %}><a href="{{ path('skippers') }}" class="nav-item nav-equipages">{{'home_equipages'|trans}}</a></li>
+	        <li {% if route starts with 'ensavoirplus' %}class="active"{% endif %}><a href="{{ path('ensavoirplus') }}" class="nav-item nav-ensavoirplus">{{'know_more'|trans}}</a></li>
+	    </ul>
+	</nav>
+</div>

@@ -4,7 +4,7 @@
 .slider .slick-next {width: 22px;height: 20px;border-radius: 10px;}
 .slider .slick-prev:before,
 .slider .slick-next:before {font-size: 24px; background: white; opacity: 1; color: black; border-radius: 30px;}
-h1 {background: url("../images/menu/icones/icon-sprite-equipages.png") no-repeat 5px 5px #23B6E1; font-size: 1.2em; padding: 10px 10px 10px 30px;margin: 0;}
+h1 {background: url("../images/menu/icones/icon-equipages.png") no-repeat 5px 5px #23B6E1; font-size: 1.2em; padding: 10px 10px 10px 30px;margin: 0;}
 
 .row-skipper { overflow: auto; }
 .skipper { background: #127BBD; border: 1px solid white; padding: 10px; text-align: center; margin-top:10px;color: white;}

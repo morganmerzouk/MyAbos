@@ -1,25 +1,34 @@
-.nav-accueil {      background-image: url("../images/menu/icones/icon-sprite-accueil.png");}
-.nav-offres {       background-image: url("../images/menu/icones/icon-sprite-offres.png");}
-.nav-prestations {  background-image: url("../images/menu/icones/icon-sprite-prestations.png");}
-.nav-destinations { background-image: url("../images/menu/icones/icon-sprite-destinations.png");}
-.nav-flotte {       background-image: url("../images/menu/icones/icon-sprite-flotte.png");}
-.nav-equipages {    background-image: url("../images/menu/icones/icon-sprite-equipages.png");}
-.nav-ensavoirplus { background-image: url("../images/menu/icones/icon-sprite-ensavoirplus.png");}
-.nav-liens {        background-image: url("../images/menu/icones/icon-sprite-liens.png");}
+.nav-accueil {      background-image: url("../images/menu/icones/icon-accueil.png");}
+.nav-offres {       background-image: url("../images/menu/icones/icon-offres.png");}
+.nav-destinations { background-image: url("../images/menu/icones/icon-destinations.png");}
+.nav-flotte {       background-image: url("../images/menu/icones/icon-flotte.png");}
+.nav-equipages {    background-image: url("../images/menu/icones/icon-equipages.png");}
+.nav-ensavoirplus { background-image: url("../images/menu/icones/icon-ensavoirplus.png");}
 
-.navbar {min-height: inherit;}
+.navbar {min-height: inherit; margin: 10px;  max-width: 760px;background: #d9edf7; border-color: #31708f; color:#31708f; }
 .navbar-nav>li { font-size:1em;}
 .navbar-nav>li>a {border-right: 1px solid;border-radius:0;background-repeat: no-repeat; background-position: 10px 0px;color: white; text-transform: uppercase;padding: 0px 10px 0px 45px;line-height: 2em;margin: 5px 0;}
 .navbar-nav>li:last-child >a{border-right: 0;}
-.navbar-default .navbar-nav>li:hover>a, 
-.navbar-default .navbar-nav>li:focus>a, 
-.navbar-default .navbar-nav>li.active>a,
-.navbar-default .navbar-nav>li.active>a:hover, 
-.navbar-default .navbar-nav>li.active>a:focus 
-{color: white; background-color: #ed9c28; background-position: 10px -40px;}
+.navbar-default .navbar-nav>li:hover>a, .navbar-default .navbar-nav>li:focus>a, 
+.navbar-default .navbar-nav>li.active>a,.navbar-default .navbar-nav>li.active>a:hover, .navbar-default .navbar-nav>li.active>a:focus,
+.navbar-default .navbar-nav>.open, .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus
+{color: white; background-color: #31708f;border-right: 1px solid #31708F;}
+.navbar-default .navbar-nav>.open,
+.navbar-nav>li:last-child>a:hover {border-right: 0;}
+.navbar-default .navbar-nav>li>a { color: #31708f;}
 .navbar-default .navbar-nav>li.active,
 .navbar-default .navbar-nav>li:focus,
-.navbar-default .navbar-nav>li:hover { color: white !important; background-color: #ed9c28; }
+.navbar-default .navbar-nav>li:hover { border: 0; color: white !important; background-color: #31708f; }
+
+.navbar-nav>li>.dropdown-menu { width: 600px; margin-left: -220px;  background: #d9edf7;}
+.dropdown-menu a { color: #31708f;}
+.dropdown-menu a:hover { text-decoration: none;  background: #31708f; color: white;}
+.dropdown-menu li:hover { background-color: #31708f;cursor:pointer;}
+.dropdown-menu .see-destinations { color: #31708f;padding: 5px;}
+.dropdown-menu .see-destinations:hover { text-decoration: underline;}
+.dropdown-menu li:hover a { color: white;}
+.dropdown-menu li.menu-item-destination { padding: 5px;}
+.dropdown-menu .divider {margin: 0;}
 .block-newsletter {background:white; padding-right: 11px; }
 .newsletter-message-container{ padding: 5px; width: 90%; margin: 10px auto;}
 .newsletter {background: #127BBD; text-align: center; padding-bottom: 20px; }

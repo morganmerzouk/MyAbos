@@ -7,70 +7,74 @@
 	    	{{ skipper.description|raw }}
 		</div>
 		<div class="col-md-3">
-			<div class="offre-crew">
-				<h2 class="offre-crew-title">{{'skipper_qualification_experience'|trans }}</h2>
-	    		{% if skipper.otherCertifications is not null %}
-		    		<div class="qualif">
-		    			<img src="" class="img-responsive img-thumbnails pull-left" />
-		    			{{ skipper.otherCertifications }}
-		    		</div>
-	    		{% endif %}
-	    		{% if skipper.hobbies is not null %}
-		    		<div class="qualif">
-		    			<img src="" class="img-responsive img-thumbnails pull-left" />
-		    			{{ skipper.hobbies }}
-		    		</div>
-	    		{% endif %}
-	    		{% if skipper.professionalSince is not null %}
-		    		<div class="qualif">
-		    			<img src="" class="img-responsive img-thumbnails pull-left" />
-		    			{{ skipper.professionalSince }}
-		    		</div>
-	    		{% endif %}
-	    		{% if skipper.certificationDate is not null %}
-		    		<div class="qualif">
-		    			<img src="" class="img-responsive img-thumbnails pull-left" />
-		    			{{ skipper.certificationDate }}
-		    		</div>
-	    		{% endif %}
-	    		{% if skipper.yearsSailingCarribean is not null %}
-		    		<div class="qualif">
-		    			<img src="" class="img-responsive img-thumbnails pull-left" />
-		    			{{ skipper.yearsSailingCarribean }}
-		    		</div>
-	    		{% endif %}
-	    		{% if skipper.yearsKiteSurfing is not null %}
-		    		<div class="qualif">
-		    			<img src="" class="img-responsive img-thumbnails pull-left" />
-		    			{{ skipper.yearsKiteSurfing }}
-		    		</div>
-	    		{% endif %}
-	    		{% if skipper.yearsKiteCruise is not null %}
-		    		<div class="qualif">
-		    			<img src="" class="img-responsive img-thumbnails pull-left" />
-		    			{{ skipper.yearsKiteCruise }}
-		    		</div>
-	    		{% endif %}
-	    		{% if skipper.kitesurfInstructorSince is not null %}
-		    		<div class="qualif">
-		    			<img src="" class="img-responsive img-thumbnails pull-left" />
-		    			{{ skipper.kitesurfInstructorSince }}
-		    		</div>
-	    		{% endif %}
-	    		{% if skipper.kitesurfCertification is not null %}
-		    		<div class="qualif">
-		    			<img src="" class="img-responsive img-thumbnails pull-left" />
-		    			{{ skipper.kitesurfCertification }}
-		    		</div>
-	    		{% endif %}
-	    		{% if skipper.languagesSpoken is not null %}
-		    		<div class="qualif">
-		    			<img src="" class="img-responsive img-thumbnails pull-left" />
-		    			{% for languageSpoken in skipper.languagesSpoken %}
-		    				{{ languageSpoken }} 
-	    				{% endfor %}
-		    		</div>
-	    		{% endif %}
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h2 class="panel-title">{{'skipper_qualification_experience'|trans }}</h2>
+				</div>
+				<div class="panel-body">
+		    		{% if skipper.otherCertifications is not null %}
+			    		<div class="qualif">
+			    			<img src="" class="img-responsive img-thumbnails pull-left" />
+			    			{{ skipper.otherCertifications }}
+			    		</div>
+		    		{% endif %}
+		    		{% if skipper.hobbies is not null %}
+			    		<div class="qualif">
+			    			<img src="" class="img-responsive img-thumbnails pull-left" />
+			    			{{ skipper.hobbies }}
+			    		</div>
+		    		{% endif %}
+		    		{% if skipper.professionalSince is not null %}
+			    		<div class="qualif">
+			    			<img src="" class="img-responsive img-thumbnails pull-left" />
+			    			{{ skipper.professionalSince }}
+			    		</div>
+		    		{% endif %}
+		    		{% if skipper.certificationDate is not null %}
+			    		<div class="qualif">
+			    			<img src="" class="img-responsive img-thumbnails pull-left" />
+			    			{{ skipper.certificationDate }}
+			    		</div>
+		    		{% endif %}
+		    		{% if skipper.yearsSailingCarribean is not null %}
+			    		<div class="qualif">
+			    			<img src="" class="img-responsive img-thumbnails pull-left" />
+			    			{{ skipper.yearsSailingCarribean }}
+			    		</div>
+		    		{% endif %}
+		    		{% if skipper.yearsKiteSurfing is not null %}
+			    		<div class="qualif">
+			    			<img src="" class="img-responsive img-thumbnails pull-left" />
+			    			{{ skipper.yearsKiteSurfing }}
+			    		</div>
+		    		{% endif %}
+		    		{% if skipper.yearsKiteCruise is not null %}
+			    		<div class="qualif">
+			    			<img src="" class="img-responsive img-thumbnails pull-left" />
+			    			{{ skipper.yearsKiteCruise }}
+			    		</div>
+		    		{% endif %}
+		    		{% if skipper.kitesurfInstructorSince is not null %}
+			    		<div class="qualif">
+			    			<img src="" class="img-responsive img-thumbnails pull-left" />
+			    			{{ skipper.kitesurfInstructorSince }}
+			    		</div>
+		    		{% endif %}
+		    		{% if skipper.kitesurfCertification is not null %}
+			    		<div class="qualif">
+			    			<img src="" class="img-responsive img-thumbnails pull-left" />
+			    			{{ skipper.kitesurfCertification }}
+			    		</div>
+		    		{% endif %}
+		    		{% if skipper.languagesSpoken is not null %}
+			    		<div class="qualif">
+			    			<img src="" class="img-responsive img-thumbnails pull-left" />
+			    			{% for languageSpoken in skipper.languagesSpoken %}
+			    				{{ languageSpoken }} 
+		    				{% endfor %}
+			    		</div>
+		    		{% endif %}
+	    		</div>
 		    </div>
 		<a href="{{ path('skipper_available', { 'id': skipper.id }) }}" class="btn btn-dispo btn-xs btn-primary">Voir les disponibilités du skipper</a>
 	</div>

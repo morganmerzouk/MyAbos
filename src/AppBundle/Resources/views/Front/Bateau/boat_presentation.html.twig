@@ -19,13 +19,17 @@
 	        {% if boat.photoCabineWebPath is not null %}<img class="col-md-2 img-responsive img-thumbnails" src="{{ boat.photoCabineWebPath }}" alt="photo cabine" />{% endif %}
 	    </div>
     </div>
-    <div class="col-md-3 boat-prestation">
-	<h2 class="boat-prestation-title">{{'boat_prestation_available'|trans }}</h2>
-    	{% for prestation in prestations %}
-    		<div class="prestation">
-    			<img src="{{ prestation.iconeWebPath|replace({ ('75'): '25' }) }}" class="img-responsive img-thumbnails pull-left" />
-    			{{ prestation.name }}
-    		</div>
-    	{% endfor %}
+    <div class="col-md-3 boat-prestation panel panel-info">
+		<div class="panel-heading">
+			<h2 class="panel-title">{{'boat_prestation_available'|trans }}</h2>
+		</div>
+		<div class="panel-body">
+	    	{% for prestation in prestations %}
+	    		<div class="prestation">
+	    			<img src="{{ prestation.iconeWebPath|replace({ ('75'): '25' }) }}" class="img-responsive img-thumbnails pull-left" />
+	    			<span class="prestation-name">{{ prestation.name }}</a>
+	    		</div>
+	    	{% endfor %}
+    	</div>
     </div>
 {% endblock content %}

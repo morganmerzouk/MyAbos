@@ -82,6 +82,7 @@ departure_date: Departure on
 return_date: Back on 
 nb_cabine_dispo: Cabin available
 see_specials_offers: See all special offers
+see_destinations: See all destinations
 offres_speciales: Special Offers
 
 Activités supplémentaires: Additional activities
@@ -191,7 +192,7 @@ equipement_supplementaire: Supplementary Equipments
 prestation_kite_disponible: Kitesurf services available
 par_passager: per passenger
 
-periode_du: Periods from
+periode_du: Price from
 periode_au: to
 periode_tarif_du: Price available for a duration between
 periode_tarif_au: and

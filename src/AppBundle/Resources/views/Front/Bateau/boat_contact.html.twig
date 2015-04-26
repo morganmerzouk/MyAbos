@@ -9,110 +9,129 @@
 {% endblock %}
 {% block content %}
     {{ parent() }}
-    <div class="col-devis col-md-9">
     	<form method="post" action="{{ path('boat_contact_step2', {'id': app.request.get('id'), 'skipperId': skipper.id }) }}">
-	    	<h2>{{'boat_get_estimate'|trans}}</h2>
-	    	<div class="row odd">
-	            {{ form_label(form.dateDepart) }}
-                    {{ form_errors(form.dateDepart) }}
-                    {{ form_widget(form.dateDepart) }}
-		        
-	            {{ form_label(form.dateRetour) }}
-                    {{ form_errors(form.dateRetour) }}
-                    {{ form_widget(form.dateRetour) }}
-	        </div>
-	    	<div class="row even">	        
-	            {{ form_label(form.dureeCroisiere) }}
-                    {{ form_errors(form.dureeCroisiere) }}
-                    {{ form_widget(form.dureeCroisiere) }} {{'jours'|trans}}
-	        </div>
-	    	<div class="row odd">	        
-	            {{ form_label(form.nbPassager) }}
-                    {{ form_errors(form.nbPassager) }}
-                    {{ form_widget(form.nbPassager) }} {{'passagers'|trans}}
-	        </div>
-	    	<div class="row even">	        
-	            {{ form_label(form.portDepart) }}
-                    {{ form_errors(form.portDepart) }}
-                    {{ form_widget(form.portDepart) }}
-	        </div>
-	    	<div class="row odd">
-	            {{ form_label(form.destination) }}
-                    {{ form_errors(form.destination) }}
-                    {{ form_widget(form.destination) }}
-	    	</div>
-	    	{% if servicepayant|length > 0 %}
-	    		<div class="optionspayantes">
-		    		<strong>{{'choose_your_options'|trans }}: </strong>
-                	{% set currentCategory = null %}
-	        		{% for service in servicepayant %}
-		        		{% if service.categorie != currentCategory %}
-		        			{% set currentCategory = service.categorie %}
-	                    	<div class="col-md-12 even">{{service.categorie|trans}}</div>
-	                    {% endif %}
-	                    <div>
-		                    <div class="col-md-5 optionpayante-name odd" data-item="1">{{service.name}}</div>
-		                    <div class="col-md-5 odd">{% if service.fraisSupplementaires != "" %}{% if service.devise == "$" %}${% endif %}{{service.fraisSupplementaires}}{% if service.devise == "€" %}€{% endif %} {{service.tarifApplique|trans}}{% else %} N/A {% endif %}</div>
-		                    <div class="col-md-1"><input type="checkbox" name="servicepayant[]" value="{{service.id}}" /></div>
-		                </div>
-                    {% endfor %}
+	    	<div class="col-devis col-md-4">		
+	    		<div class="panel panel-info">    	
+		    		<div class="panel-heading">
+			    		<h2 class="panel-title">{{'boat_get_estimate'|trans}}</h2>
+		    		</div>
+				    <div class="odd">
+					    {{ form_label(form.dateDepart) }}
+					    {{ form_errors(form.dateDepart) }}
+					    {{ form_widget(form.dateDepart) }}
+				    </div>
+				    <div class="odd">
+					    {{ form_label(form.dateRetour) }}
+					    {{ form_errors(form.dateRetour) }}
+					    {{ form_widget(form.dateRetour) }}
+				    </div>
+					<div class="odd">
+					    {{ form_label(form.dureeCroisiere) }}
+					    {{ form_errors(form.dureeCroisiere) }}
+					    {{ form_widget(form.dureeCroisiere) }} {{'jours'|trans}}
+				    </div>
+				    <div class="odd">
+						{{ form_label(form.nbPassager) }}
+					    {{ form_errors(form.nbPassager) }}
+					    {{ form_widget(form.nbPassager) }} {{'passagers'|trans}}
+					</div>
+			    	<div class="odd">        
+					    {{ form_label(form.portDepart) }}
+					    {{ form_errors(form.portDepart) }}
+					    {{ form_widget(form.portDepart) }}
+				    </div>
+				    <div class="odd">
+						{{ form_label(form.destination) }}
+					    {{ form_errors(form.destination) }}
+					    {{ form_widget(form.destination) }}
+				    </div>
+			    </div>
+		    </div>
+			{% if servicepayant|length > 0 %}
+		    	<div class="col-devis col-md-4">
+		    		<div class="panel panel-info">
+			    		<div class="panel-heading">
+				    		<h2 class="panel-title">{{'choose_your_options'|trans}}</h2>
+			    		</div>
+			    		<div class="optionspayantes">	    	
+		                	{% set currentCategory = null %}
+			        		{% for service in servicepayant %}
+				        		{% if service.categorie != currentCategory %}
+				        			{% set currentCategory = service.categorie %}
+			                    	<div class="col-md-12 even">{{service.categorie|trans}}</div>
+			                    {% endif %}
+			                    <div>
+				                    <div class="col-md-5 optionpayante-name odd" data-item="1">{{service.name}}</div>
+				                    <div class="col-md-5 odd">{% if service.fraisSupplementaires != "" %}{% if service.devise == "$" %}${% endif %}{{service.fraisSupplementaires}}{% if service.devise == "€" %}€{% endif %} {{service.tarifApplique|trans}}{% else %} N/A {% endif %}</div>
+				                    <div class="col-md-1"><input type="checkbox" name="servicepayant[]" value="{{service.id}}" /></div>
+				                </div>
+		                    {% endfor %}
+				        </div>
+			        </div>
 		        </div>
 	    	{% endif %}
-	    	<div class="row even">	        
-	            {{ form_label(form.message) }}
-                {{ form_errors(form.message) }}
-                {{ form_widget(form.message) }} 
-	        </div>
-	    	<div class="row odd">	        
-	            {{ form_label(form.nom) }}
-                {{ form_errors(form.nom) }}
-                {{ form_widget(form.nom) }} 
-	        </div>
-	    	<div class="row even">	        
-	            {{ form_label(form.email) }}
-                {{ form_errors(form.email) }}
-                {{ form_widget(form.email) }} 
-	        </div>
+			<div class="col-devis col-md-4">
+				<div class="panel panel-info">
+			        <div class="panel-heading">
+			        	<h2 class="panel-title">{{'votre_devis'|trans }}</h2>
+			    	</div>
+			        <div class="loading">
+			            <img class="img-responsive" src='{{ asset("bundles/app/images/general/loader.gif")  }}' />
+			        </div>
+			        <div class="even devis-content-date-sejour">
+			         	<strong>{{'between'|trans }}:</strong> <span class="devis-date-depart">X</span> <strong>{{ 'form_sejour_possible_fin'|trans }}</strong> <span class="devis-date-retour">X</span> 
+			        </div>
+			        <div class="odd devis-content-duree-sejour">
+			            <strong>{{'form_sejour_duree'|trans }} </strong><span class="devis-duree-sejour">X</span> {{'jours'|trans }}
+			        </div>
+			        <div class="even devis-content-nb-passager">
+			        	<strong>{{'form_sejour_nb_passager'|trans}} </strong>
+			        	<span class="devis-nb-passager">X</span> {{'passagers'|trans }}
+			        </div>
+			        <div class="odd devis-content-tarif">
+			            <strong>{{'price'|trans }}: </strong>
+			            <span class="devis-sejour-tarif"></span> {{'Prix par personne/jour'|trans}}
+			        </div>
+			        <div class="even devis-content-port-depart">
+			            <strong>{{'form_sejour_portdepart'|trans }}</strong> <span class="devis-port-depart">X</span>
+			        </div>
+			        <div class="odd devis-content-destination">
+			            <strong>{{'form_sejour_destination'|trans }}</strong> <span class="devis-destination">X</span>
+			        </div>
+			        <div class="even devis-content-option-payante">
+			            <strong>{{'devis_option'|trans }}</strong><br />
+			            <div class="devis-options-payantes">
+			            
+			            </div>
+			        </div>
+			        <div class="odd">
+			            <div class="bloc-final-price">
+			                Total:<br />
+			                <span class="devis-content-final-price"><span class="final-price"></span> euros {{'par_passager'|trans }}</span>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+			<div class="col-md-12">
+		    	<div class="even">	        
+		            {{ form_label(form.message) }}
+	                {{ form_errors(form.message) }}
+	                {{ form_widget(form.message) }} 
+		        </div>
+		    	<div class="odd">	        
+		            {{ form_label(form.nom) }}
+	                {{ form_errors(form.nom) }}
+	                {{ form_widget(form.nom) }} 
+		        </div>
+		    	<div class="even">	        
+		            {{ form_label(form.email) }}
+	                {{ form_errors(form.email) }}
+	                {{ form_widget(form.email) }} 
+		        </div>
                 {{ form_rest(form) }}
-        	{% if skipper is not null %}<button type="submit" class="btn-recap pull-right btn btn-warning">{{'recapitulatif_contact'|trans}}</button>{% endif %}
+	        	{% if skipper is not null %}<button type="submit" class="btn-recap pull-right btn btn-warning">{{'recapitulatif_contact'|trans}}</button>{% endif %}
+    		</div>
     	</form>
     </div>
-    <div class="col-devis col-right-devis col-md-3">
-        <div class="loading">
-            <img class="img-responsive" src='{{ asset("bundles/app/images/general/loader.gif")  }}' />
-        </div>
-        <h2>{{'votre_devis'|trans }}</h2>
-        <div class="row even devis-content-date-sejour">
-         	<strong>{{'between'|trans }}:</strong> <span class="devis-date-depart">X</span> <strong>{{ 'form_sejour_possible_fin'|trans }}</strong> <span class="devis-date-retour">X</span> 
-        </div>
-        <div class="row odd devis-content-duree-sejour">
-            <strong>{{'form_sejour_duree'|trans }} </strong><span class="devis-duree-sejour">X</span> {{'jours'|trans }}
-        </div>
-        <div class="row even devis-content-nb-passager">
-        	<strong>{{'form_sejour_nb_passager'|trans}} </strong>
-        	<span class="devis-nb-passager">X</span> {{'passagers'|trans }}
-        </div>
-        <div class="row odd devis-content-tarif">
-            <strong>{{'price'|trans }}: </strong>
-            <span class="devis-sejour-tarif"></span> {{'Prix par personne/jour'|trans}}
-        </div>
-        <div class="row even devis-content-port-depart">
-            <strong>{{'form_sejour_portdepart'|trans }}</strong> <span class="devis-port-depart">X</span>
-        </div>
-        <div class="row odd devis-content-destination">
-            <strong>{{'form_sejour_destination'|trans }}</strong> <span class="devis-destination">X</span>
-        </div>
-        <div class="row even devis-content-option-payante">
-            <strong>{{'devis_option'|trans }}</strong><br />
-            <div class="devis-options-payantes">
-            
-            </div>
-        </div>
-        <div class="row odd">
-            <div class="bloc-final-price">
-                Total:<br />
-                <span class="devis-content-final-price"><span class="final-price"></span> euros {{'par_passager'|trans }}</span>
-            </div>
-        </div>
-    </div>
+</div>
 {% endblock content %}

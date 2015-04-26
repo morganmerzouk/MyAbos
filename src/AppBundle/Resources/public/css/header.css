@@ -1,10 +1,12 @@
+.container-header { background: white;padding-bottom: 10px;}
 /*** Block de recherche ***/
-.searchHome { height: 50px; width: 81%;background: #127BBD; margin-left:19%; font-size: 0.9em;}
-.searchHome legend { float: left; width: 150px; text-align: center; color: white; font-size: 1em; margin: 0; padding: 0px 5px; line-height: 50px; background: #23B6E1 url("../images/general/search-home-legend.png") no-repeat right center;}
-.searchHome label { color: white;display: block;text-align: center;font-weight: 400;}
+.search-header {clear: both; }
+.searchHome { height: 50px; border: 1px solid #31708f; border-right: 0; color: #31708f;  background-color: #d9edf7; padding:0;margin:0; font-size: 0.9em;}
+.searchHome legend { float: left; width: 110px; border-bottom: 0; text-align: center; color: white; font-size: 1em; margin:0; padding:0; line-height: 49px; background: #31708f url("../images/general/search-home-legend.png") no-repeat right center;}
+.searchHome label { color: #31708f;display: block;text-align: center;font-weight: 400;}
 .searchHome .criteria { float: left;overflow:hidden; width: 15%;text-align: center;}
 .searchHome .criteria-date { width: 10%; margin: 0 1%; }
-.searchHome .criteria-date input { height: 20px;}
+.searchHome .criteria-date input { height: 20px; width: 100%;}
 .searchHome .criteria .select-destination, 
 .searchHome .criteria .select-prestation { width: 90%; }
 .searchHome .criteria-nb-passager { width: 10%; }

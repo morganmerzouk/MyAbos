@@ -93,4 +93,25 @@ class FrontController extends Controller
         
         return new Response($success);
     }
+
+    public function menuHeaderAction($route)
+    {
+        $locale = $this->getRequest()->getLocale();
+        
+        $destinations = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("AppBundle\Entity\Destination")
+            ->createQueryBuilder('s')
+            ->select('s, t')
+            ->join('s.translations', 't')
+            ->andWhere('t.locale = :locale')
+            ->setParameter(':locale', $locale)
+            ->getQuery()
+            ->getResult();
+        return $this->render('AppBundle:Front:menu.html.twig', array(
+            'menuDestinations' => $destinations,
+            'locale' => $locale,
+            'route' => $route
+        ));
+    }
 }
