@@ -163,19 +163,19 @@ boat-desti-date-operation: Dates d'opération de cet itinéraire:
 special_offer_with: Offres spéciales avec 
 tarif_bateau_title: Tarif du bateau
 
-form_sejour_possible_debut: Croisière possible entre le: 
-form_sejour_possible_fin: et le: 
+form_sejour_departure_on: Départ le: 
+form_sejour_back_on: Retour le: 
 form_sejour_duree: Durée de la croisière:  
 form_sejour_nb_passager: Nombre de passager:
 form_sejour_portdepart: Port de départ: 
 form_sejour_destination: Destination souhaitée: 
-form_sejour_message: Message complémentaires:
+form_sejour_message: Votre message
 form_sejour_from:  du  
 form_sejour_From:  De: 
 form_sejour_to:  au 
 form_sejour_To:  à: 
-form_sejour_nom: Votre nom: 
-form_sejour_email: Votre email: 
+form_sejour_nom: Votre nom
+form_sejour_email: Votre email
 modify: Modifier
 send_to_skipper: Envoyer au skipper
 devis_option_wanted: Options souhaitées non inclues dans le devis:
@@ -185,6 +185,8 @@ jours: jours
 devis_croisiere: Croisière kite de
 votre_devis: Votre devis sur mesure
 boat_get_estimate: Obtenez votre devis en un click!
+boat_choose_cruise: Choisissez votre croisière
+boat_leave_message: Laissez un message
 between: entre le
 price: Tarif
 choose_your_options: Sélectionnez vos options payantes

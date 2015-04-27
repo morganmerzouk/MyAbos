@@ -32,10 +32,10 @@
 		             {% endif %}
 		             € <span class="boat-tarif-pour text-center">({{ croisiere.tarifCroisiere[0].tarifPour|trans}})</span>
 	            </p>
-	            <div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/1-icons-boat-tech-file-50pix-'~croisiere.bateau.type|lower~'-noir.png') }}" /><br />{{croisiere.bateau.type}}</div>
-	            <div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/2-icons-boat-tech-file-50pix-CABINS-'~croisiere.bateau.nbCabine~'-noir.png') }}" /><br />{{croisiere.bateau.nbCabine}} {{'boat_cabine'|trans}}</div>
+	            <div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/icon-boat.png') }}" /><br />{{croisiere.bateau.type}}</div>
+	            <div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/icon-cabins.png') }}" /><br />{{croisiere.bateau.nbCabine}} {{'boat_cabine'|trans}}</div>
 	            
-				{% if (croisiere.bateau.nbCouchage > 0) %}<div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/3-icons-boat-tech-file-50pix-COUCHAGE-noir.png') }}" /><br />{{croisiere.bateau.nbCouchage}} {{'boat_bed'|trans}}</div>{% endif %}
+				{% if (croisiere.bateau.nbCouchage > 0) %}<div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/icon-bed.png') }}" /><br />{{croisiere.bateau.nbCouchage}} {{'boat_bed'|trans}}</div>{% endif %}
 	            <p class="bateaux-description">
 	        		{% if croisiere.bateau.description|length > 100 %}
 		        		{{ croisiere.bateau.description|striptags|slice(0,100)|raw }}...

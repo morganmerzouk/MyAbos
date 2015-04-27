@@ -28,7 +28,7 @@ class BateauDevisType extends AbstractType
     {
         $formatPattern = $this->locale == "en" ? 'MM/dd/yyyy' : 'dd/MM/yyyy';
         $builder->add('dateDepart', 'date', array(
-            'label' => "form_sejour_possible_debut",
+            'label' => "form_sejour_departure_on",
             'required' => false,
             'widget' => 'single_text',
             'attr' => array(
@@ -37,7 +37,7 @@ class BateauDevisType extends AbstractType
             'format' => $formatPattern
         ))
             ->add('dateRetour', 'date', array(
-            'label' => "form_sejour_possible_fin",
+            'label' => "form_sejour_back_on",
             'label_attr' => array(
                 'class' => 'label-date-retour'
             ),
@@ -50,6 +50,7 @@ class BateauDevisType extends AbstractType
         ))
             ->add('dureeCroisiere', 'choice', array(
             'label' => 'form_sejour_duree',
+            'required' => false,
             'label_attr' => array(
                 'class' => 'label-duree-sejour'
             ),
@@ -60,6 +61,7 @@ class BateauDevisType extends AbstractType
         ))
             ->add('nbPassager', 'choice', array(
             'label' => 'form_sejour_nb_passager',
+            'required' => false,
             'label_attr' => array(
                 'class' => 'label-nb-passager'
             ),
@@ -70,6 +72,7 @@ class BateauDevisType extends AbstractType
         ))
             ->add('portDepart', 'choice', array(
             "choices" => $this->fillPortDepart(),
+            'required' => false,
             'label' => 'form_sejour_portdepart',
             'attr' => array(
                 'class' => 'select-portdepart'
@@ -78,6 +81,7 @@ class BateauDevisType extends AbstractType
         ))
             ->add('destination', 'choice', array(
             "choices" => $this->fillDestination(),
+            'required' => false,
             'label' => 'form_sejour_destination',
             'attr' => array(
                 'class' => 'select-destination'
@@ -85,30 +89,36 @@ class BateauDevisType extends AbstractType
             'empty_value' => "toutes"
         ))
             ->add('message', 'textarea', array(
-            'label' => 'form_sejour_message',
+            'label' => '',
+            'required' => false,
             'label_attr' => array(
                 'class' => 'label-textarea-message'
             ),
             'attr' => array(
-                'class' => 'textarea-message'
+                'class' => 'textarea-message',
+                'placeholder' => 'form_sejour_message'
             )
         ))
             ->add('nom', 'text', array(
-            'label' => 'form_sejour_nom',
+            'label' => '',
+            'required' => false,
             'label_attr' => array(
                 'class' => 'label-nom'
             ),
             'attr' => array(
-                'class' => 'input-nom'
+                'class' => 'input-nom',
+                'placeholder' => 'form_sejour_nom'
             )
         ))
             ->add('email', 'email', array(
-            'label' => 'form_sejour_email',
+            'label' => '',
+            'required' => false,
             'label_attr' => array(
                 'class' => 'label-email'
             ),
             'attr' => array(
-                'class' => 'input-email'
+                'class' => 'input-email',
+                'placeholder' => 'form_sejour_email'
             )
         ))
             ->add('prix', 'hidden', array(

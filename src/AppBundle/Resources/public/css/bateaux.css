@@ -53,7 +53,7 @@ h1 {background: url("../images/menu/icones/icon-flotte.png") no-repeat 5px 5px #
 
 .col-fiche-bateau{ margin-top: 10px;padding:0;}
 .col-fiche-bateau .block-boat-spec { overflow: auto;  margin: 0px 10px; border: 1px solid white;background: #d9edf7;color:#31708f;}
-.col-fiche-bateau img {background: #31708f;padding: 5px;border-right: 2px solid white;margin-right:10px;}
+.col-fiche-bateau img {width:50px;padding: 5px;border-right: 2px solid white;margin-right:10px;}
 .col-fiche-bateau h3 {background: #31708f; font-size: 1.1em; padding: 10px; margin: 0;font-weight:bold;color: white;}
 
 /*** Page crew ***/
@@ -95,13 +95,18 @@ td.libelleLegend { padding-left: 5px;}
 .col-devis .panel { overflow: auto; }
 .col-devis .odd { background: #31708f;padding: 5px; }
 .col-devis .even { background: #d9edf7;color:#31708f;padding: 5px;clear: both;}
-.col-devis label { width: 205px;text-align: right;color: white;}
+.col-devis label { width: 50%;text-align: right;color: black;}
 .col-devis .bloc-final-price { padding: 10px; margin: 10px; text-align: center; border: 3px solid #31708f; overflow: auto;}
-.col-devis .optionspayantes .col-md-5 { width: 45%; padding: 5px 10px; margin: 1%; color: black;}
-.col-devis .optionspayantes .col-md-1 { width: 3%; height: 25px;padding: 5px 10px;  margin: 1%;}
-.input-date-depart, .input-date-retour { width:90px;}
+.optionspayantes-subblock {overflow: auto; width: 100%; }
+.col-devis .optionspayantes .col-md-2 { }
+.input-date-depart, .input-date-retour { width:100px;}
 .select-portdepart, .select-destination {width: 150px;}
-
+hr { margin: 0; padding: 0;}
+.optionspayantes-subblock .col-name,
+.optionspayantes-subblock .col-price {float: left; width: 48%;}
+.optionspayantes-subblock .col-checkbox {float: left; width: 4%;}
+.panel-message textarea { height: 100px;}
+.panel-message textarea, .panel-message input { width: 100%;margin-bottom: 10px;}
 .devis-content-duree-sejour,
 .devis-content-date-sejour,
 .devis-content-nb-passager,
@@ -110,8 +115,6 @@ td.libelleLegend { padding-left: 5px;}
 .devis-content-destination,
 .devis-content-option-payante, 
 .devis-content-final-price {display: none;}
-
-.btn-recap { margin: 0 10px 10px 0;}
 
 .devis-option-wanted {margin-bottom: 10px}
 .recap-textarea-message { border: 1px solid black; background: white; padding: 10px; margin: 10px;}

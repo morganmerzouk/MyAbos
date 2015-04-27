@@ -161,19 +161,19 @@ boat-desti-date-operation: Itinerary available from
 
 special_offer_with: Special offer with
 tarif_bateau_title: Price of the boat
-form_sejour_possible_debut: Cruise possible between: 
-form_sejour_possible_fin: and: 
+form_sejour_departure_on: Departure on: 
+form_sejour_back_on: Back on: 
 form_sejour_duree: Cruise duration: 
 form_sejour_nb_passager: Number of passenger: 
 form_sejour_portdepart: Departure: 
 form_sejour_destination: Destination: 
-form_sejour_message: Additional Infos: 
+form_sejour_message: Your message 
 form_sejour_from:  from  
 form_sejour_From:  From:
 form_sejour_to:  to  
 form_sejour_To:  To:
-form_sejour_nom: Your name: 
-form_sejour_email: Your email: 
+form_sejour_nom: Your name
+form_sejour_email: Your email 
 modify: Modify
 send_to_skipper: Send to skipper
 devis_option_wanted: Options wanted not included in the estimate: 
@@ -183,6 +183,8 @@ jours: days
 devis_croisiere: Kite cruise of
 votre_devis: Your customized estimate
 boat_get_estimate: Get your estimate in one click
+boat_choose_cruise: Choose your cruise
+boat_leave_message: Leave a message
 between: between
 price: Price
 choose_your_options: Choose your options

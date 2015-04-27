@@ -5,20 +5,20 @@
 .nav-equipages {    background-image: url("../images/menu/icones/icon-equipages.png");}
 .nav-ensavoirplus { background-image: url("../images/menu/icones/icon-ensavoirplus.png");}
 
-.navbar {min-height: inherit; margin: 10px;  max-width: 760px;background: #d9edf7; border-color: #31708f; color:#31708f; }
+.navbar-nav {margin-top: 10px; background: #d9edf7; border: 1px solid #31708f; color:#31708f; border-radius: 5px;}
 .navbar-nav>li { font-size:1em;}
 .navbar-nav>li>a {border-right: 1px solid;border-radius:0;background-repeat: no-repeat; background-position: 10px 0px;color: white; text-transform: uppercase;padding: 0px 10px 0px 45px;line-height: 2em;margin: 5px 0;}
 .navbar-nav>li:last-child >a{border-right: 0;}
-.navbar-default .navbar-nav>li:hover>a, .navbar-default .navbar-nav>li:focus>a, 
-.navbar-default .navbar-nav>li.active>a,.navbar-default .navbar-nav>li.active>a:hover, .navbar-default .navbar-nav>li.active>a:focus,
-.navbar-default .navbar-nav>.open, .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus
+.navbar-nav>li:hover>a, .navbar-nav>li:focus>a, 
+.navbar-nav>li.active>a, .navbar-nav>li.active>a:hover, .navbar-nav>li.active>a:focus,
+.navbar-nav>.open, .navbar-nav>.open>a, .navbar-nav>.open>a:hover, .navbar-nav>.open>a:focus
 {color: white; background-color: #31708f;border-right: 1px solid #31708F;}
-.navbar-default .navbar-nav>.open,
+.navbar-nav>.open,
 .navbar-nav>li:last-child>a:hover {border-right: 0;}
-.navbar-default .navbar-nav>li>a { color: #31708f;}
-.navbar-default .navbar-nav>li.active,
-.navbar-default .navbar-nav>li:focus,
-.navbar-default .navbar-nav>li:hover { border: 0; color: white !important; background-color: #31708f; }
+.navbar-nav>li>a { color: #31708f;}
+.navbar-nav>li.active,
+.navbar-nav>li:focus,
+.navbar-nav>li:hover { border: 0; color: white !important; background-color: #31708f; }
 
 .navbar-nav>li>.dropdown-menu { width: 600px; margin-left: -220px;  background: #d9edf7;}
 .dropdown-menu a { color: #31708f;}
