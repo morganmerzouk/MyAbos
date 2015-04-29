@@ -7,22 +7,26 @@
     <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/skippers.css') }}">
 {% endblock %}   
 {% block title %}{{'toptitle'|trans}} - {{'crew'|trans}}{% endblock %}
-
-
 {% block content %}
 	<h1>{{'crew_title'|trans}}</h1>
 	{% for skipper in skippers %}
-	    {% if loop.index0 % 3 == 0 %}
+		{% if loop.index0 % 4 == 0 %}
 	    	<div class="row-skipper">
 	    {% endif %}
-        <a class="col-md-4 skipper" href="{{ path('skipper', { 'id': skipper.id }) }}">
-        	<img class="img-responsive img-thumbnail" src="{{ skipper.avatarWebPath }}" alt="photo {{ skipper.name }}" /><br />
-            <span>{{ skipper.name }}</span>
-            <p>{{ skipper.description|trans|striptags|slice(0,150) ~ '...' }}</p>
-            <span class="btn btn-warning pull-right">{{'suite'|trans}}</span>
-        </a>
-        {% if loop.index0 % 3 == 2 %}
-	        </div>
-        {% endif %}
+	    <div class="col-md-3">
+	    	<div class="panel panel-info">
+		    	<div class="panel-heading">
+		    		<h3 class="panel-title text-center">{{ skipper.name }}</h3>
+		    	</div>
+		    	<div class="panel-body skipper">
+		        	<img class="img-responsive img-thumbnail center-block" src="{{ skipper.avatarWebPath }}" alt="photo {{ skipper.name }}" />
+		            <p>{{ skipper.description|trans|striptags|slice(0,150) ~ '...' }}</p>
+		            <a href="{{ path('skipper', { 'id': skipper.id }) }}" class="btn btn-warning pull-right">{{'suite'|trans}}</a>
+	        	</div>
+        	</div>
+    	</div>
+    	{% if loop.index0 % 4 == 3 %}
+	    	</div>
+	    {% endif %}
     {% endfor %}
 {% endblock content %}

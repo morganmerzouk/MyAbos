@@ -180,6 +180,7 @@ modify: Modifier
 send_to_skipper: Envoyer au skipper
 devis_option_wanted: Options souhaitées non inclues dans le devis:
 devis_option: Options non inclues dans le devis:
+devis_ok: Votre demande a été correctement envoyée!
 passagers: passagers
 jours: jours
 devis_croisiere: Croisière kite de

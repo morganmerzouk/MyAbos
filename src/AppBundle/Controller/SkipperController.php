@@ -117,11 +117,13 @@ class SkipperController extends Controller
             ->setParameter(':locale', $locale)
             ->getQuery()
             ->getResult(Query::HYDRATE_OBJECT);
+        
         return $this->render('AppBundle:Front:Skipper/skipper_bateau.html.twig', array(
-            'boat' => ($croisiere[0]->getBateau()),
-            'skipper_id' => $croisiere[0]->getSkipper()
-                ->getId()
-        ));
+            'boat' => isset($croisiere[0]) ? $croisiere[0]->getBateau() : null,
+            'skipper_id' => isset($croisiere[0]) ? $croisiere[0]->getSkipper()
+                ->getId() : null
+        )
+        );
     }
 
     /**

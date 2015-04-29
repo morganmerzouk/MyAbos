@@ -401,6 +401,7 @@ class BateauController extends Controller
             
             $data['skipper'] = $croisiere->getSkipper()->getName();
             $data['bateau'] = $croisiere->getBateau()->getName();
+            $servicePayantString = "";
             if ($this->getRequest()->get('servicepayant')) {
                 $servicePayant_id = array_values($this->getRequest()->get('servicepayant'));
                 $servicePayant = $this->getDoctrine()
@@ -415,13 +416,13 @@ class BateauController extends Controller
                     ->setParameter(':id', $servicePayant_id)
                     ->getQuery()
                     ->getResult();
-                $servicePayantString = "";
                 $i = 0;
                 foreach ($servicePayant as $service) {
                     if ($i != 0) {
                         $servicePayantString .= ", ";
                     }
                     $servicePayantString .= $service->getName();
+                    $i ++;
                 }
             }
             $formatPattern = $this->getRequest()->getLocale() == "en" ? "M/d/Y" : "d/M/Y";
@@ -443,6 +444,11 @@ class BateauController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($devis);
             $em->flush();
+            
+            $this->get('session')
+                ->getFlashBag()
+                ->add('notice', $this->get('translator')
+                ->trans('devis_ok'));
         }
         
         $croisiere = $this->getDoctrine()

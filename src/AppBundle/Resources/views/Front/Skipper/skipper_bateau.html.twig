@@ -42,4 +42,9 @@
 	        {% if boat.photoCabineWebPath is not null %}<img class="col-md-6 offre-boat-img img-responsive img-thumbnail" src="{{ boat.photoCabineWebPath }}" alt="photo cabine" />{% endif %}
 	    </div>
     {% endif %}
+    {% else %}
+    	<div class="col-md-12">
+    		{{ 'no_cruise_skipper'|trans }}
+		</div>
+	{% endif %}
 {% endblock content %}

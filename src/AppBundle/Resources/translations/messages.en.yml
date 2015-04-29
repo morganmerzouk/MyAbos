@@ -178,6 +178,7 @@ modify: Modify
 send_to_skipper: Send to skipper
 devis_option_wanted: Options wanted not included in the estimate: 
 devis_option: Options not included in the estimate:
+devis_ok: Your request has been correctly sent! 
 passagers: passengers
 jours: days
 devis_croisiere: Kite cruise of

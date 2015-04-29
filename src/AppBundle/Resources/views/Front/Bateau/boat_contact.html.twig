@@ -3,101 +3,102 @@
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('bundles/app/js/boat/boat_contact.js') }}" type="text/javascript"></script>
-    <script type="text/javascript">
-        var urlBoatPriceAjax = "{{ path('boat_contact_price', {'id': app.request.get('id')}) }}";
-    </script>
 {% endblock %}
 {% block content %}
     {{ parent() }}
-    	<form method="post" action="{{ path('boat_contact_step2', {'id': app.request.get('id'), 'skipperId': skipper.id }) }}">
-    		<div class="col-devis col-md-4">		
-	    		<div class="panel panel-info">    	
-		    		<div class="panel-heading">
-			    		<h2 class="panel-title">1 - {{'boat_choose_cruise'|trans}}</h2>
-		    		</div>
-		    		<div class="panel-body">
-					    <div>
-						    {{ form_label(form.dateDepart) }} 
-						    {{ form_errors(form.dateDepart) }}
-						    {{ form_widget(form.dateDepart) }}
-					    </div>
-					    <div>
-						    {{ form_label(form.dateRetour) }}
-						    {{ form_errors(form.dateRetour) }}
-						    {{ form_widget(form.dateRetour) }}
-					    </div>
-						<div>
-						    {{ form_label(form.dureeCroisiere) }}
-						    {{ form_errors(form.dureeCroisiere) }}
-						    {{ form_widget(form.dureeCroisiere) }} {{'jours'|trans}}
-					    </div>
-					    <div>
-							{{ form_label(form.nbPassager) }}
-						    {{ form_errors(form.nbPassager) }}
-						    {{ form_widget(form.nbPassager) }} {{'passagers'|trans}}
-						</div>
-				    	<div>        
-						    {{ form_label(form.portDepart) }}
-						    {{ form_errors(form.portDepart) }}
-						    {{ form_widget(form.portDepart) }}
-					    </div>
-					    <div>
-							{{ form_label(form.destination) }}
-						    {{ form_errors(form.destination) }}
-						    {{ form_widget(form.destination) }}
-					    </div>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+	    <div class="alert alert-success" role="alert">
+	        {{ flashMessage }}
+	    </div>
+	{% endfor %}
+	<form method="post" action="{{ path('boat_contact', {'id': app.request.get('id') }) }}">
+		<div class="col-devis col-md-4">		
+    		<div class="panel panel-info">    	
+	    		<div class="panel-heading">
+		    		<h2 class="panel-title">1 - {{'boat_choose_cruise'|trans}}</h2>
+	    		</div>
+	    		<div class="panel-body">
+				    <div>
+					    {{ form_label(form.dateDepart) }} 
+					    {{ form_errors(form.dateDepart) }}
+					    {{ form_widget(form.dateDepart) }}
+				    </div>
+				    <div>
+					    {{ form_label(form.dateRetour) }}
+					    {{ form_errors(form.dateRetour) }}
+					    {{ form_widget(form.dateRetour) }}
+				    </div>
+					<div>
+					    {{ form_label(form.dureeCroisiere) }}
+					    {{ form_errors(form.dureeCroisiere) }}
+					    {{ form_widget(form.dureeCroisiere) }} {{'jours'|trans}}
+				    </div>
+				    <div>
+						{{ form_label(form.nbPassager) }}
+					    {{ form_errors(form.nbPassager) }}
+					    {{ form_widget(form.nbPassager) }} {{'passagers'|trans}}
+					</div>
+			    	<div>        
+					    {{ form_label(form.portDepart) }}
+					    {{ form_errors(form.portDepart) }}
+					    {{ form_widget(form.portDepart) }}
+				    </div>
+				    <div>
+						{{ form_label(form.destination) }}
+					    {{ form_errors(form.destination) }}
+					    {{ form_widget(form.destination) }}
 				    </div>
 			    </div>
 		    </div>
-			{% if servicepayant|length > 0 %}
-		    	<div class="col-devis col-md-4">
-		    		<div class="panel panel-info">
-			    		<div class="panel-heading">
-				    		<h2 class="panel-title">2 - {{'choose_your_options'|trans}}</h2>
-			    		</div>
-			    		<div class="panel-body">	    	
-			        		{% for service in servicepayant %}
-				        		{% if loop.index > 1 %}
-				        			<hr />
-			        			{% endif %}
-				        		<div class="optionspayantes-subblock">
-				                    <div class="col-name" data-item="1">{{service.name}}</div>
-				                    <div class="col-price">{% if service.fraisSupplementaires != "" %}{% if service.devise == "$" %}${% endif %}{{service.fraisSupplementaires}}{% if service.devise == "€" %}€{% endif %} {{service.tarifApplique|trans}}{% else %} N/A {% endif %}
-			                    	</div>
-			                    	<div class="col-checkbox">
-				                    	<input type="checkbox" name="servicepayant[]" value="{{service.id}}" />
-				                    </div>
-				                </div>
-		                    {% endfor %}
-				        </div>
+	    </div>
+		{% if servicepayant|length > 0 %}
+	    	<div class="col-devis col-md-4">
+	    		<div class="panel panel-info">
+		    		<div class="panel-heading">
+			    		<h2 class="panel-title">2 - {{'choose_your_options'|trans}}</h2>
+		    		</div>
+		    		<div class="panel-body">	    	
+		        		{% for service in servicepayant %}
+			        		{% if loop.index > 1 %}
+			        			<hr />
+		        			{% endif %}
+			        		<div class="optionspayantes-subblock">
+			                    <div class="col-name" data-item="1">{{service.name}}</div>
+			                    <div class="col-price">
+			                    	{% if service.fraisSupplementaires != "" %}{% if service.devise == "$" %}${% endif %}{{service.fraisSupplementaires}}{% if service.devise == "€" %}€{% endif %} {{service.tarifApplique|trans}}{% else %} N/A {% endif %}
+		                    	</div>
+		                    	<div class="col-checkbox">
+			                    	<input type="checkbox" name="servicepayant[]" value="{{service.id}}" />
+			                    </div>
+			                </div>
+	                    {% endfor %}
 			        </div>
 		        </div>
-	    	{% endif %}
-			<div class="col-devis col-md-4">
-				<div class="panel panel-info">
-		    		<div class="panel-heading">
-			    		<h2 class="panel-title">3 - {{'boat_leave_message'|trans}}</h2>
-		    		</div>
-		    		<div class="panel-body panel-message">	
-				    	<div>	        
-			                {{ form_errors(form.message) }}
-			                {{ form_widget(form.message) }} 
-				        </div>
-				    	<div>	        
-			                {{ form_errors(form.nom) }}
-			                {{ form_widget(form.nom) }} 
-				        </div>
-				    	<div>	        
-			                {{ form_errors(form.email) }}
-			                {{ form_widget(form.email) }} 
-				        </div>
-		                {{ form_rest(form) }}
-		                
-    					<button type="submit" class="btn-send-to-skipper btn btn-warning pull-right">{{'send_to_skipper'|trans}}</button>
-    				</div>
-    			</div>
-    		</div>
-    	</form>
-    </div>
-</div>
+	        </div>
+    	{% endif %}
+		<div class="col-devis col-md-4">
+			<div class="panel panel-info">
+	    		<div class="panel-heading">
+		    		<h2 class="panel-title">3 - {{'boat_leave_message'|trans}}</h2>
+	    		</div>
+	    		<div class="panel-body panel-message">	
+			    	<div>	        
+		                {{ form_errors(form.message) }}
+		                {{ form_widget(form.message) }} 
+			        </div>
+			    	<div>	        
+		                {{ form_errors(form.nom) }}
+		                {{ form_widget(form.nom) }} 
+			        </div>
+			    	<div>	        
+		                {{ form_errors(form.email) }}
+		                {{ form_widget(form.email) }} 
+			        </div>
+	                {{ form_rest(form) }}
+	                
+					<button type="submit" class="btn-send-to-skipper btn btn-warning pull-right">{{'send_to_skipper'|trans}}</button>
+				</div>
+			</div>
+		</div>
+	</form>
 {% endblock content %}

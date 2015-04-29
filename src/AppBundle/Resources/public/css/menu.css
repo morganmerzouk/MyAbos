@@ -18,6 +18,8 @@
 .navbar-nav>li>a { color: #31708f;}
 .navbar-nav>li.active,
 .navbar-nav>li:focus,
+
+.nav>li>a:focus,
 .navbar-nav>li:hover { border: 0; color: white !important; background-color: #31708f; }
 
 .navbar-nav>li>.dropdown-menu { width: 600px; margin-left: -220px;  background: #d9edf7;}
