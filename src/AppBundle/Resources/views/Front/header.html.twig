@@ -1,11 +1,6 @@
 <div class="container-header">
-	<a class="logo col-md-2" href="{{ path("homepage") }}"><img src="{{ asset('bundles/app/images/general/logo.png') }}" alt="logo kitesurfari" /></a>
-	{%  render(controller('AppBundle:Front:menuHeader', { 'route': app.request.attributes.get('_route') })) %}  
-	<div class="search-header">
-        <div class="lang">
-        	<a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}"><img src="{{ asset('bundles/app/images/general/drapeauEn.gif') }}" alt="logo kitesurfari" /></a>
-   	 		<a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}"><img src="{{ asset('bundles/app/images/general/drapeauFr.gif') }}" alt="logo kitesurfari" /></a>
-        </div>          
-        {%  render(controller('AppBundle:Search:searchHeader')) %}    
-    </div>
+    <div class="lang pull-right">
+    	<a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}"><img src="{{ asset('bundles/app/images/general/drapeauEn.gif') }}" alt="langue fr" /></a>
+ 		<a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}"><img src="{{ asset('bundles/app/images/general/drapeauFr.gif') }}" alt="language en" /></a>
+    </div>          
 </div>

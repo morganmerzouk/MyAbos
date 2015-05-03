@@ -1,9 +1,14 @@
 $(document).ready(function() {
 	if(locale == "en") {
-	    $(".searchHome .input-date-depart, .searchHome .input-date-retour").datepicker({ "dateFormat": "mm/dd/yy"});
+	    $(".input-date-depart").datepicker({ "dateFormat": "mm/dd/yy"});
 	} else {
-	    $(".searchHome .input-date-depart, .searchHome .input-date-retour").datepicker({ "dateFormat": "dd/mm/yy"});
+	    $(".input-date-depart").datepicker({ "dateFormat": "dd/mm/yy"});
 	}
+	
+	$('video').on('ended', function () {
+		this.load();
+		this.play();
+	});
 	
 	$('.btn-newsletter-subscribe').on('click', function() {
 		if($('.newsletter-email').val() == "" || $('.newsletter-email').val() == "email" ) {

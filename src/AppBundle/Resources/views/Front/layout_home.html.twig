@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>{% block title %}{{'toptitle'|trans}}{% endblock %}</title>
+        {{ sonata_seo_head_attributes() }}
+        {{ sonata_seo_metadatas() }}
+        {{ sonata_seo_link_canonical() }}
+        {{ sonata_seo_lang_alternates() }}
+        <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge" /><![endif]-->
+        <!--[if lt IE 9]>
+            <script src="{{ asset('bundles/app/js/plugins/respond.min.js') }}" type="text/javascript"></script>
+        <![endif]-->
+        {% block javascripts %}
+            <script src="{{ asset('bundles/app/js/lib/modernizr.js') }}" type="text/javascript"></script> 
+            <script src="{{ asset('bundles/app/js/lib/jquery.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('bundles/app/js/lib/jquery-ui.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('bundles/app/js/lib/bootstrap.js') }}" type="text/javascript"></script>
+            
+            <script src="{{ asset('bundles/app/js/script.js') }}" type="text/javascript"></script>
+            <script type="text/javascript">
+            	var urlNewsletterSubscribe = "{{ path('newsletter_subscribe') }}";
+            	var locale = "{{ app.request.locale }}";
+            </script>
+        {% endblock %}
+
+        {% block stylesheets %}
+            <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/bootstrap.min.css') }}">
+            <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/lib/jquery-ui.css') }}">
+            <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/lib/jquery-ui.theme.css') }}">
+            <link href='http://fonts.googleapis.com/css?family=Signika' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/style.css') }}">
+            <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/home.css') }}">
+            <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/header.css') }}">
+            <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/menu.css') }}">
+            <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/footer.css') }}">
+        {% endblock %}   
+    </head>
+    <body>
+    	<div class="container-home">
+        	{% include "AppBundle:Front:header.html.twig" %}
+	        <div class="container-body">
+		    	<form class="home">
+				    {%  render(controller('AppBundle:Search:searchHeader')) %}    
+		    	</form>
+			    {%  render(controller('AppBundle:Front:menuHeader', {'route': app.request.get('route') })) %}
+                	{% block content %}{% endblock %}
+            </div>
+        </div><!--/container-->
+        {% include "AppBundle:Front:footer.html.twig" %}
+    </body>
+</html>

@@ -1,78 +1,19 @@
+html{ height: 100%; overflow: hidden;font-size: 1em;}
+video, object {left:0;top:0;margin:0;padding:0;width:100%;position: absolute; z-index: -1;}
+.container-body, .container-home {margin: 0;padding: 0;}
+.panel-info>.panel-heading { background: #39b3d7; color: white;border: 1px solid #269abc; }
+h1 { color: white; font-size: 3em;}
+
+.container-body .panel-offre { box-shadow: 0px 0px 30px black; margin-top: 10px; border-radius: 5px; }
 .slider .slick-prev {left: 10px;}
 .slider .slick-next {right: 10px;}
 .slider .layer-left {float: left; position: absolute; background: rgba(0,0,0,0.5); height: 100%; width: 33%;overflow: auto;}
-.slider .description {width: 90%; margin: 10px auto;padding:0px;overflow: auto;text-align: center;font-weight:bold;}
+.slider .description {margin: 0; padding:0; border: 0;overflow: auto; text-align: center; font-weight:bold;}
 .slider .description .panel-body { padding: 5px;}
+.slider .description .panel-btn {overflow: auto;margin: 10px 0 0 0;}
 .slider .description img {display: inline;}
 .slider .description .col-md-4 {font-size: 0.6em;font-weight: normal;padding: 1px; margin:0;text-align:left; }  
 .slider .description .col-md-4.type { text-align: center; }
 .slider .price {color: white;clear:both;}
-.see-all-special-offers { color: #127BBD; text-decoration: none; font-size: 0.7em; font-weight: normal; margin: 5px 5px 0 0; }
-.see-all-special-offers:hover,.see-all-special-offers:active, .see-all-special-offers:visited { color: white; }
-.slider .details {display: block; margin: auto; margin-top: 8px;width: 80%;}
-
-/*** Flip effect ***/
-.flip {
-    position: relative;
-    -webkit-perspective: 1000;
-    -moz-perspective: 1000;
-    -ms-perspective: 1000;
-    -o-perspective: 1000;
-    perspective: 1000;
-}
-
-.flip .square-front, .flip .square-back {
-    position: absolute;
-    top: 0;
-    left: 0;
-    -webkit-transform-style: preserve-3d;
-    -moz-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    -o-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -ms-backface-visibility: hidden;
-    -o-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-transition: 0.75s;
-    -moz-transition: 0.75s;
-    -o-transition: 0.75s;
-    transition: 0.75s;
-}
-
-.flip .square-front {
-    z-index: 5;
-}
-
-.flip .square-back {
-    z-index: 0;
-    -webkit-transform: rotateY(-180deg);
-    -moz-transform: rotateY(-180deg);
-    -ms-transform: rotateY(-180deg);
-    -o-transform: rotateY(-180deg);
-    transform: rotateY(-180deg);
-}
-
-.flip:hover .square-front {
-    z-index: 5;
-    -webkit-transform: rotateY(180deg);
-    -moz-transform: rotateY(180deg);
-    -ms-transform: rotateY(180deg);
-    -o-transform: rotateY(180deg);
-    transform: rotateY(180deg);
-}
-
-.flip:hover .square-back {
-    z-index: 10;
-    -webkit-transform: rotateY(0deg);
-    -moz-transform: rotateY(0deg);
-    -ms-transform: rotateY(0deg);
-    -o-transform: rotateY(0deg);
-    transform: rotateY(0deg);
-}
-
-.flip a {
-	text-decoration: none;
-	color: black;
-}
+.slider .price, .slider .details {background-color: #ed9c28; border-color: #d58512;}
+.see-all-special-offers { color: black; text-decoration: none; font-size: 0.7em; font-weight: normal; margin: 5px 5px 0 0; }

@@ -26,46 +26,33 @@ class SearchHeaderType extends AbstractType
         } else {
             $format = 'dd/MM/yyyy';
         }
-        $builder->add('dateDepart', 'date', array(
-            'label' => "form_depart",
-            'required' => false,
-            'widget' => 'single_text',
-            'attr' => array(
-                'class' => 'input-date-depart'
-            ),
-            'format' => $format
-        ))
-            ->add('dateRetour', 'date', array(
-            'label' => "form_retour",
-            'required' => false,
-            'widget' => 'single_text',
-            'attr' => array(
-                'class' => 'input-date-retour'
-            ),
-            'format' => $format
-        ))
-            ->add('destination', 'choice', array(
+        $builder->add('destination', 'choice', array(
+            'label' => "",
             "choices" => $this->fillDestination(),
             'required' => false,
             'attr' => array(
                 'class' => 'select-destination'
             ),
-            'empty_value' => "toutes"
+            'empty_value' => "Where?"
         ))
-            ->add('prestation', 'choice', array(
-            "choices" => $this->fillPrestation(),
+            ->add('date', 'date', array(
+            'label' => "",
             'required' => false,
+            'widget' => 'single_text',
             'attr' => array(
-                'class' => 'select-prestation'
+                'class' => 'input-date-depart',
+                'placeholder' => 'When?'
             ),
-            'empty_value' => "toutes"
+            'format' => $format
         ))
-            ->add('nbPassager', 'text', array(
-            'label' => 'form_passenger',
+            ->add('nbPassager', 'choice', array(
+            'label' => '',
+            "choices" => $this->fillPassager(),
             'required' => false,
             'attr' => array(
                 'class' => 'input-nb-passager'
-            )
+            ),
+            'empty_value' => "Who?"
         ))
             ->setMethod("POST");
     }
@@ -104,6 +91,34 @@ class SearchHeaderType extends AbstractType
         }
         
         return $prestation;
+    }
+
+    private function fillPassager()
+    {
+        if ($this->locale == "en") {
+            $passenger = array(
+                "1" => "1 passenger",
+                "2" => "2 passengers",
+                "3" => "3 passengers",
+                "4" => "4 passengers",
+                "5" => "5 passengers",
+                "6" => "6 passengers",
+                "7" => "7 passengers",
+                "8" => "8 passengers"
+            );
+        } else {
+            $passenger = array(
+                "1" => "1 passager",
+                "2" => "2 passagers",
+                "3" => "3 passagers",
+                "4" => "4 passagers",
+                "5" => "5 passagers",
+                "6" => "6 passagers",
+                "7" => "7 passagers",
+                "8" => "8 passagers"
+            );
+        }
+        return $passenger;
     }
 
     public function getName()

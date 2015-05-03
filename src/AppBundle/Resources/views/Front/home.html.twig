@@ -1,74 +1,53 @@
-{% extends "AppBundle:Front:layout.html.twig" %}
-{% block javascripts %}
-    {{ parent() }}
-    <script src="{{ asset('bundles/app/js/lib/slick.js') }}" type="text/javascript"></script>  
-    <script src="{{ asset('bundles/app/js/home.js') }}" type="text/javascript"></script>  
-{% endblock %}
-{% block stylesheets %}
-    {{ parent() }}
-    <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/lib/slick.css') }}">
-    <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/lib/slick-theme.css') }}">
-    <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/home.css') }}">
-{% endblock %}   
-{% block title %}{{'toptitle'|trans}} - {{ 'home'|trans }}{% endblock %}
+{% extends "AppBundle:Front:layout_home.html.twig" %}
 {% block content %}
-<div class="col-md-9">
-	<div class="slider">
-		{%  for offreSpeciale in offresSpeciales  %}
-			<div class="slider-item">
-			  	<div class="layer-left">
-					<div class="panel panel-info description">
-						<div class="panel-heading">
-					        <h3 class="panel-title">
-					        	{{ offreSpeciale.name }}<br />
-					  			{{'departure_date'|trans }} {{ offreSpeciale.dateDebut|date('d/m/Y') }}
-							</h3>
-						</div>
-						<div class="panel-body">
-					        <div class="col-md-4 type text-center">
-							  	<img class="img-thumbnail" src="{{ asset('bundles/app/images/icones/boat/1-icons-boat-tech-file-50pix-' ~ offreSpeciale.bateau.type|lower ~ '-noir.png') }}" /><br />
-							  	{{ offreSpeciale.bateau.type }}
-						  	</div>
-						  	<div class="col-md-4 text-center">
-							  	<img class="img-thumbnail" src="{{ offreSpeciale.bateau.inclusPrixEquipage.iconeWebPath }}" /><br />
-							  	{{ offreSpeciale.bateau.inclusPrixEquipage.name }}
-						  	</div>
-						  	<div class="col-md-4 text-center">
-							  	{% for inclusPrixAvitaillement in offreSpeciale.bateau.inclusPrixAvitaillement %}
-							  		{% if loop.index == 1 %}
-							  			<img class="img-thumbnail" src="{{ inclusPrixAvitaillement.iconeWebPath }}" /><br />
-							  		{% endif %}
-							  		{{ inclusPrixAvitaillement.name }}
-							  	{% endfor %}
-						  	</div>
-						  	<div class="text-center">
-							  	<div class="price btn btn-warning text-center">
-							  	${% if offreSpeciale.tarifHuitPersonnes > 0 %}
-							  		{{ (offreSpeciale.tarifHuitPersonnes/8)|round }}
-						  		 {% elseif offreSpeciale.tarifSeptPersonnes > 0 %}
-						  		 	{{ (offreSpeciale.tarifSeptPersonnes/7)|round }}
-						  		 {% elseif offreSpeciale.tarifSixPersonnes > 0 %}
-						  		 	{{ (offreSpeciale.tarifSixPersonnes/6)|round }}
-						  		 {% elseif offreSpeciale.tarifCinqPersonnes > 0 %}
-						  		 	{{ (offreSpeciale.tarifCinqPersonnes/5)|round }}
-						  		 {% elseif offreSpeciale.tarifQuatrePersonnes > 0 %}
-						  		 	{{ (offreSpeciale.tarifQuatrePersonnes/4)|round }}
-						  		 {% elseif offreSpeciale.tarifTroisPersonnes > 0 %}
-						  		 	{{ (offreSpeciale.tarifTroisPersonnes/3)|round }}
-						  		 {% elseif offreSpeciale.tarifDeuxPersonnes > 0 %}
-						  		 	{{ (offreSpeciale.tarifDeuxPersonnes/2)|round }}
-								 {% endif %}
-							  		  / {{ offreSpeciale.tarifPour|trans }}
+	<h1 class="col-md-6 text-right">{{'home_title'|trans|raw }}</h1>
+	<div class="col-md-4">
+		<div class="panel-offre">
+			<div class="slider">
+				{%  for offreSpeciale in offresSpeciales  %}
+					<div class="slider-item">
+						<div class="panel panel-info description">
+							<div class="panel-heading">
+						        <h3 class="panel-title">
+						        	{{ offreSpeciale.name }}<br />
+						  			{{'departure_date'|trans }} {{ offreSpeciale.dateDebut|date('d/m/Y') }}
+								</h3>
+							</div>
+							<div class="panel-body">
+							  	<img class="img-responsive" src="{{ offreSpeciale.miniatureWebPath }}" />
+							  	<div class="panel-btn">
+							        <div class="pull-left">
+									  	<div class="price btn btn-warning btn-sm  text-center">
+										  	${% if offreSpeciale.tarifHuitPersonnes > 0 %}
+										  		{{ (offreSpeciale.tarifHuitPersonnes/8)|round }}
+									  		 {% elseif offreSpeciale.tarifSeptPersonnes > 0 %}
+									  		 	{{ (offreSpeciale.tarifSeptPersonnes/7)|round }}
+									  		 {% elseif offreSpeciale.tarifSixPersonnes > 0 %}
+									  		 	{{ (offreSpeciale.tarifSixPersonnes/6)|round }}
+									  		 {% elseif offreSpeciale.tarifCinqPersonnes > 0 %}
+									  		 	{{ (offreSpeciale.tarifCinqPersonnes/5)|round }}
+									  		 {% elseif offreSpeciale.tarifQuatrePersonnes > 0 %}
+									  		 	{{ (offreSpeciale.tarifQuatrePersonnes/4)|round }}
+									  		 {% elseif offreSpeciale.tarifTroisPersonnes > 0 %}
+									  		 	{{ (offreSpeciale.tarifTroisPersonnes/3)|round }}
+									  		 {% elseif offreSpeciale.tarifDeuxPersonnes > 0 %}
+									  		 	{{ (offreSpeciale.tarifDeuxPersonnes/2)|round }}
+											 {% endif %}
+									  		  / {{ offreSpeciale.tarifPour|trans }}
+								  		</div>
+							  		</div>
+								  	<a href="{{ path('offrespeciale', { id: offreSpeciale.id }) }}" class="btn btn-warning btn-sm details pull-right">{{'details'|trans }}</a>
 						  		</div>
-					  		</div>
-					  		<a href="{{ path('offresspeciales') }}" class="see-all-special-offers pull-left">{{'see_specials_offers'|trans }}</a>
+						  		<a href="{{ path('offresspeciales') }}" class="see-all-special-offers pull-right">{{'see_specials_offers'|trans }}</a>
+							</div>
 						</div>
 					</div>
-				  	<a href="{{ path('offrespeciale', { id: offreSpeciale.id }) }}" class="btn btn-warning btn-sm details">{{'details'|trans }}</a>
-			  	</div>
-			  	<img class="img-responsive" src="{{ offreSpeciale.miniatureWebPath }}" />
+				{% endfor %}	
 			</div>
-		{% endfor %}	
-	</div>
-</div>
+		</div>
+	</div>  
+	<video autoplay poster="{{ asset('bundles/app/media/kitesurf.png') }}">
+	  <source src="{{ asset('bundles/app/media/kitesurf.webm') }}" type="video/webm">
+	  <source src="{{ asset('bundles/app/media/kitesurf.mp4') }}" type="video/mp4">
+	</video>
 {% endblock content %}
