@@ -14,11 +14,11 @@
     		<h2 class="panel-title">{{'cruise_to'|trans}} {{ offreSpeciale.destination.name }}</h2>
 	    </div>
 	    <div class="panel-body">
-	        <strong>{{'departure_date'|trans}}:</strong> {{ offreSpeciale.dateDebut|date(format) }}<br />
-	        <strong>{{'return_date'|trans}}:</strong> {{ offreSpeciale.dateFin|date(format) }}<br />
-	        <strong>{{'cruise_to'|trans}}:</strong> {{ offreSpeciale.portDepart.name }}<br />
-	        <strong>{{'nb_cabine_dispo'|trans}}:</strong> {{ offreSpeciale.nbCabine }}<br />
-	        <strong>{{'inclus_prix'|trans }}:</strong> 
+	        {{'departure_date'|trans}}: {{ offreSpeciale.dateDebut|date(format) }}<br />
+	        {{'return_date'|trans}}: {{ offreSpeciale.dateFin|date(format) }}<br />
+	        {{'cruise_to'|trans}}: {{ offreSpeciale.portDepart.name }}<br />
+	        {{'nb_cabine_dispo'|trans}}: {{ offreSpeciale.nbCabine }}<br />
+	        {{'inclus_prix'|trans }}: 
 	        <ul>
 	            {% for inclus in inclusPrix %}
 	                <li>{{ inclus.name }}</li>

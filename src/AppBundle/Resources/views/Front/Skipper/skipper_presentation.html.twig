@@ -23,9 +23,9 @@
 		             {% endif %}
 		             € <br /><span class="boat-tarif-pour text-center">({{ offrespeciale.tarifPour|trans}})</span>
 		        </p>
-		        <div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/1-icons-boat-tech-file-50pix-'~offrespeciale.bateau.type|lower~'-noir.png') }}" /><br />{{offrespeciale.bateau.type}}</div>
-		        <div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/2-icons-boat-tech-file-50pix-CABINS-'~offrespeciale.bateau.nbCabine~'-noir.png') }}" /><br />{{offrespeciale.bateau.nbCabine}} {{'boat_cabine'|trans}}</div>
-		        {% if (offrespeciale.bateau.nbCouchage > 0) %}<div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/3-icons-boat-tech-file-50pix-COUCHAGE-noir.png') }}" /><br />{{offrespeciale.bateau.nbCouchage}} {{'boat_bed'|trans}}</div>{% endif %}
+		        <div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/icon-boat.png') }}" /><br />{{offrespeciale.bateau.type}}</div>
+		        <div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/icon-cabins.png') }}" /><br />{{offrespeciale.bateau.nbCabine}} {{'boat_cabine'|trans}}</div>
+		        {% if (offrespeciale.bateau.nbCouchage > 0) %}<div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/icon-bed.png') }}" /><br />{{offrespeciale.bateau.nbCouchage}} {{'boat_bed'|trans}}</div>{% endif %}
 		        <p class="bateaux-description">
 		        	{% if offrespeciale.bateau.description|length > 100 %}
 		        		{{ offrespeciale.bateau.description|striptags|slice(0,100)|raw }}...

@@ -4,7 +4,7 @@
 .slider .slick-next {width: 22px;height: 20px;border-radius: 10px;}
 .slider .slick-prev:before,
 .slider .slick-next:before {font-size: 24px; background: white; opacity: 1; color: black; border-radius: 30px;}
-h1 {background: url("../images/menu/icones/icon-equipages.png") no-repeat 5px 5px #31708f; font-size: 1.2em; padding: 10px 10px 10px 35px;margin: 0 0 10px 0;color: white;}
+h1 {background: url("../images/menu/icones/icon-equipages.png") no-repeat 5px 5px #5bc0de; font-size: 1.2em; padding: 10px 10px 10px 35px;margin: 0 0 10px 0;color: white;}
 
 .skipper p { text-align:justify; font-size:0.9em;}
 .block-croisiere { float: right; width: 30%; border: 1px solid black; padding: 10px;text-align:center;margin-top:10px; }
@@ -14,9 +14,9 @@ h1 {background: url("../images/menu/icones/icon-equipages.png") no-repeat 5px 5p
 .skipper-contact-step2-loading img {height: 80%;}
 /*** Page Skipper ***/
 .block-skipper-submenu { display: table; width: 100%; margin-bottom: 10px; }
-.block-skipper-submenu a { display: table-cell; width: 17%; color: white;background-repeat: no-repeat; background-position: 5px 5px; background-color:#d9edf7; color: #31708F; padding: 10px; font-size: 0.9em; padding-left: 40px; }
+.block-skipper-submenu a { display: table-cell; width: 17%; color: white;background-repeat: no-repeat; background-position: 5px 5px; background-color:#d9edf7; color: #5bc0de; padding: 10px; font-size: 0.9em; padding-left: 40px; }
 .block-skipper-submenu a:hover,
-.block-skipper-submenu a.active { text-decoration: none; color: black; background-repeat: no-repeat;background-color: #31708f; color: white; }
+.block-skipper-submenu a.active { text-decoration: none; color: black; background-repeat: no-repeat;background-color: #5bc0de; color: white; }
 
 .skipper-home { background-image: url("../images/menu/icones/icon-accueil.png"); }
 .skipper-boat { background-image: url("../images/menu/icones/icon-flotte.png"); }
@@ -50,7 +50,7 @@ h1 {background: url("../images/menu/icones/icon-equipages.png") no-repeat 5px 5p
 /*** Skipper - Disponibilités ***/
 
 table.month { border: 1px solid black;}
-.monthname th { text-align: center; background: #31708f; color: white; font-weight: bold; padding:5px;}
+.monthname th { text-align: center; background: #5bc0de; color: white; padding:5px;}
 .month td { text-align: center; border: 1px solid black; }
 td .active { margin: 1px; border-radius: 3px; background: lightgrey; }
 .ligne { overflow: auto; margin-bottom: 10px;}
@@ -66,7 +66,7 @@ td.libelleLegend { padding-left: 5px;}
 .col-fiche-bateau .block-boat-spec { overflow: auto;  margin: 0px 10px; border: 1px solid white;background: #127BBD;color:white;}
 .col-fiche-bateau img {background: #23B6E1;padding: 5px;border-right: 2px solid white;margin-right:10px;}
 .offre-boat-img { margin: 1%; width: 48%; padding: 0;}
-.col-fiche-bateau h3 {background: #23B6E1; font-size: 1.1em; padding: 10px; margin: 0;font-weight:bold;}
+.col-fiche-bateau h3 {background: #23B6E1; font-size: 1.1em; padding: 10px; margin: 0;}
 .btn-contact {margin-bottom: 10px;}
 .boat-spec-content {border: 0;line-height: 50px;}
 .boat-spec-content.multiline {border: 0;line-height: normal; padding: 5px;}
@@ -74,7 +74,7 @@ td.libelleLegend { padding-left: 5px;}
 /*** Skipper tarif ***/
 .tarif-accordion { margin: 10px auto; padding-top: 0;}
 #tarifBateau h2 {margin: 0; background: #23B6E1; color: black; padding: 5px; border: 1px solid black;font-size:1.4em; }
-#tarifBateau h3 { font-weight: bold; font-size: 1.2em;padding: 5px;background: #127BBD; color: white; border: 1px solid black;margin: 0; }
+#tarifBateau h3 { font-size: 1.2em;padding: 5px;background: #127BBD; color: white; border: 1px solid black;margin: 0; }
 #tarifBateau h3:hover { cursor: pointer; background: #23B6E1; color: black; }
 #tarifBateau h3.title-hover { background: #23B6E1; color: black; }
 .subblock-periode { margin: 0 0 10px 0;border: 1px solid #B3B3B3;  padding: 5px;overflow: auto;}

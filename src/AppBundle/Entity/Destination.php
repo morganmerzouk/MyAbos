@@ -29,14 +29,19 @@ class Destination
     private $itineraire;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=200, nullable=true)
      */
-    protected $linkgmap;
+    protected $flag;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="string", length=200, nullable=true)
      */
-    protected $inclusRecherche = true;
+    protected $latitude;
+
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $longitude;
 
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
@@ -157,52 +162,6 @@ class Destination
     }
 
     /**
-     * Set linkgmap
-     *
-     * @param string $linkgmap            
-     * @return Destination
-     */
-    public function setLinkgmap($linkgmap)
-    {
-        $this->linkgmap = $linkgmap;
-        
-        return $this;
-    }
-
-    /**
-     * Get linkgmap
-     *
-     * @return string
-     */
-    public function getLinkgmap()
-    {
-        return $this->linkgmap;
-    }
-
-    /**
-     * Set inclusRecherche
-     *
-     * @param boolean $inclusRecherche            
-     * @return Destination
-     */
-    public function setInclusRecherche($inclusRecherche)
-    {
-        $this->inclusRecherche = $inclusRecherche;
-        
-        return $this;
-    }
-
-    /**
-     * Get inclusRecherche
-     *
-     * @return boolean
-     */
-    public function getInclusRecherche()
-    {
-        return $this->inclusRecherche;
-    }
-
-    /**
      * Constructor
      */
     public function __construct()
@@ -241,5 +200,74 @@ class Destination
     public function getItineraire()
     {
         return $this->itineraire;
+    }
+
+    /**
+     * Set flag
+     *
+     * @param string $flag            
+     * @return Destination
+     */
+    public function setFlag($flag)
+    {
+        $this->flag = $flag;
+        
+        return $this;
+    }
+
+    /**
+     * Get flag
+     *
+     * @return string
+     */
+    public function getFlag()
+    {
+        return $this->flag;
+    }
+
+    /**
+     * Set latitude
+     *
+     * @param string $latitude            
+     * @return Destination
+     */
+    public function setLatitude($latitude)
+    {
+        $this->latitude = $latitude;
+        
+        return $this;
+    }
+
+    /**
+     * Get latitude
+     *
+     * @return string
+     */
+    public function getLatitude()
+    {
+        return $this->latitude;
+    }
+
+    /**
+     * Set longitude
+     *
+     * @param string $longitude            
+     * @return Destination
+     */
+    public function setLongitude($longitude)
+    {
+        $this->longitude = $longitude;
+        
+        return $this;
+    }
+
+    /**
+     * Get longitude
+     *
+     * @return string
+     */
+    public function getLongitude()
+    {
+        return $this->longitude;
     }
 }

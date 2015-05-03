@@ -9,7 +9,7 @@ h1 {background: url("../images/menu/icones/icon-sprite-prestations.png") no-repe
 .block-prestations-name { display: table; width: 100%; }
 .prestations-name { display: table-cell; background: #127BBD; padding: 5px; font-size: 0.9em; text-align: center; color: white; }
 .lienMenu {list-style: none;padding: 0}
-.lienMenu li { float: left;font-size: 0.7em; text-align: center; width: 8.33%; border: 1px solid white; margin: 0;padding: 0px;background: #23B6E1; color: black; font-weight:bold;}
+.lienMenu li { float: left;font-size: 0.7em; text-align: center; width: 8.33%; border: 1px solid white; margin: 0;padding: 0px;background: #23B6E1; color: black;}
 .lienMenu li a:hover { color: white; }
 .col-md-3.prestation-boat-container { padding: 0;}
 .prestation-boat-title { font-size: 1.1em; color: white; margin: 10px 0px 10px 0px; padding: 10px;text-align: center;  background: #127BBD; }

@@ -15,29 +15,29 @@
     <div class="col-devis col-md-9">
     	<h2>{{'recapitulatif_de_votre_demande'|trans}}</h2>
     	<div class="row odd">
-    		<strong>{{'form_sejour_possible_debut'|trans }}</strong> 
+    		{{'form_sejour_possible_debut'|trans }}
             {{ recap.dateDepart|date(format) }} 
-    		<strong>{{'form_sejour_possible_fin'|trans }}</strong>   
+    		{{'form_sejour_possible_fin'|trans }}
             {{ recap.dateRetour|date(format) }}
         </div>
     	<div class="row even">	       
-    		<strong>{{'form_sejour_duree'|trans }}</strong>   
+    		{{'form_sejour_duree'|trans }}
             {{ recap.dureeCroisiere }} {{'jours'|trans}}
         </div>
     	<div class="row odd">	   
-    		<strong>{{'form_sejour_nb_passager'|trans }}</strong>    
+    		{{'form_sejour_nb_passager'|trans }}    
             {{ recap.nbPassager }} {{'passagers'|trans}}
         </div>
     	<div class="row even">	  
-			<strong>{{'form_sejour_portdepart'|trans }}</strong> 
+			{{'form_sejour_portdepart'|trans }}
             {{ recap.portDepart }}
         </div>
     	<div class="row odd">
-    		<strong>{{'form_sejour_destination'|trans }}</strong>
+    		{{'form_sejour_destination'|trans }}
             {{ recap.destination }}
     	</div>
     	<div class="optionspayantes">
-			<strong class="devis-option-wanted">{{ 'devis_option_wanted'|trans }}</strong>
+			<span class="devis-option-wanted">{{ 'devis_option_wanted'|trans }}</span>
     		{% if servicepayant is not null %}
                 <div class="servicepayant">
                 	{% set currentCategory = null %}
@@ -53,10 +53,10 @@
 	        {% endif %}
     	</div>
     	<div class="row even">
-    		<strong>{{'form_sejour_message'|trans }}</strong>
+    		{{'form_sejour_message'|trans }}
     		<div class="recap-textarea-message">
-    		    <strong>{{'form_sejour_From'|trans}}</strong> {{ recap.nom }} {{ recap.email }}<br />
-		    	<strong>{{'form_sejour_To'|trans}}</strong> {{'skipper_name'|trans}} <br />
+    		    {{'form_sejour_From'|trans}} {{ recap.nom }} {{ recap.email }}<br />
+		    	{{'form_sejour_To'|trans}} {{'skipper_name'|trans}} <br />
             	{{ recap.message }}
             </div>
     	</div>

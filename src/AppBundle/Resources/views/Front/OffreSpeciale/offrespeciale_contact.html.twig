@@ -16,15 +16,15 @@
 		    </div>
 	        <div class="panel-body">
 	        	<div class="col-md-6">
-				    <strong>Skipper: </strong> {{ offreSpeciale.skipper.name }}<br />
-				    <strong>{{'departure_date'|trans }}:</strong> {{ offreSpeciale.dateDebut|date(format) }}<br />
-				    <strong>{{'form_sejour_portdepart'|trans }}</strong> {{ offreSpeciale.portDepart.name }}<br />
-				    <strong>{{'nb_cabine_dispo'|trans }}:</strong> {{ offreSpeciale.nbCabine }}
+				    Skipper: {{ offreSpeciale.skipper.name }}<br />
+				    {{'departure_date'|trans }}: {{ offreSpeciale.dateDebut|date(format) }}<br />
+				    {{'form_sejour_portdepart'|trans }} {{ offreSpeciale.portDepart.name }}<br />
+				    {{'nb_cabine_dispo'|trans }}: {{ offreSpeciale.nbCabine }}
 	        	</div>
 	        	<div class="col-md-6">
-				    <strong>{{'offrespeciale_boat'|trans }}: </strong> {{ offreSpeciale.bateau.name }}<br />
-				    <strong>{{'return_date'|trans }}:</strong> {{ offreSpeciale.dateFin|date(format) }}<br />
-				    <strong>{{'form_sejour_destination'|trans }}</strong> {{ offreSpeciale.destination.name }}
+				    {{'offrespeciale_boat'|trans }}: {{ offreSpeciale.bateau.name }}<br />
+				    {{'return_date'|trans }}: {{ offreSpeciale.dateFin|date(format) }}<br />
+				    {{'form_sejour_destination'|trans }} {{ offreSpeciale.destination.name }}
 	        	</div>
 	        	<div class="col-md-6 pull-right center-block btn btn-warning">
 				  	${% if offreSpeciale.tarifHuitPersonnes > 0 %}

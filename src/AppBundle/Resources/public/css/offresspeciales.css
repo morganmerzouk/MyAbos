@@ -1,78 +1,360 @@
-h1.specials-offers-title {background: url("../images/menu/icones/icon-offres.png") no-repeat 5px 5px #31708f;font-size: 1.4em;padding: 7px 10px 5px 35px;margin: 0; color: white;}
-h1.special-offer-title {background: url("../images/menu/icones/icon-offres.png") no-repeat 5px 5px #31708f;font-size: 1.2em;padding: 10px 10px 10px 35px;margin: 0; color: white;}
-.description h2 { font-size: 1.2em; font-weight: bolder; margin: 8px 0;text-align:center;}
-.description {margin: 10px 0;overflow: auto;font-size: 0.7em;font-weight: normal;padding: 1px; margin: 8px 0;text-align:left;}
-.description .panel-body {padding: 0; }
-.description .panel-heading {padding: 1px; }
-.description .col-md-4 { text-align: left; padding: 1px;}
-.description .col-md-4.type { text-align: center; }
-.description-content { text-align: left; padding: 10px; clear: both;}
-.special-offer-img { margin: 0; }
-.price, .btn-more { margin: 5px; }
+h1.specials-offers-title {
+	background: url("../images/menu/icones/icon-offres.png") no-repeat 5px
+		5px #5bc0de;
+	font-size: 1.4em;
+	padding: 7px 10px 5px 35px;
+	margin: 0;
+	color: white;
+}
+
+h1.special-offer-title {
+	background: url("../images/menu/icones/icon-offres.png") no-repeat 5px
+		5px #5bc0de;
+	font-size: 1.2em;
+	padding: 10px 10px 10px 35px;
+	margin: 0;
+	color: white;
+}
+
+.description h2 {
+	font-size: 1.2em;
+	margin: 8px 0;
+	text-align: center;
+}
+
+.description {
+	margin: 10px 0;
+	overflow: auto;
+	font-size: 0.7em;
+	font-weight: normal;
+	padding: 1px;
+	margin: 8px 0;
+	text-align: left;
+}
+
+.description .panel-body {
+	padding: 0;
+}
+
+.description .panel-heading {
+	padding: 1px;
+}
+
+.description .col-md-4 {
+	text-align: left;
+	padding: 1px;
+}
+
+.description .col-md-4.type {
+	text-align: center;
+}
+
+.description-content {
+	text-align: left;
+	padding: 10px;
+	clear: both;
+}
+
+.special-offer-img {
+	margin: 0;
+}
+
+.price, .btn-more {
+	margin: 5px;
+}
 
 /*** Sous-menu ***/
-.block-offrespeciale-submenu { display: table; width: 100%; margin-bottom: 10px; }
-.block-offrespeciale-submenu a { display: table-cell; border: 1px solid white; border-bottom: 0; border-top: none; width: 18%; color: #31708f;background-repeat: no-repeat; background-position: 5px 5px; background-color:#d9edf7; padding: 10px; font-size: 0.9em; padding-left: 40px;}
-.block-offrespeciale-submenu:first-child {border-left: none;}
-.block-offrespeciale-submenu a:hover,
-.block-offrespeciale-submenu a.active { text-decoration: none; color: white; border: 0; background-repeat: no-repeat; background-color: #31708f; background-position: 5px 5px; }
+.block-offrespeciale-submenu {
+	display: table;
+	width: 100%;
+	margin-bottom: 10px;
+}
 
-.offrespeciale-home { background-image: url("../images/menu/icones/icon-accueil.png"); }
-.offrespeciale-crew { background-image: url("../images/menu/icones/icon-equipages.png"); }
-.offrespeciale-boat { background-image: url("../images/menu/icones/icon-flotte.png"); }
-.offrespeciale-desti { background-image: url("../images/menu/icones/icon-destinations.png"); }
-.offrespeciale-price { background-image: url("../images/menu/icones/icon-price.png"); }
-.offrespeciale-contact { background-image: url("../images/menu/icones/icon-contact.png"); }
+.block-offrespeciale-submenu a {
+	display: table-cell;
+	border: 1px solid white;
+	border-bottom: 0;
+	border-top: none;
+	width: 18%;
+	color: #5bc0de;
+	background-repeat: no-repeat;
+	background-position: 5px 5px;
+	background-color: #d9edf7;
+	padding: 10px;
+	font-size: 0.9em;
+	padding-left: 40px;
+}
+
+.block-offrespeciale-submenu:first-child {
+	border-left: none;
+}
+
+.block-offrespeciale-submenu a:hover, .block-offrespeciale-submenu a.active
+	{
+	text-decoration: none;
+	color: white;
+	border: 0;
+	background-repeat: no-repeat;
+	background-color: #5bc0de;
+	background-position: 5px 5px;
+}
+
+.offrespeciale-home {
+	background-image: url("../images/menu/icones/icon-accueil.png");
+}
+
+.offrespeciale-crew {
+	background-image: url("../images/menu/icones/icon-equipages.png");
+}
+
+.offrespeciale-boat {
+	background-image: url("../images/menu/icones/icon-flotte.png");
+}
+
+.offrespeciale-desti {
+	background-image: url("../images/menu/icones/icon-destinations.png");
+}
+
+.offrespeciale-price {
+	background-image: url("../images/menu/icones/icon-price.png");
+}
+
+.offrespeciale-contact {
+	background-image: url("../images/menu/icones/icon-contact.png");
+}
 
 /*** Offres Speciales - Presentation ***/
-.panel-offrespeciale-prestation { padding: 0; }
-.boat-prestation .prestation { overflow: auto; clear: both; margin: 2px 10px;padding:10px; }
-.boat-prestation .prestation img { margin-right: 10px;}
+.panel-offrespeciale-prestation {
+	padding: 0;
+}
+
+.boat-prestation .prestation {
+	overflow: auto;
+	clear: both;
+	margin: 2px 10px;
+	padding: 10px;
+}
+
+.boat-prestation .prestation img {
+	margin-right: 10px;
+}
 
 /*** Offres Spéciales - Crew ***/
-.offre-crew { background: #23B6E1; border: 1px solid #31708f; padding: 0 0 10px 0;  }
-.offre-crew-title { font-size: 1em;margin: 0 0 10px 0;padding: 10px;background: #31708f;color: white;}
-.offre-crew .qualif { overflow: auto; clear: both; margin: 2px 10px;background: white;padding:10px; }
-.offre-crew .qualif img { margin-right: 10px;}
-.btn-dispo { margin: 10px 0px; }
+.offre-crew {
+	background: #23B6E1;
+	border: 1px solid #5bc0de;
+	padding: 0 0 10px 0;
+}
+
+.offre-crew-title {
+	font-size: 1em;
+	margin: 0 0 10px 0;
+	padding: 10px;
+	background: #5bc0de;
+	color: white;
+}
+
+.offre-crew .qualif {
+	overflow: auto;
+	clear: both;
+	margin: 2px 10px;
+	background: white;
+	padding: 10px;
+}
+
+.offre-crew .qualif img {
+	margin-right: 10px;
+}
+
+.btn-dispo {
+	margin: 10px 0px;
+}
 
 /*** Offres Spéciales - Boat ***/
-.offrespeciale-boat-description { overflow:auto; margin-bottom: 5px;}
-.offrespeciale-boat-description h2 { text-align: center;margin: 5px;}
-.col-fiche-bateau{ margin:0px;padding:0;}
-.col-fiche-bateau .panel-body { padding: 1px;}
-.col-fiche-bateau .block-boat-spec { overflow: auto;  margin: 0px 10px; border: 1px solid white;background: #d9edf7;color:#31708f;}
-.col-fiche-bateau img {background: #31708f;padding: 5px;border-right: 2px solid white;margin-right:10px;}
-.offre-boat-img { margin: 1%; width: 48%; padding: 0;}
-.col-fiche-bateau h3 {background: #31708f; font-size: 1.1em; padding: 10px; margin: 0;font-weight:bold;color: white;}
-.btn-contact {margin-bottom: 10px;}
-.boat-spec-content {border: 0;line-height: 50px;}
-.boat-spec-content.multiline {border: 0;line-height: normal; padding: 5px;}
+.offrespeciale-boat-description {
+	overflow: auto;
+	margin-bottom: 5px;
+}
+
+.offrespeciale-boat-description h2 {
+	text-align: center;
+	margin: 5px;
+}
+
+.col-fiche-bateau {
+	margin: 0px;
+	padding: 0;
+}
+
+.col-fiche-bateau .panel-body {
+	padding: 1px;
+}
+
+.col-fiche-bateau .block-boat-spec {
+	overflow: auto;
+	margin: 0px 10px;
+	border: 1px solid white;
+	background: #d9edf7;
+	color: #5bc0de;
+}
+
+.col-fiche-bateau img {
+	background: #5bc0de;
+	padding: 5px;
+	border-right: 2px solid white;
+	margin-right: 10px;
+}
+
+.offre-boat-img {
+	margin: 1%;
+	width: 48%;
+	padding: 0;
+}
+
+.col-fiche-bateau h3 {
+	background: #5bc0de;
+	font-size: 1.1em;
+	padding: 10px;
+	margin: 0;
+	color: white;
+}
+
+.btn-contact {
+	margin-bottom: 10px;
+}
+
+.boat-spec-content {
+	border: 0;
+	line-height: 50px;
+}
+
+.boat-spec-content.multiline {
+	border: 0;
+	line-height: normal;
+	padding: 5px;
+}
 /*** Offres Spéciales - Desti ***/
-.offre-desti { border: 1px solid #31708f; padding: 0; overflow: auto; }
-.offre-desti ul { list-style-position: inside; margin: 0px; padding: 0px;  }
-.offre-desti-content strong { font-size: 0.9em; }
+.offre-desti {
+	border: 1px solid #5bc0de;
+	padding: 0;
+	overflow: auto;
+}
+
+.offre-desti ul {
+	list-style-position: inside;
+	margin: 0px;
+	padding: 0px;
+}
+
+.offre-desti-content strong {
+	font-size: 0.9em;
+}
 
 /*** Offres Spéciales - Price ***/
-.col-md-3.offre-prestation-container { padding: 0;}
-.prestation { overflow: auto; clear: both; margin: 5px auto; padding: 5px; }
-.prestation img { margin-right: 5px;}
-#tarifOffre {padding: 0;}
-#tarifOffre table td { padding: 5px; border: 1px solid black;}
-.periode-table-personne { text-align: center; }
-.periode-table-title {background: #31708f;color: white; text-align: left; }
-.even { background: #31708f;color: white;padding: 5px;}
-.tarif-accordion .even, .subblock-periode .odd { padding: 5px;margin: 1px; }
-.service-payant-categorie {display:block; float:none;clear: both;}
-.tarif-accordion .col-md-6 { border: 1px solid white;padding:0; }
-.tarif-accordion .servicepayant div {margin: 0;padding:5px;}
-.panel-body-padding { padding:1px; }
+.col-md-3.offre-prestation-container {
+	padding: 0;
+}
+
+.prestation {
+	overflow: auto;
+	clear: both;
+	margin: 5px auto;
+	padding: 5px;
+}
+
+.prestation img {
+	margin-right: 5px;
+}
+
+#tarifOffre {
+	padding: 0;
+}
+
+#tarifOffre table td {
+	padding: 5px;
+	border: 1px solid black;
+}
+
+.periode-table-personne {
+	text-align: center;
+}
+
+.periode-table-title {
+	background: #5bc0de;
+	color: white;
+	text-align: left;
+}
+
+.even {
+	background: #5bc0de;
+	color: white;
+	padding: 5px;
+}
+
+.tarif-accordion .even, .subblock-periode .odd {
+	padding: 5px;
+	margin: 1px;
+}
+
+.service-payant-categorie {
+	display: block;
+	float: none;
+	clear: both;
+}
+
+.tarif-accordion .col-md-6 {
+	border: 1px solid white;
+	padding: 0;
+}
+
+.tarif-accordion .servicepayant div {
+	margin: 0;
+	padding: 5px;
+}
+
+.panel-body-padding {
+	padding: 1px;
+}
 /*** Offres Spéciales - Contact ***/
-.offre-contact { padding: 10px; }
-.offrespeciale-contact-col-form-content .loading { display: none; position: absolute; z-index: 1000; height: 90%; padding: 20% 0px 0px 0px; background: black; opacity: 0.8; margin-right: 15px;}
-.offrespeciale-contact-col-form-content .loading img { width: 80%; margin: auto; }
-.offrespeciale-contact-col-form-content div { padding: 10px;}
-.offrespeciale-contact-col-form-content textarea { width: 100%; height: 200px;}
-.offrespeciale-contact-col-form-content input { width: 100%; color: black;}
-.offrespeciale-contact-col-form .btn-send {margin-top: 10px; }
-.offrespeciale-contact-col-form .btn-sent { display: none;margin: 10px auto; }
+.offre-contact {
+	padding: 10px;
+}
+
+.offrespeciale-contact-col-form-content .loading {
+	display: none;
+	position: absolute;
+	z-index: 1000;
+	height: 90%;
+	padding: 20% 0px 0px 0px;
+	background: black;
+	opacity: 0.8;
+	margin-right: 15px;
+}
+
+.offrespeciale-contact-col-form-content .loading img {
+	width: 80%;
+	margin: auto;
+}
+
+.offrespeciale-contact-col-form-content div {
+	padding: 10px;
+}
+
+.offrespeciale-contact-col-form-content textarea {
+	width: 100%;
+	height: 200px;
+}
+
+.offrespeciale-contact-col-form-content input {
+	width: 100%;
+	color: black;
+}
+
+.offrespeciale-contact-col-form .btn-send {
+	margin-top: 10px;
+}
+
+.offrespeciale-contact-col-form .btn-sent {
+	display: none;
+	margin: 10px auto;
+}

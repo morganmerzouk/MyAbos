@@ -8,7 +8,7 @@ h1 { color: white; font-size: 3em;}
 .slider .slick-prev {left: 10px;}
 .slider .slick-next {right: 10px;}
 .slider .layer-left {float: left; position: absolute; background: rgba(0,0,0,0.5); height: 100%; width: 33%;overflow: auto;}
-.slider .description {margin: 0; padding:0; border: 0;overflow: auto; text-align: center; font-weight:bold;}
+.slider .description {margin: 0; padding:0; border: 0;overflow: auto; text-align: center; }
 .slider .description .panel-body { padding: 5px;}
 .slider .description .panel-btn {overflow: auto;margin: 10px 0 0 0;}
 .slider .description img {display: inline;}
