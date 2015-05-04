@@ -11,7 +11,7 @@
 				{% if loop.index%9 == 1 %}
 					<div class="col-md-4">
 				{% endif %}
-				<li class="menu-item-destination"><a href="{{ path('destination', {'id': destination.id}) }}">{{ destination.name }}</a></li>
+				<li class="menu-item-destination"><a href="{{ path('destination', {'id': destination.id}) }}"><img src="{{ destination.flagWebPath }}" class="img-menu" alt="{{'menu_flag'|trans }} {{ destination.name }}" />{{ destination.name }}</a></li>
 				{% if loop.index%9 == 0 %}
 					</div>
 				{% else %}
@@ -24,4 +24,6 @@
     <a href="{{ path('boats') }}" class="btn btn-info nav-flotte">{{'home_flotte'|trans}}</a>
     <a href="{{ path('skippers') }}" class="btn btn-info nav-equipages">{{'home_equipages'|trans}}</a>
     <a href="{{ path('ensavoirplus') }}" class="btn btn-info nav-ensavoirplus">{{'know_more'|trans}}</a>
+    
+    {% include "AppBundle:Front:newsletter.html.twig" %}
 </div>

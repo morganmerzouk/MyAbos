@@ -43,7 +43,8 @@
 				    {%  render(controller('AppBundle:Search:searchHeader')) %}    
 		    	</form>
 			    {%  render(controller('AppBundle:Front:menuHeader', {'route': app.request.get('route') })) %}
-                	{% block content %}{% endblock %}
+        		
+            	{% block content %}{% endblock %}
             </div>
         </div><!--/container-->
         {% include "AppBundle:Front:footer.html.twig" %}

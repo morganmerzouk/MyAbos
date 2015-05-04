@@ -97,6 +97,16 @@ class Devis
     protected $createdAt;
 
     /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    protected $sendAt;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    protected $readAt;
+
+    /**
      * Set id
      *
      * @param string $id            
@@ -449,23 +459,69 @@ class Devis
     /**
      * Set offreSpecialeId
      *
-     * @param string $offreSpecialeId
+     * @param string $offreSpecialeId            
      * @return Devis
      */
     public function setOffreSpecialeId($offreSpecialeId)
     {
         $this->offreSpecialeId = $offreSpecialeId;
-
+        
         return $this;
     }
 
     /**
      * Get offreSpecialeId
      *
-     * @return string 
+     * @return string
      */
     public function getOffreSpecialeId()
     {
         return $this->offreSpecialeId;
+    }
+
+    /**
+     * Set sendAt
+     *
+     * @param \DateTime $sendAt            
+     * @return Devis
+     */
+    public function setSendAt($sendAt)
+    {
+        $this->sendAt = $sendAt;
+        
+        return $this;
+    }
+
+    /**
+     * Get sendAt
+     *
+     * @return \DateTime
+     */
+    public function getSendAt()
+    {
+        return $this->sendAt;
+    }
+
+    /**
+     * Set readAt
+     *
+     * @param \DateTime $readAt            
+     * @return Devis
+     */
+    public function setReadAt($readAt)
+    {
+        $this->readAt = $readAt;
+        
+        return $this;
+    }
+
+    /**
+     * Get readAt
+     *
+     * @return \DateTime
+     */
+    public function getReadAt()
+    {
+        return $this->readAt;
     }
 }

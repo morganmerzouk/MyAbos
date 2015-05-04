@@ -1,6 +1,4 @@
-{% extends "AppBundle:Front:OffreSpeciale/offrespeciale.html.twig" %}
-{% block content %}
-    {{ parent() }}
+<div class="offrespeciale-crew">
     {% if skipper is not null %}
 	    <div class="col-md-9">
 	    	<h2>Captain {{ skipper.name }}</h2>
@@ -76,7 +74,7 @@
 		    		{% endif %}
 	    		</div>
 		    </div>
-		<a href="{{ path('skipper_available', { 'id': skipper.id }) }}" class="btn btn-dispo btn-xs btn-primary">Voir les disponibilités du skipper</a>
-	</div>
+			<a href="{{ path('skipper_available', { 'id': skipper.id }) }}" class="btn btn-dispo btn-xs btn-primary">Voir les disponibilités du skipper</a>
+		</div>
     {% endif %}
-{% endblock content %}
+</div>

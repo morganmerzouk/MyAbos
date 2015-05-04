@@ -119,6 +119,11 @@ class Destination
         return '/uploads/destination';
     }
 
+    public function getFlagWebPath()
+    {
+        return null === $this->flag ? null : $this->getUploadDir() . '/flag/' . $this->flag;
+    }
+
     protected function getUploadRootDir()
     {
         return __DIR__ . '/../../../web/' . $this->getUploadDir();

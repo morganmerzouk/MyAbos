@@ -3,6 +3,7 @@ namespace AppBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 class DevisAdmin extends Admin
 {
@@ -19,14 +20,28 @@ class DevisAdmin extends Admin
             ->add('message', 'null', array(
             'label' => 'Message: '
         ))
-            ->add('createdAt', 'date', array(
+            ->add('createdAt', 'datetime', array(
+            'label' => 'Créé le: '
+        ))
+            ->add('sendAt', 'datetime', array(
             'label' => 'Envoyé le: '
+        ))
+            ->add('readAt', 'datetime', array(
+            'label' => 'Lu le: '
         ))
             ->add('_action', 'actions', array(
             'actions' => array(
-                'delete' => array()
+                'delete' => array(),
+                'Email' => array(
+                    'template' => 'AppBundle:Admin/CRUD:list__action_email.html.twig'
+                )
             )
         ));
+    }
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->add('email', $this->getRouterIdParameter() . '/email');
     }
 
     public function setBaseRouteName($baseRouteName)

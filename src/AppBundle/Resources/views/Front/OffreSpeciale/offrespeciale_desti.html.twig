@@ -1,10 +1,4 @@
-{% extends "AppBundle:Front:OffreSpeciale/offrespeciale.html.twig" %}
-{% block javascripts %}
-    {{ parent() }}
-    <script src="{{ asset('bundles/app/js/offrespeciale_desti.js') }}" type="text/javascript"></script>
-{% endblock %}
-{% block content %}
-    {{ parent() }}
+<div class="offrespeciale-desti">
     {% set format = app.request.locale == "en" ? 'm/d/Y' : 'd/m/Y' %}
     <div class="col-md-9">
         {{ offreSpeciale.destination.description|raw }}
@@ -20,11 +14,15 @@
 	        {{'nb_cabine_dispo'|trans}}: {{ offreSpeciale.nbCabine }}<br />
 	        {{'inclus_prix'|trans }}: 
 	        <ul>
-	            {% for inclus in inclusPrix %}
-	                <li>{{ inclus.name }}</li>
-	            {% endfor %}
+	            {% for inclus in inclusprixavitaillement %}<li>{{ inclus.name }}</li>{% endfor %}
+	            {% for inclus in inclusprixequipage %}<li>{{ inclus.name }}</li>{% endfor %}
+	            {% for inclus in inclusprixfraisdevoyage %}<li>{{ inclus.name }}</li>{% endfor %}
+	            {% for inclus in inclusprixautresservices %}<li>{{ inclus.name }}</li>{% endfor %}
+	            {% for inclus in inclusprixequipement %}<li>{{ inclus.name }}</li>{% endfor %}
+	            {% for inclus in inclusprixactivite %}<li>{{ inclus.name }}</li>{% endfor %}
+	            {% for inclus in inclusprixcours %}<li>{{ inclus.name }}</li>{% endfor %}
 	        </ul>
 		    <a href="{{ path('skipper_available', { 'id': offreSpeciale.skipper.id }) }}" class="btn btn-warning pull-right"">{{'contact_skipper'|trans }}</a>
         </div>
     </div>
-{% endblock content %}
+</div>

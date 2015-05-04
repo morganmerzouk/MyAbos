@@ -1,10 +1,4 @@
-{% extends "AppBundle:Front:OffreSpeciale/offrespeciale.html.twig" %}
-{% block javascripts %}
-    {{ parent() }}
-    <script src="{{ asset('bundles/app/js/offrespeciale_price.js') }}" type="text/javascript"></script>
-{% endblock %}
-{% block content %}
-    {{ parent() }}
+<div class="offrespeciale-price">
     {% set format = app.request.locale == "en" ? 'm/d/Y' : 'd/m/Y' %}
     <div class="col-md-6">
     	<div id="tarifOffre" class="panel panel-info">
@@ -153,4 +147,4 @@
 	        </div>
     	{% endif %}  
     </div>
-{% endblock content %}
+</div>

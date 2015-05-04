@@ -30,22 +30,25 @@ class DestinationAdmin extends Admin
         }
         
         $formMapper->add('miniatureFile', 'file', $optionsMiniature)
-            ->add('linkgmap', 'text', array(
-            'label' => 'Lien google map: ',
+            ->add('latitude', 'text', array(
+            'label' => 'Latitude: ',
             'required' => false,
             'label_attr' => array(
-                'class' => 'control-lien-google-map'
+                'class' => 'control-latitude'
             ),
             'attr' => array(
-                'class' => 'destination-lien-google-map'
+                'class' => 'destination-latitude'
             )
         ))
-            ->add('inclusRecherche', 'checkbox', array(
-            'label' => 'Inclure dans la recherche: ',
-            'attr' => array(
-                'class' => 'destination-inclusrecherche'
+            ->add('longitude', 'text', array(
+            'label' => 'Longitude: ',
+            'required' => false,
+            'label_attr' => array(
+                'class' => 'control-longitude'
             ),
-            'required' => false
+            'attr' => array(
+                'class' => 'destination-longitude'
+            )
         ))
             ->add('translations', 'a2lix_translations', array(
             'attr' => array(

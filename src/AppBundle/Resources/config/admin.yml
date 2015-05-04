@@ -162,7 +162,7 @@ services:
         arguments:
             - ~
             - AppBundle\Entity\Devis
-            - ~
+            - AppBundle:Devis
         calls:
             - [ setTranslationDomain, [AppBundle]]
             - [ setBaseRouteName, [devis]]

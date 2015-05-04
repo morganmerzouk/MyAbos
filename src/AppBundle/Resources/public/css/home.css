@@ -1,8 +1,8 @@
-html{ height: 100%; overflow: hidden;font-size: 1em;}
+html{ height: 100%; font-size: 1em;}
 video, object {left:0;top:0;margin:0;padding:0;width:100%;position: absolute; z-index: -1;}
 .container-body, .container-home {margin: 0;padding: 0;}
 .panel-info>.panel-heading { background: #39b3d7; color: white;border: 1px solid #269abc; }
-h1 { color: white; font-size: 3em;}
+h1 { color: white; font-size: 3em;text-shadow: 0 0 3px black;}
 
 .container-body .panel-offre { box-shadow: 0px 0px 30px black; margin-top: 10px; border-radius: 5px; }
 .slider .slick-prev {left: 10px;}

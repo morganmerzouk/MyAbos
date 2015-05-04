@@ -290,6 +290,7 @@ h1.special-offer-title {
 	color: white;
 	padding: 5px;
 }
+.even input, .even textarea {color: black;}
 
 .tarif-accordion .even, .subblock-periode .odd {
 	padding: 5px;

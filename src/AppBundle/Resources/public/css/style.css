@@ -1,5 +1,7 @@
 html, body {font-size: 14px; font-family: 'Signika', Verdana,sans-serif;}
 .panel-info>.panel-heading { color: white; background-color: #5bc0de; }
 .panel-info .panel-body {padding: 10px;}
+.img-menu {width: 20px; margin-right: 5px; }
+label { font-weight: normal; }
 .margintop10 { margin-top: 10px; }
 .newsletter-message-container { display: none; }

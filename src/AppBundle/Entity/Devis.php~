@@ -97,6 +97,16 @@ class Devis
     protected $createdAt;
 
     /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $sendAt;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $readAt;
+
+    /**
      * Set id
      *
      * @param string $id            
@@ -444,5 +454,28 @@ class Devis
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * Set offreSpecialeId
+     *
+     * @param string $offreSpecialeId            
+     * @return Devis
+     */
+    public function setOffreSpecialeId($offreSpecialeId)
+    {
+        $this->offreSpecialeId = $offreSpecialeId;
+        
+        return $this;
+    }
+
+    /**
+     * Get offreSpecialeId
+     *
+     * @return string
+     */
+    public function getOffreSpecialeId()
+    {
+        return $this->offreSpecialeId;
     }
 }

@@ -1,6 +1,4 @@
-{% extends "AppBundle:Front:OffreSpeciale/offrespeciale.html.twig" %}
-{% block content %}
-    {{ parent() }}
+<div class="offrespeciale-boat">
 	<div class="col-fiche-bateau col-md-6 panel panel-info">
         <div class="panel-heading">
         	<h2 class="panel-title">{{'boat_configuration'|trans}}</h2>
@@ -50,4 +48,4 @@
                 <a href="{{ path('boat_available', {'id': boat.id }) }}" class=" btn btn-danger">{{'see_available'|trans}}</a>
             </div>
     </div>
-{% endblock content %}
+</div>

@@ -10,8 +10,8 @@
 .dropdown-menu li:hover a { color: white;}
 .dropdown-menu li.menu-item-destination { padding: 5px;}
 .dropdown-menu .divider {margin: 0;}
-.block-newsletter {background:white; padding-right: 11px; }
+.block-newsletter {background: #5bc0de; }
 .newsletter-message-container{ padding: 5px; width: 90%; margin: 10px auto;}
-.newsletter {background: #127BBD; text-align: center; padding-bottom: 20px; }
+.newsletter {background: #5bc0de; text-align: center; padding-bottom: 20px; }
 .newsletter legend { color:white;border: 0; margin-bottom: 5px;border-top: 1px solid white; }
 .newsletter-email { width: 60%;font-size: 0.7em;}
