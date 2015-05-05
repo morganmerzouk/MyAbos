@@ -1,9 +1,11 @@
 <h1>Captain {{ skipper.name }}</h1>
-<div class="block-skipper-submenu">
-    <a href="#presentation" class="skipper-home">{{'skipper_presentation'|trans}}</a>
-    <a href="#boat" class="skipper-boat">{{'skipper_boat'|trans}}</a>
-    <a href="#destination" class="skipper-desti">{{'skipper_desti'|trans}}</a>
-    <a href="#available" class="skipper-available">{{'skipper_availability'|trans}}</a>
-    <a href="#price" class="skipper-price">{{'skipper_price'|trans}}</a>
-    <a href="#contact" class="skipper-contact">{{'skipper_contact'|trans}}</a>
+<div class="submenu" role="tabpanel">
+    <ul class="nav nav-tabs" role="tablist">
+	    <li role="presentation" class="active"><a href="#presentation" class="skipper-home" aria-controls="skipper" role="tab" data-toggle="tab">{{'skipper_presentation'|trans}}</a></li>
+	    <li role="presentation"><a href="#boat" class="skipper-boat" aria-controls="boat" role="tab" data-toggle="tab">{{'skipper_boat'|trans}}</a></li>
+	    <li role="presentation"><a href="#destination" class="skipper-desti" aria-controls="destination" role="tab" data-toggle="tab">{{'skipper_desti'|trans}}</a></li>
+	    <li role="presentation"><a href="#available" class="skipper-available" aria-controls="available" role="tab" data-toggle="tab">{{'skipper_availability'|trans}}</a></li>
+	    <li role="presentation"><a href="#price" class="skipper-price" aria-controls="price" role="tab" data-toggle="tab">{{'skipper_price'|trans}}</a></li>
+	    <li role="presentation"><a href="#contact" class="skipper-contact" aria-controls="contact" role="tab" data-toggle="tab">{{'skipper_contact'|trans}}</a></li>
+    </ul>
 </div>

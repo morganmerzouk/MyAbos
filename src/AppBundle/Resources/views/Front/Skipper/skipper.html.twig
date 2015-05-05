@@ -17,11 +17,23 @@
 {% block content %}
     {%  render(controller('AppBundle:Skipper:submenu', { 'route': app.request.get('_route'), 'id': app.request.get('id') })) %}
     
+  	<div class="tab-content">
+  		<div role="tabpanel" class="tab-pane active" id="skipper">
     {% include "AppBundle:Front:Skipper/skipper_presentation.html.twig" %}
-    {% include "AppBundle:Front:Skipper/skipper_bateau.html.twig" %}
-    {% include "AppBundle:Front:Skipper/skipper_desti.html.twig" %}
-    {% include "AppBundle:Front:Skipper/skipper_available.html.twig" %}
-    {% include "AppBundle:Front:Skipper/skipper_price.html.twig" %}
-    {% include "AppBundle:Front:Skipper/skipper_contact.html.twig" %}
-    
+    </div>
+    	<div role="tabpanel" class="tab-pane" id="boat">
+    	{% include "AppBundle:Front:Skipper/skipper_bateau.html.twig" %}
+    </div>
+    	<div role="tabpanel" class="tab-pane" id="destination">
+    	{% include "AppBundle:Front:Skipper/skipper_desti.html.twig" %}
+    </div>
+    	<div role="tabpanel" class="tab-pane" id="available">
+    	{% include "AppBundle:Front:Skipper/skipper_available.html.twig" %}
+    </div>
+    	<div role="tabpanel" class="tab-pane" id="price">
+    	{% include "AppBundle:Front:Skipper/skipper_price.html.twig" %}
+    </div>
+    	<div role="tabpanel" class="tab-pane" id="contact">
+    	{% include "AppBundle:Front:Skipper/skipper_contact.html.twig" %}
+    </div>
 {% endblock content %}

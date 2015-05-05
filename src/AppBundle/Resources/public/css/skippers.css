@@ -13,11 +13,6 @@ h1 {background: url("../images/menu/icones/icon-equipages.png") no-repeat 5px 5p
 .skipper-contact-step2-loading {display: none; position: absolute; z-index: 1000; width: 25%; height: 20%; top: 40%; left: 33%;padding: 10px; background: black; opacity: 0.8}
 .skipper-contact-step2-loading img {height: 80%;}
 /*** Page Skipper ***/
-.block-skipper-submenu { display: table; width: 100%; margin-bottom: 10px; }
-.block-skipper-submenu a { display: table-cell; width: 17%; color: white;background-repeat: no-repeat; background-position: 5px 5px; background-color:#d9edf7; color: #5bc0de; padding: 10px; font-size: 0.9em; padding-left: 40px; }
-.block-skipper-submenu a:hover,
-.block-skipper-submenu a.active { text-decoration: none; color: black; background-repeat: no-repeat;background-color: #5bc0de; color: white; }
-
 .skipper-home { background-image: url("../images/menu/icones/icon-accueil.png"); }
 .skipper-boat { background-image: url("../images/menu/icones/icon-flotte.png"); }
 .skipper-desti { background-image: url("../images/menu/icones/icon-destinations.png"); }
