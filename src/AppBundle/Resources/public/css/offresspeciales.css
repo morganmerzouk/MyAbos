@@ -64,41 +64,6 @@ h1.special-offer-title {
 }
 
 /*** Sous-menu ***/
-.block-offrespeciale-submenu {
-	display: table;
-	width: 100%;
-	margin-bottom: 10px;
-}
-
-.block-offrespeciale-submenu a {
-	display: table-cell;
-	border: 1px solid white;
-	border-bottom: 0;
-	border-top: none;
-	width: 18%;
-	color: #5bc0de;
-	background-repeat: no-repeat;
-	background-position: 5px 5px;
-	background-color: #d9edf7;
-	padding: 10px;
-	font-size: 0.9em;
-	padding-left: 40px;
-}
-
-.block-offrespeciale-submenu:first-child {
-	border-left: none;
-}
-
-.block-offrespeciale-submenu a:hover, .block-offrespeciale-submenu a.active
-	{
-	text-decoration: none;
-	color: white;
-	border: 0;
-	background-repeat: no-repeat;
-	background-color: #5bc0de;
-	background-position: 5px 5px;
-}
-
 .offrespeciale-home {
 	background-image: url("../images/menu/icones/icon-accueil.png");
 }

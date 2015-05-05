@@ -1,10 +1,11 @@
 <h1 class='special-offer-title'>{{ offrespeciale.name }}</h1>
-<div class="block-offrespeciale-submenu">
-    
-    <a href="#home" class="offrespeciale-home">{{'offrespeciale_presentation'|trans}}</a>
-    <a href="#crew" class="offrespeciale-crew">{{'boat_crew'|trans}}</a>
-    <a href="#boat" class="offrespeciale-boat">{{'offrespeciale_boat'|trans}}</a>
-    <a href="#destination" class="offrespeciale-desti">{{'boat_desti'|trans}}</a>
-    <a href="#price" class="offrespeciale-price">{{'boat_price'|trans}}</a>
-    <a href="#contact" class="offrespeciale-contact">{{'boat_contact'|trans}}</a>
+<div role="tabpanel" class="submenu">
+    <ul class="nav nav-tabs" role="tablist">
+	    <li role="presentation" class="active"><a href="#home" class="offrespeciale-home" aria-controls="home" role="tab" data-toggle="tab">{{'offrespeciale_presentation'|trans}}</a></li>
+	    <li role="presentation"><a href="#crew" class="offrespeciale-crew" aria-controls="crew" role="tab" data-toggle="tab">{{'boat_crew'|trans}}</a></li>
+	    <li role="presentation"><a href="#boat" class="offrespeciale-boat" aria-controls="boat" role="tab" data-toggle="tab">{{'offrespeciale_boat'|trans}}</a></li>
+	    <li role="presentation"><a href="#destination" class="offrespeciale-desti" aria-controls="destination" role="tab" data-toggle="tab">{{'boat_desti'|trans}}</a></li>
+	    <li role="presentation"><a href="#price" class="offrespeciale-price" aria-controls="price" role="tab" data-toggle="tab">{{'boat_price'|trans}}</a></li>
+	    <li role="presentation"><a href="#contact" class="offrespeciale-contact" aria-controls="contact" role="tab" data-toggle="tab">{{'boat_contact'|trans}}</a></li>
+	</ul>
 </div>

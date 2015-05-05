@@ -82,28 +82,6 @@ class SkipperController extends Controller
             ->getQuery()
             ->getResult(Query::HYDRATE_OBJECT);
         
-        $seoPage->addMeta('name', 'keyword', $skipper->getName());
-        $seoPage->addMeta('name', 'description', substr($skipper->getDescription(), 0, 255));
-        return $this->render('AppBundle:Front:Skipper/skipper_presentation.html.twig', array(
-            'skipper' => $skipper,
-            'id' => $id,
-            'offrespeciale' => isset($offreSpeciale[0]) ? $offreSpeciale[0] : null
-        ));
-    }
-
-    /**
-     * @Route("/skipper/{id}/bateaux", requirements={"id" = "\d+"}, name="skipper_bateaux")
-     */
-    public function skipperFlottesAction($id)
-    {
-        $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage->addMeta('name', 'keyword', $this->get('translator')
-            ->trans("crew_boat_meta_keywords"))
-            ->addMeta('name', 'description', $this->get('translator')
-            ->trans("crew_boat_meta_description"));
-        
-        $locale = $this->getRequest()->getLocale();
-        
         $croisiere = $this->getDoctrine()
             ->getManager()
             ->getRepository("AppBundle\Entity\Croisiere")
@@ -118,28 +96,10 @@ class SkipperController extends Controller
             ->getQuery()
             ->getResult(Query::HYDRATE_OBJECT);
         
-        return $this->render('AppBundle:Front:Skipper/skipper_bateau.html.twig', array(
-            'boat' => isset($croisiere[0]) ? $croisiere[0]->getBateau() : null,
-            'skipper_id' => isset($croisiere[0]) ? $croisiere[0]->getSkipper()
-                ->getId() : null
-        )
-        );
-    }
-
-    /**
-     * @Route("/skipper/{id}/destination", requirements={"id" = "\d+"}, name="skipper_desti")
-     */
-    public function skipperDestiAction($id)
-    {
-        $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage->addMeta('name', 'keyword', $this->get('translator')
-            ->trans("crew_destinations_meta_keywords"))
-            ->addMeta('name', 'description', $this->get('translator')
-            ->trans("crew_destinations_meta_description"));
+        $seoPage->addMeta('name', 'keyword', $skipper->getName());
+        $seoPage->addMeta('name', 'description', substr($skipper->getDescription(), 0, 255));
         
-        $locale = $this->getRequest()->getLocale();
-        
-        $croisiere = $this->getDoctrine()
+        $croisiere2 = $this->getDoctrine()
             ->getManager()
             ->getRepository("AppBundle\Entity\Croisiere")
             ->createQueryBuilder('c')
@@ -161,144 +121,46 @@ class SkipperController extends Controller
             ->getOneOrNullResult();
         
         $portDepart = null;
-        if ($croisiere != null) {
-            foreach ($croisiere->getItineraireCroisiere() as $itineraireCroisiere) {
+        if ($croisiere2 != null) {
+            foreach ($croisiere2->getItineraireCroisiere() as $itineraireCroisiere) {
                 if ($itineraireCroisiere->getParDefaut() == 1) {
                     $portDepart = $itineraireCroisiere->getItineraire()->getPortDepart();
                 }
             }
         }
         
-        $offreSpeciale = $this->getDoctrine()
-            ->getManager()
-            ->getRepository("AppBundle\Entity\OffreSpeciale")
-            ->createQueryBuilder('os')
-            ->select('os, b, ost, bt')
-            ->join('AppBundle\Entity\Bateau', 'b', 'WITH', 'os.bateau = b.id')
-            ->join('os.translations', 'ost')
-            ->join('b.translations', 'bt')
-            ->where('os.skipper = :id')
-            ->setParameter(':id', $id)
-            ->andWhere('bt.locale = :locale')
-            ->andWhere('ost.locale = :locale')
-            ->setParameter(':locale', $locale)
-            ->getQuery()
-            ->getResult(Query::HYDRATE_OBJECT);
-        
-        return $this->render('AppBundle:Front:Skipper/skipper_desti.html.twig', array(
-            'portDepart' => $portDepart,
-            'itinerairesCroisiere' => $croisiere != null ? $croisiere->getItineraireCroisiere() : null,
-            'offrespeciale' => isset($offreSpeciale[0]) ? $offreSpeciale[0] : null
-        ));
-    }
-
-    /**
-     * @Route("/skipper/{id}/disponibilite", requirements={"id" = "\d+"}, name="skipper_available")
-     */
-    public function skipperAvailableAction($id)
-    {
-        $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage->addMeta('name', 'keyword', $this->get('translator')
-            ->trans("crew_availability_meta_keywords"))
-            ->addMeta('name', 'description', $this->get('translator')
-            ->trans("crew_availability_meta_description"));
-        
-        $croisieres = $this->getDoctrine()
-            ->getManager()
-            ->getRepository("AppBundle\Entity\Croisiere")
-            ->createQueryBuilder('c')
-            ->select('c,d')
-            ->join('c.skipper', 's')
-            ->join('c.dateNonDisponibilite', 'd')
-            ->where('s.id = :id')
-            ->setParameter(':id', $id)
-            ->getQuery()
-            ->getResult(Query::HYDRATE_OBJECT);
-        
-        return $this->render('AppBundle:Front:Skipper/skipper_available.html.twig', array(
-            'datesNonDisponibilite' => isset($croisieres[0]) ? $croisieres[0]->getDateNonDisponibilite() : null
-        ));
-    }
-
-    /**
-     * @Route("/skipper/{id}/price", requirements={"id" = "\d+"}, name="skipper_price")
-     */
-    public function skipperPriceAction($id)
-    {
-        $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage->addMeta('name', 'keyword', $this->get('translator')
-            ->trans("crew_price_meta_keywords"))
-            ->addMeta('name', 'description', $this->get('translator')
-            ->trans("crew_price_meta_description"));
-        
-        $locale = $this->getRequest()->getLocale();
-        
-        $croisiere = $this->getDoctrine()
-            ->getManager()
-            ->getRepository("AppBundle\Entity\Croisiere")
-            ->createQueryBuilder('c')
-            ->select('c, t')
-            ->join('c.tarifCroisiere', 't')
-            ->where('c.skipper = :id')
-            ->setParameter(':id', $id)
-            ->getQuery()
-            ->getOneOrNullResult();
-        
-        return $this->render('AppBundle:Front:Skipper/skipper_price.html.twig', array(
-            'tarifs' => $croisiere != null ? $croisiere->getTarifCroisiere() : null,
-            'servicepayant' => $croisiere != null ? $croisiere->getServicePayant() : null,
-            'inclusprixavitaillement' => $croisiere != null ? $croisiere->getBateau()
-                ->getInclusPrixAvitaillement() : null,
-            'inclusprixequipage' => $croisiere != null ? $croisiere->getBateau()
-                ->getInclusPrixEquipage() : null,
-            'inclusprixfraisdevoyage' => $croisiere != null ? $croisiere->getBateau()
-                ->getInclusPrixFraisVoyage() : null,
-            'inclusprixautresservices' => $croisiere != null ? $croisiere->getBateau()
-                ->getInclusPrixAutresServices() : null,
-            'inclusprixequipement' => $croisiere != null ? $croisiere->getBateau()
-                ->getInclusPrixEquipement() : null,
-            'inclusprixactivite' => $croisiere != null ? $croisiere->getBateau()
-                ->getInclusPrixActivite() : null,
-            'inclusprixcours' => $croisiere != null ? $croisiere->getBateau()
-                ->getInclusPrixCours() : null
-        ));
-    }
-
-    /**
-     * @Route("/skipper/{id}/contact", requirements={"id" = "\d+"}, name="skipper_contact")
-     */
-    public function skipperContactAction($id)
-    {
-        $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage->addMeta('name', 'keyword', $this->get('translator')
-            ->trans("crew_contact_meta_keywords"))
-            ->addMeta('name', 'description', $this->get('translator')
-            ->trans("crew_contact_meta_description"));
-        
-        $locale = $this->getRequest()->getLocale();
         $form = $this->createForm(new BateauDevisType($this->getDoctrine()
             ->getManager(), $this->getRequest()
             ->getLocale()));
         $form->handleRequest($this->getRequest());
         
-        $croisiere = $this->getDoctrine()
-            ->getManager()
-            ->getRepository("AppBundle\Entity\Croisiere")
-            ->createQueryBuilder('c')
-            ->select('c, b, t')
-            ->join('AppBundle\Entity\Bateau', 'b', 'WITH', 'c.bateau = b.id')
-            ->join('b.translations', 't')
-            ->where('c.skipper = :id')
-            ->setParameter(':id', $id)
-            ->andWhere('t.locale = :locale')
-            ->setParameter(':locale', $locale)
-            ->getQuery()
-            ->getResult(Query::HYDRATE_OBJECT);
-        
-        return $this->render('AppBundle:Front:Skipper/skipper_contact.html.twig', array(
-            'form' => $form->createView(),
-            'skipper' => isset($croisiere[0]) ? $croisiere[0]->getSkipper() : null,
-            'locale' => $locale
+        return $this->render('AppBundle:Front:Skipper/skipper.html.twig', array(
+            'skipper' => $skipper,
+            'id' => $id,
+            'offrespeciale' => isset($offreSpeciale[0]) ? $offreSpeciale[0] : null,
+            'boat' => isset($croisiere[0]) ? $croisiere[0]->getBateau() : null,
+            'skipper_id' => isset($croisiere[0]) ? $croisiere[0]->getSkipper()
+                ->getId() : null,
+            'itinerairesCroisiere' => $croisiere2 != null ? $croisiere2->getItineraireCroisiere() : null,
+            'datesNonDisponibilite' => isset($croisiere[0]) ? $croisiere[0]->getDateNonDisponibilite() : null,
+            'portDepart' => $portDepart,
+            'tarifs' => isset($croisieres[0]) ? $croisiere[0]->getTarifCroisiere() : null,
+            'servicepayant' => isset($croisieres[0]) ? $croisiere[0]->getServicePayant() : null,
+            'inclusprixavitaillement' => isset($croisieres[0]) ? $croisiere[0]->getBateau()
+                ->getInclusPrixAvitaillement() : null,
+            'inclusprixequipage' => isset($croisieres[0]) ? $croisiere[0]->getBateau()
+                ->getInclusPrixEquipage() : null,
+            'inclusprixfraisdevoyage' => isset($croisieres[0]) ? $croisiere[0]->getBateau()
+                ->getInclusPrixFraisVoyage() : null,
+            'inclusprixautresservices' => isset($croisieres[0]) ? $croisiere[0]->getBateau()
+                ->getInclusPrixAutresServices() : null,
+            'inclusprixequipement' => isset($croisieres[0]) ? $croisiere[0]->getBateau()
+                ->getInclusPrixEquipement() : null,
+            'inclusprixactivite' => isset($croisieres[0]) ? $croisiere[0]->getBateau()
+                ->getInclusPrixActivite() : null,
+            'inclusprixcours' => isset($croisieres[0]) ? $croisiere[0]->getBateau()
+                ->getInclusPrixCours() : null,
+            'form' => $form->createView()
         ));
     }
 
@@ -423,8 +285,7 @@ class SkipperController extends Controller
             ->getSingleResult();
         
         return $this->render('AppBundle:Front:Skipper/skipper_submenu.html.twig', array(
-            'skipper' => $skipper,
-            'route' => $route
+            'skipper' => $skipper
         ));
     }
 }

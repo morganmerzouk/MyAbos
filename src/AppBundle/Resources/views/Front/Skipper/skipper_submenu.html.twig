@@ -1,9 +1,9 @@
 <h1>Captain {{ skipper.name }}</h1>
 <div class="block-skipper-submenu">
-    <a href="{{ path('skipper', { 'id': skipper.id }) }}" class="skipper-home {% if route == 'skipper' %}active{% endif %}">{{'skipper_presentation'|trans}}</a>
-    <a href="{{ path('skipper_bateaux', { 'id': skipper.id }) }}" class="skipper-boat {% if route == 'skipper_bateaux' %}active{% endif %}">{{'skipper_boat'|trans}}</a>
-    <a href="{{ path('skipper_desti', { 'id': skipper.id }) }}" class="skipper-desti  {% if route == 'skipper_desti' %}active{% endif %}">{{'skipper_desti'|trans}}</a>
-    <a href="{{ path('skipper_available', { 'id': skipper.id }) }}" class="skipper-available  {% if route == 'skipper_available' %}active{% endif %}">{{'skipper_availability'|trans}}</a>
-    <a href="{{ path('skipper_price', { 'id': skipper.id }) }}" class="skipper-price  {% if route == 'skipper_price' %}active{% endif %}">{{'skipper_price'|trans}}</a>
-    <a href="{{ path('skipper_contact', { 'id': skipper.id }) }}" class="skipper-contact  {% if route == 'skipper_contact' %}active{% endif %}">{{'skipper_contact'|trans}}</a>
+    <a href="#presentation" class="skipper-home">{{'skipper_presentation'|trans}}</a>
+    <a href="#boat" class="skipper-boat">{{'skipper_boat'|trans}}</a>
+    <a href="#destination" class="skipper-desti">{{'skipper_desti'|trans}}</a>
+    <a href="#available" class="skipper-available">{{'skipper_availability'|trans}}</a>
+    <a href="#price" class="skipper-price">{{'skipper_price'|trans}}</a>
+    <a href="#contact" class="skipper-contact">{{'skipper_contact'|trans}}</a>
 </div>

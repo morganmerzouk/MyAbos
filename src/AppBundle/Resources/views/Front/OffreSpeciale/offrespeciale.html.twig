@@ -1,9 +1,8 @@
 {% extends "AppBundle:Front:layout.html.twig" %}
 {% block javascripts %}
     {{ parent() }}
-    <script src="{{ asset('bundles/app/js/offrespeciale_desti.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('bundles/app/js/offrespeciale_price.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/app/js/offrespeciale_contact.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/app/js/offrespeciale.js') }}" type="text/javascript"></script>
     <script type="text/javascript">
         var urlOffreSpecialeContactAjax = "{{ path('offrespeciale_contact_send', {'id': offreSpeciale.id }) }}";
     </script>
@@ -15,11 +14,26 @@
 {% block title %}{{'toptitle'|trans}} - {{'offres_speciales'|trans}}{% endblock %}
 
 {% block content %}
-    {%  render(controller('AppBundle:OffreSpeciale:submenu', { 'route': app.request.get('_route'), 'id': app.request.get('id') })) %}
+    {%  render(controller('AppBundle:OffreSpeciale:submenu', {'id': offreSpeciale.id })) %}
 	
-    {% include "AppBundle:Front:OffreSpeciale/offrespeciale_presentation.html.twig" %}
-    {% include "AppBundle:Front:OffreSpeciale/offrespeciale_boat.html.twig" %}
-    {% include "AppBundle:Front:OffreSpeciale/offrespeciale_crew.html.twig" %}
-    {% include "AppBundle:Front:OffreSpeciale/offrespeciale_desti.html.twig" %}
-    {% include "AppBundle:Front:OffreSpeciale/offrespeciale_price.html.twig" %}
+  	<div class="tab-content">
+  		<div role="tabpanel" class="tab-pane active" id="home">
+    		{% include "AppBundle:Front:OffreSpeciale/offrespeciale_presentation.html.twig" %}
+    	</div>
+    	<div role="tabpanel" class="tab-pane" id="boat">
+    		{% include "AppBundle:Front:OffreSpeciale/offrespeciale_boat.html.twig" %}
+    	</div>
+    	<div role="tabpanel" class="tab-pane" id="crew">
+    		{% include "AppBundle:Front:OffreSpeciale/offrespeciale_crew.html.twig" %}
+    	</div>
+    	<div role="tabpanel" class="tab-pane" id="destination">
+    		{% include "AppBundle:Front:OffreSpeciale/offrespeciale_desti.html.twig" %}
+    	</div>
+    	<div role="tabpanel" class="tab-pane" id="price">
+    		{% include "AppBundle:Front:OffreSpeciale/offrespeciale_price.html.twig" %}
+    	</div>
+    	<div role="tabpanel" class="tab-pane" id="contact">
+    		{% include "AppBundle:Front:OffreSpeciale/offrespeciale_contact.html.twig" %}
+    	</div>
+	</div>
 {% endblock content %}

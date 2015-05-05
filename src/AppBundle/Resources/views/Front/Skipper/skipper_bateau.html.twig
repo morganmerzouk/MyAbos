@@ -1,6 +1,4 @@
-{% extends "AppBundle:Front:Skipper/skipper.html.twig" %}
-{% block content %}
-    {{ parent() }}
+<div class="skipper-boat">
     {% if boat|length == 1 %}
 		<div class="col-fiche-bateau col-md-6 panel panel-info">
 	        <div class="panel-heading">
@@ -47,8 +45,8 @@
             {% if boat.photoCarreWebPath is not null %}<img class="col-md-6 img-thumbnail img-responsive img-detail" src="{{ boat.photoCarreWebPath }}" alt="photo carre" />{% endif %}
             {% if boat.photoCabineWebPath is not null %}<img class="col-md-6 img-thumbnail img-responsive img-detail" src="{{ boat.photoCabineWebPath }}" alt="photo cabine" />{% endif %}
             <div class="col-md-12 text-center">
-                {% if skipper is not null %}<a href="{{ path('skipper_contact', {'id': skipper.id }) }}" class="btn btn-warning">{{'contact_skipper'|trans}}</a>{% endif %}
-                <a href="{{ path('boat_available', {'id': boat.id }) }}" class=" btn btn-danger">{{'see_available'|trans}}</a>
+                {% if skipper is not null %}<a href="#contact" class="btn btn-warning">{{'contact_skipper'|trans}}</a>{% endif %}
+                <a href="#" class=" btn btn-danger">{{'see_available'|trans}}</a>
             </div>
 	    </div>
     {% else %}
@@ -56,4 +54,4 @@
     		{{ 'no_cruise_skipper'|trans }}
 		</div>
 	{% endif %}
-{% endblock content %}
+</div>

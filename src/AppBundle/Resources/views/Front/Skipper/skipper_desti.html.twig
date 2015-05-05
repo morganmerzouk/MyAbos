@@ -1,10 +1,4 @@
-{% extends "AppBundle:Front:Skipper/skipper.html.twig" %}
-{% block javascripts %}
-    {{ parent() }}
-    <script src="{{ asset('bundles/app/js/skipper/skipper_desti.js') }}" type="text/javascript"></script>
-{% endblock %}
-{% block content %}
-    {{ parent() }}
+<div class="skipper-desti">
     {% set format = app.request.locale == "en" ? 'm/d/Y' : 'd/m/Y' %}
     {% if portDepart is not null %}
 	    <div class="{% if offrespeciale is not null %}col-md-9{% else %}col-md-12{% endif %} boat-desti">
@@ -64,7 +58,7 @@
 			             {% endif %}
 			             € <br /><span class="boat-tarif-pour text-center">({{ offrespeciale.tarifPour|trans}})</span>
 			        </p>
-			        <div class="bateaux-icones col-md-4"><img src="{{ asset('('bundles/app/images/icones/boat/icon-boat.png')') }}" /><br />{{offrespeciale.bateau.type}}</div>
+			        <div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/icon-boat.png') }}" /><br />{{offrespeciale.bateau.type}}</div>
 				        <div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/icon-cabins.png') }}" /><br />{{offrespeciale.bateau.nbCabine}} {{'boat_cabine'|trans}}</div>
 				        {% if (offrespeciale.bateau.nbCouchage > 0) %}<div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/icon-bed.png') }}" /><br />{{offrespeciale.bateau.nbCouchage}} {{'boat_bed'|trans}}</div>{% endif %}
 				        
@@ -84,4 +78,4 @@
     		{{ 'no_cruise_skipper'|trans }}
 		</div>
 	{% endif %}
-{% endblock content %}
+</div>

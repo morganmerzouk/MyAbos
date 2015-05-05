@@ -11,8 +11,38 @@ h1 {background: url("../images/menu/icones/icon-flotte.png") no-repeat 5px 5px #
 .block-croisiere .row { margin: 10px; text-align:left;}
 
 /*** Page Boats ***/
-.bateau { text-align: center; border: 1px solid #B3B3B3; margin: 10px 2% 0 0; padding: 0;  overflow: auto; width: 32%; }
+.bateau {
+	overflow: auto;
+	font-size: 0.7em;
+	font-weight: normal;
+	padding: 1px;
+	margin: 8px 0;
+	text-align: left;
+}
+
+.bateau .panel-body {
+	padding: 0;
+}
+
+.bateau .panel-heading {
+	padding: 1px;
+}
+
+.bateau .col-md-4 {
+	text-align: left;
+	padding: 1px;
+}
+
 .bateau-last { margin-right: 0;}
+.panel-heading {
+  padding: 1px;
+}
+
+.bateau h2 {
+	font-size: 1.2em;
+	margin: 8px 0;
+	text-align: center;
+}
 .bateau .img-responsive { margin: 10px; }
 .bateau .bateau-prix-semaine {background: #5bc0de; color:white; text-align: center; margin: 0;overflow: auto; }
 .bateau .bateaux-icones { float: left; padding: 5px; }
@@ -26,11 +56,6 @@ h1 {background: url("../images/menu/icones/icon-flotte.png") no-repeat 5px 5px #
 .boat-contact-step2-loading {display: none; position: absolute; z-index: 1000; width: 25%; height: 20%; top: 40%; left: 33%;padding: 10px; background: black; opacity: 0.8}
 .boat-contact-step2-loading img {height: 80%;margin: auto;}
 /*** Sous-menu ***/
-.block-bateau-submenu { display: table; width: 100%; margin-bottom: 10px; }
-.block-bateau-submenu a { display: table-cell; color: white;background-repeat: no-repeat; background-position: 5px 5px; background-color:#d9edf7; color: #5bc0de; padding: 10px; font-size: 0.9em; padding-left: 40px;}
-.block-bateau-submenu a:hover,
-.block-bateau-submenu a.active { text-decoration: none; color: black; background-repeat: no-repeat; background-color: #5bc0de; color: white; }
-
 .bateau-home { background-image: url("../images/menu/icones/icon-accueil.png"); }
 .bateau-fiche { background-image: url("../images/menu/icones/icon-boat-details.png"); }
 .bateau-crew { background-image: url("../images/menu/icones/icon-equipages.png"); }

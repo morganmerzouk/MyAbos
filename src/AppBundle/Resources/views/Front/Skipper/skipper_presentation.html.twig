@@ -1,6 +1,4 @@
-{% extends "AppBundle:Front:Skipper/skipper.html.twig" %}
-{% block content %}
-    {{ parent() }}
+<div class="skipper-presentation">
     <div class="{% if offrespeciale is not null %}col-md-9{% else %}col-md-12{% endif %}">
         {{ skipper.description|raw }}
     </div>  
@@ -37,4 +35,4 @@
 	    	</div>
 	    </div>
     {% endif %}
-{% endblock content %}
+</div>

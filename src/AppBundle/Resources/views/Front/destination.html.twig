@@ -9,7 +9,7 @@
     <script src="{{ asset('bundles/app/js/destination.js') }}" type="text/javascript"></script> 
     <script>
 		function initialize() {
-		  var myLatlng = new google.maps.LatLng({{ destination.latitude|replace(',','.') }}, {{ destination.longitude|replace(',','.') }});
+		  var myLatlng = new google.maps.LatLng({{ destination.latitude }}, {{ destination.longitude }});
 		  var mapOptions = {
 		    zoom: 6,
 		    center: myLatlng
@@ -65,8 +65,13 @@
 	        {% endfor %}
     	</div>
 	{% endif %}
-	<div id="map-canvas"></div>
 	<div class="{% if offresSpeciales|length > 0 %}col-md-8{% else %}col-md-12{% endif %}">
+		<div id="map-canvas"></div>
+		{% for photo in media|slice(0,20) %}
+			<img src="https://farm{{ photo.attributes.farm }}.staticflickr.com/{{ photo.attributes.server }}/{{ photo.attributes.id }}_{{ photo.attributes.secret }}_q.jpg" />
+			<br />
+			{{ photo.attributes.title }}
+		{% endfor %}
 		{{ destination.description|raw }}
 	</div>
 	{% if offresSpeciales|length > 0 %}

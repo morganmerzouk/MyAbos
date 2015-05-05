@@ -86,19 +86,21 @@ class DestinationController extends Controller
             $weather = $owm->getWeatherForecast($destination->getName(), $units, $locale, '', '10');
         } catch (OWMException $e) {} catch (\Exception $e) {}
         
-
-        $api = $this->get('instaphp');
-
-        var_dump($destination->getLatitude());
-        $media = $api->Media->Search(['count' => 10, 'distance' => 50, 'lat' => $destination->getLatitude(), 'lng' => $destination->getLongitude()]);
-
-        var_dump($media);
+        // API Flickr
+        $url = $this->container->getParameter('flickr_url') . '&lat=' . $destination->getLatitude() . '&lon=' . $destination->getLongitude();
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($curl);
+        curl_close($curl);
+        $media = new \SimpleXMLElement($response);
         
         return $this->render('AppBundle:Front:destination.html.twig', array(
             'destination' => $destination,
             'offresSpeciales' => $offresSpeciales,
             'weathers' => $weather,
-            'media' => $media
+            'media' => $media->children()
+                ->children()
         ));
     }
 }

@@ -63,6 +63,39 @@ class BateauController extends Controller
             ->setParameter(':locale', $locale)
             ->getQuery()
             ->getSingleResult();
+        
+        $croisiere = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("AppBundle\Entity\Croisiere")
+            ->createQueryBuilder('c')
+            ->select('c, b, t, d, t2')
+            ->join('AppBundle\Entity\Bateau', 'b', 'WITH', 'c.bateau = b.id')
+            ->join('b.translations', 't')
+            ->join('c.dateNonDisponibilite', 'd')
+            ->join('c.tarifCroisiere', 't2')
+            ->where('c.bateau = :id')
+            ->setParameter(':id', $id)
+            ->andWhere('t.locale = :locale')
+            ->setParameter(':locale', $locale)
+            ->getQuery()
+            ->getResult(Query::HYDRATE_OBJECT);
+        
+        $offreSpeciale = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("AppBundle\Entity\OffreSpeciale")
+            ->createQueryBuilder('os')
+            ->select('os, b, ost, bt')
+            ->join('AppBundle\Entity\Bateau', 'b', 'WITH', 'os.bateau = b.id')
+            ->join('os.translations', 'ost')
+            ->join('b.translations', 'bt')
+            ->where('os.bateau = :id')
+            ->setParameter(':id', $id)
+            ->andWhere('bt.locale = :locale')
+            ->andWhere('ost.locale = :locale')
+            ->setParameter(':locale', $locale)
+            ->getQuery()
+            ->getResult(Query::HYDRATE_OBJECT);
+        
         $seoPage->addMeta('name', 'keyword', $boat->getType() . ' ' . $boat->getName());
         $seoPage->addMeta('name', 'description', substr($boat->getDescription(), 0, 255));
         
@@ -132,161 +165,8 @@ class BateauController extends Controller
         } else {
             $prestation = null;
         }
-        return $this->render('AppBundle:Front:Bateau/boat_presentation.html.twig', array(
-            'boat' => $boat,
-            'prestations' => $prestation
-        ));
-    }
-
-    /**
-     * @Route("/bateau/{id}/details", requirements={"id" = "\d+"}, name="boat_details")
-     */
-    public function bateauDetailAction($id)
-    {
-        $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage->addMeta('name', 'keyword', $this->get('translator')
-            ->trans("fleet_spec_meta_keywords"))
-            ->addMeta('name', 'description', $this->get('translator')
-            ->trans("fleet_spec_meta_description"));
         
-        $locale = $this->getRequest()->getLocale();
-        
-        $boat = $this->getDoctrine()
-            ->getManager()
-            ->getRepository("AppBundle\Entity\Bateau")
-            ->createQueryBuilder('s')
-            ->select('s, t')
-            ->join('s.translations', 't')
-            ->where('s.id = :id')
-            ->setParameter(':id', $id)
-            ->andWhere('t.locale = :locale')
-            ->setParameter(':locale', $locale)
-            ->getQuery()
-            ->getSingleResult();
-        
-        $croisiere = $this->getDoctrine()
-            ->getManager()
-            ->getRepository("AppBundle\Entity\Croisiere")
-            ->createQueryBuilder('c')
-            ->select('c, b, t')
-            ->join('AppBundle\Entity\Bateau', 'b', 'WITH', 'c.bateau = b.id')
-            ->join('b.translations', 't')
-            ->where('c.bateau = :id')
-            ->setParameter(':id', $id)
-            ->andWhere('t.locale = :locale')
-            ->setParameter(':locale', $locale)
-            ->getQuery()
-            ->getResult(Query::HYDRATE_OBJECT);
-        
-        return $this->render('AppBundle:Front:Bateau/boat_details.html.twig', array(
-            'boat' => $boat,
-            'skipper' => isset($croisiere[0]) ? $croisiere[0]->getSkipper() : null
-        ));
-    }
-
-    /**
-     * @Route("/bateau/{id}/crew", requirements={"id" = "\d+"}, name="boat_crew")
-     */
-    public function bateauCrewAction($id)
-    {
-        $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage->addMeta('name', 'keyword', $this->get('translator')
-            ->trans("fleet_crew_meta_keywords"))
-            ->addMeta('name', 'description', $this->get('translator')
-            ->trans("fleet_crew_meta_description"));
-        $locale = $this->getRequest()->getLocale();
-        
-        $boat = $this->getDoctrine()
-            ->getManager()
-            ->getRepository("AppBundle\Entity\Bateau")
-            ->createQueryBuilder('s')
-            ->select('s, t')
-            ->join('s.translations', 't')
-            ->where('s.id = :id')
-            ->setParameter(':id', $id)
-            ->andWhere('t.locale = :locale')
-            ->setParameter(':locale', $locale)
-            ->getQuery()
-            ->getSingleResult();
-        
-        $croisiere = $this->getDoctrine()
-            ->getManager()
-            ->getRepository("AppBundle\Entity\Croisiere")
-            ->createQueryBuilder('c')
-            ->select('c, b, t')
-            ->join('AppBundle\Entity\Bateau', 'b', 'WITH', 'c.bateau = b.id')
-            ->join('b.translations', 't')
-            ->where('c.bateau = :id')
-            ->setParameter(':id', $id)
-            ->andWhere('t.locale = :locale')
-            ->setParameter(':locale', $locale)
-            ->getQuery()
-            ->getResult(Query::HYDRATE_OBJECT);
-        
-        $offreSpeciale = $this->getDoctrine()
-            ->getManager()
-            ->getRepository("AppBundle\Entity\OffreSpeciale")
-            ->createQueryBuilder('os')
-            ->select('os, b, ost, bt')
-            ->join('AppBundle\Entity\Bateau', 'b', 'WITH', 'os.bateau = b.id')
-            ->join('os.translations', 'ost')
-            ->join('b.translations', 'bt')
-            ->where('os.bateau = :id')
-            ->setParameter(':id', $id)
-            ->andWhere('bt.locale = :locale')
-            ->andWhere('ost.locale = :locale')
-            ->setParameter(':locale', $locale)
-            ->getQuery()
-            ->getResult(Query::HYDRATE_OBJECT);
-        
-        return $this->render('AppBundle:Front:Bateau/boat_crew.html.twig', array(
-            'boat' => $boat,
-            'skipper' => isset($croisiere[0]) ? $croisiere[0]->getSkipper() : null,
-            'offrespeciale' => isset($offreSpeciale[0]) ? $offreSpeciale[0] : null
-        ));
-    }
-
-    /**
-     * @Route("/bateau/{id}/available", requirements={"id" = "\d+"}, name="boat_available")
-     */
-    public function bateauAvailableAction($id)
-    {
-        $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage->addMeta('name', 'keyword', $this->get('translator')
-            ->trans("fleet_availability_meta_keywords"))
-            ->addMeta('name', 'description', $this->get('translator')
-            ->trans("fleet_availability_meta_description"));
-        
-        $croisieres = $this->getDoctrine()
-            ->getManager()
-            ->getRepository("AppBundle\Entity\Croisiere")
-            ->createQueryBuilder('c')
-            ->select('c,d')
-            ->join('c.bateau', 'b')
-            ->join('c.dateNonDisponibilite', 'd')
-            ->where('b.id = :id')
-            ->setParameter(':id', $id)
-            ->getQuery()
-            ->getResult(Query::HYDRATE_OBJECT);
-        return $this->render('AppBundle:Front:Bateau/boat_available.html.twig', array(
-            'datesNonDisponibilite' => isset($croisieres[0]) ? $croisieres[0]->getDateNonDisponibilite() : null
-        ));
-    }
-
-    /**
-     * @Route("/bateau/{id}/destination", requirements={"id" = "\d+"}, name="boat_destination")
-     */
-    public function bateauDestiAction($id)
-    {
-        $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage->addMeta('name', 'keyword', $this->get('translator')
-            ->trans("fleet_destination_meta_keywords"))
-            ->addMeta('name', 'description', $this->get('translator')
-            ->trans("fleet_destination_meta_description"));
-        
-        $locale = $this->getRequest()->getLocale();
-        
-        $croisiere = $this->getDoctrine()
+        $croisiere2 = $this->getDoctrine()
             ->getManager()
             ->getRepository("AppBundle\Entity\Croisiere")
             ->createQueryBuilder('c')
@@ -308,63 +188,36 @@ class BateauController extends Controller
             ->getOneOrNullResult();
         
         $portDepart = null;
-        foreach ($croisiere->getItineraireCroisiere() as $itineraireCroisiere) {
+        foreach ($croisiere2->getItineraireCroisiere() as $itineraireCroisiere) {
             if ($itineraireCroisiere->getParDefaut() == 1) {
                 $portDepart = $itineraireCroisiere->getItineraire()->getPortDepart();
             }
         }
         
-        return $this->render('AppBundle:Front:Bateau/boat_desti.html.twig', array(
+        $form = $this->createForm(new BateauDevisType($this->getDoctrine()
+            ->getManager(), $this->getRequest()
+            ->getLocale(), $id));
+        
+        $form->handleRequest($this->getRequest());
+        
+        return $this->render('AppBundle:Front:Bateau/boat.html.twig', array(
+            'boat' => $boat,
+            'prestations' => $prestation,
+            'skipper' => isset($croisiere[0]) ? $croisiere[0]->getSkipper() : null,
+            'offrespeciale' => isset($offreSpeciale[0]) ? $offreSpeciale[0] : null,
+            'datesNonDisponibilite' => isset($croisiere[0]) ? $croisiere[0]->getDateNonDisponibilite() : null,
             'portDepart' => $portDepart,
-            'itinerairesCroisiere' => $croisiere->getItineraireCroisiere()
-        ));
-    }
-
-    /**
-     * @Route("/bateau/{id}/price", requirements={"id" = "\d+"}, name="boat_price")
-     */
-    public function bateauPriceAction($id)
-    {
-        $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage->addMeta('name', 'keyword', $this->get('translator')
-            ->trans("fleet_price_meta_keywords"))
-            ->addMeta('name', 'description', $this->get('translator')
-            ->trans("fleet_price_meta_description"));
-        $locale = $this->getRequest()->getLocale();
-        
-        $croisiere = $this->getDoctrine()
-            ->getManager()
-            ->getRepository("AppBundle\Entity\Croisiere")
-            ->createQueryBuilder('c')
-            ->select('c, t')
-            ->join('c.tarifCroisiere', 't')
-            ->where('c.bateau = :id')
-            ->setParameter(':id', $id)
-            ->getQuery()
-            ->getOneOrNullResult();
-        
-        $boat = $this->getDoctrine()
-            ->getManager()
-            ->getRepository("AppBundle\Entity\Bateau")
-            ->createQueryBuilder('s')
-            ->select('s, t')
-            ->join('s.translations', 't')
-            ->where('s.id = :id')
-            ->setParameter(':id', $id)
-            ->andWhere('t.locale = :locale')
-            ->setParameter(':locale', $locale)
-            ->getQuery()
-            ->getOneOrNullResult();
-        return $this->render('AppBundle:Front:Bateau/boat_price.html.twig', array(
-            'tarifs' => $croisiere != null ? $croisiere->getTarifCroisiere() : null,
-            'servicepayant' => $croisiere != null ? $croisiere->getServicePayant() : null,
+            'itinerairesCroisiere' => isset($croisiere2) ? $croisiere2->getItineraireCroisiere() : null,
+            'tarifs' => isset($croisiere[0]) ? $croisiere[0]->getTarifCroisiere() : null,
+            'servicepayant' => isset($croisiere[0]) ? $croisiere[0]->getServicePayant() : null,
             'inclusprixavitaillement' => $boat->getInclusPrixAvitaillement(),
             'inclusprixequipage' => $boat->getInclusPrixEquipage(),
             'inclusprixfraisdevoyage' => $boat->getInclusPrixFraisVoyage(),
             'inclusprixautresservices' => $boat->getInclusPrixAutresServices(),
             'inclusprixequipement' => $boat->getInclusPrixEquipement(),
             'inclusprixactivite' => $boat->getInclusPrixActivite(),
-            'inclusprixcours' => $boat->getInclusPrixCours()
+            'inclusprixcours' => $boat->getInclusPrixCours(),
+            'form' => $form->createView()
         ));
     }
 
@@ -379,11 +232,6 @@ class BateauController extends Controller
             ->addMeta('name', 'description', $this->get('translator')
             ->trans("fleet_contact_meta_description"));
         $locale = $this->getRequest()->getLocale();
-        $form = $this->createForm(new BateauDevisType($this->getDoctrine()
-            ->getManager(), $this->getRequest()
-            ->getLocale(), $id));
-        
-        $form->handleRequest($this->getRequest());
         
         if ($form->isValid()) {
             $data = $form->getData();
@@ -602,10 +450,9 @@ class BateauController extends Controller
         return $tarifPersonne;
     }
 
-    public function subMenuAction($route, $id)
+    public function subMenuAction($id)
     {
-        $request = $this->getRequest();
-        $locale = $request->getLocale();
+        $locale = $this->getRequest()->getLocale();
         
         $boat = $this->getDoctrine()
             ->getManager()
@@ -621,8 +468,7 @@ class BateauController extends Controller
             ->getSingleResult();
         
         return $this->render('AppBundle:Front:Bateau/boat_submenu.html.twig', array(
-            'boat' => $boat,
-            'route' => $route
+            'boat' => $boat
         ));
     }
 }

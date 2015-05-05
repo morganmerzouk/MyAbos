@@ -229,7 +229,7 @@ class OffreSpecialeController extends Controller
         return new Response("OK");
     }
 
-    public function subMenuAction($route, $id)
+    public function subMenuAction($id)
     {
         $locale = $this->getRequest()->getLocale();
         
