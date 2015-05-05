@@ -22,3 +22,7 @@ elfinder:
 _console:
     resource: "@CoreSphereConsoleBundle/Resources/config/routing.yml"
     prefix: /admin/_console
+    
+OhInstagramBundle:
+    resource: "@OhInstagramBundle/Resources/config/routing.yml"
+    prefix:   /

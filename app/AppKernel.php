@@ -35,6 +35,7 @@ class AppKernel extends Kernel
             new FM\ElfinderBundle\FMElfinderBundle(),
             new Sonata\SeoBundle\SonataSeoBundle(),
             new Hype\MailchimpBundle\HypeMailchimpBundle(),
+            new Oh\InstagramBundle\OhInstagramBundle(),
             new AppBundle\AppBundle()
         );
         
