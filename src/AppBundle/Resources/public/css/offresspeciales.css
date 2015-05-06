@@ -183,7 +183,7 @@ h1.special-offer-title {
 	margin: 0;
 	color: white;
 }
-
+.img-details .btn-warning { margin-top: 10px; }
 .btn-contact {
 	margin-bottom: 10px;
 }

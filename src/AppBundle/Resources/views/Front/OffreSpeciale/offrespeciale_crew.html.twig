@@ -73,6 +73,6 @@
 	    		{% endif %}
     		</div>
 	    </div>
-		<a href="#" class="btn btn-dispo btn-xs btn-primary">Voir les disponibilités du skipper</a>
+		<a href="{{ path('skipper', { id: skipper.id }) }}#available" class="btn btn-dispo center-block btn-primary">Voir les disponibilités du skipper</a>
 	</div>
 {% endif %}

@@ -6,7 +6,7 @@
 		</div>
 	    {% if offrespeciale.bateau is defined %}
 		 	<div class="col-md-4">
-                {% if skipper is not null %}<div class="text-center"><a href="#" class="btn btn-lg btn-warning">{{'contact_skipper'|trans}}</a></div>{% endif %}    
+                {% if skipper is not null %}<div class="text-center"><a href="{{ path('skipper', { 'id': skipper.id }) }}#contact" class="btn btn-lg btn-warning">{{'contact_skipper'|trans}}</a></div>{% endif %}    
 		        <div class="boat-block-special-offer panel panel-info">
 			    	<div class="panel-heading">
 			    		<h2 class="offreName panel-title">{{'special_offer_with'|trans }} {{ skipper.name }}</h2>

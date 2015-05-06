@@ -3,18 +3,12 @@ html, body {font-size: 14px; font-family: 'Signika', Verdana,sans-serif;}
 .panel-info>.panel-heading { color: white; background-color: #5bc0de; }
 .panel-info .panel-body {padding: 10px;}
 .panel-title { padding: 5px; }
-.container-body {overflow: auto; padding-bottom: 30px;	background-color: #EFF1F2;}
-.tab-content {
-	overflow: auto;
-  	border: 1px solid #5bc0de;
-	padding: 10px;
-	box-shadow: 0px 0px 15px black;
-}
+.container-body {padding-bottom: 30px; background-color: #EFF1F2;}
+.tab-content { overflow: auto; border: 1px solid #5bc0de; padding: 10px; box-shadow: 0px 0px 15px black; }
 .img-menu {width: 20px; margin-right: 5px; }
 label { font-weight: normal; }
-.margintop10 { margin-top: 10px; }
+.margintop10 { margin-top: 10px; background-color: #EFF1F2; overflow: auto; }
 .newsletter-message-container { display: none; }
-
 
 .slick-slider {	margin-bottom: 10px !important;}
 .slick-slider .slick-prev:before, .slick-slider .slick-next:before { color: black; }

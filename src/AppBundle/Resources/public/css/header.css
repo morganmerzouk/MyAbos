@@ -1,3 +1,4 @@
-.container-header { background: white;padding: 5px;overflow: auto;}
-.home { background: url("../images/general/logo.png") left center no-repeat #5bc0de; border-bottom: 1px solid #46b8da; width: 100%; height: 70px; padding: 20px; text-align: center; box-shadow: 0px 0px 30px black; }
+.container-header { background: white;padding: 5px 5px 0 5px;height: 45px;}
+.container-header .btn { outline: 0; background-image: none; -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125); box-shadow: inset 0 3px 5px rgba(0,0,0,.125); }
+.home { background: url("../images/general/logo.png") left center no-repeat #5bc0de; border-bottom: 1px solid #46b8da; width: 100%; height: 70px; padding: 20px; text-align: center; box-shadow: 0px 0px 15px black; }
 .home select, .home input {height: 25px; padding: 2px; border: 1px solid #BBB;box-shadow: 0px 0px 15px white; color: #B3B3B3;}

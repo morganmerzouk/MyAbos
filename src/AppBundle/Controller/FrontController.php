@@ -109,7 +109,8 @@ class FrontController extends Controller
             ->getQuery()
             ->getResult();
         return $this->render('AppBundle:Front:menu.html.twig', array(
-            'menuDestinations' => $destinations
+            'menuDestinations' => $destinations,
+            'route' => $route
         ));
     }
 }

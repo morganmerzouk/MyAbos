@@ -1,6 +1,9 @@
 {% extends "AppBundle:Front:layout_home.html.twig" %}
 {% block content %}
-	<h1 class="col-md-6 text-right">{{'home_title'|trans|raw }}</h1>
+	<div class="col-md-3">
+		{% include "AppBundle:Front:newsletter.html.twig" %} 
+	</div>       		
+	<h1 class="col-md-5 text-right">{{'home_title'|trans|raw }}</h1>
 	<div class="col-md-4">
 		<div class="panel-offre">
 			<div class="slider">

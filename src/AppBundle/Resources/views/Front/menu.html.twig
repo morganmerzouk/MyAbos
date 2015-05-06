@@ -1,8 +1,8 @@
-<div class="col-md-2 btn-group-vertical pull-left">
-    <a href="{{ path('homepage') }}" class="btn btn-info nav-accueil">{{'home'|trans}}</a>
-    <a href="{{ path('offresspeciales') }}" class="btn btn-info nav-offres">{{'offres_speciales'|trans}}</a>
+<div class="pull-left">
+    <a href="{{ path('homepage') }}" class="btn nav-accueil {% if route starts with 'homepage' %}active{% endif %}">{{'home'|trans}}</a>
+    <a href="{{ path('offresspeciales') }}" class="btn nav-offres {% if route starts with 'offrespeciale' or route starts with 'offrespeciales' %}active{% endif %}">{{'offres_speciales'|trans}}</a>
     <div class="btn-group">
-    	<button type="button" id="btn-destination" data-toggle="dropdown" class="btn btn-info dropdown-toggle">
+    	<button type="button" id="btn-destination" data-toggle="dropdown" class="btn dropdown-toggle  {% if route starts with 'destination'%}active{% endif %}">
     		{{'home_destinations'|trans}}
     		<span class="caret"></span>
 		</button>
@@ -21,9 +21,8 @@
 			<a href="{{ path('destinations') }}" class="see-destinations pull-right">{{'see_destinations'|trans }} >></a>
 		</ul>
 	</div>
-    <a href="{{ path('boats') }}" class="btn btn-info nav-flotte">{{'home_flotte'|trans}}</a>
-    <a href="{{ path('skippers') }}" class="btn btn-info nav-equipages">{{'home_equipages'|trans}}</a>
-    <a href="{{ path('ensavoirplus') }}" class="btn btn-info nav-ensavoirplus">{{'know_more'|trans}}</a>
+    <a href="{{ path('boats') }}" class="btn nav-flotte  {% if route starts with 'boats' or route starts with 'boat' %}active{% endif %}">{{'home_flotte'|trans}}</a>
+    <a href="{{ path('skippers') }}" class="btn nav-equipages  {% if route starts with 'skippers' or route starts with 'skipper' %}active{% endif %}">{{'home_equipages'|trans}}</a>
+    <a href="{{ path('ensavoirplus') }}" class="btn nav-ensavoirplus  {% if route starts with 'e' or route starts with 'offrespeciales' %}active{% endif %}">{{'know_more'|trans}}</a>
     
-    {% include "AppBundle:Front:newsletter.html.twig" %}
 </div>

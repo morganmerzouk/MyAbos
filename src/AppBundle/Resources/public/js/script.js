@@ -5,10 +5,12 @@ $(document).ready(function() {
 	    $(".input-date-depart").datepicker({ "dateFormat": "dd/mm/yy"});
 	}
 	
-	$('video').on('ended', function () {
-		this.load();
-		this.play();
-	});
+	// On simule le click sur le tab si on vient d'une autre page (pour les pages flottes, offres et skipper)
+    if(window.location.href.indexOf("#") > -1) {
+	    	if($("a[href=#" + window.location.href.split("#")[1] + "]").length) {
+	    		$("a[href=#" + window.location.href.split("#")[1] + "]").tab("show");
+	    	}
+    }
 	
 	$('.btn-newsletter-subscribe').on('click', function() {
 		if($('.newsletter-email').val() == "" || $('.newsletter-email').val() == "email" ) {

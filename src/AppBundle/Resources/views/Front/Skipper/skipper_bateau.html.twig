@@ -45,8 +45,8 @@
             {% if boat.photoCarreWebPath is not null %}<img class="col-md-6 img-thumbnail img-responsive img-detail" src="{{ boat.photoCarreWebPath }}" alt="photo carre" />{% endif %}
             {% if boat.photoCabineWebPath is not null %}<img class="col-md-6 img-thumbnail img-responsive img-detail" src="{{ boat.photoCabineWebPath }}" alt="photo cabine" />{% endif %}
             <div class="col-md-12 text-center">
-                {% if skipper is not null %}<a href="#contact" class="btn btn-warning">{{'contact_skipper'|trans}}</a>{% endif %}
-                <a href="#" class=" btn btn-danger">{{'see_available'|trans}}</a>
+                <a href="#contact" class="btn btn-warning">{{'contact_skipper'|trans}}</a>
+                <a href="#available" class="btn btn-danger">{{'see_available'|trans}}</a>
             </div>
 	    </div>
     {% else %}
