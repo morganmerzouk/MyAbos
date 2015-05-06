@@ -35,58 +35,80 @@
 {% block title %}{{'toptitle'|trans}} - {{ destination.name }}{% endblock %}
 {% block content %}
     {% set format = app.request.locale == "en" ? 'm/d/Y' : 'd/m/Y' %}
-	<h1 class="destinations">{{ destination.name }}</h1>
-	{% if weathers is not null %}
-		<div class="slider">
-	        {% for weather in weathers %}
-	        	{% if loop.index == 1 or loop.index == 6 %}
-					<div class="slider-item">
-	        			<div class="col-md-weather-container">
-							<div class="last-update">
-					        	Last update: {{ weathers.lastUpdate|date(format ~ " H:i") }} | 
-					        	Sunrise: {{ weathers.sun.rise|date("H:i:s") }} | 
-					        	Sunset: {{ weathers.sun.set|date("H:i:s") }}
-				        	</div>
-	        	{% endif %}
-	        	<div class="col-md-weather panel panel-info text-center">
-		        	<div class="panel-heading"><h3 class="panel-title">{{ weather.time.day|date(format) }}</h3></div>
-		        	<img class="center-block" src="{{ weather.weather.iconUrl }}" alt="icon {{ weather.weather.description }}"  /><strong>{{ weather.temperature|raw }}</strong><br />
-		        	{{ weather.weather.description }}
-		        	<div class="text-left">
-			        	<div class="even">{{'wind_speed'|trans }}: {{ weather.wind.speed }}</div>
-			        	<div class="even">{{ weather.wind.speed.description }}</div>
-			        	<div class="even">{{'wind_direction'|trans }}: {{ weather.wind.direction }}</div>
-		        	</div>
-	        	</div>
-	        	{% if loop.index == 5 or loop.index == 10 %}
-	        			</div>
-	        		</div>
-	        	{% endif %}
-	        {% endfor %}
-    	</div>
-	{% endif %}
-	<div class="{% if offresSpeciales|length > 0 %}col-md-8{% else %}col-md-12{% endif %}">
-		<div id="map-canvas"></div>
-		{% for photo in media|slice(0,20) %}
-			<img src="https://farm{{ photo.attributes.farm }}.staticflickr.com/{{ photo.attributes.server }}/{{ photo.attributes.id }}_{{ photo.attributes.secret }}_q.jpg" />
-			<br />
-			{{ photo.attributes.title }}
-		{% endfor %}
-		{{ destination.description|raw }}
+    <div class="destination-header">
+    	<h1 class="destinations pull-right">{{ destination.name }}</h1>
+		<img src="{{ destination.miniatureWebPath }}" class="img img-responsive" alt="{{ destination.name }}" />
 	</div>
-	{% if offresSpeciales|length > 0 %}
-		<div class="col-md-4 block-bateau-destination panel panel-info">
-			<div class="panel-heading">
-	        	<h4 class="panel-title">{{'cruise_to'|trans}} {{ destination.name }}</h4>
-	        </div>
-	        {% for offreSpeciale in offresSpeciales %}
-	            <div class="panel-body">
-	                <img class="img-responsive" src="{{ offreSpeciale.miniatureWebPath }}" />
-	                {{'From'|trans }}{{ offreSpeciale.dateDebut|date(format) }} {{'to'|trans }} {{ offreSpeciale.dateFin|date(format) }}
-	                {{'Boat'|trans }}: <a href="{{ path('boat', { 'id': offreSpeciale.bateau.id }) }}">{{ offreSpeciale.bateau.name }}</a>
-	                Skipper: <a href="{{ path('skipper', { 'id': offreSpeciale.skipper.id }) }}">{{ offreSpeciale.skipper.name }}</a>
-	            </div>
-	        {% endfor %}
+	<div class="destination-body">
+		<div class="{% if offresSpeciales|length > 0 %}col-md-8{% else %}col-md-12{% endif %}">
+			<div class="col-md-3 pull-left" id="map-canvas"></div>
+			{% set description_part =  destination.description|split('<boundary>') %}
+			{{ description_part[0]|raw }}
+			<div class="slider">
+				{% for photo in media|slice(0,11) %}
+					<div class="slider-item text-center">
+						<img class="center-block" src="https://farm{{ photo.attributes.farm }}.staticflickr.com/{{ photo.attributes.server }}/{{ photo.attributes.id }}_{{ photo.attributes.secret }}_q.jpg" />
+						{{ photo.attributes.title }}
+					</div>
+				{% endfor %}
+			</div>
+			{{ description_part[1]|raw }}
 		</div>
-	{% endif %}
+		<div class="col-md-4">
+			{% if offresSpeciales|length > 0 %}
+				 <div class="block-bateau-destination panel panel-info">
+					<div class="panel-heading">
+			        	<h4 class="panel-title">{{'cruise_to'|trans}} {{ destination.name }}</h4>
+			        </div>
+			        {% for offreSpeciale in offresSpeciales %}
+			            <div class="panel-body">
+			                <img class="img-responsive" src="{{ offreSpeciale.miniatureWebPath }}" />
+			                {{'From'|trans }} {{ offreSpeciale.dateDebut|date(format) }} {{'to'|trans }} {{ offreSpeciale.dateFin|date(format) }}<br />
+			                {{'Boat'|trans }}: <a href="{{ path('boat', { 'id': offreSpeciale.bateau.id }) }}">{{ offreSpeciale.bateau.name }}</a>
+			                Skipper: <a href="{{ path('skipper', { 'id': offreSpeciale.skipper.id }) }}">{{ offreSpeciale.skipper.name }}</a>
+			            </div>
+			        {% endfor %}
+				</div>
+			{% endif %}
+			<div class="slider-side">
+				{% for photo in media|slice(11,11) %}
+					<div class="slider-item text-center">
+						<img class="center-block" src="https://farm{{ photo.attributes.farm }}.staticflickr.com/{{ photo.attributes.server }}/{{ photo.attributes.id }}_{{ photo.attributes.secret }}_q.jpg" />
+						{{ photo.attributes.title }}
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+		{% if weathers is not null %}
+			<div class="col-md-12">
+				<div class="slider-weather">
+			        {% for weather in weathers %}
+			        	{% if loop.index == 1 or loop.index == 6 %}
+							<div class="slider-item">
+			        			<div class="col-md-weather-container">
+									<div class="last-update">
+							        	Last update: {{ weathers.lastUpdate|date(format ~ " H:i") }} | 
+							        	Sunrise: {{ weathers.sun.rise|date("H:i:s") }} | 
+							        	Sunset: {{ weathers.sun.set|date("H:i:s") }}
+						        	</div>
+			        	{% endif %}
+			        	<div class="col-md-weather panel panel-info text-center">
+				        	<div class="panel-heading"><h3 class="panel-title">{{ weather.time.day|date(format) }}</h3></div>
+				        	<img class="center-block" src="{{ weather.weather.iconUrl }}" alt="icon {{ weather.weather.description }}"  /><strong>{{ weather.temperature|raw }}</strong><br />
+				        	{{ weather.weather.description }}
+				        	<div class="text-left">
+					        	<div class="even">{{'wind_speed'|trans }}: {{ weather.wind.speed }}</div>
+					        	<div class="even">{{ weather.wind.speed.description }}</div>
+					        	<div class="even">{{'wind_direction'|trans }}: {{ weather.wind.direction }}</div>
+				        	</div>
+			        	</div>
+			        	{% if loop.index == 5 or loop.index == 10 %}
+			        			</div>
+			        		</div>
+			        	{% endif %}
+			        {% endfor %}
+		    	</div>
+			</div>
+		{% endif %}
+	</div>
 {% endblock content %}

@@ -19,9 +19,9 @@ class SkipperController extends Controller
     {
         $seoPage = $this->container->get('sonata.seo.page');
         $seoPage->addMeta('name', 'keyword', $this->get('translator')
-            ->trans("crew_meta_keywords"))
+            ->trans("crews_meta_keywords"))
             ->addMeta('name', 'description', $this->get('translator')
-            ->trans("crew_meta_description"));
+            ->trans("crews_meta_description"));
         
         $locale = $this->getRequest()->getLocale();
         
@@ -47,9 +47,9 @@ class SkipperController extends Controller
     {
         $seoPage = $this->container->get('sonata.seo.page');
         $seoPage->addMeta('name', 'keyword', $this->get('translator')
-            ->trans("crew_presentation_meta_keywords"))
+            ->trans("crew_meta_keywords"))
             ->addMeta('name', 'description', $this->get('translator')
-            ->trans("crew_presentation_meta_description"));
+            ->trans("crew_meta_description"));
         
         $locale = $this->getRequest()->getLocale();
         

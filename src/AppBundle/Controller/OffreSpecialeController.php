@@ -24,6 +24,7 @@ class OffreSpecialeController extends Controller
             ->trans("specialoffers_meta_description"));
         
         $locale = $this->getRequest()->getLocale();
+        
         $offresSpeciales = $this->getDoctrine()
             ->getManager()
             ->getRepository("AppBundle\Entity\OffreSpeciale")
@@ -46,9 +47,9 @@ class OffreSpecialeController extends Controller
     {
         $seoPage = $this->container->get('sonata.seo.page');
         $seoPage->addMeta('name', 'keyword', $this->get('translator')
-            ->trans("specialoffer_presentation_meta_keywords"))
+            ->trans("specialoffer_meta_keywords"))
             ->addMeta('name', 'description', $this->get('translator')
-            ->trans("specialoffer_presentation_meta_description"));
+            ->trans("specialoffer_meta_description"));
         
         $locale = $this->getRequest()->getLocale();
         
@@ -155,7 +156,6 @@ class OffreSpecialeController extends Controller
         /**
          * * Formulaire de contact **
          */
-        
         $form = $this->createForm(new OffreSpecialeContactType($this->getDoctrine()
             ->getEntityManager(), $this->getRequest()
             ->getLocale()));

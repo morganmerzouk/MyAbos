@@ -43,9 +43,9 @@ class PrestationController extends Controller
     {
         $seoPage = $this->container->get('sonata.seo.page');
         $seoPage->addMeta('name', 'keyword', $this->get('translator')
-            ->trans("destination_meta_keywords"))
+            ->trans("service_meta_keywords"))
             ->addMeta('name', 'description', $this->get('translator')
-            ->trans("destination_meta_description"));
+            ->trans("service_meta_description"));
         
         $locale = $this->getRequest()->getLocale();
         
@@ -64,6 +64,7 @@ class PrestationController extends Controller
         
         $seoPage->addMeta('name', 'keyword', $prestation->getName());
         $seoPage->addMeta('name', 'description', substr($prestation->getDescription(), 0, 255));
+        
         $prestationsMenu = $this->getDoctrine()
             ->getManager()
             ->getRepository("AppBundle\Entity\Prestation")

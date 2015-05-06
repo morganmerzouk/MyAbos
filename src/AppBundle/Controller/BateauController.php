@@ -18,11 +18,12 @@ class BateauController extends Controller
     {
         $seoPage = $this->container->get('sonata.seo.page');
         $seoPage->addMeta('name', 'keyword', $this->get('translator')
-            ->trans("fleet_meta_keywords"))
+            ->trans("fleets_meta_keywords"))
             ->addMeta('name', 'description', $this->get('translator')
-            ->trans("fleet_meta_description"));
+            ->trans("fleets_meta_description"));
         
         $locale = $this->getRequest()->getLocale();
+        
         $croisieres = $this->getDoctrine()
             ->getManager()
             ->getRepository("AppBundle\Entity\Croisiere")
@@ -45,9 +46,9 @@ class BateauController extends Controller
     {
         $seoPage = $this->container->get('sonata.seo.page');
         $seoPage->addMeta('name', 'keyword', $this->get('translator')
-            ->trans("fleet_overview_meta_keywords"))
+            ->trans("fleet_meta_keywords"))
             ->addMeta('name', 'description', $this->get('translator')
-            ->trans("fleet_overview_meta_description"));
+            ->trans("fleet_meta_description"));
         
         $locale = $this->getRequest()->getLocale();
         
@@ -226,11 +227,6 @@ class BateauController extends Controller
      */
     public function bateauContactAction($id)
     {
-        $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage->addMeta('name', 'keyword', $this->get('translator')
-            ->trans("fleet_contact_meta_keywords"))
-            ->addMeta('name', 'description', $this->get('translator')
-            ->trans("fleet_contact_meta_description"));
         $locale = $this->getRequest()->getLocale();
         
         if ($form->isValid()) {
@@ -299,25 +295,7 @@ class BateauController extends Controller
                 ->trans('devis_ok'));
         }
         
-        $croisiere = $this->getDoctrine()
-            ->getManager()
-            ->getRepository("AppBundle\Entity\Croisiere")
-            ->createQueryBuilder('c')
-            ->select('c, b, t')
-            ->join('AppBundle\Entity\Bateau', 'b', 'WITH', 'c.bateau = b.id')
-            ->join('b.translations', 't')
-            ->where('c.bateau = :id')
-            ->setParameter(':id', $id)
-            ->andWhere('t.locale = :locale')
-            ->setParameter(':locale', $locale)
-            ->getQuery()
-            ->getResult(Query::HYDRATE_OBJECT);
-        
-        return $this->render('AppBundle:Front:Bateau/boat_contact.html.twig', array(
-            'form' => $form->createView(),
-            'skipper' => isset($croisiere[0]) ? $croisiere[0]->getSkipper() : null,
-            'servicepayant' => isset($croisiere[0]) ? $croisiere[0]->getServicePayant() : null
-        ));
+        return new Response();
     }
 
     /**

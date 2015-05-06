@@ -42,8 +42,9 @@ class OffreSpecialeAdminController extends Controller
 
     public function getServicePayantAction($id)
     {
-        if (! $id)
+        if (! $id) {
             return;
+        }
         
         $servicesPayant = $this->getDoctrine()
             ->getManager()

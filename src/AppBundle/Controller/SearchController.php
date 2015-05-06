@@ -40,8 +40,7 @@ class SearchController extends Controller
         $form->setData($values);
         
         return $this->render('AppBundle:Front:form/search_header.html.twig', array(
-            'form' => $form->createView(),
-            'locale' => $locale
+            'form' => $form->createView()
         ));
     }
 

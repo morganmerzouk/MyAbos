@@ -65,6 +65,7 @@ class DestinationController extends Controller
         
         $seoPage->addMeta('name', 'keyword', $destination->getName());
         $seoPage->addMeta('name', 'description', substr($destination->getDescription(), 0, 255));
+        
         $offresSpeciales = $this->getDoctrine()
             ->getManager()
             ->getRepository("AppBundle\Entity\OffreSpeciale")
@@ -93,6 +94,7 @@ class DestinationController extends Controller
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($curl);
         curl_close($curl);
+        
         $media = new \SimpleXMLElement($response);
         
         return $this->render('AppBundle:Front:destination.html.twig', array(

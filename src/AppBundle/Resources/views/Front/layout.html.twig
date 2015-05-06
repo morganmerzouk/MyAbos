@@ -42,9 +42,7 @@
 				    {%  render(controller('AppBundle:Search:searchHeader')) %}    
 		    	</form>
 			    {%  render(controller('AppBundle:Front:menuHeader', {'route': app.request.get('route') })) %}
-        		
-				
-				<div class="col-md-10 margintop10">
+        		<div class="col-md-10 margintop10">
                 	{% block content %}{% endblock %}
                 </div>
             </div>

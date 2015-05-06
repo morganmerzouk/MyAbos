@@ -3,7 +3,7 @@ html, body {font-size: 14px; font-family: 'Signika', Verdana,sans-serif;}
 .panel-info>.panel-heading { color: white; background-color: #5bc0de; }
 .panel-info .panel-body {padding: 10px;}
 .panel-title { padding: 5px; }
-.container-body {overflow: auto; padding-bottom: 30px;}
+.container-body {overflow: auto; padding-bottom: 30px;	background-color: #EFF1F2;}
 .tab-content {
 	overflow: auto;
   	border: 1px solid #5bc0de;
@@ -14,3 +14,10 @@ html, body {font-size: 14px; font-family: 'Signika', Verdana,sans-serif;}
 label { font-weight: normal; }
 .margintop10 { margin-top: 10px; }
 .newsletter-message-container { display: none; }
+
+
+.slick-slider {	margin-bottom: 10px !important;}
+.slick-slider .slick-prev:before, .slick-slider .slick-next:before { color: black; }
+.slick-slider .slick-prev{ left: 5px; }
+.slick-slider .slick-next { right: 5px; }
+.slick-slider .slick-prev, .slick-slider .slick-next { z-index: 20; }

@@ -12,11 +12,12 @@
     <div class="block-description-destinations">
         {{'destinations_intro'|trans}}
     </div>
-    
-    <ul class="menu-destinations">
-        {% for destination in destinations%}
-            <li><a href="{{ path('destination', { 'id': destination.id }) }}">{{ destination.name }}</a></li>
-        {% endfor %}
-    </ul>
-    <iframe src="https://mapsengine.google.com/map/embed?mid=zp1fYHiVOT9o.k8YfNcL5EBpc" height="600"></iframe>
+    <div class="tab-content">
+	    <ul class="menu-destinations">
+	        {% for destination in destinations%}
+	            <li><a href="{{ path('destination', { 'id': destination.id }) }}"><img src="{{ destination.flagWebPath }}" class="img-menu" alt="{{'menu_flag'|trans }} {{ destination.name }}" />{{ destination.name }}</a></li>
+	        {% endfor %}
+	    </ul>
+	    <iframe src="https://mapsengine.google.com/map/embed?mid=zp1fYHiVOT9o.k8YfNcL5EBpc" height="600"></iframe>
+    </div>
 {% endblock content %}
