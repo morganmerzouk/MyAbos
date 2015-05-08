@@ -104,8 +104,5 @@ h2.weather-forecast {
 }
 
 #map-canvas {
-	width: 50%;
 	height: 300px;
-	float: left;
-	margin: 0 10px 10px 0px;
 }

@@ -8,8 +8,6 @@ $(document).ready(function(){
         slidesToShow: 3
     });
     $('.slider-side').slick({
-        autoplay: 	false,
-        centerMode: true,
-        slidesToShow: 1
+        autoplay: 	true
     });
 });

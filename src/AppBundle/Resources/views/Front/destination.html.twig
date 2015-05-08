@@ -40,8 +40,43 @@
 		<img src="{{ destination.miniatureWebPath }}" class="img img-responsive" alt="{{ destination.name }}" />
 	</div>
 	<div class="destination-body">
-		<div class="{% if offresSpeciales|length > 0 %}col-md-8{% else %}col-md-12{% endif %}">
-			<div class="col-md-3 pull-left" id="map-canvas"></div>
+		<div class="col-md-12">
+			<div class="col-md-3 pull-left">
+				<div id="map-canvas"></div>
+				{% if offresSpeciales|length > 0 %}
+					 <div class="block-bateau-destination panel panel-info">
+						<div class="panel-heading">
+				        	<h4 class="panel-title">{{'cruise_to'|trans}} {{ destination.name }}</h4>
+				        </div>
+				        {% for offreSpeciale in offresSpeciales %}
+				            <div class="panel-body">
+				                <img class="img-responsive" src="{{ offreSpeciale.miniatureWebPath }}" />
+				                {{'From'|trans }} {{ offreSpeciale.dateDebut|date(format) }} {{'to'|trans }} {{ offreSpeciale.dateFin|date(format) }}<br />
+				                <a href="{{ path('offrespeciale', { 'id': offreSpeciale.id }) }}#contact" class="pull-right btn btn-warning">{{'more'|trans}}</a>
+				                {{'Boat'|trans }}: <a href="{{ path('boat', { 'id': offreSpeciale.bateau.id }) }}">{{ offreSpeciale.bateau.name }}</a>
+				                Skipper: <a href="{{ path('skipper', { 'id': offreSpeciale.skipper.id }) }}">{{ offreSpeciale.skipper.name }}</a>
+				            </div>
+				        {% endfor %}
+					</div>
+				{% endif %}
+			</div>
+			<div class="col-md-3 pull-right">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h2 class="panel-title">{{'latest_picture_from'|trans }} {{ destination.name }}</h2>
+					</div>
+					<div class="panel-body">
+						<div class="slider-side">
+							{% for photo in media|slice(11,11) %}
+								<div class="slider-item text-center">
+										<img class="center-block" src="https://farm{{ photo.attributes.farm }}.staticflickr.com/{{ photo.attributes.server }}/{{ photo.attributes.id }}_{{ photo.attributes.secret }}_q.jpg" />
+										
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
 			{% set description_part =  destination.description|split('<boundary>') %}
 			{{ description_part[0]|raw }}
 			<div class="slider">
@@ -53,32 +88,6 @@
 				{% endfor %}
 			</div>
 			{{ description_part[1]|raw }}
-		</div>
-		<div class="col-md-4">
-			{% if offresSpeciales|length > 0 %}
-				 <div class="block-bateau-destination panel panel-info">
-					<div class="panel-heading">
-			        	<h4 class="panel-title">{{'cruise_to'|trans}} {{ destination.name }}</h4>
-			        </div>
-			        {% for offreSpeciale in offresSpeciales %}
-			            <div class="panel-body">
-			                <img class="img-responsive" src="{{ offreSpeciale.miniatureWebPath }}" />
-			                {{'From'|trans }} {{ offreSpeciale.dateDebut|date(format) }} {{'to'|trans }} {{ offreSpeciale.dateFin|date(format) }}<br />
-			                <a href="{{ path('offrespeciale', { 'id': offreSpeciale.id }) }}#contact" class="pull-right btn btn-warning">{{'more'|trans}}</a>
-			                {{'Boat'|trans }}: <a href="{{ path('boat', { 'id': offreSpeciale.bateau.id }) }}">{{ offreSpeciale.bateau.name }}</a>
-			                Skipper: <a href="{{ path('skipper', { 'id': offreSpeciale.skipper.id }) }}">{{ offreSpeciale.skipper.name }}</a>
-			            </div>
-			        {% endfor %}
-				</div>
-			{% endif %}
-			<div class="slider-side">
-				{% for photo in media|slice(11,11) %}
-					<div class="slider-item text-center">
-						<img class="center-block" src="https://farm{{ photo.attributes.farm }}.staticflickr.com/{{ photo.attributes.server }}/{{ photo.attributes.id }}_{{ photo.attributes.secret }}_q.jpg" />
-						{{ photo.attributes.title }}
-					</div>
-				{% endfor %}
-			</div>
 		</div>
 		{% if weathers is not null %}
 			<div class="col-md-12">
