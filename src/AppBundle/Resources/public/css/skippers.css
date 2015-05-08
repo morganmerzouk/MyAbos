@@ -20,9 +20,7 @@ h1 {background: url("../images/menu/icones/icon-equipages.png") no-repeat 5px 5p
 .skipper-price { background-image: url("../images/menu/icones/icon-price.png"); }
 .skipper-contact { background-image: url("../images/menu/icones/icon-contact.png"); }
 
-.boat-block-special-offer .offreName { margin: 0; margin-bottom: 10px; padding:10px; color: white; background: #127BBD; font-size: 1.2em; }
-.boat-block-special-offer .boatName { padding:5px; font-size: 1em; }
-.boat-block-special-offer { text-align: center; border: 1px solid #B3B3B3; margin: 10px 0 0 0; padding: 0;  overflow: auto; }
+.panel-info .panel-body.boat-block-special-offer { text-align: center; margin: 0; padding: 0;  overflow: auto; }
 .boat-block-special-offer h3 { background: #23B6E1; color:white; text-align: center; margin: 0;padding: 5px;  font-size: 1.5em; }
 .boat-block-special-offer .img-responsive { margin: 10px; }
 .boat-block-special-offer .bateau-prix-semaine {background: #23B6E1; color:white; text-align: center; margin: 0; }
@@ -33,15 +31,9 @@ h1 {background: url("../images/menu/icones/icon-equipages.png") no-repeat 5px 5p
 .col-offre-speciale  {padding: 0;}
 .boat-tarif-pour { font-size: 0.8em;}
 /*** Skipper - Destinations ***/
-
-.boat-desti h3 { font-size: 1.2em;padding: 5px;border: 1px solid black;margin: 0; background: #23B6E1; color: black; }
-.boat-desti-itineraire { overflow: auto; border: 1px solid #B3B3B3; padding: 5px; }
-.boat-desti h3 .boat-desti-localisation {margin: 0 0 10px 0; }
-.boat-desti-block-localisation { padding: 5px;}
-.boat-desti h3.cible { background: #127BBD; color: white; }
-.boat-desti h3.cible.title-hover { background: #23B6E1; color: black; }
-.boat-desti h3.cible:hover { cursor: pointer; background: #23B6E1; color: black; }
-
+.boat-desti .title-hover,
+.boat-desti .cible:hover { background: #5bc0de; color: white; cursor: pointer; }
+.panel-heading { padding: 1px; }
 /*** Skipper - Disponibilités ***/
 
 table.month { border: 1px solid black;}
@@ -55,16 +47,19 @@ td.libelleLegend { padding-left: 5px;}
 .legend div {  padding: 1px 5px; }
 
 /*** Skipper - Boat ***/
-.offrespeciale-boat-description { overflow:auto; margin-bottom: 5px;}
-.offrespeciale-boat-description h2 { text-align: center;margin: 5px;}
-.col-fiche-bateau{ border: 3px solid #23B6E1; margin:0px;padding:0;}
-.col-fiche-bateau .block-boat-spec { overflow: auto;  margin: 0px 10px; border: 1px solid white;background: #127BBD;color:white;}
-.col-fiche-bateau img {background: #23B6E1;padding: 5px;border-right: 2px solid white;margin-right:10px;}
-.offre-boat-img { margin: 1%; width: 48%; padding: 0;}
-.col-fiche-bateau h3 {background: #23B6E1; font-size: 1.1em; padding: 10px; margin: 0;}
-.btn-contact {margin-bottom: 10px;}
+.img-details {padding: 0; padding-left: 1%;}
+.img-detail { margin: 1%; width: 48%; padding: 5px;}
+
 .boat-spec-content {border: 0;line-height: 50px;}
 .boat-spec-content.multiline {border: 0;line-height: normal; padding: 5px;}
+
+.col-fiche-bateau{ margin-top: 10px;padding:0;}
+.col-fiche-bateau .block-boat-spec { overflow: auto;  margin: 0px 10px;}
+.col-fiche-bateau .boat-spec-content { background: white; color: black; }
+.col-fiche-bateau img {width:50px;padding: 5px;border-right: 2px solid white;margin-right:10px;}
+.col-fiche-bateau h3 {background: #5bc0de; font-size: 1.1em; padding: 10px; margin: 0;color: white;}
+
+.btn-contact {margin-bottom: 10px;}
 
 /*** Skipper tarif ***/
 .tarif-accordion { margin: 10px auto; padding-top: 0;}
@@ -84,22 +79,17 @@ td.libelleLegend { padding-left: 5px;}
 .tarif-accordion .servicepayant div {margin: 0;padding:5px;}
 
 /*** Skipper devis ***/
-.col-devis { border: 1px solid #B3B3B3; padding: 0;}
-.col-devis h2 { margin: 0; background: #127BBD; padding:5px; font-size: 1.1em; color: white; }
-.col-devis .row { padding: 5px 10px; margin: 10px; color: black;}
-.col-devis .odd { background: #127BBD;padding: 5px;}
-.col-devis .even { background: #23B6E1;padding: 5px;clear: both;}
-.col-devis .row label { width: 215px;text-align: right;}
-.col-devis .row label.label-date-retour { width: 50px; }
-.col-devis .optionspayantes { padding: 10px; margin: 10px; border: 3px solid #23B6E1; overflow: auto;}
-.col-devis .optionspayantes .col-md-5 { width: 45%; padding: 5px 10px; margin: 1%; color: black;}
-.col-devis .optionspayantes .col-md-1 { width: 3%; height: 25px;padding: 5px 10px;  margin: 1%;}
-.input-date-depart, .input-date-retour { width:90px;}
-.select-portdepart, .select-destination {width: 150px;}
-.col-right-devis { position: fixed; right: 0; width: 20%; overflow: auto; padding-bottom: 10px; margin-bottom: 10px;}
-.bloc-final-price { background: white; text-align: center; margin: auto; padding:10px;}
-
-.devis-option-wanted {margin-bottom: 10px}
-.recap-textarea-message { border: 1px solid black; background: white; padding: 10px; margin: 10px;}
-.btn-send-to-skipper,
-.btn-modifier  {margin: 0 10px 10px 0; }
+.col-devis {padding:5px;}
+.col-devis .panel { overflow: auto; }
+.col-devis label { width: 50%;text-align: right;color: black;font-weight: normal; }
+.optionspayantes-subblock {overflow: hidden; }
+.input-date-depart, .input-date-retour { width:100px;}
+.select-portdepart, .select-destination {width: 48%;}
+hr { margin: 0; padding: 0;}
+.optionspayantes-subblock .col-name,
+.optionspayantes-subblock .col-price {float: left; width: 48%;}
+.optionspayantes-subblock .col-checkbox {float: left; width: 4%;}
+.panel-message textarea { height: 100px;}
+.panel-message textarea, .panel-message input { width: 100%;margin-bottom: 10px;}
+.loading { display: none; position: absolute; z-index: 1000; top: 0; left: 0; width: 100%; height: 92%; padding: 37%;background: black; opacity: 0.8;}
+.btn-sent {	display: none;margin: 10px auto;}

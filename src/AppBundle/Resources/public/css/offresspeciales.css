@@ -89,6 +89,8 @@ h1.special-offer-title {
 }
 
 /*** Offres Speciales - Presentation ***/
+.img-details {padding: 0; padding-left: 1%;}
+.img-detail { margin: 1%; width: 48%; padding: 5px;}
 .panel-offrespeciale-prestation {
 	padding: 0;
 }

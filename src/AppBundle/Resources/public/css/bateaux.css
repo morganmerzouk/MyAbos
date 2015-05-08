@@ -6,7 +6,6 @@
 .slider .slick-next:before {font-size: 24px; background: white; opacity: 1; color: black; border-radius: 30px;}
 h1 {background: url("../images/menu/icones/icon-flotte.png") no-repeat 5px 5px #5bc0de; font-size: 1.2em; padding: 10px 10px 10px 35px;margin: 0;color: white;}
 .block-description-bateaux { margin: 0; background: #5bc0de; padding: 10px; }
-.panel-body-padding { padding:1px; }
 
 .block-croisiere .row { margin: 10px; text-align:left;}
 
@@ -34,9 +33,6 @@ h1 {background: url("../images/menu/icones/icon-flotte.png") no-repeat 5px 5px #
 }
 
 .bateau-last { margin-right: 0;}
-.panel-heading {
-  padding: 1px;
-}
 
 .bateau h2 {
 	font-size: 1.2em;
@@ -49,9 +45,6 @@ h1 {background: url("../images/menu/icones/icon-flotte.png") no-repeat 5px 5px #
 .bateau .bateaux-description {clear: both;text-align: justify;padding:0 10px;}
 .bateau .btn-warning {margin: 10px;}
 .boat-tarif-pour { font-size: 0.9sem; }
-
-
-.loading { display: none; position: absolute; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%;padding: 10%; background: black; opacity: 0.8;}
 
 .boat-contact-step2-loading {display: none; position: absolute; z-index: 1000; width: 25%; height: 20%; top: 40%; left: 33%;padding: 10px; background: black; opacity: 0.8}
 .boat-contact-step2-loading img {height: 80%;margin: auto;}
@@ -119,12 +112,8 @@ td.libelleLegend { padding-left: 5px;}
  /*** Boat devis ***/
 .col-devis {padding:5px;}
 .col-devis .panel { overflow: auto; }
-.col-devis .odd { background: #5bc0de;padding: 5px; }
-.col-devis .even { background: #d9edf7;color:#5bc0de;padding: 5px;clear: both;}
 .col-devis label { width: 50%;text-align: right;color: black;font-weight: normal; }
-.col-devis .bloc-final-price { padding: 10px; margin: 10px; text-align: center; border: 3px solid #5bc0de; overflow: auto;}
 .optionspayantes-subblock {overflow: hidden; }
-.col-devis .optionspayantes .col-md-2 { }
 .input-date-depart, .input-date-retour { width:100px;}
 .select-portdepart, .select-destination {width: 48%;}
 hr { margin: 0; padding: 0;}
@@ -133,16 +122,5 @@ hr { margin: 0; padding: 0;}
 .optionspayantes-subblock .col-checkbox {float: left; width: 4%;}
 .panel-message textarea { height: 100px;}
 .panel-message textarea, .panel-message input { width: 100%;margin-bottom: 10px;}
-.devis-content-duree-sejour,
-.devis-content-date-sejour,
-.devis-content-nb-passager,
-.devis-content-tarif,
-.devis-content-port-depart,
-.devis-content-destination,
-.devis-content-option-payante, 
-.devis-content-final-price {display: none;}
-
-.devis-option-wanted {margin-bottom: 10px}
-.recap-textarea-message { border: 1px solid black; background: white; padding: 10px; margin: 10px;}
-.btn-send-to-skipper,
-.btn-modifier  {margin: 0 10px 10px 0; }
+.loading { display: none; position: absolute; z-index: 1000; top: 0; left: 0; width: 100%; height: 92%; padding: 37%;background: black; opacity: 0.8;}
+.btn-sent {	display: none;margin: 10px auto;}

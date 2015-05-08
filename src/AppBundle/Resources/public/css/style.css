@@ -7,7 +7,7 @@ html, body {font-size: 14px; font-family: 'Signika', Verdana,sans-serif;}
 .tab-content { overflow: auto; border: 1px solid #5bc0de; padding: 10px; box-shadow: 0px 0px 15px black; }
 .img-menu {width: 20px; margin-right: 5px; }
 label { font-weight: normal; }
-.margintop10 { margin-top: 10px; background-color: #EFF1F2; overflow: auto; }
+.margintop10 { margin-top: 10px; background-color: #EFF1F2; }
 .newsletter-message-container { display: none; }
 
 .slick-slider {	margin-bottom: 10px !important;}

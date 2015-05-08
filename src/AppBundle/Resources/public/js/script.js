@@ -6,11 +6,15 @@ $(document).ready(function() {
 	}
 	
 	// On simule le click sur le tab si on vient d'une autre page (pour les pages flottes, offres et skipper)
-    if(window.location.href.indexOf("#") > -1) {
-	    	if($("a[href=#" + window.location.href.split("#")[1] + "]").length) {
-	    		$("a[href=#" + window.location.href.split("#")[1] + "]").tab("show");
-	    	}
-    }
+	var hash = window.location.hash;
+	hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+
+	$('.nav-tabs a').click(function (e) {
+		$(this).tab('show');
+		var scrollmem = $('body').scrollTop();
+		window.location.hash = this.hash;
+		$('html,body').scrollTop(scrollmem);
+	});
 	
 	$('.btn-newsletter-subscribe').on('click', function() {
 		if($('.newsletter-email').val() == "" || $('.newsletter-email').val() == "email" ) {

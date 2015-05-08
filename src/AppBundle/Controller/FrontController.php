@@ -32,8 +32,32 @@ class FrontController extends Controller
             ->getQuery()
             ->getResult();
         
+        $destinations = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("AppBundle\Entity\Destination")
+            ->createQueryBuilder('d')
+            ->select('d, t')
+            ->join('d.translations', 't')
+            ->andWhere('t.locale = :locale')
+            ->setParameter(':locale', $locale)
+            ->getQuery()
+            ->getResult();
+        
+        $boats = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("AppBundle\Entity\Bateau")
+            ->createQueryBuilder('b')
+            ->select('b, t')
+            ->join('b.translations', 't')
+            ->andWhere('t.locale = :locale')
+            ->setParameter(':locale', $locale)
+            ->getQuery()
+            ->getResult();
+        
         return $this->render('AppBundle:Front:home.html.twig', array(
-            'offresSpeciales' => $offresSpeciales
+            'offresSpeciales' => $offresSpeciales,
+            'destinations' => $destinations,
+            'boats' => $boats
         ));
     }
 

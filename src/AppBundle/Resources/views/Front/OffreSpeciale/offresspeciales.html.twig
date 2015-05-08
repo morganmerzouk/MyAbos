@@ -26,13 +26,13 @@
 					  	{{ offreSpeciale.bateau.type }}
 				  	</div>
 				  	<div class="col-md-4 text-center">
-					  	<img class="img-thumbnail center-block" src="{{ offreSpeciale.bateau.inclusPrixEquipage.iconeWebPath }}" />
+					  	<img class="img-thumbnail center-block" src="{{ asset('bundles/app/images/icones/boat/icon-equipages.png') }}" />
 					  	{{ offreSpeciale.bateau.inclusPrixEquipage.name }}
 				  	</div>
 				  	<div class="col-md-4 text-center">
 					  	{% for inclusPrixAvitaillement in offreSpeciale.bateau.inclusPrixAvitaillement %}
 					  		{% if loop.index == 1 %}
-					  			<img class="img-thumbnail center-block" src="{{ inclusPrixAvitaillement.iconeWebPath }}" />
+					  			<img class="img-thumbnail center-block" src="{{ asset('bundles/app/images/icones/boat/icon-provisioning.png') }}" />
 					  		{% endif %}
 					  		{{ inclusPrixAvitaillement.name }}
 					  	{% endfor %}

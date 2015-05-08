@@ -2,8 +2,13 @@
 html{ height: 100%;overflow:hidden; font-size: 1em;}
 video, object {left:0;top:0;margin:0;padding:0;width:100%;position: absolute; z-index: -1;}
 .container-body, .container-home {margin: 0;padding: 0;}
+.container-home .container-body {padding-bottom: 30px; background-color: transparent;}
 .panel-info>.panel-heading { background: #39b3d7; color: white;border: 1px solid #269abc; }
-h1 { color: white; font-size: 3em;text-shadow: 0 0 3px black;}
+h1 { color: white; font-size: 3em;text-shadow: 0 0 3px black;  margin-top: 10px;}
+
+.col-md-5 { margin-top: 10px; }
+.col-md-5 h3 { position: absolute; right: 10px; color: white; font-size: 2em;}
+.btn-more { position: absolute; top: -50px; }
 
 .newsletter-email { width: 70%;font-size: 0.9em;}
 .container-home, .container-body { overflow: initial;}
@@ -20,3 +25,4 @@ h1 { color: white; font-size: 3em;text-shadow: 0 0 3px black;}
 .slider .price {color: white;clear:both;}
 .slider .price, .slider .details {background-color: #ed9c28; border-color: #d58512;}
 .see-all-special-offers { color: black; text-decoration: none; font-size: 0.7em; font-weight: normal; margin: 5px 5px 0 0; }
+.panel-info .panel-body-padding { padding:1px; background-color: #EFF1F2; }

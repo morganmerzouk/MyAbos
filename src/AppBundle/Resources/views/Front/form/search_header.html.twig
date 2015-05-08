@@ -1,5 +1,5 @@
 <div class="col-md-8 col-md-offset-2">
-	<form action="{{ path('search_results')}}" class="searchHome" method="post" {{ form_enctype(form) }}>
+	<form action="{{ path('search_results')}}" method="post" {{ form_enctype(form) }}>
         {{ form_widget(form.destination) }}
 	    
 	    {{ form_widget(form.date) }}
@@ -11,5 +11,4 @@
             {{'find_button'|trans}}
         </button>
 	    {{ form_rest(form) }}
-    </form>
 </div>

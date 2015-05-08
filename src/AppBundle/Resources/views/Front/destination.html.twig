@@ -70,7 +70,6 @@
 							{% for photo in media|slice(11,11) %}
 								<div class="slider-item text-center">
 										<img class="center-block" src="https://farm{{ photo.attributes.farm }}.staticflickr.com/{{ photo.attributes.server }}/{{ photo.attributes.id }}_{{ photo.attributes.secret }}_q.jpg" />
-										
 								</div>
 							{% endfor %}
 						</div>
@@ -83,7 +82,6 @@
 				{% for photo in media|slice(0,11) %}
 					<div class="slider-item text-center">
 						<img class="center-block" src="https://farm{{ photo.attributes.farm }}.staticflickr.com/{{ photo.attributes.server }}/{{ photo.attributes.id }}_{{ photo.attributes.secret }}_q.jpg" />
-						{{ photo.attributes.title }}
 					</div>
 				{% endfor %}
 			</div>

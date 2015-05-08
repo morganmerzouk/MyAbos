@@ -2,8 +2,35 @@
 {% block content %}
 	<div class="col-md-3">
 		{% include "AppBundle:Front:newsletter.html.twig" %} 
+		<div class="slider">
+			{% for boat in boats %}
+				<div class="slider-item">
+					<div class="panel panel-info">
+						<div class="panel-heading">
+				        	<h3 class="panel-title">{{ boat.name }}</h3>
+			        	</div>
+			        	<div class="panel-body panel-body-padding">
+			        		<img src="{{ boat.miniatureWebPath }}" class="img img-responsive center-block" />
+			        		<a href="{{ path('boat', {'id': boat.id}) }}" class="btn btn-warning btn-more pull-right">{{'suite'|trans }}</a>
+			        	</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
 	</div>       		
-	<h1 class="col-md-5 text-right">{{'home_title'|trans|raw }}</h1>
+	<div class="col-md-5 text-right">
+		<div class="slider-destination">
+			{% for destination in destinations %}
+				<div class="slider-item">
+	        		<a href="{{ path('destination', {'id': destination.id}) }}">
+			        	<h3>{{ destination.name }}</h3>
+	        			<img src="{{ destination.miniatureWebPath }}" class="img img-thumbnail img-responsive" />
+	        		</a>
+		        </div>
+			{% endfor %}
+		</div>
+		<h1>{{'home_title'|trans|raw }}</h1>
+	</div>
 	<div class="col-md-4">
 		<div class="panel-offre">
 			<div class="slider">
