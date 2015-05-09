@@ -37,10 +37,11 @@
     <body>
     	<div>
     		<div class="container-header">
-        		{% include "AppBundle:Front:header.html.twig" %}
+        		{% include "AppBundle:Front:header.html.twig" with {'route': app.request.get('_route') } %}
         	</div>
 	        <div class="container-body clearfix">
 			    <div class="container-search">
+			    
 			    	{%  render(controller('AppBundle:Search:searchHeader')) %} 
 		    	</div>   
 		    	<div class="col-md-12 margintop10">

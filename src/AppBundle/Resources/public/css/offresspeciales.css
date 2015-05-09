@@ -91,6 +91,12 @@ h1.special-offer-title {
 /*** Offres Speciales - Presentation ***/
 .img-details {padding: 0; padding-left: 1%;}
 .img-detail { margin: 1%; width: 48%; padding: 5px;}
+
+.boat-presentation h2,
+.crew-presentation h2,
+.desti-presentation h1 { margin: 5px 0; padding: 5px; color: white; font-size: 1.5em; background-color: #5bc0de; border: 1px solid; border-radius: 4px; border-color: #bce8f1; box-shadow: 0px 0px 15px black;}
+.boat-presentation p { text-align: justify; }
+
 .panel-offrespeciale-prestation {
 	padding: 0;
 }
@@ -159,17 +165,19 @@ h1.special-offer-title {
 
 .col-fiche-bateau .block-boat-spec {
 	overflow: auto;
-	margin: 0px 10px;
+	margin: 0px;
 	border: 1px solid white;
 	background: #d9edf7;
-	color: #5bc0de;
+	color: black;
+	border-radius: 4px;	
 }
 
 .col-fiche-bateau img {
-	background: #5bc0de;
+	background: #d9edf7;
 	padding: 5px;
 	border-right: 2px solid white;
 	margin-right: 10px;
+	border-radius: 4px;
 }
 
 .offre-boat-img {
@@ -280,14 +288,14 @@ h1.special-offer-title {
 	padding: 5px;
 }
 
-.panel-body-padding {
+.panel-info .panel-body-padding {
 	padding: 1px;
 }
 /*** Offres Spéciales - Contact ***/
 .offre-contact {
 	padding: 10px;
 }
-
+.offrespeciale-contact-col-form-content label { margin: 0; }
 .offrespeciale-contact-col-form-content .loading {
 	display: none;
 	position: absolute;

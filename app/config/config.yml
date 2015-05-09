@@ -152,7 +152,6 @@ sonata_admin:
                     - sonata.admin.servicepayant
                     - sonata.admin.croisiere
                     - sonata.admin.offrespeciale
-                    - sonata.admin.devis
     security:
         handler: sonata.admin.security.handler.acl
         # acl security information

@@ -18,10 +18,13 @@
 		    	<div class="panel-heading">
 		    		<h3 class="panel-title text-center">{{ skipper.name }}</h3>
 		    	</div>
-		    	<div class="panel-body skipper">
-		        	<img class="img-responsive img-thumbnail center-block" src="{{ skipper.avatarWebPath }}" alt="photo {{ skipper.name }}" />
-		            <p>{{ skipper.description|trans|striptags|slice(0,150) ~ '...' }}</p>
-		            <a href="{{ path('skipper', { 'id': skipper.id }) }}" class="btn btn-warning pull-right">{{'suite'|trans}}</a>
+		    	<div class="panel-body">
+			    	<a class="skipper" href="{{ path('skipper', { 'id': skipper.id }) }}">
+			            <span class="caption fade-caption">
+							<p>{{ skipper.description|trans|striptags|slice(0,150) ~ '...' }}</p>
+						</span>
+			        	<img class="img-responsive img-thumbnail center-block" src="{{ skipper.avatarWebPath }}" alt="photo {{ skipper.name }}" />
+		        	</a>
 	        	</div>
         	</div>
     	</div>

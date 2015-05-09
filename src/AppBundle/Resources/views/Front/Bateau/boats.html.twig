@@ -19,7 +19,7 @@
             	<h3 class="panel-title">{{ croisiere.bateau.name }}</h3>
         	</div>
         	<div class="panel-body panel-body-padding">
-	            <img class="img-responsive center-block img-thumbnail" src="{{ croisiere.bateau.miniatureWebPath }}" alt="photo {{ croisiere.bateau.name }}" /><br />
+	            <img class="img-responsive img center-block img-thumbnail" src="{{ croisiere.bateau.miniatureWebPath }}" alt="photo {{ croisiere.bateau.name }}" />
 	            <p class="bateau-prix-semaine"> 
 	                {{'boat_price_from'|trans}} 	
 					{% if croisiere.tarifCroisiere|length > 0 %}                       

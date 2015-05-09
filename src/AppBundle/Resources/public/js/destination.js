@@ -5,9 +5,10 @@ $(document).ready(function(){
     $('.slider').slick({
         autoplay: 	false,
         centerMode: true,
-        slidesToShow: 3
+        slidesToShow: 5
     });
     $('.slider-side').slick({
-        autoplay: 	true
+        autoplay: 	true,
+        arrows: false
     });
 });

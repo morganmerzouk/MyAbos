@@ -140,26 +140,30 @@
 	{% endif %}
 </div>
 <div class="col-md-4 offrespeciale-contact-col-form">
-	<div class="offrespeciale-contact-col-form-content">
-        <div class="loading">
-            <img class="img-responsive" src='{{ asset("bundles/app/images/general/loader.gif")  }}' />
+	<div class="offrespeciale-contact-col-form-content panel panel-info">
+    	<div class="panel-heading">
+	        <h3 class="panel-title">{{ form_label(form.message) }}</h3>
         </div>
-    	<div class="even">	        
-            {{ form_label(form.message) }}
-            {{ form_errors(form.message) }}
-            {{ form_widget(form.message) }} 
+    	<div class="panel-body panel-body-padding">
+	        <div class="loading">
+	            <img class="img-responsive" src='{{ asset("bundles/app/images/general/loader.gif")  }}' />
+	        </div>
+	    	<div class="even">	        
+	            {{ form_errors(form.message) }}
+	            {{ form_widget(form.message) }} 
+	        </div>
+	    	<div class="even">	        
+	            {{ form_label(form.nom) }}
+	            {{ form_errors(form.nom) }}
+	            {{ form_widget(form.nom) }} 
+	        </div>
+	    	<div class="even">	        
+	            {{ form_label(form.email) }}
+	            {{ form_errors(form.email) }}
+	            {{ form_widget(form.email) }} 
+	        </div>
+	        {{ form_rest(form) }}
         </div>
-    	<div class="even">	        
-            {{ form_label(form.nom) }}
-            {{ form_errors(form.nom) }}
-            {{ form_widget(form.nom) }} 
-        </div>
-    	<div class="even">	        
-            {{ form_label(form.email) }}
-            {{ form_errors(form.email) }}
-            {{ form_widget(form.email) }} 
-        </div>
-        {{ form_rest(form) }}
     </div>
     <div class="alert alert-success btn-sent" role="alert">{{'message_sent'|trans}}...</div>
 	<button type="submit" class="btn-send center-block btn btn-warning">{{'send_to_skipper'|trans}}</button>

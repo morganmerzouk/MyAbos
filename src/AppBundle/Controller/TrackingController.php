@@ -11,7 +11,7 @@ class TrackingController extends Controller
 {
 
     /**
-     * @Route("/track.gif")
+     * @Route("/track.gif?id={id}", requirements={"id" = "\d+"}, name="trackMail")
      */
     public function emailAction(Request $request)
     {

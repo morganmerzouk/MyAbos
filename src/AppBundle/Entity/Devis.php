@@ -107,6 +107,23 @@ class Devis
     protected $readAt;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $actif = true;
+
+    protected $mails;
+
+    public function addMails($mail)
+    {
+        $this->mails[] = $mail;
+    }
+
+    public function getMails()
+    {
+        return $this->mails;
+    }
+
+    /**
      * Set id
      *
      * @param string $id            
@@ -126,12 +143,6 @@ class Devis
     public function getId()
     {
         return $this->id;
-    }
-
-    /* hack */
-    public function __call($method, $arguments)
-    {
-        return $this->proxyCurrentLocaleTranslation($method, $arguments);
     }
 
     /**
@@ -523,5 +534,28 @@ class Devis
     public function getReadAt()
     {
         return $this->readAt;
+    }
+
+    /**
+     * Set actif
+     *
+     * @param boolean $actif            
+     * @return Devis
+     */
+    public function setActif($actif)
+    {
+        $this->actif = $actif;
+        
+        return $this;
+    }
+
+    /**
+     * Get actif
+     *
+     * @return boolean
+     */
+    public function getActif()
+    {
+        return $this->actif;
     }
 }

@@ -450,7 +450,7 @@ class Skipper
         $this->uploadImage($this->avatarFile, "setAvatar");
     }
 
-    public function uploadImage($file, $fctName, $width, $height)
+    public function uploadImage($file, $fctName)
     {
         if (null === $file) {
             return;

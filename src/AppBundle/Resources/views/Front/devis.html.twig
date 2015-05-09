@@ -1,2 +1,6 @@
+Bonjour {{ skipper.name }},<br />
+
+Vous avez recu une demande de devis de la part de {{ devis.nom }}: <br /><br />
+
 {{ devis.message }}
-<img src="{{ app.request.host }}/track.gif?id={{ id }}" />
+<img src="{{ app.request.host }}:8000{{ path('trackMail', {'id': id }) }}" />

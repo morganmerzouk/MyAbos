@@ -1,6 +1,6 @@
-<div class="pull-left">
+<div class="pull-left menu">
     <a href="{{ path('homepage') }}" class="btn nav-accueil {% if route starts with 'homepage' %}active{% endif %}">{{'home'|trans}}</a>
-    <a href="{{ path('offresspeciales') }}" class="btn nav-offres {% if route starts with 'offrespeciale' or route starts with 'offrespeciales' %}active{% endif %}">{{'offres_speciales'|trans}}</a>
+    <a href="{{ path('offresspeciales') }}" class="btn nav-offres {% if route starts with 'offrespeciale' or route starts with 'offresspeciales' %}active{% endif %}">{{'offres_speciales'|trans}}</a>
     <div class="btn-group">
     	<button type="button" id="btn-destination" data-toggle="dropdown" class="btn dropdown-toggle  {% if route starts with 'destination'%}active{% endif %}">
     		{{'home_destinations'|trans}}
