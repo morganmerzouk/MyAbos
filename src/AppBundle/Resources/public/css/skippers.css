@@ -5,7 +5,7 @@
 .slider .slick-prev:before,
 .slider .slick-next:before {font-size: 24px; background: white; opacity: 1; color: black; border-radius: 30px;}
 h1 {background: url("../images/menu/icones/icon-equipages.png") no-repeat 5px 5px #5bc0de; font-size: 1.2em; padding: 10px 10px 10px 35px;margin: 0 0 10px 0;color: white;}
-
+.panel-info .panel-body-padding { padding: 1px;}
 .skipper p { text-align:justify; font-size:0.9em;}
 .block-croisiere { float: right; width: 30%; border: 1px solid black; padding: 10px;text-align:center;margin-top:10px; }
 .block-croisiere .row { margin: 10px; text-align:left;}
@@ -22,6 +22,7 @@ h1 {background: url("../images/menu/icones/icon-equipages.png") no-repeat 5px 5p
 
 .fade-caption { opacity: 0; text-align: left; padding: 15px;}
 .caption { background-color: rgba(0,0,0,0.8);
+	height: 170px;
   position: absolute;
 	left: 0;
   color: #fff;
@@ -78,9 +79,9 @@ td.libelleLegend { padding-left: 5px;}
 .boat-spec-content.multiline {border: 0;line-height: normal; padding: 5px;}
 
 .col-fiche-bateau{ margin-top: 10px;padding:0;}
-.col-fiche-bateau .block-boat-spec { overflow: auto;  margin: 0px 10px;}
-.col-fiche-bateau .boat-spec-content { background: white; color: black; }
-.col-fiche-bateau img {width:50px;padding: 5px;border-right: 2px solid white;margin-right:10px;}
+.col-fiche-bateau .block-boat-spec { overflow: auto; margin: 0px; border: 1px solid white; background: #d9edf7; color: black; border-radius: 4px;}
+.boat-spec-content { border: 0; line-height: 50px;}
+.col-fiche-bateau img { background: #d9edf7; padding: 5px; border-right: 2px solid white; margin-right: 10px; border-radius: 4px;}
 .col-fiche-bateau h3 {background: #5bc0de; font-size: 1.1em; padding: 10px; margin: 0;color: white;}
 
 .btn-contact {margin-bottom: 10px;}

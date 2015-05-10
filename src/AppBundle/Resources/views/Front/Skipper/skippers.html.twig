@@ -21,7 +21,7 @@
 		    	<div class="panel-body">
 			    	<a class="skipper" href="{{ path('skipper', { 'id': skipper.id }) }}">
 			            <span class="caption fade-caption">
-							<p>{{ skipper.description|trans|striptags|slice(0,150) ~ '...' }}</p>
+							<p>{{ skipper.description|trans|striptags|slice(0,250) ~ '...' }}</p>
 						</span>
 			        	<img class="img-responsive img-thumbnail center-block" src="{{ skipper.avatarWebPath }}" alt="photo {{ skipper.name }}" />
 		        	</a>

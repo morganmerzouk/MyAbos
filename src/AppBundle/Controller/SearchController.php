@@ -60,9 +60,7 @@ class SearchController extends Controller
             $data = $form->getData();
             
             $session = $this->getRequest()->getSession();
-            $session->set('dateDepart', $data['dateDepart']);
-            $session->set('dateRetour', $data['dateRetour']);
-            $session->set('prestation', $data['prestation']);
+            $session->set('date', $data['date']);
             $session->set('destination', $data['destination']);
             $session->set('nbPassager', $data['nbPassager']);
             
