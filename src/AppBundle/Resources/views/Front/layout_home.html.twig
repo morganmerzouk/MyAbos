@@ -42,7 +42,7 @@
     <body>
     	<div class="container-home">
     		<div class="container-header">
-        		{% include "AppBundle:Front:header.html.twig" %}
+        		{% include "AppBundle:Front:header.html.twig" with {'route': app.request.get('_route') }  %}
         	</div>
 	        <div class="container-body clearfix">
 			    <div class="container-search">

@@ -8,6 +8,8 @@ use AppBundle\Form\OffreSpecialeContactType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Devis;
+use Cmfcmf\OpenWeatherMap;
+use Cmfcmf\OpenWeatherMap\Exception as OWMException;
 
 class OffreSpecialeController extends Controller
 {
@@ -160,10 +162,33 @@ class OffreSpecialeController extends Controller
             ->getEntityManager(), $this->getRequest()
             ->getLocale()));
         
+        $units = $locale == "en" ? 'imperial' : 'metric';
+        $owm = new OpenWeatherMap();
+        
+        $weather = null;
+        try {
+            $weather = $owm->getWeatherForecast($offreSpeciale[0]->getDestination()
+                ->getName(), $units, $locale, '', '10');
+        } catch (OWMException $e) {} catch (\Exception $e) {}
+        
+        // API Flickr
+        $url = $this->container->getParameter('flickr_url') . '&lat=' . $offreSpeciale[0]->getDestination()->getLatitude() . '&lon=' . $offreSpeciale[0]->getDestination()->getLongitude();
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($curl);
+        curl_close($curl);
+        
+        $media = new \SimpleXMLElement($response);
+        
         return $this->render('AppBundle:Front:OffreSpeciale/offrespeciale.html.twig', array(
             'offreSpeciale' => isset($offreSpeciale[0]) ? $offreSpeciale[0] : null,
             'skipper' => isset($offreSpeciale[0]) ? $offreSpeciale[0]->getSkipper() : null,
             'boat' => isset($offreSpeciale[0]) ? $offreSpeciale[0]->getBateau() : null,
+            'destination' => isset($offreSpeciale[0]) ? $offreSpeciale[0]->getDestination() : null,
+            'weathers' => $weather,
+            'media' => $media->children()
+                ->children(),
             'inclusprixavitaillement' => $offreSpeciale[0]->getBateau()
                 ->getInclusPrixAvitaillement(),
             'inclusprixequipage' => $offreSpeciale[0]->getBateau()
