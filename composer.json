@@ -1,5 +1,5 @@
 {
-  "name" : "symfony/framework-standard-edition",
+  "name" : "kitesurfeo",
   "description" : "The \"Symfony Standard Edition\" distribution",
   "require" : {
     "php" : ">=5.3.3",
@@ -28,9 +28,9 @@
     "coresphere/console-bundle" : "dev-master",
     "hautelook/alice-bundle" : "0.2.*",
     "helios-ag/fm-elfinder-bundle" : "~2.3.0",
-    "sonata-project/seo-bundle": "~2.0",
-    "ahmedsamy/hype-mailchimp-bundle": "dev-master",
-    "cmfcmf/openweathermap-php-api": "~2.0"
+    "sonata-project/seo-bundle" : "~2.0",
+    "ahmedsamy/hype-mailchimp-bundle" : "dev-master",
+    "cmfcmf/openweathermap-php-api" : "~2.0"
   },
   "scripts" : {
     "post-install-cmd" : [ "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters", "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap", "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache", "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets", "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile" ],
@@ -55,6 +55,6 @@
   "config" : {
     "bin-dir" : "bin"
   },
-  "license" : "MIT",
-  "type" : "project"
+  "type" : "project",
+  "license" : "MIT"
 }

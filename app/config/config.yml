@@ -159,7 +159,7 @@ sonata_admin:
             ADMIN:    [MASTER]
         admin_permissions: [CREATE, LIST, DELETE, UNDELETE, EXPORT, OPERATOR, MASTER]
         object_permissions: [VIEW, EDIT, DELETE, UNDELETE, OPERATOR, MASTER, OWNER]
-    title:      Kitesurfari
+    title:      Kitesurfeo
     templates:
         # default global templates
         layout:  AppBundle:Admin:standard_layout.html.twig
@@ -231,7 +231,7 @@ sonata_seo:
 
                 # Open Graph information
                 # see http://developers.facebook.com/docs/opengraphprotocol/#types or http://ogp.me/
-                'og:site_name': Kitesurfari
+                'og:site_name': Kitesurfeo
                 'og:description': Kitesurfing cruise in the caribbean
             http-equiv:
                 'Content-Type':         text/html; charset=utf-8
