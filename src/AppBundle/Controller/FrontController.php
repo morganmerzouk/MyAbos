@@ -101,6 +101,19 @@ class FrontController extends Controller
     }
 
     /**
+     * @Route("/faq", name="faq")
+     */
+    public function faqAction()
+    {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("faq_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("faq_meta_description"));
+        return $this->render('AppBundle:Front:faq.html.twig');
+    }
+
+    /**
      * @Route("/newsletter_subscribe", name="newsletter_subscribe")
      */
     public function newsletterAction()

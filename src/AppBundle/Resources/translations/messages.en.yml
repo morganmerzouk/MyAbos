@@ -34,6 +34,8 @@ about_weather_meta_keywords:
 about_weather_meta_description: 
 links_meta_keywords: 
 links_meta_description: 
+faq_meta_keywords:
+faq_meta_description:
 
 toptitle: Kitesurfari SXM: Kite cruise network in the Caribbean
 home_title: Book your cruise to kite<br />the Caribbean!
@@ -246,3 +248,13 @@ about_weather_temperature: Temperature
 about_weather_wind: Winds
 about_weather_pressure: Sea level pressure
 about_weather_clouds: Clouds
+
+faq: FAQ
+faq_title_1: I don't find any offer that match my criterias.
+faq_1: Envoyez nous un email en précisant votre requête, nous l'étudierons au cas par cas. Un système d'alerte est en cours de développement.
+faq_title_2: I don't understand the booking system.
+faq_2: Kitesurfeo est un système de mise en contact entre skippers et clients. Vous entrez donc directement en contact avec nos skippers par email afin de rgler les derniers détails. Pour le reglement, chaque skipper procède à sa façon.
+faq_title_3: I'd like to list my boat on your website
+faq_3: Nos sommmes constamment en recherche de nouveaux skippers pour étoffer nos offres, veuillez vous rapprocher de notre équipe qui vous indiquera la marche à suivre.
+faq_title_4: Some infos are wrong.
+faq_4: Les spots de Kite etles conditions climatiques évoluent rapidement ce que rend la collecte d'information compliquée, nous en sommes désolé. Envoyez nous un email et nous corrigerons avec plaisir.
