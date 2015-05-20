@@ -189,9 +189,11 @@ class BateauController extends Controller
             ->getOneOrNullResult();
         
         $portDepart = null;
-        foreach ($croisiere2->getItineraireCroisiere() as $itineraireCroisiere) {
-            if ($itineraireCroisiere->getParDefaut() == 1) {
-                $portDepart = $itineraireCroisiere->getItineraire()->getPortDepart();
+        if ($croisiere2 != null) {
+            foreach ($croisiere2->getItineraireCroisiere() as $itineraireCroisiere) {
+                if ($itineraireCroisiere->getParDefaut() == 1) {
+                    $portDepart = $itineraireCroisiere->getItineraire()->getPortDepart();
+                }
             }
         }
         

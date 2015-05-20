@@ -149,6 +149,7 @@ form_sejour_nom: Votre nom
 form_sejour_email: Votre email
 modify: Modifier
 send_to_skipper: Envoyer au skipper
+send: Envoyer
 devis_option_wanted: Options souhaitées non inclues dans le devis:
 devis_option: Options non inclues dans le devis:
 devis_ok: Votre demande a été correctement envoyée!
@@ -263,3 +264,5 @@ faq_title_3: Je souhaiterai proposer mes services sur notre site.
 faq_3: Nos sommmes constammenten recherche de nouveaux skippers pour étoffer nos offres, veuillez vous rapprocher de notre équipe qui vous indiquera la marche à suivre.
 faq_title_4: Certaines informations sont obsolètes ou erronées.
 faq_4: Les spots de Kite etles conditions climatiques évoluent rapidement ce que rend la collecte d'information compliquée, nous en sommes désolé. Envoyez nous un email et nous corrigerons avec plaisir.
+
+contact_intro: Une question, une demande ou juste une petite envie de dire bonjour! N'héstiez pas à nous contacter et nous nous ferons un plaisir de vous répondre.

@@ -9,5 +9,21 @@
 {% block title %}{{'toptitle'|trans}} - {{'sitemap'|trans}}{% endblock %}
 
 {% block content %}
-    <h1>{{'sitemap'|trans}}</h1>
+    <h1>{{'sitemap'|trans}}</h1> 
+    <h2><a href="{{ path('offresspeciales') }}">{{'offres_speciales'|trans}}</a></h2>
+    <p>
+    	{% for offre in offresSpeciales %}{% if loop.index != 1 %} | {% endif %}<a href="{{ path('offrespeciale', {'id': offre.id}) }}">{{ offre.name }}</a>{% endfor %}
+    </p>   
+    <h2><a href="{{ path('destinations') }}">{{'destinations'|trans}}</a></h2>
+    <p>
+    	{% for destination in destinations %}{% if loop.index != 1 %} | {% endif %}<a href="{{ path('destination', {'id': destination.id}) }}">{{ destination.name }}</a>{% endfor %}
+    </p>
+    <h2><a href="{{ path('skippers') }}">{{'home_equipages'|trans}}</a></h2>
+    <p>
+    	{% for skipper in skippers %}{% if loop.index != 1 %} | {% endif %}<a href="{{ path('skipper', {'id': skipper.id}) }}">{{ skipper.name }}</a>{% endfor %}
+    </p>
+    <h2><a href="{{ path('boats') }}">{{'boats'|trans}}</a></h2>
+    <p>
+    	{% for boat in boats %}{% if loop.index != 1 %} | {% endif %}<a href="{{ path('boat', {'id': boat.id}) }}">{{ boat.name }}</a>{% endfor %}
+    </p>
 {% endblock content %}
