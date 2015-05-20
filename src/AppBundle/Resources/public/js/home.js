@@ -9,7 +9,6 @@ $(document).ready(function(){
         fade: 		true
     });
     
-
 	$('video').on('ended', function () {
 		this.load();
 		this.play();

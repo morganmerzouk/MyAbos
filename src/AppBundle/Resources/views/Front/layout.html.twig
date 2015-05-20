@@ -60,5 +60,8 @@
             </div>
         </div><!--/container-->
         {% include "AppBundle:Front:footer.html.twig" %}
+        {% if app.request.locale == 'fr' %}
+        	{% include "AppBundle:Front:cookies.html.twig" %}
+        {% endif %}
     </body>
 </html>

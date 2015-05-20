@@ -54,10 +54,22 @@ class FrontController extends Controller
             ->getQuery()
             ->getResult();
         
+        $skippers = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("AppBundle\Entity\Skipper")
+            ->createQueryBuilder('s')
+            ->select('s, t')
+            ->join('s.translations', 't')
+            ->andWhere('t.locale = :locale')
+            ->setParameter(':locale', $locale)
+            ->getQuery()
+            ->getResult();
+        
         return $this->render('AppBundle:Front:home.html.twig', array(
             'offresSpeciales' => $offresSpeciales,
             'destinations' => $destinations,
-            'boats' => $boats
+            'boats' => $boats,
+            'skippers' => $skippers
         ));
     }
 

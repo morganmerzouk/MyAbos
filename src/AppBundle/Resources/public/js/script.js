@@ -5,6 +5,11 @@ $(document).ready(function() {
 	    $(".input-date-depart").datepicker({ "dateFormat": "dd/mm/yy"});
 	}
 	
+	//On gère le message d'avertissement pour les cookies
+	if(locale == "fr") {
+		getConteneurInfoCookie();
+	}
+	
 	// On simule le click sur le tab si on vient d'une autre page (pour les pages flottes, offres et skipper)
 	var hash = window.location.hash;
 	hash && $('ul.nav a[href="' + hash + '"]').tab('show');
@@ -54,6 +59,23 @@ $(document).ready(function() {
 		}
 	});
 });
+
+function getConteneurInfoCookie(){
+	if(localStorage['BandeauInfoCookie'] != 1){
+		$('#BandeauInfoCookie').css('display', 'block');
+	}else{
+		$('#BandeauInfoCookie').css('display', 'none');
+		$('#ConteneurInfosCookie').css('display', 'none');
+	}
+}
+
+function getInfosCookie(){
+	if($('#ConteneurInfosCookie').css('display') == "none"){
+		$('#ConteneurInfosCookie').css('display', "block");
+	}else{
+		$('#ConteneurInfosCookie').css('display', "none");
+	}
+}
 	
 function validateEmail(email) {
     var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
