@@ -1,8 +1,2 @@
 parameters:
     security.acl.permission.map.class: Sonata\AdminBundle\Security\Acl\Permission\AdminPermission
-my.hostname_listener:
-    class: AppBundle\Controller\LocaleController
-    arguments: ["@request"]
-    scope: request
-    tags:
-        - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }

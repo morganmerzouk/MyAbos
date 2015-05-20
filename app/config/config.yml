@@ -92,6 +92,11 @@ services:
             - { name: doctrine.event_subscriber, connection: default }
         calls:
             - [ setAnnotationReader, [ @annotation_reader ] ]
+    my_locale_listener:
+        class: AppBundle\Listener\LocaleListener
+        tags:
+            -  { name: kernel.event_subscriber }
+        arguments: [@service_container,%locale%]
     sonata.user.admin.group:
       abstract: true
       public: false
@@ -116,7 +121,10 @@ fos_user:
         group_manager: sonata.user.orm.group_manager
     service:
         user_manager: sonata.user.orm.user_manager         
-        
+parameters:
+    domain_locales:
+        www.kitesurfeo.com: en
+        www.kitesurfeo.fr: fr        
 sonata_user:
     security_acl: true
     manager_type: orm # can be orm or mongodb
