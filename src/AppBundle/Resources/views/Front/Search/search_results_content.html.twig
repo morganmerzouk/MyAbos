@@ -28,7 +28,7 @@
         		{{ result.bateau.description|striptags|raw }}
     		{% endif %}
 		</p>
-        <a class="btn btn-sm btn-warning pull-right" href="{{ path('boat', { 'id': result.bateau.id, 'slug': result.bateau.name|slugify }) }}">{{'suite'|trans}}</a>
+        <a class="btn btn-sm btn-warning pull-right" href="{{ path('boat', { 'id': result.bateau.id, 'slug': result.bateau.name|slugify  }) }}">{{'suite'|trans}}</a>
     </div>
     {% if loop.index0 % 3 == 2 %}
         </div>

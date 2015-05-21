@@ -12,6 +12,7 @@ h1 {background: url("../images/menu/icones/icon-equipages.png") no-repeat 5px 5p
 
 .skipper-contact-step2-loading {display: none; position: absolute; z-index: 1000; width: 25%; height: 20%; top: 40%; left: 33%;padding: 10px; background: black; opacity: 0.8}
 .skipper-contact-step2-loading img {height: 80%;}
+
 /*** Page Skipper ***/
 .skipper-home { background-image: url("../images/menu/icones/icon-accueil.png"); }
 .skipper-boat { background-image: url("../images/menu/icones/icon-flotte.png"); }
@@ -35,7 +36,8 @@ h1 {background: url("../images/menu/icones/icon-equipages.png") no-repeat 5px 5p
   margin: -10px 15px 0 15px;
 }
 .row-skipper {clear:both;}
-.skipper {display: block;height: 150px; }
+.skipper {display: block;height: 160px; }
+.skipper img { max-height: 100%; }
 .skipper:hover .fade-caption, .skipper:hover .scale-caption {
   opacity: 1;
 }

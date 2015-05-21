@@ -22,63 +22,71 @@
 <div class="home-bottom">
 	<h1>{{'home_title'|trans|raw }}</h1>
 	<div class="col-md-4">
-		<div class="panel-offre">
-			<div class="slider">
-				{%  for offreSpeciale in offresSpeciales  %}
-					<div class="slider-item">
-						<div class="panel panel-info description">
-							<div class="panel-heading">
-						        <h3 class="panel-title">
-						        	{{ offreSpeciale.name }}<br />
-						  			{{'departure_date'|trans }} {{ offreSpeciale.dateDebut|date('d/m/Y') }}
-								</h3>
-							</div>
-							<div class="panel-body">
-							  	<img class="img-responsive" src="{{ offreSpeciale.miniatureWebPath }}" />
-							  	<div class="panel-btn">
-							        <div class="pull-left">
-									  	<div class="price btn btn-warning btn-sm  text-center">
-										  	${% if offreSpeciale.tarifHuitPersonnes > 0 %}
-										  		{{ (offreSpeciale.tarifHuitPersonnes/8)|round }}
-									  		 {% elseif offreSpeciale.tarifSeptPersonnes > 0 %}
-									  		 	{{ (offreSpeciale.tarifSeptPersonnes/7)|round }}
-									  		 {% elseif offreSpeciale.tarifSixPersonnes > 0 %}
-									  		 	{{ (offreSpeciale.tarifSixPersonnes/6)|round }}
-									  		 {% elseif offreSpeciale.tarifCinqPersonnes > 0 %}
-									  		 	{{ (offreSpeciale.tarifCinqPersonnes/5)|round }}
-									  		 {% elseif offreSpeciale.tarifQuatrePersonnes > 0 %}
-									  		 	{{ (offreSpeciale.tarifQuatrePersonnes/4)|round }}
-									  		 {% elseif offreSpeciale.tarifTroisPersonnes > 0 %}
-									  		 	{{ (offreSpeciale.tarifTroisPersonnes/3)|round }}
-									  		 {% elseif offreSpeciale.tarifDeuxPersonnes > 0 %}
-									  		 	{{ (offreSpeciale.tarifDeuxPersonnes/2)|round }}
-											 {% endif %}
-									  		  / {{ offreSpeciale.tarifPour|trans }}
-								  		</div>
+		<div class="slider">
+			{%  for offreSpeciale in offresSpeciales  %}
+				<div class="slider-item">
+					<div class="panel panel-info description block-offre">
+						<div class="panel-heading">
+					        <h3 class="panel-title">
+					        	{{ offreSpeciale.name }}<br />
+					  			{{'departure_date'|trans }} {{ offreSpeciale.dateDebut|date('d/m/Y') }}
+							</h3>
+						</div>
+						<div class="panel-body">
+						  	<img class="img-responsive" src="{{ offreSpeciale.miniatureWebPath }}" />
+						  	<div class="panel-btn">
+						        <div class="pull-left">
+								  	<div class="price btn btn-warning btn-sm  text-center">
+									  	${% if offreSpeciale.tarifHuitPersonnes > 0 %}
+									  		{{ (offreSpeciale.tarifHuitPersonnes/8)|round }}
+								  		 {% elseif offreSpeciale.tarifSeptPersonnes > 0 %}
+								  		 	{{ (offreSpeciale.tarifSeptPersonnes/7)|round }}
+								  		 {% elseif offreSpeciale.tarifSixPersonnes > 0 %}
+								  		 	{{ (offreSpeciale.tarifSixPersonnes/6)|round }}
+								  		 {% elseif offreSpeciale.tarifCinqPersonnes > 0 %}
+								  		 	{{ (offreSpeciale.tarifCinqPersonnes/5)|round }}
+								  		 {% elseif offreSpeciale.tarifQuatrePersonnes > 0 %}
+								  		 	{{ (offreSpeciale.tarifQuatrePersonnes/4)|round }}
+								  		 {% elseif offreSpeciale.tarifTroisPersonnes > 0 %}
+								  		 	{{ (offreSpeciale.tarifTroisPersonnes/3)|round }}
+								  		 {% elseif offreSpeciale.tarifDeuxPersonnes > 0 %}
+								  		 	{{ (offreSpeciale.tarifDeuxPersonnes/2)|round }}
+										 {% endif %}
+								  		  / {{ offreSpeciale.tarifPour|trans }}
 							  		</div>
-								  	<a href="{{ path('offrespeciale', { id: offreSpeciale.id, 'slug': offreSpeciale.name|slugify }) }}" class="btn btn-warning btn-sm details pull-right">{{'details'|trans }}</a>
 						  		</div>
-						  		<a href="{{ path('offresspeciales') }}" class="see-all-special-offers pull-right">{{'see_specials_offers'|trans }}</a>
-							</div>
+							  	<a href="{{ path('offrespeciale', { id: offreSpeciale.id, 'slug': offreSpeciale.name|slugify }) }}" class="btn btn-warning btn-sm details pull-right">{{'details'|trans }}</a>
+					  		</div>
+					  		<a href="{{ path('offresspeciales') }}" class="see-all-special-offers pull-right">{{'see_specials_offers'|trans }}</a>
 						</div>
 					</div>
-				{% endfor %}	
-			</div>
+				</div>
+			{% endfor %}	
 		</div>
 	</div>  
 	<div class="col-md-4">
 		<div class="slider">
 			{% for boat in boats %}
 				<div class="slider-item">
-					<div class="panel panel-info">
+					<div class="panel panel-info block-boat">
 						<div class="panel-heading">
 				        	<h3 class="panel-title">{{ 'boats'|trans }}</h3>
 			        	</div>
 			        	<div class="panel-body panel-body-padding">
 							<a href="{{ path('boat', {'id': boat.id, 'slug': boat.name|slugify }) }}">
-							<figure class="text-center">			        		
-			        			<img src="{{ boat.miniatureWebPath }}" class="img img-responsive center-block" />
-				        		<figcaption>{{ boat.name }}</figcaption>
+							<figure class="text-center">
+								{# en test #}	
+									<img src="{{ asset('bundles/app/images/test/icon-catamaran.jpg') }}" class="img img-responsive center-block" />
+				        		{# en prod		        		
+			        				<img src="{{ boat.miniatureWebPath }}" class="img img-responsive center-block" />
+				        		#}
+				        		<figcaption>
+        		        			{# en test #}
+				        				Nom du bateau
+					        		{# en prod
+					            		{{ boat.name }}
+				            		#}
+				        		</figcaption>
 							</figure>
 							</a>
 			        	</div>
@@ -91,15 +99,25 @@
 		<div class="slider">
 			{% for skipper in skippers %}
 				<div class="slider-item">
-					<div class="panel panel-info">
+					<div class="panel panel-info block-skipper">
 						<div class="panel-heading">
 				        	<h3 class="panel-title">{{ 'home_equipages'|trans }}</h3>
 			        	</div>
 			        	<div class="panel-body panel-body-padding">
 							<a href="{{ path('skipper', {'id': skipper.id, 'slug': skipper.name|slugify}) }}">
-							<figure class="text-center">			        		
-			        			<img src="{{ skipper.avatarWebPath }}" class="img img-responsive center-block" />
-				        		<figcaption>{{ skipper.name }}</figcaption>
+							<figure class="text-center">
+			        			{# en test #}	
+			        				<img src="{{ asset('bundles/app/images/test/icon-man.png') }}" class="img img-responsive center-block" alt="photo skipper" />
+				        		{# en prod		        		
+			        				<img src="{{ skipper.avatarWebPath }}" class="img img-responsive center-block" alt="{{ skipper.name }}" />
+				        		#}
+				        		<figcaption>
+				        			{# en test #}
+				        				Nom du skipper
+					        		{# en prod
+					            		{{ skipper.name }}
+				            		#}
+			        			</figcaption>
 							</figure>
 							</a>
 			        	</div>
