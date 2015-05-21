@@ -48,10 +48,6 @@ class OffreSpecialeController extends Controller
     public function offreSpecialeAction($id)
     {
         $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage->addMeta('name', 'keyword', $this->get('translator')
-            ->trans("specialoffer_meta_keywords"))
-            ->addMeta('name', 'description', $this->get('translator')
-            ->trans("specialoffer_meta_description"));
         
         $locale = $this->getRequest()->getLocale();
         
@@ -71,7 +67,8 @@ class OffreSpecialeController extends Controller
             ->getQuery()
             ->getResult(Query::HYDRATE_OBJECT);
         
-        $seoPage->addMeta('name', 'keyword', $offreSpeciale[0]->getName());
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("specialoffer_meta_keywords") . ',' . $offreSpeciale[0]->getName());
         $seoPage->addMeta('name', 'description', substr($offreSpeciale[0]->getDescription(), 0, 255));
         
         $servicePayant = $this->getDoctrine()

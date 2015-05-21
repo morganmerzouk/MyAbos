@@ -45,10 +45,6 @@ class BateauController extends Controller
     public function bateauAction($id)
     {
         $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage->addMeta('name', 'keyword', $this->get('translator')
-            ->trans("fleet_meta_keywords"))
-            ->addMeta('name', 'description', $this->get('translator')
-            ->trans("fleet_meta_description"));
         
         $locale = $this->getRequest()->getLocale();
         
@@ -97,8 +93,9 @@ class BateauController extends Controller
             ->getQuery()
             ->getResult(Query::HYDRATE_OBJECT);
         
-        $seoPage->addMeta('name', 'keyword', $boat->getType() . ' ' . $boat->getName());
-        $seoPage->addMeta('name', 'description', substr($boat->getDescription(), 0, 255));
+        $seoPage->addMeta('name', 'keyword', $boat->getType() . ' ' . $boat->getName() . ',' . $this->get('translator')
+            ->trans("fleet_meta_keywords"));
+        $seoPage->addMeta('name', 'description', substr(strip_tags($boat->getDescription()), 0, 255));
         
         $inclusPrix = $this->getDoctrine()
             ->getManager()

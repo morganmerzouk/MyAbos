@@ -46,10 +46,6 @@ class SkipperController extends Controller
     public function skipperAction($id)
     {
         $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage->addMeta('name', 'keyword', $this->get('translator')
-            ->trans("crew_meta_keywords"))
-            ->addMeta('name', 'description', $this->get('translator')
-            ->trans("crew_meta_description"));
         
         $locale = $this->getRequest()->getLocale();
         
@@ -96,8 +92,9 @@ class SkipperController extends Controller
             ->getQuery()
             ->getResult(Query::HYDRATE_OBJECT);
         
-        $seoPage->addMeta('name', 'keyword', $skipper->getName());
-        $seoPage->addMeta('name', 'description', substr($skipper->getDescription(), 0, 255));
+        $seoPage->addMeta('name', 'keyword', $skipper->getName() . ',' . $this->get('translator')
+            ->trans("crew_meta_keywords"));
+        $seoPage->addMeta('name', 'description', substr(strip_tags($skipper->getDescription()), 0, 255));
         
         $croisiere2 = $this->getDoctrine()
             ->getManager()

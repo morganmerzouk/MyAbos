@@ -1,29 +1,29 @@
-home_meta_keywords: Kitesurf, cruise, fleet, skipper, boat, special offer, caribbean
-home_meta_description: Kite cruise network in the Caribbean, book online and get your estimate, check out the fleet and their skippers
+home_meta_keywords: Kitesurf, cruise, fleet, skipper, boat, special offers, caribbean
+home_meta_description: Kite cruise network in the Caribbean, book online and get your estimate, check out the destinations, the fleet and their skippers
 sitemap_meta_keywords: Sitemap
 sitemap_meta_description: Sitemap of the site
 legals_meta_keywords: Terms of use
 legals_meta_description: Terms of use
+faq_meta_keywords: F.A.Q
+faq_meta_description: Frequently Asked Questions
 contact_meta_keywords: Contact
 contact_meta_description: Contact
-specialoffers_meta_keywords: 
-specialoffers_meta_description: 
-specialoffer_meta_keywords: 
-specialoffer_meta_description: 
+specialoffers_meta_keywords: Special offers, deal, kitesurf, cruise, caribbean
+specialoffers_meta_description: Special offers and deal for a kitesurfing cruise in the Caribbean
+specialoffer_meta_keywords: Special offer, kitesurf cruise, caribbean, price 
 services_meta_keywords: 
 services_meta_description: 
 service_meta_keywords: 
 service_meta_description: 
-destinations_meta_keywords: 
-destinations_meta_description: 
-destination_meta_keywords: 
-destination_meta_description: 
-fleets_meta_keywords: 
-fleets_meta_description: 
-crews_meta_keywords: 
-crews_meta_description: 
-crew_meta_keywords: 
-crew_meta_description: 
+destinations_meta_keywords: Destinations, kite, cruise, caribbean
+destinations_meta_description: All the destinations available in the Caribbean for the best kite cruise
+destination_meta_keywords: kite, cruise, caribbean, weather condition
+fleets_meta_keywords: Boats, catamaran, monohull, yacht, sailboat, cruise, caribbean
+fleets_meta_description: Find the perfect boat for your kite cruise in the caribbean. Catamarans or monohull, check the amenities, the different options and discover the technical details (length, width, motor, cabins ...)   
+fleet_meta_keywords: Price, technical details, contact, destination, crew, availability
+crews_meta_keywords: Skipper, crew, certified, diploma, professionnal, kite, kitesurf, cruise, caribbean, 
+crews_meta_description: Check out our team of skipper and the crew that is going to lead your kite cruise across the Caribbean. They are all professional and certified skipper.
+crew_meta_keywords: Skipper, certified, professional, caribbean, availability, price, contact
 about_meta_keywords: 
 about_meta_description: 
 about_cruise_meta_keywords: 
@@ -34,8 +34,6 @@ about_weather_meta_keywords:
 about_weather_meta_description: 
 links_meta_keywords: 
 links_meta_description: 
-faq_meta_keywords:
-faq_meta_description:
 
 toptitle: Kitesurfeo: Kite cruise network in the Caribbean
 home_title: Book your cruise to kite the Caribbean!
@@ -195,7 +193,7 @@ cal_sun: "Sun."
 contact: Contact
 cruise_to: Cruise to
 destinations: Destinations
-destinations_intro: Destination for a kite surfing cruise. The caribbean offer ideal conditions for kitesurfing 10 months per year. This heaven like islands offer a high diversities of identities, culture as well as unique (and for many of them world class) kiteboarding playground.
+destinations_intro: Destinations for a kite surfing cruise. The Caribbeans offers ideal conditions for kitesurfing 10 months per year. This heaven like islands offer a high diversities of identities, culture as well as unique (and for many of them world class) kiteboarding playground.
 Weather: Weather Forecast
 wind_speed: Wind speed
 wind_direction: Wind direction

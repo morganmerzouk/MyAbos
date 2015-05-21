@@ -15,10 +15,6 @@ class DestinationController extends Controller
     public function indexAction()
     {
         $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage->addMeta('name', 'keyword', $this->get('translator')
-            ->trans("destinations_meta_keywords"))
-            ->addMeta('name', 'description', $this->get('translator')
-            ->trans("destinations_meta_description"));
         
         $locale = $this->getRequest()->getLocale();
         
@@ -32,6 +28,15 @@ class DestinationController extends Controller
             ->setParameter(':locale', $locale)
             ->getQuery()
             ->getResult();
+        $seo = "";
+        foreach ($destinations as $destination) {
+            $seo .= ',' . $destination->getName();
+        }
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("destinations_meta_keywords") . $seo)
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("destinations_meta_description"));
+        
         return $this->render('AppBundle:Front:destinations.html.twig', array(
             'destinations' => $destinations
         ));
@@ -43,11 +48,6 @@ class DestinationController extends Controller
     public function destinationAction($id)
     {
         $seoPage = $this->container->get('sonata.seo.page');
-        $seoPage->addMeta('name', 'keyword', $this->get('translator')
-            ->trans("destination_meta_keywords"))
-            ->addMeta('name', 'description', $this->get('translator')
-            ->trans("destination_meta_description"));
-        
         $locale = $this->getRequest()->getLocale();
         
         $destination = $this->getDoctrine()
@@ -63,8 +63,9 @@ class DestinationController extends Controller
             ->getQuery()
             ->getSingleResult();
         
-        $seoPage->addMeta('name', 'keyword', $destination->getName());
-        $seoPage->addMeta('name', 'description', substr($destination->getDescription(), 0, 255));
+        $seoPage->addMeta('name', 'keyword', $destination->getName() . ',' . $this->get('translator')
+            ->trans("destination_meta_keywords"));
+        $seoPage->addMeta('name', 'description', substr(strip_tags($destination->getDescription()), 0, 255));
         
         $offresSpeciales = $this->getDoctrine()
             ->getManager()
