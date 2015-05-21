@@ -30,7 +30,9 @@
     "helios-ag/fm-elfinder-bundle" : "~2.3.0",
     "sonata-project/seo-bundle" : "~2.0",
     "ahmedsamy/hype-mailchimp-bundle" : "dev-master",
-    "cmfcmf/openweathermap-php-api" : "~2.0"
+    "cmfcmf/openweathermap-php-api" : "~2.0",
+    "jms/i18n-routing-bundle" : "dev-master",
+    "cocur/slugify" : "v1.1"
   },
   "scripts" : {
     "post-install-cmd" : [ "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters", "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap", "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache", "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets", "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile" ],
@@ -55,6 +57,6 @@
   "config" : {
     "bin-dir" : "bin"
   },
-  "type" : "project",
-  "license" : "MIT"
+  "license" : "MIT",
+  "type" : "project"
 }

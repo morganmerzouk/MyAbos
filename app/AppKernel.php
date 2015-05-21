@@ -35,6 +35,8 @@ class AppKernel extends Kernel
             new FM\ElfinderBundle\FMElfinderBundle(),
             new Sonata\SeoBundle\SonataSeoBundle(),
             new Hype\MailchimpBundle\HypeMailchimpBundle(),
+            new JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
+            new Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle(),
             new AppBundle\AppBundle()
         );
         

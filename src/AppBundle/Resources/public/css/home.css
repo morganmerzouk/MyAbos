@@ -3,15 +3,15 @@ video, object {left:0;top:0;margin:0;padding:0;width:100%;position: absolute; z-
 .container-body, .container-home {margin: 0;padding: 0;}
 .container-home .container-body {background-color: transparent;}
 .panel-info>.panel-heading { background: #39b3d7; color: white;border: 1px solid #269abc; }
-h1 {background: #EFF1F2; border-top: 1px solid #B3B3B3; border-bottom: 1px solid #B3B3B3; text-align: center; clear: both; color: white; font-size: 3em;text-shadow: 0 0 3px black; margin: 10px 0; padding: 10px; box-shadow: 0px 0px 30px black;}
+h1 {background: #5bc0de; border-top: 1px solid #B3B3B3; border-bottom: 1px solid #B3B3B3; text-align: center; clear: both; color: white; font-size: 3em;text-shadow: 0 0 3px black; margin: 10px 0; padding: 10px; box-shadow: 0px 0px 30px black;}
 
-.col-md-8 { margin-top: 10px; }
-.col-md-8 h3 { position: absolute; right: 10px; color: white; font-size: 2em;}
+.slider-destination { margin-top: 10px; }
+.slider-destination h3 { position: absolute; right: 10px; color: white; font-size: 2em;}
 .btn-more { position: absolute; top: -50px; }
 
 .newsletter-email { width: 70%;font-size: 0.9em;}
 .container-home, .container-body { overflow: initial;}
-.container-body .panel-offre { box-shadow: 0px 0px 30px black; margin-top: 10px; border-radius: 5px; }
+.container-body .panel-offre { box-shadow: 0px 0px 30px black; border-radius: 5px; }
 
 .slider .slick-prev {left: 10px;}
 .slider .slick-next {right: 10px;}

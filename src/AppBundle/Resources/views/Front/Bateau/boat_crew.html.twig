@@ -6,7 +6,7 @@
 		</div>
 	    {% if offrespeciale.bateau is defined %}
 		 	<div class="col-md-4">
-                {% if skipper is not null %}<div class="text-center"><a href="{{ path('skipper', { 'id': skipper.id }) }}#contact" class="btn btn-warning">{{'contact_skipper'|trans}}</a></div>{% endif %}    
+                {% if skipper is not null %}<div class="text-center"><a href="{{ path('skipper', { 'id': skipper.id, 'slug': skipper.name|slugify }) }}#contact" class="btn btn-warning">{{'contact_skipper'|trans}}</a></div>{% endif %}    
 		        <div class="boat-block-special-offer panel panel-info">
 			    	<div class="panel-heading">
 			    		<h2 class="offreName panel-title">{{'special_offer_with'|trans }} {{ skipper.name }}</h2>
@@ -35,7 +35,7 @@
 				             {% endif %}
 				             € / ({{ offrespeciale.tarifPour|trans}})
 				        </span>
-				        <a class="btn btn-sm btn-warning pull-right" href="{{ path('offrespeciale', { 'id': offrespeciale.id }) }}">{{'suite'|trans}}</a>
+				        <a class="btn btn-sm btn-warning pull-right" href="{{ path('offrespeciale', { 'id': offrespeciale.id, 'slug': offrespeciale.name|slugify }) }}">{{'suite'|trans}}</a>
 		    		</div>
 		    	</div>
 		    </div>

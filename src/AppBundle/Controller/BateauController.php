@@ -40,7 +40,7 @@ class BateauController extends Controller
     }
 
     /**
-     * @Route("/bateau/{id}", requirements={"id" = "\d+"}, name="boat")
+     * @Route("/bateau/{id}/{slug}", requirements={"id" = "\d+"}, name="boat")
      */
     public function bateauAction($id)
     {

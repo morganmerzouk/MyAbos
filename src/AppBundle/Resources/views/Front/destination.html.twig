@@ -52,9 +52,9 @@
 				            <div class="panel-body">
 				                <img class="img-responsive" src="{{ offreSpeciale.miniatureWebPath }}" />
 				                {{'From'|trans }} {{ offreSpeciale.dateDebut|date(format) }} {{'to'|trans }} {{ offreSpeciale.dateFin|date(format) }}<br />
-				                <a href="{{ path('offrespeciale', { 'id': offreSpeciale.id }) }}#contact" class="pull-right btn btn-warning">{{'more'|trans}}</a>
-				                {{'Boat'|trans }}: <a href="{{ path('boat', { 'id': offreSpeciale.bateau.id }) }}">{{ offreSpeciale.bateau.name }}</a>
-				                Skipper: <a href="{{ path('skipper', { 'id': offreSpeciale.skipper.id }) }}">{{ offreSpeciale.skipper.name }}</a>
+				                <a href="{{ path('offrespeciale', { 'id': offreSpeciale.id, 'slug': offreSpeciale.name|slugify }) }}#contact" class="pull-right btn btn-warning">{{'more'|trans}}</a>
+				                {{'Boat'|trans }}: <a href="{{ path('boat', { 'id': offreSpeciale.bateau.id, 'slug': offreSpeciale.bateau.name|slugify }) }}">{{ offreSpeciale.bateau.name }}</a>
+				                Skipper: <a href="{{ path('skipper', { 'id': offreSpeciale.skipper.id, 'slug': offreSpeciale.skipper.name|slugify }) }}">{{ offreSpeciale.skipper.name }}</a>
 				            </div>
 				        {% endfor %}
 					</div>

@@ -8,7 +8,6 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 /**
  * @ORM\Entity
- * 
  */
 class DestinationTranslation
 {
@@ -29,25 +28,25 @@ class DestinationTranslation
      * @ORM\Column(type="text", nullable=true)
      */
     protected $infosPratique;
-    
+
     /**
      * @ORM\Column(type="integer")
      */
     protected $translatable_id;
-    
+
     /**
      * Set name
      *
-     * @param string $name
+     * @param string $name            
      * @return Destination
      */
     public function setName($name)
     {
         $this->name = $name;
-    
+        
         return $this;
     }
-    
+
     /**
      * Get name
      *
@@ -57,11 +56,11 @@ class DestinationTranslation
     {
         return $this->name;
     }
-    
+
     /**
      * Set description
      *
-     * @param string $description
+     * @param string $description            
      * @return Destination
      */
     public function setDescription($description)
@@ -70,7 +69,7 @@ class DestinationTranslation
         
         return $this;
     }
-    
+
     /**
      * Get description
      *
@@ -80,11 +79,11 @@ class DestinationTranslation
     {
         return $this->description;
     }
-    
-        /**
+
+    /**
      * Set description
      *
-     * @param string $infosPratique
+     * @param string $infosPratique            
      * @return Destination
      */
     public function setInfosPratique($infosPratique)
@@ -93,7 +92,7 @@ class DestinationTranslation
         
         return $this;
     }
-    
+
     /**
      * Get infosPratique
      *
@@ -107,16 +106,16 @@ class DestinationTranslation
     /**
      * Set translatable_id
      *
-     * @param string $translatable_id
+     * @param string $translatable_id            
      * @return PortDepartTranslation
      */
     public function setTranslatableId($translatable_id)
     {
-        $this->translatable_id= $translatable_id;
-    
+        $this->translatable_id = $translatable_id;
+        
         return $this;
     }
-    
+
     /**
      * Get name
      *

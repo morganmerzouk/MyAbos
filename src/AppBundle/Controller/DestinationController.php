@@ -38,7 +38,7 @@ class DestinationController extends Controller
     }
 
     /**
-     * @Route("/destination/{id}", requirements={"id" = "\d+"}, name="destination")
+     * @Route("/destination/{id}/{slug}", requirements={"id" = "\d+"}, name="destination")
      */
     public function destinationAction($id)
     {

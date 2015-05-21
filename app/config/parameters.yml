@@ -1,0 +1,18 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: kitesurfeo
+    database_user: root
+    database_password: null
+    mailer_transport: gmail
+    mailer_host: localhost
+    mailer_user: kitesurfeo
+    mailer_password: DdyPCX7Q
+    locale: en
+    secret: ade2e74ac2b9d749915683d7868851045
+
+    contact_email: 'contact@kitesurfeo.com'
+    
+    flickr_url: 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=58e8d0967185ad341927971d90c7592e&media=photos&sort=relevance'

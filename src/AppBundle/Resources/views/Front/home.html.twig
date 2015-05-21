@@ -6,11 +6,11 @@
   <source src="{{ asset('bundles/app/media/sunset_waves.mp4') }}" type="video/mp4">
 </video>
 <div class="clearfix">	
-	<div class="col-md-8">
+	<div class="col-md-12">
 		<div class="slider-destination">
 			{% for destination in destinations %}
 				<div class="slider-item">
-	        		<a href="{{ path('destination', {'id': destination.id}) }}">
+	        		<a href="{{ path('destination', {'id': destination.id, 'slug': destination.name|slugify }) }}">
 			        	<h3>{{ destination.name }}</h3>
 	        			<img src="{{ destination.miniatureWebPath }}" class="img img-thumbnail img-responsive" />
 	        		</a>
@@ -18,6 +18,9 @@
 			{% endfor %}
 		</div>
 	</div>
+</div>
+<div class="home-bottom">
+	<h1>{{'home_title'|trans|raw }}</h1>
 	<div class="col-md-4">
 		<div class="panel-offre">
 			<div class="slider">
@@ -53,7 +56,7 @@
 									  		  / {{ offreSpeciale.tarifPour|trans }}
 								  		</div>
 							  		</div>
-								  	<a href="{{ path('offrespeciale', { id: offreSpeciale.id }) }}" class="btn btn-warning btn-sm details pull-right">{{'details'|trans }}</a>
+								  	<a href="{{ path('offrespeciale', { id: offreSpeciale.id, 'slug': offreSpeciale.name|slugify }) }}" class="btn btn-warning btn-sm details pull-right">{{'details'|trans }}</a>
 						  		</div>
 						  		<a href="{{ path('offresspeciales') }}" class="see-all-special-offers pull-right">{{'see_specials_offers'|trans }}</a>
 							</div>
@@ -63,12 +66,6 @@
 			</div>
 		</div>
 	</div>  
-</div>
-<div class="home-bottom">
-	<h1>{{'home_title'|trans|raw }}</h1>
-	<div class="col-md-4">
-		{% include "AppBundle:Front:newsletter.html.twig" %} 
-	</div>
 	<div class="col-md-4">
 		<div class="slider">
 			{% for boat in boats %}
@@ -78,7 +75,7 @@
 				        	<h3 class="panel-title">{{ 'boats'|trans }}</h3>
 			        	</div>
 			        	<div class="panel-body panel-body-padding">
-							<a href="{{ path('boat', {'id': boat.id}) }}">
+							<a href="{{ path('boat', {'id': boat.id, 'slug': boat.name|slugify }) }}">
 							<figure class="text-center">			        		
 			        			<img src="{{ boat.miniatureWebPath }}" class="img img-responsive center-block" />
 				        		<figcaption>{{ boat.name }}</figcaption>
@@ -99,7 +96,7 @@
 				        	<h3 class="panel-title">{{ 'home_equipages'|trans }}</h3>
 			        	</div>
 			        	<div class="panel-body panel-body-padding">
-							<a href="{{ path('skipper', {'id': skipper.id}) }}">
+							<a href="{{ path('skipper', {'id': skipper.id, 'slug': skipper.name|slugify}) }}">
 							<figure class="text-center">			        		
 			        			<img src="{{ skipper.avatarWebPath }}" class="img img-responsive center-block" />
 				        		<figcaption>{{ skipper.name }}</figcaption>
@@ -110,6 +107,9 @@
 				</div>
 			{% endfor %}
 		</div> 
+	</div>
+	<div class="col-md-3">
+		{% include "AppBundle:Front:newsletter.html.twig" %} 
 	</div>
 </div>
 {% endblock content %}

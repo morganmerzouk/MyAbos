@@ -41,7 +41,7 @@ class SkipperController extends Controller
     }
 
     /**
-     * @Route("/skipper/{id}", requirements={"id" = "\d+"}, name="skipper")
+     * @Route("/skipper/{id}/{slug}", requirements={"id" = "\d+"}, name="skipper")
      */
     public function skipperAction($id)
     {

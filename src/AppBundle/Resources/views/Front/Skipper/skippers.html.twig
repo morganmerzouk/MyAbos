@@ -19,7 +19,7 @@
 		    		<h3 class="panel-title text-center">{{ skipper.name }}</h3>
 		    	</div>
 		    	<div class="panel-body">
-			    	<a class="skipper" href="{{ path('skipper', { 'id': skipper.id }) }}">
+			    	<a class="skipper" href="{{ path('skipper', { 'id': skipper.id, 'slug': skipper.name|slugify }) }}">
 			            <span class="caption fade-caption">
 							<p>{{ skipper.description|trans|striptags|slice(0,250) ~ '...' }}</p>
 						</span>

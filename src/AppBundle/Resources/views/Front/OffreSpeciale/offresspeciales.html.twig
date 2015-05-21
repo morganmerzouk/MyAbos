@@ -46,7 +46,7 @@
 			  		 	 {% elseif offreSpeciale.tarifQuatrePersonnes > 0 %}{{ (offreSpeciale.tarifQuatrePersonnes/4)|round }}{% elseif offreSpeciale.tarifTroisPersonnes > 0 %}{{ (offreSpeciale.tarifTroisPersonnes/3)|round }}
 				  		 {% elseif offreSpeciale.tarifDeuxPersonnes > 0 %}{{ (offreSpeciale.tarifDeuxPersonnes/2)|round }}{% endif %}/ {{ offreSpeciale.tarifPour|trans }}
 			  		</div>
-			  		<a href="{{ path('offrespeciale', { id: offreSpeciale.id}) }}" class="btn btn-warning btn-sm pull-right btn-more">{{'infos'|trans }}</a>
+			  		<a href="{{ path('offrespeciale', { id: offreSpeciale.id, 'slug': offreSpeciale.name|slugify }) }}" class="btn btn-warning btn-sm pull-right btn-more">{{'infos'|trans }}</a>
 		  		</div>
 		  	</div>
 	  	</div>

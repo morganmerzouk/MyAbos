@@ -73,7 +73,7 @@
 				            {% for inclus in inclusprixactivite %}<li>{{ inclus.name }}</li>{% endfor %}
 				            {% for inclus in inclusprixcours %}<li>{{ inclus.name }}</li>{% endfor %}
 				        </ul>
-					    <a href="{{ path('skipper', { 'id': skipper.id }) }}#contact" class="btn btn-warning pull-right"">{{'contact_skipper'|trans }}</a>
+					    <a href="{{ path('skipper', { 'id': skipper.id, 'slug': skipper.name|slugify }) }}#contact" class="btn btn-warning pull-right"">{{'contact_skipper'|trans }}</a>
 				    </div>
 			    </div>
 			</div>

@@ -1,5 +1,6 @@
-<a class="col-md-2 logo" href="{{ path('homepage') }}"></a>
-<div class="col-md-10 search">
+
+<div class="search">
+	<a class="logo" href="{{ path('homepage') }}"></a>
 	<form action="{{ path('search_results')}}" method="post" {{ form_enctype(form) }}>
         {{ form_widget(form.destination) }}
 	    

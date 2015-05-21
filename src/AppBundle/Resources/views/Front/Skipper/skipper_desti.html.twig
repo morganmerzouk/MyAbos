@@ -79,7 +79,7 @@
 				        		{{ offrespeciale.bateau.description|striptags|raw }}
 				    		{% endif %}
 						</p>
-				        <a class="btn btn-sm btn-warning pull-right" href="{{ path('offrespeciale', { 'id': offrespeciale.id }) }}">{{'suite'|trans}}</a>
+				        <a class="btn btn-sm btn-warning pull-right" href="{{ path('offrespeciale', { 'id': offrespeciale.id, 'slug': offrespeciale.name|slugify }) }}">{{'suite'|trans}}</a>
 		    		</div>
 		    	</div>
 		    </div>

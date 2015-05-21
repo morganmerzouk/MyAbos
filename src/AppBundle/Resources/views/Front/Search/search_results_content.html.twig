@@ -18,7 +18,7 @@
              € <span class="boat-tarif-pour text-center">({{ result.tarifCroisiere[0].tarifPour|trans}})</span>
         </p>
         
-        <div class="bateaux-icones col-md-4"><img src="{{ asset('('bundles/app/images/icones/boat/icon-boat.png')') }}" /><br />{{result.bateau.type}}</div>
+        <div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/icon-boat.png') }}" /><br />{{result.bateau.type}}</div>
         <div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/icon-cabins.png') }}" /><br />{{result.bateau.nbCabine}} {{'boat_cabine'|trans}}</div>
         {% if (result.bateau.nbCouchage > 0) %}<div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/icon-bed.png') }}" /><br />{{result.bateau.nbCouchage}} {{'boat_bed'|trans}}</div>{% endif %}
         <p class="bateaux-description">

@@ -45,7 +45,7 @@
 		        		{{ croisiere.bateau.description|striptags|raw }}
 		    		{% endif %}
 	    		</p>
-	            <a class="btn btn-sm btn-warning pull-right" href="{{ path('boat', { 'id': croisiere.bateau.id }) }}">{{'suite'|trans}}</a>
+	            <a class="btn btn-sm btn-warning pull-right" href="{{ path('boat', { 'id': croisiere.bateau.id, 'slug': croisiere.bateau.name|slugify }) }}">{{'suite'|trans}}</a>
             </div>
         </div>
         {% if loop.index0 % 3 == 2 %}

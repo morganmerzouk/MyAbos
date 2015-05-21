@@ -254,3 +254,7 @@ hype_mailchimp:
     api_key: e8f5aabe96969269a626ac40623ddff9-us10
     default_list: 8bc398fa0a
     ssl: true #optional configuring curl connection        
+jms_i18n_routing:
+    default_locale: en
+    locales: [en, fr]
+    strategy: custom

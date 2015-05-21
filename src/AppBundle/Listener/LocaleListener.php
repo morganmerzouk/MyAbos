@@ -42,9 +42,6 @@ class LocaleListener implements EventSubscriberInterface
         $request->setLocale($locale);
     }
 
-    /**
-     * @ERROR!!!
-     */
     static public function getSubscribedEvents()
     {
         return array(
@@ -52,7 +49,7 @@ class LocaleListener implements EventSubscriberInterface
             KernelEvents::REQUEST => array(
                 array(
                     'onKernelRequest',
-                    17
+                    1
                 )
             )
         );

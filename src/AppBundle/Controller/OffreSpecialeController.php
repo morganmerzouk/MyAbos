@@ -15,7 +15,7 @@ class OffreSpecialeController extends Controller
 {
 
     /**
-     * @Route("/offresspeciales", name="offresspeciales")
+     * @Route("/offres-speciales", name="offresspeciales")
      */
     public function offresSpecialesAction()
     {
@@ -43,7 +43,7 @@ class OffreSpecialeController extends Controller
     }
 
     /**
-     * @Route("/offrespeciale/{id}", requirements={"id" = "\d+"}, name="offrespeciale")
+     * @Route("/offre-speciale/{id}/{slug}", requirements={"id" = "\d+"}, name="offrespeciale")
      */
     public function offreSpecialeAction($id)
     {
