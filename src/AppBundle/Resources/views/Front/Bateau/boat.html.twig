@@ -5,7 +5,7 @@
     <script src="{{ asset('bundles/app/js/boat/boat_desti.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/app/js/boat/boat_contact.js') }}" type="text/javascript"></script> 
     <script type="text/javascript">
-        var urlBoatContactAjax = "{{ path('boat_contact', {'id': boat.id, 'slug': boat.name|slugify }) }}";
+        var urlBoatContactAjax = "{{ path('boat_contact', {'id': boat.id }) }}";
     </script>
 {% endblock %}
 {% block stylesheets %}

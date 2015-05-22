@@ -1,7 +1,7 @@
 <div class="boat-crew">
     {% if skipper is not null %}
 	    <div class="{% if offrespeciale.bateau is defined %}col-md-8{% else %}col-md-12{% endif %}">
-	    	<h2>Captain {{ skipper.name }}</h2>
+	    	<h2 class="skipper-name">Captain {{ skipper.name }}</h2>
 	    	{{ skipper.description|raw }}
 		</div>
 	    {% if offrespeciale.bateau is defined %}

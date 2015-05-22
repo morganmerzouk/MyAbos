@@ -155,3 +155,15 @@ services:
             - [ setTranslationDomain, [AppBundle]]
             - [ setBaseRouteName, [offrespeciale]]
             - [ setBaseRoutePattern, [offrespeciale]]
+    sonata.admin.devis:
+        class: AppBundle\Admin\DevisAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Devis"}
+        arguments:
+            - ~
+            - AppBundle\Entity\Devis
+            - AppBundle:Devis
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+            - [ setBaseRouteName, [devis]]
+            - [ setBaseRoutePattern, [devis]]

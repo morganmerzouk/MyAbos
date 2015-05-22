@@ -52,12 +52,12 @@ class Devis
     protected $skipper;
 
     /**
-     * @ORM\Column(type="string", length=200, nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      */
     protected $dateDebut;
 
     /**
-     * @ORM\Column(type="string", length=200, nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      */
     protected $dateFin;
 

@@ -8,7 +8,7 @@ croisieres: /cruises
 destination: '/destination/{id}/{slug}'
 destinations: /destinations
 devis_delete: '/estimate_delete/{id}'
-devis_email: '/estimate_email/{id}/{to}/{messageId}'
+devis_email: '/estimate_email/{id}'
 ensavoirplus: /know-more
 ensavoirplus_croisiere: /about/cruise
 ensavoirplus_meteo: /about/weather
@@ -27,7 +27,5 @@ search_result_content: '/search_result_content/{attr}'
 search_results: /search_results
 sitemap: /sitemap
 skipper: '/skipper/{id}/{slug}'
-skipper_contact_step2: '/skipper/{id}/contact/step2/{bateauId}'
-skipper_contact_step3: '/skipper/{id}/contact/step3/'
 skippers: /skippers
 trackMail: '/track.gif?id={id}'

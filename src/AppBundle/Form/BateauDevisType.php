@@ -32,7 +32,7 @@ class BateauDevisType extends AbstractType
             'required' => false,
             'widget' => 'single_text',
             'attr' => array(
-                'class' => 'input-date-depart'
+                'class' => 'input-date-depart-devis'
             ),
             'format' => $formatPattern
         ))
@@ -44,7 +44,7 @@ class BateauDevisType extends AbstractType
             'required' => false,
             'widget' => 'single_text',
             'attr' => array(
-                'class' => 'input-date-retour'
+                'class' => 'input-date-retour-devis'
             ),
             'format' => $formatPattern
         ))

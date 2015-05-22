@@ -2,9 +2,12 @@
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('bundles/app/js/lib/slick.js') }}" type="text/javascript"></script>  
-    <script src="{{ asset('bundles/app/js/boat/boat_contact.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/app/js/skipper/skipper_contact.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/app/js/skipper/skipper_desti.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/app/js/skipper/skipper_price.js') }}" type="text/javascript"></script>  
+    <script type="text/javascript">
+        var urlSkipperContactAjax = "{{ path('skipper_contact', {'id': skipper.id }) }}";
+    </script>
 {% endblock %}
 {% block stylesheets %}
     {{ parent() }}

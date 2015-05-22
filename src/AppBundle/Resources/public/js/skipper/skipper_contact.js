@@ -17,7 +17,7 @@ $(document).ready(function() {
 		$.ajax
 	    ({
 	        type: "POST",
-	        url: urlBoatContactAjax,
+	        url: urlSkipperContactAjax,
 	        data:
             {
                 dateDepart : $(".input-date-depart-devis").val(),
