@@ -1,51 +1,45 @@
 <div class="boat-destination">
     {% set format = app.request.locale == "en" ? 'm/d/Y' : 'd/m/Y' %}
-    {% if portDepart != null %}
-	    <div class="col-md-9 boat-desti">
-	        <div class="boat-desti-block-localisation panel panel-info">
-		        <div class="panel-heading">
-			        <h3 class="boat-desti-localisation panel-title">
-			            {{'boat-desti-localisation-boat'|trans }}
-			        </h3>
-		        </div>
-		        <div class="panel-body">
-		            <img src="{{ portDepart.miniatureWebPath }}" class="img-responsive img-thumbnail pull-right" />
-		            <div>
-		                {{'boat-desti-localisation-boat-label-portdepart'|trans }} {{ portDepart.name }}<br />
-		                {{'boat-desti-localisation-boat-label-destination'|trans }}:
-		                {% if itinerairesCroisiere|length > 0 %}
-		                    <ul>
-		                        {% for itineraireCroisiere in itinerairesCroisiere %}
-		                            <li><a href="#" id="lien-{{itineraireCroisiere.itineraire.id}}">{{ itineraireCroisiere.itineraire.destination }}</a></li>
-		                        {% endfor %}
-		                    </ul>
-		                {% endif %}
-		            </div>
-	            </div>
+    <div class="col-md-12 boat-desti">
+        <div class="boat-desti-block-localisation panel panel-info">
+	        <div class="panel-heading">
+		        <h3 class="boat-desti-localisation panel-title">
+		            {{'boat-desti-itineraries-boat'|trans }}
+		        </h3>
 	        </div>
-	        {% for itineraireCroisiere in itinerairesCroisiere %}
-	        	<div class="panel panel-info">
-		        	<div class="panel-heading cible">
-			            <h3 id="cible-{{itineraireCroisiere.itineraire.id}}" class="panel-title">
-			                {{ itineraireCroisiere.itineraire }}
-			            </h3>
-		            </div>
-		            <div class="boat-desti-itineraire panel-body">
-			            <div class="col-md-9">
-			                <div>
-			                    {{ itineraireCroisiere.itineraire.description|raw }}
-			                </div>
-			                <div>
+	        <div class="panel-body">
+	        	<div>
+	                {{'boat-desti-itineraries-boat-label-destination'|trans }}:
+	                {% if itinerairesCroisiere|length > 0 %}
+	                    <ul>
+	                        {% for itineraireCroisiere in itinerairesCroisiere %}
+	                            <li><a href="#" id="lien-{{itineraireCroisiere.itineraire.id}}">{{ itineraireCroisiere.itineraire.destination }}</a></li>
+	                        {% endfor %}
+	                    </ul>
+	                {% endif %}
+	            </div>
+            </div>
+        </div>
+        {% for itineraireCroisiere in itinerairesCroisiere %}
+        	<div class="panel panel-info">
+	        	<div id="cible-{{itineraireCroisiere.itineraire.id}}" class="panel-heading cible">
+	                {{ itineraireCroisiere.itineraire }}
+	            </div>
+	            <div class="boat-desti-itineraire panel-body">
+	            	<div>
+		                <img class="pull-right img-thumbnails" src="{{ itineraireCroisiere.itineraire.miniatureWebPath }}" />
+		                <div>
+		                    {{ itineraireCroisiere.itineraire.description|raw }}
+		                </div>
+		                <div>
+		                	{% if itineraireCroisiere.dateDebut %}
 			                    {{'boat-desti-date-operation'|trans }} {{ itineraireCroisiere.dateDebut|date(format) }}
 			                    {{'periode_au'|trans }} {{ itineraireCroisiere.dateFin|date(format) }}
-			                </div>
-			            </div>
-			            <div class="col-md-3">
-			                <img src="{{ itineraireCroisiere.itineraire.miniatureWebPath }}" />
-			            </div>
-		            </div>
+		                    {% endif %}
+		                </div>
+	                </div>
 	            </div>
-	        {% endfor %}
-	    </div>
-    {% endif %}
+            </div>
+        {% endfor %}
+    </div>
 </div>

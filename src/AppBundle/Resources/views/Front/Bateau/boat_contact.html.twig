@@ -63,10 +63,10 @@
 	        </div>
         </div>
 	{% endif %}
-	<div class="col-devis col-md-4">
+	<div class="col-devis {% if servicepayant|length > 0 %}col-md-4{% else %}col-md-8{% endif %}">
 		<div class="panel panel-info">
     		<div class="panel-heading">
-	    		<h2 class="panel-title">3 - {{'boat_leave_message'|trans}}</h2>
+	    		<h2 class="panel-title">{% if servicepayant|length > 0 %}3{% else %}2{% endif %} - {{'boat_leave_message'|trans}}</h2>
     		</div>
     		<div class="panel-body panel-message">		    		
 		        <div class="loading">

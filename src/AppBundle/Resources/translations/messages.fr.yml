@@ -125,9 +125,8 @@ boat_jouet: Loisirs
 see_available: Voir les disponibilités
 contact_skipper: Contacter le skipper
 
-boat-desti-localisation-boat: Localisation du bateau
-boat-desti-localisation-boat-label-portdepart: Le port de départ habituel de ce bateau se situe 
-boat-desti-localisation-boat-label-destination: D'ici, les destinations possibles sont
+boat-desti-itineraries-boat: Itinéraires possible avec le bateau
+boat-desti-itineraries-boat-label-destination: Vous avez ici un aperçu global des différents itinéraires envisageables avec ce bateau
 boat-desti-date-operation: Dates d'opération de cet itinéraire: 
 
 special_offer_with: Offres spéciales avec 

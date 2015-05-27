@@ -96,36 +96,6 @@ class SkipperController extends Controller
             ->trans("crew_meta_keywords"));
         $seoPage->addMeta('name', 'description', substr(strip_tags($skipper->getDescription()), 0, 255));
         
-        $croisiere2 = $this->getDoctrine()
-            ->getManager()
-            ->getRepository("AppBundle\Entity\Croisiere")
-            ->createQueryBuilder('c')
-            ->select('c, ic, i, pd, d')
-            ->join('c.itineraireCroisiere', 'ic')
-            ->join('ic.itineraire', 'i')
-            ->join('i.translations', 'it')
-            ->join('i.portDepart', 'pd')
-            ->join('pd.translations', 'pdt')
-            ->join('i.destination', 'd')
-            ->join('d.translations', 'dt')
-            ->where('c.skipper = :id')
-            ->andWhere('it.locale = :locale')
-            ->andWhere('pdt.locale = :locale')
-            ->andWhere('dt.locale = :locale')
-            ->setParameter(':id', $id)
-            ->setParameter(':locale', $locale)
-            ->getQuery()
-            ->getOneOrNullResult();
-        
-        $portDepart = null;
-        if ($croisiere2 != null) {
-            foreach ($croisiere2->getItineraireCroisiere() as $itineraireCroisiere) {
-                if ($itineraireCroisiere->getParDefaut() == 1) {
-                    $portDepart = $itineraireCroisiere->getItineraire()->getPortDepart();
-                }
-            }
-        }
-        
         $form = $this->createForm(new BateauDevisType($this->getDoctrine()
             ->getManager(), $this->getRequest()
             ->getLocale()));
@@ -138,9 +108,8 @@ class SkipperController extends Controller
             'boat' => isset($croisiere[0]) ? $croisiere[0]->getBateau() : null,
             'skipper_id' => isset($croisiere[0]) ? $croisiere[0]->getSkipper()
                 ->getId() : null,
-            'itinerairesCroisiere' => $croisiere2 != null ? $croisiere2->getItineraireCroisiere() : null,
+            'itinerairesCroisiere' => isset($croisiere[0]) ? $croisiere[0]->getItineraireCroisiere() : null,
             'datesNonDisponibilite' => isset($croisiere[0]) ? $croisiere[0]->getDateNonDisponibilite() : null,
-            'portDepart' => $portDepart,
             'tarifs' => isset($croisieres[0]) ? $croisiere[0]->getTarifCroisiere() : null,
             'servicepayant' => isset($croisieres[0]) ? $croisiere[0]->getServicePayant() : null,
             'inclusprixavitaillement' => isset($croisieres[0]) ? $croisiere[0]->getBateau()

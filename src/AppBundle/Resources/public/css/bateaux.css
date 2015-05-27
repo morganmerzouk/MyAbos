@@ -10,7 +10,8 @@ h1 {background: url("../images/menu/icones/icon-flotte.png") no-repeat 5px 5px #
 .panel-info .panel-body-padding{ padding: 1px;}
 
 /*** Page Boats ***/
-.bateau {overflow: auto;padding: 0;font-weight: normal;margin: 8px 0;text-align: left;}
+.row-bateau .bateau:last { margin-right: 0%;}
+.bateau {width: 30%; margin: 10px 5% 0px 0px; overflow: auto;padding: 0;font-weight: normal;text-align: left;}
 .bateau .panel-body {padding: 0;}
 .bateau .panel-heading {text-align: center;}
 .bateau .col-md-4 {	text-align: center;	padding: 1px;}

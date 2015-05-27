@@ -124,9 +124,8 @@ boat_jouet: Entertainment
 see_available: Check availability
 contact_skipper: Contact Skipper
 
-boat-desti-localisation-boat: Localisation of the boat
-boat-desti-localisation-boat-label-portdepart: The usual departure place of this boat is
-boat-desti-localisation-boat-label-destination: From there, you can sail to 
+boat-desti-itineraries-boat: Itineraries of the boat
+boat-desti-itineraries-boat-label-destination: Here is an overview of the different itineraries available with this boat 
 boat-desti-date-operation: Itinerary available from
 
 special_offer_with: Special offer with
@@ -218,9 +217,6 @@ skipper_availability: Availability
 skipper_price: Price
 skipper_contact: Contact
 no_cruise_skipper: No cruise available for this skipper
-skipper-desti-localisation-boat: Localisation of the skipper
-skipper-desti-localisation-boat-label-portdepart: The usual departure place of this skipper is
-skipper-desti-localisation-boat-label-destination: From there, you can sail to 
 skipper-desti-date-operation: Itinerary available from
 
 crew_title: Crew on board

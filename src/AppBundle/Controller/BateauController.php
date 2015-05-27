@@ -66,10 +66,10 @@ class BateauController extends Controller
             ->getRepository("AppBundle\Entity\Croisiere")
             ->createQueryBuilder('c')
             ->select('c, b, t, d, t2')
-            ->join('AppBundle\Entity\Bateau', 'b', 'WITH', 'c.bateau = b.id')
-            ->join('b.translations', 't')
-            ->join('c.dateNonDisponibilite', 'd')
-            ->join('c.tarifCroisiere', 't2')
+            ->leftjoin('AppBundle\Entity\Bateau', 'b', 'WITH', 'c.bateau = b.id')
+            ->leftjoin('b.translations', 't')
+            ->leftjoin('c.dateNonDisponibilite', 'd')
+            ->leftjoin('c.tarifCroisiere', 't2')
             ->where('c.bateau = :id')
             ->setParameter(':id', $id)
             ->andWhere('t.locale = :locale')
@@ -163,37 +163,6 @@ class BateauController extends Controller
         } else {
             $prestation = null;
         }
-        
-        $croisiere2 = $this->getDoctrine()
-            ->getManager()
-            ->getRepository("AppBundle\Entity\Croisiere")
-            ->createQueryBuilder('c')
-            ->select('c, ic, i, pd, d')
-            ->join('c.itineraireCroisiere', 'ic')
-            ->join('ic.itineraire', 'i')
-            ->join('i.translations', 'it')
-            ->join('i.portDepart', 'pd')
-            ->join('pd.translations', 'pdt')
-            ->join('i.destination', 'd')
-            ->join('d.translations', 'dt')
-            ->where('c.bateau = :id')
-            ->andWhere('it.locale = :locale')
-            ->andWhere('pdt.locale = :locale')
-            ->andWhere('dt.locale = :locale')
-            ->setParameter(':id', $id)
-            ->setParameter(':locale', $locale)
-            ->getQuery()
-            ->getOneOrNullResult();
-        
-        $portDepart = null;
-        if ($croisiere2 != null) {
-            foreach ($croisiere2->getItineraireCroisiere() as $itineraireCroisiere) {
-                if ($itineraireCroisiere->getParDefaut() == 1) {
-                    $portDepart = $itineraireCroisiere->getItineraire()->getPortDepart();
-                }
-            }
-        }
-        
         $form = $this->createForm(new BateauDevisType($this->getDoctrine()
             ->getManager(), $this->getRequest()
             ->getLocale(), $id));
@@ -206,8 +175,7 @@ class BateauController extends Controller
             'skipper' => isset($croisiere[0]) ? $croisiere[0]->getSkipper() : null,
             'offrespeciale' => isset($offreSpeciale[0]) ? $offreSpeciale[0] : null,
             'datesNonDisponibilite' => isset($croisiere[0]) ? $croisiere[0]->getDateNonDisponibilite() : null,
-            'portDepart' => $portDepart,
-            'itinerairesCroisiere' => isset($croisiere2) ? $croisiere2->getItineraireCroisiere() : null,
+            'itinerairesCroisiere' => $croisiere[0]->getItineraireCroisiere(),
             'tarifs' => isset($croisiere[0]) ? $croisiere[0]->getTarifCroisiere() : null,
             'servicepayant' => isset($croisiere[0]) ? $croisiere[0]->getServicePayant() : null,
             'inclusprixavitaillement' => $boat->getInclusPrixAvitaillement(),
