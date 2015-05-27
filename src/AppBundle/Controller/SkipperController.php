@@ -203,7 +203,6 @@ class SkipperController extends Controller
             ->setMessage($message)
             ->setEmail($email)
             ->setNbPassager($this->getRequest()->request->get('nbPassager'))
-            ->setDureeCroisiere($this->getRequest()->request->get('dureeCroisiere'))
             ->setPortDepart($this->getRequest()->request->get('portDepart'))
             ->setDestination($this->getRequest()->request->get('destination'))
             ->setCreatedAt(new \DateTime("now"));
@@ -220,10 +219,25 @@ class SkipperController extends Controller
             ->where('c.skipper = :id')
             ->setParameter(':id', $id)
             ->getQuery()
-            ->getSingleResult();
-        
-        $devis->setSkipper($croisiere->getSkipper())
-            ->setBateau($croisiere->getBateau());
+            ->getOneOrNullResult();
+        if ($croisiere != null) {
+            $devis->setSkipper($croisiere->getSkipper())
+                ->setBateau($croisiere->getBateau());
+        } else {
+            
+            $skipper = $this->getDoctrine()
+                ->getManager()
+                ->getRepository("AppBundle\Entity\Skipper")
+                ->createQueryBuilder('c')
+                ->select('c, t')
+                ->join('c.translations', 't')
+                ->where('c.id = :id')
+                ->setParameter(':id', $id)
+                ->getQuery()
+                ->getSingleResult();
+            
+            $devis->setSkipper($skipper->getName());
+        }
         $em = $this->getDoctrine()->getManager();
         $em->persist($devis);
         $em->flush();

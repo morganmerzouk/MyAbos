@@ -52,12 +52,12 @@ class Devis
     protected $skipper;
 
     /**
-     * @ORM\Column(type="string", length=200, nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      */
     protected $dateDebut;
 
     /**
-     * @ORM\Column(type="string", length=200, nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      */
     protected $dateFin;
 
@@ -65,11 +65,6 @@ class Devis
      * @ORM\Column(type="string", length=200, nullable=true)
      */
     protected $nbPassager;
-
-    /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    protected $dureeCroisiere;
 
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
@@ -111,6 +106,18 @@ class Devis
      */
     protected $actif = true;
 
+    protected $mails;
+
+    public function addMails($mail)
+    {
+        $this->mails[] = $mail;
+    }
+
+    public function getMails()
+    {
+        return $this->mails;
+    }
+
     /**
      * Set id
      *
@@ -131,12 +138,6 @@ class Devis
     public function getId()
     {
         return $this->id;
-    }
-
-    /* hack */
-    public function __call($method, $arguments)
-    {
-        return $this->proxyCurrentLocaleTranslation($method, $arguments);
     }
 
     /**
@@ -252,29 +253,6 @@ class Devis
     public function getNbPassager()
     {
         return $this->nbPassager;
-    }
-
-    /**
-     * Set dureeCroisiere
-     *
-     * @param string $dureeCroisiere            
-     * @return Devis
-     */
-    public function setDureeCroisiere($dureeCroisiere)
-    {
-        $this->dureeCroisiere = $dureeCroisiere;
-        
-        return $this;
-    }
-
-    /**
-     * Get dureeCroisiere
-     *
-     * @return string
-     */
-    public function getDureeCroisiere()
-    {
-        return $this->dureeCroisiere;
     }
 
     /**
@@ -528,5 +506,28 @@ class Devis
     public function getReadAt()
     {
         return $this->readAt;
+    }
+
+    /**
+     * Set actif
+     *
+     * @param boolean $actif            
+     * @return Devis
+     */
+    public function setActif($actif)
+    {
+        $this->actif = $actif;
+        
+        return $this;
+    }
+
+    /**
+     * Get actif
+     *
+     * @return boolean
+     */
+    public function getActif()
+    {
+        return $this->actif;
     }
 }

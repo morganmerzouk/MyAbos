@@ -4,6 +4,7 @@ namespace AppBundle\Admin;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery;
 
 class DevisAdmin extends Admin
 {
@@ -19,6 +20,9 @@ class DevisAdmin extends Admin
         ))
             ->add('message', 'null', array(
             'label' => 'Message: '
+        ))
+            ->add('offrespecialeId', 'null', array(
+            'label' => 'Offre spéciale: '
         ))
             ->add('createdAt', 'datetime', array(
             'label' => 'Créé le: '
@@ -37,6 +41,13 @@ class DevisAdmin extends Admin
                 )
             )
         ));
+    }
+
+    public function createQuery($context = 'list')
+    {
+        $query = parent::createQuery($context);
+        
+        return new ProxyQuery($query->andWhere("o.actif=1"));
     }
 
     protected function configureRoutes(RouteCollection $collection)

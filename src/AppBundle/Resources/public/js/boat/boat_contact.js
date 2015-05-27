@@ -22,10 +22,9 @@ $(document).ready(function() {
             {
                 dateDepart : $(".input-date-depart-devis").val(),
                 dateRetour : $(".input-date-retour-devis").val(),
-                dureeSejour : $(".select-duree-sejour").val(),
-                nbPassager : $(".select-nb-passager").val(),
-                portDepart: $(".select-portdepart").val(),
-            	destination: $(".select-destination").val(),
+                nbPassager : $(".select-nb-passager-devis").val(),
+                portDepart: $(".select-portdepart-devis").val(),
+            	destination: $(".select-destination-devis").val(),
                 nom : $(".input-nom").val(),
                 email : $(".input-email").val(),
                 message : $('.textarea-message').val(),

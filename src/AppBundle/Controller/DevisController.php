@@ -15,28 +15,45 @@ class DevisController extends Controller
         $object = $this->admin->getObject($id);
         
         $mailRaw = explode('@', $this->container->getParameter('contact_email'));
-        $hash = '+' . $id;
+        $hash = '+' . hash('md5', $id);
         $mailSender = $mailRaw[0] . $hash . '@' . $mailRaw[1];
         
-        $skipper = $this->getDoctrine()
-            ->getManager()
-            ->getRepository("AppBundle\Entity\Skipper")
-            ->createQueryBuilder('s')
-            ->select('s')
-            ->where('s.name = :name')
-            ->setParameter(':name', $object->getSkipper())
-            ->getQuery()
-            ->getSingleResult();
+        // On envoie l'email suite à une offre spéciale
+        if ($object->getOffreSpecialeId() != "") {
+            $offreSpeciale = $this->getDoctrine()
+                ->getManager()
+                ->getRepository("AppBundle\Entity\OffreSpeciale")
+                ->createQueryBuilder('os')
+                ->select('os')
+                ->where('os.id = :id')
+                ->setParameter(':id', $object->getOffreSpecialeId())
+                ->getQuery()
+                ->getSingleResult();
+            $skipper = $offreSpeciale->getSkipper();
+        } else {
+            $skipper = $this->getDoctrine()
+                ->getManager()
+                ->getRepository("AppBundle\Entity\Skipper")
+                ->createQueryBuilder('s')
+                ->select('s')
+                ->where('s.name = :name')
+                ->setParameter(':name', $object->getSkipper())
+                ->getQuery()
+                ->getSingleResult();
+        }
         
-        $mailRecipient = 'morgan.merzouk@gmail.com'; // en prod $skipper->getEmail();
+        $mailRecipient = $skipper->getEmail();
         
         $message = \Swift_Message::newInstance()->setSubject('Kitesurfeo: Demande de contact')
             ->setFrom($mailSender)
             ->setTo($mailRecipient)
             ->setBody($this->renderView('AppBundle:Front:devis.html.twig', array(
             'id' => $id,
-            'devis' => $object
-        )));
+            'devis' => $object,
+            'skipper' => $skipper,
+            'mailSender' => $mailSender,
+            'mailRecipient' => $mailRecipient
+        )), 'text/html');
         
         $this->get('mailer')->send($message);
         
@@ -70,11 +87,8 @@ class DevisController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->persist($devis);
         $em->flush();
+        $this->addFlash('sonata_flash_success', 'Estimate deleted successfully');
         
-        $this->get('session')
-            ->getFlashBag()
-            ->add('notice', 'Demande supprimée avec succès');
-        
-        return new RedirectResponse($this->generateUrl('enquiry_manager'));
+        return new RedirectResponse($this->admin->generateUrl('list'));
     }
 }

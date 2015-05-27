@@ -69,11 +69,6 @@ class Devis
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
      */
-    protected $dureeCroisiere;
-
-    /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
     protected $portDepart;
 
     /**
@@ -258,29 +253,6 @@ class Devis
     public function getNbPassager()
     {
         return $this->nbPassager;
-    }
-
-    /**
-     * Set dureeCroisiere
-     *
-     * @param string $dureeCroisiere            
-     * @return Devis
-     */
-    public function setDureeCroisiere($dureeCroisiere)
-    {
-        $this->dureeCroisiere = $dureeCroisiere;
-        
-        return $this;
-    }
-
-    /**
-     * Get dureeCroisiere
-     *
-     * @return string
-     */
-    public function getDureeCroisiere()
-    {
-        return $this->dureeCroisiere;
     }
 
     /**

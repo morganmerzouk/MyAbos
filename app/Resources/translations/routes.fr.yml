@@ -1,6 +1,5 @@
 boat: '/bateau/{id}/{slug}'
-boat_contact: '/bateau/{id}/contact'
-boat_contact_price: '/bateau/{id}/contact/price/{nbPassager}/{nbDays}/{dateDepart}/{dateFin}'
+boat_contact_send: '/bateau/contact/{id}'
 boats: /bateaux
 contact: /contact
 contact_send: /contact_send

@@ -222,7 +222,7 @@ class BateauController extends Controller
     }
 
     /**
-     * @Route("/bateau/{id}/contact", requirements={"id" = "\d+"}, name="boat_contact")
+     * @Route("/bateau/{id}/contact", requirements={"id" = "\d+"}, name="boat_contact_send")
      */
     public function bateauContactAction($id)
     {
@@ -263,7 +263,6 @@ class BateauController extends Controller
             ->setMessage($message)
             ->setEmail($email)
             ->setNbPassager($this->getRequest()->request->get('nbPassager'))
-            ->setDureeCroisiere($this->getRequest()->request->get('dureeCroisiere'))
             ->setPortDepart($this->getRequest()->request->get('portDepart'))
             ->setDestination($this->getRequest()->request->get('destination'))
             ->setCreatedAt(new \DateTime("now"));
@@ -290,12 +289,9 @@ class BateauController extends Controller
         $em->persist($devis);
         $em->flush();
         
-        return new Response("OK");
+        return new Response("ok");
     }
 
-    /**
-     * @Route("/bateau/{id}/contact/price/{nbPassager}/{nbDays}/{dateDepart}/{dateFin}", requirements={"id" = "\d+"}, defaults={"nbPassager" = 0, "nbDays" = 0, "dateDepart" = 0, "dateFin" = 0}, name="boat_contact_price")
-     */
     public function bateauContactPriceAction($id, $nbPassager = 0, $nbDays = 0, $dateDepart = 0, $dateFin = 0)
     {
         $croisiere = $this->getDoctrine()

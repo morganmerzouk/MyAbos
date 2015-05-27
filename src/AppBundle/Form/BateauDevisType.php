@@ -48,17 +48,6 @@ class BateauDevisType extends AbstractType
             ),
             'format' => $formatPattern
         ))
-            ->add('dureeCroisiere', 'choice', array(
-            'label' => 'form_sejour_duree',
-            'required' => false,
-            'label_attr' => array(
-                'class' => 'label-duree-sejour'
-            ),
-            'choice_list' => $this->loadChoiceList("dureeCroisiere"),
-            'attr' => array(
-                "class" => "select-duree-sejour"
-            )
-        ))
             ->add('nbPassager', 'choice', array(
             'label' => 'form_sejour_nb_passager',
             'required' => false,
@@ -67,7 +56,7 @@ class BateauDevisType extends AbstractType
             ),
             'choice_list' => $this->loadChoiceList("nbPassager"),
             'attr' => array(
-                "class" => "select-nb-passager"
+                "class" => "select-nb-passager-devis"
             )
         ))
             ->add('portDepart', 'choice', array(
@@ -75,7 +64,7 @@ class BateauDevisType extends AbstractType
             'required' => false,
             'label' => 'form_sejour_portdepart',
             'attr' => array(
-                'class' => 'select-portdepart'
+                'class' => 'select-portdepart-devis'
             ),
             'empty_value' => "toutes"
         ))
@@ -84,7 +73,7 @@ class BateauDevisType extends AbstractType
             'required' => false,
             'label' => 'form_sejour_destination',
             'attr' => array(
-                'class' => 'select-destination'
+                'class' => 'select-destination-devis'
             ),
             'empty_value' => "toutes"
         ))
@@ -170,29 +159,6 @@ class BateauDevisType extends AbstractType
             }
             
             $item = $listeNbPassager;
-        } elseif ($type == "dureeCroisiere") {
-            $results = $this->em->getRepository("AppBundle\Entity\Croisiere")
-                ->createQueryBuilder('c')
-                ->select('c,tc')
-                ->join('c.tarifCroisiere', 'tc')
-                ->where('c.bateau = :id')
-                ->setParameter(":id", $this->id)
-                ->orderBy("tc.nombreJourMinimum", 'ASC')
-                ->getQuery()
-                ->getResult();
-            $item = array(
-                '' => '-'
-            );
-            if (count($results) > 0) {
-                $nbJourMinimum = $results[0]->getTarifCroisiere()[0]->getNombreJourMinimum();
-                $nbJourMaximum = 0;
-                foreach ($results[0]->getTarifCroisiere() as $result) {
-                    $nbJourMaximum = $result->getNombreJourMaximum() > $nbJourMaximum ? $result->getNombreJourMaximum() : $nbJourMaximum;
-                }
-                $item = array(
-                    '' => '-'
-                ) + array_combine(range($nbJourMinimum, $nbJourMaximum), range($nbJourMinimum, $nbJourMaximum));
-            }
         }
         $choices = new SimpleChoiceList($item);
         
