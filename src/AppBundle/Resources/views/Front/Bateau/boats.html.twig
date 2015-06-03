@@ -17,19 +17,19 @@
         <div class="col-md-4 panel panel-info bateau {% if loop.index0 % 3 == 2 %}bateau-last{% endif %}">
             <div class="panel-heading">
             	<h3 class="panel-title">
-        			{# en test #}
+        			{# en test 
         				Nom du bateau
-	        		{# en prod
+    				#}
+	        		{# en prod #}
 	            		{{ croisiere.bateau.name }}
-            		#}
         		</h3>
         	</div>
         	<div class="panel-body panel-body-padding">
-        		{# en test #}
+        		{# en test 
 	            	<img class="img-responsive img center-block" src="{{ asset('bundles/app/images/test/icon-catamaran.jpg') }}" alt="photo du bateau" />
-	             {# en prod
-	            	<img class="img-responsive img center-block" src="{{ croisiere.bateau.miniatureWebPath }}" alt="photo {{ croisiere.bateau.name }}" />
-	             #}
+             	#}
+	            {# en prod #}
+            		<img class="img-responsive img center-block" src="{{ croisiere.bateau.miniatureWebPath }}" alt="photo {{ croisiere.bateau.name }}" />
 	            <p class="bateau-prix-semaine"> 
 	                {{'boat_price_from'|trans}} 	
 					{% if croisiere.tarifCroisiere|length > 0 %}                       
@@ -40,6 +40,7 @@
 						{% elseif croisiere.tarifCroisiere[0].tarifQuatrePersonnes is not null %}{{croisiere.tarifCroisiere[0].tarifQuatrePersonnes}}
 						{% elseif croisiere.tarifCroisiere[0].tarifTroisPersonnes is not null %}{{croisiere.tarifCroisiere[0].tarifTroisPersonnes}}
 						{% elseif croisiere.tarifCroisiere[0].tarifDeuxPersonnes is not null %}{{croisiere.tarifCroisiere[0].tarifDeuxPersonnes}}
+						{% elseif croisiere.tarifCroisiere[0].tarifUnePersonne is not null %}{{croisiere.tarifCroisiere[0].tarifUnePersonne}}
 						{% endif %}
 						€ <span class="boat-tarif-pour text-center">({{ croisiere.tarifCroisiere[0].tarifPour|trans}})</span>
 					{% endif %}
@@ -50,16 +51,16 @@
 				{% if (croisiere.bateau.nbCouchage > 0) %}<div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/icon-bed.png') }}" /><br />{{croisiere.bateau.nbCouchage}} {{'boat_bed'|trans}}</div>{% endif %}
 	            <p class="bateaux-description">
 	            
-	            	{# en test #}
+	            	{# en test
 	            		Une description du bateau sur lequel les participants navigueront.
 	            		Les caractéristiques de celui-ci sont listés sur la page spécifique au bateau
-	        		{# en prod
+            		#}
+	        		{# en prod #}
 		        		{% if croisiere.bateau.description|length > 100 %}
 			        		{{ croisiere.bateau.description|striptags|slice(0,100)|raw }}...
 			        	{% else %}
 			        		{{ croisiere.bateau.description|striptags|raw }}
 			    		{% endif %}
-		    		#}
 	    		</p>
 	            <a class="btn btn-sm btn-warning pull-right" href="{{ path('boat', { 'id': croisiere.bateau.id, 'slug': croisiere.bateau.name|slugify }) }}">{{'suite'|trans}}</a>
             </div>

@@ -82,15 +82,30 @@ class SkipperController extends Controller
             ->getManager()
             ->getRepository("AppBundle\Entity\Croisiere")
             ->createQueryBuilder('c')
-            ->select('c, b, t')
-            ->join('AppBundle\Entity\Bateau', 'b', 'WITH', 'c.bateau = b.id')
-            ->join('b.translations', 't')
+            ->select('c, s, t, d, t2')
+            ->leftjoin('AppBundle\Entity\Skipper', 's', 'WITH', 'c.skipper = s.id')
+            ->leftjoin('s.translations', 't')
+            ->leftjoin('c.dateNonDisponibilite', 'd')
+            ->leftjoin('c.tarifCroisiere', 't2')
             ->where('c.skipper = :id')
             ->setParameter(':id', $id)
             ->andWhere('t.locale = :locale')
             ->setParameter(':locale', $locale)
             ->getQuery()
             ->getResult(Query::HYDRATE_OBJECT);
+        
+        $boat = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("AppBundle\Entity\Bateau")
+            ->createQueryBuilder('s')
+            ->select('s, t')
+            ->join('s.translations', 't')
+            ->where('s.id = :id')
+            ->setParameter(':id', $croisiere[0]->getBateau())
+            ->andWhere('t.locale = :locale')
+            ->setParameter(':locale', $locale)
+            ->getQuery()
+            ->getSingleResult();
         
         $seoPage->addMeta('name', 'keyword', $skipper->getName() . ',' . $this->get('translator')
             ->trans("crew_meta_keywords"));
@@ -110,22 +125,15 @@ class SkipperController extends Controller
                 ->getId() : null,
             'itinerairesCroisiere' => isset($croisiere[0]) ? $croisiere[0]->getItineraireCroisiere() : null,
             'datesNonDisponibilite' => isset($croisiere[0]) ? $croisiere[0]->getDateNonDisponibilite() : null,
-            'tarifs' => isset($croisieres[0]) ? $croisiere[0]->getTarifCroisiere() : null,
-            'servicepayant' => isset($croisieres[0]) ? $croisiere[0]->getServicePayant() : null,
-            'inclusprixavitaillement' => isset($croisieres[0]) ? $croisiere[0]->getBateau()
-                ->getInclusPrixAvitaillement() : null,
-            'inclusprixequipage' => isset($croisieres[0]) ? $croisiere[0]->getBateau()
-                ->getInclusPrixEquipage() : null,
-            'inclusprixfraisdevoyage' => isset($croisieres[0]) ? $croisiere[0]->getBateau()
-                ->getInclusPrixFraisVoyage() : null,
-            'inclusprixautresservices' => isset($croisieres[0]) ? $croisiere[0]->getBateau()
-                ->getInclusPrixAutresServices() : null,
-            'inclusprixequipement' => isset($croisieres[0]) ? $croisiere[0]->getBateau()
-                ->getInclusPrixEquipement() : null,
-            'inclusprixactivite' => isset($croisieres[0]) ? $croisiere[0]->getBateau()
-                ->getInclusPrixActivite() : null,
-            'inclusprixcours' => isset($croisieres[0]) ? $croisiere[0]->getBateau()
-                ->getInclusPrixCours() : null,
+            'tarifs' => isset($croisiere[0]) ? $croisiere[0]->getTarifCroisiere() : null,
+            'servicepayant' => isset($croisiere[0]) ? $croisiere[0]->getServicePayant() : null,
+            'inclusprixavitaillement' => $boat->getInclusPrixAvitaillement(),
+            'inclusprixequipage' => $boat->getInclusPrixEquipage(),
+            'inclusprixfraisdevoyage' => $boat->getInclusPrixFraisVoyage(),
+            'inclusprixautresservices' => $boat->getInclusPrixAutresServices(),
+            'inclusprixequipement' => $boat->getInclusPrixEquipement(),
+            'inclusprixactivite' => $boat->getInclusPrixActivite(),
+            'inclusprixcours' => $boat->getInclusPrixCours(),
             'form' => $form->createView()
         ));
     }

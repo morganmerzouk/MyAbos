@@ -13,4 +13,3 @@ Vous avez recu une demande de devis de la part de <strong>{{ devis.nom }}</stron
 {% if devis.servicePayant %}<strong>Services souhaités: </strong><br />{{ devis.servicePayant|raw }}<br />{% endif %}
 <hr />
 Merci de traiter cette demande dès que possible.
-<img src="{{ app.request.host }}:8000{{ path('trackMail', {'id': id }) }}" />

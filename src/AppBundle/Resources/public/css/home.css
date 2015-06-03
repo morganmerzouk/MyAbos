@@ -15,10 +15,10 @@ h1 {position: relative; z-index: 1; background: #5bc0de; border-top: 1px solid #
 .newsletter-email { width: 70%;font-size: 0.9em;}
 .container-home, .container-body { overflow: initial;}
 
-.block-skipper, .block-boat, .block-offre { height: 300px; overflow: hidden;}
-.slider .slick-prev {left: 10px;}
-.slider .slick-next {right: 10px;}
-.slider .description {margin: 0; padding:0; border: 0;overflow: auto; text-align: center; }
+.block-skipper, .block-boat, .block-offre { height: 300px; overflow: hidden;  margin: 15px;}
+.slider .slick-prev {left: 20px;}
+.slider .slick-next {right: 20px;}
+.slider .description {padding:0; border: 0;overflow: auto; text-align: justify; }
 .slider .description .panel-body { padding: 5px;}
 .slider .description .panel-btn {overflow: auto;margin: 10px 0 0 0;}
 .slider .description img {display: inline;}
@@ -29,4 +29,7 @@ h1 {position: relative; z-index: 1; background: #5bc0de; border-top: 1px solid #
 .see-all-special-offers { color: black; text-decoration: none; font-size: 0.7em; font-weight: normal; margin: 5px 5px 0 0; }
 .panel-info .panel-body-padding { padding:1px; background-color: #EFF1F2; }
 
-figcaption  { background-color: rgba(0,0,0,0.8); position: absolute; color: #fff; z-index: 100;	padding: 5px; bottom: 21px; width: 100%;}
+.block-skipper a:hover, .block-boat a:hover { text-decoration: none;} 
+.block-skipper figcaption { background-color: rgba(0,0,0,0.8); position: relative; color: #fff; z-index: 100;	padding: 5px; bottom: 7px; width: 100%;}
+.block-boat figcaption  { background-color: rgba(0,0,0,0.8); position: relative; color: #fff; z-index: 100;	padding: 5px; bottom: 38px; width: 100%;}
+.offrespeciale-description { height: 45px; line-height: 22px; width: 100%; overflow: hidden; }

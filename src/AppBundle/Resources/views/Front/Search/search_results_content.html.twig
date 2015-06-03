@@ -7,13 +7,14 @@
         <img class="img-responsive img-thumbnail" src="{{ result.bateau.miniatureWebPath }}" alt="photo {{ result.bateau.name }}" /><br />
         <p class="bateau-prix-semaine"> 
             {{'boat_price_from'|trans}} 	                       
-             {% if result.tarifCroisiere[0].tarifHuitPersonnes is not null %}{% set base= 8 %}{{result.tarifCroisiere[0].tarifHuitPersonnes/8}}
-             {% elseif result.tarifCroisiere[0].tarifSeptPersonnes is not null %}{% set base= 7 %}{{result.tarifCroisiere[0].tarifSeptPersonnes/7}}
-             {% elseif result.tarifCroisiere[0].tarifSixPersonnes is not null %}{% set base= 6 %}{{result.tarifCroisiere[0].tarifSixPersonnes/6}}
-             {% elseif result.tarifCroisiere[0].tarifCinqPersonnes is not null %}{% set base= 5 %}{{result.tarifCroisiere[0].tarifCinqPersonnes/5}}
-             {% elseif result.tarifCroisiere[0].tarifQuatrePersonnes is not null %}{% set base= 4 %}{{result.tarifCroisiere[0].tarifQuatrePersonnes/4}}
-             {% elseif result.tarifCroisiere[0].tarifTroisPersonnes is not null %}{% set base= 3 %}{{result.tarifCroisiere[0].tarifTroisPersonnes/3}}
-             {% elseif result.tarifCroisiere[0].tarifDeuxPersonnes is not null %}{% set base= 2 %}{{result.tarifCroisiere[0].tarifDeuxPersonnes/2}}
+             {% if result.tarifCroisiere[0].tarifHuitPersonnes is not null %}{{result.tarifCroisiere[0].tarifHuitPersonnes}}
+             {% elseif result.tarifCroisiere[0].tarifSeptPersonnes is not null %}{{result.tarifCroisiere[0].tarifSeptPersonnes}}
+             {% elseif result.tarifCroisiere[0].tarifSixPersonnes is not null %}{{result.tarifCroisiere[0].tarifSixPersonnes}}
+             {% elseif result.tarifCroisiere[0].tarifCinqPersonnes is not null %}{{result.tarifCroisiere[0].tarifCinqPersonnes}}
+             {% elseif result.tarifCroisiere[0].tarifQuatrePersonnes is not null %}{{result.tarifCroisiere[0].tarifQuatrePersonnes}}
+             {% elseif result.tarifCroisiere[0].tarifTroisPersonnes is not null %}{{result.tarifCroisiere[0].tarifTroisPersonnes}}
+             {% elseif result.tarifCroisiere[0].tarifDeuxPersonnes is not null %}{{result.tarifCroisiere[0].tarifDeuxPersonnes}}
+             {% elseif result.tarifCroisiere[0].tarifUnePersonne is not null %}{{result.tarifCroisiere[0].tarifUnePersonne}}
              {% endif %}
              € <span class="boat-tarif-pour text-center">({{ result.tarifCroisiere[0].tarifPour|trans}})</span>
         </p>

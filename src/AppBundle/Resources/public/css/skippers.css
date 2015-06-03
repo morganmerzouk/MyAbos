@@ -21,7 +21,7 @@ h1 {background: url("../images/menu/icones/icon-equipages.png") no-repeat 5px 5p
 .skipper-price { background-image: url("../images/menu/icones/icon-price.png"); }
 .skipper-contact { background-image: url("../images/menu/icones/icon-contact.png"); }
 
-.fade-caption { opacity: 0; text-align: left; padding: 15px;}
+.fade-caption { opacity: 0; text-align: left; padding: 15px;overflow:hidden;}
 .caption { background-color: rgba(0,0,0,0.8);
 	height: 170px;
   position: absolute;
@@ -90,21 +90,12 @@ td.libelleLegend { padding-left: 5px;}
 .btn-contact {margin-bottom: 10px;}
 
 /*** Skipper tarif ***/
-.tarif-accordion { margin: 10px auto; padding-top: 0;}
-#tarifBateau h2 {margin: 0; background: #23B6E1; color: black; padding: 5px; border: 1px solid black;font-size:1.4em; }
-#tarifBateau h3 { font-size: 1.2em;padding: 5px;background: #127BBD; color: white; border: 1px solid black;margin: 0; }
-#tarifBateau h3:hover { cursor: pointer; background: #23B6E1; color: black; }
-#tarifBateau h3.title-hover { background: #23B6E1; color: black; }
-.subblock-periode { margin: 0 0 10px 0;border: 1px solid #B3B3B3;  padding: 5px;overflow: auto;}
-.subblock-periode table td { border: 1px solid black;padding: 10px; color: black;}
+.subblock-periode table td { border: 1px solid black;padding: 5px;}
 .periode-table-personne { text-align: center; }
-.periode-table-title {background: #23B6E1; text-align: left; }
-.odd { background: #127BBD;color: white;}
-.even { background: #23B6E1;color: black;}
-.tarif-accordion .even, .subblock-periode .odd { padding: 5px;margin: 1px; }
+.periode-table-title {background: #5bc0de; text-align: left;color: white; }
+.panel-inclus-prix .col-md-6 { padding: 5px;}
+.panel-inclus-prix .odd { background: #5bc0de;color: white;padding: 5px;}
 .service-payant-categorie {display:block; float:none;clear: both;}
-.tarif-accordion .col-md-6 { border: 1px solid white;padding:0; }
-.tarif-accordion .servicepayant div {margin: 0;padding:5px;}
 
 /*** Skipper devis ***/
 .col-devis {padding:5px;}

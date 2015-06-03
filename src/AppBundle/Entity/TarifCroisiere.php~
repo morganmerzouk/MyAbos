@@ -44,6 +44,11 @@ class TarifCroisiere
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
+    protected $tarifUnePersonne;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
     protected $tarifDeuxPersonnes;
 
     /**

@@ -13,7 +13,7 @@
 	                {% if itinerairesCroisiere|length > 0 %}
 	                    <ul>
 	                        {% for itineraireCroisiere in itinerairesCroisiere %}
-	                            <li><a href="#" id="lien-{{itineraireCroisiere.itineraire.id}}">{{ itineraireCroisiere.itineraire.destination }}</a></li>
+	                            <li><a href="#" id="lien-{{itineraireCroisiere.itineraire.id}}">{{ itineraireCroisiere.itineraire }}</a></li>
 	                        {% endfor %}
 	                    </ul>
 	                {% endif %}

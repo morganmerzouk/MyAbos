@@ -61,6 +61,11 @@ class OffreSpeciale
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
+    protected $tarifUnePersonne;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
     protected $tarifDeuxPersonnes;
 
     /**
@@ -648,5 +653,28 @@ class OffreSpeciale
     public function getNbCabine()
     {
         return $this->nbCabine;
+    }
+
+    /**
+     * Set tarifUnePersonne
+     *
+     * @param integer $tarifUnePersonne
+     * @return OffreSpeciale
+     */
+    public function setTarifUnePersonne($tarifUnePersonne)
+    {
+        $this->tarifUnePersonne = $tarifUnePersonne;
+
+        return $this;
+    }
+
+    /**
+     * Get tarifUnePersonne
+     *
+     * @return integer 
+     */
+    public function getTarifUnePersonne()
+    {
+        return $this->tarifUnePersonne;
     }
 }

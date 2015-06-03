@@ -10,6 +10,7 @@
         	{{'periode_tarif_cruise_pour'|trans }} {{ offreSpeciale.tarifPour|trans }}
             <table>
                 <tr class="periode-table-personne"><td class="periode-table-title">{{'nombre_de_personne'|trans }}</td>
+                    {% if offreSpeciale.tarifUnePersonne is not null %}<td>1</td>{% endif %}
                     {% if offreSpeciale.tarifDeuxPersonnes is not null %}<td>2</td>{% endif %}
                     {% if offreSpeciale.tarifTroisPersonnes is not null %}<td>3</td>{% endif %}
                     {% if offreSpeciale.tarifQuatrePersonnes is not null %}<td>4</td>{% endif %}
@@ -19,6 +20,7 @@
                     {% if offreSpeciale.tarifHuitPersonnes is not null %}<td>8</td>{% endif %}
                 </tr>
                 <tr><td class="periode-table-title">{{'prix_par_personne'|trans }}</td>
+                    {% if offreSpeciale.tarifUnePersonne is not null %}<td>{{ offreSpeciale.tarifUnePersonne }}</td>{% endif %}
                     {% if offreSpeciale.tarifDeuxPersonnes is not null %}<td>{{ offreSpeciale.tarifDeuxPersonnes }}</td>{% endif %}
                     {% if offreSpeciale.tarifTroisPersonnes is not null %}<td>{{ offreSpeciale.tarifTroisPersonnes }}</td>{% endif %}
                     {% if offreSpeciale.tarifQuatrePersonnes is not null %}<td>{{ offreSpeciale.tarifQuatrePersonnes }}</td>{% endif %}
@@ -27,7 +29,9 @@
                     {% if offreSpeciale.tarifSeptPersonnes is not null %}<td>{{ offreSpeciale.tarifSeptPersonnes }}</td>{% endif %}
                     {% if offreSpeciale.tarifHuitPersonnes is not null %}<td>{{ offreSpeciale.tarifHuitPersonnes }}</td>{% endif %}
                 </tr>
+                <!--
                 <tr><td class="periode-table-title">{{'prix_du_bateau'|trans }}</td>
+                    {% if offreSpeciale.tarifUnePersonne is not null %}<td>{{ offreSpeciale.tarifUnePersonne }}</td>{% endif %}
                     {% if offreSpeciale.tarifDeuxPersonnes is not null %}<td>{{ offreSpeciale.tarifDeuxPersonnes * 2 }}</td>{% endif %}
                     {% if offreSpeciale.tarifTroisPersonnes is not null %}<td>{{ offreSpeciale.tarifTroisPersonnes * 3 }}</td>{% endif %}
                     {% if offreSpeciale.tarifQuatrePersonnes is not null %}<td>{{ offreSpeciale.tarifQuatrePersonnes * 4 }}</td>{% endif %}
@@ -36,6 +40,7 @@
                     {% if offreSpeciale.tarifSeptPersonnes is not null %}<td>{{ offreSpeciale.tarifSeptPersonnes * 7 }}</td>{% endif %}
                     {% if offreSpeciale.tarifHuitPersonnes is not null %}<td>{{ offreSpeciale.tarifHuitPersonnes * 8 }}</td>{% endif %}
                 </tr>
+                -->
             </table>
     	</div>
 	</div>

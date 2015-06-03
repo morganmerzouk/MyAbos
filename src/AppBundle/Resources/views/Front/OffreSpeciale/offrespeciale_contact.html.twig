@@ -17,7 +17,7 @@
 			    {{'form_sejour_destination'|trans }} {{ offreSpeciale.destination.name }}
         	</div>
         	<div class="col-md-6 pull-right center-block btn btn-warning">
-			  	${% if offreSpeciale.tarifHuitPersonnes > 0 %}
+			  	 {% if offreSpeciale.tarifHuitPersonnes > 0 %}
 			  		{{ offreSpeciale.tarifHuitPersonnes }}
 		  		 {% elseif offreSpeciale.tarifSeptPersonnes > 0 %}
 		  		 	{{ offreSpeciale.tarifSeptPersonnes }}
@@ -31,7 +31,9 @@
 		  		 	{{ offreSpeciale.tarifTroisPersonnes }}
 		  		 {% elseif offreSpeciale.tarifDeuxPersonnes > 0 %}
 		  		 	{{ offreSpeciale.tarifDeuxPersonnes }}
-				 {% endif %} / {{ offreSpeciale.tarifPour|trans }}
+		  		 {% elseif offreSpeciale.tarifUnePersonne > 0 %}
+		  		 	{{ offreSpeciale.tarifUnePersonne }}
+				 {% endif %}€ / {{ offreSpeciale.tarifPour|trans }}
 			</div>
         </div>
     </div>

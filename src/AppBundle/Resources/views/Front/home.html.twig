@@ -37,26 +37,31 @@
 						  	<div class="panel-btn">
 						        <div class="pull-left">
 								  	<div class="price btn btn-warning btn-sm  text-center">
-									  	${% if offreSpeciale.tarifHuitPersonnes > 0 %}
-									  		{{ (offreSpeciale.tarifHuitPersonnes/8)|round }}
+									  	{% if offreSpeciale.tarifHuitPersonnes > 0 %}
+									  		{{ offreSpeciale.tarifHuitPersonnes }}
 								  		 {% elseif offreSpeciale.tarifSeptPersonnes > 0 %}
-								  		 	{{ (offreSpeciale.tarifSeptPersonnes/7)|round }}
+								  		 	{{ offreSpeciale.tarifSeptPersonnes }}
 								  		 {% elseif offreSpeciale.tarifSixPersonnes > 0 %}
-								  		 	{{ (offreSpeciale.tarifSixPersonnes/6)|round }}
+								  		 	{{ offreSpeciale.tarifSixPersonnes }}
 								  		 {% elseif offreSpeciale.tarifCinqPersonnes > 0 %}
-								  		 	{{ (offreSpeciale.tarifCinqPersonnes/5)|round }}
+								  		 	{{ offreSpeciale.tarifCinqPersonnes }}
 								  		 {% elseif offreSpeciale.tarifQuatrePersonnes > 0 %}
-								  		 	{{ (offreSpeciale.tarifQuatrePersonnes/4)|round }}
+								  		 	{{ offreSpeciale.tarifQuatrePersonnes }}
 								  		 {% elseif offreSpeciale.tarifTroisPersonnes > 0 %}
-								  		 	{{ (offreSpeciale.tarifTroisPersonnes/3)|round }}
+								  		 	{{ offreSpeciale.tarifTroisPersonnes }}
 								  		 {% elseif offreSpeciale.tarifDeuxPersonnes > 0 %}
-								  		 	{{ (offreSpeciale.tarifDeuxPersonnes/2)|round }}
-										 {% endif %}
+								  		 	{{ offreSpeciale.tarifDeuxPersonnes }}
+								  		 {% elseif offreSpeciale.tarifUnePersonne > 0 %}
+								  		 	{{ offreSpeciale.tarifUnePersonne }}
+										 {% endif %}€
 								  		  / {{ offreSpeciale.tarifPour|trans }}
 							  		</div>
 						  		</div>
 							  	<a href="{{ path('offrespeciale', { id: offreSpeciale.id, 'slug': offreSpeciale.name|slugify }) }}" class="btn btn-warning btn-sm details pull-right">{{'details'|trans }}</a>
 					  		</div>
+					  		<div class="offrespeciale-description">
+				  				{{ offreSpeciale.description|raw }}
+				  			</div>
 					  		<a href="{{ path('offresspeciales') }}" class="see-all-special-offers pull-right">{{'see_specials_offers'|trans }}</a>
 						</div>
 					</div>
@@ -75,17 +80,18 @@
 			        	<div class="panel-body panel-body-padding">
 							<a href="{{ path('boat', {'id': boat.id, 'slug': boat.name|slugify }) }}">
 							<figure class="text-center">
-								{# en test #}	
+								{# en test 	
 									<img src="{{ asset('bundles/app/images/test/icon-catamaran.jpg') }}" class="img img-responsive center-block" />
-				        		{# en prod		        		
-			        				<img src="{{ boat.miniatureWebPath }}" class="img img-responsive center-block" />
 				        		#}
+				        		{# en prod #}		        		
+			        				<img src="{{ boat.miniatureWebPath }}" class="img img-responsive center-block" />
+				        		
 				        		<figcaption>
-        		        			{# en test #}
+        		        			{# en test 
 				        				Nom du bateau
-					        		{# en prod
+			        				#}
+					        		{# en prod #}
 					            		{{ boat.name }}
-				            		#}
 				        		</figcaption>
 							</figure>
 							</a>
@@ -106,17 +112,17 @@
 			        	<div class="panel-body panel-body-padding">
 							<a href="{{ path('skipper', {'id': skipper.id, 'slug': skipper.name|slugify}) }}">
 							<figure class="text-center">
-			        			{# en test #}	
+			        			{# en test	
 			        				<img src="{{ asset('bundles/app/images/test/icon-man.png') }}" class="img img-responsive center-block" alt="photo skipper" />
-				        		{# en prod		        		
-			        				<img src="{{ skipper.avatarWebPath }}" class="img img-responsive center-block" alt="{{ skipper.name }}" />
 				        		#}
+				        		{# en prod #}		        		
+			        				<img src="{{ skipper.avatarWebPath }}" class="img img-responsive center-block" alt="{{ skipper.name }}" />
 				        		<figcaption>
-				        			{# en test #}
+				        			{# en test 
 				        				Nom du skipper
-					        		{# en prod
+					        		#}
+					        		{# en prod #}
 					            		{{ skipper.name }}
-				            		#}
 			        			</figcaption>
 							</figure>
 							</a>

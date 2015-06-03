@@ -44,6 +44,11 @@ class TarifCroisiere
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
+    protected $tarifUnePersonne;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
     protected $tarifDeuxPersonnes;
 
     /**
@@ -376,5 +381,28 @@ class TarifCroisiere
     public function getTarifPour()
     {
         return $this->tarifPour;
+    }
+
+    /**
+     * Set tarifUnePersonne
+     *
+     * @param integer $tarifUnePersonne
+     * @return TarifCroisiere
+     */
+    public function setTarifUnePersonne($tarifUnePersonne)
+    {
+        $this->tarifUnePersonne = $tarifUnePersonne;
+
+        return $this;
+    }
+
+    /**
+     * Get tarifUnePersonne
+     *
+     * @return integer 
+     */
+    public function getTarifUnePersonne()
+    {
+        return $this->tarifUnePersonne;
     }
 }

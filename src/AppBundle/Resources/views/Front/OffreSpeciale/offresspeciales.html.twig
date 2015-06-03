@@ -41,10 +41,10 @@
 			  		{{ offreSpeciale.description|striptags|slice(0,150)|raw }}...
 			  		</div>
 				  	<div class="price btn btn-sm btn-primary pull-left">
-					  	${% if offreSpeciale.tarifHuitPersonnes > 0 %}{{ (offreSpeciale.tarifHuitPersonnes/8)|round }}{% elseif offreSpeciale.tarifSeptPersonnes > 0 %}{{ (offreSpeciale.tarifSeptPersonnes/7)|round }}
-				  		 {% elseif offreSpeciale.tarifSixPersonnes > 0 %}{{ (offreSpeciale.tarifSixPersonnes/6)|round }}{% elseif offreSpeciale.tarifCinqPersonnes > 0 %}{{ (offreSpeciale.tarifCinqPersonnes/5)|round }}
-			  		 	 {% elseif offreSpeciale.tarifQuatrePersonnes > 0 %}{{ (offreSpeciale.tarifQuatrePersonnes/4)|round }}{% elseif offreSpeciale.tarifTroisPersonnes > 0 %}{{ (offreSpeciale.tarifTroisPersonnes/3)|round }}
-				  		 {% elseif offreSpeciale.tarifDeuxPersonnes > 0 %}{{ (offreSpeciale.tarifDeuxPersonnes/2)|round }}{% endif %}/ {{ offreSpeciale.tarifPour|trans }}
+					  	${% if offreSpeciale.tarifHuitPersonnes > 0 %}{{ offreSpeciale.tarifHuitPersonnes }}{% elseif offreSpeciale.tarifSeptPersonnes > 0 %}{{ offreSpeciale.tarifSeptPersonnes }}
+				  		 {% elseif offreSpeciale.tarifSixPersonnes > 0 %}{{ offreSpeciale.tarifSixPersonnes }}{% elseif offreSpeciale.tarifCinqPersonnes > 0 %}{{ offreSpeciale.tarifCinqPersonnes }}
+			  		 	 {% elseif offreSpeciale.tarifQuatrePersonnes > 0 %}{{ offreSpeciale.tarifQuatrePersonnes }}{% elseif offreSpeciale.tarifTroisPersonnes > 0 %}{{ offreSpeciale.tarifTroisPersonnes }}
+				  		 {% elseif offreSpeciale.tarifDeuxPersonnes > 0 %}{{ offreSpeciale.tarifDeuxPersonnes }}{% elseif offreSpeciale.tarifUnePersonne > 0 %}{{ offreSpeciale.tarifUnePersonne }}{% endif %}/ {{ offreSpeciale.tarifPour|trans }}
 			  		</div>
 			  		<a href="{{ path('offrespeciale', { id: offreSpeciale.id, 'slug': offreSpeciale.name|slugify }) }}" class="btn btn-warning btn-sm pull-right btn-more">{{'infos'|trans }}</a>
 		  		</div>

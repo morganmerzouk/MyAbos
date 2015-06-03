@@ -14,13 +14,14 @@
 			        <h3 class="boatName">{{ offrespeciale.bateau.name }}</h3>
 			        <p class="bateau-prix-semaine"> 
 			             {{'boat_price_from'|trans}} 	                       
-		                 {% if offrespeciale.tarifHuitPersonnes is not null %}{% set base= 8 %}{{offrespeciale.tarifHuitPersonnes/8}}
-			             {% elseif offrespeciale.tarifSeptPersonnes is not null %}{% set base= 7 %}{{offrespeciale.tarifSeptPersonnes/7}}
-			             {% elseif offrespeciale.tarifSixPersonnes is not null %}{% set base= 6 %}{{offrespeciale.tarifSixPersonnes/6}}
-			             {% elseif offrespeciale.tarifCinqPersonnes is not null %}{% set base= 5 %}{{offrespeciale.tarifCinqPersonnes/5}}
-			             {% elseif offrespeciale.tarifQuatrePersonnes is not null %}{% set base= 4 %}{{offrespeciale.tarifQuatrePersonnes/4}}
-			             {% elseif offrespeciale.tarifTroisPersonnes is not null %}{% set base= 3 %}{{offrespeciale.tarifTroisPersonnes/3}}
-			             {% elseif offrespeciale.tarifDeuxPersonnes is not null %}{% set base= 2 %}{{offrespeciale.tarifDeuxPersonnes/2}}
+		                 {% if offrespeciale.tarifHuitPersonnes is not null %}{{offrespeciale.tarifHuitPersonnes}}
+			             {% elseif offrespeciale.tarifSeptPersonnes is not null %}{{offrespeciale.tarifSeptPersonnes}}
+			             {% elseif offrespeciale.tarifSixPersonnes is not null %}{{offrespeciale.tarifSixPersonnes}}
+			             {% elseif offrespeciale.tarifCinqPersonnes is not null %}{{offrespeciale.tarifCinqPersonnes}}
+			             {% elseif offrespeciale.tarifQuatrePersonnes is not null %}{{offrespeciale.tarifQuatrePersonnes}}
+			             {% elseif offrespeciale.tarifTroisPersonnes is not null %}{{offrespeciale.tarifTroisPersonnes}}
+			             {% elseif offrespeciale.tarifDeuxPersonnes is not null %}{{offrespeciale.tarifDeuxPersonnes}}
+			             {% elseif offrespeciale.tarifUnePersonne is not null %}{{offrespeciale.tarifUnePersonne}}
 			             {% endif %}
 			             € <br /><span class="boat-tarif-pour text-center">({{ offrespeciale.tarifPour|trans}})</span>
 			        </p>

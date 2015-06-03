@@ -119,6 +119,16 @@ class OffreSpecialeAdmin extends Admin
             ),
             'choice_list' => $this->loadChoiceList("tarifPour")
         ))
+            ->add('tarifUnePersonne', 'integer', array(
+            'label' => 'Tarif pour 1',
+            'required' => false,
+            'label_attr' => array(
+                'class' => 'control-tarifcroisiere-tarifunepersonne'
+            ),
+            'attr' => array(
+                'class' => 'tarifcroisiere-tarifunepersonne'
+            )
+        ))
             ->add('tarifDeuxPersonnes', 'integer', array(
             'label' => 'Tarif pour 2',
             'required' => false,
