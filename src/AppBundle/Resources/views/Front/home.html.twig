@@ -1,7 +1,7 @@
 {% extends "AppBundle:Front:layout_home.html.twig" %}
 {% block content %}   
 
-<video autoplay poster="{{ asset('bundles/app/media/sunset_waves.png') }}">
+<video class="video-background" autoplay poster="{{ asset('bundles/app/media/sunset_waves.png') }}">
   <source src="{{ asset('bundles/app/media/sunset_waves.webm') }}" type="video/webm">
   <source src="{{ asset('bundles/app/media/sunset_waves.mp4') }}" type="video/mp4">
 </video>
@@ -21,53 +21,8 @@
 </div>
 <div class="home-bottom">
 	<h1>{{'home_title'|trans|raw }}</h1>
-	<div class="col-md-4">
-		<div class="slider">
-			{%  for offreSpeciale in offresSpeciales  %}
-				<div class="slider-item">
-					<div class="panel panel-info description block-offre">
-						<div class="panel-heading">
-					        <h3 class="panel-title">
-					        	{{ offreSpeciale.name }}<br />
-					  			{{'departure_date'|trans }} {{ offreSpeciale.dateDebut|date('d/m/Y') }}
-							</h3>
-						</div>
-						<div class="panel-body">
-						  	<img class="img-responsive" src="{{ offreSpeciale.miniatureWebPath }}" />
-						  	<div class="panel-btn">
-						        <div class="pull-left">
-								  	<div class="price btn btn-warning btn-sm  text-center">
-									  	{% if offreSpeciale.tarifHuitPersonnes > 0 %}
-									  		{{ offreSpeciale.tarifHuitPersonnes }}
-								  		 {% elseif offreSpeciale.tarifSeptPersonnes > 0 %}
-								  		 	{{ offreSpeciale.tarifSeptPersonnes }}
-								  		 {% elseif offreSpeciale.tarifSixPersonnes > 0 %}
-								  		 	{{ offreSpeciale.tarifSixPersonnes }}
-								  		 {% elseif offreSpeciale.tarifCinqPersonnes > 0 %}
-								  		 	{{ offreSpeciale.tarifCinqPersonnes }}
-								  		 {% elseif offreSpeciale.tarifQuatrePersonnes > 0 %}
-								  		 	{{ offreSpeciale.tarifQuatrePersonnes }}
-								  		 {% elseif offreSpeciale.tarifTroisPersonnes > 0 %}
-								  		 	{{ offreSpeciale.tarifTroisPersonnes }}
-								  		 {% elseif offreSpeciale.tarifDeuxPersonnes > 0 %}
-								  		 	{{ offreSpeciale.tarifDeuxPersonnes }}
-								  		 {% elseif offreSpeciale.tarifUnePersonne > 0 %}
-								  		 	{{ offreSpeciale.tarifUnePersonne }}
-										 {% endif %}€
-								  		  / {{ offreSpeciale.tarifPour|trans }}
-							  		</div>
-						  		</div>
-							  	<a href="{{ path('offrespeciale', { id: offreSpeciale.id, 'slug': offreSpeciale.name|slugify }) }}" class="btn btn-warning btn-sm details pull-right">{{'details'|trans }}</a>
-					  		</div>
-					  		<div class="offrespeciale-description">
-				  				{{ offreSpeciale.description|raw }}
-				  			</div>
-					  		<a href="{{ path('offresspeciales') }}" class="see-all-special-offers pull-right">{{'see_specials_offers'|trans }}</a>
-						</div>
-					</div>
-				</div>
-			{% endfor %}	
-		</div>
+	<div class="col-md-4 block-teaser">
+		<div id="player"></div>
 	</div>  
 	<div class="col-md-4">
 		<div class="slider">
@@ -132,7 +87,69 @@
 			{% endfor %}
 		</div> 
 	</div>
-	<div class="col-md-3">
+	<div class="col-md-12 explanation">
+		<div class="col-md-4">
+			<div class="explanation-title">{{'home_explanation_cruise'|trans}}</div>
+			<img src="{{ asset('bundles/app/images/icones/home/icon-cruise-home.jpg') }}" class="img-responsive" />
+		</div>
+		<div class="col-md-4">
+			<div class="explanation-title">{{'home_explanation_contact'|trans}}</div>
+			<img src="{{ asset('bundles/app/images/icones/home/icon-contact-home.png') }}" class="img-responsive contact center-block" />
+		</div>
+		<div class="col-md-4">
+			<div class="explanation-title">{{'home_explanation_enjoy'|trans}}</div>
+			<img src="{{ asset('bundles/app/images/icones/home/icon-enjoy-home.jpg') }}" class="img-responsive" />
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="slider">
+			{%  for offreSpeciale in offresSpeciales  %}
+				<div class="slider-item">
+					<div class="panel panel-info description block-offre">
+						<div class="panel-heading">
+					        <h3 class="panel-title">
+					        	{{ offreSpeciale.name }}<br />
+					  			{{'departure_date'|trans }} {{ offreSpeciale.dateDebut|date('d/m/Y') }}
+							</h3>
+						</div>
+						<div class="panel-body">
+						  	<img class="img-responsive" src="{{ offreSpeciale.miniatureWebPath }}" />
+						  	<div class="panel-btn">
+						        <div class="pull-left">
+								  	<div class="price btn btn-warning btn-sm  text-center">
+									  	{% if offreSpeciale.tarifHuitPersonnes > 0 %}
+									  		{{ offreSpeciale.tarifHuitPersonnes }}
+								  		 {% elseif offreSpeciale.tarifSeptPersonnes > 0 %}
+								  		 	{{ offreSpeciale.tarifSeptPersonnes }}
+								  		 {% elseif offreSpeciale.tarifSixPersonnes > 0 %}
+								  		 	{{ offreSpeciale.tarifSixPersonnes }}
+								  		 {% elseif offreSpeciale.tarifCinqPersonnes > 0 %}
+								  		 	{{ offreSpeciale.tarifCinqPersonnes }}
+								  		 {% elseif offreSpeciale.tarifQuatrePersonnes > 0 %}
+								  		 	{{ offreSpeciale.tarifQuatrePersonnes }}
+								  		 {% elseif offreSpeciale.tarifTroisPersonnes > 0 %}
+								  		 	{{ offreSpeciale.tarifTroisPersonnes }}
+								  		 {% elseif offreSpeciale.tarifDeuxPersonnes > 0 %}
+								  		 	{{ offreSpeciale.tarifDeuxPersonnes }}
+								  		 {% elseif offreSpeciale.tarifUnePersonne > 0 %}
+								  		 	{{ offreSpeciale.tarifUnePersonne }}
+										 {% endif %}€
+								  		  / {{ offreSpeciale.tarifPour|trans }}
+							  		</div>
+						  		</div>
+							  	<a href="{{ path('offrespeciale', { id: offreSpeciale.id, 'slug': offreSpeciale.name|slugify }) }}" class="btn btn-warning btn-sm details pull-right">{{'details'|trans }}</a>
+					  		</div>
+					  		<div class="offrespeciale-description">
+				  				{{ offreSpeciale.description|raw }}
+				  			</div>
+					  		<a href="{{ path('offresspeciales') }}" class="see-all-special-offers pull-right">{{'see_specials_offers'|trans }}</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}	
+		</div>
+	</div>
+	<div class="col-md-4">
 		{% include "AppBundle:Front:newsletter.html.twig" %} 
 	</div>
 </div>

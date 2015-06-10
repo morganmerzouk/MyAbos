@@ -2,7 +2,7 @@
 .container-search .search { height: 100%; padding: 20px;}
 .container-search .logo {height: 70px; background: url("../images/general/logo_beta.png") center no-repeat;   width: 250px; position: absolute; margin-top: -20px; left: 0; }
 .container-search select, .container-search input {width: auto;height: 25px; padding: 2px; border: 1px solid #BBB;box-shadow: 0px 0px 15px white; color: #B3B3B3;}
-
+.container-search input {position:relative;top:-1;}
 .btn-group-vertical {margin-top: 10px; padding: 0; box-shadow: 0px 0px 30px black; border-top-right-radius: 5px; border-bottom-right-radius: 5px; }
 .btn-info a {color: white;}
 .menu .btn, .menu #btn-destination { color: black; }
