@@ -4,7 +4,9 @@
 .slider .slick-next {width: 22px;height: 20px;border-radius: 10px;}
 .slider .slick-prev:before,
 .slider .slick-next:before {font-size: 24px; background: white; opacity: 1; color: black; border-radius: 30px;}
-h1 {background: url("../images/menu/icones/icon-equipages.png") no-repeat 5px 5px #5bc0de; font-size: 1.2em; padding: 10px 10px 10px 35px;margin: 0 0 10px 0;color: white;}
+h1 {background: #5bc0de; font-size: 2.5em; padding: 0px 10px 0px 0px;margin: 0 0 10px 0;color: white;line-height: 2.5em;
+    text-shadow: 1px 0 0 black, -1px 0 0 black, 0 1px 0 black, 0 -1px 0 black, 1px 1px black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;}
+h1 img.avatar {width: 20%; margin-right: 20px;}
 .panel-info .panel-body-padding { padding: 1px;}
 .skipper p { text-align:justify; font-size:0.9em;}
 .block-croisiere { float: right; width: 30%; border: 1px solid black; padding: 10px;text-align:center;margin-top:10px; }
@@ -48,6 +50,9 @@ h1 {background: url("../images/menu/icones/icon-equipages.png") no-repeat 5px 5p
   -ms-transition: all 300ms ease-out;
   transition: all 300ms ease-out;
 }
+
+.skipper-presentation { margin-left: 345px; font-size: 0.9em;}
+
 .panel-info .panel-body.boat-block-special-offer { text-align: center; margin: 0; padding: 0;  overflow: auto; }
 .boat-block-special-offer h3 { background: #23B6E1; color:white; text-align: center; margin: 0;padding: 5px;  font-size: 1.5em; }
 .boat-block-special-offer .img-responsive { margin: 10px; }
