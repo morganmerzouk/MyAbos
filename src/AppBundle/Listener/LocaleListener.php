@@ -27,12 +27,8 @@ class LocaleListener implements EventSubscriberInterface
     public function onKernelRequest(GetResponseEvent $event)
     {
         $request = $event->getRequest();
-        if (! $request->hasPreviousSession()) {
-            return;
-        }
         // get domain name
         $host = $request->getHttpHost();
-        // or $host = $request->getHost();
         
         $locale = $this->defaultLocale;
         

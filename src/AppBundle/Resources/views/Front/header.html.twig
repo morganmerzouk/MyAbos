@@ -1,9 +1,11 @@
 <div class="container-header">
     {%  render(controller('AppBundle:Front:menuHeader', {'route': route })) %}
     <div class="lang pull-right">
-    	{% set currentPath = path(app.request.attributes.get('_route'),
-                           app.request.attributes.get('_route_params')) %}
-    	<a href="http://www.kitesurfeo.com{{ currentPath }}"><img src="{{ asset('bundles/app/images/general/drapeauEn.gif') }}" alt="langue fr" /></a>
- 		<a href="http://www.kitesurfeo.fr{{ currentPath }}"><img src="{{ asset('bundles/app/images/general/drapeauFr.gif') }}" alt="language en" /></a>
+    	{% set currentPathEn = path(app.request.attributes.get('_route'),
+                           app.request.attributes.get('_route_params')|merge({ '_locale': 'en' })) %}
+    	{% set currentPathFr = path(app.request.attributes.get('_route'),
+                           app.request.attributes.get('_route_params')|merge({ '_locale': 'fr' })) %}
+    	<a href="http://www.kitesurfeo.com{{ currentPathEn }}"><img src="{{ asset('bundles/app/images/general/drapeauEn.gif') }}" alt="langue fr" /></a>
+ 		<a href="http://www.kitesurfeo.fr{{ currentPathFr }}"><img src="{{ asset('bundles/app/images/general/drapeauFr.gif') }}" alt="language en" /></a>
     </div>          
 </div>

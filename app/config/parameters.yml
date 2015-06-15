@@ -10,7 +10,7 @@ parameters:
     mailer_host: localhost
     mailer_user: kitesurfeo
     mailer_password: DdyPCX7Q
-    locale: en
+    locale: fr
     secret: ade2e74ac2b9d749915683d7868851045
 
     contact_email: 'contact@kitesurfeo.com'

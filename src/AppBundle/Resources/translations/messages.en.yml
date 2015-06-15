@@ -46,6 +46,9 @@ home_destinations_text: Discover our broad choice of destination in the Caribbea
 home_prestations_text: Choose the cruise that best fit your wishes
 home_flotte_text: See the technical details of the boats
 home_equipages_text: Meet the different members of our crew
+where: Where?
+when: When?
+who: Who?
 home_explanation_cruise: Choose your cruise
 home_explanation_contact: Contact the skipper
 home_explanation_enjoy: Enjoy!
@@ -214,7 +217,7 @@ something_wrong: Something went wrong ... try again later.
 prestation_boats: Boat offering
 
 skipper_presentation: Presentation
-skipper_boat: Boats
+skipper_boat: Boat
 skipper_desti: Destinations
 skipper_availability: Availability
 skipper_price: Price

@@ -4,9 +4,9 @@
 .slider .slick-next {width: 22px;height: 20px;border-radius: 10px;}
 .slider .slick-prev:before,
 .slider .slick-next:before {font-size: 24px; background: white; opacity: 1; color: black; border-radius: 30px;}
-h1 {background: #5bc0de; font-size: 2.5em; padding: 0px 10px 0px 0px;margin: 0 0 10px 0;color: white;line-height: 2.5em;
+h1 {background: #5bc0de; font-size: 2.5em; padding: 0px 10px 0px 0px;margin: 0 0 10px 18px;color: white;line-height: 2.5em;
     text-shadow: 1px 0 0 black, -1px 0 0 black, 0 1px 0 black, 0 -1px 0 black, 1px 1px black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;}
-h1 img.avatar {width: 20%; margin-right: 20px;}
+
 .panel-info .panel-body-padding { padding: 1px;}
 .skipper p { text-align:justify; font-size:0.9em;}
 .block-croisiere { float: right; width: 30%; border: 1px solid black; padding: 10px;text-align:center;margin-top:10px; }
@@ -17,12 +17,37 @@ h1 img.avatar {width: 20%; margin-right: 20px;}
 
 /*** Page Skipper ***/
 .skipper-home { background-image: url("../images/menu/icones/icon-accueil.png"); }
-.skipper-boat { background-image: url("../images/menu/icones/icon-flotte.png"); }
 .skipper-desti { background-image: url("../images/menu/icones/icon-destinations.png"); }
-.skipper-available { background-image: url("../images/menu/icones/icon-calendar.png"); }
-.skipper-price { background-image: url("../images/menu/icones/icon-price.png"); }
+.skipper-boat { background: url("../images/menu/icones/icon-flotte.png") no-repeat 5px center;
+  margin: 5px 0;padding: 5px;padding-left: 40px;	
+  color: white;
+  font-size: 1.5em;
+  background-color: #5bc0de;
+  border: 1px solid;
+  border-radius: 4px;
+  border-color: #bce8f1;
+  box-shadow: 0px 0px 15px black;
+}
+.skipper-available { background: url("../images/menu/icones/icon-calendar.png") no-repeat 5px center;
+  margin: 5px 0;
+  padding: 5px;padding-left: 40px;
+  color: white;
+  font-size: 1.5em;
+  background-color: #5bc0de;
+  border: 1px solid;
+  border-radius: 4px;
+  border-color: #bce8f1;
+  box-shadow: 0px 0px 15px black;
+}
+.skipper-price { background: url("../images/menu/icones/icon-price.png") no-repeat 5px center;
+  margin: 0;
+  padding: 5px;padding-left: 40px;
+  color: white;
+  font-size: 1.5em;
+}
 .skipper-contact { background-image: url("../images/menu/icones/icon-contact.png"); }
-
+.skipper-center { padding: 0; }
+.skipper-center .col-md-4 {padding-right: 0;}
 .fade-caption { opacity: 0; text-align: left; padding: 15px;overflow:hidden;}
 .caption { background-color: rgba(0,0,0,0.8);
 	height: 170px;
@@ -51,8 +76,6 @@ h1 img.avatar {width: 20%; margin-right: 20px;}
   transition: all 300ms ease-out;
 }
 
-.skipper-presentation { margin-left: 345px; font-size: 0.9em;}
-
 .panel-info .panel-body.boat-block-special-offer { text-align: center; margin: 0; padding: 0;  overflow: auto; }
 .boat-block-special-offer h3 { background: #23B6E1; color:white; text-align: center; margin: 0;padding: 5px;  font-size: 1.5em; }
 .boat-block-special-offer .img-responsive { margin: 10px; }
@@ -71,24 +94,20 @@ h1 img.avatar {width: 20%; margin-right: 20px;}
 table.month { border: 1px solid black; margin: auto;}
 .month th { text-align: center; background: #5bc0de; color: white; padding:5px;font-weight: normal;}
 .month td { text-align: center; border: 1px solid black; }
-td .active { margin: 1px; border-radius: 3px; background: lightgrey; }
+.legend.active { margin: 1px; border-radius: 3px; background: white; }
 .ligne { overflow: auto; margin-bottom: 10px;}
 
-.tableLegend { display: inline-block; margin-right: 10px; }
-td.legend  { border: 1px solid black; width: 20px; border-radius: 0; }
+.legend  { border: 1px solid black; width: 20px; border-radius: 0; padding-left: 4px; }
 td.libelleLegend { padding-left: 5px;}
 .legend div {  padding: 1px 5px; }
 
 /*** Skipper - Boat ***/
-.img-details {padding: 0; padding-left: 1%;}
-.img-detail { margin: 1%; width: 48%; padding: 5px;}
 
-.boat-spec-content {border: 0;line-height: 50px;}
-.boat-spec-content.multiline {border: 0;line-height: normal; padding: 5px;}
+.img-details {padding: 0; padding-left: 1%;}
 
 .col-fiche-bateau{ margin-top: 10px;padding:0;}
 .col-fiche-bateau .block-boat-spec { overflow: auto; margin: 0px; border: 1px solid white; background: #d9edf7; color: black; border-radius: 4px;}
-.boat-spec-content { border: 0; line-height: 50px;}
+.boat-spec-content { border: 0;}
 .col-fiche-bateau img { background: #d9edf7; padding: 5px; border-right: 2px solid white; margin-right: 10px; border-radius: 4px;}
 .col-fiche-bateau h3 {background: #5bc0de; font-size: 1.1em; padding: 10px; margin: 0;color: white;}
 

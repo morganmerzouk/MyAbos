@@ -33,7 +33,7 @@ class SearchHeaderType extends AbstractType
             'attr' => array(
                 'class' => 'select-destination'
             ),
-            'empty_value' => "Where?"
+            'empty_value' => "where"
         ))
             ->add('date', 'date', array(
             'label' => "",
@@ -41,7 +41,7 @@ class SearchHeaderType extends AbstractType
             'widget' => 'single_text',
             'attr' => array(
                 'class' => 'input-date-depart',
-                'placeholder' => 'When?'
+                'placeholder' => 'when'
             ),
             'format' => $format
         ))
@@ -52,7 +52,7 @@ class SearchHeaderType extends AbstractType
             'attr' => array(
                 'class' => 'input-nb-passager'
             ),
-            'empty_value' => "Who?"
+            'empty_value' => "who"
         ))
             ->setMethod("POST");
     }
