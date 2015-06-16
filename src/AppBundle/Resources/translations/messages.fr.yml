@@ -131,6 +131,14 @@ boat_jouet: Loisirs
 see_available: Voir les disponibilités
 contact_skipper: Contacter le skipper
 
+booked: Réservé
+available: Disponible
+sail_for: Navigue depuis
+kitesurf_for: Kitesurf depuis
+languages_spoken: Langues parlées
+other_certifications: Certifications
+hobbies: Passions
+
 boat-desti-itineraries-boat: Itinéraires possible avec le bateau
 boat-desti-itineraries-boat-label-destination: Vous avez ici un aperçu global des différents itinéraires envisageables avec ce bateau
 boat-desti-date-operation: Dates d'opération de cet itinéraire: 

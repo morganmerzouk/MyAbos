@@ -2,6 +2,7 @@
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('bundles/app/js/lib/slick.js') }}" type="text/javascript"></script>  
+    <script src="{{ asset('bundles/app/js/boat/boat.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/app/js/boat/boat_desti.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/app/js/boat/boat_contact.js') }}" type="text/javascript"></script> 
     <script type="text/javascript">
@@ -16,29 +17,34 @@
 {% endblock %}   
 {% block title %}{{'toptitle'|trans}}{% endblock %}
 {% block content %}
-    {%  render(controller('AppBundle:Bateau:submenu', { 'id': app.request.get('id') })) %}
-    
-  	<div class="tab-content">
-  		<div role="tabpanel" class="tab-pane active" id="presentation">
-    		{% include "AppBundle:Front:Bateau/boat_presentation.html.twig" %}
-    	</div>
-    	<div role="tabpanel" class="tab-pane" id="details">
-    		{% include "AppBundle:Front:Bateau/boat_details.html.twig" %}
-    	</div>
-    	<div role="tabpanel" class="tab-pane" id="crew">
-	    	{% include "AppBundle:Front:Bateau/boat_crew.html.twig" %}
-    	</div>
-    	<div role="tabpanel" class="tab-pane" id="destination">
-	    	{% include "AppBundle:Front:Bateau/boat_desti.html.twig" %}
-    	</div>
-    	<div role="tabpanel" class="tab-pane" id="available">
-	    	{% include "AppBundle:Front:Bateau/boat_available.html.twig" %}
-    	</div>
-    	<div role="tabpanel" class="tab-pane" id="price">
-	    	{% include "AppBundle:Front:Bateau/boat_price.html.twig" %}
-    	</div>
-    	<div role="tabpanel" class="tab-pane" id="contact">
-	    	{% include "AppBundle:Front:Bateau/boat_contact.html.twig" %}
-    	</div>
+    <div class="col-md-3 pull-left">
+        <img src="{{ boat.miniatureWebPath }}" class="center-block img-responsive img-thumbnails" alt="photo {{ boat.name }}" />
+        {% include "AppBundle:Front:Bateau/boat_available.html.twig" %}
+        {% include "AppBundle:Front:Bateau/boat_crew.html.twig" %}
     </div>
+    <h1>
+        {{ boat.name }}
+    </h1>
+    <div class="col-md-9 boat-center">
+        <div class="col-md-4 pull-right">
+            {% include "AppBundle:Front:Bateau/boat_price.html.twig" %}
+        </div>
+        <div class="col-md-4">            
+            {% include "AppBundle:Front:Bateau/boat_details.html.twig" %}
+        </div>
+        <div class="col-md-4 text-justify">
+            <div class="well">
+                {{ boat.description|striptags|raw }}
+            </div>
+	    <div class="bateau-photo clearfix">
+	        {% if boat.photoVoileWebPath is not null %}<img class="col-md-6 img-responsive img-thumbnail" src="{{ boat.photoVoileWebPath }}" alt="photo voile" />{% endif %}
+	        {% if boat.photoCarreWebPath is not null %}<img class="col-md-6 img-responsive img-thumbnail" src="{{ boat.photoCarreWebPath }}" alt="photo carre" />{% endif %}
+	        {% if boat.photoCabineWebPath is not null %}<img class="col-md-6 img-responsive img-thumbnail" src="{{ boat.photoCabineWebPath }}" alt="photo cabine" />{% endif %}
+                {% if boat.photoMouillageWebPath is not null %}<img class="col-md-6 img-responsive img-thumbnail" src="{{ boat.photoMouillageWebPath }}" alt="photo mouillage" />{% endif %}
+                {% if boat.photoCockpitWebPath is not null %}<img class="col-md-6 img-responsive img-thumbnail" src="{{ boat.photoCockpitWebPath }}" alt="photo cockpit"  />{% endif %}
+            </div>
+        </div>
+        {% include "AppBundle:Front:Bateau/boat_desti.html.twig" %}
+    </div>
+    {% include "AppBundle:Front:Bateau/boat_contact.html.twig" %}
 {% endblock content %}

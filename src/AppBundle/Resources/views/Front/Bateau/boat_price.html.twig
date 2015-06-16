@@ -1,16 +1,13 @@
-<div class="boat-price">
+
     {% set format = app.request.locale == "en" ? 'm/d/Y' : 'd/m/Y' %}
     <div id="tarifBateau">
         {% for tarif in tarifs %}
-            <div class="col-md-6">
 	            <div class="panel panel-info">
-	            	<div class="panel-heading">
-		                <h3 class="periode-title panel-title">
-		                    {{'periode_du'|trans }}  {{ tarif.dateDebut|date(format) }} {{'periode_au'|trans }} {{ tarif.dateFin|date(format) }}
-		                </h3>
-	                </div>
+                        <div class="panel-heading boat-price">
+                            {{'skipper_price'|trans }}
+                        </div>
 	                <div class="panel-body subblock-periode">
-		                {{'periode_tarif_du'|trans }} {{ tarif.nombreJourMinimum }} {{'day'|trans }} {{'periode_tarif_au'|trans }} {{ tarif.nombreJourMaximum }} {{'days'|trans }} {{'periode_tarif_cruise'|trans }}<br />
+                                {{'periode_du'|trans }}  {{ tarif.dateDebut|date(format) }} {{'periode_au'|trans }} {{ tarif.dateFin|date(format) }}<br />
 		                {{'periode_tarif_cruise_pour'|trans }} {{ tarif.tarifPour|trans }}
 		                <table>
 		                    <tr class="periode-table-personne"><td class="periode-table-title">{{'nombre_de_personne'|trans }}</td>
@@ -24,14 +21,14 @@
 		                        {% if tarif.tarifHuitPersonnes is not null %}<td>8</td>{% endif %}
 		                    </tr>
 		                    <tr><td class="periode-table-title">{{'prix_par_personne'|trans }}</td>
-		                        {% if tarif.tarifUnePersonne is not null %}<td>{{ tarif.tarifUnePersonne }}</td>{% endif %}
-		                        {% if tarif.tarifDeuxPersonnes is not null %}<td>{{ tarif.tarifDeuxPersonnes }}</td>{% endif %}
-		                        {% if tarif.tarifTroisPersonnes is not null %}<td>{{ tarif.tarifTroisPersonnes }}</td>{% endif %}
-		                        {% if tarif.tarifQuatrePersonnes is not null %}<td>{{ tarif.tarifQuatrePersonnes }}</td>{% endif %}
-		                        {% if tarif.tarifCinqPersonnes is not null %}<td>{{ tarif.tarifCinqPersonnes }}</td>{% endif %}
-		                        {% if tarif.tarifSixPersonnes is not null %}<td>{{ tarif.tarifSixPersonnes }}</td>{% endif %}
-		                        {% if tarif.tarifSeptPersonnes is not null %}<td>{{ tarif.tarifSeptPersonnes }}</td>{% endif %}
-		                        {% if tarif.tarifHuitPersonnes is not null %}<td>{{ tarif.tarifHuitPersonnes }}</td>{% endif %}
+		                        {% if tarif.tarifUnePersonne is not null %}<td>{{ tarif.tarifUnePersonne }}€</td>{% endif %}
+		                        {% if tarif.tarifDeuxPersonnes is not null %}<td>{{ tarif.tarifDeuxPersonnes }}€</td>{% endif %}
+		                        {% if tarif.tarifTroisPersonnes is not null %}<td>{{ tarif.tarifTroisPersonnes }}€</td>{% endif %}
+		                        {% if tarif.tarifQuatrePersonnes is not null %}<td>{{ tarif.tarifQuatrePersonnes }}e</td>{% endif %}
+		                        {% if tarif.tarifCinqPersonnes is not null %}<td>{{ tarif.tarifCinqPersonnes }}€</td>{% endif %}
+		                        {% if tarif.tarifSixPersonnes is not null %}<td>{{ tarif.tarifSixPersonnes }}€</td>{% endif %}
+		                        {% if tarif.tarifSeptPersonnes is not null %}<td>{{ tarif.tarifSeptPersonnes }}€</td>{% endif %}
+		                        {% if tarif.tarifHuitPersonnes is not null %}<td>{{ tarif.tarifHuitPersonnes }}€</td>{% endif %}
 		                    </tr>
 		                    <!--
 		                    {% if 'boat' in tarif.tarifPour %}
@@ -50,9 +47,7 @@
 		                </table>
 	                </div>
                 </div>
-            </div>
         {% endfor %}
-        <div class="col-md-12">
 	        <div class="panel-inclus-prix panel panel-info">
 	        	<div class="panel-heading">
 			        <h3 class="panel-title">
@@ -61,70 +56,56 @@
 		        </div>
 		        <div class="panel-body panel-body-padding">
 		        	{% if inclusprixequipage|length > 0 %}
-		        		<div class="col-md-6">
-			        		<div class="odd">{{'the_crew'|trans }}</div>
+			        		<strong>{{'the_crew'|trans }}</strong>
 	                    	<ul><li>{{ inclusprixequipage.name }}</li></ul>
-		        		</div>
 		        	{% endif %}
 		        	{% if inclusprixavitaillement|length > 0 %}
-		        		<div class="col-md-6">
-			        		<div class="odd">{{'fueling'|trans }}</div>
+			        		<strong>{{'fueling'|trans }}</strong>
 			        		<ul>
 				        		{% for inclusprix in inclusprixavitaillement %}
 			                    	<li>{{ inclusprix.name }}</li>
 			                	{% endfor %}
 		                	</ul>
-		        		</div>
 		        	{% endif %}
 		        	{% if inclusprixfraisdevoyage|length > 0 %}
-		        		<div class="col-md-6">
-			        		<div class="odd">{{'frais_de_voyage'|trans }}</div>
+			        		<strong>{{'frais_de_voyage'|trans }}</strong>
 			        		<ul>
 				        		{% for inclusprix in inclusprixfraisdevoyage %}
 			                    	<li>{{ inclusprix.name }}</li>
 			                	{% endfor %}
 		                	</ul>
-		        		</div>
 		        	{% endif %}
 		        	{% if inclusprixautresservices|length > 0 %}
-		        		<div class="col-md-6">
-			        		<div class="odd">{{'boat_otherservice'|trans }}</div>
+			        		<strong>{{'boat_otherservice'|trans }}</strong>
 			        		<ul>
 				        		{% for inclusprix in inclusprixautresservices %}
 			                    	<li>{{ inclusprix.name }}</li>
 			                	{% endfor %}
 		                	</ul>
-		        		</div>
 		        	{% endif %}
 		        	{% if inclusprixequipement|length > 0 %}
-		        		<div class="col-md-6">
-			        		<div class="odd">{{'boat_equipments'|trans }}</div>
+			        		<strong>{{'boat_equipments'|trans }}</strong>
 			        		<ul>
 				        		{% for inclusprix in inclusprixequipement %}
 			                    	<li>{{ inclusprix.name }}</li>
 			                	{% endfor %}
 		                	</ul>
-		        		</div>
 		        	{% endif %}
 		        	{% if inclusprixactivite|length > 0 %}
-		        		<div class="col-md-6">
-			        		<div class="odd">{{'boat_activity'|trans }}</div>
+			        		<strong>{{'boat_activity'|trans }}</strong>
 			        		<ul>
 				        		{% for inclusprix in inclusprixactivite %}
 			                    	<li>{{ inclusprix.name }}</li>
 			                	{% endfor %}
 		                	</ul>
-		        		</div>
 		        	{% endif %}
 		        	{% if inclusprixcours is not null %}
-		        		<div class="col-md-6">
-			        		<div class="odd">{{'boat_cours'|trans }}</div>
+			        		<strong>{{'boat_cours'|trans }}</strong>
 			        		<ul>
 				        		{% for inclusprix in inclusprixcours %}
 			                    	<li>{{ inclusprix.name }}</li>
 			                	{% endfor %}
 		                	</ul>
-		        		</div>
 		        	{% endif %}
 		        </div>  
 	        </div>
@@ -153,5 +134,3 @@
 	        </div>
     	{% endif %}
 	    </div>
-	</div>
-</div>

@@ -130,6 +130,14 @@ boat_jouet: Entertainment
 see_available: Check availability
 contact_skipper: Contact Skipper
 
+booked: Booked
+available: Available
+sail_for: Sail for
+kitesurf_for: Kitesurf for
+languages_spoken: Languages spoken
+other_certifications: Certifications
+hobbies: Hobbies
+
 boat-desti-itineraries-boat: Itineraries of the boat
 boat-desti-itineraries-boat-label-destination: Here is an overview of the different itineraries available with this boat 
 boat-desti-date-operation: Itinerary available from
