@@ -93,7 +93,7 @@ h1 {background: #5bc0de; font-size: 2.5em; padding: 0px 10px 0px 0px;margin: 0 0
 .col-fiche-bateau img {	background: #d9edf7; padding: 5px; border-right: 2px solid white;margin-right: 10px;border-radius: 4px;}
 .col-fiche-bateau h3 {background: #5bc0de; font-size: 1.1em; padding: 10px; margin: 0;color: white;}
 
-/*** Page crew ***/
+/*** Boat - crew ***/
 .fade-caption { opacity: 0; text-align: left; padding: 15px;overflow:hidden;}
 .caption { background-color: rgba(0,0,0,0.8);
 	height: 170px;
@@ -106,7 +106,20 @@ h1 {background: #5bc0de; font-size: 2.5em; padding: 0px 10px 0px 0px;margin: 0 0
   -o-transition: all 300ms ease-out;
   -ms-transition: all 300ms ease-out;
   transition: all 300ms ease-out;
-  margin: -10px 15px 0 15px;
+  margin: 0px 15px 0 15px;
+}
+.skipper p { text-align:justify; font-size:0.9em;}
+.skipper {display: block; }
+.skipper img { max-height: 100%; }
+.skipper:hover .fade-caption, .skipper:hover .scale-caption {
+  opacity: 1;
+}
+.skipper img {
+  -webkit-transition: all 300ms ease-out;
+  -moz-transition: all 300ms ease-out;
+  -o-transition: all 300ms ease-out;
+  -ms-transition: all 300ms ease-out;
+  transition: all 300ms ease-out;
 }
 /*** Boat - Destinations ***/
 .collapse .well { overflow: auto;}

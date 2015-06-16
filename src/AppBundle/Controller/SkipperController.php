@@ -180,8 +180,7 @@ class SkipperController extends Controller
             ->setMessage($message)
             ->setEmail($email)
             ->setNbPassager($this->getRequest()->request->get('nbPassager'))
-            ->setPortDepart($this->getRequest()->request->get('portDepart'))
-            ->setDestination($this->getRequest()->request->get('destination'))
+            ->setItineraire($this->getRequest()->request->get('itineraire'))
             ->setCreatedAt(new \DateTime("now"));
         if (isset($html)) {
             $devis->setServicePayant($html);

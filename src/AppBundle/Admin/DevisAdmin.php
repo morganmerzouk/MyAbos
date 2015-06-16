@@ -18,6 +18,9 @@ class DevisAdmin extends Admin
             ->add('skipper', 'null', array(
             'label' => 'Skipper: '
         ))
+            ->add('itineraire', 'null', array(
+            'label' => 'Itineraire: '
+        ))
             ->add('message', 'null', array(
             'label' => 'Message: '
         ))

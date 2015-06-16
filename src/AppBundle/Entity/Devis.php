@@ -69,12 +69,7 @@ class Devis
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
      */
-    protected $portDepart;
-
-    /**
-     * @ORM\Column(type="string", length=200, nullable=true)
-     */
-    protected $destination;
+    protected $itineraire;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -256,49 +251,26 @@ class Devis
     }
 
     /**
-     * Set portDepart
+     * Set itineraire
      *
-     * @param string $portDepart            
+     * @param string $itineraire            
      * @return Devis
      */
-    public function setPortDepart($portDepart)
+    public function setItineraire($itineraire)
     {
-        $this->portDepart = $portDepart;
+        $this->itineraire = $itineraire;
         
         return $this;
     }
 
     /**
-     * Get portDepart
+     * Get itineraire
      *
      * @return string
      */
-    public function getPortDepart()
+    public function getItineraire()
     {
-        return $this->portDepart;
-    }
-
-    /**
-     * Set destination
-     *
-     * @param string $destination            
-     * @return Devis
-     */
-    public function setDestination($destination)
-    {
-        $this->destination = $destination;
-        
-        return $this;
-    }
-
-    /**
-     * Get destination
-     *
-     * @return string
-     */
-    public function getDestination()
-    {
-        return $this->destination;
+        return $this->itineraire;
     }
 
     /**

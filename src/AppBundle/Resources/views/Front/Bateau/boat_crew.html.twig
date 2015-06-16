@@ -1,19 +1,12 @@
 <h3 class="boat-crew">Captain {{ skipper.name }}</h3>
-<a class="panel-body panel-body-padding skipper" href="{{ path('skipper', { 'id': skipper.id, 'slug': skipper.name|slugify }) }}">
-    <span class="caption fade-caption">
-                        <p>
-                                {# en test 
-                                        Un texte présentant un peu le skipper, ses diplômes, ses passions, ses spécialités et son caractère. 
-                                        Il peut également lister les services qu'ils proposent s'il le désire.
-                                        Bien évidemment, c'est le skipper décide du texte qu'il souhaite afficher.
-                                #}
-                                {# en prod #}
-                                        {{ skipper.description|trans|striptags|truncate(300)|raw }}
-
-                        </p>
-                </span>
+<a class="skipper" href="{{ path('skipper', { 'id': skipper.id, 'slug': skipper.name|slugify }) }}">
+    <!--<span class="caption fade-caption">
+        <p>
+            {{ skipper.description|trans|striptags|truncate(300)|raw }}
+        </p>
+    </span>-->
+	<img class="img-thumbnail img-responsive" src="{{ skipper.avatarWebPath }}" alt="photo {{ skipper.name }}" />
 </a>
-<img class="img-thumbnail img-responsive" src="{{ skipper.avatarWebPath }}" alt="photo {{ skipper.name }}" />
 {% if skipper.yearsSailing is not null %}<strong>{{'sail_for'|trans}}:</strong> {{ skipper.yearsSailing }}{% endif %}
 {% if skipper.yearsKiteSurfing is not null %}<strong>{{'kitesurf_for'|trans}}:</strong> {{ skipper.yearsKiteSurfing }}{% endif %}
 {% if skipper.otherCertifications is not null %}<strong>{{'other_certifications'|trans}}:</strong> {{ skipper.otherCertifications }}{% endif %}
