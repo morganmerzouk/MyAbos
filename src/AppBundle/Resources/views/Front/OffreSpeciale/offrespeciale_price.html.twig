@@ -51,7 +51,7 @@
     	<div class="offre-prestation panel-body panel-body-padding">
 	    	{% for prestation in prestations %}
 	    		<div class="prestation">
-	    			<img src="{{ prestation.iconeWebPath|replace({ ('75'): '25' }) }}" class="img-responsive img-thumbnails pull-left" />
+	    			<img src="{{ prestation.iconeWebPath|replace({ ('75'): '25' }) }}" class="img-responsive img-thumbnail pull-left" />
 	    			<div class="prestation-name">{{ prestation.name }}</div>
 	    		</div>
 	    	{% endfor %}

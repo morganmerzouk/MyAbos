@@ -4,7 +4,7 @@
 	        {{ flashMessage }}
 	    </div>
 	{% endfor %}
-	<div class="col-devis col-md-4">		
+	<div class="col-devis col-md-5">		
 		<div class="panel panel-info">    	
     		<div class="panel-heading">
 	    		<h2 class="panel-title">1 - {{'boat_choose_cruise'|trans}}</h2>
@@ -26,14 +26,9 @@
 				    {{ form_widget(form.nbPassager) }} {{'passagers'|trans}}
 				</div>
 		    	<div>        
-				    {{ form_label(form.portDepart) }}
-				    {{ form_errors(form.portDepart) }}
-				    {{ form_widget(form.portDepart) }}
-			    </div>
-			    <div>
-					{{ form_label(form.destination) }}
-				    {{ form_errors(form.destination) }}
-				    {{ form_widget(form.destination) }}
+				    {{ form_label(form.itineraire) }}
+				    {{ form_errors(form.itineraire) }}
+				    {{ form_widget(form.itineraire) }}
 			    </div>
 		    </div>
 	    </div>
@@ -63,7 +58,7 @@
 	        </div>
         </div>
 	{% endif %}
-	<div class="col-devis {% if servicepayant|length > 0 %}col-md-4{% else %}col-md-8{% endif %}">
+	<div class="col-devis {% if servicepayant|length > 0 %}col-md-4{% else %}col-md-7{% endif %}">
 		<div class="panel panel-info">
     		<div class="panel-heading">
 	    		<h2 class="panel-title">{% if servicepayant|length > 0 %}3{% else %}2{% endif %} - {{'boat_leave_message'|trans}}</h2>

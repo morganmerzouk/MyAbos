@@ -10,7 +10,7 @@
     	<div class="panel-body">
 	    	{% for prestation in prestations %}
 	    		<div class="prestation">
-	    			<img src="{{ prestation.iconeWebPath|replace({ ('75'): '25' }) }}" class="img-responsive img-thumbnails pull-left" />
+	    			<img src="{{ prestation.iconeWebPath|replace({ ('75'): '25' }) }}" class="img-responsive img-thumbnail pull-left" />
 	    			{{ prestation.name }}
 	    		</div>
 	    	{% endfor %}

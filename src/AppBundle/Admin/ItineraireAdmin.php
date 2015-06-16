@@ -57,6 +57,23 @@ class ItineraireAdmin extends Admin
         ))
             ->add('translations', 'a2lix_translations', array(
             'fields' => array(
+                'name' => array(
+                    'label' => 'Nom: ',
+                    'label_attr' => array(
+                        'class' => 'control-nom'
+                    ),
+                    'attr' => array(
+                        'class' => 'tinymce',
+                        'data-theme' => 'advanced'
+                    ),
+                    'sonata_field_description' => 'textarea',
+                    'locale_options' => array(
+                        'en' => array(
+                            'label' => 'Name: '
+                        ),
+                        'required' => false
+                    )
+                ),
                 'description' => array(
                     'label' => 'Description: ',
                     'label_attr' => array(

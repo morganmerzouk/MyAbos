@@ -49,6 +49,7 @@ home_equipages_text: Meet the different members of our crew
 where: Where?
 when: When?
 who: Who?
+whatever: Whatever
 home_explanation_cruise: Choose your cruise
 home_explanation_contact: Contact the skipper
 home_explanation_enjoy: Enjoy!
@@ -139,6 +140,7 @@ other_certifications: Certifications
 hobbies: Hobbies
 
 boat-desti-itineraries-boat: Itineraries of the boat
+skipper-desti-itineraries-boat: Circuit available with this skipper
 boat-desti-itineraries-boat-label-destination: Here is an overview of the different itineraries available with this boat 
 boat-desti-date-operation: Itinerary available from
 
@@ -150,6 +152,7 @@ form_sejour_duree: Cruise duration:
 form_sejour_nb_passager: Number of passenger: 
 form_sejour_portdepart: Departure: 
 form_sejour_destination: Destination: 
+form_sejour_itineraire: Circuit: 
 form_sejour_message: Your message 
 form_sejour_from:  from  
 form_sejour_From:  From:

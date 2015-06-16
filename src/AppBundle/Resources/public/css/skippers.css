@@ -17,7 +17,17 @@ h1 {background: #5bc0de; font-size: 2.5em; padding: 0px 10px 0px 0px;margin: 0 0
 
 /*** Page Skipper ***/
 .skipper-home { background-image: url("../images/menu/icones/icon-accueil.png"); }
-.skipper-desti { background-image: url("../images/menu/icones/icon-destinations.png"); }
+.skipper-desti { background: url("../images/menu/icones/icon-destinations.png") no-repeat 5px center;
+  margin: 5px 0;padding: 5px;padding-left: 40px;	
+  color: white;
+  font-size: 1.5em;
+clear: both;
+  background-color: #5bc0de;
+  border: 1px solid;
+  border-radius: 4px;
+  border-color: #bce8f1;
+  box-shadow: 0px 0px 15px black;
+}
 .skipper-boat { background: url("../images/menu/icones/icon-flotte.png") no-repeat 5px center;
   margin: 5px 0;padding: 5px;padding-left: 40px;	
   color: white;
@@ -47,7 +57,8 @@ h1 {background: #5bc0de; font-size: 2.5em; padding: 0px 10px 0px 0px;margin: 0 0
 }
 .skipper-contact { background-image: url("../images/menu/icones/icon-contact.png"); }
 .skipper-center { padding: 0; }
-.skipper-center .col-md-4 {padding-right: 0;}
+.skipper-center .col-md-8, .skipper-center .col-md-4 {padding: 0;}
+.skipper-center .col-md-8 {padding-right: 10px;}
 .fade-caption { opacity: 0; text-align: left; padding: 15px;overflow:hidden;}
 .caption { background-color: rgba(0,0,0,0.8);
 	height: 170px;
@@ -87,16 +98,14 @@ h1 {background: #5bc0de; font-size: 2.5em; padding: 0px 10px 0px 0px;margin: 0 0
 .col-offre-speciale  {padding: 0;}
 .boat-tarif-pour { font-size: 0.8em;}
 /*** Skipper - Destinations ***/
-.boat-desti .title-hover,
-.boat-desti .cible:hover { background: #5bc0de; color: white; cursor: pointer; }
-
+.collapse .well { overflow: auto;}
 /*** Skipper - Disponibilités ***/
 table.month { border: 1px solid black; margin: auto;}
-.month th { text-align: center; background: #5bc0de; color: white; padding:5px;font-weight: normal;}
+.month th { text-align: center; background: #5bc0de; color: white; padding:0px;font-weight: normal;}
 .month td { text-align: center; border: 1px solid black; }
 .legend.active { margin: 1px; border-radius: 3px; background: white; }
 .ligne { overflow: auto; margin-bottom: 10px;}
-
+.skipper-available-legend { margin: 10px; }
 .legend  { border: 1px solid black; width: 20px; border-radius: 0; padding-left: 4px; }
 td.libelleLegend { padding-left: 5px;}
 .legend div {  padding: 1px 5px; }
@@ -124,10 +133,9 @@ td.libelleLegend { padding-left: 5px;}
 /*** Skipper devis ***/
 .col-devis {padding:5px;}
 .col-devis .panel { overflow: auto; }
-.col-devis label { width: 50%;text-align: right;color: black;font-weight: normal; }
+.col-devis label { width: 35%;text-align: right;color: black;font-weight: normal; }
+.col-devis .select-itineraire-devis, .col-devis .input-date-depart-devis, .col-devis .input-date-retour-devis { width: 60%; }
 .optionspayantes-subblock {overflow: hidden; }
-.input-date-depart, .input-date-retour { width:100px;}
-.select-portdepart, .select-destination {width: 48%;}
 hr { margin: 0; padding: 0;}
 .optionspayantes-subblock .col-name,
 .optionspayantes-subblock .col-price {float: left; width: 48%;}

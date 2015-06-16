@@ -49,6 +49,7 @@ home_prestations_text: Bénéficiez de prestation en accord avec vos désirs
 where: Où?
 when: Quand?
 who: Qui?
+whatever: Peu importe
 home_flotte_text: Découvrez les fiches techniques des bateaux que nous utilisons
 home_equipages_text: Consultez les profils des skippers qui vous emmeneront en croisière
 home_explanation_cruise: Choisissez votre croisière
@@ -140,6 +141,7 @@ other_certifications: Certifications
 hobbies: Passions
 
 boat-desti-itineraries-boat: Itinéraires possible avec le bateau
+skipper-desti-itineraries-boat: Itinéraires possible avec ce skipper
 boat-desti-itineraries-boat-label-destination: Vous avez ici un aperçu global des différents itinéraires envisageables avec ce bateau
 boat-desti-date-operation: Dates d'opération de cet itinéraire: 
 
@@ -152,6 +154,7 @@ form_sejour_duree: Durée de la croisière:
 form_sejour_nb_passager: Nombre de passager:
 form_sejour_portdepart: Port de départ: 
 form_sejour_destination: Destination souhaitée: 
+form_sejour_itineraire: Itinéraire: 
 form_sejour_message: Votre message
 form_sejour_from:  du  
 form_sejour_From:  De: 

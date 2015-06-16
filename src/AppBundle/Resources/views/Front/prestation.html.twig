@@ -7,8 +7,6 @@
     <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/prestations.css') }}">
 {% endblock %}   
 {% block title %}{{'toptitle'|trans}} - {{ prestation.name }}{% endblock %}
-
-
 {% block content %}
 	<h1>{{'home_prestations'|trans}} - {{ prestation.name }}</h1>
     <ul class="lienMenu block-prestations-name">
@@ -28,7 +26,7 @@
 				<h2 class="prestation-boat-title">{{'boat_offering'|trans }} {{ prestation.name }}</h2>
 		    	{% for boat in boats %}
 		    		<div class="boat">
-		    			<img src="{{ boat.miniatureWebPath }}" class="col-md-4 img-responsive img-thumbnails pull-left" />
+		    			<img src="{{ boat.miniatureWebPath }}" class="col-md-4 img-responsive img-thumbnail pull-left" />
 		    			<div class="boat-name"><a href="{{ path("boat", {'id': boat.id}) }}">{{ boat.name }}</a></div>
 		    		</div>
 		    	{% endfor %}

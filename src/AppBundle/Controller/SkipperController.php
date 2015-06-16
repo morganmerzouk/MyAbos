@@ -113,7 +113,7 @@ class SkipperController extends Controller
         
         $form = $this->createForm(new BateauDevisType($this->getDoctrine()
             ->getManager(), $this->getRequest()
-            ->getLocale()));
+            ->getLocale(), $boat->getId()));
         $form->handleRequest($this->getRequest());
         
         return $this->render('AppBundle:Front:Skipper/skipper.html.twig', array(

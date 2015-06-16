@@ -99,7 +99,7 @@
 			                	{% endfor %}
 		                	</ul>
 		        	{% endif %}
-		        	{% if inclusprixcours is not null %}
+		        	{% if inclusprixcours|length > 0 %}
 			        		<strong>{{'boat_cours'|trans }}</strong>
 			        		<ul>
 				        		{% for inclusprix in inclusprixcours %}

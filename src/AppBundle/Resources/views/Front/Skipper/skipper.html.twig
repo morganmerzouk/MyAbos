@@ -4,7 +4,6 @@
     <script src="{{ asset('bundles/app/js/lib/slick.js') }}" type="text/javascript"></script>  
     <script src="{{ asset('bundles/app/js/skipper/skipper.js') }}" type="text/javascript"></script>  
     <script src="{{ asset('bundles/app/js/skipper/skipper_contact.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('bundles/app/js/skipper/skipper_desti.js') }}" type="text/javascript"></script> 
     <script type="text/javascript">
         var urlSkipperContactAjax = "{{ path('skipper_contact', {'id': skipper.id }) }}";
     </script>
@@ -26,11 +25,13 @@
 		Captain {{ skipper.name }}
 	</h1>
 	<div class="col-md-9 skipper-center">
-		<div class="col-md-4 pull-right">
+		<div class="col-md-8">
+			<div class="text-justify well">{{ skipper.description|raw }}</div>
+    		{% include "AppBundle:Front:Skipper/skipper_contact.html.twig" %}
+		</div>
+		<div class="col-md-4">
             {% include "AppBundle:Front:Skipper/skipper_price.html.twig" %}
         </div>
-		<div class="text-justify">{{ skipper.description|raw }}</div>
 		{% include "AppBundle:Front:Skipper/skipper_desti.html.twig" %}
 	</div>
-    {% include "AppBundle:Front:Skipper/skipper_contact.html.twig" %}
 {% endblock content %}

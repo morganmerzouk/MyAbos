@@ -198,7 +198,7 @@ class Itineraire
     {
         if (! $this->getPortDepart())
             return 'Nouvel itinéraire';
-        return (string) $this->getPortDepart()->getName() . '-' . $this->getDestination()->getName();
+        return (string) $this->getName();
     }
 
     /* hack */

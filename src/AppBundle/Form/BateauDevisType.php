@@ -59,23 +59,14 @@ class BateauDevisType extends AbstractType
                 "class" => "select-nb-passager-devis"
             )
         ))
-            ->add('portDepart', 'choice', array(
-            "choices" => $this->fillPortDepart(),
+            ->add('itineraire', 'choice', array(
+            "choices" => $this->fillItineraire(),
             'required' => false,
-            'label' => 'form_sejour_portdepart',
+            'label' => 'form_sejour_itineraire',
             'attr' => array(
-                'class' => 'select-portdepart-devis'
+                'class' => 'select-itineraire-devis'
             ),
-            'empty_value' => "toutes"
-        ))
-            ->add('destination', 'choice', array(
-            "choices" => $this->fillDestination(),
-            'required' => false,
-            'label' => 'form_sejour_destination',
-            'attr' => array(
-                'class' => 'select-destination-devis'
-            ),
-            'empty_value' => "toutes"
+            'empty_value' => "whatever"
         ))
             ->add('message', 'textarea', array(
             'label' => '',
@@ -190,15 +181,13 @@ class BateauDevisType extends AbstractType
         return $destination;
     }
 
-    private function fillPortDepart()
+    private function fillItineraire()
     {
         $results = $this->em->getRepository("AppBundle\Entity\Croisiere")
             ->createQueryBuilder('c')
-            ->select('t.translatable_id as id, t.name')
             ->join('c.itineraireCroisiere', 'ic')
             ->join('ic.itineraire', 'i')
-            ->join('i.portDepart', 'd')
-            ->join('d.translations', 't')
+            ->join('i.translations', 't')
             ->where("t.locale = :locale")
             ->andWhere('c.bateau = :id')
             ->setParameter(":locale", $this->locale)
@@ -207,12 +196,14 @@ class BateauDevisType extends AbstractType
             ->getQuery()
             ->getResult();
         
-        $portDepart = array();
-        foreach ($results as $port) {
-            $portDepart[$port['name']] = $port['name'];
+        $itineraires = array();
+        foreach ($results as $croisiere) {
+            foreach ($croisiere->getItineraireCroisiere() as $itineraireCroisiere) {
+                $itineraires[$itineraireCroisiere->getItineraire()->getName()] = $itineraireCroisiere->getItineraire()->getName();
+            }
         }
         
-        return $portDepart;
+        return $itineraires;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
