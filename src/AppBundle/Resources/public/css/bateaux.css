@@ -6,8 +6,6 @@
 .slider .slick-next:before {font-size: 24px; background: white; opacity: 1; color: black; border-radius: 30px;}
 h1 {background: #5bc0de; font-size: 2.5em; padding: 0px 10px 0px 0px;margin: 0 0 10px 18px;color: white;line-height: 2.5em;
     text-shadow: 1px 0 0 black, -1px 0 0 black, 0 1px 0 black, 0 -1px 0 black, 1px 1px black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;}
-.block-description-bateaux { margin: 0; background: #5bc0de; padding: 10px; }
-.block-croisiere .row { margin: 10px; text-align:left;}
 .panel-info .panel-body-padding{ padding: 1px;}
 
 /*** Page Boats ***/
@@ -25,11 +23,7 @@ h1 {background: #5bc0de; font-size: 2.5em; padding: 0px 10px 0px 0px;margin: 0 0
 .bateau .btn-warning {margin: 10px;}
 .boat-tarif-pour { font-size: 0.9em; }
 
-.boat-contact-step2-loading {display: none; position: absolute; z-index: 1000; width: 25%; height: 20%; top: 40%; left: 33%;padding: 10px; background: black; opacity: 0.8}
-.boat-contact-step2-loading img {height: 80%;margin: auto;}
 /*** Sous-menu ***/
-.bateau-home { background-image: url("../images/menu/icones/icon-accueil.png"); }
-.bateau-fiche { background-image: url("../images/menu/icones/icon-boat-details.png"); }
 .boat-crew { background: url("../images/menu/icones/icon-equipages.png") no-repeat 5px center;
     margin: 5px 0;
     padding: 5px;padding-left: 40px;
@@ -52,8 +46,7 @@ h1 {background: #5bc0de; font-size: 2.5em; padding: 0px 10px 0px 0px;margin: 0 0
   border-color: #bce8f1;
   box-shadow: 0px 0px 15px black;
 }
-.bateau-price { background-image: url("../images/menu/icones/icon-price.png"); }
-.bateau-contact { background-image: url("../images/menu/icones/icon-contact.png"); }
+.boat-contact { clear: both; }
 .boat-available { background: url("../images/menu/icones/icon-calendar.png") no-repeat 5px center;
   margin: 5px 0;
   padding: 5px;padding-left: 40px;
@@ -77,10 +70,8 @@ h1 {background: #5bc0de; font-size: 2.5em; padding: 0px 10px 0px 0px;margin: 0 0
 .boat-center .col-md-8, .boat-center .col-md-4 {padding: 0;}
 .boat-center .col-md-8 {padding-right: 10px;}
 
-/*** Boat présentation ***/
+/*** Boat prÃ©sentation ***/
 .skipper-boat-description {overflow: auto; margin-bottom: 10px;}
-.img-details {padding: 0; padding-left: 1%;}
-.img-detail { margin: 1%; width: 48%; padding: 5px;}
 .bateau-photo .col-md-2 { width: 20%; }
 .boat-prestation { padding: 0; }
 .prestation { overflow: auto; clear: both; margin: 5px auto; padding: 5px; }
@@ -123,35 +114,30 @@ h1 {background: #5bc0de; font-size: 2.5em; padding: 0px 10px 0px 0px;margin: 0 0
 }
 /*** Boat - Destinations ***/
 .collapse .well { overflow: auto;}
-/*** Boat Disponibilités ***/
+/*** Boat DisponibilitÃ©s ***/
 table.month { border: 1px solid black; margin: auto;}
 .month th { text-align: center; background: #5bc0de; color: white; padding:0px;font-weight: normal;}
 .month td { text-align: center; border: 1px solid black; }
-.legend.active { margin: 1px; border-radius: 3px; background: white; }
-.ligne { overflow: auto; margin-bottom: 10px;}
-.boat-available-legend { margin: 10px; }
 .legend  { border: 1px solid black; width: 20px; border-radius: 0; padding-left: 4px; }
-td.libelleLegend { padding-left: 5px;}
 .legend div {  padding: 1px 5px; }
-
+.legend.active { margin: 1px; border-radius: 3px; background: white; }
+.boat-available-legend { margin: 10px; }
 /*** Boat tarif ***/
 .subblock-periode table td { border: 1px solid black;padding: 5px;}
 .periode-table-personne { text-align: center; }
 .periode-table-title {background: #5bc0de; text-align: left;color: white; }
-.panel-inclus-prix .col-md-6 { padding: 5px;}
-.panel-inclus-prix .odd { background: #5bc0de;color: white;padding: 5px;}
 .service-payant-categorie {display:block; float:none;clear: both;}
  /*** Boat devis ***/
 .col-devis {padding:5px;}
 .col-devis .panel { overflow: auto; }
 .col-devis label { width: 35%;text-align: right;color: black;font-weight: normal; }
 .col-devis .select-itineraire-devis, .col-devis .input-date-depart-devis, .col-devis .input-date-retour-devis { width: 60%; }
-.optionspayantes-subblock {overflow: hidden; }
 hr { margin: 0; padding: 0;}
+.optionspayantes-subblock {overflow: hidden; }
 .optionspayantes-subblock .col-name,
 .optionspayantes-subblock .col-price {float: left; width: 48%;}
 .optionspayantes-subblock .col-checkbox {float: left; width: 4%;}
 .panel-message textarea { height: 100px;}
 .panel-message textarea, .panel-message input { width: 100%;margin-bottom: 10px;}
 .loading { display: none; position: absolute; z-index: 1000; top: 0; left: 0; width: 100%; height: 92%; padding: 37%;background: black; opacity: 0.8;}
-.btn-sent {	display: none;margin: 10px auto;}
+.btn-sent { display: none;margin: 10px auto;}

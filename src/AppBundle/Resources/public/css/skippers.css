@@ -6,21 +6,29 @@
 .slider .slick-next:before {font-size: 24px; background: white; opacity: 1; color: black; border-radius: 30px;}
 h1 {background: #5bc0de; font-size: 2.5em; padding: 0px 10px 0px 0px;margin: 0 0 10px 18px;color: white;line-height: 2.5em;
     text-shadow: 1px 0 0 black, -1px 0 0 black, 0 1px 0 black, 0 -1px 0 black, 1px 1px black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;}
-
 .panel-info .panel-body-padding { padding: 1px;}
-.block-croisiere { float: right; width: 30%; border: 1px solid black; padding: 10px;text-align:center;margin-top:10px; }
-.block-croisiere .row { margin: 10px; text-align:left;}
 
-.skipper-contact-step2-loading {display: none; position: absolute; z-index: 1000; width: 25%; height: 20%; top: 40%; left: 33%;padding: 10px; background: black; opacity: 0.8}
-.skipper-contact-step2-loading img {height: 80%;}
+/*** Page Skippers ***/
+.row-skipper {clear:both;}
+.skipper p { text-align:justify; font-size:0.9em;}
+.skipper {display: block;height: 160px; }
+.skipper img { max-height: 100%; }
+.skipper:hover .fade-caption, .skipper:hover .scale-caption {
+  opacity: 1;
+}
+.skipper img {
+  -webkit-transition: all 300ms ease-out;
+  -moz-transition: all 300ms ease-out;
+  -o-transition: all 300ms ease-out;
+  -ms-transition: all 300ms ease-out;
+  transition: all 300ms ease-out;
+}
 
-/*** Page Skipper ***/
-.skipper-home { background-image: url("../images/menu/icones/icon-accueil.png"); }
 .skipper-desti { background: url("../images/menu/icones/icon-destinations.png") no-repeat 5px center;
   margin: 5px 0;padding: 5px;padding-left: 40px;	
   color: white;
   font-size: 1.5em;
-clear: both;
+  clear: both;
   background-color: #5bc0de;
   border: 1px solid;
   border-radius: 4px;
@@ -54,7 +62,6 @@ clear: both;
   color: white;
   font-size: 1.5em;
 }
-.skipper-contact { background-image: url("../images/menu/icones/icon-contact.png"); }
 .skipper-center { padding: 0; }
 .skipper-center .col-md-8, .skipper-center .col-md-4 {padding: 0;}
 .skipper-center .col-md-8 {padding-right: 10px;}
@@ -72,47 +79,19 @@ clear: both;
   transition: all 300ms ease-out;
   margin: -10px 15px 0 15px;
 }
-.row-skipper {clear:both;}
-.skipper p { text-align:justify; font-size:0.9em;}
-.skipper {display: block;height: 160px; }
-.skipper img { max-height: 100%; }
-.skipper:hover .fade-caption, .skipper:hover .scale-caption {
-  opacity: 1;
-}
-.skipper img {
-  -webkit-transition: all 300ms ease-out;
-  -moz-transition: all 300ms ease-out;
-  -o-transition: all 300ms ease-out;
-  -ms-transition: all 300ms ease-out;
-  transition: all 300ms ease-out;
-}
 
-.panel-info .panel-body.boat-block-special-offer { text-align: center; margin: 0; padding: 0;  overflow: auto; }
-.boat-block-special-offer h3 { background: #23B6E1; color:white; text-align: center; margin: 0;padding: 5px;  font-size: 1.5em; }
-.boat-block-special-offer .img-responsive { margin: 10px; }
-.boat-block-special-offer .bateau-prix-semaine {background: #23B6E1; color:white; text-align: center; margin: 0; }
-.boat-block-special-offer .bateaux-icones { float: left; padding: 5px; }
-.boat-block-special-offer .bateaux-description {clear: both;text-align: justify;padding:0 10px;}
-.boat-block-special-offer .btn-warning {margin: 10px;}
-
-.col-offre-speciale  {padding: 0;}
-.boat-tarif-pour { font-size: 0.8em;}
 /*** Skipper - Destinations ***/
 .collapse .well { overflow: auto;}
 /*** Skipper - Disponibilités ***/
 table.month { border: 1px solid black; margin: auto;}
 .month th { text-align: center; background: #5bc0de; color: white; padding:0px;font-weight: normal;}
 .month td { text-align: center; border: 1px solid black; }
-.legend.active { margin: 1px; border-radius: 3px; background: white; }
-.ligne { overflow: auto; margin-bottom: 10px;}
-.skipper-available-legend { margin: 10px; }
 .legend  { border: 1px solid black; width: 20px; border-radius: 0; padding-left: 4px; }
-td.libelleLegend { padding-left: 5px;}
 .legend div {  padding: 1px 5px; }
+.legend.active { margin: 1px; border-radius: 3px; background: white; }
+.skipper-available-legend { margin: 10px; }
 
 /*** Skipper - Boat ***/
-
-.img-details {padding: 0; padding-left: 1%;}
 
 .col-fiche-bateau{ margin-top: 10px;padding:0;}
 .col-fiche-bateau .block-boat-spec { overflow: auto; margin: 0px; border: 1px solid white; background: #d9edf7; color: black; border-radius: 4px;}
@@ -135,8 +114,8 @@ td.libelleLegend { padding-left: 5px;}
 .col-devis .panel { overflow: auto; }
 .col-devis label { width: 35%;text-align: right;color: black;font-weight: normal; }
 .col-devis .select-itineraire-devis, .col-devis .input-date-depart-devis, .col-devis .input-date-retour-devis { width: 60%; }
-.optionspayantes-subblock {overflow: hidden; }
 hr { margin: 0; padding: 0;}
+.optionspayantes-subblock {overflow: hidden; }
 .optionspayantes-subblock .col-name,
 .optionspayantes-subblock .col-price {float: left; width: 48%;}
 .optionspayantes-subblock .col-checkbox {float: left; width: 4%;}

@@ -3,8 +3,8 @@
 	{% for tarif in tarifs %}
 	    <div class="panel panel-info">
 	    	<div class="panel-heading skipper-price">
-				{{'skipper_price'|trans }}
-            </div>
+                    {{'skipper_price'|trans }}
+                </div>
             <div class="panel-body subblock-periode">
                 {{'periode_du'|trans }}  {{ tarif.dateDebut|date(format) }} {{'periode_au'|trans }} {{ tarif.dateFin|date(format) }}<br />
                 {{'periode_tarif_cruise_pour'|trans }} {{ tarif.tarifPour|trans }}
@@ -85,7 +85,7 @@
             	</ul>
         	{% endif %}
         	{% if inclusprixcours|length > 0 %}
-    			<strong class="odd">{{'boat_cours'|trans }}</strong>
+    			<strong>{{'boat_cours'|trans }}</strong>
         		<ul>
 	        		{% for inclusprix in inclusprixcours %}
                     	<li>{{ inclusprix.name }}</li>

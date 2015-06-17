@@ -7,13 +7,15 @@
     </span>-->
 	<img class="img-thumbnail img-responsive" src="{{ skipper.avatarWebPath }}" alt="photo {{ skipper.name }}" />
 </a>
-{% if skipper.yearsSailing is not null %}<strong>{{'sail_for'|trans}}:</strong> {{ skipper.yearsSailing }}{% endif %}
-{% if skipper.yearsKiteSurfing is not null %}<strong>{{'kitesurf_for'|trans}}:</strong> {{ skipper.yearsKiteSurfing }}{% endif %}
-{% if skipper.otherCertifications is not null %}<strong>{{'other_certifications'|trans}}:</strong> {{ skipper.otherCertifications }}{% endif %}
-{% if skipper.languagesSpoken is not null %}<strong>{{'languages_spoken'|trans}}:</strong> 
+<ul>
+    {% if skipper.yearsSailing is not null %}<li><strong>{{'sail_for'|trans}}:</strong> {{ skipper.yearsSailing }}</li>{% endif %}
+{% if skipper.yearsKiteSurfing is not null %}<li><strong>{{'kitesurf_for'|trans}}:</strong> {{ skipper.yearsKiteSurfing }}</li>{% endif %}
+{% if skipper.otherCertifications is not null %}<li><strong>{{'other_certifications'|trans}}:</strong> {{ skipper.otherCertifications }}</li>{% endif %}
+{% if skipper.languagesSpoken is not null %}<li><strong>{{'languages_spoken'|trans}}:</strong>
         {% for langue in skipper.languagesSpoken %}
             {% if loop.index > 1 %},{% endif %}{{ langue }}
-        {% endfor %}
+        {% endfor %}</li>
     {% endif %}
-{% if skipper.hobbies is not null %}<strong>{{'hobbies'|trans}}:</strong> {{ skipper.hobbies }}{% endif %}
+    {% if skipper.hobbies is not null %}<li><strong>{{'hobbies'|trans}}:</strong> {{ skipper.hobbies }}</li>{% endif %}
+</ul>
         
