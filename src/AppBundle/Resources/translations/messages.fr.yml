@@ -50,6 +50,8 @@ where: Où?
 when: Quand?
 who: Qui?
 whatever: Peu importe
+years: ans
+year: an
 home_flotte_text: Découvrez les fiches techniques des bateaux que nous utilisons
 home_equipages_text: Consultez les profils des skippers qui vous emmeneront en croisière
 home_explanation_cruise: Choisissez votre croisière
@@ -116,7 +118,7 @@ boat_cabine: cabines
 boat_bed: couchages
 boat_beddouble: Double 
 boat_bedsimple: Simple
-boat_shower: salle de bain
+boat_shower: salles de bain
 boat_length: Longueur
 boat_width: Largeur
 boat_draft: Tirant d'eau

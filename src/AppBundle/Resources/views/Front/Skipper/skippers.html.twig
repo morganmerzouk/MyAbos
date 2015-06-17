@@ -8,7 +8,6 @@
 {% endblock %}   
 {% block title %}{{'toptitle'|trans}} - {{'crew'|trans}}{% endblock %}
 {% block content %}
-	<h1>{{'crew_title'|trans}}</h1>
 	{% for skipper in skippers %}
 		{% if loop.index0 % 4 == 0 %}
 	    	<div class="row-skipper">
@@ -17,24 +16,13 @@
 	    	<div class="panel panel-info">
 		    	<div class="panel-heading">
 		    		<h3 class="panel-title text-center">
-			    		{# en test
-			    			Nom du skipper
-			    		 #}
-			    		{# en prod #}
 			    			{{ skipper.name }}
 		    		</h3>
 		    	</div>
 		    	<a class="panel-body panel-body-padding skipper" href="{{ path('skipper', { 'id': skipper.id, 'slug': skipper.name|slugify }) }}">
 		            <span class="caption fade-caption">
 						<p>
-							{# en test 
-								Un texte présentant un peu le skipper, ses diplômes, ses passions, ses spécialités et son caractère. 
-								Il peut également lister les services qu'ils proposent s'il le désire.
-								Bien évidemment, c'est le skipper décide du texte qu'il souhaite afficher.
-							#}
-							{# en prod #}
-								{{ skipper.description|trans|striptags|truncate(300)|raw }}
-							
+							{{ skipper.description|trans|striptags|truncate(300)|raw }}
 						</p>
 					</span>
 					{#  en test 

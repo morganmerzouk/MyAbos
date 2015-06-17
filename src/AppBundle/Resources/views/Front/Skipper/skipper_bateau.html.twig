@@ -28,10 +28,10 @@
 	    		{% endif %}
 		        {% if (boat.nbDouche > 0) %}<div class="block-boat-spec"><img src="{{ asset('bundles/app/images/icones/boat/icon-bathroom.png') }}" width=50 class="pull-left" /><div class="boat-spec-content">{{boat.nbDouche}} {{'boat_shower'|trans}}</div></div>{% endif %}
 		        <div class="block-boat-spec"><img src="{{ asset('bundles/app/images/icones/boat/icon-width.png') }}" width=50 class="pull-left" /><div class="boat-spec-content multiline">
-		        	{% if boat.longueur is not null %}{{'boat_length'|trans}}: {{boat.longueur}} - {% endif %}
-			        {% if boat.largeur is not null %} {{'boat_width'|trans}}: {{boat.largeur}} - {% endif %}
+		        	{% if boat.longueur is not null %}{{'boat_length'|trans}}: {{boat.longueur}}m - {% endif %}
+			        {% if boat.largeur is not null %} {{'boat_width'|trans}}: {{boat.largeur}}m - {% endif %}
 			        {% if boat.tirantDEau is not null %} {{'boat_draft'|trans}}: {{boat.tirantDEau}} - {% endif %}
-			        {% if boat.surfacegrandvoile is not null %} {{'boat_main_sail'|trans}}: {{boat.surfacegrandvoile}}{% endif %}
+			        {% if boat.surfacegrandvoile is not null %} {{'boat_main_sail'|trans}}: {{boat.surfacegrandvoile}}m²{% endif %}
 		        </div></div>
 		        {% if boat.moteur is not null %}<div class="block-boat-spec"><img src="{{ asset('bundles/app/images/icones/boat/icon-motor.png') }}" width=50 class="pull-left" /><div class="boat-spec-content">{{'boat_motor'|trans}}: {{boat.moteur}}</div></div>{% endif %}
 		        {% if boat.reservoirCarburant is not null %}<div class="block-boat-spec"><img src="{{ asset('bundles/app/images/icones/boat/icon-fuel.png') }}" width=50 class="pull-left" /><div class="boat-spec-content">{{'boat_fuelcapacity'|trans}}: {{boat.reservoirCarburant}}</div></div>{% endif %}
