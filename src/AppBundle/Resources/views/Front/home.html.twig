@@ -1,10 +1,5 @@
 {% extends "AppBundle:Front:layout_home.html.twig" %}
 {% block content %}   
-
-<video class="video-background" autoplay poster="{{ asset('bundles/app/media/sunset_waves.png') }}">
-  <source src="{{ asset('bundles/app/media/sunset_waves.webm') }}" type="video/webm">
-  <source src="{{ asset('bundles/app/media/sunset_waves.mp4') }}" type="video/mp4">
-</video>
 <div class="clearfix">	
 	<div class="col-md-12">
 		<div class="slider-destination">
@@ -17,10 +12,35 @@
 		        </div>
 			{% endfor %}
 		</div>
+		<div class="container-search-home">
+	        {%  render(controller('AppBundle:Search:searchHeader')) %} 
+	    </div>
 	</div>
 </div>
 <div class="home-bottom">
-	<h1>{{'home_title'|trans|raw }}</h1>
+	<div class="col-md-4">
+		<div class="slider">
+			{% for skipper in skippers %}
+				<div class="slider-item">
+					<div class="panel panel-info block-skipper">
+						<div class="panel-heading">
+				        	<h3 class="panel-title">{{ 'home_equipages'|trans }}</h3>
+			        	</div>
+			        	<div class="panel-body panel-body-padding">
+							<a href="{{ path('skipper', {'id': skipper.id, 'slug': skipper.name|slugify}) }}">
+							<figure class="text-center">        		
+		        				<img src="{{ skipper.avatarWebPath }}" class="img img-responsive center-block" alt="{{ skipper.name }}" />
+				        		<figcaption>
+				            		{{ skipper.name }}
+			        			</figcaption>
+							</figure>
+							</a>
+			        	</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div> 
+	</div>
 	<div class="col-md-4">
 		<div class="slider">
 			{% for boat in boats %}
@@ -52,55 +72,7 @@
 				</div>
 			{% endfor %}
 		</div>
-	</div>
-	<div class="col-md-4 block-teaser">		
-		<div id="player"></div>		
-	</div>    
-	<div class="col-md-4">
-		<div class="slider">
-			{% for skipper in skippers %}
-				<div class="slider-item">
-					<div class="panel panel-info block-skipper">
-						<div class="panel-heading">
-				        	<h3 class="panel-title">{{ 'home_equipages'|trans }}</h3>
-			        	</div>
-			        	<div class="panel-body panel-body-padding">
-							<a href="{{ path('skipper', {'id': skipper.id, 'slug': skipper.name|slugify}) }}">
-							<figure class="text-center">
-			        			{# en test	
-			        				<img src="{{ asset('bundles/app/images/test/icon-man.png') }}" class="img img-responsive center-block" alt="photo skipper" />
-				        		#}
-				        		{# en prod #}		        		
-			        				<img src="{{ skipper.avatarWebPath }}" class="img img-responsive center-block" alt="{{ skipper.name }}" />
-				        		<figcaption>
-				        			{# en test 
-				        				Nom du skipper
-					        		#}
-					        		{# en prod #}
-					            		{{ skipper.name }}
-			        			</figcaption>
-							</figure>
-							</a>
-			        	</div>
-					</div>
-				</div>
-			{% endfor %}
-		</div> 
-	</div>
-	<div class="col-md-12 explanation">
-		<div class="col-md-4">
-			<div class="explanation-title">{{'home_explanation_cruise'|trans}}</div>
-			<img src="{{ asset('bundles/app/images/icones/home/icon-cruise-home.jpg') }}" class="img-responsive" />
-		</div>
-		<div class="col-md-4">
-			<div class="explanation-title">{{'home_explanation_contact'|trans}}</div>
-			<img src="{{ asset('bundles/app/images/icones/home/icon-contact-home.png') }}" class="img-responsive contact center-block" />
-		</div>
-		<div class="col-md-4">
-			<div class="explanation-title">{{'home_explanation_enjoy'|trans}}</div>
-			<img src="{{ asset('bundles/app/images/icones/home/icon-enjoy-home.jpg') }}" class="img-responsive" />
-		</div>
-	</div>
+	</div>  
 	<div class="col-md-4">
 		<div class="slider">
 			{%  for offreSpeciale in offresSpeciales  %}
@@ -149,8 +121,22 @@
 			{% endfor %}	
 		</div>
 	</div>
-	<div class="col-md-4">
-		{% include "AppBundle:Front:newsletter.html.twig" %} 
+	<div class="col-md-12 explanation">
+		<div class="col-md-4">
+			<div class="explanation-title">{{'home_explanation_cruise'|trans}}</div>
+			<img src="{{ asset('bundles/app/images/icones/home/icon-cruise-home.jpg') }}" class="img-responsive" />
+		</div>
+		<div class="col-md-4">
+			<div class="explanation-title">{{'home_explanation_contact'|trans}}</div>
+			<img src="{{ asset('bundles/app/images/icones/home/icon-contact-home.png') }}" class="img-responsive contact center-block" />
+		</div>
+		<div class="col-md-4">
+			<div class="explanation-title">{{'home_explanation_enjoy'|trans}}</div>
+			<img src="{{ asset('bundles/app/images/icones/home/icon-enjoy-home.jpg') }}" class="img-responsive" />
+		</div>
 	</div>
+	<!--<div class="col-md-4">
+		{% include "AppBundle:Front:newsletter.html.twig" %} 
+	</div>-->
 </div>
 {% endblock content %}

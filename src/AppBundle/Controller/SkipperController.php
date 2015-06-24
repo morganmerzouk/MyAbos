@@ -101,7 +101,8 @@ class SkipperController extends Controller
             ->select('s, t')
             ->join('s.translations', 't')
             ->where('s.id = :id')
-            ->setParameter(':id', $croisiere[0]->getBateau())
+            ->setParameter(':id', $croisiere[0]->getBateau()
+            ->getId())
             ->andWhere('t.locale = :locale')
             ->setParameter(':locale', $locale)
             ->getQuery()
@@ -116,6 +117,29 @@ class SkipperController extends Controller
             ->getLocale(), $boat->getId()));
         $form->handleRequest($this->getRequest());
         
+        /**
+         * * hack car bug i18n **
+         */
+        $inclusPrixAvitaillement = array();
+        foreach ($boat->getInclusPrixAvitaillement() as $inclusPrix)
+            array_push($inclusPrixAvitaillement, $inclusPrix);
+        $inclusPrixAutresServices = array();
+        foreach ($boat->getInclusPrixAutresServices() as $inclusPrix)
+            array_push($inclusPrixAutresServices, $inclusPrix);
+        $inclusPrixEquipement = array();
+        foreach ($boat->getInclusPrixEquipement() as $inclusPrix)
+            array_push($inclusPrixEquipement, $inclusPrix);
+        $inclusPrixFraisVoyage = array();
+        foreach ($boat->getInclusPrixFraisVoyage() as $inclusPrix)
+            array_push($inclusPrixFraisVoyage, $inclusPrix);
+        $inclusPrixEquipage = $boat->getInclusPrixEquipage()->getName();
+        $inclusPrixActivite = array();
+        foreach ($boat->getInclusPrixActivite() as $inclusPrix)
+            array_push($inclusPrixActivite, $inclusPrix);
+        $inclusPrixCours = array();
+        foreach ($boat->getInclusPrixCours() as $inclusPrix)
+            array_push($inclusPrixCours, $inclusPrix);
+        
         return $this->render('AppBundle:Front:Skipper/skipper.html.twig', array(
             'skipper' => $skipper,
             'id' => $id,
@@ -127,13 +151,13 @@ class SkipperController extends Controller
             'datesNonDisponibilite' => isset($croisiere[0]) ? $croisiere[0]->getDateNonDisponibilite() : null,
             'tarifs' => isset($croisiere[0]) ? $croisiere[0]->getTarifCroisiere() : null,
             'servicepayant' => isset($croisiere[0]) ? $croisiere[0]->getServicePayant() : null,
-            'inclusprixavitaillement' => $boat->getInclusPrixAvitaillement(),
-            'inclusprixequipage' => $boat->getInclusPrixEquipage(),
-            'inclusprixfraisdevoyage' => $boat->getInclusPrixFraisVoyage(),
-            'inclusprixautresservices' => $boat->getInclusPrixAutresServices(),
-            'inclusprixequipement' => $boat->getInclusPrixEquipement(),
-            'inclusprixactivite' => $boat->getInclusPrixActivite(),
-            'inclusprixcours' => $boat->getInclusPrixCours(),
+            'inclusprixavitaillement' => $inclusPrixAvitaillement,
+            'inclusprixequipage' => $inclusPrixEquipage,
+            'inclusprixfraisdevoyage' => $inclusPrixFraisVoyage,
+            'inclusprixautresservices' => $inclusPrixAutresServices,
+            'inclusprixequipement' => $inclusPrixEquipement,
+            'inclusprixactivite' => $inclusPrixActivite,
+            'inclusprixcours' => $inclusPrixCours,
             'form' => $form->createView()
         ));
     }

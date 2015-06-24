@@ -97,72 +97,6 @@ class BateauController extends Controller
             ->trans("fleet_meta_keywords"));
         $seoPage->addMeta('name', 'description', substr(strip_tags($boat->getDescription()), 0, 255));
         
-        $inclusPrix = $this->getDoctrine()
-            ->getManager()
-            ->getRepository("AppBundle\Entity\Bateau")
-            ->createQueryBuilder('b')
-            ->select('b, ipe, ipa, ipf, ipet, ipac, ipc, ipas')
-            ->leftJoin('b.inclusPrixEquipage', 'ipe')
-            ->leftJoin('b.inclusPrixAvitaillement', 'ipa')
-            ->leftJoin('b.inclusPrixFraisVoyage', 'ipf')
-            ->leftJoin('b.inclusPrixEquipement', 'ipet')
-            ->leftJoin('b.inclusPrixActivite', 'ipac')
-            ->leftJoin('b.inclusPrixCours', 'ipc')
-            ->leftJoin('b.inclusPrixAutresServices', 'ipas')
-            ->where('b.id = :id')
-            ->setParameter(':id', $id)
-            ->getQuery()
-            ->getResult();
-        
-        $ids = array();
-        
-        if (isset($inclusPrix[0]) && $inclusPrix[0]->getInclusPrixEquipage() != null)
-            array_push($ids, $inclusPrix[0]->getInclusPrixEquipage()->getId());
-        foreach ($inclusPrix[0]->getInclusPrixAvitaillement() as $inclusPrixAvitaillement)
-            array_push($ids, $inclusPrixAvitaillement->getId());
-        foreach ($inclusPrix[0]->getInclusPrixFraisVoyage() as $inclusPrixFraisVoyage)
-            array_push($ids, $inclusPrixFraisVoyage->getId());
-        foreach ($inclusPrix[0]->getInclusPrixEquipement() as $inclusPrixEquipement)
-            array_push($ids, $inclusPrixEquipement->getId());
-        foreach ($inclusPrix[0]->getInclusPrixActivite() as $inclusPrixActivite)
-            array_push($ids, $inclusPrixActivite->getId());
-        foreach ($inclusPrix[0]->getInclusPrixCours() as $inclusPrixCours)
-            array_push($ids, $inclusPrixCours->getId());
-        foreach ($inclusPrix[0]->getInclusPrixAutresServices() as $inclusPrixAutresServices)
-            array_push($ids, $inclusPrixAutresServices->getId());
-        
-        $inclusPrix = $this->getDoctrine()
-            ->getManager()
-            ->createQueryBuilder('ip')
-            ->select('ip,p,pt')
-            ->from("AppBundle\Entity\InclusPrix", "ip")
-            ->join('ip.prestation', 'p')
-            ->join('p.translations', 'pt')
-            ->andWhere('pt.locale = :locale')
-            ->andWhere('ip.id IN (' . implode(',', $ids) . ')')
-            ->setParameter(':locale', $locale)
-            ->getQuery()
-            ->getResult();
-        if (count($inclusPrix) > 0) {
-            $idPrestations = array();
-            foreach ($inclusPrix[0]->getPrestation() as $prestation) {
-                array_push($idPrestations, $prestation->getId());
-            }
-            
-            $prestation = $this->getDoctrine()
-                ->getManager()
-                ->createQueryBuilder('p')
-                ->select('p,pt')
-                ->from("AppBundle\Entity\Prestation", "p")
-                ->join('p.translations', 'pt')
-                ->andWhere('pt.locale = :locale')
-                ->andWhere('p.id IN (' . implode(',', $idPrestations) . ')')
-                ->setParameter(':locale', $locale)
-                ->getQuery()
-                ->getResult();
-        } else {
-            $prestation = null;
-        }
         $form = $this->createForm(new BateauDevisType($this->getDoctrine()
             ->getManager(), $this->getRequest()
             ->getLocale(), $id));
@@ -171,7 +105,6 @@ class BateauController extends Controller
         
         return $this->render('AppBundle:Front:Bateau/boat.html.twig', array(
             'boat' => $boat,
-            'prestations' => $prestation,
             'skipper' => isset($croisiere[0]) ? $croisiere[0]->getSkipper() : null,
             'offrespeciale' => isset($offreSpeciale[0]) ? $offreSpeciale[0] : null,
             'datesNonDisponibilite' => isset($croisiere[0]) ? $croisiere[0]->getDateNonDisponibilite() : null,

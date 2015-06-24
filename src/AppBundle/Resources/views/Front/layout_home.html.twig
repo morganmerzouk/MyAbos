@@ -13,9 +13,10 @@
         {% block javascripts %}
             <script src="{{ asset('bundles/app/js/lib/modernizr.js') }}" type="text/javascript"></script> 
             <script src="{{ asset('bundles/app/js/lib/jquery.js') }}" type="text/javascript"></script>
-            <script src="{{ asset('bundles/app/js/lib/jquery-ui.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('bundles/app/js/lib/jquery-ui.min.js') }}" type="text/javascript"></script>
             <script src="{{ asset('bundles/app/js/lib/bootstrap.js') }}" type="text/javascript"></script>
     		<script src="{{ asset('bundles/app/js/lib/slick.js') }}" type="text/javascript"></script>
+    		<script src="{{ asset('bundles/app/js/lib/jquery.colorbox-min.js') }}" type="text/javascript"></script>
             
             <script src="{{ asset('bundles/app/js/script.js') }}" type="text/javascript"></script>
             <script src="{{ asset('bundles/app/js/home.js') }}" type="text/javascript"></script>
@@ -53,12 +54,10 @@
     	<div class="container-home">
             {% include "AppBundle:Front:header.html.twig" with {'route': app.request.get('_route') }  %}
             <div class="container-body clearfix">
-                <div class="container-search">
-                    {%  render(controller('AppBundle:Search:searchHeader')) %} 
-                </div>   
+				<h1>{{'home_title'|trans|raw }}</h1>
             	{% block content %}{% endblock %}
             </div>
-        </div><!--/container-->
+        </div>
         {% include "AppBundle:Front:footer.html.twig" %}
         {% if app.request.locale == 'fr' %}
         	{% include "AppBundle:Front:cookies.html.twig" %}

@@ -5,4 +5,5 @@ $(document).ready(function() {
     $('.slider-boat').slick({
         autoplay: 	true
     });
+	$('.skipper-slider-photo').colorbox({rel:'skipper-slider-photo'});
 });

@@ -18,7 +18,9 @@
 {% block title %}{{'toptitle'|trans}}{% endblock %}
 {% block content %}
     <div class="col-md-3 pull-left">
-        <img src="{{ boat.miniatureWebPath }}" class="center-block img-responsive img-thumbnail" alt="photo {{ boat.name }}" />
+        <a href="{{ boat.miniatureWebPath }}" class="boat-photo">
+        	<img src="{{ boat.miniatureWebPath }}" class="center-block img-responsive img-thumbnail" alt="photo {{ boat.name }}" />
+    	</a>
         {% include "AppBundle:Front:Bateau/boat_available.html.twig" %}
         {% include "AppBundle:Front:Bateau/boat_crew.html.twig" %}
     </div>
@@ -35,12 +37,12 @@
 	            <div class="well">
 	                {{ boat.description|striptags|raw }}
 	            </div>
-			    <div class="bateau-photo clearfix">
-			        {% if boat.photoVoileWebPath is not null %}<img class="col-md-6 img-responsive img-thumbnail" src="{{ boat.photoVoileWebPath }}" alt="photo voile" />{% endif %}
-			        {% if boat.photoCarreWebPath is not null %}<img class="col-md-6 img-responsive img-thumbnail" src="{{ boat.photoCarreWebPath }}" alt="photo carre" />{% endif %}
-			        {% if boat.photoCabineWebPath is not null %}<img class="col-md-6 img-responsive img-thumbnail" src="{{ boat.photoCabineWebPath }}" alt="photo cabine" />{% endif %}
-		            {% if boat.photoMouillageWebPath is not null %}<img class="col-md-6 img-responsive img-thumbnail" src="{{ boat.photoMouillageWebPath }}" alt="photo mouillage" />{% endif %}
-		            {% if boat.photoCockpitWebPath is not null %}<img class="col-md-6 img-responsive img-thumbnail" src="{{ boat.photoCockpitWebPath }}" alt="photo cockpit"  />{% endif %}
+			    <div class="bateau-photo slider-boat clearfix">
+			        {% if boat.photoVoileWebPath is not null %}<div class="slider-item"><a href="{{ boat.photoVoileWebPath }}" class="boat-slider-photo"><img class="img-responsive img-thumbnail" src="{{ boat.photoVoileWebPath }}" alt="photo voile" /></a></div>{% endif %}
+			        {% if boat.photoCarreWebPath is not null %}<div class="slider-item"><a href="{{ boat.photoCarreWebPath }}" class="boat-slider-photo"><img class="img-responsive img-thumbnail" src="{{ boat.photoCarreWebPath }}" alt="photo carre" /></a></div>{% endif %}
+			        {% if boat.photoCabineWebPath is not null %}<div class="slider-item"><a href="{{ boat.photoCabineWebPath }}" class="boat-slider-photo"><img class="img-responsive img-thumbnail" src="{{ boat.photoCabineWebPath }}" alt="photo cabine" /></a></div>{% endif %}
+		            {% if boat.photoMouillageWebPath is not null %}<div class="slider-item"><a href="{{ boat.photoMouillageWebPath }}" class="boat-slider-photo"><img class="img-responsive img-thumbnail" src="{{ boat.photoMouillageWebPath }}" alt="photo mouillage" /></a></div>{% endif %}
+		            {% if boat.photoCockpitWebPath is not null %}<div class="slider-item"><a href="{{ boat.photoCockpitWebPath }}" class="boat-slider-photo"><img class="img-responsive img-thumbnail" src="{{ boat.photoCockpitWebPath }}" alt="photo cockpit"  /></a></div>{% endif %}
 		        </div>
 	        </div>
     		{% include "AppBundle:Front:Bateau/boat_contact.html.twig" %}

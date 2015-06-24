@@ -2,12 +2,12 @@
 <div>
     {% if boat|length == 1 %}
 		<div class="slider slider-boat">
-            {% if boat.miniatureWebPath is not null %}<div class="slider-item"><img class="img-thumbnail img-responsive" src="{{ boat.miniatureWebPath }}" alt="photo voile" /></div>{% endif %}
-            {% if boat.photoVoileWebPath is not null %}<div class="slider-item"><img class="img-thumbnail img-responsive" src="{{ boat.photoVoileWebPath }}" alt="photo voile" /></div>{% endif %}
-            {% if boat.photoMouillageWebPath is not null %}<div class="slider-item"><img class="img-thumbnail img-responsive" src="{{ boat.photoMouillageWebPath }}" alt="photo mouillage" /></div>{% endif %}
-            {% if boat.photoCockpitWebPath is not null %}<div class="slider-item"><img class="img-thumbnail img-responsive" src="{{ boat.photoCockpitWebPath }}" alt="photo cockpit"  /></div>{% endif %}
-            {% if boat.photoCarreWebPath is not null %}<div class="slider-item"><img class="img-thumbnail img-responsive" src="{{ boat.photoCarreWebPath }}" alt="photo carre" /></div>{% endif %}
-            {% if boat.photoCabineWebPath is not null %}<div class="slider-item"><img class="img-thumbnail img-responsive" src="{{ boat.photoCabineWebPath }}" alt="photo cabine" /></div>{% endif %}
+            {% if boat.miniatureWebPath is not null %}<div class="slider-item"><a href="{{ boat.miniatureWebPath }}" class="skipper-slider-photo"><img class="img-thumbnail img-responsive" src="{{ boat.miniatureWebPath }}" alt="photo voile" /></a></div>{% endif %}
+            {% if boat.photoVoileWebPath is not null %}<div class="slider-item"><a href="{{ boat.photoVoileWebPath }}" class="skipper-slider-photo"><img class="img-thumbnail img-responsive" src="{{ boat.photoVoileWebPath }}" alt="photo voile" /></a></div>{% endif %}
+            {% if boat.photoMouillageWebPath is not null %}<div class="slider-item"><a href="{{ boat.photoMouillageWebPath }}" class="skipper-slider-photo"><img class="img-thumbnail img-responsive" src="{{ boat.photoMouillageWebPath }}" alt="photo mouillage" /></a></div>{% endif %}
+            {% if boat.photoCockpitWebPath is not null %}<div class="slider-item"><a href="{{ boat.photoCockpitWebPath }}" class="skipper-slider-photo"><img class="img-thumbnail img-responsive" src="{{ boat.photoCockpitWebPath }}" alt="photo cockpit" /></a></div>{% endif %}
+            {% if boat.photoCarreWebPath is not null %}<div class="slider-item"><a href="{{ boat.photoCarreWebPath }}" class="skipper-slider-photo"><img class="img-thumbnail img-responsive" src="{{ boat.photoCarreWebPath }}" alt="photo carre" /></a></div>{% endif %}
+            {% if boat.photoCabineWebPath is not null %}<div class="slider-item"><a href="{{ boat.photoCabineWebPath }}" class="skipper-slider-photo"><img class="img-thumbnail img-responsive" src="{{ boat.photoCabineWebPath }}" alt="photo cabine" /></a></div>{% endif %}
 	    </div>
 		<div class="col-fiche-bateau panel panel-info">
 	        <div class="panel-heading">
