@@ -32,6 +32,7 @@ class SkipperController extends Controller
             ->select('s, t')
             ->join('s.translations', 't')
             ->andWhere('t.locale = :locale')
+            ->andWhere('s.actif = 1')
             ->setParameter(':locale', $locale)
             ->getQuery()
             ->getResult();
@@ -58,6 +59,7 @@ class SkipperController extends Controller
             ->where('s.id = :id')
             ->setParameter(':id', $id)
             ->andWhere('t.locale = :locale')
+            ->andWhere('s.actif = 1')
             ->setParameter(':locale', $locale)
             ->getQuery()
             ->getSingleResult();
@@ -83,7 +85,7 @@ class SkipperController extends Controller
             ->getRepository("AppBundle\Entity\Croisiere")
             ->createQueryBuilder('c')
             ->select('c, s, t, d, t2')
-            ->leftjoin('AppBundle\Entity\Skipper', 's', 'WITH', 'c.skipper = s.id')
+            ->leftjoin('AppBundle\Entity\Skipper', 's', 'WITH', 'c.skipper = s.id = s.actif=1')
             ->leftjoin('s.translations', 't')
             ->leftjoin('c.dateNonDisponibilite', 'd')
             ->leftjoin('c.tarifCroisiere', 't2')
@@ -104,6 +106,7 @@ class SkipperController extends Controller
             ->setParameter(':id', $croisiere[0]->getBateau()
             ->getId())
             ->andWhere('t.locale = :locale')
+            ->andWhere('s.actif = 1')
             ->setParameter(':locale', $locale)
             ->getQuery()
             ->getSingleResult();

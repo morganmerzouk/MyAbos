@@ -86,6 +86,11 @@ class Skipper
     protected $avatarFile;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $actif = false;
+
+    /**
      * Get id
      *
      * @return integer
@@ -466,6 +471,29 @@ class Skipper
         $this->$fctName($file->getClientOriginalName());
         // clean up the file property as you won't need it anymore
         $file = null;
+    }
+
+    /**
+     * Set actif
+     *
+     * @param boolean $actif            
+     * @return Skipper
+     */
+    public function setActif($actif)
+    {
+        $this->actif = $actif;
+        
+        return $this;
+    }
+
+    /**
+     * Get actif
+     *
+     * @return boolean
+     */
+    public function getActif()
+    {
+        return $this->actif;
     }
 
     public function __toString()

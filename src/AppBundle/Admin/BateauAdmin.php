@@ -520,6 +520,10 @@ class BateauAdmin extends Admin
             'label' => 'Cours de kitesurf: ',
             'empty_value' => 'Cours de kitesurf',
             'btn_add' => false
+        ))
+            ->add('actif', 'checkbox', array(
+            'label' => 'Public?',
+            'required' => false
         ));
     }
     

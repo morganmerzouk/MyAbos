@@ -148,6 +148,11 @@ class Bateau
     protected $inclusPrixCours;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $actif = false;
+
+    /**
      * Get id
      *
      * @return integer
@@ -981,5 +986,28 @@ class Bateau
     public function getNbLitDouble()
     {
         return $this->nbLitDouble;
+    }
+
+    /**
+     * Set actif
+     *
+     * @param boolean $actif            
+     * @return Bateau
+     */
+    public function setActif($actif)
+    {
+        $this->actif = $actif;
+        
+        return $this;
+    }
+
+    /**
+     * Get actif
+     *
+     * @return boolean
+     */
+    public function getActif()
+    {
+        return $this->actif;
     }
 }

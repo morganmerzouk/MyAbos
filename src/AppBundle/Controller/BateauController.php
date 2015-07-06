@@ -57,6 +57,7 @@ class BateauController extends Controller
             ->where('s.id = :id')
             ->setParameter(':id', $id)
             ->andWhere('t.locale = :locale')
+            ->andWhere('s.actif = 1')
             ->setParameter(':locale', $locale)
             ->getQuery()
             ->getSingleResult();
@@ -66,7 +67,7 @@ class BateauController extends Controller
             ->getRepository("AppBundle\Entity\Croisiere")
             ->createQueryBuilder('c')
             ->select('c, b, t, d, t2')
-            ->leftjoin('AppBundle\Entity\Bateau', 'b', 'WITH', 'c.bateau = b.id')
+            ->leftjoin('AppBundle\Entity\Bateau', 'b', 'WITH', 'c.bateau = b.id AND b.actif=1')
             ->leftjoin('b.translations', 't')
             ->leftjoin('c.dateNonDisponibilite', 'd')
             ->leftjoin('c.tarifCroisiere', 't2')

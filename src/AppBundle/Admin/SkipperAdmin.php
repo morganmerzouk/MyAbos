@@ -162,6 +162,10 @@ class SkipperAdmin extends Admin
             'label_attr' => array(
                 'class' => 'control-languages-spoken'
             )
+        ))
+            ->add('actif', 'checkbox', array(
+            'label' => 'Public?',
+            'required' => false
         ));
     }
 

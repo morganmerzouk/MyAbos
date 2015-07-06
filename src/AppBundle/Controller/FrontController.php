@@ -51,6 +51,7 @@ class FrontController extends Controller
             ->select('b, t')
             ->join('b.translations', 't')
             ->andWhere('t.locale = :locale')
+            ->andWhere('b.actif = 1')
             ->setParameter(':locale', $locale)
             ->getQuery()
             ->getResult();
@@ -62,6 +63,7 @@ class FrontController extends Controller
             ->select('s, t')
             ->join('s.translations', 't')
             ->andWhere('t.locale = :locale')
+            ->andWhere('s.actif = 1')
             ->setParameter(':locale', $locale)
             ->getQuery()
             ->getResult();
@@ -128,6 +130,7 @@ class FrontController extends Controller
             ->select('b, t')
             ->join('b.translations', 't')
             ->andWhere('t.locale = :locale')
+            ->andWhere('b.actif = 1')
             ->setParameter(':locale', $locale)
             ->getQuery()
             ->getResult();
@@ -139,6 +142,7 @@ class FrontController extends Controller
             ->select('s, t')
             ->join('s.translations', 't')
             ->andWhere('t.locale = :locale')
+            ->andWhere('s.actif = 1')
             ->setParameter(':locale', $locale)
             ->getQuery()
             ->getResult();
