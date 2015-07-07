@@ -1,7 +1,7 @@
 <h3 class="boat-available">{{'skipper_availability'|trans}}</h3>
 <div class="clearfix boat-available-legend">
-	<div class="col-md-6"><div class="active legend pull-left">X</div>{{'booked'|trans }}</div>
-	<div class="col-md-6"><div class="legend pull-left">X</div>{{'available'|trans }}</div>
+	<div class="col-md-6"><div class="booked legend pull-left">X</div><span>{{'booked'|trans }}</span></div>
+	<div class="col-md-6"><div class="available legend pull-left">X</div><span>{{'available'|trans }}</span></div>
 </div>
 <div class="slider slider-available">
     {% for i in 0..11 %}
@@ -51,7 +51,9 @@
 		                                                        and dateNonDisponibilite.dateDebut|date('Ym') < time|date("Ym")
 		                                                    )) 
 		                                        %}
-		                                            class="active"
+		                                            class="booked"
+	                                            {% else %}
+		                                            class="available"	                                            
 		                                        {% endif %}
 		                                    {% endfor %}
 										>{{ day }}

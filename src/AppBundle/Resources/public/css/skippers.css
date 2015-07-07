@@ -87,9 +87,14 @@ table.month { border: 1px solid black; margin: auto;}
 .month th { text-align: center; background: #5bc0de; color: white; padding:0px;font-weight: normal;}
 .month td { text-align: center; border: 1px solid black; }
 .legend  { border: 1px solid black; width: 20px; border-radius: 0; padding-left: 4px; }
-.legend div {  padding: 1px 5px; }
-.legend.active { margin: 1px; border-radius: 3px; background: white; }
+.legend div { padding: 1px 5px; }
+.legend.available { margin: 1px; margin-right: 3px; border-radius: 3px; background: white; }
+.legend.booked { margin: 1px; margin-right: 3px; border-radius: 3px; background: #BBBBBB; }
+
+.booked { background: #BBBBBB; }
+.available { background: white; }
 .skipper-available-legend { margin: 10px; }
+.skipper-available-legend span { line-height: 25px; }
 
 /*** Skipper - Boat ***/
 

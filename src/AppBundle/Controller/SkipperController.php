@@ -85,7 +85,7 @@ class SkipperController extends Controller
             ->getRepository("AppBundle\Entity\Croisiere")
             ->createQueryBuilder('c')
             ->select('c, s, t, d, t2')
-            ->leftjoin('AppBundle\Entity\Skipper', 's', 'WITH', 'c.skipper = s.id = s.actif=1')
+            ->leftjoin('AppBundle\Entity\Skipper', 's', 'WITH', 'c.skipper = s.id AND s.actif=1')
             ->leftjoin('s.translations', 't')
             ->leftjoin('c.dateNonDisponibilite', 'd')
             ->leftjoin('c.tarifCroisiere', 't2')
@@ -106,7 +106,6 @@ class SkipperController extends Controller
             ->setParameter(':id', $croisiere[0]->getBateau()
             ->getId())
             ->andWhere('t.locale = :locale')
-            ->andWhere('s.actif = 1')
             ->setParameter(':locale', $locale)
             ->getQuery()
             ->getSingleResult();

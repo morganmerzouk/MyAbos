@@ -120,8 +120,14 @@ table.month { border: 1px solid black; margin: auto;}
 .month td { text-align: center; border: 1px solid black; }
 .legend  { border: 1px solid black; width: 20px; border-radius: 0; padding-left: 4px; }
 .legend div {  padding: 1px 5px; }
-.legend.active { margin: 1px; border-radius: 3px; background: white; }
+.legend.available { margin: 1px; margin-right: 3px; border-radius: 3px; background: white; }
+.legend.booked { margin: 1px; margin-right: 3px; border-radius: 3px; background: #BBBBBB; }
+
+.booked { background: #BBBBBB; }
+.available { background: white; }
 .boat-available-legend { margin: 10px; }
+.boat-available-legend span { line-height: 25px; }
+
 /*** Boat tarif ***/
 .subblock-periode table td { border: 1px solid black;padding: 5px;}
 .periode-table-personne { text-align: center; }
