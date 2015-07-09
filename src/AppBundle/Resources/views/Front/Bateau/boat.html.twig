@@ -23,33 +23,31 @@
     	</a>
         {% include "AppBundle:Front:Bateau/boat_available.html.twig" %}
         {% include "AppBundle:Front:Bateau/boat_crew.html.twig" %}
+        {% include "AppBundle:Front:Bateau/boat_price.html.twig" %}
     </div>
     <h1>
         {{ boat.name }}
     </h1>
     <div class="col-md-9 boat-center">
     	<div class="clearfix">
-    	<div class="col-md-8">
-	        <div class="col-md-6">            
-	            {% include "AppBundle:Front:Bateau/boat_details.html.twig" %}
-	        </div>
-	        <div class="col-md-6 text-justify">
-	            <div class="well">
-	                {{ boat.description|striptags|raw }}
-	            </div>
-			    <div class="bateau-photo slider-boat clearfix">
-			        {% if boat.photoVoileWebPath is not null %}<div class="slider-item"><a href="{{ boat.photoVoileWebPath }}" class="boat-slider-photo"><img class="img-responsive img-thumbnail" src="{{ boat.photoVoileWebPath }}" alt="photo voile" /></a></div>{% endif %}
-			        {% if boat.photoCarreWebPath is not null %}<div class="slider-item"><a href="{{ boat.photoCarreWebPath }}" class="boat-slider-photo"><img class="img-responsive img-thumbnail" src="{{ boat.photoCarreWebPath }}" alt="photo carre" /></a></div>{% endif %}
-			        {% if boat.photoCabineWebPath is not null %}<div class="slider-item"><a href="{{ boat.photoCabineWebPath }}" class="boat-slider-photo"><img class="img-responsive img-thumbnail" src="{{ boat.photoCabineWebPath }}" alt="photo cabine" /></a></div>{% endif %}
-		            {% if boat.photoMouillageWebPath is not null %}<div class="slider-item"><a href="{{ boat.photoMouillageWebPath }}" class="boat-slider-photo"><img class="img-responsive img-thumbnail" src="{{ boat.photoMouillageWebPath }}" alt="photo mouillage" /></a></div>{% endif %}
-		            {% if boat.photoCockpitWebPath is not null %}<div class="slider-item"><a href="{{ boat.photoCockpitWebPath }}" class="boat-slider-photo"><img class="img-responsive img-thumbnail" src="{{ boat.photoCockpitWebPath }}" alt="photo cockpit"  /></a></div>{% endif %}
+	    	<div class="col-md-8">
+	            <div class="col-md-12 text-justify">
+		            <div class="well">
+		                {{ boat.description|raw }}
+		            </div>
+				    <div class="bateau-photo slider-boat clearfix">
+				        {% if boat.photoVoileWebPath is not null %}<div class="slider-item"><a href="{{ boat.photoVoileWebPath }}" class="boat-slider-photo"><img class="img-responsive img-thumbnail" src="{{ boat.photoVoileWebPath }}" alt="photo voile" /></a></div>{% endif %}
+				        {% if boat.photoCarreWebPath is not null %}<div class="slider-item"><a href="{{ boat.photoCarreWebPath }}" class="boat-slider-photo"><img class="img-responsive img-thumbnail" src="{{ boat.photoCarreWebPath }}" alt="photo carre" /></a></div>{% endif %}
+				        {% if boat.photoCabineWebPath is not null %}<div class="slider-item"><a href="{{ boat.photoCabineWebPath }}" class="boat-slider-photo"><img class="img-responsive img-thumbnail" src="{{ boat.photoCabineWebPath }}" alt="photo cabine" /></a></div>{% endif %}
+			            {% if boat.photoMouillageWebPath is not null %}<div class="slider-item"><a href="{{ boat.photoMouillageWebPath }}" class="boat-slider-photo"><img class="img-responsive img-thumbnail" src="{{ boat.photoMouillageWebPath }}" alt="photo mouillage" /></a></div>{% endif %}
+			            {% if boat.photoCockpitWebPath is not null %}<div class="slider-item"><a href="{{ boat.photoCockpitWebPath }}" class="boat-slider-photo"><img class="img-responsive img-thumbnail" src="{{ boat.photoCockpitWebPath }}" alt="photo cockpit"  /></a></div>{% endif %}
+			        </div>
 		        </div>
 	        </div>
-    		{% include "AppBundle:Front:Bateau/boat_contact.html.twig" %}
-        </div>
-        <div class="col-md-4">
-            {% include "AppBundle:Front:Bateau/boat_price.html.twig" %}
-        </div>
+	        <div class="col-md-4">
+	        	{% include "AppBundle:Front:Bateau/boat_details.html.twig" %}
+	        </div>
+	        {% include "AppBundle:Front:Bateau/boat_contact.html.twig" %}
         </div>
         {% include "AppBundle:Front:Bateau/boat_desti.html.twig" %}
     </div>

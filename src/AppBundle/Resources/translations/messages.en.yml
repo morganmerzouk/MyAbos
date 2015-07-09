@@ -184,6 +184,8 @@ equipement_supplementaire: Supplementary Equipments
 prestation_kite_disponible: Kitesurf services available
 par_passager: per passenger
 
+periode: Date
+price_of_boat: Price of boat
 periode_du: Price from
 periode_au: to
 periode_tarif_du: Price available for a duration between
