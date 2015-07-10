@@ -20,36 +20,31 @@
         	</div>
         	<div class="panel-body panel-body-padding">
         		<a href="{{ path('boat', { 'id': croisiere.bateau.id, 'slug': croisiere.bateau.name|slugify }) }}">
-        			<img class="img-responsive img center-block" src="{{ croisiere.bateau.miniatureWebPath }}" alt="photo {{ croisiere.bateau.name }}" />
-	            </a>
-	            <p class="bateau-prix-semaine"> 
-	                {{'boat_price_from'|trans}} 	
-					{% if croisiere.tarifCroisiere|length > 0 %}                       
-						{% if croisiere.tarifCroisiere[0].tarifHuitPersonnes is not null %}{{croisiere.tarifCroisiere[0].tarifHuitPersonnes}}
-						{% elseif croisiere.tarifCroisiere[0].tarifSeptPersonnes is not null %}{{croisiere.tarifCroisiere[0].tarifSeptPersonnes}}
-						{% elseif croisiere.tarifCroisiere[0].tarifSixPersonnes is not null %}{{croisiere.tarifCroisiere[0].tarifSixPersonnes}}
-						{% elseif croisiere.tarifCroisiere[0].tarifCinqPersonnes is not null %}{{croisiere.tarifCroisiere[0].tarifCinqPersonnes}}
-						{% elseif croisiere.tarifCroisiere[0].tarifQuatrePersonnes is not null %}{{croisiere.tarifCroisiere[0].tarifQuatrePersonnes}}
-						{% elseif croisiere.tarifCroisiere[0].tarifTroisPersonnes is not null %}{{croisiere.tarifCroisiere[0].tarifTroisPersonnes}}
-						{% elseif croisiere.tarifCroisiere[0].tarifDeuxPersonnes is not null %}{{croisiere.tarifCroisiere[0].tarifDeuxPersonnes}}
-						{% elseif croisiere.tarifCroisiere[0].tarifUnePersonne is not null %}{{croisiere.tarifCroisiere[0].tarifUnePersonne}}
+		            <div class="pull-right btn btn-warning btn-price"> 
+		                {{'boat_price_from'|trans}}<br />	
+						<span class="boat-price-from">
+							{% if croisiere.tarifCroisiere|length > 0 %}                       
+								{% if croisiere.tarifCroisiere[0].tarifHuitPersonnes is not null %}{{croisiere.tarifCroisiere[0].tarifHuitPersonnes}}
+								{% elseif croisiere.tarifCroisiere[0].tarifSeptPersonnes is not null %}{{croisiere.tarifCroisiere[0].tarifSeptPersonnes}}
+								{% elseif croisiere.tarifCroisiere[0].tarifSixPersonnes is not null %}{{croisiere.tarifCroisiere[0].tarifSixPersonnes}}
+								{% elseif croisiere.tarifCroisiere[0].tarifCinqPersonnes is not null %}{{croisiere.tarifCroisiere[0].tarifCinqPersonnes}}
+								{% elseif croisiere.tarifCroisiere[0].tarifQuatrePersonnes is not null %}{{croisiere.tarifCroisiere[0].tarifQuatrePersonnes}}
+								{% elseif croisiere.tarifCroisiere[0].tarifTroisPersonnes is not null %}{{croisiere.tarifCroisiere[0].tarifTroisPersonnes}}
+								{% elseif croisiere.tarifCroisiere[0].tarifDeuxPersonnes is not null %}{{croisiere.tarifCroisiere[0].tarifDeuxPersonnes}}
+								{% elseif croisiere.tarifCroisiere[0].tarifUnePersonne is not null %}{{croisiere.tarifCroisiere[0].tarifUnePersonne}}
+							{% endif %}
+							€
+						</span><br />({{ croisiere.tarifCroisiere[0].tarifPour|trans}})
 						{% endif %}
-						€ <span class="boat-tarif-pour text-center">({{ croisiere.tarifCroisiere[0].tarifPour|trans}})</span>
-					{% endif %}
-	            </p>
-	            <div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/icon-boat.png') }}" /><br />{{croisiere.bateau.type}}</div>
-	            <div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/icon-cabins.png') }}" /><br />{{croisiere.bateau.nbCabine}} {{'boat_cabine'|trans}}</div>
-	            
-				{% if (croisiere.bateau.nbCouchage > 0) %}<div class="bateaux-icones col-md-4"><img src="{{ asset('bundles/app/images/icones/boat/icon-bed.png') }}" /><br />{{croisiere.bateau.nbCouchage}} {{'boat_bed'|trans}}</div>{% endif %}
-	            <p class="bateaux-description">
-		        		{% if croisiere.bateau.description|length > 100 %}
-			        		{{ croisiere.bateau.description|striptags|slice(0,100)|raw }}...
-			        	{% else %}
-			        		{{ croisiere.bateau.description|striptags|raw }}
-			    		{% endif %}
-	    		</p>
-	            <a class="btn btn-sm btn-warning pull-right" href="{{ path('boat', { 'id': croisiere.bateau.id, 'slug': croisiere.bateau.name|slugify }) }}">{{'suite'|trans}}</a>
-            </div>
+		            </div>
+        			<img class="img-responsive img center-block" src="{{ croisiere.bateau.miniatureWebPath }}" alt="photo {{ croisiere.bateau.name }}" />	            	
+		            <div class="boat-amenities">
+			            <div class="bateaux-icones col-md-4 text-center"><img width="40" src="{{ asset('bundles/app/images/icones/boat/icon-boat.png') }}" /><br />{{croisiere.bateau.type}}</div>
+			            <div class="bateaux-icones col-md-4 text-center"><img width="40"src="{{ asset('bundles/app/images/icones/boat/icon-cabins.png') }}" /><br />{{croisiere.bateau.nbCabine}} {{'boat_cabine'|trans}}</div>
+			        	{% if (croisiere.bateau.nbCouchage > 0) %}<div class="bateaux-icones col-md-4 text-center"><img width="40" src="{{ asset('bundles/app/images/icones/boat/icon-bed2.png') }}" /><br />{{croisiere.bateau.nbCouchage}} {{'boat_bed'|trans}}</div>{% endif %}
+		        	</div>
+	        	</a>
+	        </div>
         </div>
         {% if loop.index0 % 3 == 2 %}
 	        </div>

@@ -26,9 +26,9 @@ h1 {background: #5bc0de; font-size: 2.5em; padding: 0px 10px 0px 0px;margin: 0 0
 }
 
 .skipper-desti { background: url("../images/menu/icones/icon-destinations.png") no-repeat 5px center;
-  margin: 5px 0;padding: 5px;padding-left: 40px;	
+  margin: 5px 0;padding: 10px;padding-left: 50px;	
   color: white;
-  font-size: 1.5em;
+  font-size: 1.3em;
   clear: both;
   background-color: #5bc0de;
   border: 1px solid;
@@ -83,6 +83,7 @@ h1 {background: #5bc0de; font-size: 2.5em; padding: 0px 10px 0px 0px;margin: 0 0
 
 /*** Skipper - Destinations ***/
 .collapse .well { overflow: auto;}
+.skipper-desti-content { border:1px solid #269abc;box-shadow: 0px 0px 15px black;border-radius: 4px;border-top-left-radius: 0;}
 /*** Skipper - Disponibilités ***/
 table.month { border: 1px solid black; margin: auto;}
 .month th { text-align: center; background: #5bc0de; color: white; padding:0px;font-weight: normal;}
@@ -108,13 +109,14 @@ table.month { border: 1px solid black; margin: auto;}
 .btn-contact {margin-bottom: 10px;}
 
 /*** Skipper tarif ***/
+.boat-price {  background: url("../images/menu/icones/icon-price.png") no-repeat 5px center; margin: 0; padding: 5px; padding-left: 40px; color: white; font-size: 1.5em;}
 .subblock-periode table td { border: 1px solid black;padding: 5px;}
 .periode-table-personne { text-align: center; }
 .periode-table-title {background: #5bc0de; text-align: left;color: white; }
 .panel-inclus-prix .col-md-6 { padding: 5px;}
 .panel-inclus-prix .odd { background: #5bc0de;color: white;padding: 5px;}
-.service-payant-categorie {display:block; float:none;clear: both;}
-
+.panel-inclus-prix.service-payant-categorie {display:block; float:none;clear: both;}
+.panel-inclus-prix strong{ display: inline-lock; margin-left: 10px; }
 /*** Skipper devis ***/
 .col-devis {padding:5px;}
 .col-devis .panel { overflow: auto; }

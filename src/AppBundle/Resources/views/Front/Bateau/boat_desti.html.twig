@@ -17,7 +17,7 @@
     {% endif %}
     {% for itineraireCroisiere in itinerairesCroisiere %}
     	<div class="collapse {% if loop.index == 1%}active in{% endif %}" id="collapse{{itineraireCroisiere.itineraire.id}}">
-			<div class="well">
+			<div class="well boat-desti-content">
                 	<img class="pull-right img-responsive img-thumbnail" src="{{ itineraireCroisiere.itineraire.miniatureWebPath }}" />
 				    {{ itineraireCroisiere.itineraire.description|raw }}
                 <div>

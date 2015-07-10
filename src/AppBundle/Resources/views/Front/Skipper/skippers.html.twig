@@ -25,12 +25,7 @@
 							{{ skipper.description|trans|striptags|truncate(300)|raw }}
 						</p>
 					</span>
-					{#  en test 
-						<img class="img-responsive center-block" src="{{ asset('bundles/app/images/test/icon-man.png') }}" alt="photo skipper" />
-	        		#}
-		        	{# en prod #}
-	        			<img class="img-responsive center-block" src="{{ skipper.avatarWebPath }}" alt="photo {{ skipper.name }}" />
-	        		 
+        			<img class="img-responsive center-block" src="{{ skipper.avatarWebPath }}" alt="photo {{ skipper.name }}" /> 
 	        	</a>
         	</div>
     	</div>

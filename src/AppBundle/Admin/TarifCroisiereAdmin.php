@@ -171,6 +171,8 @@ class TarifCroisiereAdmin extends Admin
             );
         } elseif ($type == "tarifPour") {
             $item = array(
+                'bateau' => 'bateau',
+                'jour' => 'jour',
                 '1 jour/bateau' => '1 jour/bateau',
                 '1 jour/personne' => '1 jour/personne',
                 '7 jours/bateau' => '7 jours/bateau',
