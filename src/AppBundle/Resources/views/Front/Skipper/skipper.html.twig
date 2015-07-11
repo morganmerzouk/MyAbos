@@ -27,21 +27,20 @@
 		    {% endif %}
 		    {% if skipper.hobbies is not null %}<li><strong>{{'hobbies'|trans}}:</strong> {{ skipper.hobbies }}</li>{% endif %}
 		</ul>
-         	
-		{% include "AppBundle:Front:Skipper/skipper_available.html.twig" %}
         {% include "AppBundle:Front:Skipper/skipper_bateau.html.twig" %}
+    	{% include "AppBundle:Front:Skipper/skipper_price_details.html.twig" %}
 	</div>
 	<h1>
 		Captain {{ skipper.name }}
 	</h1>
 	<div class="col-md-9 skipper-center">
-		<div class="col-md-8">
-			<div class="text-justify well">{{ skipper.description|raw }}</div>
-    		{% include "AppBundle:Front:Skipper/skipper_contact.html.twig" %}
-		</div>
+		<div class="col-md-8 text-justify well">{{ skipper.description|raw }}</div>
 		<div class="col-md-4">
-            {% include "AppBundle:Front:Skipper/skipper_price.html.twig" %}
+			{% include "AppBundle:Front:Skipper/skipper_available.html.twig" %}
         </div>
-		{% include "AppBundle:Front:Skipper/skipper_desti.html.twig" %}
+		<div class="col-md-12">
+			{% include "AppBundle:Front:Skipper/skipper_desti.html.twig" %}
+			{% include "AppBundle:Front:Skipper/skipper_contact.html.twig" %}
+		</div>
 	</div>
 {% endblock content %}

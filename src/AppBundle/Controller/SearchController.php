@@ -67,7 +67,7 @@ class SearchController extends Controller
             $this->querySearchResult("price", "asc");
         }
         return $this->render('AppBundle:Front:Search/search_results.html.twig', array(
-            'results' => $this->results
+            'croisieres' => $this->results
         ));
     }
 
@@ -84,7 +84,7 @@ class SearchController extends Controller
         $this->querySearchResult($orderBy, $sort);
         
         return $this->render('AppBundle:Front:Search/search_results_content.html.twig', array(
-            'results' => $this->results
+            'croisieres' => $this->results
         ));
     }
 

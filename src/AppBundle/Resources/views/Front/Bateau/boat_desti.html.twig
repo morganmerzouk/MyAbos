@@ -18,14 +18,29 @@
     {% for itineraireCroisiere in itinerairesCroisiere %}
     	<div class="collapse {% if loop.index == 1%}active in{% endif %}" id="collapse{{itineraireCroisiere.itineraire.id}}">
 			<div class="well boat-desti-content">
+				{% set break = false %}
+				{% set empty = true %}
+				{% for tarif in tarifs if not break %}
+					{% if itineraireCroisiere == tarif.itineraireCroisiere %}
+        				{% set break = true %}
+    				{% elseif tarif.itineraireCroisiere != "" %}
+    					{% set empty = false %} 
+					{% endif %}
+				{% endfor %}
+				{% set afficherPrix = break or empty %}
+				<div {% if afficherPrix == true %}class="col-md-9"{% endif %}>
                 	<img class="pull-right img-responsive img-thumbnail" src="{{ itineraireCroisiere.itineraire.miniatureWebPath }}" />
 				    {{ itineraireCroisiere.itineraire.description|raw }}
-                <div>
-                	{% if itineraireCroisiere.dateDebut %}
-	                    {{'boat-desti-date-operation'|trans }} {{ itineraireCroisiere.dateDebut|date(format) }}
-	                    {{'periode_au'|trans }} {{ itineraireCroisiere.dateFin|date(format) }}
-                    {% endif %}
+	                <div>
+	                	{% if itineraireCroisiere.dateDebut %}
+		                    {{'boat-desti-date-operation'|trans }} {{ itineraireCroisiere.dateDebut|date(format) }}
+		                    {{'periode_au'|trans }} {{ itineraireCroisiere.dateFin|date(format) }}
+	                    {% endif %}
+	                </div>
                 </div>
+                {% if afficherPrix == true %}
+                	{% include "AppBundle:Front:Bateau/boat_price.html.twig" %}
+                {% endif %}
 			</div>
 		</div>
     {% endfor %}

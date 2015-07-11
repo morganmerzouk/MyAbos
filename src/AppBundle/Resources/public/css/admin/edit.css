@@ -151,6 +151,9 @@ height: auto
 .control-inclusprix-prestation { width: 300px;}
 /*** Fin Inclus Prix ***/
 /*** Début Croisiére ***/
+.control-tarifcroisiere-name { display: none; }
+.tarifcroisiere-name { width: 100px;}
+.tarifcroisiere-tarifunepersonne,
 .tarifcroisiere-tarifdeuxpersonne,
 .tarifcroisiere-tariftroispersonne,
 .tarifcroisiere-tarifquatrepersonne,

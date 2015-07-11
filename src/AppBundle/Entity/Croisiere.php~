@@ -49,6 +49,12 @@ class Croisiere {
     protected $servicePayant;
     
     /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ItineraireCroisiere",cascade={"persist"})
+     */
+    protected $itineraireCroisiere;
+    
+    /**
     * @ORM\Column(type="string", length=200, nullable=true)
     */
     protected $miniature;

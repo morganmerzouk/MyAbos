@@ -111,6 +111,10 @@ class CroisiereAdmin extends Admin
             'edit' => 'inline',
             'inline' => 'table',
             'sortable' => 'position'
+        ))
+            ->add('actif', 'checkbox', array(
+            'label' => 'Public?',
+            'required' => false
         ));
     }
     

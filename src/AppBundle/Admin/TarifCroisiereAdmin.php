@@ -13,7 +13,48 @@ class TarifCroisiereAdmin extends Admin
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('dateDebut', 'sonata_type_date_picker', array(
+        $croisiere = $this->getRoot()->getSubject();
+        $ic = $croisiere->getItineraireCroisiere();
+        $ids = array();
+        foreach ($ic as $itineraireCroisiere) {
+            array_push($ids, $itineraireCroisiere->getId());
+        }
+        
+        $em = $this->modelManager->getEntityManager('AppBundle\Entity\ItineraireCroisiere');
+        $query = $em->createQueryBuilder('ic')
+            ->select('ic')
+            ->from('AppBundle:ItineraireCroisiere', 'ic')
+            ->where('ic.id IN (:ids)')
+            ->setParameter(':ids', $ids);
+        $formMapper->add('itineraireCroisiere', 'sonata_type_model', array(
+            'required' => false,
+            'query' => $query
+        ))
+            ->add('translations', 'a2lix_translations', array(
+            'fields' => array(
+                'name' => array(
+                    'label' => 'Nom: ',
+                    'label_attr' => array(
+                        'class' => 'control-tarifcroisiere-name'
+                    ),
+                    'attr' => array(
+                        'class' => 'tarifcroisiere-name',
+                        'data-theme' => 'advanced'
+                    ),
+                    'sonata_field_description' => 'textarea',
+                    'locale_options' => array(
+                        'en' => array(
+                            'label' => 'Name: '
+                        ),
+                        'required' => false
+                    )
+                ),
+                'translatable_id' => array(
+                    'field_type' => 'hidden'
+                )
+            )
+        ))
+            ->add('dateDebut', 'sonata_type_date_picker', array(
             'label' => 'Date début: ',
             'required' => true,
             'format' => 'dd/MM/yyyy'
@@ -152,7 +193,7 @@ class TarifCroisiereAdmin extends Admin
         ));
     }
 
-    protected function loadChoiceList($type)
+    protected function loadChoiceList($type, $ic = null)
     {
         if ($type == "nombreJourMinimum") {
             $item = array(

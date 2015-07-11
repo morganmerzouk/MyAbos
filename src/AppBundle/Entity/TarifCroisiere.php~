@@ -13,6 +13,8 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  */
 class TarifCroisiere
 {
+    
+    use ORMBehaviors\Translatable\Translatable;
 
     /**
      * @ORM\Id
@@ -20,6 +22,11 @@ class TarifCroisiere
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="ItineraireCroisiere",cascade={"persist"})
+     */
+    protected $itineraireCroisiere;
 
     /**
      * @ORM\Column(type="date")
@@ -381,5 +388,28 @@ class TarifCroisiere
     public function getTarifPour()
     {
         return $this->tarifPour;
+    }
+
+    /**
+     * Set tarifUnePersonne
+     *
+     * @param integer $tarifUnePersonne            
+     * @return TarifCroisiere
+     */
+    public function setTarifUnePersonne($tarifUnePersonne)
+    {
+        $this->tarifUnePersonne = $tarifUnePersonne;
+        
+        return $this;
+    }
+
+    /**
+     * Get tarifUnePersonne
+     *
+     * @return integer
+     */
+    public function getTarifUnePersonne()
+    {
+        return $this->tarifUnePersonne;
     }
 }

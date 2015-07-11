@@ -61,6 +61,11 @@ class Croisiere
     protected $miniatureFile;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $actif = false;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -378,5 +383,28 @@ class Croisiere
     public function getItineraireCroisiere()
     {
         return $this->itineraireCroisiere;
+    }
+
+    /**
+     * Set actif
+     *
+     * @param boolean $actif            
+     * @return Bateau
+     */
+    public function setActif($actif)
+    {
+        $this->actif = $actif;
+        
+        return $this;
+    }
+
+    /**
+     * Get actif
+     *
+     * @return boolean
+     */
+    public function getActif()
+    {
+        return $this->actif;
     }
 }

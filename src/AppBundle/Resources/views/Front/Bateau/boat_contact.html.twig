@@ -30,38 +30,31 @@
 				    {{ form_errors(form.itineraire) }}
 				    {{ form_widget(form.itineraire) }}
 			    </div>
+				{% if servicepayant|length > 0 %}
+					<hr />
+					<strong>{{'choose_your_options'|trans}}</strong>
+					{% for service in servicepayant %}
+			    		{% if loop.index > 1 %}
+			    			<hr />
+						{% endif %}
+			    		<div class="optionspayantes-subblock">
+			                <div class="col-name">{{service.name|trans}}</div>
+			                <div class="col-price">
+			                	{% if service.fraisSupplementaires != "" %}{% if service.devise == "$" %}${% endif %}{{service.fraisSupplementaires}}{% if service.devise == "€" %}€{% endif %} {{service.tarifApplique|trans}}{% else %} N/A {% endif %}
+			            	</div>
+			            	<div class="col-checkbox">
+			                	<input type="checkbox" class="selection" name="servicepayant[]" value="{{service.id}}" />
+			                </div>
+			            </div>
+			        {% endfor %}
+				{% endif %}
 		    </div>
 	    </div>
     </div>
-	{% if servicepayant|length > 0 %}
-    	<div class="col-devis col-md-4">
-    		<div class="panel panel-info">
-	    		<div class="panel-heading">
-		    		<h2 class="panel-title">2 - {{'choose_your_options'|trans}}</h2>
-	    		</div>
-	    		<div class="panel-body">	    	
-	        		{% for service in servicepayant %}
-		        		{% if loop.index > 1 %}
-		        			<hr />
-	        			{% endif %}
-		        		<div class="optionspayantes-subblock">
-		                    <div class="col-name" data-item="1">{{service.name}}</div>
-		                    <div class="col-price">
-		                    	{% if service.fraisSupplementaires != "" %}{% if service.devise == "$" %}${% endif %}{{service.fraisSupplementaires}}{% if service.devise == "€" %}€{% endif %} {{service.tarifApplique|trans}}{% else %} N/A {% endif %}
-	                    	</div>
-	                    	<div class="col-checkbox">
-		                    	<input type="checkbox" class="selection" name="servicepayant[]" value="{{service.id}}" />
-		                    </div>
-		                </div>
-                    {% endfor %}
-		        </div>
-	        </div>
-        </div>
-	{% endif %}
-	<div class="col-devis {% if servicepayant|length > 0 %}col-md-4{% else %}col-md-7{% endif %}">
+	<div class="col-devis col-md-7">
 		<div class="panel panel-info">
     		<div class="panel-heading">
-	    		<h2 class="panel-title">{% if servicepayant|length > 0 %}3{% else %}2{% endif %} - {{'boat_leave_message'|trans}}</h2>
+	    		<h2 class="panel-title">2 - {{'boat_leave_message'|trans}}</h2>
     		</div>
     		<div class="panel-body panel-message">		    		
 		        <div class="loading">

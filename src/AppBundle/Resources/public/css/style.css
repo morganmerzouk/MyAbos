@@ -1,5 +1,5 @@
 html, body {font-size: 14px; font-family: 'Signika', Verdana,sans-serif;}
-.panel-info { box-shadow: 0px 0px 15px black; }
+.panel-info { box-shadow: 0px 0px 6px black; }
 .panel-info>.panel-heading { color: white; background-color: #5bc0de; }
 .panel-info .panel-body {padding: 10px;}
 .container-body {padding-bottom: 30px; background-color: #EFF1F2;}

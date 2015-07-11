@@ -13,6 +13,8 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  */
 class TarifCroisiere
 {
+    
+    use ORMBehaviors\Translatable\Translatable;
 
     /**
      * @ORM\Id
@@ -22,12 +24,17 @@ class TarifCroisiere
     protected $id;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\ManyToOne(targetEntity="ItineraireCroisiere",cascade={"persist"})
+     */
+    protected $itineraireCroisiere;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
      */
     protected $dateDebut;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
     protected $dateFin;
 
@@ -100,6 +107,12 @@ class TarifCroisiere
     public function getId()
     {
         return $this->id;
+    }
+    
+    // Need this method for the admin list template
+    public function getName()
+    {
+        return $this->translate()->getName();
     }
 
     public function __toString()
@@ -386,23 +399,46 @@ class TarifCroisiere
     /**
      * Set tarifUnePersonne
      *
-     * @param integer $tarifUnePersonne
+     * @param integer $tarifUnePersonne            
      * @return TarifCroisiere
      */
     public function setTarifUnePersonne($tarifUnePersonne)
     {
         $this->tarifUnePersonne = $tarifUnePersonne;
-
+        
         return $this;
     }
 
     /**
      * Get tarifUnePersonne
      *
-     * @return integer 
+     * @return integer
      */
     public function getTarifUnePersonne()
     {
         return $this->tarifUnePersonne;
+    }
+
+    /**
+     * Set itineraireCroisiere
+     *
+     * @param \AppBundle\Entity\ItineraireCroisiere $itineraireCroisiere            
+     * @return TarifCroisiere
+     */
+    public function setItineraireCroisiere(\AppBundle\Entity\ItineraireCroisiere $itineraireCroisiere = null)
+    {
+        $this->itineraireCroisiere = $itineraireCroisiere;
+        
+        return $this;
+    }
+
+    /**
+     * Get itineraireCroisiere
+     *
+     * @return \AppBundle\Entity\ItineraireCroisiere
+     */
+    public function getItineraireCroisiere()
+    {
+        return $this->itineraireCroisiere;
     }
 }

@@ -51,19 +51,10 @@
 			        	</div>
 			        	<div class="panel-body panel-body-padding">
 							<a href="{{ path('boat', {'id': boat.id, 'slug': boat.name|slugify }) }}">
-							<figure class="text-center">
-								{# en test 	
-									<img src="{{ asset('bundles/app/images/test/icon-catamaran.jpg') }}" class="img img-responsive center-block" />
-				        		#}
-				        		{# en prod #}		        		
-			        				<img src="{{ boat.miniatureWebPath }}" class="img img-responsive center-block" />
-				        		
+							<figure class="text-center">    		
+		        				<img src="{{ boat.miniatureWebPath }}" class="img img-responsive center-block" />
 				        		<figcaption>
-        		        			{# en test 
-				        				Nom du bateau
-			        				#}
-					        		{# en prod #}
-					            		{{ boat.name }}
+    		        				{{ boat.name }}
 				        		</figcaption>
 							</figure>
 							</a>

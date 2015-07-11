@@ -29,25 +29,6 @@ class ItineraireCroisiereAdmin extends Admin
             'attr' => array(
                 'class' => 'itinerairecroisiere-itineraire'
             )
-        ))
-            ->add('variationPrix', 'text', array(
-            'label' => 'Variation prix: ',
-            'attr' => array(
-                'class' => 'itinerairecroisiere-variation-prix'
-            ),
-            'required' => false
-        ))
-            ->add('tarifAppliqueSur', 'choice', array(
-            'label' => 'Tarif à appliquer sur: ',
-            'required' => false,
-            'choice_list' => $this->loadChoiceList("tarifAppliqueSur"),
-            'attr' => array(
-                'class' => 'itinerairecroisiere-tarifappliquesur'
-            )
-        ))
-            ->add('parDefaut', 'checkbox', array(
-            'label' => 'Par défaut?: ',
-            'required' => false
         ));
     }
     
