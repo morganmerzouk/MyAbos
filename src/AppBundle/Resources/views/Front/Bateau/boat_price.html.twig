@@ -22,33 +22,72 @@
             {% if tarif.tarifHuitPersonnes is not null %}<tr><td>8 {{'boat_price_personnes'|trans }}</td><td>{{ tarif.tarifHuitPersonnes }}€</td></tr>{% endif %}
         </table>
     {% else %}
+    	{% set break = false %}
+		{% set compteur = 1 %}
+		{% set subrow = "" %}
+		{% for tarif in tarifs if not break %}
+			{% set tarifname = (tarif.translations is not empty) ? ( tarif.translations.en is defined) ?  tarif.translations.en.name : tarif.translations.fr.name : null  %}
+			{% set precedentTarifName = (loop.index0 != 0 and tarifs[(loop.index0-1)].translations is not empty) ? (tarifs[(loop.index0-1)].translations and tarifs[(loop.index0-1)].translations.en is defined) ? tarifs[(loop.index0-1)].translations.en.name : tarifs[(loop.index0-1)].translations.fr.name  : "" %}
+        	{% set precedentTarifJourMaximum = (loop.index0 != 0) ? tarifs[(loop.index0-1)].nombreJourMaximum : null %}
+        	{% set precedentTarifName = (loop.index0 != 0 and tarifs[(loop.index0-1)].translations is not empty) ? (tarifs[(loop.index0-1)].translations and tarifs[(loop.index0-1)].translations.en is defined) ? tarifs[(loop.index0-1)].translations.en.name : tarifs[(loop.index0-1)].translations.fr.name  : "" %}
+        	{% if loop.index0 != 0 and ((tarifname != "" and tarifname != precedentTarifName) or (tarif.nombreJourMaximum == precedentTarifJourMaximum))  %}
+        		{% set break = true %}
+    		{% else %}
+	        	{% if itineraireCroisiere is defined and tarif.itineraireCroisiere.id == itineraireCroisiere.id %}
+	        		{% set compteur = compteur + 1 %}
+	        		{% set subrow = subrow ~ '<td class="periode-table-title">' ~ tarif.nombreJourMinimum ~ ' ' ~ 'to'|trans ~ ' ' ~ tarif.nombreJourMaximum ~ ' ' ~ 'jours'|trans ~ '</td>' %}
+			    {% else %}
+			    	{% set break = true %}
+			    {% endif %}
+        	{% endif %}
+        {% endfor %}
+    
     	<table class="width100 table-price">
         	<tr>
-        		<th class="boat-price" colspan="2">{{'skipper_price'|trans }}</th>
+        		<th class="boat-price" colspan="{{ compteur + 1 }}">{{'skipper_price'|trans }}</th>
         	</tr>
             <tr>
             	<td class="periode-table-title">{{'periode'|trans }}
-            	<td class="periode-table-title text-center">{{'prix_du_bateau'|trans }}</td>
+            	<td class="periode-table-title text-center" colspan="{{ compteur }}">{{'prix_du_bateau'|trans }}</td>
         	</tr>
+        	{% if subrow != "" %}
+				<tr><td></td>{{ subrow|raw }}</tr>        	
+        	{% endif %}
+	        	
 		{% for tarif in tarifs %}
-			{% if itineraireCroisiere is defined and tarif.itineraireCroisiere == itineraireCroisiere %}
-        	<tr>
-        		<td>
-        			{% if tarif.name != "" %}
-        				{{ tarif.name }}
-    				{% else %}
-        				{{ tarif.dateDebut|date(format) }} {{'periode_au'|trans }} {{ tarif.dateFin|date(format) }}
-        			{% endif %}
-        		</td>
-                {% if tarif.tarifUnePersonne is not null %}<td class="text-center">{{ tarif.tarifUnePersonne }}€</td>{% endif %}
-                {% if tarif.tarifDeuxPersonnes is not null %}<td>{{ tarif.tarifDeuxPersonnes }}</td>{% endif %}
-                {% if tarif.tarifTroisPersonnes is not null %}<td>{{ tarif.tarifTroisPersonnes }}</td>{% endif %}
-                {% if tarif.tarifQuatrePersonnes is not null %}<td>{{ tarif.tarifQuatrePersonnes }}</td>{% endif %}
-                {% if tarif.tarifCinqPersonnes is not null %}<td>{{ tarif.tarifCinqPersonnes }}</td>{% endif %}
-                {% if tarif.tarifSixPersonnes is not null %}<td>{{ tarif.tarifSixPersonnes }}</td>{% endif %}
-                {% if tarif.tarifSeptPersonnes is not null %}<td>{{ tarif.tarifSeptPersonnes }}</td>{% endif %}
-                {% if tarif.tarifHuitPersonnes is not null %}<td>{{ tarif.tarifHuitPersonnes }}</td>{% endif %}
-            </tr>   
+			{% if itineraireCroisiere is defined and tarif.itineraireCroisiere.id == itineraireCroisiere.id %}
+	        	{% set tarifname = (tarif.translations is not empty) ? (tarif.translations.en is defined) ?  tarif.translations.en.name : tarif.translations.fr.name : null  %}
+        		{% set precedentTarifName = (loop.index0 != 0 and tarifs[(loop.index0-1)].translations) ? (tarifs[(loop.index0-1)].translations.en is defined) ? tarifs[(loop.index0-1)].translations.en.name : tarifs[(loop.index0-1)].translations.fr.name  : "" %}
+		        {% if tarifname != "" and tarifname == precedentTarifName %}
+		        	{% if tarif.tarifUnePersonne is not null %}<td class="text-center">{{ tarif.tarifUnePersonne }}€</td>{% endif %}
+	                {% if tarif.tarifDeuxPersonnes is not null %}<td class="text-center">{{ tarif.tarifDeuxPersonnes }}</td>{% endif %}
+	                {% if tarif.tarifTroisPersonnes is not null %}<td class="text-center">{{ tarif.tarifTroisPersonnes }}</td>{% endif %}
+	                {% if tarif.tarifQuatrePersonnes is not null %}<td class="text-center">{{ tarif.tarifQuatrePersonnes }}</td>{% endif %}
+	                {% if tarif.tarifCinqPersonnes is not null %}<td class="text-center">{{ tarif.tarifCinqPersonnes }}</td>{% endif %}
+	                {% if tarif.tarifSixPersonnes is not null %}<td class="text-center">{{ tarif.tarifSixPersonnes }}</td>{% endif %}
+	                {% if tarif.tarifSeptPersonnes is not null %}<td class="text-center">{{ tarif.tarifSeptPersonnes }}</td>{% endif %}
+	                {% if tarif.tarifHuitPersonnes is not null %}<td class="text-center">{{ tarif.tarifHuitPersonnes }}</td>{% endif %}
+	        	{% else %}
+			        {% if loop.index0 != 0 %}
+			        	</tr>
+			        {% endif %}
+			        <tr>
+		        		<td>
+			        		{% if tarifname != "" %}
+		        				{{ tarifname }}
+		    				{% else %}
+		        				{{ tarif.dateDebut|date(format) }} {{'periode_au'|trans }} {{ tarif.dateFin|date(format) }}
+		        			{% endif %}
+		        		</td>
+		                {% if tarif.tarifUnePersonne is not null %}<td class="text-center">{{ tarif.tarifUnePersonne }}€</td>{% endif %}
+		                {% if tarif.tarifDeuxPersonnes is not null %}<td>{{ tarif.tarifDeuxPersonnes }}</td>{% endif %}
+		                {% if tarif.tarifTroisPersonnes is not null %}<td>{{ tarif.tarifTroisPersonnes }}</td>{% endif %}
+		                {% if tarif.tarifQuatrePersonnes is not null %}<td>{{ tarif.tarifQuatrePersonnes }}</td>{% endif %}
+		                {% if tarif.tarifCinqPersonnes is not null %}<td>{{ tarif.tarifCinqPersonnes }}</td>{% endif %}
+		                {% if tarif.tarifSixPersonnes is not null %}<td>{{ tarif.tarifSixPersonnes }}</td>{% endif %}
+		                {% if tarif.tarifSeptPersonnes is not null %}<td>{{ tarif.tarifSeptPersonnes }}</td>{% endif %}
+		                {% if tarif.tarifHuitPersonnes is not null %}<td>{{ tarif.tarifHuitPersonnes }}</td>{% endif %}
+                {% endif %}
             {% endif %}      
     	{% endfor %}
         </table>

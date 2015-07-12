@@ -90,6 +90,7 @@ offrespeciale_boat: Boat
 skipper_qualification_experience: Qualifications and Experience
 tarif_croisiere_title: Price of the cruise
 tarif_croisiere_from: From
+to: to
 tarif_croisiere_to: to
 tarif_croisiere_nbcabine: Number of cabins available on board: 
 cruise_recap: Cruise recap':

@@ -198,16 +198,37 @@ class TarifCroisiereAdmin extends Admin
         if ($type == "nombreJourMinimum") {
             $item = array(
                 '1' => '1 jour',
+                '2' => '2 jours',
                 '3' => '3 jours',
+                '4' => '4 jours',
                 '5' => '5 jours',
+                '6' => '6 jours',
                 '7' => '7 jours',
+                '8' => '8 jours',
+                '9' => '9 jours',
                 '10' => '10 jours'
             );
         } elseif ($type == "nombreJourMaximum") {
             $item = array(
+                '' => '',
+                '3' => '3 jours',
+                '4' => '4 jours',
+                '5' => '5 jours',
+                '6' => '6 jours',
                 '7' => '7 jours',
+                '8' => '8 jours',
+                '9' => '9 jours',
                 '10' => '10 jours',
+                '11' => '11 jours',
+                '12' => '12 jours',
+                '13' => '13 jours',
                 '14' => '14 jours',
+                '15' => '15 jours',
+                '16' => '16 jours',
+                '17' => '17 jours',
+                '18' => '18 jours',
+                '19' => '19 jours',
+                '20' => '20 jours',
                 '21' => '21 jours'
             );
         } elseif ($type == "tarifPour") {

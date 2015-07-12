@@ -34,7 +34,11 @@
 		Captain {{ skipper.name }}
 	</h1>
 	<div class="col-md-9 skipper-center">
-		<div class="col-md-8 text-justify well">{{ skipper.description|raw }}</div>
+		<div class="col-md-8">
+			<div class="text-justify well">
+				{{ skipper.description|raw }}
+			</div>
+		</div>
 		<div class="col-md-4">
 			{% include "AppBundle:Front:Skipper/skipper_available.html.twig" %}
         </div>

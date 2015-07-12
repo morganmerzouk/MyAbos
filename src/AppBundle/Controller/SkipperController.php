@@ -96,6 +96,33 @@ class SkipperController extends Controller
             ->getQuery()
             ->getResult(Query::HYDRATE_OBJECT);
         
+        $ids = array();
+        $tc = $croisiere[0];
+        foreach ($tc->getTarifCroisiere() as $tarifCroisiere) {
+            $ids[] = $tarifCroisiere->getId();
+        }
+        
+        // Faire une requete pour chopper les tarifs bien rangés en array
+        // TarifCroisiere::
+        // ItineraireCroisiere:
+        // Date ou nom:
+        // Nb jour
+        $tarifs = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("AppBundle\Entity\TarifCroisiere")
+            ->createQueryBuilder('tc')
+            ->select('tc, ic, t3')
+            ->leftjoin('tc.translations', 't3', 'WITH', 't3.locale = :locale')
+            ->leftjoin('tc.itineraireCroisiere', 'ic')
+            ->where('tc.id IN(:ids)')
+            ->setParameter(':locale', $locale)
+            ->setParameter(':ids', $ids)
+            ->addorderBy("ic.id", "ASC")
+            ->addorderBy('tc.dateDebut', "ASC")
+            ->addorderBy('t3.name', "ASC")
+            ->addorderBy('tc.nombreJourMaximum', "ASC")
+            ->getQuery()
+            ->getResult(Query::HYDRATE_ARRAY);
         $boat = $this->getDoctrine()
             ->getManager()
             ->getRepository("AppBundle\Entity\Bateau")
@@ -151,7 +178,7 @@ class SkipperController extends Controller
                 ->getId() : null,
             'itinerairesCroisiere' => isset($croisiere[0]) ? $croisiere[0]->getItineraireCroisiere() : null,
             'datesNonDisponibilite' => isset($croisiere[0]) ? $croisiere[0]->getDateNonDisponibilite() : null,
-            'tarifs' => isset($croisiere[0]) ? $croisiere[0]->getTarifCroisiere() : null,
+            'tarifs' => isset($croisiere[0]) ? $tarifs : null,
             'servicepayant' => isset($croisiere[0]) ? $croisiere[0]->getServicePayant() : null,
             'inclusprixavitaillement' => $inclusPrixAvitaillement,
             'inclusprixequipage' => $inclusPrixEquipage,

@@ -15,7 +15,7 @@
 	        		<strong>{{'fueling'|trans }}</strong>
 	        		<ul>
 		        		{% for inclusprix in inclusprixavitaillement %}
-	                    	<li>{{ inclusprix.name }}</li>
+	                    	<li>{{ inclusprix }}</li>
 	                	{% endfor %}
                 	</ul>
         	{% endif %}
@@ -23,7 +23,7 @@
 	        		<strong>{{'frais_de_voyage'|trans }}</strong>
 	        		<ul>
 		        		{% for inclusprix in inclusprixfraisdevoyage %}
-	                    	<li>{{ inclusprix.name }}</li>
+	                    	<li>{{ inclusprix }}</li>
 	                	{% endfor %}
                 	</ul>
         	{% endif %}
@@ -31,7 +31,7 @@
 	        		<strong>{{'boat_otherservice'|trans }}</strong>
 	        		<ul>
 		        		{% for inclusprix in inclusprixautresservices %}
-	                    	<li>{{ inclusprix.name }}</li>
+	                    	<li>{{ inclusprix }}</li>
 	                	{% endfor %}
                 	</ul>
         	{% endif %}
@@ -39,7 +39,7 @@
 	        		<strong>{{'boat_equipments'|trans }}</strong>
 	        		<ul>
 		        		{% for inclusprix in inclusprixequipement %}
-	                    	<li>{{ inclusprix.name }}</li>
+	                    	<li>{{ inclusprix }}</li>
 	                	{% endfor %}
                 	</ul>
         	{% endif %}
@@ -47,7 +47,7 @@
 	        		<strong>{{'boat_activity'|trans }}</strong>
 	        		<ul>
 		        		{% for inclusprix in inclusprixactivite %}
-	                    	<li>{{ inclusprix.name }}</li>
+	                    	<li>{{ inclusprix }}</li>
 	                	{% endfor %}
                 	</ul>
         	{% endif %}
@@ -55,7 +55,7 @@
 	        		<strong>{{'boat_cours'|trans }}</strong>
 	        		<ul>
 		        		{% for inclusprix in inclusprixcours %}
-	                    	<li>{{ inclusprix.name }}</li>
+	                    	<li>{{ inclusprix }}</li>
 	                	{% endfor %}
                 	</ul>
         	{% endif %}
@@ -69,21 +69,14 @@
         		</h3>
             </div>
             <div class="panel-body panel-body-padding servicepayant">
-            	{% set currentCategory = null %}
+        		<ul>
         		{% for service in servicepayant %}
-	        		{% if service.categorie != currentCategory %}
-                		<strong class="service-payant-categorie">{{service.categorie|trans}}</strong>
-                		<ul>
-                    {% endif %}
                     <li>
-                    	{{service.name}}: 
+                    	{{service|trans }}: 
                     	{% if service.fraisSupplementaires != "" %}{% if service.devise == "$" %}${% endif %}{{service.fraisSupplementaires}}{% if service.devise == "€" %}€{% endif %} {{service.tarifApplique|trans}}{% else %} N/A {% endif %}</li>
             		</li>
-            		{% if service.categorie != currentCategory %}
-            			</ul>
-	        			{% set currentCategory = service.categorie %}
-                    {% endif %}
                 {% endfor %}
+                </ul>
             </div>
         </div>
 	{% endif %}

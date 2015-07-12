@@ -107,7 +107,7 @@ class Bateau
     protected $nbLitDouble;
 
     /**
-     * @ORM\OneToOne(targetEntity="InclusPrix")
+     * @ORM\ManyToOne(targetEntity="InclusPrix")
      */
     protected $inclusPrixEquipage;
 

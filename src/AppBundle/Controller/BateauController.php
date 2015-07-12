@@ -7,6 +7,7 @@ use Doctrine\ORM\Query;
 use AppBundle\Form\BateauDevisType;
 use AppBundle\Entity\Devis;
 use Symfony\Component\HttpFoundation\Response;
+use AppBundle\Entity\TarifCroisiere;
 
 class BateauController extends Controller
 {
@@ -65,18 +66,46 @@ class BateauController extends Controller
             ->getManager()
             ->getRepository("AppBundle\Entity\Croisiere")
             ->createQueryBuilder('c')
-            ->select('c, b, t, d, t2')
+            ->select('c, b, t, d, t2, t3, ic2')
             ->leftjoin('AppBundle\Entity\Bateau', 'b', 'WITH', 'c.bateau = b.id')
             ->leftjoin('b.translations', 't')
             ->leftjoin('c.dateNonDisponibilite', 'd')
             ->leftjoin('c.tarifCroisiere', 't2')
+            ->leftjoin('t2.translations', 't3')
+            ->leftjoin('t2.itineraireCroisiere', 'ic2')
             ->where('c.bateau = :id')
             ->setParameter(':id', $id)
             ->andWhere('t.locale = :locale')
             ->setParameter(':locale', $locale)
             ->getQuery()
             ->getResult(Query::HYDRATE_OBJECT);
+        $ids = array();
+        $tc = $croisiere[0];
+        foreach ($tc->getTarifCroisiere() as $tarifCroisiere) {
+            $ids[] = $tarifCroisiere->getId();
+        }
         
+        // Faire une requete pour chopper les tarifs bien rangés en array
+        // TarifCroisiere::
+        // ItineraireCroisiere:
+        // Date ou nom:
+        // Nb jour
+        $tarifs = $this->getDoctrine()
+            ->getManager()
+            ->getRepository("AppBundle\Entity\TarifCroisiere")
+            ->createQueryBuilder('tc')
+            ->select('tc, ic, t3')
+            ->leftjoin('tc.translations', 't3', 'WITH', 't3.locale = :locale')
+            ->leftjoin('tc.itineraireCroisiere', 'ic')
+            ->where('tc.id IN(:ids)')
+            ->setParameter(':locale', $locale)
+            ->setParameter(':ids', $ids)
+            ->addorderBy("ic.id", "ASC")
+            ->addorderBy('tc.dateDebut', "ASC")
+            ->addorderBy('t3.name', "ASC")
+            ->addorderBy('tc.nombreJourMaximum', "ASC")
+            ->getQuery()
+            ->getResult(Query::HYDRATE_ARRAY);
         $offreSpeciale = $this->getDoctrine()
             ->getManager()
             ->getRepository("AppBundle\Entity\OffreSpeciale")
@@ -102,14 +131,13 @@ class BateauController extends Controller
             ->getLocale(), $id));
         
         $form->handleRequest($this->getRequest());
-        
         return $this->render('AppBundle:Front:Bateau/boat.html.twig', array(
             'boat' => $boat,
             'skipper' => isset($croisiere[0]) ? $croisiere[0]->getSkipper() : null,
             'offrespeciale' => isset($offreSpeciale[0]) ? $offreSpeciale[0] : null,
             'datesNonDisponibilite' => isset($croisiere[0]) ? $croisiere[0]->getDateNonDisponibilite() : null,
             'itinerairesCroisiere' => $croisiere[0]->getItineraireCroisiere(),
-            'tarifs' => isset($croisiere[0]) ? $croisiere[0]->getTarifCroisiere() : null,
+            'tarifs' => $tarifs,
             'servicepayant' => isset($croisiere[0]) ? $croisiere[0]->getServicePayant() : null,
             'inclusprixavitaillement' => $boat->getInclusPrixAvitaillement(),
             'inclusprixequipage' => $boat->getInclusPrixEquipage(),

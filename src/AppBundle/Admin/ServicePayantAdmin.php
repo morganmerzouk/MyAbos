@@ -72,7 +72,7 @@ class ServicePayantAdmin extends Admin
             'attr' => array(
                 "class" => "optionpayante-list-radio optionpayante-list-radio-categorie"
             ),
-            'required' => true
+            'required' => false
         ))
             ->add('prestation', 'entity', array(
             'class' => 'AppBundle\Entity\Prestation',
@@ -219,6 +219,7 @@ class ServicePayantAdmin extends Admin
     {
         if ($type == "categorie") {
             $item = array(
+                '' => '',
                 'Equipiers supplémentaires' => 'Equipiers supplémentaires',
                 'Service d\'avitaillement supplémentaire' => 'Service d\'avitaillement supplémentaire',
                 'Autres prestations disponibles à bord' => 'Autres prestations disponibles à bord',

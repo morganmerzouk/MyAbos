@@ -21,7 +21,7 @@
 				{% set break = false %}
 				{% set empty = true %}
 				{% for tarif in tarifs if not break %}
-					{% if itineraireCroisiere == tarif.itineraireCroisiere %}
+					{% if tarif.itineraireCroisiere is not null and itineraireCroisiere.id == tarif.itineraireCroisiere.id %}
         				{% set break = true %}
     				{% elseif tarif.itineraireCroisiere != "" %}
     					{% set empty = false %} 

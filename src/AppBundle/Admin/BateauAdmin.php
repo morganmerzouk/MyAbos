@@ -617,15 +617,9 @@ class BateauAdmin extends Admin
                 'Monohull' => 'Monohull',
                 'Catamaran' => 'Catamaran'
             );
-        } elseif ($type == "equipier") {
-            $item = array(
-                '1' => '1',
-                '2' => '2',
-                '3' => '3',
-                '4' => '4'
-            );
         } elseif ($type == "douche") {
             $item = array(
+                '0' => '0',
                 '1' => '1',
                 '2' => '2',
                 '3' => '3',
