@@ -127,10 +127,10 @@ fos_user:
         user_manager: sonata.user.orm.user_manager         
 parameters:
     domain_locales:
-        www.kitesurfeo.com: en
-        kitesurfeo.com: en
-        www.kitesurfeo.fr: fr  
-        kitesurfeo.fr: fr        
+        www.myabos.com: en
+        myabos.com: en
+        www.myabos.fr: fr  
+        myabos.fr: fr        
 sonata_user:
     security_acl: true
     manager_type: orm # can be orm or mongodb
@@ -144,29 +144,11 @@ sonata_admin:
                 type: sonata.admin.block.admin_list
                 settings:
                     groups: [sonata.admin.group.content]
-            -
-                position: right
-                type: sonata.admin.block.admin_list
-                settings:
-                    groups: [sonata.admin.group.bateau]
         groups:
             sonata.admin.group.content:
                 label: "Contenu"
                 items:
                     - sonata.admin.prestation
-                    - sonata.admin.skipper
-                    - sonata.admin.portdepart
-                    - sonata.admin.destination
-                    - sonata.admin.itineraire
-            sonata.admin.group.bateau:
-                label: "Bateau"
-                items:
-                    - sonata.admin.bateau
-                    - sonata.admin.inclusprix
-                    - sonata.admin.servicepayant
-                    - sonata.admin.croisiere
-                    - sonata.admin.offrespeciale
-                    - sonata.admin.devis
     security:
         handler: sonata.admin.security.handler.acl
         # acl security information
@@ -174,7 +156,7 @@ sonata_admin:
             ADMIN:    [MASTER]
         admin_permissions: [CREATE, LIST, DELETE, UNDELETE, EXPORT, OPERATOR, MASTER]
         object_permissions: [VIEW, EDIT, DELETE, UNDELETE, OPERATOR, MASTER, OWNER]
-    title:      Kitesurfeo
+    title:      MyAbos
     templates:
         # default global templates
         layout:  AppBundle:Admin:standard_layout.html.twig
@@ -215,9 +197,6 @@ stfalcon_tinymce:
              toolbar2: " stfalcon | example"
              image_advtab: true
              file_browser_callback : 'elFinderBrowser'
-hautelook_alice:
-    locale: "%locale%"   
-    seed: 1 
 fm_elfinder:
     instances:
         tinymce:
@@ -233,7 +212,10 @@ fm_elfinder:
                         path: uploads
                         upload_allow: ['image/png', 'image/jpg', 'image/jpeg']
                         upload_deny: ['all']
-                        upload_max_size: 5M
+                        upload_max_size: 5M 
+hautelook_alice:
+    locale: "%locale%"   
+    seed: 1 
 sonata_seo:
     page:
         metas:
@@ -246,8 +228,8 @@ sonata_seo:
 
                 # Open Graph information
                 # see http://developers.facebook.com/docs/opengraphprotocol/#types or http://ogp.me/
-                'og:site_name': Kitesurfeo
-                'og:description': Kitesurfing cruise in the caribbean
+                'og:site_name': MyAbos               
+                'og:description': MyAbos
             http-equiv:
                 'Content-Type':         text/html; charset=utf-8
                 #'X-Ua-Compatible':      IE=EmulateIE7
