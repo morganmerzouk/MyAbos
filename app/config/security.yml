@@ -4,6 +4,7 @@ security:
         Application\Sonata\UserBundle\Entity\User: sha512
     acl:
         connection: default
+        
     providers:
         fos_userbundle:
             id: fos_user.user_manager
@@ -28,6 +29,22 @@ security:
                 path:           /admin/logout
             anonymous:          true
 
+        # default login area for standard users
+        # This firewall is used to handle the public login area
+        # This part is handled by the FOS User Bundle
+        main:
+            pattern:             .*
+            context:             user
+            form_login:
+                provider:       fos_userbundle
+                csrf_provider: security.csrf.token_manager
+                login_path:     /login
+                use_forward:    false
+                check_path:     /login_check
+                failure_path:   null
+            logout:             true
+            anonymous:          true
+
     access_control:
         # The WDT has to be allowed to anonymous users to avoid requiring the login with the AJAX request
         - { path: ^/wdt/, role: IS_AUTHENTICATED_ANONYMOUSLY }
@@ -36,7 +53,12 @@ security:
         # AsseticBundle paths used when using the controller for assets
         - { path: ^/js/, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/css/, role: IS_AUTHENTICATED_ANONYMOUSLY }
-
+        
+        # URL of FOSUserBundle which need to be available to anonymous users
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        
         # Admin login page needs to be access without credential
         - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }

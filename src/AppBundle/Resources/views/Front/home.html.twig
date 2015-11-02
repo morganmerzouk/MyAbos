@@ -1,4 +1,5 @@
 {% extends "AppBundle:Front:layout_home.html.twig" %}
 {% block content %}   
-MyAbos
+	<h1>{{'home_title'|trans|raw }}</h1>
+    {% include "AppBundle:Registration:register.html.twig" %}
 {% endblock content %}

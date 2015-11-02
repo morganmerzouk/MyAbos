@@ -147,8 +147,6 @@ sonata_admin:
         groups:
             sonata.admin.group.content:
                 label: "Contenu"
-                items:
-                    - sonata.admin.prestation
     security:
         handler: sonata.admin.security.handler.acl
         # acl security information
@@ -157,15 +155,6 @@ sonata_admin:
         admin_permissions: [CREATE, LIST, DELETE, UNDELETE, EXPORT, OPERATOR, MASTER]
         object_permissions: [VIEW, EDIT, DELETE, UNDELETE, OPERATOR, MASTER, OWNER]
     title:      MyAbos
-    templates:
-        # default global templates
-        layout:  AppBundle:Admin:standard_layout.html.twig
-        ajax:    SonataAdminBundle::ajax_layout.html.twig
-        dashboard: AppBundle:Admin:dashboard.html.twig
-        # default actions templates, should extend a global templates
-        list:    AppBundle:Admin/CRUD:base_list.html.twig
-        show:    SonataAdminBundle:CRUD:show.html.twig
-        edit:    AppBundle:Admin/CRUD:base_edit.html.twig
         
 sonata_block:
     default_contexts: [cms]

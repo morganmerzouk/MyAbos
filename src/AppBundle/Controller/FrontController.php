@@ -3,9 +3,10 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use AppBundle\Form\SearchHeaderType;
-use AppBundle\Form\ContactType;
+use AppBundle\Entity\User;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use AppBundle\Form\UserType;
 
 class FrontController extends Controller
 {
@@ -13,7 +14,7 @@ class FrontController extends Controller
     /**
      * @Route("/", name="homepage")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $seoPage = $this->container->get('sonata.seo.page');
         $seoPage->addMeta('name', 'keyword', $this->get('translator')
@@ -23,7 +24,44 @@ class FrontController extends Controller
         
         $locale = $this->getRequest()->getLocale();
         
-        return $this->render('AppBundle:Front:home.html.twig', array());
+        // 1) build the form
+        $user = new User();
+        $form = $this->createForm(new UserType(), $user);
+        
+        // 2) handle the submit (will only happen on POST)
+        $form->handleRequest($request);
+        if ($form->isValid() && $form->isSubmitted()) {
+            // 3) Encode the password (you could also do this via Doctrine listener)
+            $password = $this->get('security.password_encoder')->encodePassword($user, $user->getPlainPassword());
+            $user->setPassword($password);
+            
+            // 4) save the User!
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+            
+            // ... do any other work - like send them an email, etc
+            // maybe set a "flash" success message for the user
+            
+            return $this->redirectToRoute('dashboard');
+        }
+        
+        return $this->render('AppBundle:Front:home.html.twig', array(
+            'form' => $form->createView()
+        ));
+    }
+
+    /**
+     * @Route("/dashboard", name="dashboard")
+     */
+    public function dashboardAction()
+    {
+        $seoPage = $this->container->get('sonata.seo.page');
+        $seoPage->addMeta('name', 'keyword', $this->get('translator')
+            ->trans("dashboard_meta_keywords"))
+            ->addMeta('name', 'description', $this->get('translator')
+            ->trans("dashboard_meta_description"));
+        return $this->render('AppBundle:Front:dashboard.html.twig');
     }
 
     /**
