@@ -1,7 +1,7 @@
 <?php
 namespace AppBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
+use Application\Sonata\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -18,65 +18,15 @@ class User extends BaseUser
      */
     protected $id;
 
-    /**
-     * @ORM\Column(type="text")
-     */
-    protected $nom;
-
-    /**
-     * @ORM\Column(type="text")
-     */
-    protected $prenom;
+    public function setEmail($email)
+    {
+        parent::setEmail($email);
+        parent::setUsername($email);
+    }
 
     public function __construct()
     {
         parent::__construct();
         // your own logic
-    }
-
-    /**
-     * Set nom
-     *
-     * @param string $nom
-     * @return User
-     */
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
-
-        return $this;
-    }
-
-    /**
-     * Get nom
-     *
-     * @return string 
-     */
-    public function getNom()
-    {
-        return $this->nom;
-    }
-
-    /**
-     * Set prenom
-     *
-     * @param string $prenom
-     * @return User
-     */
-    public function setPrenom($prenom)
-    {
-        $this->prenom = $prenom;
-
-        return $this;
-    }
-
-    /**
-     * Get prenom
-     *
-     * @return string 
-     */
-    public function getPrenom()
-    {
-        return $this->prenom;
     }
 }

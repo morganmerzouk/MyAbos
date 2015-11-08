@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xml:lang="{{ app.request.locale }}" lang="{{ app.request.locale }}">
     <head>
-        <title>{% block title %}{{'toptitle'|trans}}{% endblock %}</title>
+        <title>{% block page_title %}{{'toptitle'|trans}}{% endblock %}</title>
         {{ sonata_seo_head_attributes() }}
         {{ sonata_seo_metadatas() }}
         {{ sonata_seo_link_canonical() }}
@@ -30,7 +30,6 @@
             <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/lib/colorbox.css') }}">
             <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/style.css') }}">
             <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/header.css') }}">
-            <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/menu.css') }}">
             <link rel="stylesheet" media="all" href="{{ asset('bundles/app/css/footer.css') }}">
         {% endblock %}   
     </head>
@@ -38,10 +37,10 @@
     	<div>
     		{% include "AppBundle:Front:header.html.twig" %}
             <div class="container-body clearfix">
-		    	<div class="col-md-12 margintop10">
+		    	<div class="col-md-12">
+                	{% block page_name %}{% endblock %}
                 	{% block content %}{% endblock %}
                 </div>
-                <div class="clear"></div>
             </div>
         </div><!--/container-->
         {% include "AppBundle:Front:footer.html.twig" %}

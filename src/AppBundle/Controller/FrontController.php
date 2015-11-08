@@ -6,7 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use AppBundle\Form\UserType;
+use AppBundle\Form\UserRegistrationStep1Type;
+use AppBundle\Form\UserRegistrationStep2Type;
 
 class FrontController extends Controller
 {
@@ -24,33 +25,20 @@ class FrontController extends Controller
         
         $locale = $this->getRequest()->getLocale();
         
-        // 1) build the form
         $user = new User();
-        $form = $this->createForm(new UserType(), $user);
-        
-        // 2) handle the submit (will only happen on POST)
+        $form = $this->createForm(new UserRegistrationStep1Type(), $user);
         $form->handleRequest($request);
         if ($form->isValid() && $form->isSubmitted()) {
-            // 3) Encode the password (you could also do this via Doctrine listener)
-            $password = $this->get('security.password_encoder')->encodePassword($user, $user->getPlainPassword());
-            $user->setPassword($password);
-            
-            // 4) save the User!
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
-            
-            // ... do any other work - like send them an email, etc
-            // maybe set a "flash" success message for the user
-            
-            return $this->redirectToRoute('dashboard');
+            $session = $request->getSession();
+            $session->set('prenom', $user->getFirstname());
+            $session->set('nom', $user->getLastname());
+            $session->set('email', $user->getEmail());
+            return $this->redirectToRoute('user_register_step2');
         }
-        
         return $this->render('AppBundle:Front:home.html.twig', array(
             'form' => $form->createView()
         ));
     }
-
     /**
      * @Route("/dashboard", name="dashboard")
      */
@@ -145,29 +133,5 @@ class FrontController extends Controller
             ->addMeta('name', 'description', $this->get('translator')
             ->trans("faq_meta_description"));
         return $this->render('AppBundle:Front:faq.html.twig');
-    }
-
-    /**
-     * @Route("/newsletter_subscribe", name="newsletter_subscribe")
-     */
-    public function newsletterAction()
-    {
-        $email = $this->getRequest()->request->get('email');
-        
-        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $mc = $this->get('hype_mailchimp');
-            $data = $mc->getList()->subscribe($email, 'html', false);
-            $success = 1;
-        } else {
-            $success = 0;
-        }
-        
-        return new Response($success);
-    }
-
-    public function menuHeaderAction($route)
-    {
-        $locale = $this->getRequest()->getLocale();
-        return $this->render('AppBundle:Front:menu.html.twig', array());
     }
 }

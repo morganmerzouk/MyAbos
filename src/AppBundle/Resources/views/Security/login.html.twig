@@ -1,0 +1,8 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+ 
+{% block fos_user_content %}
+{% if error %}
+    <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
+{% endif %}
+{% include "AppBundle:Security:login_content.html.twig" %}
+{% endblock fos_user_content %}

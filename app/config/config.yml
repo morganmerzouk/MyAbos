@@ -85,18 +85,6 @@ swiftmailer:
     spool:     { type: memory }
     
 services:
-    # Doctrine Extension listeners to handle behaviors
-    gedmo.listener.translatable:
-        class: Gedmo\Translatable\TranslatableListener
-        tags:
-            - { name: doctrine.event_subscriber, connection: default }
-        calls:
-            - [ setAnnotationReader, [ @annotation_reader ] ]
-    my_locale_listener:
-        class: AppBundle\Listener\LocaleListener
-        tags:
-            -  { name: kernel.event_subscriber }
-        arguments: [@service_container,%locale%]
     sonata.user.admin.group:
       abstract: true
       public: false
