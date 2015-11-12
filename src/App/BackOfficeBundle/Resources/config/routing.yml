@@ -1,0 +1,7 @@
+# SECURITY
+app_back_office_security:
+    resource: "@AppBackOfficeBundle/Resources/config/routing/security.yml"
+
+# BACKOFFICE
+app_back_office_bo:
+    resource: "@AppBackOfficeBundle/Resources/config/routing/backoffice.yml"

@@ -1,43 +1,83 @@
-app:
-    resource: @AppBundle/Controller/
-    type:     annotation
-    prefix:   /
+# FOS USER BUNDLE ROUTES
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
-admin:
-    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
-    prefix: /admin
-
-sonata_user:
-    resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
-    prefix: /admin
-
-_sonata_admin:
-    resource: .
-    type: sonata_admin
-    prefix: /admin
-
-sonata_user_security:
-    resource: "@SonataUserBundle/Resources/config/routing/sonata_security_1.xml"
-
-sonata_user_resetting:
-    resource: "@SonataUserBundle/Resources/config/routing/sonata_resetting_1.xml"
-    prefix: /resetting
-
-sonata_user_profile:
-    resource: "@SonataUserBundle/Resources/config/routing/sonata_profile_1.xml"
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
     prefix: /profile
 
-sonata_user_register:
-    resource: "@SonataUserBundle/Resources/config/routing/sonata_registration_1.xml"
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
     prefix: /register
 
-sonata_user_change_password:
-    resource: "@SonataUserBundle/Resources/config/routing/sonata_change_password_1.xml"
-    prefix: /profile
-    
-elfinder:
-     resource: "@FMElfinderBundle/Resources/config/routing.yml"
-     
-_console:
-    resource: "@CoreSphereConsoleBundle/Resources/config/routing.yml"
-    prefix: /admin/_console
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /change-password
+
+# REGISTRATION
+fos_user_registration_register:
+    pattern: /inscription
+    defaults: { _controller: FOSUserBundle:Registration:register }
+    requirements:
+        _method: GET|POST
+
+fos_user_registration_check_email:
+    pattern: /inscription/e-mail
+    defaults: { _controller: FOSUserBundle:Registration:checkEmail }
+    requirements:
+        _method: GET
+
+fos_user_registration_confirm:
+    pattern: /inscription/confirmation/{token}
+    defaults: { _controller: FOSUserBundle:Registration:confirm }
+    requirements:
+        _method: GET
+
+fos_user_registration_confirmed:
+    pattern: /inscription/confirmation
+    defaults: { _controller: FOSUserBundle:Registration:confirmed }
+    requirements:
+        _method: GET
+
+# RESETTING PASSWORD
+fos_user_resetting_request:
+    pattern: /mot-de-passe-oublie/reinitialisation
+    defaults: { _controller: FOSUserBundle:Resetting:request }
+    requirements:
+        _method: GET
+
+fos_user_resetting_send_email:
+    pattern: /mot-de-passe-oublie/e-mail
+    defaults: { _controller: FOSUserBundle:Resetting:sendEmail }
+    requirements:
+        _method: GET|POST
+
+fos_user_resetting_check_email:
+    pattern: /mot-de-passe-oublie/verification
+    defaults: { _controller: FOSUserBundle:Resetting:checkEmail }
+    requirements:
+        _method: GET
+
+fos_user_resetting_reset:
+    pattern: /mot-de-passe-oublie/{token}
+    defaults: { _controller: FOSUserBundle:Resetting:reset }
+    requirements:
+        _method: GET|POST
+# BACKOFFICE BUNDLE
+app_back_office:
+    resource: "@AppBackOfficeBundle/Resources/config/routing.yml"
+    prefix:   /backoffice
+
+# FRONTOFFICE BUNDLE
+app_front_office:
+    resource: "@AppFrontOfficeBundle/Resources/config/routing.yml"
+    prefix:   /mon-compte
+
+# CMS BUNDLE
+app_cms:
+    resource: "@AppMainBundle/Resources/config/routing.yml"
+    prefix:   /

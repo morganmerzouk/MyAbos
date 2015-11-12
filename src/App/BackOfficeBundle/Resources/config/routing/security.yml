@@ -1,0 +1,13 @@
+app_back_office_security_login:
+    path:     /login
+    defaults: { _controller: AppBackOfficeBundle:Security:login }
+
+app_back_office_security_check:
+    path:     /login-check
+    defaults: { _controller: AppBackOfficeBundle:Security:check }
+    requirements:
+        _method: POST
+
+app_back_office_security_logout:
+    path:     /logout
+    defaults: { _controller: AppBackOfficeBundle:Security:logout }

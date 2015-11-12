@@ -1,0 +1,5 @@
+app_backofficebundle_home:
+    pattern: /
+    defaults: { _controller: "AppBackOfficeBundle:Default:index" }
+    requirements:
+        _method: GET

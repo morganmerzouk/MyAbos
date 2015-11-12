@@ -25,9 +25,6 @@ class AppKernel extends Kernel
             new Sonata\AdminBundle\SonataAdminBundle(),
             new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
-            new SonataEasyExtendsBundle(),
-            new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Hautelook\AliceBundle\HautelookAliceBundle(),
@@ -37,7 +34,9 @@ class AppKernel extends Kernel
             new Hype\MailchimpBundle\HypeMailchimpBundle(),
             new JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
             new Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle(),
-            new AppBundle\AppBundle()
+            new App\MainBundle\AppMainBundle(),
+            new App\FrontOfficeBundle\AppFrontOfficeBundle(),
+            new App\BackOfficeBundle\AppBackOfficeBundle()
         );
         
         if (in_array($this->getEnvironment(), array(
