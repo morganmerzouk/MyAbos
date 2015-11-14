@@ -12,42 +12,27 @@ security:
             id: fos_user.user_provider.username_email
 
     firewalls:
-        dev:
-            pattern:  ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-
         # login area for backoffice users
         backoffice:
             context: primary_auth
             pattern:            ^/backoffice
-            form_login:
-                provider:       fos_userbundle
-                login_path:     app_back_office_security_login
-                use_forward:    true
-                use_referer:    true
-                check_path:     app_back_office_security_check
-                #failure_path:   null
-                default_target_path: app_backofficebundle_home
             logout:
                 path: app_back_office_security_logout
                 target: app_main_homepage
-            anonymous:    true
+            anonymous:   ~
 
         # defaut login area for standard users
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: true
+            anonymous: ~ 
         main:
-            context: primary_auth
-            pattern:            ^/
+            pattern: ^/
             form_login:
-                provider:       fos_userbundle
-                login_path:     fos_user_security_login
-                use_forward:    true
-                use_referer:    true
-                check_path:     fos_user_security_check
-                #failure_path:   null
-                default_target_path: fos_user_profile_show
-            logout:
-                path: fos_user_security_logout
-                target: app_main_homepage
+                provider: fos_userbundle
+                csrf_provider: security.csrf.token_manager # Use form.csrf_provider instead for Symfony <2.4
+
+            logout:       true
             anonymous:    true
 
     access_control:
@@ -56,7 +41,9 @@ security:
         - { path: ^/profile, role: IS_AUTHENTICATED_FULLY }
         - { path: ^/backoffice/connexion, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/connexion, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/inscription, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/mot-de-passe-oublie, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/deconnexion$, role: IS_AUTHENTICATED_FULLY }

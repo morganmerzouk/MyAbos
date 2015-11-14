@@ -8,22 +8,11 @@ body { width: 100%;
 	font-size: 1em; }
 .container-home { text-align: center; }
 .container-home h1 { margin: 30px;}
-.container-home h1, .container-home .col-md-4 { font-size: 2.5em; color: white;
+.container-home h1 { line-height: 2em; }
+.container-home h1, .container-home .col-md-4 .headline { font-size: 2.5em; color: white; 
 	text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000; }
 .container-home .btn-connect { display: block; position: absolute; top: 10px; right: 10px; border: 2px solid white; color: white; padding: 5px; margin: 0 10px 0 0; cursor: pointer; }
+.col-md-4 .headline { font-size: 2em; }
 .btn-danger { margin: 30px auto; background-color: #d2322d; }
-.container-home .col-md-4 { font-size: 2em; }
-.thumbnail {
-    background-color: transparent;
-    border: 0;
-}
-
-.email, .password { 
-	width: 80%;
-	margin: 10px auto; 
-	text-align: center;
-	line-height: 2em;
-	border: 2px solid red; 
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;}
+.container-register-home  { width: 70%; margin: auto; }
+.container-register-home input { width: 31%; border: 1px solid black; margin: 0 5px; padding: 5px }

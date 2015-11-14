@@ -11,38 +11,68 @@ class RegisterType extends RegistrationFormType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
-        
-        $builder->add('gender', 'text', array(
-            'label' => 'profile.fields.gender',
-            'translation_domain' => 'forms'
+        $builder->remove('username')
+            ->add('gender', 'choice', array(
+            'label' => 'profile.fields.gender.civilite',
+            'choices' => array(
+                'u' => 'profile.fields.gender.none',
+                'm' => 'profile.fields.gender.masculin',
+                'f' => 'profile.fields.gender.feminin'
+            ),
+            'required' => 'true',
+            'attr' => array(
+                'class' => 'input-register',
+                "placeholder" => "profile.fields.gender"
+            )
         ))
             ->add('firstname', 'text', array(
             'label' => 'profile.fields.firstname',
-            'translation_domain' => 'forms'
+            'required' => 'true',
+            'attr' => array(
+                'class' => 'input-register',
+                "placeholder" => "profile.fields.firstname"
+            )
         ))
             ->add('lastname', 'text', array(
             'label' => 'profile.fields.lastname',
-            'translation_domain' => 'forms'
+            'required' => 'true',
+            'attr' => array(
+                'class' => 'input-register',
+                "placeholder" => "profile.fields.lastname"
+            )
         ))
-            ->add('address', 'text', array(
-            'label' => 'profile.fields.address',
-            'translation_domain' => 'forms'
-        ))
-            ->add('zip_code', 'text', array(
-            'label' => 'profile.fields.zip_code',
-            'translation_domain' => 'forms'
-        ))
-            ->add('city', 'text', array(
-            'label' => 'profile.fields.city',
-            'translation_domain' => 'forms'
-        ))
-            ->add('country', 'text', array(
-            'label' => 'profile.fields.country',
-            'translation_domain' => 'forms'
+            ->add('email', 'email', array(
+            'label' => 'profile.fields.email',
+            'required' => 'true',
+            'attr' => array(
+                'class' => 'input-register',
+                "placeholder" => "profile.fields.email"
+            )
         ))
             ->add('phone', 'text', array(
             'label' => 'profile.fields.phone',
-            'translation_domain' => 'forms'
+            'attr' => array(
+                'class' => 'input-register',
+                "placeholder" => "profile.fields.phone"
+            )
+        ))
+            ->add('plainPassword', 'repeated', array(
+            'type' => 'password',
+            'invalid_message' => 'The password fields must match.',
+            'first_options' => array(
+                'label' => 'profile.fields.password',
+                'attr' => array(
+                    'class' => 'input-register',
+                    "placeholder" => "profile.fields.password"
+                )
+            ),
+            'second_options' => array(
+                'label' => 'profile.fields.password_repeat',
+                'attr' => array(
+                    'class' => 'input-register',
+                    "placeholder" => "profile.fields.password_repeat"
+                )
+            )
         ));
     }
 

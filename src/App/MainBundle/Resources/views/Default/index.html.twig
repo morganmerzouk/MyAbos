@@ -1,27 +1,38 @@
 {% extends "AppMainBundle::layout_home.html.twig" %}
 {% block content %}   
 	<span class="btn-connect" data-toggle="modal" data-target="#modal-connect">Se connecter</span>
-	<img src="{{ asset('bundles/app/images/general/logo.png') }}" alt="logo myabos" />
+	<img src="{{ asset('bundles/appmain/images/general/logo.png') }}" alt="logo myabos" />
 	<h1>{{'home_title'|trans|raw }}</h1>
-	<span type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-register">Commencer</span>
+		<div class="container-register-home">
+		    <input type="firstname" id="firstname" class="firstname" placeholder="Nom" />
+		    <input type="lastname" id="lastname" class="lastname" placeholder="Prénom" />
+		    <input type="email" id="email" class="email" placeholder="Adresse mail" />
+    	</div>
+	<span type="button" class="btn btn-danger btn-start" data-toggle="modal" data-target="#modal-register">Commencer</span>
     <div class="col-md-12">
     	<div class="col-md-4">
-    		<div class="thumbnail">
-      			<img src="{{ asset('bundles/app/images/icones/icon-cloud-store.png') }}" class="img-responsive" alt="icone stockage">
+    		<div class="col-md-12">
+	    		<div class="col-md-6 col-md-offset-3">
+	      			<img src="{{ asset('bundles/appmain/images/icones/icon-cloud-store.png') }}" class="img-responsive" alt="icone stockage">
+				</div>
 			</div>
-    		Stocker vos contrats et facture
+    		<span class="headline">Stocker vos contrats et facture</span>
     	</div>
     	<div class="col-md-4">
-    		<div class="thumbnail">
-      			<img src="{{ asset('bundles/app/images/icones/icon-message.png') }}" class="img-responsive" alt="icone enveloppe">
+    		<div class="col-md-12">
+	    		<div class="col-md-6 col-md-offset-3">
+	      			<img src="{{ asset('bundles/appmain/images/icones/icon-message.png') }}" class="img-responsive" alt="icone enveloppe">
+				</div>
 			</div>
-    		Recevez des alertes à vos dates de résiliation
+    		<span class="headline">Recevez des alertes à vos dates de résiliation</span>
     	</div>
     	<div class="col-md-4">
-    		<div class="thumbnail">
-      			<img src="{{ asset('bundles/app/images/icones/icon-smiley.png') }}" class="img-responsive" alt="icone smiley">
+    		<div class="col-md-12">
+	    		<div class="col-md-6 col-md-offset-3">
+	      			<img src="{{ asset('bundles/appmain/images/icones/icon-smiley.png') }}" class="img-responsive" alt="icone smiley">
+				</div>
 			</div>
-    		Résilier vos contrats de votre canapé
+    		<span class="headline">Résilier vos contrats de votre canapé</span>
     	</div>
     </div>
 
@@ -30,7 +41,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<img src="{{ asset('bundles/app/images/general/logo.png') }}" width="48" alt="logo myabos" />
+					<img src="{{ asset('bundles/appmain/images/general/logo.png') }}" width="48" alt="logo myabos" />
 				</div>
 				<div class="modal-body">
 					<h4>Déjà membre?</h4>
@@ -45,7 +56,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<img src="{{ asset('bundles/app/images/general/logo.png') }}" width="48" alt="logo myabos" />
+					<img src="{{ asset('bundles/appmain/images/general/logo.png') }}" width="48" alt="logo myabos" />
 				</div>
 				<div class="modal-body">
 					<h4>Inscription</h4>

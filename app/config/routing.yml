@@ -81,3 +81,11 @@ app_front_office:
 app_cms:
     resource: "@AppMainBundle/Resources/config/routing.yml"
     prefix:   /
+    
+
+elfinder:
+     resource: "@FMElfinderBundle/Resources/config/routing.yml"
+     
+_console:
+    resource: "@CoreSphereConsoleBundle/Resources/config/routing.yml"
+    prefix: /admin/_console

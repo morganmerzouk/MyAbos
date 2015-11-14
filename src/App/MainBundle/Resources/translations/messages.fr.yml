@@ -13,3 +13,44 @@ toptitle: MyAbos: Plateforme Gratuite, de gestion Simplifiée et Sécurisée, de
 home_title: La première plateforme gratuite de gestion centralisée<br /> et simplifiée de tous vos contrats d'abonnements!
 dashboard_title: Tableau de bord
 home: Accueil
+
+reset_password: Mot de passe oublié?        
+profile:
+    fields:
+        gender: 
+            civilite: Civilité
+            none: -Sexe-
+            masculin: Masculin
+            feminin: Féminin
+        firstname: Prénom *
+        lastname: Nom *
+        address: Adresse
+        zip_code: Code postal
+        phone: Téléphone
+        email: Adresse mail *
+        password: Créer un mot de passe *
+        password_repeat: Confirmer le mot de passe *
+        password_first: Mot de passe
+        password_second: Mot de passe (validation)
+register:
+    fields:
+        firstname: Nom
+
+# Resetting account
+resetting:
+    email:
+        subject: |
+            Réinitialisation de votre mot de passe
+        message:  |
+            <p>Pour réinitialiser votre mot de passe, merci de cliquer sur le lien suivant :</p>
+            <p><a href="%confirmationUrl%">%confirmationUrl%</a></p>
+# Registration
+registration:
+    confirmed: Votre compte est maintenant activé.
+    email:
+        subject: |
+            Confirmation de l'inscription
+        message:  |
+            <p>Pour valider votre compte utilisateur, merci de vous rendre sur :</p>
+            <p><a href="%confirmationUrl%">%confirmationUrl%</a></p>
+    register: Accéder à la plateforme

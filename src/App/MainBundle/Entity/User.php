@@ -116,6 +116,16 @@ class User extends BaseUser
 
     /**
      *
+     * @param mixed $email            
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+        $this->username = $email;
+    }
+
+    /**
+     *
      * @param mixed $firstname            
      */
     public function setFirstname($firstname)
