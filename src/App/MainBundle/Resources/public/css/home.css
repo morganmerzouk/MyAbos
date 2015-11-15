@@ -5,14 +5,15 @@ body { width: 100%;
     background-repeat: no-repeat;
     background-position: center center;
     background-image: url("../images/home/background-home.png");
-	font-size: 1em; }
+	font-family: Verdana,sans-serif;
+	font-size: 14px; }
 .container-home { text-align: center; }
 .container-home h1 { margin: 30px;}
-.container-home h1 { line-height: 2em; }
-.container-home h1, .container-home .col-md-4 .headline { font-size: 2.5em; color: white; 
+.container-home h1 { line-height: 1.5em; }
+.container-home h1, .container-home .col-md-4 .headline { font-size: 3em; color: white; 
 	text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000; }
 .container-home .btn-connect { display: block; position: absolute; top: 10px; right: 10px; border: 2px solid white; color: white; padding: 5px; margin: 0 10px 0 0; cursor: pointer; }
-.col-md-4 .headline { font-size: 2em; }
+.col-md-4 .headline { font-size: 1.6em; }
 .btn-danger { margin: 30px auto; background-color: #d2322d; }
 .container-register-home  { width: 70%; margin: auto; }
-.container-register-home input { width: 31%; border: 1px solid black; margin: 0 5px; padding: 5px }
+.container-register-home input { width: 31%; border: 1px solid black; margin: 0 5px; padding: 5px; font-size: 1em; }

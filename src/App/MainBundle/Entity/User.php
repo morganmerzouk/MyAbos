@@ -4,6 +4,9 @@ namespace App\MainBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Entity\User as BaseUser;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Security\Core\Util\SecureRandom;
 
 /**
  * Class User
@@ -86,6 +89,15 @@ class User extends BaseUser
      * @var @ORM\Column(name="phone", type="string", length=255, nullable=true)
      */
     protected $phone;
+
+    /**
+     * @Assert\File(maxSize="2048k")
+     * @Assert\Image(mimeTypesMessage="Please upload a valid image.")
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $avatar;
+
+    protected $avatarFile;
 
     /**
      * Constructor
@@ -266,6 +278,83 @@ class User extends BaseUser
     public function getPhone()
     {
         return $this->phone;
+    }
+
+    /**
+     * Set avatar
+     *
+     * @param string $avatar            
+     * @return Skipper
+     */
+    public function setAvatar($avatar)
+    {
+        $this->avatar = $avatar;
+        
+        return $this;
+    }
+
+    /**
+     * Get avatar
+     *
+     * @return string
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
+
+    /**
+     * Sets avatarFile.
+     *
+     * @param UploadedFile $avatarFile            
+     */
+    public function setAvatarFile(UploadedFile $avatarFile = null)
+    {
+        $this->avatarFile = $avatarFile;
+    }
+
+    /**
+     * Get avatarFile.
+     *
+     * @return UploadedFile
+     */
+    public function getAvatarFile()
+    {
+        return $this->avatarFile;
+    }
+
+    public function getAvatarWebPath()
+    {
+        return null === $this->avatar ? null : $this->getUploadDir() . '/avatar/' . $this->avatar;
+    }
+
+    protected function getUploadDir()
+    {
+        return '/uploads/user';
+    }
+
+    protected function getUploadRootDir()
+    {
+        return __DIR__ . '/../../../web/' . $this->getUploadDir();
+    }
+
+    public function upload($basepath)
+    {
+        $this->uploadImage($this->avatarFile, "setAvatar");
+    }
+
+    public function uploadImage($file, $fctName)
+    {
+        if (null === $file) {
+            return;
+        }
+        
+        $file->move($this->getUploadRootDir() . '/avatar/', $file->getClientOriginalName());
+        
+        // set the path property to the filename where you'ved saved the file
+        $this->$fctName($file->getClientOriginalName());
+        // clean up the file property as you won't need it anymore
+        $file = null;
     }
 
     /**

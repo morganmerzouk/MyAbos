@@ -8,6 +8,6 @@ class DefaultController extends Controller
 
     public function indexAction()
     {
-        return $this->render('AppFrontOfficeBundle:Default:index.html.twig');
+        return $this->render('AppFrontOfficeBundle:Profile:show.html.twig');
     }
 }

@@ -18,6 +18,7 @@ class ProfileType extends ProfileFormType
                 'f' => 'Mme'
             )
         ))
+            ->remove('plainPassword')
             ->add('firstname', 'text', array(
             'label' => 'profile.fields.firstname',
             'translation_domain' => 'forms'
@@ -26,7 +27,7 @@ class ProfileType extends ProfileFormType
             'label' => 'profile.fields.lastname',
             'translation_domain' => 'forms'
         ))
-            ->add('address', 'textarea', array(
+            ->add('address', 'text', array(
             'label' => 'profile.fields.address',
             'translation_domain' => 'forms'
         ))
@@ -50,16 +51,7 @@ class ProfileType extends ProfileFormType
             'label' => 'profile.fields.email',
             'translation_domain' => 'forms'
         ))
-            ->add('plainPassword', 'repeated', array(
-            'first_options' => array(
-                'label' => 'profile.fields.password_first'
-            ),
-            'second_options' => array(
-                'label' => 'profile.fields.password_second'
-            ),
-            'required' => false,
-            'translation_domain' => 'forms'
-        ));
+            ->remove('avatarFile');
     }
 
     public function setDefaultOption(OptionsResolverInterface $resolver)

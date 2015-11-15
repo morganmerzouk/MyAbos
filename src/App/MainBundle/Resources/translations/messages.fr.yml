@@ -14,7 +14,9 @@ home_title: La première plateforme gratuite de gestion centralisée<br /> et si
 dashboard_title: Tableau de bord
 home: Accueil
 
-reset_password: Mot de passe oublié?        
+reset_password: Mot de passe oublié?
+my_account: Mon compte
+logout: Déconnexion        
 profile:
     fields:
         gender: 
