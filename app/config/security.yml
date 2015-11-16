@@ -16,6 +16,14 @@ security:
         backoffice:
             context: primary_auth
             pattern:            ^/backoffice
+            form_login:
+                provider:       fos_userbundle
+                login_path:     app_back_office_security_login
+                use_forward:    true
+                use_referer:    true
+                check_path:     app_back_office_security_check
+                #failure_path:   null
+                default_target_path: App_backofficebundle_home
             logout:
                 path: app_back_office_security_logout
                 target: app_main_homepage

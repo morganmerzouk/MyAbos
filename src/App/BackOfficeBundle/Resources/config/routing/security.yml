@@ -10,4 +10,8 @@ app_back_office_security_check:
 
 app_back_office_security_logout:
     path:     /logout
-    defaults: { _controller: AppBackOfficeBundle:Security:logout }
+    defaults: { _controller: AppBackOfficeBundle:Security:logout }  
+
+app_back_office_category:
+    path:     /category
+    defaults: { _controller: AppBackOfficeBundle:Category:index }

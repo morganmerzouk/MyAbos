@@ -8,9 +8,9 @@
         {% endif %}
         <div id="login-form" class="col-md-4 col-md-offset-4">
 
-            <h1 class="text-center">Blog Test</h1>
+            <h1 class="text-center">BO Login</h1>
 
-            <form action="{{ path("sf_web_app_back_office_security_check") }}" method="post" class="center-block">
+            <form action="{{ path("app_back_office_security_check") }}" method="post" class="center-block">
 
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 

@@ -5,3 +5,7 @@ app_back_office_security:
 # BACKOFFICE
 app_back_office_bo:
     resource: "@AppBackOfficeBundle/Resources/config/routing/backoffice.yml"
+
+# Catégorie
+app_back_office_category:
+    resource: "@AppBackOfficeBundle/Resources/config/routing/category.yml"

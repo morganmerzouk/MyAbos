@@ -1,0 +1,175 @@
+<?php
+
+// src/App/MainBundle/Entity/Category.php
+namespace App\MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="category")
+ */
+class Category
+{
+
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $name;
+
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $miniature;
+
+    protected $miniatureFile;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $actif = false;
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name            
+     * @return Bateau
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+        
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Sets photoVoileFile.
+     *
+     * @param UploadedFile $photoVoileFile            
+     */
+    public function setMiniatureFile(UploadedFile $miniatureFile = null)
+    {
+        $this->miniatureFile = $miniatureFile;
+        if ($miniatureFile instanceof UploadedFile)
+            $this->upload();
+    }
+
+    /**
+     * Get miniatureFile.
+     *
+     * @return UploadedFile
+     */
+    public function getMiniatureFile()
+    {
+        return $this->miniatureFile;
+    }
+
+    public function getMiniatureWebPath()
+    {
+        return null === $this->miniature ? null : $this->getUploadDir() . '/miniature/' . $this->miniature;
+    }
+
+    protected function getUploadDir()
+    {
+        return '/uploads/category';
+    }
+
+    protected function getUploadRootDir()
+    {
+        return __DIR__ . '/../../../../web/' . $this->getUploadDir();
+    }
+
+    public function upload()
+    {
+        $this->uploadImage($this->miniatureFile, "setMiniature");
+    }
+
+    public function uploadImage($file, $fctName)
+    {
+        if (null === $file) {
+            return;
+        }
+        if ($fctName == "setMiniature") {
+            $file->move($this->getUploadRootDir() . '/', $file->getClientOriginalName());
+        }
+        
+        // set the path property to the filename where you'ved saved the file
+        $this->$fctName($file->getClientOriginalName());
+        // clean up the file property as you won't need it anymore
+        $file = null;
+    }
+
+    /**
+     * Set miniature
+     *
+     * @param string $miniature            
+     * @return Bateau
+     */
+    public function setMiniature($miniature)
+    {
+        $this->miniature = $miniature;
+        
+        return $this;
+    }
+
+    /**
+     * Get miniature
+     *
+     * @return string
+     */
+    public function getMiniature()
+    {
+        return $this->miniature;
+    }
+
+    /**
+     * Set actif
+     *
+     * @param boolean $actif            
+     * @return Bateau
+     */
+    public function setActif($actif)
+    {
+        $this->actif = $actif;
+        
+        return $this;
+    }
+
+    /**
+     * Get actif
+     *
+     * @return boolean
+     */
+    public function getActif()
+    {
+        return $this->actif;
+    }
+}

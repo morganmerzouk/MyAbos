@@ -44,6 +44,14 @@ class User extends BaseUser
 
     /**
      *
+     * @var ArrayCollection $contract
+     *     
+     *      @ORM\OneToMany(targetEntity="Contract", mappedBy="user", cascade={"persist", "remove", "merge"})
+     */
+    private $contracts;
+
+    /**
+     *
      * @var @ORM\Column(name="gender", type="string", length=255, nullable=true)
      */
     protected $gender;
@@ -391,5 +399,38 @@ class User extends BaseUser
     public function getGroups()
     {
         return $this->groups;
+    }
+
+    /**
+     * Add contracts
+     *
+     * @param \App\MainBundle\Entity\Contract $contracts
+     * @return User
+     */
+    public function addContract(\App\MainBundle\Entity\Contract $contracts)
+    {
+        $this->contracts[] = $contracts;
+
+        return $this;
+    }
+
+    /**
+     * Remove contracts
+     *
+     * @param \App\MainBundle\Entity\Contract $contracts
+     */
+    public function removeContract(\App\MainBundle\Entity\Contract $contracts)
+    {
+        $this->contracts->removeElement($contracts);
+    }
+
+    /**
+     * Get contracts
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getContracts()
+    {
+        return $this->contracts;
     }
 }

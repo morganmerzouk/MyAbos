@@ -1,0 +1,23 @@
+{% extends 'AppFrontOfficeBundle::layout.html.twig' %}
+
+{% block content %}
+	<div class="panel-body">
+	<form method="post" {{ form_enctype(form) }}>
+		<div class="col-md-12">
+			<div class="col-md-6">
+			    {{ form_widget(form.provider) }}
+			    {{ form_widget(form.number) }}
+			    {{ form_widget(form.startingDate) }}
+			    {{ form_widget(form.endingDate) }}
+			    {{ form_widget(form.amount) }}
+			    {{ form_widget(form.amountFrequency) }}
+			    {{ form_widget(form.withEngagement) }}
+			    {{ form_widget(form.autoRenewal) }}
+			    {{ form_widget(form.engagementLength) }}
+			    {{ form_widget(form.alertFrequency) }}
+		    </div>
+		</div>
+	    <button type="submit" value="Ajouter" class="btn btn-danger pull right"/>Ajouter</button>
+	    {{ form_end(form) }}
+	</div>
+{% endblock %}

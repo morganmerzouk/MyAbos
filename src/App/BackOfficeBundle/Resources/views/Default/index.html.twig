@@ -1,1 +1,14 @@
-Hello {{ name }}!
+{% extends '::back-office.html.twig' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-info">
+                <div class="panel-body">
+					<a href="{{ path('app_back_office_category') }}">Catégorie</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
