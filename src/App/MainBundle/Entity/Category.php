@@ -21,6 +21,14 @@ class Category
     protected $id;
 
     /**
+     *
+     * @var ArrayCollection $contract
+     *     
+     *      @ORM\OneToMany(targetEntity="Contract", mappedBy="category", cascade={"persist", "remove", "merge"})
+     */
+    private $contracts;
+
+    /**
      * @ORM\Column(type="string", length=200, nullable=true)
      */
     protected $name;
@@ -45,6 +53,16 @@ class Category
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * toString
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName();
     }
 
     /**
@@ -171,5 +189,45 @@ class Category
     public function getActif()
     {
         return $this->actif;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->contracts = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add contracts
+     *
+     * @param \App\MainBundle\Entity\Contract $contracts
+     * @return Category
+     */
+    public function addContract(\App\MainBundle\Entity\Contract $contracts)
+    {
+        $this->contracts[] = $contracts;
+
+        return $this;
+    }
+
+    /**
+     * Remove contracts
+     *
+     * @param \App\MainBundle\Entity\Contract $contracts
+     */
+    public function removeContract(\App\MainBundle\Entity\Contract $contracts)
+    {
+        $this->contracts->removeElement($contracts);
+    }
+
+    /**
+     * Get contracts
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getContracts()
+    {
+        return $this->contracts;
     }
 }

@@ -29,6 +29,19 @@ class Contract
     private $user;
 
     /**
+     *
+     * @var Category $category
+     *     
+     *      @ORM\ManyToOne(targetEntity="Category", inversedBy="contracts", cascade={"persist", "merge"})
+     */
+    private $category;
+
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $name;
+
+    /**
      * @ORM\Column(type="string", length=200, nullable=true)
      */
     protected $provider;
@@ -228,7 +241,7 @@ class Contract
      */
     public function setStartingDate($startingDate)
     {
-        $this->startingDate = $startingDate;
+        $this->startingDate = \DateTime::createFromFormat("d/m/Y", $startingDate);
         
         return $this;
     }
@@ -251,7 +264,7 @@ class Contract
      */
     public function setEndingDate($endingDate)
     {
-        $this->endingDate = $endingDate;
+        $this->endingDate = \DateTime::createFromFormat("d/m/Y", $endingDate);
         
         return $this;
     }
@@ -425,5 +438,51 @@ class Contract
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name            
+     * @return Contract
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+        
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \App\MainBundle\Entity\Category $category            
+     * @return Contract
+     */
+    public function setCategory(\App\MainBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+        
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \App\MainBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }

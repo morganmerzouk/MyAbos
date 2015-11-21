@@ -1,0 +1,41 @@
+{% extends 'AppFrontOfficeBundle:Contract:layout.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-info">
+                <div class="panel-body">
+			        <a href="{{ path("app_front_office_contract_add") }}" class="btn btn-danger">Ajouter un contrat</a>
+			        <a href="#" class="btn btn-danger">Résilier un contrat</a>
+			        {% for contract in contracts %}
+			        	<div class="col-md-12 row contract">
+			        		<div class="col-md-2 text-center">
+			        			<strong>Intitulé</strong><br />
+			        			{{ contract.name }}
+			        		</div>
+			        		<div class="col-md-1 text-center">
+			        			<strong>Budget</strong><br />
+			        			{{ contract.amount }}
+			        		</div>
+			        		<div class="col-md-3 text-center">
+			        			<strong>Date d'engagement</strong><br />
+			        			{{ contract.startingDate|date("d/m/Y") }}
+			        		</div>
+			        		<div class="col-md-3 text-center">
+			        			<strong>Date de résiliation possible</strong><br />
+			        			{{ contract.endingDate|date("d/m/Y") }}
+			        		</div>
+			        		<div class="col-md-3 text-center">
+			        			<strong>Actions</strong><br />
+			        			<a href="{{ path("app_front_office_contract_edit", {"id": contract.id}) }}"><span class="glyphicon glyphicon-pencil  btn-lg" aria-hidden="true"></span></a>
+			        			<a href="{{ path("app_front_office_contract_delete", {"id": contract.id}) }}"><span class="glyphicon glyphicon-trash  btn-lg" aria-hidden="true"></span></a>
+			        			<a href="{{ path("app_front_office_contract_delete", {"id": contract.id}) }}"><span class="glyphicon glyphicon-file  btn-lg" aria-hidden="true"></span></a>
+			        			<br /><a href="#" class="btn btn-danger">Résilier</a>
+			        		</div>
+			        	</div>
+			        {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -9,3 +9,19 @@ app_front_office_security:
 app_front_office_contract:
     path:     /contract
     defaults: { _controller: AppFrontOfficeBundle:Contract:index }
+
+app_front_office_contract_edit:
+    path:     /contract/edit/{id}
+    defaults: { _controller: AppFrontOfficeBundle:Contract:edit }
+
+app_front_office_contract_list:
+    path:     /contract/list
+    defaults: { _controller: AppFrontOfficeBundle:Contract:list }
+
+app_front_office_contract_add:
+    path:     /contract/add
+    defaults: { _controller: AppFrontOfficeBundle:Contract:add }
+    
+app_front_office_contract_delete:
+    path:     /contract/delete/{id}
+    defaults: { _controller: AppFrontOfficeBundle:Contract:delete }

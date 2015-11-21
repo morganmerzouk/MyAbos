@@ -12,7 +12,8 @@
 	        <script src="{{ asset('bundles/appmain/js/lib/modernizr.js') }}" type="text/javascript"></script> 
 	        <script src="{{ asset('bundles/appmain/js/lib/jquery.js') }}" type="text/javascript"></script>
 	        <script src="{{ asset('bundles/appmain/js/lib/jquery-ui.min.js') }}" type="text/javascript"></script>
-	        <script src="{{ asset('bundles/appmain/js/lib/bootstrap.js') }}" type="text/javascript"></script>        
+	        <script src="{{ asset('bundles/appmain/js/lib/bootstrap.js') }}" type="text/javascript"></script>      
+	        <script src="{{ asset('bundles/appmain/js/script.js') }}" type="text/javascript"></script>        
 		    <script>
 		    	locale = "{{ app.request.locale }}";
 		        route = "{{ route }}";
@@ -50,25 +51,14 @@
 			                </div>
 			            {% endif %}
 			    	</div>
-					<img src="{{ asset('bundles/appmain/images/general/logo.png') }}" class="center-block" alt="logo myabos" />
+					<img src="{{ asset('bundles/appmain/images/general/logo.png') }}" alt="logo myabos" />
 				</div>
 				{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-					<nav class="navbar navbar-default main-nav">
-				        <div class="container-fluid">
-				            <div class="navbar-header">
-								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-							    	<ul class="nav navbar-nav">
-								        <li class="active"><a href="#">Profil</a></li>
-								        <li><a href="#">Gestion de mes contrats</a></li>
-								        <li><a href="#">Mes dépenses</a></li>
-								        <li><a href="#">Alertes</a></li>
-								        <li><a href="{{ path("app_front_office_contract") }}">Ajouter un contrat</a></li>
-								        <li><a href="#">Résilier un contrat</a></li>
-							        </ul>
-				            	</div>
-				        	</div>
-			        	</div>
-				    </nav>
+			    	<ul class="nav nav-tabs nav-justified">
+				        <li role="presentation" {% if route == "app_front_office_contract_list" %}class="active"{% endif %}><a href="{{ path('app_front_office_contract_list') }}">Gestion de mes contrats</a></li>
+				        <li role="presentation"><a href="#">Mes dépenses</a></li>
+				        <li role="presentation"><a href="#">Mes alertes</a></li>
+			        </ul>
 			    {% endif %}
 		    {% endblock %}
 		    {% block flash %}

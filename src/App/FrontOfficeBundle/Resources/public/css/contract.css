@@ -1,0 +1,19 @@
+.row { margin: 10px 0px; }
+.img-thumbnail { padding: 0px; }
+.contract:after  {
+	position:relative;
+	top: 5px;
+  	content: " ";
+  	height: 1px;
+  	width: 100%;
+  	background-color: lightgray;
+}
+.contract .col-md-3:not(:last-child):before, .contract .col-md-1:after, .contract .col-md-2:after {
+  	position: absolute;
+  	content: " ";
+  	top: 0;
+  	right: 0;
+  	height: 100%;
+  	width: 1px;
+  	background-color: lightgray;
+}

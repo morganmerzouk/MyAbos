@@ -1,23 +1,72 @@
-{% extends 'AppFrontOfficeBundle::layout.html.twig' %}
+{% extends 'AppFrontOfficeBundle:Contract:layout.html.twig' %}
 
 {% block content %}
 	<div class="panel-body">
 	<form method="post" {{ form_enctype(form) }}>
 		<div class="col-md-12">
-			<div class="col-md-6">
-			    {{ form_widget(form.provider) }}
-			    {{ form_widget(form.number) }}
-			    {{ form_widget(form.startingDate) }}
-			    {{ form_widget(form.endingDate) }}
-			    {{ form_widget(form.amount) }}
-			    {{ form_widget(form.amountFrequency) }}
-			    {{ form_widget(form.withEngagement) }}
-			    {{ form_widget(form.autoRenewal) }}
-			    {{ form_widget(form.engagementLength) }}
-			    {{ form_widget(form.alertFrequency) }}
+			<div class="block-categories">
+				{% for category in categories %}
+					<div class="col-md-3 text-center">
+						<img src="{{ category.miniatureWebPath }}" alt="{{ category.name }}" data-id="{{ category.id }}" class="category img-thumbnail img-responsive" />
+					</div>
+				{% endfor %}
+			</div>
+			<div class="form-add-contrat">
+				<div class="col-md-6">
+					<h2>Entrez vos données manuellement</h2>
+					    	{{ form_widget(form.category) }}
+				    <div class="row">
+				    	{{ form_widget(form.name) }}
+				    </div>
+				    <div class="row">
+				    	{{ form_widget(form.provider) }}
+				    </div>
+				    <div class="row">
+				    	{{ form_widget(form.number) }}
+				    </div>
+				    <div class="row">
+					    {{ form_label(form.startingDate) }}
+					    <div class="col-md-6">
+					    	{{ form_widget(form.startingDate) }}
+					    </div>
+				    </div>
+				    <div class="row">
+					    {{ form_label(form.endingDate) }}
+					    <div class="col-md-6">
+					    	{{ form_widget(form.endingDate) }}
+					    </div>
+				    </div>
+				    <div class="row">
+				    	<div class="col-md-6">
+					    	{{ form_widget(form.amount) }}
+					    </div>
+					    <div class="col-md-6">
+					    	{{ form_widget(form.amountFrequency) }}
+					    </div>
+				    </div>
+				    <div class="row">
+					    {{ form_label(form.withEngagement) }}
+				    	{{ form_widget(form.withEngagement) }}
+				    </div>
+				    <div class="row">
+					    {{ form_label(form.autoRenewal) }}
+				    	{{ form_widget(form.autoRenewal) }}
+				    </div>
+				    <div class="row">
+				    	{{ form_widget(form.engagementLength) }}
+				    </div>
+				    <div class="row">
+				    	{{ form_widget(form.alertFrequency) }}
+				    </div>
+			    </div>
+			    <div class="col-md-6">
+					    {{ form_label(form.contractFile) }}
+				    	{{ form_widget(form.contractFile) }}
+			    </div>
+			    <button type="submit" value="Annuler" class="btn btn-default"/>Annuler</button>
+			    <button type="submit" value="Valider" class="btn btn-danger"/>Valider</button>
+			    {{ form_end(form) }}
 		    </div>
 		</div>
-	    <button type="submit" value="Ajouter" class="btn btn-danger pull right"/>Ajouter</button>
-	    {{ form_end(form) }}
 	</div>
 {% endblock %}

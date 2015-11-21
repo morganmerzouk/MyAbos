@@ -8,6 +8,6 @@ class DefaultController extends Controller
 
     public function indexAction()
     {
-        return $this->render('AppFrontOfficeBundle:Profile:show.html.twig');
+        return $this->redirectToRoute('app_front_office_contract_list');
     }
 }

@@ -5,7 +5,6 @@ namespace App\MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use App\MainBundle\Entity\Category;
 
 /**
  * @ORM\Entity
@@ -20,6 +19,14 @@ class Category
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     *
+     * @var ArrayCollection $contract
+     *     
+     *      @ORM\OneToMany(targetEntity="Contract", mappedBy="category", cascade={"persist", "remove", "merge"})
+     */
+    private $contracts;
 
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
@@ -46,6 +53,16 @@ class Category
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * toString
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName();
     }
 
     /**
@@ -79,6 +96,8 @@ class Category
     public function setMiniatureFile(UploadedFile $miniatureFile = null)
     {
         $this->miniatureFile = $miniatureFile;
+        if ($miniatureFile instanceof UploadedFile)
+            $this->upload();
     }
 
     /**
@@ -103,10 +122,10 @@ class Category
 
     protected function getUploadRootDir()
     {
-        return __DIR__ . '/../../../web/' . $this->getUploadDir();
+        return __DIR__ . '/../../../../web/' . $this->getUploadDir();
     }
 
-    public function upload($basepath)
+    public function upload()
     {
         $this->uploadImage($this->miniatureFile, "setMiniature");
     }
@@ -116,10 +135,7 @@ class Category
         if (null === $file) {
             return;
         }
-        
         if ($fctName == "setMiniature") {
-            $file->move($this->getUploadRootDir() . '/miniature/', $file->getClientOriginalName());
-        } else {
             $file->move($this->getUploadRootDir() . '/', $file->getClientOriginalName());
         }
         

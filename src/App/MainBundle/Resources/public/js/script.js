@@ -1,26 +1,11 @@
 $(document).ready(function() {
-	if(locale == "en") {
-	    $(".input-date-depart").datepicker({ "dateFormat": "mm/dd/yy"});
-	} else {
-	    $(".input-date-depart").datepicker({ "dateFormat": "dd/mm/yy"});
-	}
+	$("form input.date").datepicker();
 	
 	//On gère le message d'avertissement pour les cookies
 	if(locale == "fr") {
 		getConteneurInfoCookie();
 	}
-	
-	// On simule le click sur le tab si on vient d'une autre page (pour les pages flottes, offres et skipper)
-	var hash = window.location.hash;
-	hash && $('ul.nav a[href="' + hash + '"]').tab('show');
-
-	$('.nav-tabs a').click(function (e) {
-		$(this).tab('show');
-		var scrollmem = $('body').scrollTop();
-		window.location.hash = this.hash;
-		$('html,body').scrollTop(scrollmem);
-	});
-	
+		
 	$('.btn-newsletter-subscribe').on('click', function() {
 		if($('.newsletter-email').val() == "" || $('.newsletter-email').val() == "email" ) {
 			return;
