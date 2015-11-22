@@ -76,9 +76,13 @@ class ContractType extends AbstractType
             ),
             'label' => "Date de fin d'engagement"
         ))
-            ->add('amount', 'text', array(
+            ->add('amount', 'integer', array(
+            "scale" => 2,
+            'required' => false,
             'attr' => array(
-                'class' => "form-control col-md-6",
+                'step' => "0.01",
+                'min' => "0",
+                'class' => "form-control",
                 'placeholder' => "Montant de l'abonnement"
             )
         ))
@@ -89,6 +93,7 @@ class ContractType extends AbstractType
             'choices' => array(
                 'jour' => 'par jour',
                 'semaine' => 'par semaine',
+                'mois' => 'par mois',
                 'an' => 'par an'
             ),
             'expanded' => false,
@@ -127,6 +132,7 @@ class ContractType extends AbstractType
             'data' => 1
         ))
             ->add('engagementLength', 'choice', array(
+            'required' => false,
             'attr' => array(
                 'class' => "form-control"
             ),
@@ -141,6 +147,7 @@ class ContractType extends AbstractType
             )
         ))
             ->add('alertFrequency', 'choice', array(
+            'required' => false,
             'attr' => array(
                 'class' => "form-control"
             ),

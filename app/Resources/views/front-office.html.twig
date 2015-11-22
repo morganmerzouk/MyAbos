@@ -56,7 +56,7 @@
 				{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 			    	<ul class="nav nav-tabs nav-justified">
 				        <li role="presentation" {% if route == "app_front_office_contract_list" %}class="active"{% endif %}><a href="{{ path('app_front_office_contract_list') }}">Gestion de mes contrats</a></li>
-				        <li role="presentation"><a href="#">Mes dépenses</a></li>
+				        <li role="presentation" {% if route == "app_front_office_resiliation" %}class="active"{% endif %}><a href="{{ path('app_front_office_resiliation') }}">Mes dépenses</a></li>
 				        <li role="presentation"><a href="#">Mes alertes</a></li>
 			        </ul>
 			    {% endif %}

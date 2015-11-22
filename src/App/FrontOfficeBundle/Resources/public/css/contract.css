@@ -17,3 +17,5 @@
   	width: 1px;
   	background-color: lightgray;
 }
+
+.col-md-3 .btn-lg { padding: 10px 5px; font-size: 30px; }

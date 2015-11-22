@@ -1,0 +1,81 @@
+{% extends 'AppFrontOfficeBundle:Resiliation:layout.html.twig' %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-6">
+        	<h2>Mes dépenses</h2>
+        	<select name="filter-category" class="form-control filter-category">
+            	{% for category in categories %}
+            		{% if loop.first %}
+            			<option value="">Toutes</option>
+        			{% endif %}
+            			<option value="{{ category.id }}">{{ category.name }} - {{ category.amountByYear }} € / an</option>
+            	{% endfor %}
+        	</select>
+        	<h2>Catégorie</h2>
+        	{% set currentCategory = "" %}
+        	{% for contract in contracts %}
+            	{% if contract.category != currentCategory %}
+        			{% if loop.first == false %}
+    					</ul>
+					</div>
+        			{% endif %}
+        			<div class="list-category category-{{ contract.category.id }}">
+        				{{ contract.category }}
+        				<ul>
+            	{% endif %}
+            		<li data-name="{{ contract.name }}" data-amount="{{ contract.amountByYear }}">{{ contract.name }} - {{ contract.amount }}€/{{ contract.amountFrequency }}</li>
+        		{% set currentCategory = contract.category %}
+        	{% endfor %}
+        	</div>
+        </div>
+        <div class="col-md-6 text-center">
+        	<h2>Répartition budgetaire</h2>
+			<div id="canvas-holder">
+				<canvas id="chart-area" width="300" height="300"/>
+			</div>
+			<div class="legend"></div>
+        </div>
+    </div>
+<script type="text/javascript">
+
+function generatePieChart(pieData) {
+	var tabColor = ["#46BFBD", "#F7464A", "#FDB45C", "#949FB1", "#4D5360"];
+	var tabHighlight = ["#5AD3D1", "#FF5A5E", "#FFC870", "#A8B3C5", "#616774"];
+	
+	if(pieData.length == 0) {
+		var pieData = [
+            	{% for category in categories %}
+            		{% if category != currentCategory %}
+						{
+							value: {{ category.amountByYear }},
+							color: tabColor[{{ loop.index0 }}],
+							highlight: tabHighlight[{{ loop.index0 }}],
+							label: "{{ category.name }}"
+						}
+	            		{% if loop.last == false %}
+	            			,
+						{% endif %}
+					{% endif %}
+				{% endfor %}
+			];
+	} else {
+		for(i = 0 ; i < pieData.length; i++) {
+			pieData[i].color = tabColor[i];
+			pieData[i].highlight = tabHighlight[i];
+		}
+	}
+	
+	var options = {
+				  	legendTemplate : '<% for (var i=0; i<segments.length; i++) { %>'
+					                    +'<p style=\"color:<%=segments[i].color%>\"><%= segments[i].label %></p>'
+					                +'<% } %>'
+				  };
+	var ctx = document.getElementById("chart-area").getContext("2d");
+		window.myPie = new Chart(ctx).Pie(pieData, options);
+		var legend = window.myPie.generateLegend()
+		$('.legend').html(legend);;
+
+}
+generatePieChart([]);
+</script>
+{% endblock %}

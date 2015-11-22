@@ -5,6 +5,7 @@ namespace App\MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -62,7 +63,11 @@ class Contract
     protected $endingDate;
 
     /**
-     * @ORM\Column(type="string", length=200, nullable=true)
+     * @ORM\Column(type="decimal", precision=11, scale=2)
+     * @Assert\Range(
+     * min = 0,
+     * minMessage = "Vous devez rentrer un montant"
+     * )
      */
     protected $amount;
 
@@ -70,6 +75,8 @@ class Contract
      * @ORM\Column(type="string", length=200, nullable=true)
      */
     protected $amountFrequency;
+
+    protected $amountByYear;
 
     /**
      * @ORM\Column(type="boolean")
@@ -241,7 +248,7 @@ class Contract
      */
     public function setStartingDate($startingDate)
     {
-        $this->startingDate = \DateTime::createFromFormat("d/m/Y", $startingDate);
+        $this->startingDate = $startingDate;
         
         return $this;
     }
@@ -264,7 +271,7 @@ class Contract
      */
     public function setEndingDate($endingDate)
     {
-        $this->endingDate = \DateTime::createFromFormat("d/m/Y", $endingDate);
+        $this->endingDate = $endingDate;
         
         return $this;
     }
@@ -300,6 +307,31 @@ class Contract
     public function getAmount()
     {
         return $this->amount;
+    }
+
+    /**
+     * Get amountByYear
+     *
+     * @return string
+     */
+    public function getAmountByYear()
+    {
+        $amountByYear = 0;
+        switch ($this->amountFrequency) {
+            case "an":
+                $amountByYear = $this->amount;
+                break;
+            case "mois":
+                $amountByYear = $this->amount * 12;
+                break;
+            case "semaine":
+                $amountByYear = $this->amount * 52;
+                break;
+            case "jour":
+                $amountByYear = $this->amount * 365;
+                break;
+        }
+        return $amountByYear;
     }
 
     /**

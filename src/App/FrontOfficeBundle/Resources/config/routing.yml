@@ -25,3 +25,7 @@ app_front_office_contract_add:
 app_front_office_contract_delete:
     path:     /contract/delete/{id}
     defaults: { _controller: AppFrontOfficeBundle:Contract:delete }
+    
+app_front_office_resiliation:
+    path:     /resiliation
+    defaults: { _controller: AppFrontOfficeBundle:Resiliation:index }
