@@ -1,11 +1,12 @@
-{% extends 'AppFrontOfficeBundle:Contract:layout.html.twig' %}
+{% extends 'AppFrontOfficeBundle:Resiliation:layout.html.twig' %}
 
 {% block content %}
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-info">
                 <div class="panel-body">
-                	<h2>Gestion de mes contrats</h2>
+                	<h2>Résilier un contrat</h2>
+                	<h3>Sélectionner un abonnement</h3>
 			        {% for contract in contracts %}
 			        	<div class="col-md-12 row contract">
 			        		<div class="col-md-2 text-center">
@@ -25,11 +26,7 @@
 			        			{{ contract.endingDate|date("d/m/Y") }}
 			        		</div>
 			        		<div class="col-md-3 text-center">
-			        			<strong>Actions</strong><br />
-			        			<a href="{{ path("app_front_office_contract_edit", {"id": contract.id}) }}"><span class="glyphicon glyphicon-pencil  btn-lg" aria-hidden="true"></span></a>
-			        			<a href="{{ path("app_front_office_contract_delete", {"id": contract.id}) }}"><span class="glyphicon glyphicon-trash  btn-lg" aria-hidden="true"></span></a>
-			        			<a href="{{ path("app_front_office_resiliation", {"id": contract.id}) }}"><span class="glyphicon glyphicon-file  btn-lg" aria-hidden="true"></span></a>
-			        			<br /><a href="#" class="btn btn-danger">Résilier</a>
+			        			<a href="{{ path("app_front_office_resiliation_choix_formule", { "id": contract.id }) }}" class="btn btn-danger">Résilier</a>
 			        		</div>
 			        	</div>
 			        {% endfor %}

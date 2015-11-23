@@ -25,7 +25,14 @@ app_front_office_contract_add:
 app_front_office_contract_delete:
     path:     /contract/delete/{id}
     defaults: { _controller: AppFrontOfficeBundle:Contract:delete }
+app_front_office_spending:
+    path:     /depenses
+    defaults: { _controller: AppFrontOfficeBundle:Spending:index }
     
 app_front_office_resiliation:
     path:     /resiliation
     defaults: { _controller: AppFrontOfficeBundle:Resiliation:index }
+    
+app_front_office_resiliation_choix_formule:
+    path:     /resiliation/choix-formule/{id}
+    defaults: { _controller: AppFrontOfficeBundle:Resiliation:choixFormule }

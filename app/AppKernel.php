@@ -31,9 +31,9 @@ class AppKernel extends Kernel
             new CoreSphere\ConsoleBundle\CoreSphereConsoleBundle(),
             new FM\ElfinderBundle\FMElfinderBundle(),
             new Sonata\SeoBundle\SonataSeoBundle(),
-            new Hype\MailchimpBundle\HypeMailchimpBundle(),
-            new JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
-            new Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle(),
+            
+            new PaymentSuite\PaymentCoreBundle\PaymentCoreBundle(),
+            new PaymentSuite\StripeBundle\StripeBundle(),
             new App\MainBundle\AppMainBundle(),
             new App\FrontOfficeBundle\AppFrontOfficeBundle(),
             new App\BackOfficeBundle\AppBackOfficeBundle()

@@ -9,11 +9,6 @@ use App\MainBundle\Entity\Contract;
 class ContractController extends Controller
 {
 
-    public function indexAction(Request $request)
-    {
-        return $this->redirectToRoute('app_front_office_contract_list');
-    }
-
     public function addAction(Request $request)
     {
         $contract = new Contract();
@@ -105,9 +100,12 @@ class ContractController extends Controller
         $contracts = $em->getRepository("AppMainBundle:Contract")->findBy(array(
             "user" => $user->getId()
         ));
-        
-        return $this->render('AppFrontOfficeBundle:Contract:list.html.twig', array(
-            'contracts' => $contracts
-        ));
+        if (count($contracts) == 0) {
+            return $this->redirectToRoute('app_front_office_contract_add');
+        } else {
+            return $this->render('AppFrontOfficeBundle:Contract:list.html.twig', array(
+                'contracts' => $contracts
+            ));
+        }
     }
 }

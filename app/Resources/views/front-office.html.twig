@@ -51,12 +51,16 @@
 			                </div>
 			            {% endif %}
 			    	</div>
+		    		<div class="col-md-2 pull-right text-centered">
+				        <a href="{{ path("app_front_office_contract_add") }}" class="btn btn-danger">Ajouter un contrat</a><br /><br />
+				        <a href="{{ path("app_front_office_resiliation") }}" class="btn btn-danger">Résilier un contrat</a>
+		    		</div>
 					<img src="{{ asset('bundles/appmain/images/general/logo.png') }}" alt="logo myabos" />
 				</div>
 				{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 			    	<ul class="nav nav-tabs nav-justified">
-				        <li role="presentation" {% if route == "app_front_office_contract_list" %}class="active"{% endif %}><a href="{{ path('app_front_office_contract_list') }}">Gestion de mes contrats</a></li>
-				        <li role="presentation" {% if route == "app_front_office_resiliation" %}class="active"{% endif %}><a href="{{ path('app_front_office_resiliation') }}">Mes dépenses</a></li>
+				        <li role="presentation" {% if route starts with "app_front_office_contract" %}class="active"{% endif %}><a href="{{ path('app_front_office_contract_list') }}">Gestion de mes contrats</a></li>
+				        <li role="presentation" {% if route starts with "app_front_office_spending" %}class="active"{% endif %}><a href="{{ path('app_front_office_spending') }}">Mes dépenses</a></li>
 				        <li role="presentation"><a href="#">Mes alertes</a></li>
 			        </ul>
 			    {% endif %}

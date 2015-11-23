@@ -9,6 +9,12 @@ class DefaultController extends Controller
 
     public function indexAction(Request $request)
     {
-        return $this->render('AppMainBundle:Default:index.html.twig', array());
+        $user = $this->get('security.token_storage')
+            ->getToken()
+            ->getUser();
+        if ($user == "anon.")
+            return $this->render('AppMainBundle:Default:index.html.twig', array());
+        else
+            return $this->redirectToRoute('app_front_office_contract_list');
     }
 }

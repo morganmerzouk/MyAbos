@@ -3,6 +3,7 @@ $(document).on("ready", function() {
 		var pieData = [];
 		if($(this).val() == "") {
 			$('.list-category').show();
+			generatePieChart([]);
 		} else {
 			$('.list-category').hide();
 			$(".category-"+$(this).val()).show();

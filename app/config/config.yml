@@ -90,6 +90,17 @@ services:
         class: App\MainBundle\Twig\DatetimeExtension
         tags:
             - { name: twig.extension }
+    payment.bridge:
+        class: App\MainBundle\Services\PaymentBridge
+    payment.event.listener:
+        class:     App\MainBundle\Listener\Payment
+        arguments: [@doctrine.orm.entity_manager, @mailer]
+        tags:
+            - { name: kernel.event_listener, event: payment.order.done, method: onPaymentOrderDone }
+            - { name: kernel.event_listener, event: payment.order.created, method: onPaymentOrderCreated }
+            - { name: kernel.event_listener, event: payment.order.load, method: onPaymentLoad }
+            - { name: kernel.event_listener, event: payment.order.success, method: onPaymentSuccess }
+            - { name: kernel.event_listener, event: payment.order.fail, method: onPaymentFail }
 fos_user:
     db_driver: orm
     firewall_name: main
@@ -115,12 +126,7 @@ fos_user:
     from_email:
         address: username@mail.com
         sender_name: username    
-parameters:
-    domain_locales:
-        www.myabos.com: en
-        myabos.com: en
-        www.myabos.fr: fr  
-        myabos.fr: fr        
+
 sonata_admin:
     title_logo:           bundles/app/images/general/logo.png
     dashboard:
@@ -188,9 +194,6 @@ fm_elfinder:
                         upload_allow: ['image/png', 'image/jpg', 'image/jpeg']
                         upload_deny: ['all']
                         upload_max_size: 5M 
-hautelook_alice:
-    locale: "%locale%"   
-    seed: 1 
 sonata_seo:
     page:
         metas:
@@ -214,11 +217,32 @@ sonata_seo:
             'xmlns':              http://www.w3.org/1999/xhtml
             'xmlns:og':           http://opengraphprotocol.org/schema/
             #'xmlns:fb':           "http://www.facebook.com/2008/fbml"    
-hype_mailchimp:
-    api_key: e8f5aabe96969269a626ac40623ddff9-us10
-    default_list: 8bc398fa0a
-    ssl: true #optional configuring curl connection        
-jms_i18n_routing:
-    default_locale: %locale%
-    locales: [fr, en]
-    strategy: custom
+    
+stripe:
+
+    # stripe keys
+    public_key: pk_test_bRKL5eJi4tc9TmWOaUtc0y47
+    private_key: sk_test_GyiB2fCxy62ydudovWhyyp6H
+
+    # By default, controller route is /payment/stripe/execute
+    controller_route: /payment/stripe/execute
+
+    # Configuration for payment success redirection
+    #
+    # Route defines which route will redirect if payment success
+    # If order_append is true, Bundle will append cart identifier into route
+    #    taking order_append_field value as parameter name and
+    #    PaymentOrderWrapper->getOrderId() value
+    payment_success:
+        route: cart_thanks
+        order_append: true
+        order_append_field: order_id
+
+    # Configuration for payment fail redirection
+    #
+    # Route defines which route will redirect if payment fails
+    # If cart_append is true, Bundle will append cart identifier into route
+    #    taking cart_append_field value as parameter name and
+    #    PaymentCartWrapper->getCartId() value
+    payment_fail:
+        route: cart_view

@@ -7,7 +7,7 @@ use App\FrontOfficeBundle\Form\Type\ContractType;
 use App\MainBundle\Entity\Contract;
 use App\MainBundle\Entity\Category;
 
-class ResiliationController extends Controller
+class SpendingController extends Controller
 {
 
     public function indexAction(Request $request)
@@ -36,16 +36,9 @@ class ResiliationController extends Controller
             $currentCategory = $contract->getCategory()->getName();
         }
         
-        return $this->render('AppFrontOfficeBundle:Resiliation:list.html.twig', array(
+        return $this->render('AppFrontOfficeBundle:Spending:index.html.twig', array(
             'contracts' => $contracts,
             'categories' => $categories
         ));
-    }
-
-    public function choixFormuleAction(Request $request)
-    {
-        return $this->render('AppFrontOfficeBundle:Resiliation:choixFormule.html.twig', array()
-
-        );
     }
 }

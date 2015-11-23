@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "59b46c661ebf49e3b7283f98cf3de9bd",
-    "content-hash": "b1fbe4b4c8210947c1813546be616e80",
+    "hash": "05e2ee7d7dadc5ba9deb688f2b0e62fb",
+    "content-hash": "aa0e760b5139d2c27aa179a828ff6f6a",
     "packages": [
         {
             "name": "a2lix/i18n-doctrine-bundle",
@@ -291,12 +291,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/CoreSphere/ConsoleBundle.git",
-                "reference": "d310cef0c90c654f8770bd42b51b880661f4f613"
+                "reference": "c93930343aa6a932f2b2cc06d7feefc480598e43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CoreSphere/ConsoleBundle/zipball/d310cef0c90c654f8770bd42b51b880661f4f613",
-                "reference": "d310cef0c90c654f8770bd42b51b880661f4f613",
+                "url": "https://api.github.com/repos/CoreSphere/ConsoleBundle/zipball/c93930343aa6a932f2b2cc06d7feefc480598e43",
+                "reference": "c93930343aa6a932f2b2cc06d7feefc480598e43",
                 "shasum": ""
             },
             "require": {
@@ -339,7 +339,7 @@
                 "javascript",
                 "symfony"
             ],
-            "time": "2015-09-24 00:13:07"
+            "time": "2015-11-17 09:06:20"
         },
         {
             "name": "doctrine/annotations",
@@ -816,19 +816,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineFixturesBundle.git",
-                "reference": "817c2d233fde0fe85cb7e4d25d43fbfcd028aef8"
+                "reference": "0f1a2f91b349e10f5c343f75ab71d23aace5b029"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineFixturesBundle/zipball/817c2d233fde0fe85cb7e4d25d43fbfcd028aef8",
-                "reference": "817c2d233fde0fe85cb7e4d25d43fbfcd028aef8",
+                "url": "https://api.github.com/repos/doctrine/DoctrineFixturesBundle/zipball/0f1a2f91b349e10f5c343f75ab71d23aace5b029",
+                "reference": "0f1a2f91b349e10f5c343f75ab71d23aace5b029",
                 "shasum": ""
             },
             "require": {
                 "doctrine/data-fixtures": "~1.0",
                 "doctrine/doctrine-bundle": "~1.0",
                 "php": ">=5.3.2",
-                "symfony/doctrine-bridge": "~2.1"
+                "symfony/doctrine-bridge": "~2.3|~3.0"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -865,20 +865,20 @@
                 "Fixture",
                 "persistence"
             ],
-            "time": "2015-08-04 22:43:14"
+            "time": "2015-11-04 21:23:23"
         },
         {
             "name": "doctrine/inflector",
-            "version": "v1.0.1",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/inflector.git",
-                "reference": "0bcb2e79d8571787f18b7eb036ed3d004908e604"
+                "reference": "90b2128806bfde671b6952ab8bea493942c1fdae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/0bcb2e79d8571787f18b7eb036ed3d004908e604",
-                "reference": "0bcb2e79d8571787f18b7eb036ed3d004908e604",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/90b2128806bfde671b6952ab8bea493942c1fdae",
+                "reference": "90b2128806bfde671b6952ab8bea493942c1fdae",
                 "shasum": ""
             },
             "require": {
@@ -890,7 +890,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
@@ -932,7 +932,7 @@
                 "singularize",
                 "string"
             ],
-            "time": "2014-12-20 21:24:13"
+            "time": "2015-11-06 14:35:42"
         },
         {
             "name": "doctrine/instantiator",
@@ -1577,16 +1577,16 @@
         },
         {
             "name": "helios-ag/fm-elfinder-php-connector",
-            "version": "2.3.4",
+            "version": "2.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/helios-ag/ElFinderPHP.git",
-                "reference": "81e5daeb11af996eab7d55a72ee60281982c2817"
+                "reference": "ed896cc7f2a5ecb6c0009747927f40e36015ad9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/helios-ag/ElFinderPHP/zipball/81e5daeb11af996eab7d55a72ee60281982c2817",
-                "reference": "81e5daeb11af996eab7d55a72ee60281982c2817",
+                "url": "https://api.github.com/repos/helios-ag/ElFinderPHP/zipball/ed896cc7f2a5ecb6c0009747927f40e36015ad9f",
+                "reference": "ed896cc7f2a5ecb6c0009747927f40e36015ad9f",
                 "shasum": ""
             },
             "require": {
@@ -1626,25 +1626,25 @@
                 "elfinder",
                 "filemanager"
             ],
-            "time": "2015-09-27 13:32:19"
+            "time": "2015-11-16 04:03:08"
         },
         {
             "name": "incenteev/composer-parameter-handler",
-            "version": "v2.1.1",
+            "version": "v2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Incenteev/ParameterHandler.git",
-                "reference": "84a205fe80a46101607bafbc423019527893ddd0"
+                "reference": "d7ce7f06136109e81d1cb9d57066c4d4a99cf1cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Incenteev/ParameterHandler/zipball/84a205fe80a46101607bafbc423019527893ddd0",
-                "reference": "84a205fe80a46101607bafbc423019527893ddd0",
+                "url": "https://api.github.com/repos/Incenteev/ParameterHandler/zipball/d7ce7f06136109e81d1cb9d57066c4d4a99cf1cc",
+                "reference": "d7ce7f06136109e81d1cb9d57066c4d4a99cf1cc",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3",
-                "symfony/yaml": "~2.0"
+                "symfony/yaml": "~2.3|~3.0"
             },
             "require-dev": {
                 "composer/composer": "1.0.*@dev",
@@ -1677,7 +1677,7 @@
             "keywords": [
                 "parameters management"
             ],
-            "time": "2015-06-03 08:27:03"
+            "time": "2015-11-10 17:04:01"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -1999,23 +1999,24 @@
         },
         {
             "name": "jms/serializer-bundle",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "target-dir": "JMS/SerializerBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/JMSSerializerBundle.git",
-                "reference": "0be35615b5bae1ce42567244a321aa1be3ed0280"
+                "reference": "3e396c980545350c2efb65a50041d2a9f9d6562e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/JMSSerializerBundle/zipball/0be35615b5bae1ce42567244a321aa1be3ed0280",
-                "reference": "0be35615b5bae1ce42567244a321aa1be3ed0280",
+                "url": "https://api.github.com/repos/schmittjoh/JMSSerializerBundle/zipball/3e396c980545350c2efb65a50041d2a9f9d6562e",
+                "reference": "3e396c980545350c2efb65a50041d2a9f9d6562e",
                 "shasum": ""
             },
             "require": {
                 "jms/serializer": "^1.0.0",
-                "php": ">=5.3.2",
-                "symfony/framework-bundle": "~2.1"
+                "php": ">=5.4.0",
+                "phpoption/phpoption": "^1.1.0",
+                "symfony/framework-bundle": "~2.3|~3.0"
             },
             "require-dev": {
                 "doctrine/doctrine-bundle": "*",
@@ -2037,7 +2038,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.13-dev"
+                    "dev-master": "1.1-dev"
                 }
             },
             "autoload": {
@@ -2064,7 +2065,7 @@
                 "serialization",
                 "xml"
             ],
-            "time": "2015-06-23 19:27:08"
+            "time": "2015-11-10 12:26:42"
         },
         {
             "name": "jms/translation-bundle",
@@ -2146,12 +2147,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/DoctrineBehaviors.git",
-                "reference": "a2a3b5aefd77eed6ca38231f2b3ace9640306137"
+                "reference": "a52a92a7b1a7cb37e3440c5d8456f9405be5fef1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/DoctrineBehaviors/zipball/a2a3b5aefd77eed6ca38231f2b3ace9640306137",
-                "reference": "a2a3b5aefd77eed6ca38231f2b3ace9640306137",
+                "url": "https://api.github.com/repos/KnpLabs/DoctrineBehaviors/zipball/a52a92a7b1a7cb37e3440c5d8456f9405be5fef1",
+                "reference": "a52a92a7b1a7cb37e3440c5d8456f9405be5fef1",
                 "shasum": ""
             },
             "require": {
@@ -2204,7 +2205,7 @@
                 "translatable",
                 "tree"
             ],
-            "time": "2015-10-12 19:31:11"
+            "time": "2015-11-17 13:43:51"
         },
         {
             "name": "knplabs/knp-menu",
@@ -2755,20 +2756,23 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "1.0.10",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "2fa50aa2f17066fa74ba00d943e8cee1a98284af"
+                "reference": "19f765b66c6fbb56ee3b11bc16d52e38eebdc295"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/2fa50aa2f17066fa74ba00d943e8cee1a98284af",
-                "reference": "2fa50aa2f17066fa74ba00d943e8cee1a98284af",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/19f765b66c6fbb56ee3b11bc16d52e38eebdc295",
+                "reference": "19f765b66c6fbb56ee3b11bc16d52e38eebdc295",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*|5.*"
             },
             "suggest": {
                 "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
@@ -2796,7 +2800,124 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2015-10-23 13:21:37"
+            "time": "2015-11-10 00:45:41"
+        },
+        {
+            "name": "paymentsuite/payment-core-bundle",
+            "version": "v1.5.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PaymentSuite/PaymentCoreBundle.git",
+                "reference": "f4f08066327e174e54d1213b044a906689b7f80e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PaymentSuite/PaymentCoreBundle/zipball/f4f08066327e174e54d1213b044a906689b7f80e",
+                "reference": "f4f08066327e174e54d1213b044a906689b7f80e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "psr/log": "~1.0",
+                "symfony/config": ">=2.2",
+                "symfony/dependency-injection": ">=2.2",
+                "symfony/event-dispatcher": ">=2.2",
+                "symfony/http-kernel": ">=2.2"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PaymentSuite\\PaymentCoreBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marc Morera",
+                    "email": "yuhu@mmoreram.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://github.com/PaymentSuite/paymentsuite/contributors"
+                }
+            ],
+            "description": "PaymentCore PaymentSuite Component",
+            "keywords": [
+                "ecommerce",
+                "payment",
+                "paymentsuite"
+            ],
+            "time": "2015-03-16 15:18:19"
+        },
+        {
+            "name": "paymentsuite/stripe-bundle",
+            "version": "v1.5.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PaymentSuite/StripeBundle.git",
+                "reference": "208bd1540226e2da7b660a8c8bcd337cbf38410f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PaymentSuite/StripeBundle/zipball/208bd1540226e2da7b660a8c8bcd337cbf38410f",
+                "reference": "208bd1540226e2da7b660a8c8bcd337cbf38410f",
+                "shasum": ""
+            },
+            "require": {
+                "paymentsuite/payment-core-bundle": "~1.1",
+                "php": ">=5.3.3",
+                "stripe/stripe-php": "v1.10.1",
+                "symfony/config": ">=2.2.3",
+                "symfony/dependency-injection": ">=2.2.3",
+                "symfony/event-dispatcher": ">=2.2.3",
+                "symfony/form": ">=2.2.3",
+                "symfony/framework-bundle": ">=2.2.3",
+                "symfony/http-kernel": ">=2.2.3",
+                "twig/twig": "~1.11"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.6.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PaymentSuite\\StripeBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marc Morera",
+                    "email": "yuhu@mmoreram.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://github.com/PaymentSuite/paymentsuite/contributors"
+                }
+            ],
+            "description": "Stripe PaymentSuite Component",
+            "keywords": [
+                "ecommerce",
+                "payment",
+                "stripe"
+            ],
+            "time": "2015-05-29 10:17:51"
         },
         {
             "name": "phpcollection/phpcollection",
@@ -4212,12 +4333,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataDatagridBundle.git",
-                "reference": "62eb30561331468514a9e36215922c55597f67bb"
+                "reference": "88d12865c186ac4822fb8c3462db278f96c90678"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataDatagridBundle/zipball/62eb30561331468514a9e36215922c55597f67bb",
-                "reference": "62eb30561331468514a9e36215922c55597f67bb",
+                "url": "https://api.github.com/repos/sonata-project/SonataDatagridBundle/zipball/88d12865c186ac4822fb8c3462db278f96c90678",
+                "reference": "88d12865c186ac4822fb8c3462db278f96c90678",
                 "shasum": ""
             },
             "require": {
@@ -4261,7 +4382,7 @@
                 "datagrid",
                 "sonata"
             ],
-            "time": "2015-10-20 09:09:26"
+            "time": "2015-11-05 08:58:35"
         },
         {
             "name": "sonata-project/doctrine-extensions",
@@ -4687,12 +4808,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataUserBundle.git",
-                "reference": "65caa4358145a1d90f031256ca4f85567100e684"
+                "reference": "5b91f001a22508f21784e1b34170d65576bd88b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/65caa4358145a1d90f031256ca4f85567100e684",
-                "reference": "65caa4358145a1d90f031256ca4f85567100e684",
+                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/5b91f001a22508f21784e1b34170d65576bd88b3",
+                "reference": "5b91f001a22508f21784e1b34170d65576bd88b3",
                 "shasum": ""
             },
             "require": {
@@ -4757,7 +4878,7 @@
                 "sonata",
                 "user"
             ],
-            "time": "2015-10-21 09:39:34"
+            "time": "2015-11-23 17:08:15"
         },
         {
             "name": "stfalcon/tinymce-bundle",
@@ -4766,12 +4887,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/stfalcon/TinymceBundle.git",
-                "reference": "758c19947b04d93d9d79e0ae8432beaccc0097f2"
+                "reference": "0a2bbac6ea6bcfdfb36eab5b471bb225a063b4c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stfalcon/TinymceBundle/zipball/758c19947b04d93d9d79e0ae8432beaccc0097f2",
-                "reference": "758c19947b04d93d9d79e0ae8432beaccc0097f2",
+                "url": "https://api.github.com/repos/stfalcon/TinymceBundle/zipball/0a2bbac6ea6bcfdfb36eab5b471bb225a063b4c5",
+                "reference": "0a2bbac6ea6bcfdfb36eab5b471bb225a063b4c5",
                 "shasum": ""
             },
             "require": {
@@ -4815,7 +4936,55 @@
                 "tinymce",
                 "wysiwyg"
             ],
-            "time": "2014-09-15 12:37:07"
+            "time": "2015-11-05 20:14:37"
+        },
+        {
+            "name": "stripe/stripe-php",
+            "version": "v1.10.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stripe/stripe-php.git",
+                "reference": "ca02fbe5cb15a8c22eba205751a17ceb293c59ec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/ca02fbe5cb15a8c22eba205751a17ceb293c59ec",
+                "reference": "ca02fbe5cb15a8c22eba205751a17ceb293c59ec",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=5.2"
+            },
+            "require-dev": {
+                "vierbergenlars/simpletest": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib/Stripe/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stripe and contributors",
+                    "homepage": "https://github.com/stripe/stripe-php/contributors"
+                }
+            ],
+            "description": "Stripe PHP Library",
+            "homepage": "https://stripe.com/",
+            "keywords": [
+                "api",
+                "payment processing",
+                "stripe"
+            ],
+            "time": "2013-12-02 20:01:33"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -4997,12 +5166,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-icu.git",
-                "reference": "8987da38f6b1ab5c96542c923c4dc16f9e775520"
+                "reference": "2deb44160e1c886241c06602b12b98779f728177"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-icu/zipball/8987da38f6b1ab5c96542c923c4dc16f9e775520",
-                "reference": "8987da38f6b1ab5c96542c923c4dc16f9e775520",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-icu/zipball/2deb44160e1c886241c06602b12b98779f728177",
+                "reference": "2deb44160e1c886241c06602b12b98779f728177",
                 "shasum": ""
             },
             "require": {
@@ -5044,7 +5213,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2015-10-25 07:56:29"
+            "time": "2015-11-04 20:28:58"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -5052,16 +5221,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "82159e61debcd09790b20154b350b1c083029aa6"
+                "reference": "49ff736bd5d41f45240cec77b44967d76e0c3d25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/82159e61debcd09790b20154b350b1c083029aa6",
-                "reference": "82159e61debcd09790b20154b350b1c083029aa6",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/49ff736bd5d41f45240cec77b44967d76e0c3d25",
+                "reference": "49ff736bd5d41f45240cec77b44967d76e0c3d25",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
+            },
+            "suggest": {
+                "ext-mbstring": "For best performance"
             },
             "type": "library",
             "extra": {
@@ -5100,7 +5272,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2015-10-27 22:54:43"
+            "time": "2015-11-20 09:19:13"
         },
         {
             "name": "symfony/polyfill-php54",
@@ -5108,12 +5280,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php54.git",
-                "reference": "f54805a34632406c4109aa74ac239f583aaedec2"
+                "reference": "2c9f6d98eb30dc04fe0b06f9cc92a55acea5bdcc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php54/zipball/f54805a34632406c4109aa74ac239f583aaedec2",
-                "reference": "f54805a34632406c4109aa74ac239f583aaedec2",
+                "url": "https://api.github.com/repos/symfony/polyfill-php54/zipball/2c9f6d98eb30dc04fe0b06f9cc92a55acea5bdcc",
+                "reference": "2c9f6d98eb30dc04fe0b06f9cc92a55acea5bdcc",
                 "shasum": ""
             },
             "require": {
@@ -5158,7 +5330,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2015-10-26 06:55:25"
+            "time": "2015-11-04 20:28:58"
         },
         {
             "name": "symfony/polyfill-php55",
@@ -5166,12 +5338,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php55.git",
-                "reference": "689c17b5fca0f75e5dbf5a02e7fe2e0639c717b8"
+                "reference": "3adc962a6250c02adb508e85ecfa6fcfee9eec47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php55/zipball/689c17b5fca0f75e5dbf5a02e7fe2e0639c717b8",
-                "reference": "689c17b5fca0f75e5dbf5a02e7fe2e0639c717b8",
+                "url": "https://api.github.com/repos/symfony/polyfill-php55/zipball/3adc962a6250c02adb508e85ecfa6fcfee9eec47",
+                "reference": "3adc962a6250c02adb508e85ecfa6fcfee9eec47",
                 "shasum": ""
             },
             "require": {
@@ -5214,7 +5386,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2015-10-26 06:55:25"
+            "time": "2015-11-04 20:28:58"
         },
         {
             "name": "symfony/polyfill-php56",
@@ -5222,12 +5394,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php56.git",
-                "reference": "3988fdc5a83dff7f04110ccc364fd6d5f94e1a01"
+                "reference": "a6bd4770a6967517e6610529e14afaa3111094a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/3988fdc5a83dff7f04110ccc364fd6d5f94e1a01",
-                "reference": "3988fdc5a83dff7f04110ccc364fd6d5f94e1a01",
+                "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/a6bd4770a6967517e6610529e14afaa3111094a3",
+                "reference": "a6bd4770a6967517e6610529e14afaa3111094a3",
                 "shasum": ""
             },
             "require": {
@@ -5270,7 +5442,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2015-10-26 06:55:25"
+            "time": "2015-11-04 20:28:58"
         },
         {
             "name": "symfony/polyfill-php70",
@@ -5278,12 +5450,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php70.git",
-                "reference": "7b0b1fa0427134d9ecfcd73e71fea5c06d693469"
+                "reference": "7f7f3c9c2b9f17722e0cd64fdb4f957330c53146"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/7b0b1fa0427134d9ecfcd73e71fea5c06d693469",
-                "reference": "7b0b1fa0427134d9ecfcd73e71fea5c06d693469",
+                "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/7f7f3c9c2b9f17722e0cd64fdb4f957330c53146",
+                "reference": "7f7f3c9c2b9f17722e0cd64fdb4f957330c53146",
                 "shasum": ""
             },
             "require": {
@@ -5329,7 +5501,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2015-10-26 06:55:25"
+            "time": "2015-11-04 20:28:58"
         },
         {
             "name": "symfony/polyfill-util",
@@ -5337,12 +5509,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-util.git",
-                "reference": "7beeeb1458dd36d9685aba558020742b7724d9c2"
+                "reference": "4271c55cbc0a77b2641f861b978123e46b3da969"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/7beeeb1458dd36d9685aba558020742b7724d9c2",
-                "reference": "7beeeb1458dd36d9685aba558020742b7724d9c2",
+                "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/4271c55cbc0a77b2641f861b978123e46b3da969",
+                "reference": "4271c55cbc0a77b2641f861b978123e46b3da969",
                 "shasum": ""
             },
             "require": {
@@ -5381,20 +5553,20 @@
                 "polyfill",
                 "shim"
             ],
-            "time": "2015-10-30 11:12:03"
+            "time": "2015-11-04 20:28:58"
         },
         {
             "name": "symfony/security-acl",
-            "version": "v2.7.6",
+            "version": "v2.7.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-acl.git",
-                "reference": "8cfb6072e9a4715ec3cedd06a018e6a60cade201"
+                "reference": "9aec8062e33fca5e08d2a78669b2222252e8c3b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/security-acl/zipball/8cfb6072e9a4715ec3cedd06a018e6a60cade201",
-                "reference": "8cfb6072e9a4715ec3cedd06a018e6a60cade201",
+                "url": "https://api.github.com/repos/symfony/security-acl/zipball/9aec8062e33fca5e08d2a78669b2222252e8c3b6",
+                "reference": "9aec8062e33fca5e08d2a78669b2222252e8c3b6",
                 "shasum": ""
             },
             "require": {
@@ -5420,7 +5592,10 @@
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Security\\Acl\\": ""
-                }
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -5438,7 +5613,7 @@
             ],
             "description": "Symfony Security Component - ACL (Access Control List)",
             "homepage": "https://symfony.com",
-            "time": "2015-10-12 09:20:33"
+            "time": "2015-11-18 13:41:01"
         },
         {
             "name": "symfony/swiftmailer-bundle",
@@ -5503,12 +5678,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "9a1574a7e507a02c6d3814f8a76df89e98c74f7d"
+                "reference": "15c2416c9744916e79b2366358bdbcbc4c712247"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/9a1574a7e507a02c6d3814f8a76df89e98c74f7d",
-                "reference": "9a1574a7e507a02c6d3814f8a76df89e98c74f7d",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/15c2416c9744916e79b2366358bdbcbc4c712247",
+                "reference": "15c2416c9744916e79b2366358bdbcbc4c712247",
                 "shasum": ""
             },
             "require": {
@@ -5628,7 +5803,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-11-02 20:29:39"
+            "time": "2015-11-23 20:38:03"
         },
         {
             "name": "twig/extensions",
@@ -5679,16 +5854,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.23.0",
+            "version": "v1.23.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "5868cd822fd6cf626d5f805439575f9c323cee2a"
+                "reference": "d9b6333ae8dd2c8e3fd256e127548def0bc614c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/5868cd822fd6cf626d5f805439575f9c323cee2a",
-                "reference": "5868cd822fd6cf626d5f805439575f9c323cee2a",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/d9b6333ae8dd2c8e3fd256e127548def0bc614c6",
+                "reference": "d9b6333ae8dd2c8e3fd256e127548def0bc614c6",
                 "shasum": ""
             },
             "require": {
@@ -5736,7 +5911,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2015-10-29 23:29:01"
+            "time": "2015-11-05 12:49:06"
         },
         {
             "name": "willdurand/jsonp-callback-validator",
