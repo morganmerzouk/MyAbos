@@ -43,7 +43,10 @@ class Contract
     protected $name;
 
     /**
-     * @ORM\Column(type="string", length=200, nullable=true)
+     *
+     * @var Category $provider
+     *     
+     *      @ORM\ManyToOne(targetEntity="Provider", inversedBy="contracts", cascade={"persist", "merge"})
      */
     protected $provider;
 

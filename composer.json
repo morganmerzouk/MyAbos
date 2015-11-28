@@ -14,19 +14,14 @@
     "sensio/framework-extra-bundle" : "2.3.*",
     "sensio/generator-bundle" : "2.3.*",
     "incenteev/composer-parameter-handler" : "~2.0",
-    "a2lix/translation-form-bundle" : "dev-master",
     "knplabs/doctrine-behaviors" : "dev-master",
     "gedmo/doctrine-extensions" : "=v2.3.10",
-    "a2lix/i18n-doctrine-bundle" : "=0.1",
     "stfalcon/tinymce-bundle" : "dev-master",
     "phpunit/phpunit" : "4.5.*",
     "doctrine/doctrine-fixtures-bundle" : "dev-master",
     "hautelook/alice-bundle" : "0.2.*",
     "helios-ag/fm-elfinder-bundle" : "~2.3.0",
     "sonata-project/seo-bundle" : "~2.0",
-    "ahmedsamy/hype-mailchimp-bundle" : "dev-master",
-    "jms/i18n-routing-bundle" : "dev-master",
-    "cocur/slugify" : "v1.1",
     "symfony/polyfill-intl-icu" : "dev-master",
     "symfony/polyfill-mbstring" : "dev-master",
     "symfony/polyfill-php54" : "dev-master",
@@ -72,6 +67,6 @@
   "config" : {
     "bin-dir" : "bin"
   },
-  "license" : "MIT",
-  "type" : "project"
+  "type" : "project",
+  "license" : "MIT"
 }

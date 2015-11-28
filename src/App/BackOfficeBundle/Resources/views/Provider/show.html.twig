@@ -1,0 +1,17 @@
+{% extends '::back-office.html.twig' %}
+
+{% block content %}
+    <h1>{{ entity.name }} ({% if entity.actif == 1 %}Publié{%else %}Non publié{% endif %})</h1>
+    <h2>{{ entity.category }}</h2>
+    <p>{{ entity.address }}</p>
+    <img src="{{ entity.miniatureWebPath }}" />
+    <a class="btn btn-default" href="{{ path('provider') }}">
+       Retour
+    </a>
+    <a class="btn btn-danger" href="{{ path('provider_edit', { 'id': entity.id }) }}">
+        Modifier
+    </a>
+    <a class="btn btn-danger" href="{{ path('provider_delete', { 'id': entity.id }) }}">
+        Supprimer
+    </a>
+{% endblock %}

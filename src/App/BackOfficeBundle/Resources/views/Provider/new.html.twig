@@ -1,11 +1,19 @@
 {% extends '::back-office.html.twig' %}
 
 {% block content %}
-    <h1>Ajout d'une catégorie</h1>
-	<form action="{{ path('category_create') }}" method="post" {{ form_enctype(form) }}>
+    <h1>Ajout d'un annonceur</h1>
+	<form action="{{ path('provider_create') }}" method="post" {{ form_enctype(form) }}>
+		<p>
+		    {{ form_label(form.category) }}
+		    {{ form_widget(form.category) }}
+	    </p>
 		<p>
 		    {{ form_label(form.name) }}
 		    {{ form_widget(form.name) }}
+	    </p>
+		<p>
+		    {{ form_label(form.address) }}
+		    {{ form_widget(form.address) }}
 	    </p>
 	    <p>
 		    {{ form_label(form.miniatureFile) }}
@@ -17,7 +25,7 @@
 	    </p>
 	    {{ form_row(form.submit, { 'label': 'Ajouter', 'class': 'btn btn-danger' }) }}
     {{ form_end(form) }}
-    <a class="btn btn-default" href="{{ path('category') }}">
+    <a class="btn btn-default" href="{{ path('provider') }}">
         Retour
     </a>
 {% endblock %}

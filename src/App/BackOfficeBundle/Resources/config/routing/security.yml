@@ -15,3 +15,7 @@ app_back_office_security_logout:
 app_back_office_category:
     path:     /category
     defaults: { _controller: AppBackOfficeBundle:Category:index }
+
+app_back_office_provider:
+    path:     /provider
+    defaults: { _controller: AppBackOfficeBundle:Provider:index }

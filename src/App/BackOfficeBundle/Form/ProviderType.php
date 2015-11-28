@@ -5,7 +5,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class CategoryType extends AbstractType
+class ProviderType extends AbstractType
 {
 
     /**
@@ -15,8 +15,16 @@ class CategoryType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name', 'text', array(
+        $builder->add('category', 'entity', array(
+            'label' => "Catégorie:",
+            'class' => 'AppMainBundle:Category',
+            'choice_label' => 'name'
+        ))
+            ->add('name', 'text', array(
             'label' => "Libellé:"
+        ))
+            ->add('address', 'textarea', array(
+            'label' => "Adresse:"
         ))
             ->add('miniatureFile', 'file', array(
             'label' => "Logo:"
@@ -34,7 +42,7 @@ class CategoryType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'App\MainBundle\Entity\Category'
+            'data_class' => 'App\MainBundle\Entity\Provider'
         ));
     }
 
@@ -44,6 +52,6 @@ class CategoryType extends AbstractType
      */
     public function getName()
     {
-        return 'app_mainbundle_category';
+        return 'app_mainbundle_provider';
     }
 }

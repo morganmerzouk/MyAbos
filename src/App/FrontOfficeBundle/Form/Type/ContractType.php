@@ -34,19 +34,16 @@ class ContractType extends AbstractType
                 'class' => "form-control"
             )
         ))
-            ->add('provider', 'choice', array(
+            ->add('provider', 'entity', array(
+            'class' => 'AppMainBundle:Provider',
+            'query_builder' => function (EntityRepository $er) {
+                return $er->createQueryBuilder('p')
+                    ->andWhere("p.actif = 1")
+                    ->orderBy('p.name', 'ASC');
+            },
             'attr' => array(
-                'class' => "form-control"
-            ),
-            'choices' => array(
-                'Fournisseur' => 'Fournisseur',
-                'Bouygues Telecom' => 'Bouygues Telecom',
-                'Free' => 'Free',
-                'Orange' => 'Orange',
-                'Sfr' => 'SFR'
-            ),
-            'expanded' => false,
-            'multiple' => false
+                'class' => 'form-control'
+            )
         ))
             ->add('number', 'text', array(
             'attr' => array(

@@ -1,0 +1,30 @@
+provider:
+    path:     /provider
+    defaults: { _controller: "AppBackOfficeBundle:Provider:index" }
+
+provider_show:
+    path:     /provider/show/{id}
+    defaults: { _controller: "AppBackOfficeBundle:Provider:show" }
+
+provider_new:
+    path:     /provider/new
+    defaults: { _controller: "AppBackOfficeBundle:Provider:new" }
+
+provider_create:
+    path:     /provider/create
+    defaults: { _controller: "AppBackOfficeBundle:Provider:create" }
+    requirements: { _method: post }
+
+provider_edit:
+    path:     /provider/edit/{id}
+    defaults: { _controller: "AppBackOfficeBundle:Provider:edit" }
+
+provider_update:
+    path:     /provider/update/{id}
+    defaults: { _controller: "AppBackOfficeBundle:Provider:update" }
+    requirements: { _method: post|put }
+
+provider_delete:
+    path:     /provider/delete/{id}
+    defaults: { _controller: "AppBackOfficeBundle:Provider:delete" }
+    requirements: { _method: post|get }

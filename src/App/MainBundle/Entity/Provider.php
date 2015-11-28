@@ -1,6 +1,6 @@
 <?php
 
-// src/App/MainBundle/Entity/Category.php
+// src/App/MainBundle/Entity/Provider.php
 namespace App\MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -8,9 +8,9 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="category")
+ * @ORM\Table(name="provider")
  */
-class Category
+class Provider
 {
 
     /**
@@ -22,16 +22,21 @@ class Category
 
     /**
      *
-     * @var ArrayCollection $contract
+     * @var Category $category
      *     
-     *      @ORM\OneToMany(targetEntity="Contract", mappedBy="category", cascade={"persist", "remove", "merge"})
+     *      @ORM\ManyToOne(targetEntity="Category", inversedBy="providers", cascade={"persist", "merge"})
      */
-    private $contracts;
+    private $category;
 
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
      */
     protected $name;
+
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $address;
 
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
@@ -117,7 +122,7 @@ class Category
 
     protected function getUploadDir()
     {
-        return '/uploads/category';
+        return '/uploads/provider';
     }
 
     protected function getUploadRootDir()
@@ -195,40 +200,97 @@ class Category
      * Constructor
      */
     public function __construct()
-    {
-        $this->contracts = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+    {}
 
     /**
-     * Add contracts
+     * Set adress
      *
-     * @param \App\MainBundle\Entity\Contract $contracts            
-     * @return Category
+     * @param string $adress            
+     * @return Provider
      */
-    public function addContract(\App\MainBundle\Entity\Contract $contracts)
+    public function setAdress($adress)
     {
-        $this->contracts[] = $contracts;
+        $this->adress = $adress;
         
         return $this;
     }
 
     /**
-     * Remove contracts
+     * Get adress
      *
-     * @param \App\MainBundle\Entity\Contract $contracts            
+     * @return string
      */
-    public function removeContract(\App\MainBundle\Entity\Contract $contracts)
+    public function getAdress()
     {
-        $this->contracts->removeElement($contracts);
+        return $this->adress;
     }
 
     /**
-     * Get contracts
+     * Add category
+     *
+     * @param \App\MainBundle\Entity\Category $category            
+     * @return Provider
+     */
+    public function addCategory(\App\MainBundle\Entity\Category $category)
+    {
+        $this->category[] = $category;
+        
+        return $this;
+    }
+
+    /**
+     * Remove category
+     *
+     * @param \App\MainBundle\Entity\Category $category            
+     */
+    public function removeCategory(\App\MainBundle\Entity\Category $category)
+    {
+        $this->category->removeElement($category);
+    }
+
+    /**
+     * Get category
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getContracts()
+    public function getCategory()
     {
-        return $this->contracts;
+        return $this->category;
+    }
+
+    /**
+     * Set address
+     *
+     * @param string $address            
+     * @return Provider
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+        
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \App\MainBundle\Entity\Category $category
+     * @return Provider
+     */
+    public function setCategory(\App\MainBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
     }
 }

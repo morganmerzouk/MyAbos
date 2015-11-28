@@ -3,13 +3,13 @@ namespace App\BackOfficeBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use App\MainBundle\Entity\Category;
-use App\BackOfficeBundle\Form\CategoryType;
+use App\MainBundle\Entity\Provider;
+use App\BackOfficeBundle\Form\ProviderType;
 
 /**
  * Category controller.
  */
-class CategoryController extends Controller
+class ProviderController extends Controller
 {
 
     /**
@@ -19,19 +19,19 @@ class CategoryController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         
-        $entities = $em->getRepository('AppMainBundle:Category')->findAll();
+        $entities = $em->getRepository('AppMainBundle:Provider')->findAll();
         
-        return $this->render('AppBackOfficeBundle:Category:index.html.twig', array(
+        return $this->render('AppBackOfficeBundle:Provider:index.html.twig', array(
             'entities' => $entities
         ));
     }
 
     /**
-     * Creates a new Category entity.
+     * Creates a new Provider entity.
      */
     public function createAction(Request $request)
     {
-        $entity = new Category();
+        $entity = new Provider();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
         
@@ -40,29 +40,29 @@ class CategoryController extends Controller
             $em->persist($entity);
             $em->flush();
             
-            return $this->redirect($this->generateUrl('category_show', array(
+            return $this->redirect($this->generateUrl('provider_show', array(
                 'id' => $entity->getId()
             )));
         }
         
-        return $this->render('AppBackOfficeBundle:Category:new.html.twig', array(
+        return $this->render('AppBackOfficeBundle:Provider:new.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView()
         ));
     }
 
     /**
-     * Creates a form to create a Category entity.
+     * Creates a form to create a Provider entity.
      *
-     * @param Category $entity
+     * @param Provider $entity
      *            The entity
      *            
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Category $entity)
+    private function createCreateForm(Provider $entity)
     {
-        $form = $this->createForm(new CategoryType(), $entity, array(
-            'action' => $this->generateUrl('category_create'),
+        $form = $this->createForm(new ProviderType(), $entity, array(
+            'action' => $this->generateUrl('provider_create'),
             'method' => 'POST'
         ));
         
@@ -74,73 +74,73 @@ class CategoryController extends Controller
     }
 
     /**
-     * Displays a form to create a new Category entity.
+     * Displays a form to create a new Provider entity.
      */
     public function newAction()
     {
-        $entity = new Category();
+        $entity = new Provider();
         $form = $this->createCreateForm($entity);
         
-        return $this->render('AppBackOfficeBundle:Category:new.html.twig', array(
+        return $this->render('AppBackOfficeBundle:Provider:new.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView()
         ));
     }
 
     /**
-     * Finds and displays a Category entity.
+     * Finds and displays a Provider entity.
      */
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
         
-        $entity = $em->getRepository('AppMainBundle:Category')->find($id);
+        $entity = $em->getRepository('AppMainBundle:Provider')->find($id);
         
         if (! $entity) {
-            throw $this->createNotFoundException('Unable to find Category entity.');
+            throw $this->createNotFoundException('Unable to find Provider entity.');
         }
         
         $deleteForm = $this->createDeleteForm($id);
         
-        return $this->render('AppBackOfficeBundle:Category:show.html.twig', array(
+        return $this->render('AppBackOfficeBundle:Provider:show.html.twig', array(
             'entity' => $entity,
             'delete_form' => $deleteForm->createView()
         ));
     }
 
     /**
-     * Displays a form to edit an existing Category entity.
+     * Displays a form to edit an existing Provider entity.
      */
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
         
-        $entity = $em->getRepository('AppMainBundle:Category')->find($id);
+        $entity = $em->getRepository('AppMainBundle:Provider')->find($id);
         
         if (! $entity) {
-            throw $this->createNotFoundException('Unable to find Category entity.');
+            throw $this->createNotFoundException('Unable to find Provider entity.');
         }
         
         $editForm = $this->createEditForm($entity);
         
-        return $this->render('AppBackOfficeBundle:Category:edit.html.twig', array(
+        return $this->render('AppBackOfficeBundle:Provider:edit.html.twig', array(
             'entity' => $entity,
             'form' => $editForm->createView()
         ));
     }
 
     /**
-     * Creates a form to edit a Category entity.
+     * Creates a form to edit a Provider entity.
      *
-     * @param Category $entity
+     * @param Provider $entity
      *            The entity
      *            
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createEditForm(Category $entity)
+    private function createEditForm(Provider $entity)
     {
-        $form = $this->createForm(new CategoryType(), $entity, array(
-            'action' => $this->generateUrl('category_update', array(
+        $form = $this->createForm(new ProviderType(), $entity, array(
+            'action' => $this->generateUrl('provider_update', array(
                 'id' => $entity->getId()
             ))
         ));
@@ -153,51 +153,51 @@ class CategoryController extends Controller
     }
 
     /**
-     * Edits an existing Category entity.
+     * Edits an existing Provider entity.
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
         
-        $entity = $em->getRepository('AppMainBundle:Category')->find($id);
+        $entity = $em->getRepository('AppMainBundle:Provider')->find($id);
         
         if (! $entity) {
-            throw $this->createNotFoundException('Unable to find Category entity.');
+            throw $this->createNotFoundException('Unable to find Provider entity.');
         }
         
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
         if ($editForm->isValid()) {
             $em->flush();
-            return $this->redirect($this->generateUrl('category'));
+            return $this->redirect($this->generateUrl('provider'));
         }
         
-        return $this->render('AppBackOfficeBundle:Category:edit.html.twig', array(
+        return $this->render('AppBackOfficeBundle:Provider:edit.html.twig', array(
             'entity' => $entity,
             'form' => $editForm->createView()
         ));
     }
 
     /**
-     * Deletes a Category entity.
+     * Deletes a Provider entity.
      */
     public function deleteAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('AppMainBundle:Category')->find($id);
+        $entity = $em->getRepository('AppMainBundle:Provider')->find($id);
         
         if (! $entity) {
-            throw $this->createNotFoundException('Unable to find Category entity.');
+            throw $this->createNotFoundException('Unable to find Provider entity.');
         }
         
         $em->remove($entity);
         $em->flush();
         
-        return $this->redirect($this->generateUrl('category'));
+        return $this->redirect($this->generateUrl('provider'));
     }
 
     /**
-     * Creates a form to delete a Category entity by id.
+     * Creates a form to delete a Provider entity by id.
      *
      * @param mixed $id
      *            The entity id
@@ -207,7 +207,7 @@ class CategoryController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('category_delete', array(
+            ->setAction($this->generateUrl('provider_delete', array(
             'id' => $id
         )))
             ->setMethod('DELETE')

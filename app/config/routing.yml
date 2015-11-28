@@ -70,7 +70,7 @@ fos_user_resetting_reset:
 # BACKOFFICE BUNDLE
 app_back_office:
     resource: "@AppBackOfficeBundle/Resources/config/routing.yml"
-    prefix:   /backoffice
+    prefix:   /admin
 
 # FRONTOFFICE BUNDLE
 app_front_office:

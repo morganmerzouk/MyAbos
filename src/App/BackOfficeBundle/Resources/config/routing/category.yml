@@ -1,30 +1,30 @@
 category:
-    path:     /
+    path:     /category
     defaults: { _controller: "AppBackOfficeBundle:Category:index" }
 
 category_show:
-    path:     /{id}/show
+    path:     /category/show/{id}
     defaults: { _controller: "AppBackOfficeBundle:Category:show" }
 
 category_new:
-    path:     /new
+    path:     /category/new
     defaults: { _controller: "AppBackOfficeBundle:Category:new" }
 
 category_create:
-    path:     /create
+    path:     /category/create
     defaults: { _controller: "AppBackOfficeBundle:Category:create" }
     requirements: { _method: post }
 
 category_edit:
-    path:     /{id}/edit
+    path:     /category/edit/{id}
     defaults: { _controller: "AppBackOfficeBundle:Category:edit" }
 
 category_update:
-    path:     /{id}/update
+    path:     /category/update/{id}
     defaults: { _controller: "AppBackOfficeBundle:Category:update" }
     requirements: { _method: post|put }
 
 category_delete:
-    path:     /{id}/delete
+    path:     /category/delete/{id}
     defaults: { _controller: "AppBackOfficeBundle:Category:delete" }
-    requirements: { _method: post|delete }
+    requirements: { _method: post|get }
