@@ -50,25 +50,21 @@
 			                </div>
 			            {% endif %}
 			    	</div>
-					<img src="{{ asset('bundles/appmain/images/general/logo.png') }}" class="center-block" alt="logo myabos" />
+		    		<div class="col-md-2 pull-right text-centered">
+				        <a href="{{ path("app_front_office_contract_add") }}" class="btn btn-danger">Ajouter un contrat</a><br /><br />
+				        <a href="{{ path("app_front_office_resiliation") }}" class="btn btn-danger">Résilier un contrat</a>
+		    		</div>
+					<a href="{{ path('app_main_homepage') }}"><img src="{{ asset('bundles/appmain/images/general/logo.png') }}" alt="logo myabos" /></a>
 				</div>
 				{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-					<nav class="navbar navbar-default main-nav">
-				        <div class="container-fluid">
-				            <div class="navbar-header">
-								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-							    	<ul class="nav navbar-nav">
-								        <li class="active"><a href="#">Profil</a></li>
-								        <li><a href="#">Gestion de mes contrats</a></li>
-								        <li><a href="#">Mes dépenses</a></li>
-								        <li><a href="#">Alertes</a></li>
-								        <li><a href="#">Ajouter un contrat</a></li>
-								        <li><a href="#">Résilier un contrat</a></li>
-							        </ul>
-				            	</div>
-				        	</div>
-			        	</div>
-				    </nav>
+			    	<ul class="nav nav-tabs nav-justified">
+				        <li role="presentation" {% if route starts with "app_front_office_contract" %}class="active"{% endif %}><a href="{{ path('app_front_office_contract_list') }}">Gestion de mes contrats</a></li>
+				        <li role="presentation" {% if route starts with "app_front_office_spending" %}class="active"{% endif %}><a href="{{ path('app_front_office_spending') }}">Mes dépenses</a></li>
+				        <li role="presentation"><a href="#">Mes alertes</a></li>
+				        {% if is_granted('ROLE_ADMIN') %}
+		    				 <li role="presentation" {% if route starts with "app_backofficebundle" %}class="active"{% endif %}><a href="{{ path("app_backofficebundle_home") }}">Administration</a></li>
+				        {% endif %}
+			        </ul>
 			    {% endif %}
 		    {% endblock %}
 		    {% block flash %}

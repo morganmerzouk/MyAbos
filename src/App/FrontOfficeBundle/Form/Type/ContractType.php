@@ -41,6 +41,13 @@ class ContractType extends AbstractType
                     ->andWhere("p.actif = 1")
                     ->orderBy('p.name', 'ASC');
             },
+            'choice_attr' => function ($provider, $key, $index) {
+                return [
+                    'class' => 'provider provider_' . $provider->getCategory()
+                        ->getId()
+                ];
+            },
+            'placeholder' => 'Fournisseur',
             'attr' => array(
                 'class' => 'form-control'
             )
@@ -157,7 +164,10 @@ class ContractType extends AbstractType
         ))
             ->add('contractFile', 'file', array(
             'required' => false,
-            'label' => "Téléchargement contrat + factures"
+            'label' => "Téléchargement contrat + factures",
+            'attr' => array(
+                'class' => 'center-block'
+            )
         ));
     }
 

@@ -17,6 +17,7 @@ class ProviderController extends Controller
      */
     public function indexAction()
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page!');
         $em = $this->getDoctrine()->getManager();
         
         $entities = $em->getRepository('AppMainBundle:Provider')->findAll();
@@ -40,9 +41,7 @@ class ProviderController extends Controller
             $em->persist($entity);
             $em->flush();
             
-            return $this->redirect($this->generateUrl('provider_show', array(
-                'id' => $entity->getId()
-            )));
+            return $this->redirect($this->generateUrl('provider_new'));
         }
         
         return $this->render('AppBackOfficeBundle:Provider:new.html.twig', array(

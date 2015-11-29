@@ -5,10 +5,28 @@
 	<form method="post" {{ form_enctype(form) }}>
 		<div class="col-md-12">
 			<div class="block-categories">
+				<h2>Sélectionner une catégorie</h2>
 				{% for category in categories %}
-					<div class="col-md-3 text-center">
-						<img src="{{ category.miniatureWebPath }}" alt="{{ category.name }}" data-id="{{ category.id }}" class="category img-thumbnail img-responsive" />
+					{% if loop.index0 % 4 == 0 %}
+						<div class="row">
+					{% endif %}
+					<div class="col-md-3 text-center effects">
+    					<div class="img">
+							<img src="{{ category.miniatureWebPath }}" alt="{{ category.name }}" class="img-thumbnail img-responsive" />
+							<div class="overlay category" data-id="{{ category.id }}" >
+					            <span class="expand">
+									+
+								</span>
+					            <span class="name">
+									{{ category.name }}
+								</span>
+					            <span class="close-overlay hidden">x</span>
+					        </div>
+				        </div>
 					</div>
+					{% if loop.index0 % 4 == 3 %}
+						</div>
+					{% endif %}
 				{% endfor %}
 			</div>
 			<div class="form-add-contrat">
@@ -63,8 +81,12 @@
 				    </div>
 			    </div>
 			    <div class="col-md-6">
-					    {{ form_label(form.contractFile) }}
-				    	{{ form_widget(form.contractFile) }}
+					<h2>Entrez vos données grace à notre outil de reconnaissance de caractères</h2>
+					<p class="text-center">Scanner et télécharger votre contrat<br /><br />
+			    		{{ form_widget(form.contractFile) }}
+			    	</p>
+					<p class="text-center">La qualité du document pouvant avoir un impact sur le remplissage du formulaire 
+					vous pouvez à tout moment corriger manuellement les informations avant validation</p>
 			    </div>
 			    <button type="submit" value="Annuler" class="btn btn-default"/>Annuler</button>
 			    <button type="submit" value="Valider" class="btn btn-danger"/>Valider</button>

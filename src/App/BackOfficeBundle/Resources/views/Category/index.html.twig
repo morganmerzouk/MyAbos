@@ -1,14 +1,13 @@
 {% extends '::back-office.html.twig' %}
 
 {% block content %}
-    <h1>Liste des catégories</h1>
+    <h2>Liste des catégories</h2>
 
     <table class="table records_list">
         <thead>
             <tr>
-                <th class="text-center">Id</th>
-                <th class="text-center">Libellé</th>
                 <th class="text-center">Miniature</th>
+                <th class="text-center">Libellé</th>
                 <th class="text-center">Publié</th>
                 <th class="text-center">Actions</th>
             </tr>
@@ -16,9 +15,8 @@
         <tbody>
         {% for category in entities %}
             <tr>
-                <td><a href="{{ path('category_show', { 'id': category.id }) }}">{{ category.id }}</a></td>
+                <td class="text-center"><img src="{{ category.miniatureWebPath }}" width=100 /></td>
                 <td>{{ category.name }}</td>
-                <td><img src="{{ category.miniatureWebPath }}" /></td>
                 <td class="text-center">{% if category.actif == 1 %}<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>{% endif %}</td>
                 <td class="text-center">
                     <a title="Voir" href="{{ path('category_show', { 'id': category.id }) }}">

@@ -17,6 +17,7 @@ class CategoryController extends Controller
      */
     public function indexAction()
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Unable to access this page!');
         $em = $this->getDoctrine()->getManager();
         
         $entities = $em->getRepository('AppMainBundle:Category')->findAll();

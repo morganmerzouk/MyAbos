@@ -27,7 +27,8 @@ class ProviderType extends AbstractType
             'label' => "Adresse:"
         ))
             ->add('miniatureFile', 'file', array(
-            'label' => "Logo:"
+            'label' => "Logo:",
+            'required' => false
         ))
             ->add('actif', 'checkbox', array(
             'label' => 'Public:',

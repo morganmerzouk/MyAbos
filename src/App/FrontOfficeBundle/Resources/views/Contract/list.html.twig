@@ -28,8 +28,8 @@
 			        			<strong>Actions</strong><br />
 			        			<a href="{{ path("app_front_office_contract_edit", {"id": contract.id}) }}"><span class="glyphicon glyphicon-pencil  btn-lg" aria-hidden="true"></span></a>
 			        			<a href="{{ path("app_front_office_contract_delete", {"id": contract.id}) }}"><span class="glyphicon glyphicon-trash  btn-lg" aria-hidden="true"></span></a>
-			        			<a href="{{ path("app_front_office_resiliation", {"id": contract.id}) }}"><span class="glyphicon glyphicon-file  btn-lg" aria-hidden="true"></span></a>
-			        			<br /><a href="#" class="btn btn-danger">Résilier</a>
+			        			<a href="#"><span class="glyphicon glyphicon-file  btn-lg" aria-hidden="true"></span></a>
+			        			<br /><a href="{{ path("app_front_office_resiliation", {"id": contract.id}) }}" class="btn btn-danger">Résilier</a>
 			        		</div>
 			        	</div>
 			        {% endfor %}
