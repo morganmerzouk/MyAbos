@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	$("form input.date").datepicker();
+	$("form input.date").datepicker({ dateFormat: 'dd/mm/yy' });
 	
 	//On gère le message d'avertissement pour les cookies
 	if(locale == "fr") {

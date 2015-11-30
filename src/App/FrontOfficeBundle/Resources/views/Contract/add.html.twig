@@ -2,8 +2,8 @@
 
 {% block content %}
 	<div class="panel-body">
-	<form method="post" {{ form_enctype(form) }}>
-		<div class="col-md-12">
+	{{ form_start(form) }}
+   	 	<div class="col-md-12">
 			<div class="block-categories">
 				<h2>Sélectionner une catégorie</h2>
 				{% for category in categories %}
@@ -32,64 +32,78 @@
 			<div class="form-add-contrat">
 				<div class="col-md-6">
 					<h2>Entrez vos données manuellement</h2>
-					    	{{ form_widget(form.category) }}
+			    	{{ form_widget(form.category) }}
+			    	{{ form_errors(form.category) }}
 				    <div class="row">
 				    	{{ form_widget(form.name) }}
+				    	{{ form_errors(form.name) }}
 				    </div>
 				    <div class="row">
 				    	{{ form_widget(form.provider) }}
+				    	{{ form_errors(form.provider) }}
 				    </div>
 				    <div class="row">
 				    	{{ form_widget(form.number) }}
+						{{ form_errors(form.number) }}
 				    </div>
 				    <div class="row">
 					    {{ form_label(form.startingDate) }}
 					    <div class="col-md-6">
 					    	{{ form_widget(form.startingDate) }}
+							{{ form_errors(form.startingDate) }}
 					    </div>
 				    </div>
 				    <div class="row">
 					    {{ form_label(form.endingDate) }}
 					    <div class="col-md-6">
 					    	{{ form_widget(form.endingDate) }}
+							{{ form_errors(form.endingDate) }}
 					    </div>
 				    </div>
 				    <div class="row">
 				    	<div class="col-md-6">
 							<div class="input-group">
 								{{ form_widget(form.amount) }}
+								{{ form_errors(form.amount) }}
 								<span class="input-group-addon">€</span>
 							</div>
 					    </div>
 					    <div class="col-md-6">
 					    	{{ form_widget(form.amountFrequency) }}
+				    		{{ form_errors(form.amountFrequency) }}
 					    </div>
 				    </div>
 				    <div class="row">
 					    {{ form_label(form.withEngagement) }}
 				    	{{ form_widget(form.withEngagement) }}
+				    	{{ form_errors(form.withEngagement) }}
 				    </div>
 				    <div class="row">
 					    {{ form_label(form.autoRenewal) }}
 				    	{{ form_widget(form.autoRenewal) }}
+				    	{{ form_errors(form.autoRenewal) }}
 				    </div>
 				    <div class="row">
 				    	{{ form_widget(form.engagementLength) }}
+				    	{{ form_errors(form.engagementLength) }}
 				    </div>
 				    <div class="row">
 				    	{{ form_widget(form.alertFrequency) }}
+				    	{{ form_errors(form.alertFrequency) }}
 				    </div>
 			    </div>
 			    <div class="col-md-6">
 					<h2>Entrez vos données grace à notre outil de reconnaissance de caractères</h2>
 					<p class="text-center">Scanner et télécharger votre contrat<br /><br />
 			    		{{ form_widget(form.contractFile) }}
+			    		{{ form_errors(form.contractFile) }}
 			    	</p>
 					<p class="text-center">La qualité du document pouvant avoir un impact sur le remplissage du formulaire 
 					vous pouvez à tout moment corriger manuellement les informations avant validation</p>
 			    </div>
 			    <button type="submit" value="Annuler" class="btn btn-default"/>Annuler</button>
 			    <button type="submit" value="Valider" class="btn btn-danger"/>Valider</button>
+			    {{ form_row(form._token) }}
 			    {{ form_end(form) }}
 		    </div>
 		</div>

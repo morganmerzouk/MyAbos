@@ -75,8 +75,8 @@ class ContractController extends Controller
             ->getToken()
             ->getUser();
         $em = $this->getDoctrine()->getManager();
-        $contract = $em->getRepository("AppMainBundle:Contract")->findBy(array(
-            "user_id" => $user->getId(),
+        $contract = $em->getRepository("AppMainBundle:Contract")->findOneBy(array(
+            "user" => $user->getId(),
             "id" => $id
         ));
         
