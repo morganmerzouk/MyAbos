@@ -17,7 +17,7 @@
   	width: 1px;
   	background-color: lightgray;
 }
-
+.btn-resilier { margin-bottom: 20px; }
 .col-md-3 .btn-lg { padding: 10px 5px; font-size: 30px; }
 
 .overlay {

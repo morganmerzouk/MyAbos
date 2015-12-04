@@ -28,29 +28,35 @@
   	</script>
 {% endblock %}
 {% block content %}
-<h1>Payez 12.99€ avec Stripe</h1>
-<form action="" method="POST" id="payment-form">
-    <span class="payment-errors"></span>
-    <div class="form-row">
-		<label>
-        	<span>N° de carte: </span>
-        	<input type="text" class="form-control" size="20" data-stripe="number"/>
-      	</label>
-    </div>
-    <div class="form-row">
-      	<label>
-        	<span>Clé de sécurité: </span>
-        	<input type="text" class="form-control" size="4" data-stripe="cvc"/>
-      	</label>
-    </div>
-    <div class="form-row">
-      	<label>
-        	<span>Date d'expiration (MM/YY)</span>
-        	<input type="text" size="2" data-stripe="exp-month"/>
-  		</label>
-      	<span> / </span>
-      	<input type="text" size="4" data-stripe="exp-year"/>
-    </div>
-    <button type="submit" class="btn btn-danger">Payer</button>
-</form>
+{% if message is not null %}
+	<h2>Paiement effectué avec succès.</h2>
+	<p>Votre contrat a été résilié avec succès, vous recevrez une confirmation par mail une fois la résiliation effective.</p>
+{% else %}
+	<h2>Paiement</h2>
+	<h3>Payez 12.99€</h3>
+	<form action="" method="POST" id="payment-form">
+	    <span class="payment-errors"></span>
+	    <div class="form-row">
+			<label>
+	        	<span>N° de carte: </span>
+	        	<input type="text" size="16" data-stripe="number"/>
+	      	</label>
+	    </div>
+	    <div class="form-row">
+	      	<label>
+	        	<span>Clé de sécurité: </span>
+	        	<input type="text" size="4" data-stripe="cvc"/>
+	      	</label>
+	    </div>
+	    <div class="form-row">
+	      	<label>
+	        	<span>Date d'expiration (MM/YY): </span>
+	        	<input type="text" size="2" data-stripe="exp-month"/>
+	  		</label>
+	      	<span> / </span>
+	      	<input type="text" size="4" data-stripe="exp-year"/>
+	    </div>
+	    <button type="submit" class="btn btn-danger">Payer</button>
+	</form>
+{% endif %}
 {% endblock %}

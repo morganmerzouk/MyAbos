@@ -6,30 +6,37 @@
             <div class="panel panel-info">
                 <div class="panel-body">
                 	<h2>Gestion de mes contrats</h2>
+                	<div class="col-xs-4">
+	                	<select class="filter-category form-control">
+		                	{% for category in categories %}
+								<option value="{{ category.id }}">{{ category.name }}</option>                	
+		                	{% endfor %}	
+	                	</select>
+                	</div>
 			        {% for contract in contracts %}
-			        	<div class="col-md-12 row contract">
+			        	<div class="col-md-12 row contract category-{{ contract.category.id }}">
 			        		<div class="col-md-2 text-center">
-			        			<strong>Intitulé</strong><br />
+			        			<strong>Intitulé</strong><br /><br />
 			        			{{ contract.name }}
 			        		</div>
 			        		<div class="col-md-1 text-center">
-			        			<strong>Budget</strong><br />
-			        			{{ contract.amount }}
+			        			<strong>Budget</strong><br /><br />
+			        			{{ contract.amount }}€
 			        		</div>
 			        		<div class="col-md-3 text-center">
-			        			<strong>Date d'engagement</strong><br />
+			        			<strong>Date d'engagement</strong><br /><br />
 			        			{{ contract.startingDate|date("d/m/Y") }}
 			        		</div>
 			        		<div class="col-md-3 text-center">
-			        			<strong>Date de résiliation possible</strong><br />
+			        			<strong>Date de résiliation possible</strong><br /><br />
 			        			{{ contract.endingDate|date("d/m/Y") }}
 			        		</div>
 			        		<div class="col-md-3 text-center">
 			        			<strong>Actions</strong><br />
 			        			<a href="{{ path("app_front_office_contract_edit", {"id": contract.id}) }}"><span class="glyphicon glyphicon-pencil  btn-lg" aria-hidden="true"></span></a>
-			        			<a href="{{ path("app_front_office_contract_delete", {"id": contract.id}) }}"><span class="glyphicon glyphicon-trash  btn-lg" aria-hidden="true"></span></a>
 			        			<a href="#"><span class="glyphicon glyphicon-file  btn-lg" aria-hidden="true"></span></a>
-			        			<br /><a href="{{ path("app_front_office_resiliation", {"id": contract.id}) }}" class="btn btn-danger">Résilier</a>
+			        			<a href="{{ path("app_front_office_contract_delete", {"id": contract.id}) }}"><span class="glyphicon glyphicon-trash  btn-lg" aria-hidden="true"></span></a>
+			        			<a href="{{ path("app_front_office_resiliation_choix_formule", {"id": contract.id}) }}" class="btn btn-danger btn-resilier">Résilier</a>
 			        		</div>
 			        	</div>
 			        {% endfor %}

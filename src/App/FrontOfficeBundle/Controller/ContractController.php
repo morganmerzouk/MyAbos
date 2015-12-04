@@ -103,8 +103,14 @@ class ContractController extends Controller
         if (count($contracts) == 0) {
             return $this->redirectToRoute('app_front_office_contract_add');
         } else {
+            
+            $categories = $em->getRepository("AppMainBundle:Category")->findBy(array(
+                "actif" => "1"
+            ));
+            
             return $this->render('AppFrontOfficeBundle:Contract:list.html.twig', array(
-                'contracts' => $contracts
+                'contracts' => $contracts,
+                'categories' => $categories
             ));
         }
     }

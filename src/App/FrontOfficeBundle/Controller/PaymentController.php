@@ -32,9 +32,11 @@ class PaymentController extends Controller
                 'amount' => 1299,
                 'currency' => 'eur'
             ));
-            var_dump($charge);
-            $message = '<h1>Paiement effectué avec succès</h1>';
+            
+            $message = '<h1>Paiement effectué avec succès!</h1>';
         }
-        return $this->render('AppFrontOfficeBundle:Payment:index.html.twig', array());
+        return $this->render('AppFrontOfficeBundle:Payment:index.html.twig', array(
+            "message" => $message
+        ));
     }
 }

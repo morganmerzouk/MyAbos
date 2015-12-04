@@ -10,6 +10,12 @@ $(document).on("ready", function() {
 		$('.provider_'+$(this).data('id')).show();
 	});
 	
+	$(".filter-category option[value='12']").attr('selected','selected');
+	$(".filter-category").on("change", function() {
+		$("div.contract").hide();
+		$(".category-" + $(this).val()).show();
+	});
+	
 	$(".img").on("mouseenter", function(){
         $(this).addClass("hover");
     })
