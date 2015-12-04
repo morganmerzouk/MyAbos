@@ -12,6 +12,14 @@ class DefaultController extends Controller
         $user = $this->get('security.token_storage')
             ->getToken()
             ->getUser();
+        
+        $message = \Swift_Message::newInstance()->setSubject('Hello Email')
+            ->setFrom('send@example.com')
+            ->setTo('morgan.merzouk@gmail.com')
+            ->setBody("test");
+        
+        $this->container->get('mailer')->send($message);
+        
         if ($user == "anon.")
             return $this->render('AppMainBundle:Default:index.html.twig', array());
         else

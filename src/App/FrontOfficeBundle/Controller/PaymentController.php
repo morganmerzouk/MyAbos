@@ -16,21 +16,25 @@ class PaymentController extends Controller
         // See your keys here https://dashboard.stripe.com/account/apikeys
         $request = $this->container->get('request');
         $message = '';
-        \Stripe::setApiKey('sk_test_GyiB2fCxy62ydudovWhyyp6H');
-        
-        $token = $request->get('stripeToken');
-        
-        $customer = \Stripe_Customer::create(array(
-            'email' => 'customer@example.com',
-            'card' => $token
-        ));
-        
-        $charge = \Stripe_Charge::create(array(
-            'customer' => $customer->id,
-            'amount' => 12.99,
-            'currency' => 'eur'
-        ));
-        
-        $message = '<h1>Paiement effectué avec succès</h1>';
+        if ($request->isMethod('POST')) {
+            
+            \Stripe::setApiKey('sk_test_GyiB2fCxy62ydudovWhyyp6H');
+            
+            $token = $request->get('stripeToken');
+            
+            $customer = \Stripe_Customer::create(array(
+                'email' => 'customer@example.com',
+                'card' => $token
+            ));
+            
+            $charge = \Stripe_Charge::create(array(
+                'customer' => $customer->id,
+                'amount' => 1299,
+                'currency' => 'eur'
+            ));
+            var_dump($charge);
+            $message = '<h1>Paiement effectué avec succès</h1>';
+        }
+        return $this->render('AppFrontOfficeBundle:Payment:index.html.twig', array());
     }
 }

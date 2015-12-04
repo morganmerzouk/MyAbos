@@ -1,11 +1,56 @@
-<form action="" method="POST">
-  <script
-    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="pk_test_bRKL5eJi4tc9TmWOaUtc0y47"
-    data-amount="12.99"
-    data-name="MyAbos"
-    data-description="Une résiliation automatique de contrar"
-    data-image="/128x128.png"
-    data-locale="auto">
-  </script>
+{% extends '::front-office.html.twig' %}
+{% block javascripts %}
+	{{ parent() }}
+	<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+	<script type="text/javascript">
+	    Stripe.setPublishableKey('pk_test_bRKL5eJi4tc9TmWOaUtc0y47');
+	    var stripeResponseHandler = function(status, response) {
+			var $form = $('#payment-form');
+			if (response.error) {
+	        	$form.find('.payment-errors').text(response.error.message);
+	        	$form.find('button').prop('disabled', false);
+	      	} else {
+	        	var token = response.id;
+	        	// Insert the token into the form so it gets submitted to the server
+	        	$form.append($('<input type="hidden" name="stripeToken" />').val(token));
+	        	$form.get(0).submit();
+	      	}
+	    };
+	    
+	    $(document).on("ready", function() {
+			$('#payment-form').on("submit", function(event) {
+		        event.preventDefault();
+		        var $form = $(this);
+		        $form.find('button').prop('disabled', true);
+		        Stripe.card.createToken($form, stripeResponseHandler);
+	      	});
+	    });
+  	</script>
+{% endblock %}
+{% block content %}
+<h1>Payez 12.99€ avec Stripe</h1>
+<form action="" method="POST" id="payment-form">
+    <span class="payment-errors"></span>
+    <div class="form-row">
+		<label>
+        	<span>N° de carte: </span>
+        	<input type="text" class="form-control" size="20" data-stripe="number"/>
+      	</label>
+    </div>
+    <div class="form-row">
+      	<label>
+        	<span>Clé de sécurité: </span>
+        	<input type="text" class="form-control" size="4" data-stripe="cvc"/>
+      	</label>
+    </div>
+    <div class="form-row">
+      	<label>
+        	<span>Date d'expiration (MM/YY)</span>
+        	<input type="text" size="2" data-stripe="exp-month"/>
+  		</label>
+      	<span> / </span>
+      	<input type="text" size="4" data-stripe="exp-year"/>
+    </div>
+    <button type="submit" class="btn btn-danger">Payer</button>
 </form>
+{% endblock %}

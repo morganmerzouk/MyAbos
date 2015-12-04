@@ -1,7 +1,6 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: @AppMainBundle/Resources/config/admin.yml }
     - { resource: ../../vendor/knplabs/doctrine-behaviors/config/orm-services.yml }
 
 framework:
@@ -68,7 +67,10 @@ doctrine:
                 mappings:
                     AppMainBundle: ~
                     FOSUserBundle: ~    
-
+cspoo_swiftmailer_mailgun:
+    key: "%mailer_api_key%"
+    domain: "%mailer_domain%"
+    
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
@@ -90,17 +92,6 @@ services:
         class: App\MainBundle\Twig\DatetimeExtension
         tags:
             - { name: twig.extension }
-    payment.bridge:
-        class: App\MainBundle\Services\PaymentBridge
-    payment.event.listener:
-        class:     App\MainBundle\Listener\Payment
-        arguments: [@doctrine.orm.entity_manager, @mailer]
-        tags:
-            - { name: kernel.event_listener, event: payment.order.done, method: onPaymentOrderDone }
-            - { name: kernel.event_listener, event: payment.order.created, method: onPaymentOrderCreated }
-            - { name: kernel.event_listener, event: payment.order.load, method: onPaymentLoad }
-            - { name: kernel.event_listener, event: payment.order.success, method: onPaymentSuccess }
-            - { name: kernel.event_listener, event: payment.order.fail, method: onPaymentFail }
 fos_user:
     db_driver: orm
     firewall_name: main
@@ -156,11 +147,6 @@ sonata_block:
         sonata.block.service.text: # used to if you plan to use Sonata user routes
         sonata.admin.block.admin_list: # Enable the SonataAdminBundle block
             contexts:   [admin]
-            
-a2lix_translation_form:
-        default_locale: %locale%
-        locales: [fr,en]               # [Optionnal] Array of translations locales. Can be specified in the form.
-        templating: "A2lixTranslationFormBundle::default.html.twig"      # [4]
 
 stfalcon_tinymce:
     tinymce_jquery: true
@@ -217,32 +203,3 @@ sonata_seo:
             'xmlns':              http://www.w3.org/1999/xhtml
             'xmlns:og':           http://opengraphprotocol.org/schema/
             #'xmlns:fb':           "http://www.facebook.com/2008/fbml"    
-    
-stripe:
-
-    # stripe keys
-    public_key: pk_test_bRKL5eJi4tc9TmWOaUtc0y47
-    private_key: sk_test_GyiB2fCxy62ydudovWhyyp6H
-
-    # By default, controller route is /payment/stripe/execute
-    controller_route: /payment/stripe/execute
-
-    # Configuration for payment success redirection
-    #
-    # Route defines which route will redirect if payment success
-    # If order_append is true, Bundle will append cart identifier into route
-    #    taking order_append_field value as parameter name and
-    #    PaymentOrderWrapper->getOrderId() value
-    payment_success:
-        route: cart_thanks
-        order_append: true
-        order_append_field: order_id
-
-    # Configuration for payment fail redirection
-    #
-    # Route defines which route will redirect if payment fails
-    # If cart_append is true, Bundle will append cart identifier into route
-    #    taking cart_append_field value as parameter name and
-    #    PaymentCartWrapper->getCartId() value
-    payment_fail:
-        route: cart_view

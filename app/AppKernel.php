@@ -23,7 +23,6 @@ class AppKernel extends Kernel
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Sonata\AdminBundle\SonataAdminBundle(),
-            new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
@@ -31,9 +30,7 @@ class AppKernel extends Kernel
             new CoreSphere\ConsoleBundle\CoreSphereConsoleBundle(),
             new FM\ElfinderBundle\FMElfinderBundle(),
             new Sonata\SeoBundle\SonataSeoBundle(),
-            
-            new PaymentSuite\PaymentCoreBundle\PaymentCoreBundle(),
-            new PaymentSuite\StripeBundle\StripeBundle(),
+            new cspoo\Swiftmailer\MailgunBundle\cspooSwiftmailerMailgunBundle(),
             new App\MainBundle\AppMainBundle(),
             new App\FrontOfficeBundle\AppFrontOfficeBundle(),
             new App\BackOfficeBundle\AppBackOfficeBundle()

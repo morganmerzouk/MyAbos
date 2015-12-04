@@ -42,7 +42,8 @@
     "sonata-project/intl-bundle" : "^2.2",
     "knplabs/knp-menu-bundle" : "~2.0",
     "knplabs/knp-menu" : "~2.0",
-    "paymentsuite/stripe-bundle" : "v1.5.3"
+    "paymentsuite/stripe-bundle" : "v1.5.3",
+    "cspoo/swiftmailer-mailgun-bundle" : "dev-master"
   },
   "scripts" : {
     "post-install-cmd" : [ "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters", "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap", "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache", "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets", "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile" ],
@@ -67,6 +68,6 @@
   "config" : {
     "bin-dir" : "bin"
   },
-  "type" : "project",
-  "license" : "MIT"
+  "license" : "MIT",
+  "type" : "project"
 }
