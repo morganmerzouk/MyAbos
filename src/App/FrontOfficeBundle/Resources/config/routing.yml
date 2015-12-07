@@ -40,3 +40,7 @@ app_front_office_resiliation_choix_formule:
 app_front_office_resiliation_payment:
     path:     /resiliation/payment/{id}
     defaults: { _controller: AppFrontOfficeBundle:Payment:index }
+    
+app_front_resiliation_preview:
+    path:     /resiliation/preview/{id}
+    defaults: { _controller: AppFrontOfficeBundle:Resiliation:preview }

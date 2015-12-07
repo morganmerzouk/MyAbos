@@ -1,0 +1,27 @@
+{% extends '::back-office.html.twig' %}
+
+{% block content %}
+    <h1>Ajout d'un motif de résiliation</h1>
+	<form action="{{ path('cause_resiliation_create') }}" method="post" {{ form_enctype(form) }}>
+		<p>
+		    {{ form_label(form.category) }}
+		    {{ form_widget(form.category) }}
+	    </p>
+		<p>
+		    {{ form_label(form.name) }}
+		    {{ form_widget(form.name) }}
+	    </p>
+		<p>
+		    {{ form_label(form.letter) }}
+		    {{ form_widget(form.letter) }}
+	    </p>
+	    <p>
+		    {{ form_label(form.actif) }}
+		    {{ form_widget(form.actif) }}
+	    </p>
+	    {{ form_row(form.submit, { 'label': 'Ajouter', 'class': 'btn btn-danger' }) }}
+    {{ form_end(form) }}
+    <a class="btn btn-default" href="{{ path('cause_resiliation') }}">
+        Retour
+    </a>
+{% endblock %}

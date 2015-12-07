@@ -1,0 +1,30 @@
+cause_resiliation:
+    path:     /cause_resiliation
+    defaults: { _controller: "AppBackOfficeBundle:CauseResiliation:index" }
+
+cause_resiliation_show:
+    path:     /cause_resiliation/show/{id}
+    defaults: { _controller: "AppBackOfficeBundle:CauseResiliation:show" }
+
+cause_resiliation_new:
+    path:     /cause_resiliation/new
+    defaults: { _controller: "AppBackOfficeBundle:CauseResiliation:new" }
+
+cause_resiliation_create:
+    path:     /cause_resiliation/create
+    defaults: { _controller: "AppBackOfficeBundle:CauseResiliation:create" }
+    requirements: { _method: post }
+
+cause_resiliation_edit:
+    path:     /cause_resiliation/edit/{id}
+    defaults: { _controller: "AppBackOfficeBundle:CauseResiliation:edit" }
+
+cause_resiliation_update:
+    path:     /cause_resiliation/update/{id}
+    defaults: { _controller: "AppBackOfficeBundle:CauseResiliation:update" }
+    requirements: { _method: post|put }
+
+cause_resiliation_delete:
+    path:     /cause_resiliation/delete/{id}
+    defaults: { _controller: "AppBackOfficeBundle:CauseResiliation:delete" }
+    requirements: { _method: post|get }

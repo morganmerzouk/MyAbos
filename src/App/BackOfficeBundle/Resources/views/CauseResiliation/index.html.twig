@@ -1,0 +1,39 @@
+{% extends '::back-office.html.twig' %}
+
+{% block content %}
+    <h2>Liste des motifs de résiliation</h2>
+
+    <table class="table records_list">
+        <thead>
+            <tr>
+                <th class="text-center">Catégorie</th>
+                <th class="text-center">Libellé</th>
+                <th class="text-center">Publié</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cause_resiliation in entities %}
+            <tr>
+                <td>{{ cause_resiliation.category }}</td>
+                <td>{{ cause_resiliation.name }}</td>
+                <td class="text-center">{% if cause_resiliation.actif == 1 %}<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>{% endif %}</td>
+                <td class="text-center">
+                    <a title="Voir" href="{{ path('cause_resiliation_show', { 'id': cause_resiliation.id }) }}">
+						<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+					</a>
+                    <a title="Editer" href="{{ path('cause_resiliation_edit', { 'id': cause_resiliation.id }) }}">
+                    	<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    </a>
+                    <a title="Supprimer" href="{{ path('cause_resiliation_delete', { 'id': cause_resiliation.id }) }}">
+                    	<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a class="btn btn-danger" href="{{ path('cause_resiliation_new') }}">
+       	Ajouter
+    </a>
+    {% endblock %}

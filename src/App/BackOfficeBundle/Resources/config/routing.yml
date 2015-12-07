@@ -6,9 +6,13 @@ app_back_office_security:
 app_back_office_bo:
     resource: "@AppBackOfficeBundle/Resources/config/routing/backoffice.yml"
 
-# Category
+
 app_back_office_category:
     resource: "@AppBackOfficeBundle/Resources/config/routing/category.yml"
-# Provider
+
 app_back_office_provider:
     resource: "@AppBackOfficeBundle/Resources/config/routing/provider.yml"
+
+app_back_office_cause_resiliation:
+    resource: "@AppBackOfficeBundle/Resources/config/routing/cause_resiliation.yml"
+    

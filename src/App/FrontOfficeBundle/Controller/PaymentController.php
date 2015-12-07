@@ -34,6 +34,10 @@ class PaymentController extends Controller
             ));
             
             $message = '<h1>Paiement effectué avec succès!</h1>';
+        } else {
+            return $this->redirectToRoute("app_front_resiliation_preview", array(
+                "id" => $id
+            ));
         }
         return $this->render('AppFrontOfficeBundle:Payment:index.html.twig', array(
             "message" => $message

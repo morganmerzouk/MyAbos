@@ -19,3 +19,7 @@ app_back_office_category:
 app_back_office_provider:
     path:     /provider
     defaults: { _controller: AppBackOfficeBundle:Provider:index }
+
+app_back_office_cause_resiliation:
+    path:     /cause_resiliation
+    defaults: { _controller: AppBackOfficeBundle:CauseResiliation:index }
