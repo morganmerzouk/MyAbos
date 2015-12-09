@@ -1,4 +1,6 @@
 $(document).on("ready", function() {
+
+	$(".filter-category option[value='12']").attr('selected','selected');
 	$(".filter-category").on("change", function() {
 		var pieData = [];
 		if($(this).val() == "") {

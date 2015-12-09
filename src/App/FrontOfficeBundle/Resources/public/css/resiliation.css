@@ -1,0 +1,13 @@
+.row {
+    height: 100%;
+    display: table-row;
+}
+.col-md-6 {
+    display: table-cell;
+}
+.no-float {
+	float: none;
+}
+.container-fluid {
+	height: 100%;
+}

@@ -1,30 +1,35 @@
 {% extends 'AppFrontOfficeBundle:Resiliation:layout.html.twig' %}
-
 {% block content %}
-<div class="col-md-6">
-	{% for causeResiliation in causeResiliations %}
-		<div class="cause-resiliation cause-resiliation-{{ causeResiliation.id }}">
-			<div class="clearfix">
-				<div class="pull-right">
-					{{ contract.provider.address|nl2br }}
+<div class="row">
+	<div class="col-md-6 no-float">
+		{% for causeResiliation in causeResiliations %}
+			<div class="cause-resiliation cause-resiliation-{{ causeResiliation.id }}">
+				<div class="clearfix">
+					<div class="pull-right cause-resiliation-address">
+						{{ contract.provider.address|nl2br }}
+					</div>
+				</div>
+				<div class="cause-resiliation-textarea">
+					Madame, Monsieur<br /><br />
+					{{ causeResiliation.letter|replace({"[[num_contrat]]":"<strong>"~contract.number~"</strong>" })|raw|nl2br }}<br /><br />
+					Veuillez accepter, Madame, Monsieur, l'expression de mes salutations distinguées.
 				</div>
 			</div>
-			Madame, Monsieur<br /><br />
-			{{ causeResiliation.letter|nl2br }}<br /><br />
-			Veuillez accepter, Madame, Monsieur, l'expression de mes salutations distinguées.
+		{% endfor %}
+	</div>
+	<div class="col-md-6 no-float">
+		<h2>Sélectionner le motif de la résiliation souhaité</h2>
+		<select class="form-control select-cause-resiliation">
+		{% for causeResiliation in causeResiliations %}
+			<option value="{{ causeResiliation.id }}">{{ causeResiliation.name }}</option>
+		{% endfor %}
+		</select>
+		<div class="col-md-12">
+		<a href="#" class="btn btn-danger btn-preview-modify">Modifier</a>
+		<a href="#" class="btn btn-primary btn-preview-validate hidden">Valider</a>
+		<a href="" class="btn btn-danger">Générer un pdf</a>
+		<a href="" class="btn btn-success">Envoyer</a>
 		</div>
-	{% endfor %}
-</div>
-<div class="col-md-6">
-	<h2>Sélectionner le motif de la résiliation souhaité</h2>
-	<select class="form-control select-cause-resiliation">
-	{% for causeResiliation in causeResiliations %}
-		<option value="{{ causeResiliation.id }}">{{ causeResiliation.name }}</option>
-	{% endfor %}
-	</select>
-	
-	<a href="" class="btn btn-danger">Modifier</a>
-	<a href="" class="btn btn-danger">Générer un pdf</a>
-	<a href="" class="btn btn-success">Valider</a>
+	</div>
 </div>
 {% endblock %}

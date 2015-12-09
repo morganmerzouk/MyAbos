@@ -17,6 +17,12 @@
             	{% if contract.category != currentCategory %}
         			{% if loop.first == false %}
     					</ul>
+    					<h2>Budget Total</h2>
+			        	{% for myCategory in categories %}
+			        		{% if myCategory == currentCategory %}
+			        			{{ myCategory.amountByYear }}€ / an
+		        			{% endif %}
+		    			{% endfor %}
 					</div>
         			{% endif %}
         			<div class="list-category category-{{ contract.category.id }}">

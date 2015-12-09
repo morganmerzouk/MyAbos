@@ -14,6 +14,14 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Contract
 {
 
+    const STATUS_INACTIVE = 0;
+
+    const STATUS_ACTIVE = 1;
+
+    const STATUS_RESILIATING = 2;
+
+    const STATUS_RESILIATED = 3;
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -36,6 +44,14 @@ class Contract
      *      @ORM\ManyToOne(targetEntity="Category", inversedBy="contracts", cascade={"persist", "merge"})
      */
     private $category;
+
+    /**
+     *
+     * @var CauseResiliation $causeResiliation
+     *     
+     *      @ORM\ManyToOne(targetEntity="CauseResiliation", inversedBy="contracts", cascade={"persist", "merge"})
+     */
+    private $causeResiliation;
 
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
@@ -107,6 +123,11 @@ class Contract
     protected $contract;
 
     protected $contractFile;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $status = self::STATUS_ACTIVE;
 
     /**
      * Get id
@@ -519,5 +540,51 @@ class Contract
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return Contract
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer 
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set causeResiliation
+     *
+     * @param \App\MainBundle\Entity\CauseResiliation $causeResiliation
+     * @return Contract
+     */
+    public function setCauseResiliation(\App\MainBundle\Entity\CauseResiliation $causeResiliation = null)
+    {
+        $this->causeResiliation = $causeResiliation;
+
+        return $this;
+    }
+
+    /**
+     * Get causeResiliation
+     *
+     * @return \App\MainBundle\Entity\CauseResiliation 
+     */
+    public function getCauseResiliation()
+    {
+        return $this->causeResiliation;
     }
 }

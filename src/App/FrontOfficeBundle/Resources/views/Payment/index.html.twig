@@ -28,35 +28,34 @@
   	</script>
 {% endblock %}
 {% block content %}
-{% if message is not null %}
-	<h2>Paiement effectué avec succès.</h2>
-	<p>Votre contrat a été résilié avec succès, vous recevrez une confirmation par mail une fois la résiliation effective.</p>
-{% else %}
-	<h2>Paiement</h2>
-	<h3>Payez 12.99€</h3>
-	<form action="" method="POST" id="payment-form">
-	    <span class="payment-errors"></span>
-	    <div class="form-row">
-			<label>
-	        	<span>N° de carte: </span>
-	        	<input type="text" size="16" data-stripe="number"/>
-	      	</label>
-	    </div>
-	    <div class="form-row">
-	      	<label>
-	        	<span>Clé de sécurité: </span>
-	        	<input type="text" size="4" data-stripe="cvc"/>
-	      	</label>
-	    </div>
-	    <div class="form-row">
-	      	<label>
-	        	<span>Date d'expiration (MM/YY): </span>
-	        	<input type="text" size="2" data-stripe="exp-month"/>
-	  		</label>
-	      	<span> / </span>
-	      	<input type="text" size="4" data-stripe="exp-year"/>
-	    </div>
-	    <button type="submit" class="btn btn-danger">Payer</button>
-	</form>
-{% endif %}
+<h2>Pour 12,99€ nous nous occupons de tout.</h2>
+<p class="text-danger">Nous rédigeons et envoyons par recommandé votre lettre de résiliation à votre fournisseur.<br /><br />
+Vous recevrez un email de confirmation et un accusé de réception de La Poste.<br /><br />
+Votre contrat apparaîtra alors automatiquement dans votre dashboard comme "Résilié".
+</p>
+<p class="text-center text-danger">Entrez vos informations de paiement ci-dessous pour commander votre résiliation.</p>
+<form action="" method="POST" id="payment-form">
+    <span class="payment-errors"></span>
+    <div class="form-row">
+		<label>
+        	<span>N° de carte: </span>
+        	<input type="text" size="16" data-stripe="number"/>
+      	</label>
+    </div>
+    <div class="form-row">
+      	<label>
+        	<span>Clé de sécurité: </span>
+        	<input type="text" size="4" data-stripe="cvc"/>
+      	</label>
+    </div>
+    <div class="form-row">
+      	<label>
+        	<span>Date d'expiration (MM/YY): </span>
+        	<input type="text" size="2" data-stripe="exp-month"/>
+  		</label>
+      	<span> / </span>
+      	<input type="text" size="4" data-stripe="exp-year"/>
+    </div>
+    <button type="submit" class="btn btn-danger">Payer</button>
+</form>
 {% endblock %}
