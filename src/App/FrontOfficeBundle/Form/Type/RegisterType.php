@@ -13,7 +13,6 @@ class RegisterType extends RegistrationFormType
         parent::buildForm($builder, $options);
         $builder->remove('username')
             ->add('gender', 'choice', array(
-            'label' => 'profile.fields.gender.civilite',
             'choices' => array(
                 'u' => 'profile.fields.gender.none',
                 'm' => 'profile.fields.gender.masculin',
@@ -21,15 +20,15 @@ class RegisterType extends RegistrationFormType
             ),
             'required' => 'true',
             'attr' => array(
-                'class' => 'input-register',
-                "placeholder" => "profile.fields.gender"
+                'class' => 'form-control input-lg',
+                "placeholder" => "profile.fields.gender.none"
             )
         ))
             ->add('firstname', 'text', array(
             'label' => 'profile.fields.firstname',
             'required' => 'true',
             'attr' => array(
-                'class' => 'input-register',
+                'class' => 'form-control input-lg',
                 "placeholder" => "profile.fields.firstname"
             )
         ))
@@ -37,7 +36,7 @@ class RegisterType extends RegistrationFormType
             'label' => 'profile.fields.lastname',
             'required' => 'true',
             'attr' => array(
-                'class' => 'input-register',
+                'class' => 'form-control input-lg',
                 "placeholder" => "profile.fields.lastname"
             )
         ))
@@ -45,14 +44,14 @@ class RegisterType extends RegistrationFormType
             'label' => 'profile.fields.email',
             'required' => 'true',
             'attr' => array(
-                'class' => 'input-register',
+                'class' => 'form-control input-lg',
                 "placeholder" => "profile.fields.email"
             )
         ))
             ->add('phone', 'text', array(
             'label' => 'profile.fields.phone',
             'attr' => array(
-                'class' => 'input-register',
+                'class' => 'form-control input-lg',
                 "placeholder" => "profile.fields.phone"
             )
         ))
@@ -62,14 +61,14 @@ class RegisterType extends RegistrationFormType
             'first_options' => array(
                 'label' => 'profile.fields.password',
                 'attr' => array(
-                    'class' => 'input-register',
+                    'class' => 'form-control input-lg',
                     "placeholder" => "profile.fields.password"
                 )
             ),
             'second_options' => array(
                 'label' => 'profile.fields.password_repeat',
                 'attr' => array(
-                    'class' => 'input-register',
+                    'class' => 'form-control input-lg',
                     "placeholder" => "profile.fields.password_repeat"
                 )
             )

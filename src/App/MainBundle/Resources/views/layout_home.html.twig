@@ -6,16 +6,19 @@
         {{ sonata_seo_metadatas() }}
         {{ sonata_seo_link_canonical() }}
         {{ sonata_seo_lang_alternates() }}
+    	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge" /><![endif]-->
         <!--[if lt IE 9]>
             <script src="{{ asset('bundles/app/js/plugins/respond.min.js') }}" type="text/javascript"></script>
         <![endif]-->
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    	<link href="http://fonts.googleapis.com/css?family=Raleway:300,400,600,700%7COpen+Sans:300,400,600,700%7CHandlee" rel="stylesheet">
         {% block javascripts %}
             <script src="{{ asset('bundles/appmain/js/lib/modernizr.js') }}" type="text/javascript"></script> 
             <script src="{{ asset('bundles/appmain/js/lib/jquery.js') }}" type="text/javascript"></script>
             <script src="{{ asset('bundles/appmain/js/lib/jquery-ui.min.js') }}" type="text/javascript"></script>
             <script src="{{ asset('bundles/appmain/js/lib/bootstrap.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('bundles/appmain/js/lib/plugins.min.js') }}" type="text/javascript"></script>
     		<script src="{{ asset('bundles/appmain/js/home.js') }}" type="text/javascript"></script>
             <script type="text/javascript">
             	var locale = "{{ app.request.locale }}";
@@ -24,6 +27,10 @@
 
         {% block stylesheets %}
             <link rel="stylesheet" media="all" href="{{ asset('bundles/appmain/css/bootstrap.min.css') }}">
+            <link rel="stylesheet" media="all" href="{{ asset('bundles/appmain/css/lib/icons.min.css') }}">
+            <link rel="stylesheet" media="all" href="{{ asset('bundles/appmain/css/lib/plugins.min.css') }}">
+            <link rel="stylesheet" media="all" href="{{ asset('bundles/appmain/css/responsive.css') }}">
+            <link rel="stylesheet" media="all" href="{{ asset('bundles/appmain/css/red.css') }}">
             <link rel="stylesheet" media="all" href="{{ asset('bundles/appmain/css/lib/jquery-ui.css') }}">
             <link rel="stylesheet" media="all" href="{{ asset('bundles/appmain/css/lib/jquery-ui.theme.css') }}">
             <link rel="stylesheet" media="all" href="{{ asset('bundles/appmain/css/style.css') }}">
@@ -33,10 +40,8 @@
         {% endblock %}   
     </head>
     <body>
-    	<div class="container-home">
-            <div class="container-body clearfix">
+    	<div class="main-wrapper">
             	{% block content %}{% endblock %}
-            </div>
         </div>
         {% include "AppMainBundle:Default:footer.html.twig" %}
         {% if app.request.locale == 'fr' %}

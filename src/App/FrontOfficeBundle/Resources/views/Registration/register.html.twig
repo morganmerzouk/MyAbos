@@ -1,9 +1,12 @@
-<div class="panel-body">
 <form action="{{ path('fos_user_registration_register') }}" method="post" {{ form_enctype(form) }}>
 	<div class="col-md-12">
+		<div class="erreur">
+        	{{ form_errors(form) }}
+        </div>
 		<div class="col-md-6">
-		    {{ form_widget(form.firstname) }}
-		    {{ form_widget(form.lastname) }}
+	    	{{ form_widget(form.gender) }}
+	    	{{ form_widget(form.lastname) }}
+	    	{{ form_widget(form.firstname) }}
 		    {{ form_widget(form.email) }}
 		    {{ form_widget(form.gender) }}
 		    {{ form_widget(form.phone) }}
@@ -11,8 +14,9 @@
 	    <div class="col-md-6">
 		    {{ form_widget(form.plainPassword.first) }}
 		    {{ form_widget(form.plainPassword.second) }}
+		</div>
+	    <div class="col-md-6 col-md-offset-3">
+	    	<button type="submit" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" class="btn btn-danger center-block"/>{{ 'registration.register'|trans }}</button>
 	    </div>
 	</div>
-    <button type="submit" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" class="btn btn-danger pull right"/>{{ 'registration.register'|trans }}</button>
-    {{ form_end(form) }}
-</div>
+{{ form_end(form) }}

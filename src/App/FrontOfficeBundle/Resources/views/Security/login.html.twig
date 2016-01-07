@@ -6,22 +6,15 @@
 	<div class="col-md-6 center-block" id="login-form" >
 	    <form action="{{ path("fos_user_security_check") }}" method="post" class="center-block">
 	        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-	        <div class="form-group">
-	            <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" required="required"/>
-	        </div>
-	        <div class="form-group">
-	            <input type="password" class="form-control" id="password" name="_password" required="required"/>
-	        </div>  
-	        <div class="form-group">
-	            <input type="checkbox" id="remember_me" class="remember-me" name="_remember_me" value="on" />
-	            <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
-	        </div>
-	        <input class="btn btn-danger btn-block" type="submit" id="_submit" name="_submit" value="Accéder à la plateforme" />
-	        <div class="form-group">
-	            <a href="{{ path('fos_user_resetting_request') }}">
-	                <strong>{{ 'reset_password'|trans }}</strong>
-	            </a>
-	        </div>	      
+            <input type="text" class="form-control input-lg" id="username" name="_username" value="{{ last_username }}" placeholder="Email" required="required"/>
+            <input type="password" class="form-control input-lg" id="password" name="_password" placeholder="Mot de passe" required="required"/>
+            <input type="checkbox" id="remember_me" class="remember-me" name="_remember_me" value="on" />
+            <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+        	<br />
+            <a href="{{ path('fos_user_resetting_request') }}">
+                <strong>{{ 'reset_password'|trans }}</strong>
+            </a>
+        	<input class="btn btn-color btn-block" type="submit" id="_submit" name="_submit" value="Accéder à la plateforme" />
 	    </form>
     </div>
 </div>

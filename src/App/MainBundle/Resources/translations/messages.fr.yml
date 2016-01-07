@@ -21,9 +21,9 @@ profile:
     fields:
         gender: 
             civilite: Civilité
-            none: -Sexe-
-            masculin: Masculin
-            feminin: Féminin
+            none: -Civilité-
+            masculin: M.
+            feminin: Mme.
         firstname: Prénom *
         lastname: Nom *
         address: Adresse
