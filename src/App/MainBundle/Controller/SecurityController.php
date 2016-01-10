@@ -1,7 +1,7 @@
 <?php
 namespace App\MainBundle\Controller;
 
-use FOS\UserBundle\Controller\RegistrationController as BaseRegistrationController;
+use FOS\UserBundle\Controller\SecurityController as BaseRegistrationController;
 
 class SecurityController extends BaseRegistrationController
 {

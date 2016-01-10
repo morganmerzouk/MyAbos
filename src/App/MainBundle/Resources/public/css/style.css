@@ -186,7 +186,7 @@ ul {
 /*------------------------------------------*/
 /*   Notifications
 /*------------------------------------------*/
-.signup-success,.signup-failed,.lm-success,.lm-failed,.sm-success,.sm-failed,.fast-failed,.fast-success,.subscription-success,.subscription-failed,.mc-success,.mc-failed{
+.signup-success,.signup-failed,.lm-success,.lm-failed,.lm-failed-email,.sm-success,.sm-failed,.fast-failed,.fast-success,.subscription-success,.subscription-failed,.mc-success,.mc-failed{
     display: none;
     margin-top: 5px;
 }
@@ -217,7 +217,7 @@ blockquote:before {
     position: relative;
     top: 14px;
     left: -30px;
-    content: "“";
+    content: '"';
     font-family: Georgia, Times, "Times New Roman", serif;
     font-size: 50px;
     color: #999;

@@ -1,5 +1,9 @@
 {% extends "AppMainBundle::layout_home.html.twig" %}
 {% block content %}   
+<script type="text/javascript">
+    var urlLogin = "{{ path("fos_user_security_check") }}";
+    var urlDashboard = "{{ path("app_front_office_contract_list") }}";
+</script>
 <div class="preloader">
     <div class="loader-container">
         <div class="text-logo">MyAbos</div>
@@ -46,11 +50,10 @@
                         <div class="box">
                              <div class="content">
                                 <div class="loginBox">
-                                    <form id="login-modal" role="form">
-                                        <p class="lm-success"><i class="icon icon_check_alt2"></i> <strong>Congratulation! Login modal validation is working. Implement your code.</strong></p>
-                                        <p class="lm-failed"><i class="icon icon_close_alt2"></i><strong> Something went wrong! Insert correct value.</strong></p>
-                                        {{ render(controller('AppFrontOfficeBundle:Security:login')) }}
-                                    </form>
+                                    <p class="lm-success"><i class="icon icon_check_alt2"></i> <strong>Connecté !</strong></p>
+                                    <p class="lm-failed"><i class="icon icon_close_alt2"></i><strong> Identifiants incorrects! Veuillez recommencer.</strong></p>
+                                    <p class="lm-failed-email"><i class="icon icon_close_alt2"></i><strong> Email invalide! Veuillez recommencer.</strong></p>
+                                    {{ render(controller('AppFrontOfficeBundle:Security:login')) }}
                                 </div>
                              </div>
                         </div>
@@ -90,7 +93,7 @@
                                     <div class="form-group">
                                         <input type="password" size="25" name="fast-password" id="fast-password" class="form-control input-lg" placeholder="Entrer votre mot de passe" required>
                                     </div>
-                                    <button class="btn btn-color">S'inscrire gratuitement</button>
+                                    <a class="btn btn-color" data-toggle="modal" href="javascript:void(0)" onclick="openRegisterModal();">S'inscrire gratuitement</a>
                                 </form>
                             </div>
 						</div>
@@ -105,8 +108,8 @@
 		<div class="wrapper-lg">
 			<div class="row">
 				<div class="col-xs-12">
-					<h2>It's about making ideas happen</h2>
-					<p class="large">Spend less time worrying about front-end and more focusing on your product.</p>
+					<h2 class="text-color">It's about making ideas happen</h2>
+					<p class="large text-color">Spend less time worrying about front-end and more focusing on your product.</p>
 				</div>
 			</div>
 			<div class="row">
@@ -135,11 +138,10 @@
     <div class="container wrapper-lg">
         <div class="row">
             <div class="col-lg-5 col-md-5">
-                <h3>Notre but : dématérialiser et simplifier la gestion administrative dans les foyers !</h3>
-                <p>Téléphonie, internet, assurance, mutuelles, TV, salle de sport...Nous avons tous aujourd’hui une multitude de souscriptions à des contrats en tous genres. 
-					Pas forcément facile à gérer...et encore moins à résilier !</p>
-				<p>MyAbos vous propose donc une plateforme gratuite pour gérer tous vos contrats en ligne...et surtout un service simplissime pour les résilier en moins d’une minute. Nous nous occupons de tout pour vous ! Plus besoin de retrouver vos informations, rédiger votre lettre et vous rendre à la Poste pour envoyer votre recommandé. Nous vous prévenons aussi à l’avance de vos échéances de résiliation, pour ne plus perdre d’argent à cause des reconductions tacites.</p>
-                <div class="start-charts"></div>
+                <h3 class="text-color  class="text-justify"">Notre but : dématérialiser et simplifier la gestion administrative dans les foyers !</h3>
+                <p class="text-justify">Téléphonie, internet, assurance, mutuelles, TV, salle de sport...Nous avons tous aujourd’hui une multitude de souscriptions à des contrats en tous genres. 
+					Pas forcément facile à gérer... et encore moins à résilier !</p>
+				<br /><p class="text-justify">MyAbos vous propose donc une plateforme gratuite pour gérer tous vos contrats en ligne...et surtout un service simplissime pour les résilier en moins d’une minute. Nous nous occupons de tout pour vous ! Plus besoin de retrouver vos informations, rédiger votre lettre et vous rendre à la Poste pour envoyer votre recommandé. Nous vous prévenons aussi à l’avance de vos échéances de résiliation, pour ne plus perdre d’argent à cause des reconductions tacites.</p>
             </div>
         </div>
     </div>
@@ -255,7 +257,7 @@
     <div class="container vmiddle">
         <div class="row">
             <div class="col-md-12">
-                <h2>Ils recommandent MyAbos</h2>
+                <h2 class="text-color">Ils recommandent MyAbos</h2>
             </div>
         </div>
         <div class="row">
@@ -268,7 +270,7 @@
                                 <img src="assets/images/testimonials/testimonial-1.jpg" alt=" ">
                                 <p class="testimonial-name"><span>James Knight</span>Manager @ LoremIpsum</p>
                             </blockquote>
-                        </div><!-- /End Tab-block -->
+                        </div>
                         <div class="tab-block" id="tab-testimonials-2">
                             <blockquote>
                                 <p>Iusto quam fugit consequatur explicabo at deserunt eius vel, debitis non itaque blanditiis error iure modi, asperiores molestiae dolorum! Earum expedita sit, nesciunt neque magnam at dolorem praesentium saepe! Rerum recusandae qui quidem, a neque consequatur laboriosam.</p>

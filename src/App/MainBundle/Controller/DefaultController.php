@@ -20,7 +20,6 @@ class DefaultController extends Controller
          *
          * $this->container->get('mailer')->send($message);
          */
-        
         if ($user == "anon.")
             return $this->render('AppMainBundle:Default:index.html.twig', array());
         else

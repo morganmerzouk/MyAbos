@@ -260,7 +260,7 @@ $("#subscribe").submit(function(e) {
     if ( isValidEmail(data['email']) ) {
         $.ajax({
             type: "POST",
-            url: "assets/php/subscribe.php",
+            url: urlSignUp,
             data: data,
             success: function() {
                 $('.subscription-success').fadeIn(1000);
@@ -281,18 +281,39 @@ $("#subscribe").submit(function(e) {
 $("#login-modal").submit(function(e) {
     e.preventDefault();
     var data = {
-        password: $("#lm-password").val(),
-        email: $("#lm-email").val()
+        _password: $("#lm-password").val(),
+        _username: $("#lm-email").val(),
+        _remember_me: false,
+        _csrf_token: $("#csrf_token").val(),
+        _target_path: $("#_target_path").val()
     };
 
-    if ( isValidEmail(data['email']) && (data['password'].length > 1) ) {
+    if (!isValidEmail(data['_username'])) {
+    	$('.lm-failed-email').fadeIn(1000);
+        $('.lm-failed').fadeOut(500);
+    }
+    else if ( data['_password'].length > 1 ) {
         $.ajax({
             type: "POST",
-            url: "assets/php/subscribe.php",
+            url: urlLogin,
             data: data,
-            success: function() {
-                $('.lm-success').fadeIn(1000);
-                $('.lm-failed').fadeOut(500);
+            success: function(msg) {
+            	if(msg) {
+            		if(msg.indexOf("success") > -1) {
+                		$('.lm-success').fadeIn(1000);
+                    	$('.lm-failed-email').fadeOut(500);
+                    	window.location.href= urlDashboard;
+            		} else if(msg.indexOf("Mot de passe") > -1) {
+                    	$('.lm-failed').fadeIn(1000);
+                		$('.lm-success').fadeOut(500);
+                    	$('.lm-failed-email').fadeOut(500);
+            		} else {
+                    	$('.lm-failed').fadeIn(1000);
+                		$('.lm-success').fadeOut(500);
+                    	$('.lm-failed-email').fadeOut(500);
+            		}
+            	}
+                $('.lm-failed-email').fadeOut(500);
             }
         });
     } else {
@@ -318,7 +339,7 @@ $("#signup-modal").submit(function(e) {
     if ( isValidEmail(data['email']) && (data['password'].length > 1) && (data['password'].match(data['pswconfirm'])) ) {
         $.ajax({
             type: "POST",
-            url: "assets/php/subscribe.php",
+            url: urlSignUp,
             data: data,
             success: function() {
                 $('.sm-success').fadeIn(1000);

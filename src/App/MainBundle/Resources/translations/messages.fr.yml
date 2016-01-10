@@ -56,3 +56,5 @@ registration:
             <p>Pour valider votre compte utilisateur, merci de vous rendre sur :</p>
             <p><a href="%confirmationUrl%">%confirmationUrl%</a></p>
     register: Accéder à la plateforme
+
+Bad credentials.: "Mot de passe incorrect"

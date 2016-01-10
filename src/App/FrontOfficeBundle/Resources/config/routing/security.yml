@@ -10,3 +10,11 @@ fos_user_profile_edit:
     defaults: { _controller: FOSUserBundle:Profile:edit }
     requirements:
         _method: GET|POST
+        
+check_login:
+    pattern:  /check_login
+    defaults: { _controller: AppFrontOfficeBundle:Security:check }
+    requirements:
+        _method:  POST
+    options:
+        expose: true

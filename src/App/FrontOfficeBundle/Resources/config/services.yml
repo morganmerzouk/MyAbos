@@ -13,3 +13,7 @@ services:
         parent: fos_user.registration.form.type
         tags:
             - { name: form.type, alias: app_fos_user_register }
+    user.security.authentication_handler:
+        class: App\MainBundle\Handler\AuthenticationHandler
+        arguments: ['@router', '@session']
+    
