@@ -28,6 +28,9 @@ app_front_office_contract_delete:
 app_front_office_spending:
     path:     /depenses
     defaults: { _controller: AppFrontOfficeBundle:Spending:index }
+app_front_office_alert:
+    path:     /alertes
+    defaults: { _controller: AppFrontOfficeBundle:Alert:index }
     
 app_front_office_resiliation:
     path:     /resiliation

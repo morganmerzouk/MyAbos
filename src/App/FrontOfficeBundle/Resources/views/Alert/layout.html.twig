@@ -1,0 +1,12 @@
+{% extends '::front-office.html.twig' %}
+{% block stylesheets %}
+	{{ parent() }}
+    <link rel="stylesheet" media="all" href="{{ asset('bundles/appfrontoffice/css/alert.css') }}">
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+    <script src="{{ asset('bundles/appfrontoffice/js/alert.js') }}" type="text/javascript"></script> 
+{% endblock %}
+{% block content %}
+{% endblock %}
+{% block footer %}{% endblock %}

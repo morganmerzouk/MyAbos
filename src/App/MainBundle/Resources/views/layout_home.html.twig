@@ -43,7 +43,6 @@
     	<div class="main-wrapper">
             	{% block content %}{% endblock %}
         </div>
-        {% include "AppMainBundle:Default:footer.html.twig" %}
         {% if app.request.locale == 'fr' %}
         	{% include "AppMainBundle:Default:cookies.html.twig" %}
     	{% endif %}

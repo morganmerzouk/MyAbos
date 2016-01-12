@@ -1,0 +1,4 @@
+.border { border: 1px solid grey; }
+.selected p, .provider img:hover+p { font-weight: bold; }
+.selected img {border: 2px outset black;}
+.provider img:hover { border: 2px outset black; cursor: pointer; }

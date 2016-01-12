@@ -23,6 +23,8 @@
 	        <link rel="stylesheet" media="all" href="{{ asset('bundles/appmain/css/bootstrap.min.css') }}">
 	        <link rel="stylesheet" media="all" href="{{ asset('bundles/appmain/css/lib/jquery-ui.css') }}">
 	        <link rel="stylesheet" media="all" href="{{ asset('bundles/appmain/css/lib/jquery-ui.theme.css') }}">
+            <link rel="stylesheet" media="all" href="{{ asset('bundles/appmain/css/responsive.css') }}">
+            <link rel="stylesheet" media="all" href="{{ asset('bundles/appmain/css/red.css') }}">
 	        <link rel="stylesheet" media="all" href="{{ asset('bundles/appmain/css/header.css') }}">
 	        <link rel="stylesheet" media="all" href="{{ asset('bundles/appmain/css/style.css') }}">
 	    {% endblock %}
@@ -63,7 +65,7 @@
 			    	<ul class="nav nav-tabs nav-justified">
 				        <li role="presentation" {% if route starts with "app_front_office_contract" %}class="active"{% endif %}><a href="{{ path('app_front_office_contract_list') }}">Gestion de mes contrats</a></li>
 				        <li role="presentation" {% if route starts with "app_front_office_spending" %}class="active"{% endif %}><a href="{{ path('app_front_office_spending') }}">Mes dépenses</a></li>
-				        <li role="presentation"><a href="#">Mes alertes</a></li>
+				        <li role="presentation" {% if route starts with "app_front_office_alert" %}class="active"{% endif %}><a href="{{ path('app_front_office_alert') }}">Mes alertes</a></li>
 				        {% if is_granted('ROLE_ADMIN') %}
 		    				 <li role="presentation" {% if route starts with "app_backofficebundle" %}class="active"{% endif %}><a href="{{ path("app_backofficebundle_home") }}">Administration</a></li>
 				        {% endif %}

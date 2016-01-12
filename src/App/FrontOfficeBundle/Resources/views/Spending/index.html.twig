@@ -2,7 +2,7 @@
 {% block content %}
     <div class="row">
         <div class="col-md-6">
-        	<h2>Mes dépenses</h2>
+        	<h3 class="text-color">Catégorie</h3>
         	<select name="filter-category" class="form-control filter-category">
             	{% for category in categories %}
             		{% if loop.first %}
@@ -11,13 +11,12 @@
             			<option value="{{ category.id }}">{{ category.name }} - {{ category.amountByYear }} € / an</option>
             	{% endfor %}
         	</select>
-        	<h2>Catégorie</h2>
         	{% set currentCategory = "" %}
         	{% for contract in contracts %}
             	{% if contract.category != currentCategory %}
         			{% if loop.first == false %}
     					</ul>
-    					<h2>Budget Total</h2>
+    					<h3 class="text-color">Budget Total</h2>
 			        	{% for myCategory in categories %}
 			        		{% if myCategory == currentCategory %}
 			        			{{ myCategory.amountByYear }}€ / an
@@ -35,7 +34,7 @@
         	</div>
         </div>
         <div class="col-md-6 text-center">
-        	<h2>Répartition budgetaire</h2>
+        	<h3 class="text-color">Répartition budgetaire</h3>
 			<div id="canvas-holder">
 				<canvas id="chart-area" width="300" height="300"/>
 			</div>
