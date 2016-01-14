@@ -7,9 +7,8 @@ services:
         parent: fos_user.profile.form.type
         tags:
             - { name: form.type, alias: app_fos_user_profile }
-
     user.form.register.type:
-        class: App\FrontOfficeBundle\Form\Type\RegisterType
+        class: App\MainBundle\Form\RegisterType
         parent: fos_user.registration.form.type
         tags:
             - { name: form.type, alias: app_fos_user_register }

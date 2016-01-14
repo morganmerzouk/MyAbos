@@ -1,3 +1,24 @@
 app_main_homepage:
     path:     /
     defaults: { _controller: AppMainBundle:Default:index }
+    
+# PROFILE
+fos_user_profile_show:
+    pattern: /profile
+    defaults: { _controller: FOSUserBundle:Profile:show }
+    requirements:
+        _method: GET
+
+fos_user_profile_edit:
+    pattern: /profile/editer
+    defaults: { _controller: FOSUserBundle:Profile:edit }
+    requirements:
+        _method: GET|POST
+        
+check_login:
+    pattern:  /check_login
+    defaults: { _controller: AppMainBundle:Security:check }
+    requirements:
+        _method:  POST
+    options:
+        expose: true

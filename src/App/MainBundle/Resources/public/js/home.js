@@ -22,6 +22,7 @@ $(window).load(function() {
 
 function showRegisterForm(){
     "use strict";
+    $('.passwordForgottenBox').fadeOut('fast');
     $('.loginBox').fadeOut('fast',function(){
         $('.registerBox').fadeIn('fast');
         $('.login-footer').fadeOut('fast',function(){
@@ -35,6 +36,7 @@ function showRegisterForm(){
 
 function showLoginForm(){
     "use strict";
+    $('.passwordForgottenBox').fadeOut('fast');
     $('#loginModal .registerBox').fadeOut('fast',function(){
         $('.loginBox').fadeIn('fast');
         $('.register-footer').fadeOut('fast',function(){
@@ -46,6 +48,36 @@ function showLoginForm(){
     $('.error').removeClass('alert alert-danger').html('');
 }
 
+function showPasswordForgottenForm(title){
+    "use strict";
+    //Display loader
+    $('#loginModal .loginBox').fadeOut('fast',function(){
+        $('.passwordForgottenBox').fadeIn('fast');
+        $('.register-footer').fadeOut('fast',function(){
+            $('.login-footer').fadeIn('fast');
+        });
+        
+        $('.modal-title').html(title);
+    });
+    $('.error').removeClass('alert alert-danger').html('');
+}
+
+function showSendMailForm(url){
+    "use strict";
+    //Display loader
+    $.ajax(url)
+    .done(function(msg) {
+    	console.log(msg);
+        $('.modal-content').html(msg);
+    })
+    .fail(function() {
+      alert( "Erreur" );
+    })
+    .always(function() {
+	    //Loader fade
+	});
+    $('.error').removeClass('alert alert-danger').html('');
+}
 
 function openLoginModal(){
     "use strict";
@@ -59,6 +91,7 @@ function openRegisterModal(){
     showRegisterForm();
     $('#loginModal').modal('show');
 }
+
 
 
 /* =================================

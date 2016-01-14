@@ -1,0 +1,16 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        <i class="icon icon_close_alt2"></i>
+    </button>
+    <h4 class="modal-title">{{ 'reset_password'|trans }}</h4>
+</div>
+<div class="modal-body">  
+    <div class="panel-body">
+        {% form_theme form 'bootstrap_3_layout.html.twig' %}
+        {{ form_start(form) }}
+        {{ form_row(form.new.first) }}
+        {{ form_row(form.new.second) }}
+        <button type="submit" class="btn btn-primary" value="{{ 'resetting.reset.submit'|trans({}, 'FOSUserBundle') }}" />{{ 'reset_password'|trans }}</button>
+        {{ form_end(form) }}
+    </div>
+</div>

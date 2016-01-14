@@ -1,5 +1,5 @@
 <?php
-namespace App\FrontOfficeBundle\Form\Type;
+namespace App\MainBundle\Form;
 
 use FOS\UserBundle\Form\Type\RegistrationFormType;
 use Symfony\Component\Form\FormBuilderInterface;

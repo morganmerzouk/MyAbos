@@ -1,7 +1,4 @@
 # FOS USER BUNDLE ROUTES
-fos_user_security:
-    resource: "@AppFrontOfficeBundle/Resources/config/routing/security.xml"
-
 fos_user_profile:
     resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
     prefix: /profile
@@ -18,6 +15,17 @@ fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /change-password
 
+fos_user_security_login:
+    pattern: /login
+    defaults: { _controller: AppMainBundle:Security:login }
+fos_user_security_check:
+    pattern: /login_check
+    defaults: { _controller: FOSUserBundle:Security:check }
+    requirements:
+        _method: POST
+fos_user_security_logout:
+    pattern: /logout
+    defaults: { _controller: FOSUserBundle:Security:logout }
 # REGISTRATION
 fos_user_registration_register:
     pattern: /inscription
@@ -46,13 +54,13 @@ fos_user_registration_confirmed:
 # RESETTING PASSWORD
 fos_user_resetting_request:
     pattern: /mot-de-passe-oublie/reinitialisation
-    defaults: { _controller: FOSUserBundle:Resetting:request }
+    defaults: { _controller: AppMainBundle:Resetting:request }
     requirements:
         _method: GET
 
 fos_user_resetting_send_email:
     pattern: /mot-de-passe-oublie/e-mail
-    defaults: { _controller: FOSUserBundle:Resetting:sendEmail }
+    defaults: { _controller: AppMainBundle:Resetting:sendEmail }
     requirements:
         _method: GET|POST
 
@@ -81,7 +89,6 @@ app_front_office:
 app_cms:
     resource: "@AppMainBundle/Resources/config/routing.yml"
     prefix:   /
-    
 
 elfinder:
      resource: "@FMElfinderBundle/Resources/config/routing.yml"

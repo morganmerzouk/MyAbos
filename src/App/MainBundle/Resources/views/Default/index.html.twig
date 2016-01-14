@@ -53,15 +53,22 @@
                                     <p class="lm-success"><i class="icon icon_check_alt2"></i> <strong>Connecté !</strong></p>
                                     <p class="lm-failed"><i class="icon icon_close_alt2"></i><strong> Identifiants incorrects! Veuillez recommencer.</strong></p>
                                     <p class="lm-failed-email"><i class="icon icon_close_alt2"></i><strong> Email invalide! Veuillez recommencer.</strong></p>
-                                    {{ render(controller('AppFrontOfficeBundle:Security:login')) }}
+                                    {{ render(controller('AppMainBundle:Security:login')) }}
                                 </div>
                              </div>
                         </div>
+                        
                         <div class="content registerBox" style="display:none;">
-                                <p class="sm-success"><i class="icon icon_check_alt2"></i> <strong>Congratulation! Signup modal validation is working. Implement your code.</strong></p>
-                                <p class="sm-failed"><i class="icon icon_close_alt2"></i><strong> Something went wrong! Insert correct value.</strong></p>
-                                {{ render(controller('FOSUserBundle:Registration:register')) }}
+                            <p class="sm-success"><i class="icon icon_check_alt2"></i> <strong>Congratulation! Signup modal validation is working. Implement your code.</strong></p>
+                            <p class="sm-failed"><i class="icon icon_close_alt2"></i><strong> Something went wrong! Insert correct value.</strong></p>
+                            {{ render(controller('AppMainBundle:Registration:register')) }}
                         </div>
+                        <div class="content passwordForgottenBox" style="display:none;">
+	                        <p class="lm-success"><i class="icon icon_check_alt2"></i> <strong>Connecté !</strong></p>
+	                        <p class="lm-failed"><i class="icon icon_close_alt2"></i><strong> Identifiants incorrects! Veuillez recommencer.</strong></p>
+	                        <p class="lm-failed-email"><i class="icon icon_close_alt2"></i><strong> Email invalide! Veuillez recommencer.</strong></p>
+	                        {{ render(controller('AppMainBundle:Resetting:request')) }}
+	                    </div>
                     </div>
                     <div class="modal-footer">
                         <div class="forgot login-footer">

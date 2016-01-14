@@ -1,8 +1,6 @@
 <form action="{{ path('fos_user_registration_register') }}" method="post" {{ form_enctype(form) }}>
 	<div class="col-md-12">
-		<div class="erreur">
-        	{{ form_errors(form) }}
-        </div>
+		<div class="erreur">{{ form_errors(form) }}</div>
 		<div class="col-md-6">
 	    	{{ form_widget(form.gender) }}
 	    	{{ form_widget(form.lastname) }}

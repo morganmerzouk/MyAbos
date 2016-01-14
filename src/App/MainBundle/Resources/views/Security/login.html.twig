@@ -1,8 +1,22 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
- 
-{% block fos_user_content %}
 {% if error %}
-    <div>{{ error|trans() }}</div>
+    <div class="bg-danger">{{ error|trans }}</div>
 {% endif %}
-{% include "AppMainBundle:Security:login_content.html.twig" %}
-{% endblock fos_user_content %}
+<link rel="stylesheet" media="all" href="{{ asset('bundles/appmain/css/registration.css') }}">
+<div class="clearfix">
+	<div class="col-md-6 center-block" id="login-form" >
+	    <form id="login-modal" method="post" class="center-block">
+	        <input type="hidden" name="_csrf_token" id="csrf_token" value="{{ _csrf_token }}" />
+            <input type="text" class="form-control input-lg" id="lm-email" name="_username" value="{{ last_username }}" placeholder="Email" required="required"/>
+            <input type="password" class="form-control input-lg" id="lm-password" name="_password" placeholder="Mot de passe" required="required"/>
+            <input type="checkbox" id="remember_me" class="remember-me" name="_remember_me" value="on" />
+            
+    		<input type="hidden" name="_target_path" id="_target_path" value="app_front_office_contract_list" />
+            <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+        	<br />
+            <a onclick="javascript:showPasswordForgottenForm('Mot de passe oublié?')" href="#">
+                <strong>{{ 'reset_password'|trans }}</strong>
+            </a>
+        	<input class="btn btn-color btn-block" type="submit" id="_submit" name="_submit" value="Accéder à la plateforme" />
+	    </form>
+    </div>
+</div>

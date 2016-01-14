@@ -1,10 +1,6 @@
 app_front_office_homepage:
     path:     /
     defaults: { _controller: AppFrontOfficeBundle:Default:index }
-
-# SECURITY
-app_front_office_security:
-    resource: "@AppFrontOfficeBundle/Resources/config/routing/security.yml"
     
 app_front_office_contract:
     path:     /contract
