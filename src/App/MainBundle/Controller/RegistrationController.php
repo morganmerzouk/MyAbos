@@ -17,10 +17,10 @@ class RegistrationController extends BaseRegistrationController
     {
         $form = $this->container->get('fos_user.registration.form');
         $formHandler = $this->container->get('fos_user.registration.form.handler');
+        
         $confirmationEnabled = $this->container->getParameter('fos_user.registration.confirmation.enabled');
         $process = $formHandler->process($confirmationEnabled);
         if ($process) {
-            
             $user = $form->getData();
             
             $authUser = false;
@@ -82,7 +82,7 @@ class RegistrationController extends BaseRegistrationController
         $user->setLastLogin(new \DateTime());
         
         $this->container->get('fos_user.user_manager')->updateUser($user);
-        $response = new RedirectResponse($this->container->get('router')->generate('fos_user_registration_confirmed'));
+        $response = new RedirectResponse($this->container->get('router')->generate('app_front_office_contract_list'));
         $this->authenticateUser($user, $response);
         
         return $response;

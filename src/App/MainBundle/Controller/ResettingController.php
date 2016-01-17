@@ -41,7 +41,7 @@ class ResettingController extends ContainerAware
      */
     public function sendEmailAction()
     {
-        $username = $this->container->get('request')->request->get('username');
+        $username = $this->container->get('request')->query->get('username');
         
         /**
          *
@@ -50,11 +50,11 @@ class ResettingController extends ContainerAware
         $user = $this->container->get('fos_user.user_manager')->findUserByUsernameOrEmail($username);
         
         if (null === $user) {
-            return new Response('invalid_username' . $username);
+            return new Response('invalid_username');
         }
         
         if ($user->isPasswordRequestNonExpired($this->container->getParameter('fos_user.resetting.token_ttl'))) {
-            return $this->container->get('templating')->renderResponse('AppMainBundle:Resetting:passwordAlreadyRequested.html.' . $this->getEngine());
+            return new Response('password_already_requested');
         }
         
         if (null === $user->getConfirmationToken()) {
@@ -66,11 +66,10 @@ class ResettingController extends ContainerAware
             $user->setConfirmationToken($tokenGenerator->generateToken());
         }
         
-        $this->container->get('session')->set(static::SESSION_EMAIL, $this->getObfuscatedEmail($user));
+        $this->container->get('session')->set(static::SESSION_EMAIL, $user->getEmail());
         $this->container->get('fos_user.mailer')->sendResettingEmailMessage($user);
         $user->setPasswordRequestedAt(new \DateTime());
         $this->container->get('fos_user.user_manager')->updateUser($user);
-        
         return new RedirectResponse($this->container->get('router')->generate('fos_user_resetting_check_email'));
     }
 
@@ -88,7 +87,7 @@ class ResettingController extends ContainerAware
             return new RedirectResponse($this->container->get('router')->generate('fos_user_resetting_request'));
         }
         
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:checkEmail.html.' . $this->getEngine(), array(
+        return $this->container->get('templating')->renderResponse('AppMainBundle:Resetting:checkEmail.html.' . $this->getEngine(), array(
             'email' => $email
         ));
     }

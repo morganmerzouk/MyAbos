@@ -115,8 +115,8 @@ fos_user:
     group:
         group_class: App\MainBundle\Entity\Group
     from_email:
-        address: username@mail.com
-        sender_name: username    
+        address: contact@myabos.fr
+        sender_name: MyAbos    
 
 sonata_admin:
     title_logo:           bundles/app/images/general/logo.png

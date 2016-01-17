@@ -29,25 +29,25 @@ fos_user_security_logout:
 # REGISTRATION
 fos_user_registration_register:
     pattern: /inscription
-    defaults: { _controller: FOSUserBundle:Registration:register }
+    defaults: { _controller: AppMainBundle:Registration:register }
     requirements:
         _method: GET|POST
 
 fos_user_registration_check_email:
     pattern: /inscription/e-mail
-    defaults: { _controller: FOSUserBundle:Registration:checkEmail }
+    defaults: { _controller: AppMainBundle:Registration:checkEmail }
     requirements:
         _method: GET
 
 fos_user_registration_confirm:
     pattern: /inscription/confirmation/{token}
-    defaults: { _controller: FOSUserBundle:Registration:confirm }
+    defaults: { _controller: AppMainBundle:Registration:confirm }
     requirements:
         _method: GET
 
 fos_user_registration_confirmed:
     pattern: /inscription/confirmation
-    defaults: { _controller: FOSUserBundle:Registration:confirmed }
+    defaults: { _controller: AppMainBundle:Registration:confirmed }
     requirements:
         _method: GET
 
@@ -66,7 +66,7 @@ fos_user_resetting_send_email:
 
 fos_user_resetting_check_email:
     pattern: /mot-de-passe-oublie/verification
-    defaults: { _controller: FOSUserBundle:Resetting:checkEmail }
+    defaults: { _controller: AppMainBundle:Resetting:checkEmail }
     requirements:
         _method: GET
 

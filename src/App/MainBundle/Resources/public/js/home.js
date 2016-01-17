@@ -51,6 +51,7 @@ function showLoginForm(){
 function showPasswordForgottenForm(title){
     "use strict";
     //Display loader
+    $(".lm-success, .lm-failed, .lm-success-email").hide();
     $('#loginModal .loginBox').fadeOut('fast',function(){
         $('.passwordForgottenBox').fadeIn('fast');
         $('.register-footer').fadeOut('fast',function(){
@@ -62,13 +63,26 @@ function showPasswordForgottenForm(title){
     $('.error').removeClass('alert alert-danger').html('');
 }
 
-function showSendMailForm(url){
+function sendResetMailForm(url){
     "use strict";
     //Display loader
-    $.ajax(url)
+	$('.invalid-username, .password-already-requested, .password-resetting-success').hide();
+    $.ajax({
+		type: "GET",
+		url: url,
+		data: { username:  $("#username").val()}
+    })
     .done(function(msg) {
-    	console.log(msg);
-        $('.modal-content').html(msg);
+    	if(msg == "invalid_username") {
+    		$('.invalid-username').show();
+    	}
+    	else if(msg == "password_already_requested") {
+    		$('.password-already-requested').show();
+    	}
+    	else {
+    		$('.password-resetting-success').html(msg);
+    		$('.password-resetting-success').show();
+    	}
     })
     .fail(function() {
       alert( "Erreur" );
@@ -76,7 +90,46 @@ function showSendMailForm(url){
     .always(function() {
 	    //Loader fade
 	});
-    $('.error').removeClass('alert alert-danger').html('');
+}
+
+function sendRegisterForm(url){
+    "use strict";
+    //Display loader
+	$('.invalid-username, .password-already-requested, .password-resetting-success').hide();
+	var password = [];
+	password["first"] = $("#fos_user_registration_form_plainPassword_first").val();
+	password["second"] = $("#fos_user_registration_form_plainPassword_second").val();
+	
+	var dataString = 'fos_user_registration_form[_token]='
+        +  $("#fos_user_registration_form__token").val()
+        + '&fos_user_registration_form[email]='
+        + $("#fos_user_registration_form_email").val()
+        + '&fos_user_registration_form[phone]='
+        + $("#fos_user_registration_form_phone").val()
+        + '&fos_user_registration_form[gender]='
+        + $("#fos_user_registration_form_gender").val()
+        + '&fos_user_registration_form[firstname]='
+        + $("#fos_user_registration_form_firstname").val()
+        + '&fos_user_registration_form[lastname]='
+        + $("#fos_user_registration_form_lastname").val()
+        + '&fos_user_registration_form[plainPassword][first]='
+        + $("#fos_user_registration_form_plainPassword_first").val()
+        + '&fos_user_registration_form[plainPassword][second]='
+        + $("#fos_user_registration_form_plainPassword_second").val();
+    $.ajax({
+		type: "POST",
+		url: url,
+		data: dataString
+    })
+    .done(function(msg) {
+    	$('.registerBox').html(msg);
+    })
+    .fail(function() {
+      alert( "Erreur" );
+    })
+    .always(function() {
+	    //Loader fade
+	});
 }
 
 function openLoginModal(){

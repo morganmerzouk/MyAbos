@@ -1,13 +1,1 @@
-{% extends '::front-office.html.twig' %}
-
-{% block content %}
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-info">
-                <div class="panel-body">
-                    <p>{{ 'registration.check_email'|trans({'%email%': user.email}, 'FOSUserBundle') }}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-{% endblock %}
+{{ 'registration.check_email'|trans({'%email%': user.email}, 'FOSUserBundle') }}
