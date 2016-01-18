@@ -130,6 +130,11 @@ class Contract
     protected $status = self::STATUS_ACTIVE;
 
     /**
+     * @ORM\Column(type="date")
+     */
+    protected $resiliationDate;
+
+    /**
      * Get id
      *
      * @return integer
@@ -540,5 +545,51 @@ class Contract
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status            
+     * @return Contract
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+        
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set causeResiliation
+     *
+     * @param \App\MainBundle\Entity\CauseResiliation $causeResiliation            
+     * @return Contract
+     */
+    public function setCauseResiliation(\App\MainBundle\Entity\CauseResiliation $causeResiliation = null)
+    {
+        $this->causeResiliation = $causeResiliation;
+        
+        return $this;
+    }
+
+    /**
+     * Get causeResiliation
+     *
+     * @return \App\MainBundle\Entity\CauseResiliation
+     */
+    public function getCauseResiliation()
+    {
+        return $this->causeResiliation;
     }
 }

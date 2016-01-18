@@ -75,6 +75,11 @@ class CauseResiliation
         return $this->name;
     }
 
+    public function __toString()
+    {
+        return $this->name;
+    }
+
     /**
      * Set category
      *
@@ -124,20 +129,20 @@ class CauseResiliation
     /**
      * Set actif
      *
-     * @param boolean $actif
+     * @param boolean $actif            
      * @return CauseResiliation
      */
     public function setActif($actif)
     {
         $this->actif = $actif;
-
+        
         return $this;
     }
 
     /**
      * Get actif
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getActif()
     {

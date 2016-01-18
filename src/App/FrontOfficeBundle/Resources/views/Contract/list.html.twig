@@ -1,6 +1,11 @@
 {% extends 'AppFrontOfficeBundle:Contract:layout.html.twig' %}
 
 {% block content %}
+	{% for flash_message in app.session.flashbag.get('notice') %}
+	    <p class="bg-success">
+	        {{ flash_message }}
+	    </p>
+	{% endfor %}
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-info">
@@ -35,7 +40,9 @@
 			        			<a href="{{ path("app_front_office_contract_edit", {"id": contract.id}) }}"><span class="glyphicon glyphicon-pencil  btn-lg" aria-hidden="true"></span></a>
 			        			<a href="#"><span class="glyphicon glyphicon-file  btn-lg" aria-hidden="true"></span></a>
 			        			<a href="{{ path("app_front_office_contract_delete", {"id": contract.id}) }}"><span class="glyphicon glyphicon-trash  btn-lg" aria-hidden="true"></span></a>
-			        			<a href="{{ path("app_front_office_resiliation_choix_formule", {"id": contract.id}) }}" class="btn btn-danger btn-resilier">Résilier</a>
+			        			{% if contract.status == 0 %}
+			        				<a href="{{ path("app_front_office_resiliation_choix_formule", {"id": contract.id}) }}" class="btn btn-danger btn-resilier">Résilier</a>
+			        			{% endif %}
 			        		</div>
 			        	</div>
 			        {% endfor %}

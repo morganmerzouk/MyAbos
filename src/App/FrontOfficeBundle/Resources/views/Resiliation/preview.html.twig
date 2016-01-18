@@ -19,17 +19,15 @@
 	</div>
 	<div class="col-md-6 no-float">
 		<h2>Sélectionner le motif de la résiliation souhaité</h2>
-		<select class="form-control select-cause-resiliation">
-		{% for causeResiliation in causeResiliations %}
-			<option value="{{ causeResiliation.id }}">{{ causeResiliation.name }}</option>
-		{% endfor %}
-		</select>
-		<div class="col-md-12">
-		<a href="#" class="btn btn-danger btn-preview-modify">Modifier</a>
-		<a href="#" class="btn btn-primary btn-preview-validate hidden">Valider</a>
-		<a href="" class="btn btn-danger">Générer un pdf</a>
-		<a href="" class="btn btn-success">Envoyer</a>
-		</div>
+		<form method="post" action="">
+	        {{ form_widget(form.causeResiliation) }}
+			<div class="col-md-12">
+				<a href="#" class="btn btn-danger btn-preview-modify">Modifier</a>
+				<a href="#" class="btn btn-primary btn-preview-validate hidden">Valider</a>
+				<a href="" class="btn btn-danger">Générer un pdf</a>
+				<input type="submit" class="btn btn-success" value="Envoyer" />
+			</div>
+	    {{ form_end(form) }}
 	</div>
 </div>
 {% endblock %}

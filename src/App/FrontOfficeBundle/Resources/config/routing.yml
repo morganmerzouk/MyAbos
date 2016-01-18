@@ -43,3 +43,7 @@ app_front_office_resiliation_payment:
 app_front_resiliation_preview:
     path:     /resiliation/preview/{id}
     defaults: { _controller: AppFrontOfficeBundle:Resiliation:preview }
+    
+app_front_office_resiliation_send:
+    path:     /resiliation/send/{id}
+    defaults: { _controller: AppFrontOfficeBundle:Resiliation:send }

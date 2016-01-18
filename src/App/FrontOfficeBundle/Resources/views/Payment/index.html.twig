@@ -37,23 +37,17 @@ Votre contrat apparaîtra alors automatiquement dans votre dashboard comme "Rés
 <form action="" method="POST" id="payment-form">
     <span class="payment-errors"></span>
     <div class="form-row">
-		<label>
-        	<span>N° de carte: </span>
-        	<input type="text" size="16" data-stripe="number"/>
-      	</label>
+		<label>N° de carte: </label>
+    	<input type="text" size="16" data-stripe="number"/>
     </div>
     <div class="form-row">
-      	<label>
-        	<span>Clé de sécurité: </span>
+      	<label>Clé de sécurité: </label>
         	<input type="text" size="4" data-stripe="cvc"/>
-      	</label>
-    </div>
+  	</div>
     <div class="form-row">
-      	<label>
-        	<span>Date d'expiration (MM/YYYY): </span>
-        	<input type="text" size="2" data-stripe="exp-month"/>
-  		</label>
-      	<span> / </span>
+      	<label>Date d'expiration (MM/YYYY): </label>
+    	<input type="text" size="2" data-stripe="exp-month"/>
+  		<span> / </span>
       	<input type="text" size="4" data-stripe="exp-year"/>
     </div>
     <button type="submit" class="btn btn-danger">Payer</button>

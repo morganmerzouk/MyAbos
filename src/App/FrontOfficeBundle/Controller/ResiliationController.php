@@ -4,6 +4,7 @@ namespace App\FrontOfficeBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use App\FrontOfficeBundle\Form\Type\ContractType;
+use App\FrontOfficeBundle\Form\Type\ResiliationType;
 use App\MainBundle\Entity\Contract;
 use App\MainBundle\Entity\Category;
 
@@ -55,12 +56,27 @@ class ResiliationController extends Controller
         $causeResiliation = $em->getRepository("AppMainBundle:CauseResiliation")->findBy(array(
             "category" => $contract->getCategory()
         ));
-        $category = $em->getRepository("AppMainBundle:Category")->findOneBy(array(
-            "id" => $contract->getCategory()
-        ));
+        
+        $form = $this->createForm(new ResiliationType($em, $contract->getCategory()
+            ->getId(), $id));
+        
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted()) {
+            $data = $form->getData();
+            $contract->setCauseResiliation($data->getCauseResiliation())
+                ->setStatus(Contract::STATUS_RESILIATING)
+                ->setResiliationDate(new \DateTime());
+            $em->persist($contract);
+            $em->flush();
+            $this->addFlash('notice', "La résiliation de votre contract " . $contract->getProvider() . " a été enregistré avec succès, nous vous tiendrons par email du statut de celle-ci");
+            return $this->redirectToRoute("app_front_office_contract_list");
+        }
+        
         return $this->render('AppFrontOfficeBundle:Resiliation:preview.html.twig', array(
             "contract" => $contract,
-            "causeResiliations" => $causeResiliation
+            "causeResiliations" => $causeResiliation,
+            "form" => $form->createView()
         ));
     }
 

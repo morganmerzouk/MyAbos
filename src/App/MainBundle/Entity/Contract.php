@@ -130,6 +130,11 @@ class Contract
     protected $status = self::STATUS_ACTIVE;
 
     /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $resiliationDate;
+
+    /**
      * Get id
      *
      * @return integer
@@ -545,20 +550,20 @@ class Contract
     /**
      * Set status
      *
-     * @param integer $status
+     * @param integer $status            
      * @return Contract
      */
     public function setStatus($status)
     {
         $this->status = $status;
-
+        
         return $this;
     }
 
     /**
      * Get status
      *
-     * @return integer 
+     * @return integer
      */
     public function getStatus()
     {
@@ -568,23 +573,46 @@ class Contract
     /**
      * Set causeResiliation
      *
-     * @param \App\MainBundle\Entity\CauseResiliation $causeResiliation
+     * @param \App\MainBundle\Entity\CauseResiliation $causeResiliation            
      * @return Contract
      */
     public function setCauseResiliation(\App\MainBundle\Entity\CauseResiliation $causeResiliation = null)
     {
         $this->causeResiliation = $causeResiliation;
-
+        
         return $this;
     }
 
     /**
      * Get causeResiliation
      *
-     * @return \App\MainBundle\Entity\CauseResiliation 
+     * @return \App\MainBundle\Entity\CauseResiliation
      */
     public function getCauseResiliation()
     {
         return $this->causeResiliation;
+    }
+
+    /**
+     * Set resiliationDate
+     *
+     * @param \DateTime $resiliationDate            
+     * @return Contract
+     */
+    public function setResiliationDate($resiliationDate)
+    {
+        $this->resiliationDate = $resiliationDate;
+        
+        return $this;
+    }
+
+    /**
+     * Get resiliationDate
+     *
+     * @return \DateTime
+     */
+    public function getResiliationDate()
+    {
+        return $this->resiliationDate;
     }
 }
