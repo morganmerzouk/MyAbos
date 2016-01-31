@@ -153,10 +153,10 @@ function openRegisterModal(){
 $(window).scroll(function(){
     "use strict";
     var b = $(window).scrollTop();
-    if( b > 60 ){
-        $(".navbar").addClass("is-scrolling");
+    if( b > 100 ){
+        $(".overlay .navbar").addClass("is-scrolling");
     } else {
-        $(".navbar").removeClass("is-scrolling");
+        $(".overlay .navbar").removeClass("is-scrolling");
     }
 });
 

@@ -1,0 +1,9 @@
+h1 { color: white; background: #23B6E1; font-size: 2em; padding: 10px;margin: 0;}
+p {font-size: 1.8em; }
+.loading, .btn-sent { display: none;}
+.col-form { padding: 10px; }
+.col-md-offset-2 { border: 1px solid #23B6E1; }
+.input-nom, .input-email, .textarea-message { width: 100%; }
+.input-nom, .input-email {box-shadow: 0px 0px 15px black;}
+.textarea-message { box-shadow: 0px 0px 15px black; height: 300px; }
+.form-contact { margin-bottom: 10px; }

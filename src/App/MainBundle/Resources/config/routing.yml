@@ -1,7 +1,23 @@
 app_main_homepage:
     path:     /
     defaults: { _controller: AppMainBundle:Default:index }
+
+app_main_security:
+    path:     /securite
+    defaults: { _controller: AppMainBundle:Default:securite }
+
+app_main_cgv:
+    path:     /cgv
+    defaults: { _controller: AppMainBundle:Default:cgv } 
     
+app_main_contact:
+    path:     /contact
+    defaults: { _controller: AppMainBundle:Default:contact } 
+    
+app_main_contact_send:
+    path:     /contact/send
+    defaults: { _controller: AppMainBundle:Default:contactSend } 
+       
 # PROFILE
 fos_user_profile_show:
     pattern: /profile

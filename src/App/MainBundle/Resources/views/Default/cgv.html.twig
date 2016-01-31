@@ -1,0 +1,100 @@
+{% extends "AppMainBundle::layout_home.html.twig" %}
+{% block content %}
+<script type="text/javascript">
+    var urlLogin = "{{ path("fos_user_security_check") }}";
+    var urlDashboard = "{{ path("app_front_office_contract_list") }}";
+</script>
+<div class="preloader">
+    <div class="loader-container">
+        <div class="text-logo">MyAbos</div>
+        <div class="signal"></div>
+    </div>
+</div> 
+<header class="header" id="top" data-stellar-background-ratio="0.5">
+    <div class="overlay-min">
+        <nav class="navbar navbar-fixed-top is-scrolling" role="navigation">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="navbar-header">
+                            <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+                                <i class="icon icon_menu"></i>
+                            </button>
+							<a href="{{ path('app_main_homepage') }}" class="navbar-brand img-logo scrollto" title="MyAbos">
+                                <img src="{{ asset('bundles/appmain/images/general/logo.png') }}" alt="logo MyAbos" />
+                            </a>
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="#about" title="" class="scrollto">A propos</a></li>
+                                <li><a href="#features" title="" class="scrollto">Fonctionnalités</a></li>
+                                <li><a href="#testimonials" title="" class="scrollto">Témoignages</a></li>
+                                <li><a class="btn btn-nav" data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();">Se connecter</a></li>
+                                <li><a class="btn btn-nav btn-signup" data-toggle="modal" href="javascript:void(0)" onclick="openRegisterModal();">S'inscrire</a></li> 
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="modal fade login" id="loginModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            <i class="icon icon_close_alt2"></i>
+                        </button>
+                        <h4 class="modal-title">Se connecter à <span>MyAbos</span></h4>
+                    </div>
+					<div class="modal-body">  
+                        <div class="box">
+                             <div class="content">
+                                <div class="loginBox">
+                                    <p class="lm-success"><i class="icon icon_check_alt2"></i> <strong> Connecté !</strong></p>
+                                    <p class="lm-failed"><i class="icon icon_close_alt2"></i><strong> Identifiants incorrects! Veuillez recommencer.</strong></p>
+                                    <p class="lm-failed-email"><i class="icon icon_close_alt2"></i><strong> Email invalide! Veuillez recommencer.</strong></p>
+                                    {{ render(controller('AppMainBundle:Security:login')) }}
+                                </div>
+                             </div>
+                        </div>
+                        
+                        <div class="content registerBox" style="display:none;">
+                            {{ render(controller('AppMainBundle:Registration:register')) }}
+                        </div>
+                        <div class="content passwordForgottenBox" style="display:none;">
+	                        <p class="lm-failed invalid-username"><i class="icon icon_close_alt2"></i><strong> Cette adresse email n'est associée à aucun compte.<br /> Veuillez recommencer.</strong></p>
+	                        <p class="lm-failed password-already-requested"><i class="icon icon_close_alt2"></i><strong> Un nouveau mot de passe a déjà été demandé pour cet utilisateur dans les dernières 24 heures.</strong></p>
+	                        <p class="lm-success password-resetting-success"></p>
+	                        {{ render(controller('AppMainBundle:Resetting:request')) }}
+	                    </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="forgot login-footer">
+                            <span>Pas encore inscrit? 
+                                 <a href="javascript:showRegisterForm();">S'enregistrer</a>
+                            </span>
+                        </div>
+                        <div class="forgot register-footer" style="display:none">
+                             <span>Déjà membre?</span>
+                             <a href="javascript:showLoginForm();">Se connecter</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+</header> 
+<div class="container">  
+	<h2 class="text-color text-justify">Données personnelles sécurisées :</h2>
+	<p>MyAbos a mis en place tous les moyens nécessaires dans le cadre du développement du site, pour garantir la sécurité et la confidentialité des informations personnelles de ses utilisateurs.</p><br />
+	<p>Pour crypter toutes les données échangées, MyAbos utilise le protocole de sécurité SSL 128 bits (Secure Socket Layer), niveau de chiffrement le plus élevé autorisé en France. Le chiffrement transforme les informations du client sous une forme encodée avant l'envoi sur Internet. Les coordonnées sont donc cryptées et ne transitent jamais en clair sur le réseau.</p><br />
+	<p>La présence en icône d'une clé ou d'un cadenas et la mention "https" ("http" classique suivi d’un "s" pour sécurité) dans la barre d’adresse du navigateur internet, atteste que le site est sécurisé par la technique de l'encodage et que les informations saisies sur une page, sont protégées.</p><br />
+	<p>Les informations transmises sur notre site sont donc parfaitement cryptées et sécurisées,  et cela sur l'ensemble du réseau Internet.</p><br />
+	<p>En matière de sécurité votre rôle est également important et il vous appartient de garder secrets vos identifiants et mots de passe de connexion. Il vous est recommandé de choisir un mot de passe unique pour chaque espace client dont vous êtes titulaire.</p><br />
+	<h2 class="text-color text-justify">Paiements Sécurisés :</h2>
+	<p>MyAbos, utilise la solution de paiement de STRIPE, société internationale spécialiste du paiement en ligne. Vos coordonnées bancaires sont collectées par notre prestataire de paiement, STRIPE, qui utilise un algorithme de chiffrement (niveau 1 de certification PCI ) - le niveau le plus élevé de certification.</p><br />
+	<p>Notre solution bancaire est donc certifiée PCI DSS par VISA et MASTERCARD : cette norme est un standard de sécurité international dont les objectifs sont d'assurer la confidentialité et l'intégrité des données des porteurs de cartes, et ainsi de sécuriser la protection des données concernant la carte et la transaction.</p><br />
+	<p>Vos données bancaires sont cryptées selon les technologies SSL (Secure Socket Layer). Elles ne circulent pas en clair sur internet et ne peuvent être interceptées.</p><br />
+	<p>Lorsque vous effectuez un paiement, votre numéro de carte de crédit sera visible uniquement pour la saisie du champ, mais seuls les 4 derniers chiffres  seront visibles dans votre compte, les autres étant masqués pour des raisons de sécurité.</p><br />
+</div>
+{% endblock content %}

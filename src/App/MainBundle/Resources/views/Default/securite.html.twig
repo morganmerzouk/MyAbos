@@ -1,0 +1,160 @@
+{% extends "AppMainBundle::layout_home.html.twig" %}
+{% block content %}
+<script type="text/javascript">
+    var urlLogin = "{{ path("fos_user_security_check") }}";
+    var urlDashboard = "{{ path("app_front_office_contract_list") }}";
+</script>
+<div class="preloader">
+    <div class="loader-container">
+        <div class="text-logo">MyAbos</div>
+        <div class="signal"></div>
+    </div>
+</div> 
+<header class="header" id="top" data-stellar-background-ratio="0.5">
+    <div class="overlay-min">
+        <nav class="navbar navbar-fixed-top is-scrolling" role="navigation">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="navbar-header">
+                            <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+                                <i class="icon icon_menu"></i>
+                            </button>
+							<a href="{{ path('app_main_homepage') }}" class="navbar-brand img-logo scrollto" title="MyAbos">
+                                <img src="{{ asset('bundles/appmain/images/general/logo.png') }}" alt="logo MyAbos" />
+                            </a>
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="#about" title="" class="scrollto">A propos</a></li>
+                                <li><a href="#features" title="" class="scrollto">Fonctionnalités</a></li>
+                                <li><a href="#testimonials" title="" class="scrollto">Témoignages</a></li>
+                                <li><a class="btn btn-nav" data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();">Se connecter</a></li>
+                                <li><a class="btn btn-nav btn-signup" data-toggle="modal" href="javascript:void(0)" onclick="openRegisterModal();">S'inscrire</a></li> 
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="modal fade login" id="loginModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            <i class="icon icon_close_alt2"></i>
+                        </button>
+                        <h4 class="modal-title">Se connecter à <span>MyAbos</span></h4>
+                    </div>
+					<div class="modal-body">  
+                        <div class="box">
+                             <div class="content">
+                                <div class="loginBox">
+                                    <p class="lm-success"><i class="icon icon_check_alt2"></i> <strong> Connecté !</strong></p>
+                                    <p class="lm-failed"><i class="icon icon_close_alt2"></i><strong> Identifiants incorrects! Veuillez recommencer.</strong></p>
+                                    <p class="lm-failed-email"><i class="icon icon_close_alt2"></i><strong> Email invalide! Veuillez recommencer.</strong></p>
+                                    {{ render(controller('AppMainBundle:Security:login')) }}
+                                </div>
+                             </div>
+                        </div>
+                        
+                        <div class="content registerBox" style="display:none;">
+                            {{ render(controller('AppMainBundle:Registration:register')) }}
+                        </div>
+                        <div class="content passwordForgottenBox" style="display:none;">
+	                        <p class="lm-failed invalid-username"><i class="icon icon_close_alt2"></i><strong> Cette adresse email n'est associée à aucun compte.<br /> Veuillez recommencer.</strong></p>
+	                        <p class="lm-failed password-already-requested"><i class="icon icon_close_alt2"></i><strong> Un nouveau mot de passe a déjà été demandé pour cet utilisateur dans les dernières 24 heures.</strong></p>
+	                        <p class="lm-success password-resetting-success"></p>
+	                        {{ render(controller('AppMainBundle:Resetting:request')) }}
+	                    </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="forgot login-footer">
+                            <span>Pas encore inscrit? 
+                                 <a href="javascript:showRegisterForm();">S'enregistrer</a>
+                            </span>
+                        </div>
+                        <div class="forgot register-footer" style="display:none">
+                             <span>Déjà membre?</span>
+                             <a href="javascript:showLoginForm();">Se connecter</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+</header> 
+<div class="container">  
+	<h1 class="text-color text-justify">Conditions Générales</h1>
+	<h2 class="text-color text-justify">1. Présentation</h2>
+	<div>
+		<p>Les mentions obligatoires relatives au présent site, sont consultables en cliquant sur le lien « Conditions Générales » visible dans le footer et en bas de chaque page du site.</p><br />
+		<p>Le site www.myabos.fr, désigné dans le présent document par les termes « le site » a pour objet de permettre aux internautes, de gérer et résilier leurs contrats d’abonnements de façon simple et unifiée, après avoir saisi un certain nombre d’informations personnelles et contractuelles sur le site.</p><br />
+		<p>Une application liée au site sera prochainement disponible sur téléphones et tablettes, sur l’Apple Store (iOS) et Google Play (Android). Son utilisation sera soumise aux mêmes obligations que celle du site.</p><br />
+		<p>En utilisant le site ou l’application, vous vous engagez à respecter les présentes conditions générales dans leur intégralité, sans aucune limite ni réserve.</p><br />
+		<p>Vous reconnaissez donc avoir lu et compris les présentes Conditions Générales, ce qui sera matérialisé par le fait de cocher la case correspondant à la phrase suivante : « je reconnais avoir lu et accepté l'ensemble des conditions générales du site. » et qui aura même valeur qu’une signature manuscrite de votre part.</p><br />
+		<p>Le fait de cocher la case sera un préalable indispensable à votre inscription sur le site et sera donc enregistré par MyAbos. Vous renoncez donc par avance à la possibilité de contester ce fait.</p><br />
+		<p>En vous inscrivant, vous vous engagez à être en pleine capacité juridique ou en mesure de justifier de l’accord de votre tuteur, curateur ou représentant légal si vous êtes mineur.</p><br />
+	</div>
+	<h2 class="text-color text-justify">2. Services proposés sur le site</h2>
+	<div>
+		<p>Vous avez la possibilité en vous inscrivant gratuitement sur le site, de saisir depuis votre espace personnel, un ou plusieurs contrats d’abonnements. Vous avez également la possibilité de gérer gratuitement votre budget et de bénéficier des alertes d’échéance, vous permettant de résilier, renouveler et reconduire le contrat.</p><br />
+		<p>MyAbos vous propose également de prendre en charge pour vous et pour seulement 7€, l’ensemble de l’acte de résiliation.</p><br />
+		<p>MyAbos fait ses meilleurs efforts pour que le Service de résiliation en ligne soit opérationnel et satisfaisant. MyAbos n’est pas en mesure de garantir qu’aucune erreur ou autre trouble de fonctionnement ou d’utilisation n’apparaîtra au cours de l’utilisation du site et/ou de l'acheminement du courrier par La Poste. En cas de problème d'acheminement du courrier recommandé par La Poste, MyAbos contactera La Poste pour que la situation soit analysée au plus vite et s'engage à rembourser le client du prix de l'envoi. MyAbos ne peut être tenu responsable des préjudices qu'occasionnerait un problème de délai ou de non réception du courrier recommandé. Il est de la responsabilité du client de vérifier le statut de son envoi avec les informations de suivi fournies et de nous prévenir en cas de problème constaté.</p><br />
+	</div>
+	<h2 class="text-color text-justify">3. Conditions de paiement</h2>
+	<div>
+		<p>MyAbos, utilise la solution de paiement de STRIPE, société internationale spécialiste du paiement en ligne. Vos coordonnées bancaires sont collectées par notre prestataire de paiement, STRIPE, qui utilise un algorithme de chiffrement (niveau 1 de certification PCI ) - le niveau le plus élevé de certification.</p><br />
+		<p>Notre solution bancaire est donc certifiée PCI DSS par VISA et MASTERCARD : cette norme est un standard de sécurité international dont les objectifs sont d'assurer la confidentialité et l'intégrité des données des porteurs de cartes, et ainsi de sécuriser la protection des données concernant la carte et la transaction.</p><br />
+		<p>Vos données bancaires sont cryptées selon les technologies SSL (Secure Socket Layer). Elles ne circulent pas en clair sur internet et ne peuvent être interceptées.<br />Lorsque vous effectuez un paiement, votre numéro de carte de crédit sera visible uniquement pour la saisie du champ, mais seuls les 4 derniers chiffres  seront visibles dans votre compte, les autres étant masqués pour des raisons de sécurité.</p><br />
+	</div>
+	<h2 class="text-color text-justify">4. Utilisation conforme à la loi, à l’ordre public et aux bonnes moeurs</h2>
+	<div>
+		<p>En vous inscrivant, vous vous engager à  utiliser les services proposés sur le site, dans le respect de la réglementation en vigueur.</p><br />
+		<p>Vous vous engagez à ne pas nuire au bon fonctionnement du site ou à sa bonne utilisation par les autres membres. Vous vous engagez à ne pas dénigrer le site sur tous types de supports.</p><br />
+		<p>A défaut de respecter ces obligations, votre espace membre pourra être purement et simplement supprimé à titre de sanction.</p><br />
+	</div>
+	<h2 class="text-color text-justify">5. Responsabilité</h2>
+	<div>
+		<p>L’utilisation des services proposés sur le site suppose de votre part la fourniture sincère des différentes informations requises. A défaut, il est évident que les services ne pourront fonctionner de façon satisfaisante et vous ne pourrez en aucun cas rechercher la responsabilité de MyAbos.</p><br />
+		<p>Les services fonctionnent 7 jours sur 7, 24 heures sur 24, dès la validation du compte utilisateur.</p>
+		<p>En cas de retard ou de dysfonctionnement des services, vous devrez en aviser MyAbos par mail à contact@myabos.fr, pour résolution du problème, évidement dans la limite du possible. MyAbos se réserve le droit de suspendre le fonctionnement des services pour des raisons techniques ou en cas de force majeure, à charge pour lui d’en aviser les utilisateurs par tous moyens et notamment par affichage sur le site.</p><br />
+		<p>Les contenus des courriers générés ou des modèles en téléchargement sont fournis par MyAbos, à titre de modèles et en dépit du soin apporté à leur contenu ainsi qu’à la veille législative et jurisprudentielle assurée par MyAbos, pour leur exactitude, aucune garantie formelle de prise en compte par les différents fournisseur n’est assurée.</p><br />
+		<p>Malgré tout le soin apporté à la sécurisation du site et de ses systèmes, aucune garantie ne peut être assurée sur les risques de contamination de vos équipements informatiques par un virus ou tout autre élément ou programme malveillant, il vous est recommandé de vous équiper d’un système de protection efficace et maintenu à jour. De même, tout dommage né de l’utilisation des services ne pourra engager la responsabilité de MyAbos.</p><br />
+		<p>Enfin, malgré tout le soin apporté au développement du site, MyAbos ne peut vous garantir une compatibilité totale avec tous types de systèmes informatiques. La responsabilité de MyAbos ne pourra pas être engagée sur ce motif. Vous pourrez cela dit nous reporter tous dysfonctionnements, afin que les problèmes soient résolus dans la mesure du possible et dans les meilleurs délais.</p><br />
+	</div>
+	<h2 class="text-color text-justify">6. Informatique et Libertés</h2>
+	<div>
+		<p>Pour utiliser les services proposés sur le présent site, vous devez impérativement fournir un certain nombre d’informations personnelles. En vous inscrivant et en fournissant ces informations sur les différents formulaires d’inscription, vous donnez votre consentement exprès à la collecte de ces données.</p><br />
+		<p>En cas de désinscription complète, vos données personnelles seront conservées pour la durée légale de conservation imposée par l’administration fiscale, en revanche les informations fournis dans l’outil de gestion des abonnements et des garanties seront purement et simplement supprimées.Les données récoltées sont nécessaires à votre inscription ainsi qu’au bon fonctionnement des outils proposés sur le site.</p><br />
+		<p>Vos données personnelles sont conservées de façon sécurisée par MyAbos en sa seule qualité et ne seront ni transmises à des tiers, ni transférées à l’étranger, sauf cas prévus par la loi. Les données collectées pourront cependant faire l’objet d’un traitement statistique purement anonyme et être ainsi exploitées à toutes fins par l’éditeur, ou cédées à des tiers.</p><br />
+		<p>Conformément à loi informatique et libertés du 6 janvier 1978, vous disposez d’un droit d’opposition, d’interrogation, d’accès et de rectification des données que vous avez fournies en en faisant la demande à MyAbos, du présent site à l’adresse électronique suivante : <a href="mailto:contact@myabos.fr">contact@myabos.fr</a></p><br />
+	</div>
+	<h2 class="text-color text-justify">7. Collecte des Cookies et des adresses IP</h2>
+	<div>
+		<p>Afin que l’application du site puisse fonctionner correctement, et afin que vous puissiez bénéficier de la totalité des services proposés sur le site et par votre navigateur internet, le site collecte anonymement votre adresse IP (Internet Protocol) et peut implanter un ou plusieurs cookies dans votre ordinateur.</p><br />
+		<p>Le cookie est un petit fichier pouvant contenir des informations vous concernant ou concernant votre utilisation du site, ils sont conservés pour une durée que vous définissez dans la sécurité de votre navigateur et le site pourra lire le contenu de ces cookies à chacune de vos visites. </p><br />
+		<p>Vous pouvez supprimer les cookies dans les options de sécurité de votre navigateur internet, de même que vous pouvez systématiser l’interdiction des cookies sur votre navigateur. Dans ce cas, l’utilisation des services proposés sur le site ne sera pas possible, sans que cela n’engage la responsabilité de MyAbos.</p><br />
+	</div>
+	<h2 class="text-color text-justify">8. Sécurité</h2>
+	<div>
+		<p>MyAbos a mis en place tous les moyens nécessaires dans le cadre du développement du site, pour garantir la sécurité et la confidentialité des informations personnelles de ses utilisateurs.</p>
+		<p>Pour crypter toutes les données échangées, MyAbos utilise le protocole de sécurité SSL 128 bits (Secure  Socket Layer), niveau de chiffrement le plus élevé autorisé en France. Le chiffrement transforme les informations du client sous une forme encodée avant l'envoi sur Internet. Les coordonnées sont donc cryptées et ne transitent jamais en clair sur le réseau.</p><br />
+		<p>La présence en icône d'une clé ou d'un cadenas et la mention "https" ("http" classique suivi d’un "s" pour sécurité) dans la barre d’adresse du navigateur internet, atteste que le site est sécurisé par la technique de l'encodage et que les informations saisies sur une page,  sont protégées.</p><br />
+		<p>Les informations transmises sur notre site sont donc parfaitement cryptées et sécurisées,  et cela sur l'ensemble du réseau Internet.</p><br />
+		<p>En matière de sécurité votre rôle est également important et il vous appartient de garder secrets vos identifiants et mots de passe de connexion. Il vous est recommandé de choisir un mot de passe unique pour chaque espace client dont vous êtes titulaire.</p><br />
+	</div>
+	<h2 class="text-color text-justify">9. Propriété intellectuelle</h2>
+	<div>
+		<p>Tous les éléments constituant le site et dans le futur son application (images, logos, textes, couleurs, codes etc) et qui ne sont pas soumis à une licence opensource et définis comme tels appartiennent à MyAbos.</p><br />
+		<p>Tous les contenus mis à votre disposition par les outils proposés par le site et notamment les courriers, matrices et modèles de lettres appartiennent à MyAbos.</p><br />
+		<p>Tous les éléments définis ci-dessus, sont protégés par le code de la propriété intellectuelle et par le code pénal. Toute copie ou contrefaçon donneront lieu à des poursuites à l’initiative de MyAbos.</p><br />
+	</div>
+	<h2 class="text-color text-justify">10. Clauses diverses</h2>
+	<div>
+		<p>Les présentes conditions générales sont soumises au droit français. Elles peuvent être modifiées à tout moment et tout changement vous sera notifié.</p><br />
+		<p>La nullité de l’une des clauses des présentes conditions générales n’entraîne pas de droit la nullité de l’ensemble.</p><br />
+		<p>En cas de litige, vous vous engagez à privilégier un traitement amiable de votre réclamation en la formulant auprès de MyAbos. Les traitements amiables ne suspendent pas les délais d’action en justice.</p><br />
+	</div>
+</div>
+{% endblock content %}

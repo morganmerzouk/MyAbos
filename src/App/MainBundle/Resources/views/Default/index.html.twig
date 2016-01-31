@@ -50,9 +50,9 @@
                         <div class="box">
                              <div class="content">
                                 <div class="loginBox">
-                                    <p class="lm-success"><i class="icon icon_check_alt2"></i> <strong> Connecté !</strong></p>
-                                    <p class="lm-failed"><i class="icon icon_close_alt2"></i><strong> Identifiants incorrects! Veuillez recommencer.</strong></p>
-                                    <p class="lm-failed-email"><i class="icon icon_close_alt2"></i><strong> Email invalide! Veuillez recommencer.</strong></p>
+                                    <span class="lm-success"><i class="icon icon_check_alt2"></i> <strong> Connecté !</strong></span>
+                                    <span class="lm-failed"><i class="icon icon_close_alt2"></i><strong> Identifiants incorrects! Veuillez recommencer.</strong></span>
+                                    <span class="lm-failed-email"><i class="icon icon_close_alt2"></i><strong> Email invalide! Veuillez recommencer.</strong></span>
                                     {{ render(controller('AppMainBundle:Security:login')) }}
                                 </div>
                              </div>
@@ -62,9 +62,9 @@
                             {{ render(controller('AppMainBundle:Registration:register')) }}
                         </div>
                         <div class="content passwordForgottenBox" style="display:none;">
-	                        <p class="lm-failed invalid-username"><i class="icon icon_close_alt2"></i><strong> Cette adresse email n'est associée à aucun compte.<br /> Veuillez recommencer.</strong></p>
-	                        <p class="lm-failed password-already-requested"><i class="icon icon_close_alt2"></i><strong> Un nouveau mot de passe a déjà été demandé pour cet utilisateur dans les dernières 24 heures.</strong></p>
-	                        <p class="lm-success password-resetting-success"></p>
+	                        <span class="lm-failed invalid-username"><i class="icon icon_close_alt2"></i><strong> Cette adresse email n'est associée à aucun compte.<br /> Veuillez recommencer.</strong></span>
+	                        <span class="lm-failed password-already-requested"><i class="icon icon_close_alt2"></i><strong> Un nouveau mot de passe a déjà été demandé pour cet utilisateur dans les dernières 24 heures.</strong></span>
+	                        <span class="lm-success password-resetting-success"></span>
 	                        {{ render(controller('AppMainBundle:Resetting:request')) }}
 	                    </div>
                     </div>
@@ -143,7 +143,7 @@
     <div class="container wrapper-lg">
         <div class="row">
             <div class="col-lg-5 col-md-5">
-                <h3 class="text-color  class="text-justify"">Notre but : dématérialiser et simplifier la gestion administrative dans les foyers !</h3>
+                <h3 class="text-color text-justify">Notre but : dématérialiser et simplifier la gestion administrative dans les foyers !</h3>
                 <p class="text-justify">Téléphonie, internet, assurance, mutuelles, TV, salle de sport...Nous avons tous aujourd’hui une multitude de souscriptions à des contrats en tous genres. 
 					Pas forcément facile à gérer... et encore moins à résilier !</p>
 				<br /><p class="text-justify">MyAbos vous propose donc une plateforme gratuite pour gérer tous vos contrats en ligne...et surtout un service simplissime pour les résilier en moins d’une minute. Nous nous occupons de tout pour vous ! Plus besoin de retrouver vos informations, rédiger votre lettre et vous rendre à la Poste pour envoyer votre recommandé. Nous vous prévenons aussi à l’avance de vos échéances de résiliation, pour ne plus perdre d’argent à cause des reconductions tacites.</p>
@@ -318,9 +318,9 @@
                             </div>
                             <div class="table-cell">
                                 <ul class="social-list">
-                                    <li><a href="#"><i class="icon icon-facebook"></i></a></li>
-                                    <li><a href="#"><i class="icon icon-twitter"></i></a></li>
-                                    <li><a href="#"><i class="icon icon-googleplus"></i></a></li>
+                                    <li><a href="https://www.facebook.com/myabos2016/?skip_nax_wizard=true"><i class="icon icon-facebook"></i></a></li>
+                                    <li><a href="https://twitter.com/MyAbos2016"><i class="icon icon-twitter"></i></a></li>
+                                    <li><a href="https://plus.google.com/u/0/108526026236132173067/about"><i class="icon icon-googleplus"></i></a></li>
                                     <li><a href="#"><i class="icon icon-linkedin"></i></a></li>
                                 </ul>
                             </div>
@@ -345,8 +345,8 @@
                             </div>
                         </div>
                         <div class="col-md-10 col-md-offset-1 col-sm-8 col-sm-offset-2">
-                            <p class="mc-success"></p>
-                            <p class="mc-failed"></p>
+                            <span class="mc-success"></span>
+                            <span class="mc-failed"></span>
                         </div>
                     </form>
                 </div>
@@ -354,95 +354,4 @@
         </div>
     </div>
 </section>
-<footer class="footer dark-bg" id="footer">
-    <div class="container">
-        <div class="wrapper-lg">
-            <div class="row">
-                <div class="col-md-5">
-	                <a href="#top" class="scrollto" title="SmartMvp">
-	                    <span class="text-logo">MyAbos</span>
-	                </a>
-                </div>
-                <div class="col-md-3">
-                    <h5 class="text-white">Contact</h5>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="icon icon_mail"></i>
-                        </div>
-                        <div class="contact-content">
-                            <a href="mailto:contact@myabos.fr">contact@myabos.fr</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="icon icon_pin"></i>
-                        </div>
-                        <div class="contact-content">
-                            121 King Street, Melbourne<br>
-                            Victoria 3000 Australia
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="icon icon_phone"></i>
-                        </div>
-                        <div class="contact-content">
-                            1-234-567-89
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                
-				</div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <ul class="footer-nav">
-                            <li><a href="#">Nos partenaires</a></li>
-                            <li><a href="#">Sécurité des données</a></li>
-                            <li><a href="#">Nous contacter</a></li>
-                            <li><a href="#">Conditions générales</a></li>
-                        </ul>
-                        <p class="footer-copy">&copy; 2016 - MyAbos.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
-        
-<!--	
-	<h1>{{'home_title'|trans|raw }}</h1>
-		<div class="container-register-home">
-		    <input type="firstname" id="firstname" class="firstname" placeholder="Nom" />
-		    <input type="lastname" id="lastname" class="lastname" placeholder="Prénom" />
-		    <input type="email" id="email" class="email" placeholder="Adresse mail" />
-    	</div>
-	<span type="button" class="btn btn-start" data-toggle="modal" data-target="#modal-register">Commencer</span>
-    <div class="col-md-12 container-home-bottom">
-    	<div class="col-md-4">
-    		<div class="col-md-12">
-	    		<div class="col-md-4 col-md-offset-4">
-	      			<img src="{{ asset('bundles/appmain/images/icones/icon-cloud-store.png') }}" class="img-responsive" alt="icone stockage">
-				</div>
-			</div>
-    		<span class="headline">Stocker tous vos contrats<br /> en un seul endroit dans le cloud</span>
-    	</div>
-    	<div class="col-md-4">
-    		<div class="col-md-12">
-	    		<div class="col-md-4 col-md-offset-4">
-	      			<img src="{{ asset('bundles/appmain/images/icones/icon-message.png') }}" class="img-responsive" alt="icone enveloppe">
-				</div>
-			</div>
-    		<span class="headline">Recevez des alertes à l'approche<br /> de vos dates de résiliation</span>
-    	</div>
-    	<div class="col-md-4">
-    		<div class="col-md-12">
-	    		<div class="col-md-4 col-md-offset-4">
-	      			<img src="{{ asset('bundles/appmain/images/icones/icon-smiley.png') }}" class="img-responsive" alt="icone smiley">
-				</div>
-			</div>
-    		<span class="headline">Résilier vos contrats<br /> depuis votre canapé</span>
-    	</div>
-    </div>
-	-->
 {% endblock content %}
