@@ -40,8 +40,14 @@
 			        			<a href="{{ path("app_front_office_contract_edit", {"id": contract.id}) }}"><span class="glyphicon glyphicon-pencil  btn-lg" aria-hidden="true"></span></a>
 			        			<a href="#"><span class="glyphicon glyphicon-file  btn-lg" aria-hidden="true"></span></a>
 			        			<a href="{{ path("app_front_office_contract_delete", {"id": contract.id}) }}"><span class="glyphicon glyphicon-trash  btn-lg" aria-hidden="true"></span></a>
-			        			{% if contract.status == 0 %}
-			        				<a href="{{ path("app_front_office_resiliation_choix_formule", {"id": contract.id}) }}" class="btn btn-danger btn-resilier">Résilier</a>
+			        			{% if contract.status == 2 %}
+			        				<a href="{{ path("app_front_office_resiliation_choix_formule", {"id": contract.id}) }}" class="btn btn-danger col-md-6 col-md-offset-3 btn-resilier">Résilier</a>
+			        			{% endif %}
+			        			{% if contract.status == 1 %}
+			        				<a href="" class="btn btn-warning btn-resilier">En Cours de résiliation</a>
+			        			{% endif %}
+			        			{% if contract.status == 3 %}
+			        				<a href="" class="btn btn-success col-md-6 col-md-offset-3 btn-resilier">Résilié</a>
 			        			{% endif %}
 			        		</div>
 			        	</div>
