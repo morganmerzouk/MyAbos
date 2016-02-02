@@ -785,12 +785,12 @@ p {
     margin: 5px auto;
 }
 
-.btn{
+.login .btn{
     width: 100%;
     margin: 5px 0 0;
 }
 
-.btn-color:hover{
+.login .btn-color:hover{
     color: #fff;
     background-color: #3e3e3e;
     border-color: #3e3e3e;
