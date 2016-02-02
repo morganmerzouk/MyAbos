@@ -24,3 +24,22 @@ $(document).on("ready", function() {
         $(this).removeClass("hover");
     });
 });
+
+function openShowContractModal(id){
+    "use strict";
+    $('#contract'+id+' .editbox').hide();
+    $('#contract'+id+' .btn-edit').addClass('hide');
+    $('#contract'+id+' .showbox').show();
+    $('#contract'+id+' .btn-show').removeClass('hide');
+    $('#contract'+id).modal('show');
+}
+
+
+function openEditContractModal(id){
+    "use strict";
+    $('#contract'+id+' .editbox').show();
+    $('#contract'+id+' .btn-edit').removeClass('hide');
+    $('#contract'+id+' .showbox').hide();
+    $('#contract'+id+' .btn-show').addClass('hide');
+    $('#contract'+id).modal('show');
+}

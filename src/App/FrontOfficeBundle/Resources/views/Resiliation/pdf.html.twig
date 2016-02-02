@@ -1,0 +1,10 @@
+
+	<div style="float: right;">
+		{{ contract.provider.address|nl2br }}
+	</div>
+<div style="clear: both;"></div>
+<div class="cause-resiliation-textarea">
+	Madame, Monsieur<br /><br />
+	{{ causeResiliation.letter|replace({"[[num_contrat]]":"<strong>"~contract.number~"</strong>" })|raw|nl2br }}<br /><br />
+	Veuillez accepter, Madame, Monsieur, l'expression de mes salutations distinguées.
+</div>

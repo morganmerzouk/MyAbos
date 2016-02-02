@@ -97,7 +97,7 @@ a, .text-color {
 /*------------------------------------------*/
 /*   Login/Signup Modal
 /*------------------------------------------*/
-.login .modal-header .modal-title span{
+.modal-header .modal-title span{
     font-weight: 400;
     color: #c0392b;
 }

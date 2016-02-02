@@ -1,14 +1,23 @@
-{% extends 'AppFrontOfficeBundle:Contract:layout.html.twig' %}
-
-{% block content %}
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-info">
-                <div class="panel-body">
-			        <a href="{{ path("app_front_office_contract") }}" class="btn btn-danger">Ajouter un contrat</a>
-			        <a href="#" class="btn btn-danger">Résilier un contrat</a>
-                </div>
-            </div>
-        </div>
-    </div>
-{% endblock %}
+{{ contract.category }}
+<div class="row">
+	{{ contract.name }}
+</div>
+<div class="row">
+	{{ contract.provider }}
+</div>
+<div class="row">
+	{{ contract.number }}
+</div>
+<div class="row">
+    {{ contract.startingDate|date("d/m/Y") }}
+	{{ contract.endingDate|date("d/m/Y") }}
+</div>
+<div class="row">
+	{{ contract.amount }}€/{{ contract.amountFrequency }}
+</div>
+<div class="row">
+	{{ contract.withEngagement }}
+	{{ contract.autoRenewal }}
+	{{ contract.engagementLength }}
+	{{ contract.alertFrequency }}
+</div>

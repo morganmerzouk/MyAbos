@@ -33,7 +33,7 @@ class PaymentController extends Controller
                 'currency' => 'eur'
             ));
             
-            return $this->redirectToRoute("app_front_resiliation_preview", array(
+            return $this->redirectToRoute("app_front_office_resiliation_preview", array(
                 "id" => $id
             ));
         }

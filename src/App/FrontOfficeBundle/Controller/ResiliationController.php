@@ -3,6 +3,7 @@ namespace App\FrontOfficeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use App\FrontOfficeBundle\Form\Type\ContractType;
 use App\FrontOfficeBundle\Form\Type\ResiliationType;
 use App\MainBundle\Entity\Contract;
@@ -83,5 +84,31 @@ class ResiliationController extends Controller
     public function choixFormuleAction(Request $request)
     {
         return $this->render('AppFrontOfficeBundle:Resiliation:choixFormule.html.twig', array());
+    }
+
+    public function pdfAction(Request $request, $id, $idCauseResiliation)
+    {
+        /* Empecher un utilisateur qui a payé pour un contrat d'accéder aux autres en modifiant l'url */
+        $em = $this->getDoctrine()->getManager();
+        $causeResiliation = $em->getRepository("AppMainBundle:CauseResiliation")->findOneBy(array(
+            "id" => $idCauseResiliation
+        ));
+        
+        $user = $this->get('security.token_storage')
+            ->getToken()
+            ->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $contract = $em->getRepository("AppMainBundle:Contract")->findOneBy(array(
+            "user" => $user,
+            "id" => $id
+        ));
+        $html = utf8_decode($this->renderView('AppFrontOfficeBundle:Resiliation:pdf.html.twig', array(
+            'contract' => $contract,
+            'causeResiliation' => $causeResiliation
+        )));
+        return new Response($this->get('knp_snappy.pdf')->getOutputFromHtml($html), 200, array(
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'filename="test.pdf"'
+        ));
     }
 }

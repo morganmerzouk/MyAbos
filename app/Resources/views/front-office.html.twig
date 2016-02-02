@@ -21,6 +21,8 @@
 	    {% endblock %}
 	    {% block stylesheets %}
 	        <link rel="stylesheet" media="all" href="{{ asset('bundles/appmain/css/bootstrap.min.css') }}">
+            <link rel="stylesheet" media="all" href="{{ asset('bundles/appmain/css/lib/icons.min.css') }}">
+            <link rel="stylesheet" media="all" href="{{ asset('bundles/appmain/css/lib/plugins.min.css') }}">
 	        <link rel="stylesheet" media="all" href="{{ asset('bundles/appmain/css/lib/jquery-ui.css') }}">
 	        <link rel="stylesheet" media="all" href="{{ asset('bundles/appmain/css/lib/jquery-ui.theme.css') }}">
             <link rel="stylesheet" media="all" href="{{ asset('bundles/appmain/css/responsive.css') }}">
@@ -88,12 +90,12 @@
 		    {% endif %}
 		    {% block flash %}
 			    {% for flashMessage in app.session.flashbag.get('notice') %}
-			        <div>
+			        <div class="alert alert-success" role="alert">
 			            {{ flashMessage }}
 			        </div>
 			    {% endfor %}
 			    {% for flashMessage in app.session.flashbag.get('error') %}
-			        <div>
+			        <div class="alert alert-danger" role="alert">
 			            {{ flashMessage }}
 			        </div>
 			    {% endfor %}
@@ -102,9 +104,9 @@
 		</div>
 		<footer class="footer dark-bg" id="footer">
 		    <div class="container">
-		        <div class="wrapper-lg">
-		            <div class="row">
-		                <div class="col-md-12">
+	            <div class="row">
+	                <div class="col-md-12">
+	                	<div class="wrapper-sm">
 		                    <ul class="footer-nav">
 		                        <li><a href="#">Nos partenaires</a></li>
 		                        <li><a href="{{ path('app_main_security') }}">Sécurité des données</a></li>
@@ -112,9 +114,9 @@
 		                        <li><a href="{{ path('app_main_cgv') }}">Conditions générales</a></li>
 		                    </ul>
 		                    <p class="footer-copy">&copy; 2016 - MyAbos.</p>
-		                </div>
-		            </div>
-		        </div>
+	                    </div>
+	                </div>
+	            </div>
 		    </div>
 		</footer>
 	</body>

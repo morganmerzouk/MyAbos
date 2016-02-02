@@ -1,5 +1,9 @@
 $(document).on("ready", function() {
 	
+	$(".btn-pdf").on("click", function()  {
+		window.open(urlPdf + $(".select-cause-resiliation").val(),"Lettre de résiliation","menubar=no, status=no, scrollbars=no, menubar=no, width=500, height=600");
+	});
+	
 	$(".select-cause-resiliation").on("change", function() {
 		$("div.cause-resiliation").hide();
 		$(".cause-resiliation-" + $(this).val()).show();

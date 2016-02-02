@@ -9,6 +9,23 @@ use App\MainBundle\Entity\Contract;
 class ContractController extends Controller
 {
 
+    public function showAction(Request $request, $id)
+    {
+        $contract = new Contract();
+        
+        $user = $this->get('security.token_storage')
+            ->getToken()
+            ->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $contract = $em->getRepository("AppMainBundle:Contract")->findOneBy(array(
+            "user" => $user,
+            "id" => $id
+        ));
+        return $this->render('AppFrontOfficeBundle:Contract:show.html.twig', array(
+            'contract' => $contract
+        ));
+    }
+
     public function addAction(Request $request)
     {
         $contract = new Contract();

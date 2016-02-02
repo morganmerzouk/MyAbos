@@ -43,7 +43,8 @@
     "knplabs/knp-menu-bundle" : "~2.0",
     "knplabs/knp-menu" : "~2.0",
     "paymentsuite/stripe-bundle" : "v1.5.3",
-    "cspoo/swiftmailer-mailgun-bundle" : "dev-master"
+    "cspoo/swiftmailer-mailgun-bundle" : "dev-master",
+    "knplabs/knp-snappy-bundle" : "v1.4"
   },
   "scripts" : {
     "post-install-cmd" : [ "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters", "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap", "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache", "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets", "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile" ],
@@ -68,6 +69,6 @@
   "config" : {
     "bin-dir" : "bin"
   },
-  "license" : "MIT",
-  "type" : "project"
+  "type" : "project",
+  "license" : "MIT"
 }

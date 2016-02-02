@@ -30,7 +30,10 @@ class AppKernel extends Kernel
             new CoreSphere\ConsoleBundle\CoreSphereConsoleBundle(),
             new FM\ElfinderBundle\FMElfinderBundle(),
             new Sonata\SeoBundle\SonataSeoBundle(),
+            
             new cspoo\Swiftmailer\MailgunBundle\cspooSwiftmailerMailgunBundle(),
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+            
             new App\MainBundle\AppMainBundle(),
             new App\FrontOfficeBundle\AppFrontOfficeBundle(),
             new App\BackOfficeBundle\AppBackOfficeBundle()

@@ -27,7 +27,7 @@
     		{% for contract in contracts %}
 	        	<div class="col-md-12 contract-preview contract-preview-{{ contract.id }}" {% if loop.index > 1 %}style="display: none"{% endif %}>
 		        	{% if contract.contractWebPath != "" %}
-		        		test
+		        		<img src="{{ contract.contractWebPath }}" title="Contract" />
 		        	{% endif %}
 					<a href="{{ path('app_front_office_resiliation_choix_formule', {'id': contract.id}) }}" class="pull-left btn btn-danger">Résilier</a>
 					<a href="#" class="pull-right btn btn-danger">Ignorer</a>

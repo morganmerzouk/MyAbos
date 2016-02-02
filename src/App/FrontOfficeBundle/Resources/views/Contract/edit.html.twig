@@ -1,65 +1,51 @@
-{% extends 'AppFrontOfficeBundle:Contract:layout.html.twig' %}
-
-{% block content %}
-	<div class="panel-body">
-	<form method="post" {{ form_enctype(form) }}>
-		<div class="col-md-12">
-			<div class="form-edit-contrat">
-				<div class="col-md-6">
-					<h2>Entrez vos données manuellement</h2>
-				    	{{ form_widget(form.category) }}
-				    <div class="row">
-				    	{{ form_widget(form.name) }}
-				    </div>
-				    <div class="row">
-				    	{{ form_widget(form.provider) }}
-				    </div>
-				    <div class="row">
-				    	{{ form_widget(form.number) }}
-				    </div>
-				    <div class="row">
-					    {{ form_label(form.startingDate) }}
-					    <div class="col-md-6">
-					    	{{ form_widget(form.startingDate) }}
-					    </div>
-				    </div>
-				    <div class="row">
-					    {{ form_label(form.endingDate) }}
-					    <div class="col-md-6">
-					    	{{ form_widget(form.endingDate) }}
-					    </div>
-				    </div>
-				    <div class="row">
-				    	<div class="col-md-6">
-					    	{{ form_widget(form.amount) }}
-					    </div>
-					    <div class="col-md-6">
-					    	{{ form_widget(form.amountFrequency) }}
-					    </div>
-				    </div>
-				    <div class="row">
-					    {{ form_label(form.withEngagement) }}
-				    	{{ form_widget(form.withEngagement) }}
-				    </div>
-				    <div class="row">
-					    {{ form_label(form.autoRenewal) }}
-				    	{{ form_widget(form.autoRenewal) }}
-				    </div>
-				    <div class="row">
-				    	{{ form_widget(form.engagementLength) }}
-				    </div>
-				    <div class="row">
-				    	{{ form_widget(form.alertFrequency) }}
-				    </div>
-			    </div>
-			    <div class="col-md-6">
-					    {{ form_label(form.contractFile) }}
-				    	{{ form_widget(form.contractFile) }}
-			    </div>
-			    <button type="submit" value="Annuler" class="btn btn-default"/>Annuler</button>
-			    <button type="submit" value="Modifier" class="btn btn-danger"/>Modifier</button>
-			    {{ form_end(form) }}
-		    </div>
-		</div>
-	</div>
-{% endblock %}
+<form method="post" {{ form_enctype(form) }}>
+<div class="form-edit-contrat">
+	<h4 class="text-color">Entrez vos données manuellement</h2>
+    	{{ form_widget(form.category) }}
+    <div class="row">
+    	{{ form_widget(form.name) }}
+    </div>
+    <div class="row">
+    	{{ form_widget(form.provider) }}
+    </div>
+    <div class="row">
+    	{{ form_widget(form.number) }}
+    </div>
+    <div class="row">
+	    {{ form_label(form.startingDate) }}
+	    <div class="col-md-6">
+	    	{{ form_widget(form.startingDate) }}
+	    </div>
+    </div>
+    <div class="row">
+	    {{ form_label(form.endingDate) }}
+	    <div class="col-md-6">
+	    	{{ form_widget(form.endingDate) }}
+	    </div>
+    </div>
+    <div class="row">
+    	<div class="col-md-6">
+	    	{{ form_widget(form.amount) }}
+	    </div>
+	    <div class="col-md-6">
+	    	{{ form_widget(form.amountFrequency) }}
+	    </div>
+    </div>
+    <div class="row">
+	    {{ form_label(form.withEngagement) }}
+    	{{ form_widget(form.withEngagement) }}
+    </div>
+    <div class="row">
+	    {{ form_label(form.autoRenewal) }}
+    	{{ form_widget(form.autoRenewal) }}
+    </div>
+    <div class="row">
+    	{{ form_widget(form.engagementLength) }}
+    </div>
+    <div class="row">
+    	{{ form_widget(form.alertFrequency) }}
+    </div>
+    {{ form_label(form.contractFile) }}
+	{{ form_widget(form.contractFile) }}
+</div>
+{{ form_end(form) }}

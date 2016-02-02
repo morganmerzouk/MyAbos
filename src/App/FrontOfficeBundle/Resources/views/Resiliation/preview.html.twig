@@ -1,7 +1,10 @@
 {% extends 'AppFrontOfficeBundle:Resiliation:layout.html.twig' %}
 {% block content %}
-<div class="row">
-	<div class="col-md-6 no-float">
+<script type="text/javascript">
+	var urlPdf = "{{ path('app_front_office_resiliation_pdf', {'id': contract.id }) }}/";
+</script>
+<div class="preview">
+	<div class="col-md-6">
 		{% for causeResiliation in causeResiliations %}
 			<div class="cause-resiliation cause-resiliation-{{ causeResiliation.id }}">
 				<div class="clearfix">
@@ -17,14 +20,12 @@
 			</div>
 		{% endfor %}
 	</div>
-	<div class="col-md-6 no-float">
-		<h2>Sélectionner le motif de la résiliation souhaité</h2>
+	<div class="col-md-6">
+		<h3 class="text-color">Sélectionner le motif de la résiliation souhaité</h3>
 		<form method="post" action="">
 	        {{ form_widget(form.causeResiliation) }}
 			<div class="col-md-12">
-				<a href="#" class="btn btn-danger btn-preview-modify">Modifier</a>
-				<a href="#" class="btn btn-primary btn-preview-validate hidden">Valider</a>
-				<a href="" class="btn btn-danger">Générer un pdf</a>
+				<span class="btn btn-pdf btn-danger">Générer un pdf</span>
 				<input type="submit" class="btn btn-success" value="Envoyer" />
 			</div>
 	    {{ form_end(form) }}

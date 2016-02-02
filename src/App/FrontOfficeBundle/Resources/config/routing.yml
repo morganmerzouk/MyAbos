@@ -18,6 +18,10 @@ app_front_office_contract_add:
     path:     /contract/add
     defaults: { _controller: AppFrontOfficeBundle:Contract:add }
     
+app_front_office_contract_show:
+    path:     /contract/add
+    defaults: { _controller: AppFrontOfficeBundle:Contract:show }
+    
 app_front_office_contract_delete:
     path:     /contract/delete/{id}
     defaults: { _controller: AppFrontOfficeBundle:Contract:delete }
@@ -40,9 +44,13 @@ app_front_office_resiliation_payment:
     path:     /resiliation/payment/{id}
     defaults: { _controller: AppFrontOfficeBundle:Payment:index }
     
-app_front_resiliation_preview:
+app_front_office_resiliation_preview:
     path:     /resiliation/preview/{id}
     defaults: { _controller: AppFrontOfficeBundle:Resiliation:preview }
+    
+app_front_office_resiliation_pdf:
+    path:     /resiliation/pdf/{id}/{idCauseResiliation}
+    defaults: { _controller: AppFrontOfficeBundle:Resiliation:pdf, idCauseResiliation: null}
     
 app_front_office_resiliation_send:
     path:     /resiliation/send/{id}
