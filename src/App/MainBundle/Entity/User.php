@@ -52,6 +52,24 @@ class User extends BaseUser
 
     /**
      *
+     * @var string @ORM\Column(name="facebook_id", type="string", nullable=true)
+     */
+    protected $facebook_id;
+
+    /**
+     *
+     * @var string @ORM\Column(name="google_id", type="string", nullable=true)
+     */
+    protected $google_id;
+
+    /**
+     *
+     * @var string @ORM\Column(name="twitter_id", type="string", nullable=true)
+     */
+    protected $twitter_id;
+
+    /**
+     *
      * @var @ORM\Column(name="gender", type="string", length=255, nullable=true)
      */
     protected $gender;
@@ -404,20 +422,20 @@ class User extends BaseUser
     /**
      * Add contracts
      *
-     * @param \App\MainBundle\Entity\Contract $contracts
+     * @param \App\MainBundle\Entity\Contract $contracts            
      * @return User
      */
     public function addContract(\App\MainBundle\Entity\Contract $contracts)
     {
         $this->contracts[] = $contracts;
-
+        
         return $this;
     }
 
     /**
      * Remove contracts
      *
-     * @param \App\MainBundle\Entity\Contract $contracts
+     * @param \App\MainBundle\Entity\Contract $contracts            
      */
     public function removeContract(\App\MainBundle\Entity\Contract $contracts)
     {
@@ -427,10 +445,79 @@ class User extends BaseUser
     /**
      * Get contracts
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getContracts()
     {
         return $this->contracts;
+    }
+
+    /**
+     * Set facebook_id
+     *
+     * @param string $facebookId
+     * @return User
+     */
+    public function setFacebookId($facebookId)
+    {
+        $this->facebook_id = $facebookId;
+
+        return $this;
+    }
+
+    /**
+     * Get facebook_id
+     *
+     * @return string 
+     */
+    public function getFacebookId()
+    {
+        return $this->facebook_id;
+    }
+
+    /**
+     * Set google_id
+     *
+     * @param string $googleId
+     * @return User
+     */
+    public function setGoogleId($googleId)
+    {
+        $this->google_id = $googleId;
+
+        return $this;
+    }
+
+    /**
+     * Get google_id
+     *
+     * @return string 
+     */
+    public function getGoogleId()
+    {
+        return $this->google_id;
+    }
+
+    /**
+     * Set twitter_id
+     *
+     * @param string $twitterId
+     * @return User
+     */
+    public function setTwitterId($twitterId)
+    {
+        $this->twitter_id = $twitterId;
+
+        return $this;
+    }
+
+    /**
+     * Get twitter_id
+     *
+     * @return string 
+     */
+    public function getTwitterId()
+    {
+        return $this->twitter_id;
     }
 }

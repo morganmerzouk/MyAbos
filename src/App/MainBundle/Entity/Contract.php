@@ -20,7 +20,9 @@ class Contract
 
     const STATUS_RESILIATING = 2;
 
-    const STATUS_RESILIATED = 3;
+    const STATUS_RESILIATION_SENT = 3;
+
+    const STATUS_RESILIATED = 4;
 
     /**
      * @ORM\Id
@@ -72,12 +74,12 @@ class Contract
     protected $number;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
     protected $startingDate;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
     protected $endingDate;
 
@@ -130,7 +132,7 @@ class Contract
     protected $status = self::STATUS_ACTIVE;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     protected $resiliationDate;
 

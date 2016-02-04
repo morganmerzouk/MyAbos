@@ -39,10 +39,13 @@
 			        				<a href="{{ path("app_front_office_resiliation_choix_formule", {"id": contract.id}) }}" class="btn btn-danger col-md-6 col-md-offset-3 btn-resilier">Résilier</a>
 			        			{% endif %}
 			        			{% if contract.status == 2 %}
-			        				<a href="" class="btn btn-warning btn-resilier">En Cours de résiliation</a>
+			        				<span class="btn-sm btn-warning btn-resilier">Résiliation demandée</span>
 			        			{% endif %}
 			        			{% if contract.status == 3 %}
-			        				<a href="" class="btn btn-success col-md-6 col-md-offset-3 btn-resilier">Résilié</a>
+			        				<span class="btn-sm btn-warning col-md-6 col-md-offset-3 btn-resilier">Résiliation en cours</span>
+			        			{% endif %}
+			        			{% if contract.status == 4 %}
+			        				<span class="btn-sm btn-success col-md-6 col-md-offset-3 btn-resilier">Résilié</span>
 			        			{% endif %}
 			        		</div>
 			        	</div>

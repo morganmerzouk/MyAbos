@@ -32,6 +32,23 @@
 	    {% endblock %}
 	</head>
 	<body> 
+		<script>
+			window.fbAsyncInit = function() {
+			    FB.init({
+			      appId      : '1765760356981128',
+			      xfbml      : true,
+			      version    : 'v2.5'
+			    });
+			};
+			
+		  (function(d, s, id){
+		     var js, fjs = d.getElementsByTagName(s)[0];
+		     if (d.getElementById(id)) {return;}
+		     js = d.createElement(s); js.id = id;
+		     js.src = "//connect.facebook.net/fr_FR/sdk.js";
+		     fjs.parentNode.insertBefore(js, fjs);
+		   }(document, 'script', 'facebook-jssdk'));
+		</script>
 		<header class="header" id="top" data-stellar-background-ratio="0.5">
 		    <div class="overlay-min">
 		        <nav class="navbar navbar-fixed-top is-scrolling" role="navigation">
@@ -64,6 +81,9 @@
 							                            <li>
 							                                <a href="{{ path('fos_user_security_logout') }}">{{ 'logout'|trans }}</a>
 							                            </li>
+							                            <li>
+							                            	<a href="" onclick="javascript:logoutState()">{{ 'logout'|trans }}</a>
+						                            	</li>		
 							                        </ul>
 							                    </li>
 							                </ul>

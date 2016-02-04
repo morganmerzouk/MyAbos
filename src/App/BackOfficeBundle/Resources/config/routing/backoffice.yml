@@ -3,3 +3,15 @@ app_backofficebundle_home:
     defaults: { _controller: "AppBackOfficeBundle:Default:index" }
     requirements:
         _method: GET
+        
+app_back_office_resiliating:
+    pattern: /resiliating/{id}
+    defaults: { _controller: "AppBackOfficeBundle:Default:resiliating" }
+    requirements:
+        _method: GET
+        
+app_back_office_resiliated:
+    pattern: /resiliated/{id}
+    defaults: { _controller: "AppBackOfficeBundle:Default:resiliated" }
+    requirements:
+        _method: GET

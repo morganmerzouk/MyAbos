@@ -40,6 +40,27 @@
         {% endblock %}   
     </head>
     <body>
+		<script>
+			window.fbAsyncInit = function() {
+			    FB.init({
+			      appId      : '1765760356981128',
+			      xfbml      : true,
+			      version    : 'v2.5'
+			    });
+			    
+				FB.getLoginStatus(function(response) {
+			    	statusChangeCallback(response);
+			  	});
+			};
+			
+		  (function(d, s, id){
+		     var js, fjs = d.getElementsByTagName(s)[0];
+		     if (d.getElementById(id)) {return;}
+		     js = d.createElement(s); js.id = id;
+		     js.src = "//connect.facebook.net/fr_FR/sdk.js";
+		     fjs.parentNode.insertBefore(js, fjs);
+		   }(document, 'script', 'facebook-jssdk'));
+		</script>
     	<div class="main-wrapper">
         	{% block content %}{% endblock %}
             <footer class="footer dark-bg" id="footer">
@@ -47,6 +68,7 @@
 		            <div class="row">
 		                <div class="col-md-12 wrapper-sm">
 		                    <ul class="footer-nav">
+		                    <li>{{ render(url('hwi_oauth_connect')) }}</li>
 		                        <li><a href="#">Nos partenaires</a></li>
 		                        <li><a href="{{ path('app_main_security') }}">Sécurité des données</a></li>
 		                        <li><a href="{{ path('app_main_contact') }}">Nous contacter</a></li>

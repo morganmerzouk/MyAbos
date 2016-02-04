@@ -14,4 +14,8 @@ parameters:
     mailer_api_key: key-01afcc76625d7e4b4e3598934102fe2b
     locale: fr
     secret: ade2e74ac2b9d749915683d7868851045
+    
+    oauth.facebook.id: "1765760356981128"
+    oauth.facebook.secret: "24a079389579f486fbb8c1af0ea312db"
+    
     contact_email: contact@myabos.fr

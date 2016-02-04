@@ -27,6 +27,11 @@
 									<td>
 										<a href="javascript:void(0);" onclick="javascript:printContract('contrat', 'previewModalContent{{ contract.id }}')" class="glyphicon glyphicon-print" aria-hidden="true" title="Imprimer"></a>
 										<a href="javascript:void(0);" onclick="javascript:openPreviewModal({{ contract.id }})" class="glyphicon glyphicon-search" aria-hidden="true" title="Visualiser"></a>
+										{% if contract.status == 2 %}
+											<a href="{{ path('app_back_office_resiliating', { 'id': contract.id }) }}" class="btn-sm btn-warning">Marquer comme "En cours de résiliation"</a>
+										{% elseif contract.status == 3 %}
+											<a href="{{ path('app_back_office_resiliated', { 'id': contract.id }) }}" class="btn-sm btn-danger">Marquer comme "Résilié"</a>
+										{% endif %}
 									</td>
 								</tr>
 								<div class="modal fade letter-{{ contract.id }}" id="previewModal{{ contract.id }}">

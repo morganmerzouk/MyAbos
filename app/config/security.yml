@@ -41,6 +41,13 @@ security:
                 csrf_provider: security.csrf.token_manager # Use form.csrf_provider instead for Symfony <2.4
                 default_target_path: /mon-compte
                 success_handler: user.security.authentication_handler
+            oauth:
+                resource_owners:
+                    facebook:           "/connect/check-facebook"
+                login_path:        /connect
+                failure_path:      /connect
+                oauth_user_provider:
+                    service: hwi_oauth.user.provider.fosub_bridge
             logout:       true
             anonymous:    true
 

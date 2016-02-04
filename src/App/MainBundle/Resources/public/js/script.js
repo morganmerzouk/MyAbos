@@ -5,7 +5,6 @@ $(document).ready(function() {
 	if(locale == "fr") {
 		getConteneurInfoCookie();
 	}
-		
 	$('.btn-newsletter-subscribe').on('click', function() {
 		if($('.newsletter-email').val() == "" || $('.newsletter-email').val() == "email" ) {
 			return;
@@ -45,6 +44,17 @@ $(document).ready(function() {
 	});
 });
 
+
+function logoutState() {
+	FB.getLoginStatus(function(response) {
+        if (response && response.status === 'connected') {
+            FB.logout(function(response) {
+                document.location.reload();
+            });
+        }
+    });
+}
+
 function getConteneurInfoCookie(){
 	if(localStorage['BandeauInfoCookie'] != 1){
 		$('#BandeauInfoCookie').css('display', 'block');
@@ -55,11 +65,7 @@ function getConteneurInfoCookie(){
 }
 
 function getInfosCookie(){
-	if($('#ConteneurInfosCookie').css('display') == "none"){
-		$('#ConteneurInfosCookie').css('display', "block");
-	}else{
-		$('#ConteneurInfosCookie').css('display', "none");
-	}
+	$('#ConteneurInfosCookie').toggle();
 }
 	
 function validateEmail(email) {

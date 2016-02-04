@@ -15,7 +15,33 @@ $(window).load(function() {
 
 });
 
+/* =================================
+LOGIN-FACEBOOK 
+=================================== */
+function statusChangeCallback(response) {
+    if (response.status === 'connected') {
+    	console.log(response.authResponse.accessToken);
+    	FB.api('/me', function(response) {
+    	    console.log(JSON.stringify(response.name));
+    	});
+      // Logged into your app and Facebook.
+    } else if (response.status === 'not_authorized') {
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this app.';
+    } else {
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into Facebook.';
+    }
+}
 
+  // This function is called when someone finishes with the Login
+  // Button.  See the onlogin handler attached to it in the sample
+  // code below.
+function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+    	statusChangeCallback(response);
+    });
+}
 /* =================================
    LOGIN-SIGNUP MODAL                     
 =================================== */
@@ -303,7 +329,7 @@ if (onMobile === true) {
 ============================================= */
 $(".mailchimp-subscribe").ajaxChimp({
     callback: mailchimpCallback,
-    url: "http://themedept.us9.list-manage.com/subscribe/post?u=63465a86fdd5f3b9fa31f9278&amp;id=52df53337f" // Replace your mailchimp post url inside double quote "".  
+    url: "http://morganmerzouk.us10.list-manage.com/subscribe/post?u=747564b3c5653c7d399cc8295&amp;id=8bc398fa0a" // Replace your mailchimp post url inside double quote "".  
 });
 
 function mailchimpCallback(resp) {

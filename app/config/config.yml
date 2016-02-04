@@ -210,3 +210,18 @@ knp_snappy:
         binary:     C:\wkhtmltopdf\bin\wkhtmltopdf.exe
         options:    []
     temporary_folder: %kernel.cache_dir%/snappy
+
+hwi_oauth:
+    connect:
+        confirmation: true
+        registration_form: fos_user.registration.form
+    firewall_name: main
+    fosub:
+        username_iterations: 30
+        properties:
+            facebook: facebook_id
+    resource_owners:
+        facebook:
+            type: facebook
+            client_id: %oauth.facebook.id%
+            client_secret: %oauth.facebook.secret%
