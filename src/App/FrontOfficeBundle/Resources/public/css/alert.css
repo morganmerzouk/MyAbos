@@ -2,3 +2,4 @@
 .selected p, .provider img:hover+p { font-weight: bold; }
 .selected img {border: 2px outset black;}
 .provider img:hover { border: 2px outset black; cursor: pointer; }
+.table>tbody>tr>td.vcenter { vertical-align: middle; }

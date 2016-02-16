@@ -57,7 +57,7 @@ class DefaultController extends Controller
         $nom = $this->getRequest()->request->get('nom');
         $message = $this->getRequest()->request->get('message');
         
-        $demande = \Swift_Message::newInstance()->setSubject('MyAbos: Nouveau message de ' . $nom)
+        $demande = \Swift_Message::newInstance()->setSubject('MYABOS: Nouveau message de ' . $nom)
             ->setFrom($email)
             ->setTo($this->container->getParameter('contact_email'))
             ->setBody($message, 'text/html');

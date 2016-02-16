@@ -28,12 +28,8 @@
   	</script>
 {% endblock %}
 {% block content %}
-<h2>Pour 12,99€ nous nous occupons de tout.</h2>
-<p class="text-danger">Nous rédigeons et envoyons par recommandé votre lettre de résiliation à votre fournisseur.<br /><br />
-Vous recevrez un email de confirmation et un accusé de réception de La Poste.<br /><br />
-Votre contrat apparaîtra alors automatiquement dans votre dashboard comme "Résilié".
-</p>
-<p class="text-center text-danger">Entrez vos informations de paiement ci-dessous pour commander votre résiliation.</p>
+<h2 class="text-uppercase text-color">Informations bancaires</h2>
+<p>Entrez vos informations de paiement ci-dessous pour commander votre résiliation:</p><br />
 <form action="" method="POST" id="payment-form">
     <span class="payment-errors"></span>
     <div class="form-row">
@@ -41,15 +37,20 @@ Votre contrat apparaîtra alors automatiquement dans votre dashboard comme "Rés
     	<input type="text" size="16" data-stripe="number"/>
     </div>
     <div class="form-row">
-      	<label>Clé de sécurité: </label>
-        	<input type="text" size="4" data-stripe="cvc"/>
-  	</div>
-    <div class="form-row">
       	<label>Date d'expiration (MM/YYYY): </label>
-    	<input type="text" size="2" data-stripe="exp-month"/>
+    	<input type="text" size="2" data-stripe="exp-month" placeholder="Mois"/>
   		<span> / </span>
-      	<input type="text" size="4" data-stripe="exp-year"/>
+      	<input type="text" size="4" data-stripe="exp-year" placeholder="Année"/>
     </div>
-    <button type="submit" class="btn btn-danger">Payer</button>
+    <div class="form-row">
+      	<label>Clé de sécurité: </label>
+        	<input type="text" size="4" data-stripe="cvc"/> (présent au dos de votre carte)
+  	</div><br />
+  	Je reconnais avoir lu et accepté l'ensemble des conditions générales de ventes
+  	<input type="checkbox" class="accept-cgv" id="accept-cgv" name="accept-cgv" /><br /><br />
+    <div class="clearfix">
+	    <a href="{{ path('app_front_office_resiliation_choix_formule', {'id': app.request.get('id') }) }}" class="btn btn-default">Annuler</a>
+	    <button type="submit" class="btn btn-danger">Procéder au paiement</button>
+    </div>
 </form>
 {% endblock %}

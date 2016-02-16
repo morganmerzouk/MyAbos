@@ -1,38 +1,105 @@
 {% extends 'AppFrontOfficeBundle:Alert:layout.html.twig' %}
 {% block content %}
     <div class="col-md-12">
-        <div class="col-md-6">
-        	<h3 class="text-color">Résiliations à venir</h3>
-        	{% for contract in contracts %}
-        		{% if loop.index%3 == 1 %}
-        			<div class="row">
-    			{% endif %}
-    			<div class="col-md-4 provider {% if loop.index == 1 %}selected{% endif %}">
-    				<img data-id="{{ contract.id }}" class="img-thumbnail img-responsive" src="{{ contract.provider.miniatureWebPath }}" />
-        			<p class="text-center">{{ contract.name }}</p>
-    			</div>
-        		{% if loop.index%3 == 0 %}
-        			</div>
-    			{% endif %}
-            {% endfor %}
-        	<h3 class="text-color">Résiliations Possibles / Loi Chatel</h3>
-        	{% for contract in contractsChatel %}
-    			<div class="col-md-4">
-    				<img class="img-responsive" src="{{ contract.provider.miniatureWebPath }}" />
-        			<p class="text-center">{{ contract.name }}</p>
-    			</div>
-            {% endfor %}
+    	<h3 class="text-uppercase text-color">Résiliations possibles à venir</h3>
+    	<table class="table table-bordered">
+    		<tr>
+    			<th class="text-center">Fournisseur</th>
+    			<th class="text-center">Intitulé du contrat</th>
+    			<th class="text-center">Budget</th>
+    			<th class="text-center">Date de fin d'engagement</th>
+    			<th class="text-center">Motif de résiliation</th>
+    			<th class="text-center">Action</th>
+    		</tr>
+    	{% for contract in contracts %}
+			<tr>
+				<td class="text-center vcenter"><img src="{{ contract.provider.miniatureWebPath }}" /></td>
+    			<td class="text-center vcenter">{{ contract.name }}</td>
+    			<td class="text-center vcenter">{{ contract.amount }}€ / {{ contract.amountFrequency }}</td>
+				<td class="text-center vcenter">{{ contract.endingDate|date('d/m/Y') }}</td>
+				<td class="text-center vcenter">
+					Motif de résiliation<br />
+					<a href="#" onclick="javascript:openPopin('loi-chatel')">Plus d'informations</a>
+				</td>
+				<td class="text-center vcenter">
+					<a href="{{ path('app_front_office_contract_list') }}" class="btn btn-danger">Ignorer</a><br /><br />
+					<a href="{{ path('app_front_office_resiliation_choix_formule', {'id': contract.id}) }}" class="btn btn-danger">Résilier</a>
+				</td>
+			</tr>
+        {% endfor %}
+        </table>
+        <div class="modal fade" id="modal-loi-chatel">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icon icon_close_alt2"></i></button>
+                        <h4 class="modal-title text-color">Loi Chatel</h4>
+                    </div>
+					<div class="modal-body">  
+                        <div class="box">
+                             <div class="content text-left">
+                             	Nous vous prévenons par cette alerte, que votre contrat téléphonique est arrivé à son 13ème mois, sur une durée d'engagement de 24 mois. Vous pouvez désormais à partir de ce jour et jusqu'à la fin de votre engagement, résilier ce même contrat, conformément à l’article L. 121-84-1 à L. 121-84-5 du code de la consommation, dans le cadre de la Loi Chatel. 
+								Attention, votre indemnité de résiliation s'élèvera à hauteur de 25% du montant restant dû, jusqu'au terme de l'engagement.
+                             	<button type="button" class="pull-right btn-sm btn-danger" data-dismiss="modal">OK</button>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-md-6 text-center">
-    		{% for contract in contracts %}
-	        	<div class="col-md-12 contract-preview contract-preview-{{ contract.id }}" {% if loop.index > 1 %}style="display: none"{% endif %}>
-		        	{% if contract.contractWebPath != "" %}
-		        		<img src="{{ contract.contractWebPath }}" title="Contract" />
-		        	{% endif %}
-					<a href="{{ path('app_front_office_resiliation_choix_formule', {'id': contract.id}) }}" class="pull-left btn btn-danger">Résilier</a>
-					<a href="#" class="pull-right btn btn-danger">Ignorer</a>
-				</div>
-        	{% endfor %}
+        <div class="modal fade" id="modal-non-reconduction">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icon icon_close_alt2"></i></button>
+                        <h4 class="modal-title text-color">Non reconduction au terme du contrat </h4>
+                    </div>
+					<div class="modal-body">  
+                        <div class="box">
+                        	<div class="content text-left">
+                            	Vous avez souscrit à une assurance habitation/Auto/Moto, Mutuelle ou autres et ne souhaitez pas reconduire cet abonnement à échéance, nous vous prévenons par cette alerte, que vous avez à partir de ce jour, 2 mois avant la date anniversaire de fin de contrat, pour procéder à la résiliation de celui-ci, afin d'éviter toute reconduction tacite, comme l’exige, les Conditions Générales de Ventes de votre fournisseur.
+								<button type="button" class="pull-right btn-sm btn-danger" data-dismiss="modal">OK</button>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modal-reconduction">
+            <div class="modal-dialog">
+                <div class="modal-content text-color">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icon icon_close_alt2"></i></button>
+                        <h4 class="modal-title">Reconduction Tacite (Loi Chatel)</h4>
+                    </div>
+					<div class="modal-body">  
+                        <div class="box">
+                         	<div class="content text-left">
+								Vous avez souscrit à une assurance habitation/Auto/Moto, Mutuelle ou autre et n'avez pas résilié votre contrat à temps, faute d’avoir été informé par votre fournisseur, ce qui a eu pour conséquence la reconduction tacite de celui-ci. Nous vous prévenons par cette alerte, que vous êtes en droit à ce jour, conformément à l’article L. 113-15- 1, Loi n°2005-67 du 28 janvier 2005 – art. 2 JORF 1er février 2005 en vigueur le 28 juillet 2005, de résilier ce contrat dans le cadre de la Loi Chatel.
+                            	<button type="button" class="pull-right btn-sm btn-danger" data-dismiss="modal">OK</button>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modal-anniversaire">
+            <div class="modal-dialog">
+                <div class="modal-content text-color">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icon icon_close_alt2"></i></button>
+                        <h4 class="modal-title">Date anniversaire</h4>
+                    </div>
+					<div class="modal-body">  
+                        <div class="box">
+                            <div class="content text-left">
+                            	Nous vous prévenons par cette alerte, que votre contrat téléphonique, arrive à échéance ce jour. Vous pouvez donc désormais, résilier celui-ci, à tout moment.
+								<button type="button" class="pull-right btn-sm btn-danger" data-dismiss="modal">OK</button>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

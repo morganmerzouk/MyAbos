@@ -4,3 +4,10 @@
 .container-fluid {
 	height: 100%;
 }
+
+.white { color: white; }
+.bg-red { background: #c0392b; }
+
+.choix-formule-text-size { font-size: 1.3em; }
+.text-size-smaller { font-size: 0.8em; }
+.choix-formule { margin-bottom: 80px; }

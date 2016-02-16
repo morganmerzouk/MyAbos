@@ -116,7 +116,7 @@ fos_user:
         group_class: App\MainBundle\Entity\Group
     from_email:
         address: contact@myabos.fr
-        sender_name: MyAbos    
+        sender_name: MYABOS    
 
 sonata_admin:
     title_logo:           bundles/app/images/general/logo.png
@@ -137,7 +137,7 @@ sonata_admin:
             ADMIN:    [MASTER]
         admin_permissions: [CREATE, LIST, DELETE, UNDELETE, EXPORT, OPERATOR, MASTER]
         object_permissions: [VIEW, EDIT, DELETE, UNDELETE, OPERATOR, MASTER, OWNER]
-    title:      MyAbos
+    title:      MYABOS
         
 sonata_block:
     default_contexts: [cms]
@@ -192,8 +192,8 @@ sonata_seo:
 
                 # Open Graph information
                 # see http://developers.facebook.com/docs/opengraphprotocol/#types or http://ogp.me/
-                'og:site_name': MyAbos               
-                'og:description': MyAbos
+                'og:site_name': MYABOS               
+                'og:description': MYABOS
             http-equiv:
                 'Content-Type':         text/html; charset=utf-8
                 #'X-Ua-Compatible':      IE=EmulateIE7
@@ -210,18 +210,3 @@ knp_snappy:
         binary:     C:\wkhtmltopdf\bin\wkhtmltopdf.exe
         options:    []
     temporary_folder: %kernel.cache_dir%/snappy
-
-hwi_oauth:
-    connect:
-        confirmation: true
-        registration_form: fos_user.registration.form
-    firewall_name: main
-    fosub:
-        username_iterations: 30
-        properties:
-            facebook: facebook_id
-    resource_owners:
-        facebook:
-            type: facebook
-            client_id: %oauth.facebook.id%
-            client_secret: %oauth.facebook.secret%

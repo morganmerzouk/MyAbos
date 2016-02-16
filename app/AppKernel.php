@@ -33,8 +33,6 @@ class AppKernel extends Kernel
             
             new cspoo\Swiftmailer\MailgunBundle\cspooSwiftmailerMailgunBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
-            new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
-            
             new App\MainBundle\AppMainBundle(),
             new App\FrontOfficeBundle\AppFrontOfficeBundle(),
             new App\BackOfficeBundle\AppBackOfficeBundle()

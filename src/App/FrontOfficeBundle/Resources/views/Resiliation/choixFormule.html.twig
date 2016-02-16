@@ -1,21 +1,36 @@
 {% extends 'AppFrontOfficeBundle:Resiliation:layout.html.twig' %}
 {% block content %}
-    <div class="choix-formule">
+    <div class="choix-formule clearfix">
         <div class="col-md-12">
-	      	<h2>Résilier un contrat</h2>
-	      	<h3>Choix du mode de résiliation</h3>
-	      	<div class="col-md-6">
-	      		<div class="clearfix">
-	      			<a href="{{ path("app_front_office_resiliation_payment", { 'id': app.request.get('id') }) }}" class="btn btn-danger btn-lg col-md-6 col-md-offset-3">JE VEUX QUE MYABOS<br /> RÉSILIE POUR MOI<br /> POUR 12,99€</a>
+	      	<h2 class="text-uppercase text-color">Choisissez votre mode de résiliation</h2>
+	      	<div class="col-md-6 white choix-formule-text-size">
+	      		<div class="col-md-12 dark-bg">
+		      		<h3 class="text-uppercase white">Basique</h3>
+		      		Je gère et résilie moi même<br /> mes contrats d'abonnements
+		      		<hr />
+		      		<h4 class="white">Gratuit</h4>
+		      		<hr />
+	      			Vous préférez rédiger et envoyer vous-même votre courrier de résiliation?<br />
+	      			Pas de problème! Nous vous laissons faire les démarche et vous rendre ensuite sur votre<br /> tableau de bord "Gestion de mes contrats"<br /> pour indiquer manuellement que le contrat a été résilié.<br />
+		      		<div class="clearfix">
+		      			<a href="{{ path("app_front_office_resiliation_payment", { 'id': app.request.get('id') }) }}" class="btn btn-default btn-lg col-md-6 col-md-offset-3">Je fais tout moi même</a>
+		      		</div>
 	      		</div>
-	      		<div class="col-md-10 col-md-offset-1 text-justify"><br />Nous nous occupons de tout : rédaction de votre lettre de résiliation et envoi du courrier recommandé à votre fournisseur. Vous recevez la confirmation par mail et l'accusé de réception du destinataire par la Poste. Les frais d'envoi de recommandé avec accusé de réception (6€) sont inclus.
-					Le tableau de suivi de vos contrats est alors mis à jour automatiquement pour indique que ce contrat est résilié. </div>
 	      	</div>
-	      	<div class="col-md-6">
-	      		<div class="clearfix">
-	      			<a href="#" class="btn btn-danger btn-lg col-md-6 col-md-offset-3">JE RÉSILIE MOI-MÊME<br /> MANUELLEMENT</a>
+	      	<div class="col-md-6 white choix-formule-text-size">
+	      		<div class="col-md-12 bg-red">
+		      		<h3 class="text-uppercase white">Premium</h3>
+		      		Je gère mes contrats d'abonnements<br /> mais je souhaite que MYABOS résilie pour moi.
+		      		<hr />
+		      		<h4 class="white">Seulement 7,99€/contrat</h4>
+	      			<span class="text-size-smaller">frais d'envoi de recommandé avec accusé de réception inclus</span>
+	      			<hr />
+	      			Nous nous occupons de tout :<br />
+	      			Rédaction de votre lettre de résiliation et envoi du courrier recommandé avec accusé de réception à votre fournisseur. Suivi 24h/24<br /> Nous mettons à jour le tableau de suivi de  vos contrats, afin d'indiquer que votre contrat est "Résilié". 
+		      		<div class="clearfix">
+		      			<a href="{{ path("app_front_office_resiliation_payment", { 'id': app.request.get('id') }) }}" class="btn btn-default btn-lg col-md-6 col-md-offset-3">Je laisse MYABOS<br /> s'occuper de tout</a>
+		      		</div>
 	      		</div>
-	      		<div class="col-md-10 col-md-offset-1 text-justify"><br />Vous préférez rédiger et envoyer vous-même votre courrier ? Pas de problème ! Nous vous laissons faire les démarches et vous rendre ensuite sur votre tableau de bord "Gestion de mes contrats" pour indiquer manuellement que le contrat a été résilié. </div>
         	</div>
         </div>
     </div>

@@ -29,7 +29,7 @@ class PaymentController extends Controller
             
             $charge = \Stripe_Charge::create(array(
                 'customer' => $customer->id,
-                'amount' => 1299,
+                'amount' => 700,
                 'currency' => 'eur'
             ));
             

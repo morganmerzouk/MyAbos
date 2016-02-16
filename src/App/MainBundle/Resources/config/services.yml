@@ -15,9 +15,7 @@ services:
     user.security.authentication_handler:
         class: App\MainBundle\Handler\AuthenticationHandler
         arguments: ['@router', '@session']
-    app.oauth.user_provider:
-        class: App\MainBundle\OAuth\UserProvider
-        argumenty: ['fos_user.user_manager']
-        tags:
-            - { name: facebook, value: facebookId }
+    hwi_oauth.user.provider.entity:
+        class: HWI\Bundle\OAuthBundle\Security\Core\User\OAuthUserProvider
+
     

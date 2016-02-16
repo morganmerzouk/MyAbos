@@ -20,17 +20,13 @@ LOGIN-FACEBOOK
 =================================== */
 function statusChangeCallback(response) {
     if (response.status === 'connected') {
-    	console.log(response.authResponse.accessToken);
-    	FB.api('/me', function(response) {
-    	    console.log(JSON.stringify(response.name));
-    	});
+    	document.location = "{{ url('hwi_oauth_service_redirect', {service: 'facebook'}) }}";
+    	
       // Logged into your app and Facebook.
     } else if (response.status === 'not_authorized') {
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
+      document.getElementById('status').innerHTML = 'Please log into this app.';
     } else {
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into Facebook.';
+      document.getElementById('status').innerHTML = 'Please log into Facebook.';
     }
 }
 
@@ -69,7 +65,7 @@ function showLoginForm(){
             $('.login-footer').fadeIn('fast');
         });
         
-        $('.modal-title').html('Se connecter à <span>MyAbos</span>');
+        $('.modal-title').html('Se connecter à <span>MYABOS</span>');
     });
     $('.error').removeClass('alert alert-danger').html('');
 }
